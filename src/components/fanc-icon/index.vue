@@ -1,5 +1,5 @@
 <template>
-    <view class="fanc-icon">
+    <view class="fanc-icon" @click="$emit('click')">
         <i :class="`fa${iconType} fa-${name}`" :style="iconStyle"></i>
     </view>
 </template>
