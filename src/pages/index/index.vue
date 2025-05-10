@@ -12,6 +12,9 @@
             <navigator url="/pages/icon-example/icon-example" class="nav-button">
                 <text class="nav-text">查看图标示例</text>
             </navigator>
+            <navigator url="/pages/cell-demo/index" class="nav-button">
+                <text class="nav-text">查看单元格示例</text>
+            </navigator>
         </view>
     </view>
 </template>
