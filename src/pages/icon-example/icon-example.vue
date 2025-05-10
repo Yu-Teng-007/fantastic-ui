@@ -80,6 +80,42 @@
         </view>
 
         <view class="example-section">
+            <text class="title">小红点(dot)</text>
+            <view class="icon-row">
+                <view class="icon-item">
+                    <fanc-icon name="bell" size="24" dot></fanc-icon>
+                    <text class="icon-name">消息提醒</text>
+                </view>
+                <view class="icon-item">
+                    <fanc-icon name="envelope" size="24" dot></fanc-icon>
+                    <text class="icon-name">邮件提醒</text>
+                </view>
+                <view class="icon-item">
+                    <fanc-icon name="comment" size="24" dot></fanc-icon>
+                    <text class="icon-name">评论提醒</text>
+                </view>
+            </view>
+        </view>
+
+        <view class="example-section">
+            <text class="title">徽标(badge)</text>
+            <view class="icon-row">
+                <view class="icon-item">
+                    <fanc-icon name="bell" size="24" badge="8"></fanc-icon>
+                    <text class="icon-name">8条消息</text>
+                </view>
+                <view class="icon-item">
+                    <fanc-icon name="envelope" size="24" badge="99+"></fanc-icon>
+                    <text class="icon-name">99+封邮件</text>
+                </view>
+                <view class="icon-item">
+                    <fanc-icon name="shopping-cart" size="24" badge="5"></fanc-icon>
+                    <text class="icon-name">5件商品</text>
+                </view>
+            </view>
+        </view>
+
+        <view class="example-section">
             <text class="title">点击事件</text>
             <view class="icon-row">
                 <view class="icon-item">
