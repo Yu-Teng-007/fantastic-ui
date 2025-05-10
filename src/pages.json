@@ -11,6 +11,12 @@
             "style": {
                 "navigationBarTitleText": "按钮示例"
             }
+        },
+        {
+            "path": "pages/icon-example/icon-example",
+            "style": {
+                "navigationBarTitleText": "图标示例"
+            }
         }
     ],
     "globalStyle": {

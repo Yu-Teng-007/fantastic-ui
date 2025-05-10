@@ -9,6 +9,9 @@
             <navigator url="/pages/button-example/button-example" class="nav-button">
                 <text class="nav-text">查看按钮示例</text>
             </navigator>
+            <navigator url="/pages/icon-example/icon-example" class="nav-button">
+                <text class="nav-text">查看图标示例</text>
+            </navigator>
         </view>
     </view>
 </template>
@@ -52,7 +55,11 @@ export default {
 .nav-section {
     margin-top: 50rpx;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 20rpx;
+    width: 100%;
+    padding: 0 30rpx;
 }
 
 .nav-button {
@@ -63,6 +70,8 @@ export default {
     text-align: center;
     box-shadow: 0 4rpx 8rpx rgba(0, 0, 0, 0.1);
     transition: background-color 0.3s;
+    width: 100%;
+    max-width: 400rpx;
 }
 
 .nav-button:hover {
