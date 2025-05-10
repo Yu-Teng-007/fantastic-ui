@@ -60,8 +60,8 @@
             <text class="title">图标按钮 (Icon)</text>
             <view class="button-row">
                 <fanc-button icon="fanc-icon-search">搜索</fanc-button>
-                <fanc-button type="primary" icon="fanc-icon-edit">编辑</fanc-button>
-                <fanc-button type="primary" icon="fanc-icon-check" plain></fanc-button>
+                <fanc-button type="primary" icon="edit">编辑</fanc-button>
+                <fanc-button type="primary" icon="apple-alt" plain></fanc-button>
                 <fanc-button icon="https://img.yzcdn.cn/vant/logo.png">图片图标</fanc-button>
             </view>
         </view>

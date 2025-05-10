@@ -25,7 +25,7 @@
         <view v-else class="fanc-button__content">
             <view v-if="icon && !loading" class="fanc-button__icon">
                 <image v-if="isIconUrl" :src="icon" class="fanc-icon-image" />
-                <text v-else :class="['fanc-icon', icon]"></text>
+                <fanc-icon v-else :name="icon"></fanc-icon>
             </view>
             <text v-if="!loading || (loading && loadingText)" class="fanc-button__text">
                 <slot></slot>
@@ -80,9 +80,9 @@ export default {
                 if (this.plain) {
                     style.color = this.color;
                     style.borderColor = this.color;
-                    style.backgroundColor = "#fff";
+                    style.background = "#fff";
                 } else {
-                    style.backgroundColor = this.color;
+                    style.background = this.color;
                     style.borderColor = this.color;
                     style.color = "#fff";
                 }
