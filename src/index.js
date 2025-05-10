@@ -1,8 +1,9 @@
-// This is the entry point for your component library.
-// You will export your components from here.
+import FancButton from "@/components/fanc-button/index.vue";
 
-// Example:
-// import MyButton from './components/MyButton.vue';
-// export { MyButton };
+export { FancButton };
 
-export default {};
+export default {
+    install(app) {
+        app.component(FancButton.name, FancButton);
+    },
+};
