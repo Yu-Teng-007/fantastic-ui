@@ -1,4 +1,4 @@
-// Base Colors
+// 基础颜色
 $primary-color: #007bff;
 $secondary-color: #6c757d;
 $success-color: #28a745;
@@ -8,13 +8,14 @@ $info-color: #17a2b8;
 $light-color: #f8f9fa;
 $dark-color: #343a40;
 
-// Fantastic UI Colors
+// Fantastic UI 颜色
 $fanc-primary-color: $primary-color;
 $fanc-success-color: $success-color;
 $fanc-warning-color: $warning-color;
 $fanc-danger-color: $danger-color;
+$fanc-info-color: $info-color;
 
-// Grayscale Palette
+// 灰度调色板
 $white: #fff;
 $gray-100: #f8f9fa;
 $gray-200: #e9ecef;
@@ -27,11 +28,11 @@ $gray-800: #343a40;
 $gray-900: #212529;
 $black: #000;
 
-// Typography
+// 排版
 $font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans",
     sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 $font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-$font-size-base: 1rem; // Assumes 16px
+$font-size-base: 1rem; // 假设基础字号为16px
 $font-size-lg: $font-size-base * 1.25;
 $font-size-sm: $font-size-base * 0.875;
 $font-weight-light: 300;
@@ -40,27 +41,42 @@ $font-weight-bold: 700;
 $line-height-base: 1.5;
 $headings-font-weight: 500;
 
-// Spacing
-$spacing-unit: 1rem; // Base spacing unit (e.g., 16px)
-$spacer-1: $spacing-unit * 0.25;
-$spacer-2: $spacing-unit * 0.5;
-$spacer-3: $spacing-unit;
-$spacer-4: $spacing-unit * 1.5;
+// 间距
+$spacing-unit: 1rem; // 基础间距单位（如16px）
+$spacing-xs: $spacing-unit * 0.25; // 4px
+$spacing-sm: $spacing-unit * 0.5; // 8px
+$spacing-md: $spacing-unit * 0.75; // 12px
+$spacing-lg: $spacing-unit; // 16px
+$spacing-xl: $spacing-unit * 1.5; // 24px
+$spacing-xxl: $spacing-unit * 2; // 32px
+
+$spacer-1: $spacing-xs;
+$spacer-2: $spacing-sm;
+$spacer-3: $spacing-lg;
+$spacer-4: $spacing-xl;
 $spacer-5: $spacing-unit * 3;
 
-// Borders
+// 边框
 $border-width: 1px;
 $border-color: $gray-300;
 $border-radius: 0.25rem;
 $border-radius-lg: 0.3rem;
 $border-radius-sm: 0.2rem;
 
-// Box Shadow
+// 阴影
 $box-shadow-sm: 0 0.125rem 0.25rem rgba($black, 0.075);
 $box-shadow: 0 0.5rem 1rem rgba($black, 0.15);
 $box-shadow-lg: 0 1rem 3rem rgba($black, 0.175);
 
-// Buttons
+// 动画与过渡
+$duration-fast: 150ms;
+$duration-base: 300ms;
+$duration-slow: 500ms;
+$easing-standard: cubic-bezier(0.34, 0.69, 0.1, 1);
+$easing-accelerate: cubic-bezier(0.4, 0, 1, 1);
+$easing-decelerate: cubic-bezier(0, 0, 0.2, 1);
+
+// 按钮
 $btn-padding-y: 0.375rem;
 $btn-padding-x: 0.75rem;
 $btn-font-family: $font-family-sans-serif;
@@ -70,7 +86,13 @@ $btn-border-radius: $border-radius;
 $btn-focus-box-shadow: 0 0 0 0.2rem rgba($primary-color, 0.25);
 $btn-active-box-shadow: inset 0 3px 5px rgba($black, 0.125);
 
-// Modals (Popups)
+// 按钮尺寸
+$btn-height-large: 44px;
+$btn-height-normal: 36px;
+$btn-height-small: 28px;
+$btn-height-mini: 24px;
+
+// 模态框（弹窗）
 $modal-inner-padding: $spacer-3;
 $modal-dialog-margin: 0.5rem;
 $modal-content-bg: $white;
@@ -86,13 +108,13 @@ $modal-footer-border-color: $modal-header-border-color;
 $modal-header-padding-y: $spacer-3;
 $modal-header-padding-x: $spacer-3;
 
-// Cells (Table Cells / List Items)
+// 单元格（表格单元/列表项）
 $cell-padding-y: 0.75rem;
 $cell-padding-x: 1.25rem;
 $cell-bg: $white;
 $cell-border-color: $gray-300;
 
-// Alerts / Tips
+// 提示/警告
 $alert-padding-y: 0.75rem;
 $alert-padding-x: 1.25rem;
 $alert-margin-bottom: 1rem;
@@ -100,7 +122,7 @@ $alert-border-radius: $border-radius;
 $alert-link-font-weight: $font-weight-bold;
 $alert-border-width: $border-width;
 
-// Calendar
+// 日历
 $calendar-bg: $white;
 $calendar-border-color: $gray-300;
 $calendar-header-bg: $gray-100;
@@ -108,7 +130,7 @@ $calendar-day-hover-bg: $gray-200;
 $calendar-today-bg: $primary-color;
 $calendar-today-color: $white;
 
-// Forms
+// 表单
 $input-padding-y: 0.375rem;
 $input-padding-x: 0.75rem;
 $input-font-family: $font-family-sans-serif;
@@ -126,7 +148,7 @@ $input-focus-box-shadow: 0 0 0 0.2rem rgba($primary-color, 0.25);
 $input-placeholder-color: $gray-600;
 $input-disabled-bg: $gray-200;
 
-// Date/Time Pickers
+// 日期/时间选择器
 $datepicker-dropdown-bg: $white;
 $datepicker-dropdown-border-color: $gray-300;
 $datepicker-active-bg: $primary-color;
@@ -135,7 +157,7 @@ $timepicker-bg: $white;
 $timepicker-border-color: $gray-300;
 $timepicker-item-hover-bg: $gray-100;
 
-// Z-index master list
+// Z轴层级列表
 $zindex-dropdown: 1000;
 $zindex-sticky: 1020;
 $zindex-fixed: 1030;
