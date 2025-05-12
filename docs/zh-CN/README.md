@@ -1,61 +1,84 @@
-# Fantastic UI 组件库文档
+# Fantastic UI
 
-欢迎使用 Fantastic UI 组件库！本文档将帮助您了解如何使用 Fantastic UI 构建美观、高效的跨平台应用。
+<p align="center">
+  <img src="../../src/static/logo.png" width="200" alt="Fantastic UI Logo">
+</p>
+
+<p align="center">基于uni-app的轻量级跨平台UI组件库</p>
 
 ## 介绍
 
-Fantastic UI 是一个基于 uni-app 的跨平台 UI 组件库，专为开发者提供统一的 UI 解决方案。我们的组件支持多端适配，包括 H5、微信小程序、App 等平台，让您的应用在不同平台上拥有一致的视觉体验和交互效果。
+Fantastic UI 是一套基于 [uni-app](https://uniapp.dcloud.io/) 开发的跨平台 UI 组件库，致力于提供统一、美观的视觉体验。组件库采用 Vue 2 开发，支持在 H5、iOS、Android 以及各类小程序平台使用。
 
-## 文档导航
+## 特性
 
-### 指南
+-   🌈 **多平台兼容**: 一套代码，多端运行，支持 H5、iOS、Android 和各类小程序平台
+-   🚀 **性能优先**: 追求轻量化设计，确保高性能体验
+-   💎 **精致 UI**: 提供统一、美观的视觉体验
+-   🧩 **可定制主题**: 灵活的主题配置，支持品牌定制
+-   📦 **即插即用**: 支持按需引入组件
+-   📱 **全面适配**: 针对不同尺寸设备进行优化
 
--   [快速上手](./guide/quickstart.md) - 了解如何安装和使用 Fantastic UI
--   [主题定制](./guide/theme.md) - 学习如何定制组件库的主题风格
--   [设计规范](./guide/design.md) - 了解组件库的设计理念和规范
--   [更新日志](./guide/changelog.md) - 查看组件库的版本更新记录
--   [常见问题](./guide/faq.md) - 解答使用过程中的常见问题
--   [贡献指南](./guide/contributing.md) - 参与 Fantastic UI 的开发与改进
+## 快速上手
 
-### 组件
+### 安装
 
-#### 基础组件
+```bash
+# 使用npm
+npm i fantastic-ui
 
--   [Button 按钮](./components/button.md) - 常用的操作按钮
--   [Icon 图标](./components/icon.md) - 提供丰富的图标集合
+# 使用yarn
+yarn add fantastic-ui
 
-#### 表单组件
+# 使用pnpm
+pnpm add fantastic-ui
+```
 
--   [Input 输入框](./components/input.md) - 文本输入控件
--   [Checkbox 复选框](./components/checkbox.md) - 多选控件
--   [Radio 单选框](./components/radio.md) - 单选控件
--   [Switch 开关](./components/switch.md) - 切换控件
+### 引入组件
 
-#### 展示组件
+#### 完整引入
 
--   [Cell 单元格](./components/cell.md) - 单元格
--   [List 列表](./components/list.md) - 列表组件
--   [Grid 宫格](./components/grid.md) - 宫格布局
+```js
+// main.js
+import Vue from "vue";
+import FantasticUI from "fantastic-ui";
+import "fantastic-ui/lib/index.css";
 
-#### 反馈组件
+Vue.use(FantasticUI);
+```
 
--   [Toast 轻提示](./components/toast.md) - 轻量级反馈提示
--   [Dialog 对话框](./components/dialog.md) - 模态对话框
--   [Loading 加载](./components/loading.md) - 加载指示器
+#### 按需引入
 
-## 版本信息
+```js
+// main.js
+import Vue from "vue";
+import { FancButton, FancIcon } from "fantastic-ui";
+import "fantastic-ui/lib/button/style";
+import "fantastic-ui/lib/icon/style";
 
--   当前版本：0.1.0
--   支持平台：H5、微信小程序、App（Android/iOS）及其他 uni-app 支持的平台
--   Vue 版本要求：Vue 2.6+
+Vue.use(FancButton);
+Vue.use(FancIcon);
+```
 
-## 问题反馈
+## 浏览器兼容性
 
-如果您在使用过程中遇到问题，欢迎通过以下方式反馈：
+-   Android 4.4+
+-   iOS 9.0+
+-   支持主流小程序平台
 
--   提交 [GitHub Issue](https://github.com/yourusername/fantastic-ui/issues)
--   发送邮件至：support@fantastic-ui.com
+## 组件列表
 
-## 关于我们
+### 基础组件
 
-Fantastic UI 由热爱开源的开发者团队维护，致力于为跨平台应用开发提供优质的 UI 解决方案。我们欢迎任何形式的贡献和建议！
+-   [Button 按钮](./components/button.md)
+-   [Icon 图标](./components/icon.md)
+-   [Cell 单元格](./components/cell.md)
+-   [CellGroup 单元格组](./components/cell-group.md)
+
+## 贡献指南
+
+请参阅 [贡献指南](./guide/contribution.md)。
+
+## 版权信息
+
+Fantastic UI 使用 [MIT 协议](../../LICENSE)。
