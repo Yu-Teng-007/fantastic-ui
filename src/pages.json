@@ -19,7 +19,7 @@
             }
         },
         {
-            "path": "pages/cell-demo/index",
+            "path": "pages/cell-example/index",
             "style": {
                 "navigationBarTitleText": "单元格示例"
             }

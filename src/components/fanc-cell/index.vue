@@ -16,7 +16,7 @@
             <slot name="icon" v-if="$slots.icon"> </slot>
             <!-- 默认图标 -->
             <view class="fanc-cell__icon" v-else-if="icon">
-                <fanc-icon :name="icon" class="fanc-cell__icon-inner" />
+                <fanc-icon :name="icon" class="fanc-cell__icon-inner" size="16" />
             </view>
 
             <view class="fanc-cell__title">
@@ -48,7 +48,9 @@
         <!-- 默认箭头 -->
         <view class="fanc-cell__right-icon" v-else-if="isLink">
             <fanc-icon
-                :name="arrowDirection ? 'arrow-' + arrowDirection : 'arrow-right'"
+                color="#bfbfbf"
+                size="16"
+                :name="arrowDirection ? 'angle-' + arrowDirection : 'angle-right'"
                 class="fanc-cell__right-icon-inner"
             />
         </view>
@@ -254,10 +256,11 @@ export default {
     &__right-icon {
         margin-left: $spacing-xs;
         color: $gray-600;
+        display: flex;
+        align-items: center;
 
         &-inner {
             display: block;
-            min-width: 1em;
             font-size: $font-size-base;
         }
     }

@@ -26,7 +26,7 @@
             <fanc-cell title="单元格" content="内容" icon="home" />
             <fanc-cell title="单元格">
                 <template #icon>
-                    <fanc-icon name="user" />
+                    <fanc-icon name="user" style="color: #1989fa;margin-right: 4px;"  size="16"/>
                 </template>
             </fanc-cell>
         </view>
