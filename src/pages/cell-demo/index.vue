@@ -57,8 +57,8 @@
                 </template>
             </fanc-cell>
             <fanc-cell title="单元格">
-                <template #label>
-                    <view class="custom-label">自定义描述信息</view>
+                <template #description>
+                    <view class="custom-description">自定义描述信息</view>
                 </template>
             </fanc-cell>
             <fanc-cell title="单元格" is-link>
@@ -81,22 +81,13 @@
 </template>
 
 <script>
-import FancCell from "@/components/fanc-cell";
-import FancCellGroup from "@/components/fanc-cell-group";
-import FancIcon from "@/components/fanc-icon";
-
-export default {
-    components: {
-        FancCell,
-        FancCellGroup,
-        FancIcon,
-    },
-};
+export default {};
 </script>
 
 <style lang="scss">
+
 .cell-demo {
-    padding-bottom: 20px;
+     padding-bottom: 20px;
     background-color: #f7f8fa;
 
     .demo-section {

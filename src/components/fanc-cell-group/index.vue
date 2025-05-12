@@ -33,17 +33,19 @@ export default {
 </script>
 
 <style lang="scss">
+@import "@/styles/_variables.scss";
+
 .fanc-cell-group {
     &__title {
-        padding: 16px 16px 8px;
-        color: #969799;
-        font-size: 14px;
-        line-height: 16px;
+        padding: $spacing-lg $spacing-lg $spacing-sm;
+        color: $gray-600;
+        font-size: $font-size-base;
+        line-height: $font-size-base;
     }
 
     &__container {
         position: relative;
-        background-color: #fff;
+        background-color: $white;
 
         &::after {
             position: absolute;
@@ -54,7 +56,7 @@ export default {
             top: 0;
             right: 0;
             left: 0;
-            border-top: 1px solid #ebedf0;
+            border-top: $border-width solid $border-color;
             transform: scaleY(0.5);
         }
 
@@ -67,13 +69,13 @@ export default {
             right: 0;
             bottom: 0;
             left: 0;
-            border-bottom: 1px solid #ebedf0;
+            border-bottom: $border-width solid $border-color;
             transform: scaleY(0.5);
         }
 
         &--inset {
-            margin: 0 16px;
-            border-radius: 8px;
+            margin: 0 $spacing-lg;
+            border-radius: $border-radius-normal;
             overflow: hidden;
 
             &::after,
@@ -84,7 +86,7 @@ export default {
     }
 
     &--inset {
-        margin: 0 16px;
+        margin: 0 $spacing-lg;
     }
 }
 </style>

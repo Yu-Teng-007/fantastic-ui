@@ -1,4 +1,3 @@
-<!-- fanc-cell 单元格组件 -->
 <template>
     <view
         class="fanc-cell"
@@ -159,24 +158,26 @@ export default {
 </script>
 
 <style lang="scss">
+@import "@/styles/_variables.scss";
+
 .fanc-cell {
     position: relative;
     display: flex;
     box-sizing: border-box;
     width: 100%;
-    padding: 10px 16px;
-    background-color: #fff;
-    line-height: 24px;
+    padding: $cell-padding-y $cell-padding-x;
+    background-color: $white;
+    line-height: $line-height-base;
 
     &::after {
         position: absolute;
         box-sizing: border-box;
         content: " ";
         pointer-events: none;
-        right: 16px;
+        right: $cell-padding-x;
         bottom: 0;
-        left: 16px;
-        border-bottom: 1px solid #ebedf0;
+        left: $cell-padding-x;
+        border-bottom: $border-width solid $border-color;
         transform: scaleY(0.5);
     }
 
@@ -185,8 +186,8 @@ export default {
     }
 
     &--large {
-        padding-top: 12px;
-        padding-bottom: 12px;
+        padding-top: $spacing-md;
+        padding-bottom: $spacing-md;
     }
 
     &--center {
@@ -198,7 +199,7 @@ export default {
     }
 
     &--hover:active {
-        background-color: rgba(0, 0, 0, 0.05);
+        background-color: rgba($black, 0.05);
     }
 
     &__left {
@@ -216,13 +217,13 @@ export default {
     }
 
     &__icon {
-        margin-right: 4px;
-        font-size: 16px;
+        margin-right: $spacing-xs;
+        font-size: $font-size-base;
 
         &-inner {
             display: block;
             min-width: 1em;
-            color: #969799;
+            color: $gray-600;
         }
     }
 
@@ -235,10 +236,10 @@ export default {
     }
 
     &__description {
-        margin-top: 4px;
-        color: #969799;
-        font-size: 12px;
-        line-height: 18px;
+        margin-top: $spacing-xs;
+        color: $gray-600;
+        font-size: $font-size-sm;
+        line-height: $line-height-base * 0.75;
     }
 
     &__content {
@@ -247,22 +248,22 @@ export default {
         overflow: hidden;
         text-align: right;
         vertical-align: middle;
-        color: #969799;
+        color: $gray-600;
     }
 
     &__right-icon {
-        margin-left: 4px;
-        color: #969799;
+        margin-left: $spacing-xs;
+        color: $gray-600;
 
         &-inner {
             display: block;
             min-width: 1em;
-            font-size: 16px;
+            font-size: $font-size-base;
         }
     }
 
     &--has-label {
-        padding-bottom: 6px;
+        padding-bottom: $spacing-xs * 1.5;
     }
 }
 </style>
