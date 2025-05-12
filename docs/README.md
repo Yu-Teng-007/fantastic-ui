@@ -54,15 +54,6 @@ Vue.component(FancIcon.name, FancIcon);
 ## 链接
 
 -   [文档首页](./zh-CN/README.md)
--   [快速上手](./zh-CN/guide/quickstart.md)
 -   [主题定制](./zh-CN/guide/theme.md)
 -   [设计规范](./zh-CN/guide/design.md)
--   [常见问题](./zh-CN/guide/faq.md)
 
-## 贡献指南
-
-感谢您对 Fantastic UI 的贡献！请阅读我们的[贡献指南](./zh-CN/guide/contributing.md)。
-
-## 许可证
-
-Fantastic UI 使用 [MIT 许可证](../LICENSE)。

@@ -6,7 +6,7 @@
         </view>
 
         <view class="example-section">
-            <text class="title">基础用法</text>
+            <text class="section-title">基础用法</text>
             <view class="icon-row">
                 <view class="icon-item">
                     <fanc-icon name="home" size="24"></fanc-icon>
@@ -32,7 +32,25 @@
         </view>
 
         <view class="example-section">
-            <text class="title">不同颜色</text>
+            <text class="section-title">图标类型</text>
+            <view class="icon-row">
+                <view class="icon-item">
+                    <fanc-icon name="user" type="solid" size="24"></fanc-icon>
+                    <text class="icon-name">Solid</text>
+                </view>
+                <view class="icon-item">
+                    <fanc-icon name="user" type="regular" size="24"></fanc-icon>
+                    <text class="icon-name">Regular</text>
+                </view>
+                <view class="icon-item">
+                    <fanc-icon name="apple" type="brands" size="24"></fanc-icon>
+                    <text class="icon-name">Brands</text>
+                </view>
+            </view>
+        </view>
+
+        <view class="example-section">
+            <text class="section-title">不同颜色</text>
             <view class="icon-row">
                 <view class="icon-item">
                     <fanc-icon name="check" size="24" color="#28a745"></fanc-icon>
@@ -58,7 +76,7 @@
         </view>
 
         <view class="example-section">
-            <text class="title">不同尺寸</text>
+            <text class="section-title">不同尺寸</text>
             <view class="icon-row">
                 <view class="icon-item">
                     <fanc-icon name="cog" size="16"></fanc-icon>
@@ -80,7 +98,7 @@
         </view>
 
         <view class="example-section">
-            <text class="title">小红点(dot)</text>
+            <text class="section-title">小红点(dot)</text>
             <view class="icon-row">
                 <view class="icon-item">
                     <fanc-icon name="bell" size="24" dot></fanc-icon>
@@ -98,7 +116,7 @@
         </view>
 
         <view class="example-section">
-            <text class="title">徽标(badge)</text>
+            <text class="section-title">徽标(badge)</text>
             <view class="icon-row">
                 <view class="icon-item">
                     <fanc-icon name="bell" size="24" badge="8"></fanc-icon>
@@ -116,11 +134,86 @@
         </view>
 
         <view class="example-section">
-            <text class="title">点击事件</text>
+            <text class="section-title">旋转动画(spin)</text>
             <view class="icon-row">
                 <view class="icon-item">
-                    <fanc-icon name="bell" size="32" color="#007bff" @click="handleIconClick"></fanc-icon>
+                    <fanc-icon name="sync" size="24" spin></fanc-icon>
+                    <text class="icon-name">同步</text>
+                </view>
+                <view class="icon-item">
+                    <fanc-icon name="spinner" size="24" spin></fanc-icon>
+                    <text class="icon-name">加载中</text>
+                </view>
+                <view class="icon-item">
+                    <fanc-icon name="circle-notch" size="24" spin></fanc-icon>
+                    <text class="icon-name">刷新</text>
+                </view>
+                <view class="icon-item">
+                    <fanc-icon name="cog" size="24" spin></fanc-icon>
+                    <text class="icon-name">设置</text>
+                </view>
+            </view>
+        </view>
+
+        <view class="example-section">
+            <text class="section-title">图片图标</text>
+            <view class="icon-row">
+                <view class="icon-item">
+                    <fanc-icon name="https://img.yzcdn.cn/vant/logo.png" size="32"></fanc-icon>
+                    <text class="icon-name">URL图片</text>
+                </view>
+                <view class="icon-item">
+                    <fanc-icon name="https://img.yzcdn.cn/vant/logo.png" size="48" badge="new"></fanc-icon>
+                    <text class="icon-name">带徽标</text>
+                </view>
+            </view>
+        </view>
+
+        <view class="example-section">
+            <text class="section-title">自定义样式</text>
+            <view class="icon-row">
+                <view class="icon-item">
+                    <fanc-icon
+                        name="star"
+                        size="32"
+                        color="#ffc107"
+                        :customStyle="{
+                            transform: 'rotate(45deg)',
+                            textShadow: '0 0 5px rgba(255, 193, 7, 0.5)',
+                        }"
+                    ></fanc-icon>
+                    <text class="icon-name">旋转星星</text>
+                </view>
+                <view class="icon-item">
+                    <fanc-icon
+                        name="heart"
+                        size="32"
+                        color="#dc3545"
+                        :customStyle="{
+                            filter: 'drop-shadow(0 0 2px #dc3545)',
+                        }"
+                    ></fanc-icon>
+                    <text class="icon-name">发光爱心</text>
+                </view>
+            </view>
+        </view>
+
+        <view class="example-section">
+            <text class="section-title">点击事件</text>
+            <view class="icon-row">
+                <view class="icon-item">
+                    <fanc-icon name="bell" size="32" color="#007bff" clickable @click="handleIconClick"></fanc-icon>
                     <text class="icon-name">点击我</text>
+                </view>
+                <view class="icon-item">
+                    <fanc-icon
+                        name="thumbs-up"
+                        size="32"
+                        :color="isLiked ? '#dc3545' : '#6c757d'"
+                        clickable
+                        @click="toggleLike"
+                    ></fanc-icon>
+                    <text class="icon-name">{{ isLiked ? "已点赞" : "点赞" }}</text>
                 </view>
             </view>
         </view>
@@ -135,7 +228,9 @@ export default {
         fancIcon,
     },
     data() {
-        return {};
+        return {
+            isLiked: false,
+        };
     },
     methods: {
         handleIconClick() {
@@ -144,47 +239,64 @@ export default {
                 icon: "none",
             });
         },
+        toggleLike() {
+            this.isLiked = !this.isLiked;
+            uni.showToast({
+                title: this.isLiked ? "已点赞" : "已取消点赞",
+                icon: "none",
+            });
+        },
     },
 };
 </script>
 
 <style lang="scss" scoped>
+@import "@/styles/_variables.scss";
+
 .container {
-    padding: 20px;
-    background-color: #f7f8fa;
+    padding: $spacing-lg;
+    background-color: $gray-100;
 }
 
 .header {
-    margin-bottom: 30px;
+    margin-bottom: $spacing-xl;
     text-align: center;
 }
 
 .title {
     display: block;
-    margin-bottom: 10px;
-    font-size: 20px;
-    font-weight: bold;
-    color: #333;
+    margin-bottom: $spacing-sm;
+    font-size: $font-size-lg * 1.25;
+    font-weight: $font-weight-bold;
+    color: $gray-800;
 }
 
 .subtitle {
-    font-size: 14px;
-    color: #666;
+    font-size: $font-size-base;
+    color: $gray-600;
 }
 
 .example-section {
-    margin-bottom: 20px;
-    padding: 15px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+    margin-bottom: $spacing-lg;
+    padding: $spacing-md;
+    background-color: $white;
+    border-radius: $border-radius-lg;
+    box-shadow: $box-shadow-sm;
+}
+
+.section-title {
+    display: block;
+    margin-bottom: $spacing-sm;
+    font-size: $font-size-lg;
+    font-weight: $font-weight-bold;
+    color: $gray-800;
 }
 
 .icon-row {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
-    margin-top: 10px;
+    gap: $spacing-md;
+    margin-top: $spacing-sm;
 }
 
 .icon-item {
@@ -194,15 +306,22 @@ export default {
     justify-content: center;
     width: 80px;
     height: 80px;
-    padding: 10px;
-    background-color: #f8f9fa;
-    border-radius: 8px;
+    padding: $spacing-sm;
+    background-color: $gray-100;
+    border-radius: $border-radius-md;
+    transition: all $duration-base;
+
+    &:hover {
+        background-color: $gray-200;
+        transform: translateY(-2px);
+        box-shadow: $box-shadow-sm;
+    }
 }
 
 .icon-name {
-    margin-top: 8px;
-    font-size: 12px;
-    color: #666;
+    margin-top: $spacing-sm;
+    font-size: $font-size-sm;
+    color: $gray-700;
     text-align: center;
 }
 </style>
