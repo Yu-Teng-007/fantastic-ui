@@ -88,7 +88,7 @@ export default {
             const style = {};
 
             if (this.size) {
-                style.fontSize = typeof this.size === "number" ? `${this.size}px` : this.size;
+                style.fontSize = typeof this.size === "number" ? `${this.size}px` : this.size.includes("px") ? this.size : `${this.size}px`;
 
                 if (this.isImageIcon) {
                     style.width = style.fontSize;
