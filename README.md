@@ -13,11 +13,8 @@
 
 ## 文档
 
--   [文档首页](docs/zh-CN/README.md)
--   [快速上手](docs/zh-CN/guide/quickstart.md)
--   [主题定制](docs/zh-CN/guide/theme.md)
+-   [开发文档](docs/zh-CN/README.md)
 -   [设计规范](docs/zh-CN/guide/design.md)
--   [贡献指南](docs/zh-CN/guide/contribution.md)
 
 ## 安装
 
