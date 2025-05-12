@@ -56,6 +56,7 @@ Vue.component(FancIcon.name, FancIcon);
 -   [文档首页](./zh-CN/README.md)
 -   [快速上手](./zh-CN/guide/quickstart.md)
 -   [主题定制](./zh-CN/guide/theme.md)
+-   [设计规范](./zh-CN/guide/design.md)
 -   [常见问题](./zh-CN/guide/faq.md)
 
 ## 贡献指南

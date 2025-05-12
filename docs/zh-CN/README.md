@@ -12,6 +12,7 @@ Fantastic UI 是一个基于 uni-app 的跨平台 UI 组件库，专为开发者
 
 -   [快速上手](./guide/quickstart.md) - 了解如何安装和使用 Fantastic UI
 -   [主题定制](./guide/theme.md) - 学习如何定制组件库的主题风格
+-   [设计规范](./guide/design.md) - 了解组件库的设计理念和规范
 -   [更新日志](./guide/changelog.md) - 查看组件库的版本更新记录
 -   [常见问题](./guide/faq.md) - 解答使用过程中的常见问题
 -   [贡献指南](./guide/contributing.md) - 参与 Fantastic UI 的开发与改进
