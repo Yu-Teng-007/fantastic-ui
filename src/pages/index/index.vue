@@ -18,6 +18,9 @@
             <navigator url="/pages/popup-example/index" class="nav-button">
                 <text class="nav-text">查看弹出层示例</text>
             </navigator>
+            <navigator url="/pages/message-demo/index" class="nav-button">
+                <text class="nav-text">查看消息通知示例</text>
+            </navigator>
         </view>
     </view>
 </template>

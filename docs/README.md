@@ -70,8 +70,8 @@ Vue.use(FancIcon);
 
 ### 基础组件
 
--   [Button 按钮](./components/button.md)
--   [Icon 图标](./components/icon.md)
--   [Cell 单元格](./components/cell.md)
--   [CellGroup 单元格组](./components/cell-group.md)
--   [Popup 弹出层](./components/popup.md)
+-   [Button 按钮](./button.md)
+-   [Icon 图标](./icon.md)
+-   [Cell 单元格](./cell.md)
+-   [CellGroup 单元格组](./cell-group.md)
+-   [Popup 弹出层](./popup.md)

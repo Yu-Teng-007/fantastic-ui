@@ -29,6 +29,12 @@
             "style": {
                 "navigationBarTitleText": "弹出层示例"
             }
+        },
+        {
+            "path": "pages/message-demo/index",
+            "style": {
+                "navigationBarTitleText": "消息通知示例"
+            }
         }
     ],
     "globalStyle": {

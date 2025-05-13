@@ -13,8 +13,8 @@
 
 ## 文档
 
--   [开发文档](docs/zh-CN/README.md)
--   [设计规范](docs/zh-CN/guide/design.md)
+-   [开发文档](docs/README.md)
+-   [设计规范](docs/design.md)
 
 ## 安装
 
