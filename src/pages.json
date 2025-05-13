@@ -23,6 +23,12 @@
             "style": {
                 "navigationBarTitleText": "单元格示例"
             }
+        },
+        {
+            "path": "pages/popup-example/index",
+            "style": {
+                "navigationBarTitleText": "弹出层示例"
+            }
         }
     ],
     "globalStyle": {

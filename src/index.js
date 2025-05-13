@@ -2,15 +2,16 @@ import FancButton from "@/components/fanc-button/index.vue";
 import FancIcon from "@/components/fanc-icon/index.vue";
 import FancCell from "@/components/fanc-cell";
 import FancCellGroup from "@/components/fanc-cell-group";
+import FancPopup from "@/components/fanc-popup/index.vue";
 
 // 组件列表
-const components = [FancButton, FancIcon, FancCell, FancCellGroup];
+const components = [FancButton, FancIcon, FancCell, FancCellGroup, FancPopup];
 
 // 组件库版本
 const version = "0.1.1";
 
 // 导出单个组件
-export { FancButton, FancIcon, FancCell, FancCellGroup };
+export { FancButton, FancIcon, FancCell, FancCellGroup, FancPopup };
 
 // 导出版本信息
 export { version };

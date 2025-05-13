@@ -74,3 +74,4 @@ Vue.use(FancIcon);
 -   [Icon 图标](./components/icon.md)
 -   [Cell 单元格](./components/cell.md)
 -   [CellGroup 单元格组](./components/cell-group.md)
+-   [Popup 弹出层](./components/popup.md)
