@@ -178,27 +178,27 @@ export default {
             // 带图标的操作项
             actionsWithIcon: [
                 { name: "拍照", icon: "camera" },
-                { name: "从相册选择", icon: "picture" },
+                { name: "从相册选择", icon: "photo-video" },
                 { name: "保存图片", icon: "download" },
                 { name: "分享", icon: "share" },
             ],
 
             // 宫格模式操作项
             gridActions: [
-                { name: "微信", icon: "weixin", iconColor: "#07C160" },
-                { name: "朋友圈", icon: "circle", iconColor: "#07C160" },
-                { name: "QQ", icon: "qq", iconColor: "#1DA1F2" },
-                { name: "企业微信", icon: "comments", iconColor: "#1989FA" },
+                { name: "微信", icon: "/static/img/wechat.png", iconColor: "#07C160" },
+                { name: "朋友圈", icon: "/static/img/times.png", iconColor: "#07C160" },
+                { name: "QQ", icon: "/static/img/qq.png", iconColor: "#1DA1F2" },
+                { name: "企业微信", icon: "/static/img/wecom.png", iconColor: "#1989FA" },
                 { name: "收藏", icon: "star", iconColor: "#FF9500" },
                 { name: "刷新", icon: "sync", iconColor: "#8E8E93" },
                 { name: "下载", icon: "download", iconColor: "#34C759" },
                 { name: "编辑", icon: "edit", iconColor: "#5856D6" },
                 // 第二页的图标
-                { name: "微博", icon: "weibo", iconColor: "#FF2442" },
-                { name: "抖音", icon: "video", iconColor: "#000000" },
-                { name: "钉钉", icon: "phone", iconColor: "#1677FF" },
+                { name: "微博", icon: "/static/img/weibo.png", iconColor: "#FF2442" },
+                { name: "抖音", icon: "/static/img/douyin.png", iconColor: "#000000" },
+                { name: "钉钉", icon: "/static/img/ding.png", iconColor: "#1677FF" },
                 { name: "短信", icon: "envelope", iconColor: "#34C759" },
-                { name: "飞书", icon: "feather", iconColor: "#3370FF" },
+                { name: "飞书", icon: "/static/img/feishu.png", iconColor: "#3370FF" },
                 { name: "复制链接", icon: "link", iconColor: "#8E8E93" },
                 { name: "浏览器打开", icon: "globe", iconColor: "#5856D6" },
                 { name: "更多", icon: "ellipsis-h", iconColor: "#8E8E93" },
@@ -207,7 +207,7 @@ export default {
             // 多列宫格模式操作项
             gridManyActions: [
                 { name: "拍照", icon: "camera", iconColor: "#07C160" },
-                { name: "相册", icon: "photo", iconColor: "#FF3B30" },
+                { name: "相册", icon: "/static/img/photo.png", iconColor: "#FF3B30" },
                 { name: "文件", icon: "file-alt", iconColor: "#FF9500" },
                 { name: "位置", icon: "location-arrow", iconColor: "#5AC8FA" },
                 { name: "语音", icon: "microphone", iconColor: "#AF52DE" },
