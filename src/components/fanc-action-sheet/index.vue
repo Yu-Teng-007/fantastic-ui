@@ -160,45 +160,31 @@ export default {
     },
 
     data() {
-        return {
-            isInitialized: false, // 用于标记组件是否已初始化
-        };
+        return {};
     },
 
-    created() {
-        console.log("ActionSheet created, show:", this.show);
-    },
+    created() {},
 
-    mounted() {
-        console.log("ActionSheet mounted, show:", this.show);
-        this.isInitialized = true; // 组件挂载后标记为已初始化
-    },
+    mounted() {},
 
     methods: {
         // 处理更新show事件
         onUpdateShow(val) {
-            console.log("ActionSheet @update:show 触发:", val);
             this.$emit("update:show", val);
         },
 
         // 处理open事件
         onOpenEmit() {
-            console.log("ActionSheet @open 触发");
             this.$emit("open");
         },
 
         // 处理close事件
         onCloseEmit() {
-            console.log("ActionSheet @close 触发");
-            // 只有在组件初始化后才触发close事件，避免初始化时的意外触发
-            if (this.isInitialized) {
-                this.$emit("close");
-            }
+            this.$emit("close");
         },
 
         // 选择操作项
         onSelect(item, index) {
-            console.log("ActionSheet onSelect 触发:", item.name, index);
             // 禁用或加载状态下不触发事件
             if (item.disabled || item.loading) {
                 return;
@@ -214,21 +200,13 @@ export default {
 
         // 点击取消按钮
         onCancel() {
-            console.log("ActionSheet onCancel 触发");
             this.$emit("cancel");
             this.$emit("update:show", false);
         },
 
         // 关闭面板
         onClose() {
-            console.log("ActionSheet onClose 触发");
             this.$emit("update:show", false);
-        },
-    },
-
-    watch: {
-        show(newVal, oldVal) {
-            console.log("ActionSheet watch show:", oldVal, "->", newVal);
         },
     },
 };

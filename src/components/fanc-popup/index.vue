@@ -166,7 +166,7 @@ export default {
                     this.handleClose();
                 }
             },
-            immediate: true,
+            immediate: false,
         },
     },
 

@@ -1,7 +1,7 @@
 <template>
     <view class="action-sheet-example">
-        <view class="example-section">
-            <view class="section-title">基础用法</view>
+        <view class="action-sheet-example__section">
+            <view class="action-sheet-example__section-title">基础用法</view>
             <fanc-button type="primary" @click="showBasic = true">基础动作面板</fanc-button>
             <fanc-action-sheet
                 v-model:show="showBasic"
@@ -13,8 +13,8 @@
             />
         </view>
 
-        <view class="example-section">
-            <view class="section-title">带标题和描述</view>
+        <view class="action-sheet-example__section">
+            <view class="action-sheet-example__section-title">带标题和描述</view>
             <fanc-button type="primary" @click="showWithTitle = true">带标题动作面板</fanc-button>
             <fanc-action-sheet
                 v-model:show="showWithTitle"
@@ -28,8 +28,8 @@
             />
         </view>
 
-        <view class="example-section">
-            <view class="section-title">带图标</view>
+        <view class="action-sheet-example__section">
+            <view class="action-sheet-example__section-title">带图标</view>
             <fanc-button type="primary" @click="showWithIcon = true">带图标动作面板</fanc-button>
             <fanc-action-sheet
                 v-model:show="showWithIcon"
@@ -42,8 +42,8 @@
             />
         </view>
 
-        <view class="example-section">
-            <view class="section-title">状态示例</view>
+        <view class="action-sheet-example__section">
+            <view class="action-sheet-example__section-title">状态示例</view>
             <fanc-button type="primary" @click="showWithStatus = true">状态示例</fanc-button>
             <fanc-action-sheet
                 v-model:show="showWithStatus"
@@ -56,8 +56,8 @@
             />
         </view>
 
-        <view class="example-section">
-            <view class="section-title">自定义关闭按钮</view>
+        <view class="action-sheet-example__section">
+            <view class="action-sheet-example__section-title">自定义关闭按钮</view>
             <fanc-button type="primary" @click="showWithClose = true">自定义关闭按钮</fanc-button>
             <fanc-action-sheet
                 v-model:show="showWithClose"
@@ -71,8 +71,8 @@
             />
         </view>
 
-        <view class="example-section">
-            <view class="section-title">异步操作</view>
+        <view class="action-sheet-example__section">
+            <view class="action-sheet-example__section-title">异步操作</view>
             <fanc-button type="primary" @click="showAsync = true">异步操作</fanc-button>
             <fanc-action-sheet
                 v-model:show="showAsync"
@@ -84,8 +84,6 @@
                 @open="onOpenAction('async')"
             />
         </view>
-
-        <fanc-message ref="message" />
     </view>
 </template>
 
@@ -134,28 +132,19 @@ export default {
         };
     },
 
-    created() {
-        console.log("示例页面 created");
-    },
+    created() {},
 
-    mounted() {
-        console.log("示例页面 mounted");
-    },
+    mounted() {},
 
     methods: {
         // 处理打开事件
-        onOpenAction(type) {
-            console.log(`${type} ActionSheet @open 事件触发`);
-        },
+        onOpenAction(type) {},
 
         // 处理关闭事件
-        onCloseAction(type) {
-            console.log(`${type} ActionSheet @close 事件触发`);
-        },
+        onCloseAction(type) {},
 
         // 处理选择操作项事件
         onSelectAction(action, index) {
-            console.log("示例页面 onSelectAction 触发:", action.name, index);
             this.$message.success({
                 message: `点击了 ${action.name}，索引: ${index}`,
                 duration: 2000,
@@ -164,7 +153,6 @@ export default {
 
         // 处理取消操作
         onCancel() {
-            console.log("示例页面 onCancel 触发");
             this.$message.info({
                 message: "点击了取消按钮",
                 duration: 2000,
@@ -173,7 +161,6 @@ export default {
 
         // 处理关闭操作
         onClose() {
-            console.log("示例页面 onClose 触发");
             this.$message.info({
                 message: "点击了关闭按钮",
                 duration: 2000,
@@ -182,7 +169,6 @@ export default {
 
         // 处理异步操作
         onSelectAsyncAction(action, index) {
-            console.log("示例页面 onSelectAsyncAction 触发:", action.name, index);
             // 更新当前操作项为加载状态
             this.asyncActions[index].loading = true;
 
@@ -202,27 +188,6 @@ export default {
             }, 1500);
         },
     },
-
-    watch: {
-        showBasic(val) {
-            console.log("showBasic changed:", val);
-        },
-        showWithTitle(val) {
-            console.log("showWithTitle changed:", val);
-        },
-        showWithIcon(val) {
-            console.log("showWithIcon changed:", val);
-        },
-        showWithStatus(val) {
-            console.log("showWithStatus changed:", val);
-        },
-        showWithClose(val) {
-            console.log("showWithClose changed:", val);
-        },
-        showAsync(val) {
-            console.log("showAsync changed:", val);
-        },
-    },
 };
 </script>
 
@@ -231,20 +196,39 @@ export default {
 
 .action-sheet-example {
     padding: 16px;
+    background-color: #f7f8fa;
+    min-height: 100vh;
 
-    .example-section {
+    &__section {
         margin-bottom: 24px;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+    }
 
-        .section-title {
-            font-size: 16px;
-            font-weight: 500;
-            color: $text-primary;
-            margin-bottom: 12px;
-        }
+    &__section-title {
+        font-size: 1.125rem;
+        font-weight: 600;
+        margin-bottom: 16px;
+        color: #323233;
+        position: relative;
+        padding-left: 12px;
 
-        .fanc-button {
-            margin-bottom: 8px;
+        &::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 4px;
+            height: 16px;
+            width: 4px;
+            background-color: #007bff;
+            border-radius: 2px;
         }
+    }
+
+    .fanc-button {
+        margin-bottom: 8px;
     }
 }
 </style>
