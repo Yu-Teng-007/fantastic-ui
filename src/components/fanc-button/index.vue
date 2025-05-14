@@ -189,10 +189,9 @@ export default {
     text-align: center;
     border-radius: 4px;
     border: 1px solid transparent;
-    font-family: $btn-font-family;
-    font-weight: $font-weight-normal;
+    font-weight: 400;
     cursor: pointer;
-    transition: all $duration-base $easing-standard;
+    transition: all 300ms cubic-bezier(0.34, 0.69, 0.1, 1);
     -webkit-appearance: none;
     appearance: none;
     margin: 0;
@@ -237,7 +236,7 @@ export default {
         border-radius: 50%;
         width: 1em;
         height: 1em;
-        animation: fanc-spin $duration-slow linear infinite;
+        animation: fanc-spin 500ms linear infinite;
     }
 
     // 加载文字样式

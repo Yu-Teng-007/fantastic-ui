@@ -235,7 +235,7 @@ export default {
         height: 100%;
         background-color: $black;
         opacity: 0;
-        transition: opacity 300ms $easing-standard;
+        transition: opacity 300ms cubic-bezier(0.34, 0.69, 0.1, 1);
 
         &--show {
             opacity: 0.5;
@@ -246,7 +246,7 @@ export default {
     &__content {
         position: fixed;
         background-color: $white;
-        transition: all 300ms $easing-decelerate;
+        transition: all 300ms cubic-bezier(0, 0, 0.2, 1);;
         overflow: auto;
 
         &--show {
