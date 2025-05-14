@@ -1,7 +1,7 @@
 # Fantastic UI
 
 <p align="center">
-  <img src="../../src/static/logo.png" width="200" alt="Fantastic UI Logo">
+  <img src="../src/static/logo.png" width="200" alt="Fantastic UI Logo">
 </p>
 
 <p align="center">基于uni-app的轻量级跨平台UI组件库</p>
@@ -75,3 +75,11 @@ Vue.use(FancIcon);
 -   [Cell 单元格](./cell.md)
 -   [CellGroup 单元格组](./cell-group.md)
 -   [Popup 弹出层](./popup.md)
+
+### 展示组件
+
+-   [NoticeBar 通知栏](./noticebar.md)
+-   [Message 消息提示](./message.md)
+
+
+
