@@ -36,6 +36,7 @@
                 v-if="showClosable"
                 text="这是一条可关闭的公告栏，点击右侧关闭按钮后消失"
                 closable
+                scrollable
                 @close="onCloseNotice"
             ></fanc-noticebar>
             <view v-else class="reset-btn-wrap">

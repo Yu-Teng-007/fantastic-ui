@@ -272,23 +272,19 @@ export default {
     methods: {
         // 检查是否需要滚动显示
         checkScrollable() {
-            if (!this.scrollable || !this.$refs.content || !this.$refs.contentInner) {
+            const contentEl = this.$el.querySelector(".fanc-noticebar__content-inner");
+            const containerEl = this.$el.querySelector(".fanc-noticebar__content");
+
+            if (!this.scrollable || !contentEl || !containerEl) {
                 this.shouldScroll = false;
                 return;
             }
 
-            this.containerWidth = this.$refs.content.offsetWidth || 0;
-            this.contentWidth = this.$refs.contentInner.offsetWidth || 0;
+            this.contentWidth = contentEl.scrollWidth || contentEl.offsetWidth;
+            this.containerWidth = containerEl.clientWidth;
 
             // 当内容宽度超过容器宽度时才需要滚动
             this.shouldScroll = this.contentWidth > this.containerWidth;
-            console.log("🚀 ~ checkScrollable ~ this.shouldScroll:", this.shouldScroll);
-            console.log(
-                "🚀 ~ checkScrollable ~ contentWidth:",
-                this.contentWidth,
-                "containerWidth:",
-                this.containerWidth
-            );
         },
 
         // 鼠标进入时暂停滚动
@@ -402,13 +398,7 @@ export default {
         &--scroll {
             display: inline-block;
             padding-right: 16px;
-
-            // 创建滚动内容的伪元素，实现连续滚动效果
-            &::after {
-                content: attr(data-content);
-                display: inline-block;
-                padding-left: 16px;
-            }
+            padding-left: 16px;
         }
 
         // 添加滚动动画
