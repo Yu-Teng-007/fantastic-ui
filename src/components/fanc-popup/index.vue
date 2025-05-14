@@ -122,12 +122,18 @@ export default {
             type: String,
             default: "",
         },
+        // 是否挂载到页面根元素
+        mountToBody: {
+            type: Boolean,
+            default: true,
+        },
     },
 
     data() {
         return {
             showPopup: false, // 是否显示弹出层
             showAnimated: false, // 是否显示动画
+            popupEl: null, // 弹出层DOM元素
         };
     },
 
@@ -140,6 +146,16 @@ export default {
             const duration = this.duration;
             if (duration) {
                 style.transitionDuration = `${duration}ms`;
+            }
+
+            // 设置挂载到页面根元素时的样式
+            if (this.mountToBody) {
+                style.position = "fixed";
+                style.top = "0";
+                style.left = "0";
+                style.width = "100%";
+                style.height = "100%";
+                style.pointerEvents = "none";
             }
 
             // 合并自定义样式
@@ -170,7 +186,33 @@ export default {
         },
     },
 
+    mounted() {
+        if (this.mountToBody) {
+            this.moveToBody();
+        }
+    },
+
+    beforeDestroy() {
+        // 组件销毁时，如果挂载到了body需要移除
+        if (this.popupEl && this.mountToBody) {
+            document.body.removeChild(this.popupEl);
+        }
+    },
+
     methods: {
+        // 将弹出层移动到body
+        moveToBody() {
+            // 仅在H5端执行DOM操作
+            // #ifdef H5
+            if (this.$el && typeof document !== "undefined") {
+                // 存储元素引用
+                this.popupEl = this.$el;
+                // 移至body
+                document.body.appendChild(this.$el);
+            }
+            // #endif
+        },
+
         // 打开弹出层
         open() {
             this.showPopup = true;
@@ -223,8 +265,8 @@ export default {
     position: fixed;
     // 防止内容溢出
     overflow: hidden;
-
     z-index: 1000;
+    pointer-events: auto;
 
     // 遮罩层样式
     &__overlay {
@@ -236,6 +278,7 @@ export default {
         background-color: $black;
         opacity: 0;
         transition: opacity 300ms cubic-bezier(0.34, 0.69, 0.1, 1);
+        pointer-events: auto;
 
         &--show {
             opacity: 0.5;
@@ -246,8 +289,9 @@ export default {
     &__content {
         position: fixed;
         background-color: $white;
-        transition: all 300ms cubic-bezier(0, 0, 0.2, 1);;
+        transition: all 300ms cubic-bezier(0, 0, 0.2, 1);
         overflow: auto;
+        pointer-events: auto;
 
         &--show {
             transform: none !important;

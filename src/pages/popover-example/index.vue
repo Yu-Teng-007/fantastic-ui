@@ -18,12 +18,12 @@
         <view class="example-page__section">
             <view class="example-page__section-title">基础位置</view>
             <view class="example-page__section-desc">气泡框支持四个基础方向：上、右、下、左</view>
-            <view class="popover-positions">
-                <fanc-popover content="顶部气泡" placement="top">
-                    <fanc-button size="small">上</fanc-button>
-                </fanc-popover>
+            <view class="popover-positions" style="margin: 50px 0px">
                 <fanc-popover content="右侧气泡" placement="right">
                     <fanc-button size="small">右</fanc-button>
+                </fanc-popover>
+                <fanc-popover content="顶部气泡" placement="top">
+                    <fanc-button size="small">上</fanc-button>
                 </fanc-popover>
                 <fanc-popover content="底部气泡" placement="bottom">
                     <fanc-button size="small">下</fanc-button>
