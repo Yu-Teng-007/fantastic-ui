@@ -16,6 +16,9 @@
             <navigator url="/pages/message-example/index" class="nav-button">
                 <text class="nav-text">查看消息通知示例</text>
             </navigator>
+            <navigator url="/pages/noticebar-demo/index" class="nav-button">
+                <text class="nav-text">查看公告栏示例</text>
+            </navigator>
         </view>
     </view>
 </template>
@@ -132,5 +135,9 @@ export default {
 
 .nav-button:nth-child(5) {
     background-color: #6610f2;
+}
+
+.nav-button:nth-child(6) {
+    background-color: #17a2b8;
 }
 </style>

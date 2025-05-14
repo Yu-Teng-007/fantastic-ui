@@ -35,6 +35,12 @@
             "style": {
                 "navigationBarTitleText": "消息通知示例"
             }
+        },
+        {
+            "path": "pages/noticebar-demo/index",
+            "style": {
+                "navigationBarTitleText": "公告栏示例"
+            }
         }
     ],
     "globalStyle": {

@@ -57,3 +57,24 @@ $message-error-color: $danger-color;
 $message-close-color: $gray-600;
 $message-box-shadow-color: rgba($black, 0.1);
 $message-action-hover-bg: rgba($black, 0.05);
+
+// 公告栏组件 (fanc-noticebar) 颜色
+$noticebar-info-bg: #f0f8ff;
+$noticebar-info-border: #d0e6ff;
+$noticebar-info-color: $info-color;
+
+$noticebar-success-bg: #f0f9eb;
+$noticebar-success-border: #e1f3d8;
+$noticebar-success-color: $success-color;
+
+$noticebar-warning-bg: #fffbe5;
+$noticebar-warning-border: #fff1c2;
+$noticebar-warning-color: $warning-color;
+
+$noticebar-error-bg: #fff2f0;
+$noticebar-error-border: #ffccc7;
+$noticebar-error-color: $danger-color;
+
+$noticebar-action-color: $primary-color;
+$noticebar-action-hover-bg: rgba($black, 0.05);
+$noticebar-close-color: $gray-600;
