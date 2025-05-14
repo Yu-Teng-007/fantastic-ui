@@ -43,6 +43,37 @@
         </view>
 
         <view class="action-sheet-example__section">
+            <view class="action-sheet-example__section-title">宫格模式</view>
+            <fanc-button type="primary" @click="showGrid = true">宫格动作面板</fanc-button>
+            <fanc-action-sheet
+                v-model:show="showGrid"
+                :actions="gridActions"
+                grid-mode
+                title="分享到"
+                @select="onSelectAction"
+                @cancel="onCancel"
+                @close="onCloseAction('grid')"
+                @open="onOpenAction('grid')"
+            />
+        </view>
+
+        <view class="action-sheet-example__section">
+            <view class="action-sheet-example__section-title">自定义列数</view>
+            <fanc-button type="primary" @click="showCustomColumns = true">自定义列数</fanc-button>
+            <fanc-action-sheet
+                v-model:show="showCustomColumns"
+                :actions="gridManyActions"
+                grid-mode
+                :column-number="3"
+                title="更多操作"
+                @select="onSelectAction"
+                @cancel="onCancel"
+                @close="onCloseAction('columns')"
+                @open="onOpenAction('columns')"
+            />
+        </view>
+
+        <view class="action-sheet-example__section">
             <view class="action-sheet-example__section-title">状态示例</view>
             <fanc-button type="primary" @click="showWithStatus = true">状态示例</fanc-button>
             <fanc-action-sheet
@@ -101,6 +132,8 @@ export default {
             showWithStatus: false,
             showWithClose: false,
             showAsync: false,
+            showGrid: false,
+            showCustomColumns: false,
 
             // 基础操作项
             basicActions: [{ name: "选项一" }, { name: "选项二" }, { name: "选项三" }],
@@ -111,6 +144,28 @@ export default {
                 { name: "从相册选择", icon: "picture" },
                 { name: "保存图片", icon: "download" },
                 { name: "分享", icon: "share" },
+            ],
+
+            // 宫格模式操作项
+            gridActions: [
+                { name: "微信", icon: "weixin", iconColor: "#07C160" },
+                { name: "朋友圈", icon: "circle", iconColor: "#07C160" },
+                { name: "QQ", icon: "qq", iconColor: "#1DA1F2" },
+                { name: "企业微信", icon: "comments", iconColor: "#1989FA" },
+                { name: "收藏", icon: "star", iconColor: "#FF9500" },
+                { name: "复制", icon: "copy", iconColor: "#8E8E93" },
+                { name: "下载", icon: "download", iconColor: "#8E8E93" },
+                { name: "复制", icon: "copy", iconColor: "#8E8E93" },
+            ],
+
+            // 多列宫格模式操作项
+            gridManyActions: [
+                { name: "拍照", icon: "camera", iconColor: "#07C160" },
+                { name: "相册", icon: "photo", iconColor: "#FF3B30" },
+                { name: "文件", icon: "file-alt", iconColor: "#FF9500" },
+                { name: "位置", icon: "location-arrow", iconColor: "#5AC8FA" },
+                { name: "语音", icon: "microphone", iconColor: "#AF52DE" },
+                { name: "我的收藏", icon: "star", iconColor: "#FF9500" },
             ],
 
             // 不同状态的操作项

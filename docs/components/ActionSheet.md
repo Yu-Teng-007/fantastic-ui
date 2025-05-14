@@ -67,6 +67,35 @@ actionsWithIcon: [ { name: '拍照', icon: 'camera' }, { name: '从相册选择'
 'download' }, { name: '分享', icon: 'share' } ]
 ```
 
+## 宫格模式
+
+设置 `grid-mode` 属性可以将操作项以宫格形式展示：
+
+```vue
+<fanc-action-sheet v-model:show="showActionSheet" :actions="gridActions" grid-mode title="分享到" @select="onSelect" />
+
+<!-- 数据结构 -->
+gridActions: [ { name: '微信', icon: 'weixin', iconColor: '#07C160' }, { name: '朋友圈', icon: 'circle', iconColor:
+'#07C160' }, { name: 'QQ', icon: 'qq', iconColor: '#1DA1F2' }, { name: '企业微信', icon: 'comments', iconColor:
+'#1989FA' }, { name: '收藏', icon: 'star', iconColor: '#FF9500' }, { name: '复制', icon: 'copy', iconColor: '#8E8E93' },
+{ name: '下载', icon: 'download', iconColor: '#8E8E93' } ]
+```
+
+## 自定义列数
+
+可以通过 `column-number` 属性自定义宫格的列数：
+
+```vue
+<fanc-action-sheet
+    v-model:show="showActionSheet"
+    :actions="gridActions"
+    grid-mode
+    :column-number="3"
+    title="更多操作"
+    @select="onSelect"
+/>
+```
+
 ## 不同状态
 
 支持不同的状态样式：
@@ -117,6 +146,8 @@ this.$message.show({ type: 'success', message: `完成 ${action.name} 操作` })
 | zIndex              | 面板的 z-index 值                    | Number/String | 1000   |
 | customStyle         | 自定义面板样式                       | String/Object | ''     |
 | customClass         | 自定义面板类名                       | String        | ''     |
+| gridMode            | 是否使用宫格模式展示操作项           | Boolean       | false  |
+| columnNumber        | 宫格模式的列数                       | Number/String | 4      |
 
 ### Action 数据结构
 

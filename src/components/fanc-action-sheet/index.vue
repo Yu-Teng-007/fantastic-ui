@@ -29,8 +29,8 @@
                     <text>{{ description }}</text>
                 </view>
 
-                <!-- 操作项列表 -->
-                <view class="fanc-action-sheet__content">
+                <!-- 操作项列表 - 列表模式 -->
+                <view v-if="!gridMode" class="fanc-action-sheet__content">
                     <view
                         v-for="(item, index) in actions"
                         :key="index"
@@ -51,6 +51,30 @@
                         </view>
                         <text class="fanc-action-sheet__name">{{ item.name }}</text>
                         <text v-if="item.subname" class="fanc-action-sheet__subname">{{ item.subname }}</text>
+                    </view>
+                </view>
+
+                <!-- 操作项列表 - 宫格模式 -->
+                <view v-else class="fanc-action-sheet__grid" :style="gridStyle">
+                    <view
+                        v-for="(item, index) in actions"
+                        :key="index"
+                        class="fanc-action-sheet__grid-item"
+                        :class="{
+                            'fanc-action-sheet__grid-item--disabled': item.disabled,
+                            'fanc-action-sheet__grid-item--loading': item.loading,
+                            [`fanc-action-sheet__grid-item--${item.type || 'default'}`]: item.type,
+                        }"
+                        :style="item.style || {}"
+                        @click="onSelect(item, index)"
+                    >
+                        <view v-if="item.loading" class="fanc-action-sheet__grid-loading">
+                            <view class="fanc-loading-indicator"></view>
+                        </view>
+                        <view v-else-if="item.icon" class="fanc-action-sheet__grid-icon">
+                            <fanc-icon :name="item.icon" :size="item.iconSize || '28'" :color="item.iconColor" />
+                        </view>
+                        <text class="fanc-action-sheet__grid-name">{{ item.name }}</text>
                     </view>
                 </view>
 
@@ -79,6 +103,8 @@
  * @property {Number|String} zIndex - 面板的z-index值
  * @property {String|Object} customStyle - 自定义面板样式
  * @property {String} customClass - 自定义面板类名
+ * @property {Boolean} gridMode - 是否使用宫格模式
+ * @property {Number|String} columnNumber - 宫格列数，默认4
  * @event {Function} select - 选中操作项时触发，回调参数为选中项和索引
  * @event {Function} cancel - 点击取消按钮时触发
  * @event {Function} close - 面板关闭时触发
@@ -157,6 +183,16 @@ export default {
             type: String,
             default: "",
         },
+        // 是否使用宫格模式
+        gridMode: {
+            type: Boolean,
+            default: false,
+        },
+        // 宫格列数
+        columnNumber: {
+            type: [Number, String],
+            default: 4,
+        },
     },
 
     data() {
@@ -166,6 +202,15 @@ export default {
     created() {},
 
     mounted() {},
+
+    computed: {
+        // 计算宫格样式
+        gridStyle() {
+            return {
+                gridTemplateColumns: `repeat(${this.columnNumber}, 1fr)`,
+            };
+        },
+    },
 
     methods: {
         // 处理更新show事件
@@ -259,12 +304,12 @@ export default {
         border-bottom: 1px solid $border-color-light;
     }
 
-    // 内容区域样式
+    // 内容区域样式 - 列表模式
     &__content {
         width: 100%;
     }
 
-    // 操作项样式
+    // 操作项样式 - 列表模式
     &__item {
         position: relative;
         display: flex;
@@ -331,25 +376,25 @@ export default {
         }
     }
 
-    // 操作项名称
+    // 操作项名称 - 列表模式
     &__name {
         font-size: 16px;
         color: inherit;
     }
 
-    // 操作项副标题
+    // 操作项副标题 - 列表模式
     &__subname {
         margin-top: 4px;
         font-size: 12px;
         color: $text-secondary;
     }
 
-    // 操作项图标
+    // 操作项图标 - 列表模式
     &__icon {
         margin-bottom: 8px;
     }
 
-    // 加载指示器
+    // 加载指示器 - 列表模式
     &__loading {
         margin-bottom: 8px;
 
@@ -359,6 +404,103 @@ export default {
             border-radius: 50%;
             width: 20px;
             height: 20px;
+            animation: fanc-spin 500ms linear infinite;
+        }
+    }
+
+    // 宫格区域样式
+    &__grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        padding: 16px 8px;
+        background-color: $bg-white;
+        gap: 8px;
+        border-radius: 8px;
+    }
+
+    // 宫格项样式
+    &__grid-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 12px 8px;
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        border-radius: 8px;
+
+        &:active {
+            background-color: $bg-gray-light;
+        }
+
+        // 禁用状态
+        &--disabled {
+            color: $text-disabled;
+            cursor: not-allowed;
+
+            &:active {
+                background-color: $bg-white;
+            }
+        }
+
+        // 加载状态
+        &--loading {
+            cursor: default;
+        }
+
+        // 不同类型的样式
+        &--primary {
+            color: $fanc-primary-color;
+        }
+
+        &--success {
+            color: $fanc-success-color;
+        }
+
+        &--warning {
+            color: $fanc-warning-color;
+        }
+
+        &--danger {
+            color: $fanc-danger-color;
+        }
+    }
+
+    // 宫格图标样式
+    &__grid-icon {
+        margin-bottom: 8px;
+        width: 52px;
+        height: 52px;
+        width: 48px;
+        height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    // 宫格项名称
+    &__grid-name {
+        font-size: 14px;
+        color: inherit;
+        line-height: 1.2;
+    }
+
+    // 宫格加载指示器
+    &__grid-loading {
+        margin-bottom: 8px;
+        width: 48px;
+        height: 48px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .fanc-loading-indicator {
+            border: 2px solid rgba($black, 0.1);
+            border-left-color: currentColor;
+            border-radius: 50%;
+            width: 28px;
+            height: 28px;
             animation: fanc-spin 500ms linear infinite;
         }
     }
