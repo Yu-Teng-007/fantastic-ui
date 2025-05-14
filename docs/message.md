@@ -44,6 +44,45 @@ this.$message.info({
 });
 ```
 
+## 带操作按钮
+
+可以添加一个操作按钮，用于执行特定操作。
+
+```js
+this.$message.warning({
+    message: "检测到风险",
+    actionText: "查看详情", // 操作按钮文本
+    duration: 0, // 设为0则不自动关闭
+    closable: true, // 显示关闭按钮
+    onAction: () => {
+        // 点击操作按钮的回调函数
+        console.log("查看详情");
+    },
+});
+```
+
+不同类型的消息通知可以设置不同的操作按钮：
+
+```js
+// 成功消息带撤销按钮
+this.$message.success({
+    message: "操作已完成",
+    actionText: "撤销",
+    onAction: () => {
+        console.log("执行撤销操作");
+    },
+});
+
+// 错误消息带重试按钮
+this.$message.error({
+    message: "提交失败",
+    actionText: "重试",
+    onAction: () => {
+        console.log("执行重试操作");
+    },
+});
+```
+
 ## 多条消息
 
 多条消息会按照队列顺序从上到下展示，每个消息间有合理间距。
@@ -77,15 +116,17 @@ this.$message.closeAll();
 
 ### Message 选项
 
-| 参数     | 说明                                         | 类型     | 默认值 |
-| -------- | -------------------------------------------- | -------- | ------ |
-| message  | 消息内容                                     | String   | -      |
-| type     | 消息类型，可选值：info/success/warning/error | String   | info   |
-| duration | 显示时间，单位毫秒，设为 0 则不自动关闭      | Number   | 3000   |
-| showIcon | 是否显示图标                                 | Boolean  | true   |
-| closable | 是否显示关闭按钮                             | Boolean  | false  |
-| zIndex   | 层级                                         | Number   | 2000   |
-| onClose  | 关闭时的回调函数                             | Function | -      |
+| 参数       | 说明                                         | 类型     | 默认值 |
+| ---------- | -------------------------------------------- | -------- | ------ |
+| message    | 消息内容                                     | String   | -      |
+| type       | 消息类型，可选值：info/success/warning/error | String   | info   |
+| duration   | 显示时间，单位毫秒，设为 0 则不自动关闭      | Number   | 3000   |
+| showIcon   | 是否显示图标                                 | Boolean  | true   |
+| closable   | 是否显示关闭按钮                             | Boolean  | false  |
+| actionText | 操作按钮文本，不为空时显示操作按钮           | String   | ''     |
+| zIndex     | 层级                                         | Number   | 2000   |
+| onClose    | 关闭时的回调函数                             | Function | -      |
+| onAction   | 点击操作按钮时的回调函数                     | Function | -      |
 
 ### Message 方法
 

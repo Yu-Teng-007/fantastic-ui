@@ -1,5 +1,5 @@
 import Vue from "vue";
-import MessageComponent from "./index.vue";
+import MessageComponent from "@/components/fanc-message/index.vue";
 
 // 创建消息构造器
 const MessageConstructor = Vue.extend(MessageComponent);

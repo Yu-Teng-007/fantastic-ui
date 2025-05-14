@@ -4,7 +4,7 @@ import FancCell from "@/components/fanc-cell";
 import FancCellGroup from "@/components/fanc-cell-group";
 import FancPopup from "@/components/fanc-popup/index.vue";
 import FancMessage from "@/components/fanc-message/index.vue";
-import Message from "@/components/fanc-message/index.js";
+import Message from "@/plugins/message";
 
 // 组件列表
 const components = [FancButton, FancIcon, FancCell, FancCellGroup, FancPopup, FancMessage];
