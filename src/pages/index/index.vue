@@ -16,7 +16,7 @@
             <navigator url="/pages/message-example/index" class="nav-button">
                 <text class="nav-text">查看消息通知示例</text>
             </navigator>
-            <navigator url="/pages/noticebar-demo/index" class="nav-button">
+            <navigator url="/pages/noticebar-example/index" class="nav-button">
                 <text class="nav-text">查看公告栏示例</text>
             </navigator>
         </view>

@@ -1,8 +1,8 @@
 <template>
-    <view class="noticebar-demo">
+    <view class="noticebar-example">
         <view class="demo-block">
             <view class="block-title">基础用法</view>
-            <fanc-noticebar text="这是一条基础公告栏，展示系统通知、广告等内容"></fanc-noticebar>
+            <fanc-noticebar text="这是一条基础公告栏，展示系统通知"></fanc-noticebar>
         </view>
 
         <view class="demo-block">
@@ -193,7 +193,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.noticebar-demo {
+.noticebar-example {
     padding: 16px;
     background-color: #f8f8f8;
     min-height: 100vh;

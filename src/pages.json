@@ -37,7 +37,7 @@
             }
         },
         {
-            "path": "pages/noticebar-demo/index",
+            "path": "pages/noticebar-example/index",
             "style": {
                 "navigationBarTitleText": "公告栏示例"
             }
