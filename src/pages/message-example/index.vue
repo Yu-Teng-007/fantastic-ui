@@ -33,6 +33,7 @@
             <view class="message-demo__buttons">
                 <fanc-button type="primary" @click="showQuickAction">快速操作按钮</fanc-button>
                 <fanc-button type="warning" @click="showPersistentAction">持久操作按钮</fanc-button>
+                <fanc-button type="info" @click="showNoCloseOnAction">点击不关闭按钮</fanc-button>
             </view>
         </view>
 
@@ -74,25 +75,6 @@
             <view class="message-demo__section-title">多条消息</view>
             <view class="message-demo__buttons">
                 <fanc-button type="primary" @click="showMultiple">显示多条</fanc-button>
-            </view>
-        </view>
-
-        <view class="message-demo__section">
-            <view class="message-demo__section-title">测试与状态</view>
-            <view class="message-demo__buttons">
-                <fanc-button type="primary" @click="testMessage">测试消息</fanc-button>
-                <fanc-button type="warning" @click="detectPlatform">检测平台</fanc-button>
-                <fanc-button type="info" @click="checkIconLib">检查图标库</fanc-button>
-                <fanc-button type="danger" @click="showDebugMessage">调试信息</fanc-button>
-            </view>
-            <view class="message-demo__status" v-if="lastMessage">
-                <text>最后一条消息: {{ lastMessage }}</text>
-            </view>
-            <view class="message-demo__debug" v-if="debugInfo">
-                <view class="message-demo__debug-title">调试信息:</view>
-                <view v-for="(info, index) in debugInfo" :key="index" class="message-demo__debug-item">
-                    <text>{{ info.key }}: {{ info.value }}</text>
-                </view>
             </view>
         </view>
 
@@ -419,133 +401,6 @@ export default {
             }
         },
 
-        // 测试消息
-        testMessage() {
-            try {
-                // 直接创建一个DOM消息来测试
-                const div = document.createElement("div");
-                div.textContent = "这是一条测试DOM消息";
-                div.style.position = "fixed";
-                div.style.top = "100px";
-                div.style.left = "50%";
-                div.style.transform = "translateX(-50%)";
-                div.style.backgroundColor = "#67c23a";
-                div.style.color = "white";
-                div.style.padding = "10px 20px";
-                div.style.borderRadius = "4px";
-                div.style.zIndex = "10000";
-                document.body.appendChild(div);
-
-                setTimeout(() => {
-                    if (document.body.contains(div)) {
-                        document.body.removeChild(div);
-                    }
-                }, 3000);
-
-                // 使用API
-                this.$message.info({
-                    message: "测试消息API",
-                    duration: 3000,
-                    onClose: () => {
-                        this.lastMessage = "测试消息已关闭";
-                    },
-                });
-
-                this.lastMessage = "测试消息已显示";
-            } catch (error) {
-                this.handleError(error, "测试消息失败");
-            }
-        },
-
-        // 检测平台
-        detectPlatform() {
-            try {
-                // 收集环境信息
-                const info = [
-                    { key: "运行环境", value: process.env.VUE_APP_PLATFORM || "未知" },
-                    { key: "User Agent", value: navigator.userAgent },
-                    { key: "屏幕尺寸", value: `${window.innerWidth}x${window.innerHeight}` },
-                    { key: "vue版本", value: this.$root.$options.version || "未知" },
-                ];
-
-                // 检查uni相关API
-                if (typeof uni !== "undefined") {
-                    info.push({ key: "uni-app可用", value: "是" });
-
-                    // 获取系统信息
-                    try {
-                        const sysInfo = uni.getSystemInfoSync();
-                        info.push({ key: "系统信息", value: JSON.stringify(sysInfo).substring(0, 100) + "..." });
-                    } catch (e) {
-                        info.push({ key: "获取系统信息", value: "失败:" + e.message });
-                    }
-                } else {
-                    info.push({ key: "uni-app可用", value: "否" });
-                }
-
-                this.debugInfo = info;
-                this.lastMessage = "已检测平台信息";
-            } catch (error) {
-                this.handleError(error, "检测平台失败");
-            }
-        },
-
-        // 检查图标库
-        checkIconLib() {
-            try {
-                this.showIconTest = true;
-                this.lastMessage = "已显示图标测试";
-
-                // 使用DOM API检测加载的字体
-                if (document && document.fonts) {
-                    const fontInfo = [];
-                    document.fonts.forEach((font) => {
-                        fontInfo.push({
-                            key: font.family,
-                            value: font.loaded ? "已加载" : "未加载",
-                        });
-                    });
-                    if (fontInfo.length > 0) {
-                        this.debugInfo = fontInfo;
-                    }
-                }
-            } catch (error) {
-                this.handleError(error, "检查图标库失败");
-            }
-        },
-
-        // 显示调试信息
-        showDebugMessage() {
-            try {
-                this.$message.info({
-                    message: "这是调试消息，将在控制台输出信息",
-                    duration: 3000,
-                });
-
-                console.log("Message组件:", this.$message);
-                console.log("Vue实例:", this);
-
-                // 检查$message是否正确安装
-                const debugInfo = [
-                    { key: "$message可用", value: typeof this.$message !== "undefined" ? "是" : "否" },
-                    { key: "info方法", value: typeof this.$message?.info === "function" ? "是函数" : "不是函数" },
-                    { key: "success方法", value: typeof this.$message?.success === "function" ? "是函数" : "不是函数" },
-                    { key: "warning方法", value: typeof this.$message?.warning === "function" ? "是函数" : "不是函数" },
-                    { key: "error方法", value: typeof this.$message?.error === "function" ? "是函数" : "不是函数" },
-                    { key: "scroll方法", value: typeof this.$message?.scroll === "function" ? "是函数" : "不是函数" },
-                    {
-                        key: "closeAll方法",
-                        value: typeof this.$message?.closeAll === "function" ? "是函数" : "不是函数",
-                    },
-                ];
-
-                this.debugInfo = debugInfo;
-                this.lastMessage = "已显示调试信息";
-            } catch (error) {
-                this.handleError(error, "显示调试信息失败");
-            }
-        },
-
         // 快速操作按钮
         showQuickAction() {
             try {
@@ -580,6 +435,31 @@ export default {
                 this.lastMessage = "显示了持久操作按钮消息";
             } catch (e) {
                 this.handleError(e, "显示持久操作按钮消息时出错");
+            }
+        },
+
+        // 点击操作按钮不关闭消息
+        showNoCloseOnAction() {
+            try {
+                this.$message.action({
+                    message: "点击操作按钮不会关闭此消息",
+                    actionText: "执行操作",
+                    type: "info",
+                    closeOnAction: false,
+                    closable: true,
+                    duration: 0,
+                    onAction: () => {
+                        this.lastMessage = "执行了操作但消息保持显示";
+                        // 显示操作已执行但消息保持显示
+                        this.$message.info({
+                            message: "操作已执行，但原消息保持显示",
+                            duration: 2000,
+                        });
+                    },
+                });
+                this.lastMessage = "显示了点击不关闭的操作按钮消息";
+            } catch (e) {
+                this.handleError(e, "显示点击不关闭的操作按钮消息时出错");
             }
         },
 
@@ -709,6 +589,7 @@ export default {
 
         &-input {
             width: 100%;
+            box-sizing: border-box;
             height: 36px;
             padding: 0 12px;
             border: 1px solid #dcdfe6;

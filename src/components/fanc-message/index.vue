@@ -55,6 +55,7 @@
  * @property {Number} zIndex - 层级
  * @property {Number} offsetTop - 顶部偏移量
  * @property {String} actionText - 操作按钮文本，不为空时显示操作按钮
+ * @property {Boolean} closeOnAction - 点击操作按钮后是否自动关闭消息
  * @property {Boolean} scrollable - 是否启用横向滚动
  * @property {Number} scrollSpeed - 滚动速度，单位为像素/秒
  * @property {Boolean} useHtml - 是否启用富文本支持
@@ -101,6 +102,10 @@ export default {
         actionText: {
             type: String,
             default: "",
+        },
+        closeOnAction: {
+            type: Boolean,
+            default: true,
         },
         scrollable: {
             type: Boolean,
@@ -201,6 +206,24 @@ export default {
                 this.stopScroll();
             }
         },
+
+        // 监听关闭按钮状态变化
+        closable() {
+            if (this.scrollable && this.isShow) {
+                this.$nextTick(() => {
+                    this.checkScrollable();
+                });
+            }
+        },
+
+        // 监听操作按钮文本变化
+        actionText() {
+            if (this.scrollable && this.isShow) {
+                this.$nextTick(() => {
+                    this.checkScrollable();
+                });
+            }
+        },
     },
 
     mounted() {
@@ -217,7 +240,7 @@ export default {
 
     beforeDestroy() {
         this.clearTimer();
-        this.stopJsScroll();
+        this.stopScroll();
     },
 
     methods: {
@@ -261,8 +284,8 @@ export default {
                 this.onAction();
             }
 
-            // 默认点击操作按钮后关闭消息，除非设置了不自动关闭
-            if (this.duration !== 0) {
+            // 根据closeOnAction决定是否关闭消息
+            if (this.closeOnAction) {
                 this.close();
             }
         },
@@ -283,6 +306,23 @@ export default {
                     this.contentWidth = contentEl.scrollWidth || contentEl.offsetWidth;
                     this.containerWidth = containerEl.clientWidth;
 
+                    // 计算出实际可用宽度 - 如果有关闭按钮或操作按钮，需要减去按钮占用的空间
+                    let effectiveWidth = this.containerWidth;
+                    if (this.closable || this.actionText) {
+                        // 关闭按钮和操作按钮会导致容器有效宽度减少
+                        // 根据样式估算扣除的宽度
+                        if (this.closable) {
+                            effectiveWidth -= 30; // 关闭按钮的大致宽度及其间距
+                        }
+                        if (this.actionText) {
+                            // 根据操作文本长度估算宽度
+                            effectiveWidth -= Math.min(100, this.actionText.length * 12 + 24);
+                        }
+                    }
+
+                    // 使用有效宽度判断是否需要滚动
+                    this.containerWidth = effectiveWidth;
+
                     // 如果内容宽度大于容器宽度，则需要滚动
                     const shouldScroll = this.contentWidth > this.containerWidth;
 
@@ -292,10 +332,10 @@ export default {
                         if (this.shouldScroll) {
                             contentEl.classList.add("fanc-message__content-inner--scroll");
                             this.scrollPosition = 0;
-                            this.startJsScroll();
+                            this.startScroll();
                         } else {
                             contentEl.classList.remove("fanc-message__content-inner--scroll");
-                            this.stopJsScroll();
+                            this.stopScroll();
                         }
                     }
                 });
@@ -306,14 +346,15 @@ export default {
         },
 
         // 开始JS滚动
-        startJsScroll() {
-            this.stopJsScroll();
+        startScroll() {
+            this.stopScroll();
 
             const contentEl = this.$el.querySelector(".fanc-message__content-inner");
             if (!contentEl) return;
 
-            // 计算滚动范围
-            const maxScroll = this.contentWidth - this.containerWidth;
+            // 计算滚动范围，考虑padding
+            const maxScroll = this.contentWidth - this.containerWidth + (this.closable || this.actionText ? 20 : 0); // 如果有按钮，增加边距补偿
+
             if (maxScroll <= 0) return;
 
             // 重置滚动位置和方向
@@ -346,7 +387,7 @@ export default {
         },
 
         // 停止JS滚动
-        stopJsScroll() {
+        stopScroll() {
             if (this.scrollTimer) {
                 clearInterval(this.scrollTimer);
                 this.scrollTimer = null;
@@ -380,11 +421,6 @@ export default {
         // 恢复滚动
         resumeScroll() {
             this.isScrollPaused = false;
-        },
-
-        // 停止滚动
-        stopScroll() {
-            this.stopJsScroll();
         },
     },
 };

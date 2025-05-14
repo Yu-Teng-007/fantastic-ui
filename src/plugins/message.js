@@ -171,7 +171,6 @@ const Message = {
     // 带操作按钮的消息
     action(options) {
         if (typeof options === "string" || !options.actionText) {
-            console.warn("使用 action 方法时必须提供 actionText 属性");
             return this.info(options);
         }
 
@@ -179,6 +178,14 @@ const Message = {
         // 默认不自动关闭，除非明确设置了 duration
         if (options.duration === undefined) {
             options.duration = 0;
+        }
+        // 默认显示关闭按钮
+        if (options.closable === undefined) {
+            options.closable = true;
+        }
+        // 设置closeOnAction的默认值
+        if (options.closeOnAction === undefined) {
+            options.closeOnAction = true;
         }
 
         return createMessage(options);
