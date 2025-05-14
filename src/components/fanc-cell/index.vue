@@ -6,7 +6,6 @@
             isLink ? 'fanc-cell--clickable' : '',
             borderless ? 'fanc-cell--borderless' : '',
             large ? 'fanc-cell--large' : '',
-            label || $slots.label ? 'fanc-cell--has-label' : '',
             isLink ? 'fanc-cell--hover' : '',
         ]"
         @click="onClick"
@@ -167,19 +166,19 @@ export default {
     display: flex;
     box-sizing: border-box;
     width: 100%;
-    padding: $cell-padding-y $cell-padding-x;
+    padding: 12px 16px;
     background-color: $white;
-    line-height: $line-height-base;
+    line-height: 1.5;
 
     &::after {
         position: absolute;
         box-sizing: border-box;
         content: " ";
         pointer-events: none;
-        right: $cell-padding-x;
+        right: 16px;
         bottom: 0;
-        left: $cell-padding-x;
-        border-bottom: $border-width solid $border-color;
+        left: 16px;
+        border-bottom: 1px solid $border-color;
         transform: scaleY(0.5);
     }
 
@@ -188,8 +187,8 @@ export default {
     }
 
     &--large {
-        padding-top: $spacing-md;
-        padding-bottom: $spacing-md;
+        padding-top: 12px;
+        padding-bottom: 12px;
     }
 
     &--center {
@@ -219,8 +218,8 @@ export default {
     }
 
     &__icon {
-        margin-right: $spacing-xs;
-        font-size: $font-size-base;
+        margin-right: 4px;
+        font-size: 14px;
 
         &-inner {
             display: block;
@@ -238,10 +237,10 @@ export default {
     }
 
     &__description {
-        margin-top: $spacing-xs;
+        margin-top: 4px;
         color: $gray-600;
-        font-size: $font-size-sm;
-        line-height: $line-height-base * 0.75;
+        font-size: 12px;
+        line-height: 1.2;
     }
 
     &__content {
@@ -254,19 +253,15 @@ export default {
     }
 
     &__right-icon {
-        margin-left: $spacing-xs;
+        margin-left: 4px;
         color: $gray-600;
         display: flex;
         align-items: center;
 
         &-inner {
             display: block;
-            font-size: $font-size-base;
+            font-size: 14px;
         }
-    }
-
-    &--has-label {
-        padding-bottom: $spacing-xs * 1.5;
     }
 }
 </style>

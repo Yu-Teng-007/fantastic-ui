@@ -1,4 +1,8 @@
-// 基础颜色
+// 颜色系统
+// ====================
+
+// 主题颜色
+// --------------------
 $primary-color: #007bff;
 $secondary-color: #6c757d;
 $success-color: #28a745;
@@ -9,14 +13,19 @@ $light-color: #f8f9fa;
 $dark-color: #343a40;
 
 // Fantastic UI 颜色
+// --------------------
 $fanc-primary-color: $primary-color;
 $fanc-success-color: $success-color;
 $fanc-warning-color: $warning-color;
 $fanc-danger-color: $danger-color;
 $fanc-info-color: $info-color;
 
-// 灰度调色板
+// 中性色阶
+// --------------------
 $white: #fff;
+$black: #000;
+
+// 灰度色阶
 $gray-100: #f8f9fa;
 $gray-200: #e9ecef;
 $gray-300: #dee2e6;
@@ -26,150 +35,47 @@ $gray-600: #6c757d;
 $gray-700: #495057;
 $gray-800: #343a40;
 $gray-900: #212529;
-$black: #000;
 
-// 排版
-$font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans",
-    sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-$font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-$font-size-base: 1rem; // 假设基础字号为16px
-$font-size-lg: $font-size-base * 1.25;
-$font-size-sm: $font-size-base * 0.875;
-$font-weight-light: 300;
-$font-weight-normal: 400;
-$font-weight-bold: 700;
-$line-height-base: 1.5;
-$headings-font-weight: 500;
+// 文本颜色
+// --------------------
+$text-primary: $dark-color;
+$text-secondary: $gray-600;
+$text-muted: $gray-500;
+$text-light: $white;
+$text-dark: $black;
 
-// 间距
-$spacing-unit: 1rem; // 基础间距单位（如16px）
-$spacing-xs: $spacing-unit * 0.25; // 4px
-$spacing-sm: $spacing-unit * 0.5; // 8px
-$spacing-md: $spacing-unit * 0.75; // 12px
-$spacing-lg: $spacing-unit; // 16px
-$spacing-xl: $spacing-unit * 1.5; // 24px
-$spacing-xxl: $spacing-unit * 2; // 32px
+// 背景颜色
+// --------------------
+$bg-primary: $primary-color;
+$bg-secondary: $secondary-color;
+$bg-success: $success-color;
+$bg-danger: $danger-color;
+$bg-warning: $warning-color;
+$bg-info: $info-color;
+$bg-light: $light-color;
+$bg-dark: $dark-color;
+$bg-white: $white;
+$bg-transparent: transparent;
 
-$spacer-1: $spacing-xs;
-$spacer-2: $spacing-sm;
-$spacer-3: $spacing-lg;
-$spacer-4: $spacing-xl;
-$spacer-5: $spacing-unit * 3;
-
-// 边框
-$border-width: 1px;
+// 边框颜色
+// --------------------
 $border-color: $gray-300;
-$border-radius: 0.25rem;
-$border-radius-lg: 0.3rem;
-$border-radius-sm: 0.2rem;
-$border-radius-md: 0.375rem;
-$border-radius-circle: 50%;
-$border-radius-normal: 8px;
+$border-light-color: $gray-200;
+$border-dark-color: $gray-400;
 
-// 阴影
-$box-shadow-sm: 0 0.125rem 0.25rem rgba($black, 0.075);
-$box-shadow: 0 0.5rem 1rem rgba($black, 0.15);
-$box-shadow-lg: 0 1rem 3rem rgba($black, 0.175);
+// 阴影颜色
+// --------------------
+$shadow-color: rgba($black, 0.15);
+$shadow-sm-color: rgba($black, 0.075);
+$shadow-lg-color: rgba($black, 0.175);
 
-// 动画与过渡
-$duration-fast: 150ms;
-$duration-base: 300ms;
-$duration-slow: 500ms;
-$easing-standard: cubic-bezier(0.34, 0.69, 0.1, 1);
-$easing-accelerate: cubic-bezier(0.4, 0, 1, 1);
-$easing-decelerate: cubic-bezier(0, 0, 0.2, 1);
+// 状态颜色
+// --------------------
+$state-active-color: darken($primary-color, 10%);
+$state-hover-color: darken($primary-color, 5%);
 
-// 按钮
-$btn-padding-y: 0.375rem;
-$btn-padding-x: 0.75rem;
-$btn-font-family: $font-family-sans-serif;
-$btn-font-size: $font-size-base;
-$btn-line-height: $line-height-base;
-$btn-border-radius: $border-radius;
-$btn-focus-box-shadow: 0 0 0 0.2rem rgba($primary-color, 0.25);
-$btn-active-box-shadow: inset 0 3px 5px rgba($black, 0.125);
-
-// 按钮尺寸
-$btn-height-large: 44px;
-$btn-height-normal: 36px;
-$btn-height-small: 28px;
-$btn-height-mini: 24px;
-
-// 模态框（弹窗）
-$modal-inner-padding: $spacer-3;
-$modal-dialog-margin: 0.5rem;
-$modal-content-bg: $white;
-$modal-content-border-color: rgba($black, 0.2);
-$modal-content-border-width: $border-width;
-$modal-content-border-radius: $border-radius-lg;
-$modal-content-box-shadow-xs: 0 0.25rem 0.5rem rgba($black, 0.5);
-$modal-content-box-shadow-sm-up: 0 0.5rem 1rem rgba($black, 0.5);
-$modal-backdrop-bg: $black;
-$modal-backdrop-opacity: 0.5;
-$modal-header-border-color: $gray-200;
-$modal-footer-border-color: $modal-header-border-color;
-$modal-header-padding-y: $spacer-3;
-$modal-header-padding-x: $spacer-3;
-
-// 单元格（表格单元/列表项）
-$cell-padding-y: 0.75rem;
-$cell-padding-x: 1.25rem;
-$cell-bg: $white;
-$cell-border-color: $gray-300;
-
-// 提示/警告
-$alert-padding-y: 0.75rem;
-$alert-padding-x: 1.25rem;
-$alert-margin-bottom: 1rem;
-$alert-border-radius: $border-radius;
-$alert-link-font-weight: $font-weight-bold;
-$alert-border-width: $border-width;
-
-// 日历
-$calendar-bg: $white;
-$calendar-border-color: $gray-300;
-$calendar-header-bg: $gray-100;
-$calendar-day-hover-bg: $gray-200;
-$calendar-today-bg: $primary-color;
-$calendar-today-color: $white;
-
-// 表单
-$input-padding-y: 0.375rem;
-$input-padding-x: 0.75rem;
-$input-font-family: $font-family-sans-serif;
-$input-font-size: $font-size-base;
-$input-line-height: $line-height-base;
-$input-color: $gray-700;
-$input-bg: $white;
-$input-border-color: $gray-400;
-$input-border-width: $border-width;
-$input-border-radius: $border-radius;
-$input-focus-bg: $input-bg;
-$input-focus-border-color: lighten($primary-color, 25%);
-$input-focus-color: $input-color;
-$input-focus-box-shadow: 0 0 0 0.2rem rgba($primary-color, 0.25);
-$input-placeholder-color: $gray-600;
-$input-disabled-bg: $gray-200;
-
-// 日期/时间选择器
-$datepicker-dropdown-bg: $white;
-$datepicker-dropdown-border-color: $gray-300;
-$datepicker-active-bg: $primary-color;
-$datepicker-active-color: $white;
-$timepicker-bg: $white;
-$timepicker-border-color: $gray-300;
-$timepicker-item-hover-bg: $gray-100;
-
-// Z轴层级列表
-$zindex-dropdown: 1000;
-$zindex-sticky: 1020;
-$zindex-fixed: 1030;
-$zindex-modal-backdrop: 1040;
-$zindex-modal: 1050;
-$zindex-popover: 1060;
-$zindex-tooltip: 1070;
-
-// 消息提示 (fanc-message) 颜色
+// 消息组件 (fanc-message) 颜色
+// --------------------
 $message-info-bg: #f4f4f5;
 $message-info-border: #ebeef5;
 $message-info-color: $gray-600;
@@ -191,5 +97,117 @@ $message-close-color: $gray-600;
 $message-box-shadow-color: rgba($black, 0.1);
 $message-action-hover-bg: rgba($black, 0.05);
 
+// 排版
+// ====================
+$font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans",
+    sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+$font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+$font-size-base: 1rem; // 假设基础字号为16px
+$font-size-lg: $font-size-base * 1.25;
+$font-size-sm: $font-size-base * 0.875;
+$font-weight-light: 300;
+$font-weight-normal: 400;
+$font-weight-bold: 700;
+$line-height-base: 1.5;
+$headings-font-weight: 500;
+
+// 边框
+// ====================
+$border-width: 1px;
+$border-radius: 0.25rem;
+$border-radius-lg: 0.3rem;
+$border-radius-sm: 0.2rem;
+$border-radius-md: 0.375rem;
+$border-radius-circle: 50%;
+$border-radius-normal: 8px;
+
+// 动画与过渡
+// ====================
+$duration-fast: 150ms;
+$duration-base: 300ms;
+$duration-slow: 500ms;
+$easing-standard: cubic-bezier(0.34, 0.69, 0.1, 1);
+$easing-accelerate: cubic-bezier(0.4, 0, 1, 1);
+$easing-decelerate: cubic-bezier(0, 0, 0.2, 1);
+
+// 按钮
+// ====================
+$btn-padding-y: 0.375rem;
+$btn-padding-x: 0.75rem;
+$btn-font-family: $font-family-sans-serif;
+$btn-font-size: $font-size-base;
+$btn-line-height: $line-height-base;
+$btn-border-radius: $border-radius;
+$btn-focus-box-shadow: 0 0 0 0.2rem rgba($primary-color, 0.25);
+$btn-active-box-shadow: inset 0 3px 5px rgba($black, 0.125);
+
+// 尺寸变量（使用px单位）
+// ====================
+
+// 间距尺寸
+// --------------------
+$spacing-xs: 4px;
+$spacing-sm: 8px;
+$spacing-md: 12px;
+$spacing-lg: 16px;
+$spacing-xl: 24px;
+$spacing-xxl: 32px;
+$spacing-xxxl: 48px;
+
+// 按钮尺寸
+// --------------------
+$btn-height-large: 44px;
+$btn-height-normal: 36px;
+$btn-height-small: 28px;
+$btn-height-mini: 24px;
+
+// 图标尺寸
+// --------------------
+$icon-size-xs: 12px;
+$icon-size-sm: 14px;
+$icon-size-md: 16px;
+$icon-size-lg: 20px;
+$icon-size-xl: 24px;
+
+// 组件尺寸
+// --------------------
+$component-size-sm: 28px;
+$component-size-md: 36px;
+$component-size-lg: 44px;
+
+// 弹窗尺寸
+// --------------------
+$modal-width-sm: 300px;
+$modal-width-md: 500px;
+$modal-width-lg: 800px;
+$modal-content-padding: 16px;
+$modal-header-padding: 16px;
+$modal-footer-padding: 16px;
+
+// 消息提示尺寸
+// --------------------
+$message-min-width: 300px;
+$message-padding: 12px 16px;
+$message-border-radius: 4px;
+$message-margin-bottom: 10px;
+$message-icon-margin: 10px;
+$message-action-margin: 16px;
+$message-close-margin: 12px;
+
+// 单元格尺寸
+// --------------------
+$cell-padding-y: 12px;
+$cell-padding-x: 16px;
+$cell-min-height: 48px;
+$cell-icon-size: 16px;
+$cell-icon-margin: 8px;
+
+// 阴影尺寸
+// ====================
+$box-shadow-sm: 0 2px 4px rgba($black, 0.075);
+$box-shadow: 0 8px 16px rgba($black, 0.15);
+$box-shadow-lg: 0 16px 48px rgba($black, 0.175);
+
 // 消息Z-index
+// ====================
 $message-zindex: 2000;

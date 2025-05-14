@@ -37,10 +37,10 @@ export default {
 
 .fanc-cell-group {
     &__title {
-        padding: $spacing-lg $spacing-lg $spacing-sm;
+        padding: 16px 16px 8px;
         color: $gray-600;
-        font-size: $font-size-base;
-        line-height: $font-size-base;
+        font-size: 14px;
+        line-height: 14px;
     }
 
     &__container {
@@ -56,7 +56,7 @@ export default {
             top: 0;
             right: 0;
             left: 0;
-            border-top: $border-width solid $border-color;
+            border-top: 1px solid $border-color;
             transform: scaleY(0.5);
         }
 
@@ -69,13 +69,13 @@ export default {
             right: 0;
             bottom: 0;
             left: 0;
-            border-bottom: $border-width solid $border-color;
+            border-bottom: 1px solid $border-color;
             transform: scaleY(0.5);
         }
 
         &--inset {
-            margin: 0 $spacing-lg;
-            border-radius: $border-radius-normal;
+            margin: 0 16px;
+            border-radius: 8px;
             overflow: hidden;
 
             &::after,
@@ -86,7 +86,7 @@ export default {
     }
 
     &--inset {
-        margin: 0 $spacing-lg;
+        margin: 0 16px;
     }
 }
 </style>

@@ -88,7 +88,12 @@ export default {
             const style = {};
 
             if (this.size) {
-                style.fontSize = typeof this.size === "number" ? `${this.size}px` : this.size.includes("px") ? this.size : `${this.size}px`;
+                style.fontSize =
+                    typeof this.size === "number"
+                        ? `${this.size}px`
+                        : this.size.includes("px")
+                        ? this.size
+                        : `${this.size}px`;
 
                 if (this.isImageIcon) {
                     style.width = style.fontSize;
@@ -152,10 +157,10 @@ export default {
         position: absolute;
         top: 0;
         right: 0;
-        width: $spacing-xs * 2;
-        height: $spacing-xs * 2;
+        width: 8px;
+        height: 8px;
         background-color: $fanc-danger-color;
-        border-radius: $border-radius-circle;
+        border-radius: 50%;
         transform: translate(50%, -50%);
         z-index: 1;
     }
@@ -167,11 +172,11 @@ export default {
         right: 0;
         min-width: 16px;
         height: 16px;
-        padding: 0 $spacing-xs;
+        padding: 0 4px;
         background-color: $fanc-danger-color;
-        border-radius: $border-radius-normal;
+        border-radius: 8px;
         color: $white;
-        font-size: $font-size-sm;
+        font-size: 12px;
         line-height: 16px;
         text-align: center;
         transform: translate(90%, -50%);
@@ -181,7 +186,7 @@ export default {
 
     // 旋转动画
     &.is-spin {
-        animation: fanc-icon-spin $duration-slow linear infinite;
+        animation: fanc-icon-spin 500ms linear infinite;
     }
 
     // 点击反馈效果

@@ -233,20 +233,20 @@ export default {
         left: 0;
         width: 100%;
         height: 100%;
-        background-color: $modal-backdrop-bg;
+        background-color: $black;
         opacity: 0;
-        transition: opacity $duration-base $easing-standard;
+        transition: opacity 300ms $easing-standard;
 
         &--show {
-            opacity: $modal-backdrop-opacity;
+            opacity: 0.5;
         }
     }
 
     // 弹出层内容
     &__content {
         position: fixed;
-        background-color: $modal-content-bg;
-        transition: all $duration-base $easing-decelerate;
+        background-color: $white;
+        transition: all 300ms $easing-decelerate;
         overflow: auto;
 
         &--show {
@@ -263,8 +263,8 @@ export default {
             min-width: 200px;
             max-width: 80%;
             max-height: 80%;
-            border-radius: $modal-content-border-radius;
-            box-shadow: $modal-content-box-shadow-sm-up;
+            border-radius: 6px;
+            box-shadow: 0 8px 16px rgba($black, 0.15);
             opacity: 0;
 
             &--show {
@@ -317,19 +317,19 @@ export default {
     // 圆角样式
     &--round {
         &.fanc-popup--top .fanc-popup__content {
-            border-radius: 0 0 $border-radius-normal $border-radius-normal;
+            border-radius: 0 0 8px 8px;
         }
 
         &.fanc-popup--bottom .fanc-popup__content {
-            border-radius: $border-radius-normal $border-radius-normal 0 0;
+            border-radius: 8px 8px 0 0;
         }
 
         &.fanc-popup--left .fanc-popup__content {
-            border-radius: 0 $border-radius-normal $border-radius-normal 0;
+            border-radius: 0 8px 8px 0;
         }
 
         &.fanc-popup--right .fanc-popup__content {
-            border-radius: $border-radius-normal 0 0 $border-radius-normal;
+            border-radius: 8px 0 0 8px;
         }
     }
 
@@ -337,7 +337,7 @@ export default {
     &__close-icon {
         position: absolute;
         z-index: 1;
-        padding: $spacing-sm;
+        padding: 8px;
         color: $gray-600;
         cursor: pointer;
 

@@ -115,7 +115,7 @@ export default {
         // 确定按钮使用的标签
         tag() {
             if (this.url) {
-                return "navigator";
+                return "a";
             } else if (this.to) {
                 return "router-link";
             }
@@ -174,6 +174,7 @@ export default {
 
 <style lang="scss" scoped>
 @import "@/uni.scss";
+@import "@/styles/_variables.scss";
 
 // 按钮基础样式
 .fanc-button {
@@ -182,11 +183,11 @@ export default {
     align-items: center;
     justify-content: center;
     box-sizing: border-box;
-    padding: $btn-padding-y $btn-padding-x;
-    font-size: $btn-font-size;
-    line-height: $btn-line-height;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.5;
     text-align: center;
-    border-radius: $btn-border-radius;
+    border-radius: 4px;
     border: 1px solid transparent;
     font-family: $btn-font-family;
     font-weight: $font-weight-normal;
@@ -212,7 +213,7 @@ export default {
         align-items: center;
 
         & + .fanc-button__text {
-            margin-left: $spacing-xs;
+            margin-left: 4px;
         }
     }
 
@@ -231,7 +232,7 @@ export default {
 
     // 加载指示器样式
     .fanc-loading-indicator {
-        border: 2px solid rgba(0, 0, 0, 0.1);
+        border: 2px solid rgba($black, 0.1);
         border-left-color: currentColor;
         border-radius: 50%;
         width: 1em;
@@ -241,36 +242,36 @@ export default {
 
     // 加载文字样式
     &__loading-text {
-        margin-left: $spacing-xs;
+        margin-left: 4px;
     }
 
     // 默认按钮样式
     &--default {
-        color: $uni-text-color;
-        background-color: $uni-bg-color;
-        border-color: $uni-border-color;
+        color: $text-primary;
+        background-color: $bg-white;
+        border-color: $border-color;
 
         &.is-plain {
-            color: $uni-text-color;
-            background-color: transparent;
-            border-color: $uni-border-color;
+            color: $text-primary;
+            background-color: $bg-transparent;
+            border-color: $border-color;
         }
 
         &:active:not(.is-disabled) {
-            background-color: darken($uni-bg-color, 5%);
-            border-color: darken($uni-border-color, 10%);
+            background-color: darken($bg-white, 5%);
+            border-color: darken($border-color, 10%);
         }
     }
 
     // 主要按钮样式
     &--primary {
-        color: $uni-text-color-inverse;
+        color: $text-light;
         background-color: $fanc-primary-color;
         border-color: $fanc-primary-color;
 
         &.is-plain {
             color: $fanc-primary-color;
-            background-color: transparent;
+            background-color: $bg-transparent;
             border-color: $fanc-primary-color;
         }
 
@@ -282,13 +283,13 @@ export default {
 
     // 成功按钮样式
     &--success {
-        color: $uni-text-color-inverse;
+        color: $text-light;
         background-color: $fanc-success-color;
         border-color: $fanc-success-color;
 
         &.is-plain {
             color: $fanc-success-color;
-            background-color: transparent;
+            background-color: $bg-transparent;
             border-color: $fanc-success-color;
         }
 
@@ -300,13 +301,13 @@ export default {
 
     // 警告按钮样式
     &--warning {
-        color: $uni-text-color-inverse;
+        color: $text-light;
         background-color: $fanc-warning-color;
         border-color: $fanc-warning-color;
 
         &.is-plain {
             color: $fanc-warning-color;
-            background-color: transparent;
+            background-color: $bg-transparent;
             border-color: $fanc-warning-color;
         }
 
@@ -318,13 +319,13 @@ export default {
 
     // 危险按钮样式
     &--danger {
-        color: $uni-text-color-inverse;
+        color: $text-light;
         background-color: $fanc-danger-color;
         border-color: $fanc-danger-color;
 
         &.is-plain {
             color: $fanc-danger-color;
-            background-color: transparent;
+            background-color: $bg-transparent;
             border-color: $fanc-danger-color;
         }
 
@@ -336,13 +337,13 @@ export default {
 
     // 信息按钮样式
     &--info {
-        color: $uni-text-color-inverse;
+        color: $text-light;
         background-color: $fanc-info-color;
         border-color: $fanc-info-color;
 
         &.is-plain {
             color: $fanc-info-color;
-            background-color: transparent;
+            background-color: $bg-transparent;
             border-color: $fanc-info-color;
         }
 
@@ -354,31 +355,31 @@ export default {
 
     // 大尺寸按钮
     &--large {
-        padding: ($spacing-sm) ($spacing-lg);
-        font-size: $uni-font-size-lg;
-        border-radius: $border-radius-lg;
-        height: $btn-height-large;
+        padding: 8px 16px;
+        font-size: 16px;
+        border-radius: 6px;
+        height: 44px;
     }
 
     // 正常尺寸按钮
     &--normal {
-        height: $btn-height-normal;
+        height: 36px;
     }
 
     // 小尺寸按钮
     &--small {
-        padding: ($spacing-xs) ($spacing-sm);
-        font-size: $uni-font-size-sm;
-        border-radius: $border-radius-sm;
-        height: $btn-height-small;
+        padding: 4px 8px;
+        font-size: 12px;
+        border-radius: 2px;
+        height: 28px;
     }
 
     // 迷你尺寸按钮
     &--mini {
-        padding: ($spacing-xs * 0.8) ($spacing-xs);
-        font-size: $uni-font-size-sm * 0.9;
-        border-radius: $border-radius-sm;
-        height: $btn-height-mini;
+        padding: 3px 4px;
+        font-size: 12px;
+        border-radius: 2px;
+        height: 24px;
     }
 
     // 圆角按钮
@@ -404,7 +405,7 @@ export default {
 
     // 禁用状态
     &.is-disabled {
-        opacity: $uni-opacity-disabled;
+        opacity: 0.3;
         cursor: not-allowed;
     }
 
@@ -419,7 +420,7 @@ export default {
 
         // 为不同类型的按钮设置不同的加载指示器颜色
         &.fanc-button--default .fanc-loading-indicator {
-            border-left-color: $uni-text-color;
+            border-left-color: $text-primary;
         }
 
         &.fanc-button--primary .fanc-loading-indicator,
@@ -427,7 +428,7 @@ export default {
         &.fanc-button--warning .fanc-loading-indicator,
         &.fanc-button--danger .fanc-loading-indicator,
         &.fanc-button--info .fanc-loading-indicator {
-            border-left-color: $uni-text-color-inverse;
+            border-left-color: $text-light;
         }
 
         // 当使用plain模式时，按照按钮的文字颜色来设置加载指示器的颜色
