@@ -5,16 +5,26 @@ import FancCellGroup from "@/components/fanc-cell-group";
 import FancPopup from "@/components/fanc-popup/index.vue";
 import FancMessage from "@/components/fanc-message/index.vue";
 import FancNoticebar from "@/components/fanc-noticebar/index.vue";
+import FancActionSheet from "@/components/fanc-action-sheet/index.vue";
 import Message from "@/plugins/message";
 
 // 组件列表
-const components = [FancButton, FancIcon, FancCell, FancCellGroup, FancPopup, FancMessage, FancNoticebar];
+const components = [
+    FancButton,
+    FancIcon,
+    FancCell,
+    FancCellGroup,
+    FancPopup,
+    FancMessage,
+    FancNoticebar,
+    FancActionSheet,
+];
 
 // 组件库版本
 const version = "0.1.1";
 
 // 导出单个组件
-export { FancButton, FancIcon, FancCell, FancCellGroup, FancPopup, FancMessage, FancNoticebar };
+export { FancButton, FancIcon, FancCell, FancCellGroup, FancPopup, FancMessage, FancNoticebar, FancActionSheet };
 
 // 导出版本信息
 export { version };

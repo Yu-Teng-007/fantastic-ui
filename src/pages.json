@@ -41,6 +41,12 @@
             "style": {
                 "navigationBarTitleText": "公告栏示例"
             }
+        },
+        {
+            "path": "pages/action-sheet-example/index",
+            "style": {
+                "navigationBarTitleText": "动作面板示例"
+            }
         }
     ],
     "globalStyle": {
