@@ -46,7 +46,7 @@
 /**
  * fanc-message 消息提示
  * @description 用于全局消息提示，支持不同类型的消息通知
- * @property {String} id - 消息ID
+ * @property {String} id - 消息实例的唯一标识，用于管理消息列表（由插件自动生成）
  * @property {String} message - 消息内容
  * @property {String} type - 消息类型，可选值为 info/success/warning/error
  * @property {Boolean} showIcon - 是否显示图标
@@ -62,13 +62,22 @@
  * @event {Function} close - 关闭时触发
  * @event {Function} action - 点击操作按钮时触发
  */
+import {
+    MESSAGE_ZINDEX,
+    MESSAGE_DEFAULT_DURATION,
+    MESSAGE_SCROLL_SPEED,
+    MESSAGE_OFFSET_TOP,
+    MESSAGE_TYPES,
+    MESSAGE_ICON_MAP,
+} from "@/configs/message";
+
 export default {
     name: "fanc-message",
 
     props: {
         id: {
             type: String,
-            default: "",
+            default: "", // 通常由message插件生成和管理
         },
         message: {
             type: String,
@@ -77,7 +86,7 @@ export default {
         type: {
             type: String,
             default: "info",
-            validator: (value) => ["info", "success", "warning", "error"].includes(value),
+            validator: (value) => MESSAGE_TYPES.includes(value),
         },
         showIcon: {
             type: Boolean,
@@ -85,7 +94,7 @@ export default {
         },
         duration: {
             type: Number,
-            default: 3000,
+            default: MESSAGE_DEFAULT_DURATION,
         },
         closable: {
             type: Boolean,
@@ -93,11 +102,11 @@ export default {
         },
         zIndex: {
             type: Number,
-            default: 2000,
+            default: MESSAGE_ZINDEX,
         },
         offsetTop: {
             type: Number,
-            default: 20,
+            default: MESSAGE_OFFSET_TOP,
         },
         actionText: {
             type: String,
@@ -113,7 +122,7 @@ export default {
         },
         scrollSpeed: {
             type: Number,
-            default: 50, // 滚动速度，单位为像素/秒
+            default: MESSAGE_SCROLL_SPEED,
         },
         useHtml: {
             type: Boolean,
@@ -140,13 +149,7 @@ export default {
     computed: {
         // 根据消息类型返回对应的图标类名
         iconClass() {
-            const iconMap = {
-                info: "info-circle",
-                success: "check-circle",
-                warning: "exclamation-circle",
-                error: "tired",
-            };
-            return iconMap[this.type] || iconMap.info;
+            return MESSAGE_ICON_MAP[this.type] || MESSAGE_ICON_MAP.info;
         },
 
         // 计算消息样式
@@ -412,29 +415,21 @@ export default {
                 this.isScrollPaused = false;
             }
         },
-
-        // 暂停滚动
-        pauseScroll() {
-            this.isScrollPaused = true;
-        },
-
-        // 恢复滚动
-        resumeScroll() {
-            this.isScrollPaused = false;
-        },
     },
 };
 </script>
 
 <style lang="scss">
+@import "@/styles/_variables.scss";
+
 .fanc-message {
     position: fixed;
     min-width: 300px;
     max-width: 80%;
     padding: 12px 16px;
     border-radius: 4px;
-    background-color: #fff;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+    background-color: $white;
+    box-shadow: 0 2px 12px $message-box-shadow-color;
     display: flex;
     align-items: center;
     box-sizing: border-box;
@@ -484,7 +479,7 @@ export default {
         cursor: pointer;
         padding: 2px 8px;
         border-radius: 3px;
-        transition: background-color 0.2s, opacity 0.2s;
+        transition: background-color 0.15s, opacity 0.15s;
 
         &:active {
             opacity: 0.7;
@@ -500,63 +495,63 @@ export default {
         margin-left: 12px;
         cursor: pointer;
         font-size: 14px;
-        color: #909399;
+        color: $message-close-color;
     }
 
     // 不同类型的消息样式
     &--info {
-        background-color: #f4f4f5;
-        border: 1px solid #ebeef5;
-        color: #909399;
+        background-color: $message-info-bg;
+        border: 1px solid $message-info-border;
+        color: $message-info-color;
 
         .fanc-message__icon {
-            color: #909399;
+            color: $message-info-color;
         }
 
         .fanc-message__action-text {
-            color: #409eff;
+            color: $message-info-action-color;
         }
     }
 
     &--success {
-        background-color: #f0f9eb;
-        border: 1px solid #e1f3d8;
-        color: #67c23a;
+        background-color: $message-success-bg;
+        border: 1px solid $message-success-border;
+        color: $message-success-color;
 
         .fanc-message__icon {
-            color: #67c23a;
+            color: $message-success-color;
         }
 
         .fanc-message__action-text {
-            color: #67c23a;
+            color: $message-success-color;
         }
     }
 
     &--warning {
-        background-color: #fdf6ec;
-        border: 1px solid #faecd8;
-        color: #e6a23c;
+        background-color: $message-warning-bg;
+        border: 1px solid $message-warning-border;
+        color: $message-warning-color;
 
         .fanc-message__icon {
-            color: #e6a23c;
+            color: $message-warning-color;
         }
 
         .fanc-message__action-text {
-            color: #e6a23c;
+            color: $message-warning-color;
         }
     }
 
     &--error {
-        background-color: #fef0f0;
-        border: 1px solid #fde2e2;
-        color: #f56c6c;
+        background-color: $message-error-bg;
+        border: 1px solid $message-error-border;
+        color: $message-error-color;
 
         .fanc-message__icon {
-            color: #f56c6c;
+            color: $message-error-color;
         }
 
         .fanc-message__action-text {
-            color: #f56c6c;
+            color: $message-error-color;
         }
     }
 
@@ -606,7 +601,7 @@ export default {
 
     .fanc-message__action {
         &:hover {
-            background-color: rgba(0, 0, 0, 0.05);
+            background-color: $message-action-hover-bg;
         }
     }
 }

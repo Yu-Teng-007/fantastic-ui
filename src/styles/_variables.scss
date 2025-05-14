@@ -168,3 +168,28 @@ $zindex-modal-backdrop: 1040;
 $zindex-modal: 1050;
 $zindex-popover: 1060;
 $zindex-tooltip: 1070;
+
+// 消息提示 (fanc-message) 颜色
+$message-info-bg: #f4f4f5;
+$message-info-border: #ebeef5;
+$message-info-color: $gray-600;
+$message-info-action-color: $primary-color;
+
+$message-success-bg: #f0f9eb;
+$message-success-border: #e1f3d8;
+$message-success-color: $success-color;
+
+$message-warning-bg: #fdf6ec;
+$message-warning-border: #faecd8;
+$message-warning-color: $warning-color;
+
+$message-error-bg: #fef0f0;
+$message-error-border: #fde2e2;
+$message-error-color: $danger-color;
+
+$message-close-color: $gray-600;
+$message-box-shadow-color: rgba($black, 0.1);
+$message-action-hover-bg: rgba($black, 0.05);
+
+// 消息Z-index
+$message-zindex: 2000;
