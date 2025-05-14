@@ -126,6 +126,9 @@ export default {
             contentWidth: 0, // 内容宽度
             containerWidth: 0, // 容器宽度
             scrollTimer: null, // 滚动定时器
+            scrollPosition: 0, // 当前滚动位置
+            scrollDirection: 1, // 滚动方向：1向左，-1向右
+            isScrollPaused: false, // 滚动是否暂停
         };
     },
 
@@ -201,18 +204,20 @@ export default {
     },
 
     mounted() {
-        // 在组件挂载后，确保样式生效
         setTimeout(() => {
-            // 这个延迟确保过渡效果正常工作
             if (this.offsetTop > 0) {
                 this.isShow = true;
+
+                if (this.scrollable) {
+                    setTimeout(() => this.checkScrollable(), 100);
+                }
             }
         }, 50);
     },
 
     beforeDestroy() {
         this.clearTimer();
-        this.stopScroll();
+        this.stopJsScroll();
     },
 
     methods: {
@@ -270,101 +275,122 @@ export default {
                 const contentEl = this.$el.querySelector(".fanc-message__content-inner");
                 const containerEl = this.$el.querySelector(".fanc-message__content");
 
-                if (contentEl && containerEl) {
+                if (!contentEl || !containerEl) return;
+
+                // 确保文本内容在DOM中完全渲染
+                this.$nextTick(() => {
                     // 获取内容和容器的宽度
                     this.contentWidth = contentEl.scrollWidth || contentEl.offsetWidth;
                     this.containerWidth = containerEl.clientWidth;
 
                     // 如果内容宽度大于容器宽度，则需要滚动
-                    this.shouldScroll = this.contentWidth > this.containerWidth;
+                    const shouldScroll = this.contentWidth > this.containerWidth;
 
-                    if (this.shouldScroll) {
-                        // 启动滚动动画
-                        this.startScroll();
-                    } else {
-                        this.stopScroll();
+                    if (shouldScroll !== this.shouldScroll) {
+                        this.shouldScroll = shouldScroll;
+
+                        if (this.shouldScroll) {
+                            contentEl.classList.add("fanc-message__content-inner--scroll");
+                            this.scrollPosition = 0;
+                            this.startJsScroll();
+                        } else {
+                            contentEl.classList.remove("fanc-message__content-inner--scroll");
+                            this.stopJsScroll();
+                        }
                     }
-                }
+                });
             } catch (e) {
                 console.error("检查滚动失败:", e);
                 this.shouldScroll = false;
             }
         },
 
-        // 开始滚动
-        startScroll() {
-            this.stopScroll();
+        // 开始JS滚动
+        startJsScroll() {
+            this.stopJsScroll();
 
-            // 计算滚动动画持续时间 (毫秒)
-            const scrollDistance = this.contentWidth - this.containerWidth;
-            const duration = (scrollDistance / this.scrollSpeed) * 1000;
+            const contentEl = this.$el.querySelector(".fanc-message__content-inner");
+            if (!contentEl) return;
 
-            // 设置CSS动画
+            // 计算滚动范围
+            const maxScroll = this.contentWidth - this.containerWidth;
+            if (maxScroll <= 0) return;
+
+            // 重置滚动位置和方向
+            this.scrollPosition = 0;
+            this.scrollDirection = 1;
+            this.isScrollPaused = false;
+
+            // 应用初始位置
+            contentEl.style.transform = `translateX(0px)`;
+
+            // 计算每帧移动的像素数
+            const pixelsPerFrame = this.scrollSpeed / 60;
+
+            // 创建滚动定时器
+            this.scrollTimer = setInterval(() => {
+                if (this.isScrollPaused) return;
+
+                this.scrollPosition += pixelsPerFrame * this.scrollDirection;
+
+                if (this.scrollPosition >= maxScroll) {
+                    this.scrollPosition = maxScroll;
+                    this.scrollDirection = -1;
+                } else if (this.scrollPosition <= 0) {
+                    this.scrollPosition = 0;
+                    this.scrollDirection = 1;
+                }
+
+                contentEl.style.transform = `translateX(-${this.scrollPosition}px)`;
+            }, 16);
+        },
+
+        // 停止JS滚动
+        stopJsScroll() {
+            if (this.scrollTimer) {
+                clearInterval(this.scrollTimer);
+                this.scrollTimer = null;
+            }
+
             const contentEl = this.$el.querySelector(".fanc-message__content-inner");
             if (contentEl) {
-                // 设置滚动距离变量
-                contentEl.style.setProperty("--scroll-distance", `${scrollDistance}px`);
-                contentEl.style.animationDuration = `${duration}ms`;
-                contentEl.style.animationName = "messageScroll";
-                contentEl.style.animationTimingFunction = "linear";
-                contentEl.style.animationIterationCount = "infinite";
-                contentEl.style.animationDirection = "alternate";
-                contentEl.style.animationPlayState = "running";
+                contentEl.style.transform = `translateX(0px)`;
             }
         },
 
         // 鼠标进入时暂停滚动
         onMouseEnter() {
             if (this.scrollable && this.shouldScroll) {
-                this.pauseScroll();
+                this.isScrollPaused = true;
             }
         },
 
         // 鼠标离开时恢复滚动
         onMouseLeave() {
             if (this.scrollable && this.shouldScroll) {
-                this.resumeScroll();
+                this.isScrollPaused = false;
             }
         },
 
         // 暂停滚动
         pauseScroll() {
-            const contentEl = this.$el && this.$el.querySelector(".fanc-message__content-inner");
-            if (contentEl) {
-                contentEl.style.animationPlayState = "paused";
-            }
+            this.isScrollPaused = true;
         },
 
         // 恢复滚动
         resumeScroll() {
-            const contentEl = this.$el && this.$el.querySelector(".fanc-message__content-inner");
-            if (contentEl) {
-                contentEl.style.animationPlayState = "running";
-            }
+            this.isScrollPaused = false;
         },
 
         // 停止滚动
         stopScroll() {
-            const contentEl = this.$el && this.$el.querySelector(".fanc-message__content-inner");
-            if (contentEl) {
-                contentEl.style.animationPlayState = "paused";
-            }
+            this.stopJsScroll();
         },
     },
 };
 </script>
 
 <style lang="scss">
-/* 定义滚动动画 */
-@keyframes messageScroll {
-    0% {
-        transform: translateX(0);
-    }
-    100% {
-        transform: translateX(calc(var(--scroll-distance, -30%) * -1));
-    }
-}
-
 .fanc-message {
     position: fixed;
     min-width: 300px;
@@ -402,10 +428,12 @@ export default {
 
         &-inner {
             display: inline-block;
+            transition: transform 0.05s linear;
 
             &--scroll {
                 white-space: nowrap;
                 padding-right: 20px;
+                padding-left: 20px;
                 will-change: transform;
             }
         }

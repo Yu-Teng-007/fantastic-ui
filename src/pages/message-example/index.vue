@@ -307,7 +307,9 @@ export default {
         // 普通滚动消息
         showScrollMessage() {
             try {
-                this.$message.scroll("这是一条会自动横向滚动的消息，当内容过长时会自动滚动显示全部内容。");
+                this.$message.scroll({
+                    message: "这是一条会自动横向滚动的消息，当内容过长时会自动滚动显示全部内容。",
+                });
                 this.lastMessage = "显示了滚动消息";
             } catch (e) {
                 this.handleError(e, "显示滚动消息时出错");
