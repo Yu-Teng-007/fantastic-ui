@@ -180,10 +180,14 @@
         <view class="example-page__section">
             <view class="example-page__section-title">手动控制</view>
             <view class="example-page__section-desc">通过ref可以获取组件实例，手动控制气泡的显示和隐藏</view>
-            <view class="popover-demo">
+            <view
+                class="popover-demo"
+                style="height: 100px; display: flex; align-items: center; flex-direction: column"
+            >
                 <fanc-popover ref="customPopover" content="手动控制显示和隐藏">
                     <fanc-button size="small" type="primary">内容</fanc-button>
                 </fanc-popover>
+
                 <view class="control-buttons">
                     <fanc-button size="small" type="success" @click="openPopover">打开气泡</fanc-button>
                     <fanc-button size="small" type="danger" @click="closePopover">关闭气泡</fanc-button>
