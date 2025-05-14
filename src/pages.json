@@ -47,6 +47,12 @@
             "style": {
                 "navigationBarTitleText": "动作面板示例"
             }
+        },
+        {
+            "path": "pages/popover-example/index",
+            "style": {
+                "navigationBarTitleText": "弹出气泡示例"
+            }
         }
     ],
     "globalStyle": {

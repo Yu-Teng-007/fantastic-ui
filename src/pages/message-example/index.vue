@@ -1,8 +1,14 @@
 <template>
-    <view class="message-demo">
-        <view class="message-demo__section">
-            <view class="message-demo__section-title">基础用法</view>
-            <view class="message-demo__buttons">
+    <view class="example-page">
+        <view class="example-page__header">
+            <text class="example-page__header-title">消息通知组件</text>
+            <text class="example-page__header-desc">用于展示操作反馈或提示信息的轻量级组件</text>
+        </view>
+
+        <view class="example-page__section">
+            <view class="example-page__section-title">基础用法</view>
+            <view class="example-page__section-desc">支持不同类型的消息通知，用于不同场景</view>
+            <view class="example-page__button-group">
                 <fanc-button type="primary" @click="showInfo">普通通知</fanc-button>
                 <fanc-button type="success" @click="showSuccess">成功通知</fanc-button>
                 <fanc-button type="warning" @click="showWarning">警示通知</fanc-button>
@@ -10,9 +16,10 @@
             </view>
         </view>
 
-        <view class="message-demo__section">
-            <view class="message-demo__section-title">自定义配置</view>
-            <view class="message-demo__buttons">
+        <view class="example-page__section">
+            <view class="example-page__section-title">自定义配置</view>
+            <view class="example-page__section-desc">可以自定义消息的关闭按钮、图标和显示时间</view>
+            <view class="example-page__button-group">
                 <fanc-button type="primary" @click="showCustom">带关闭按钮</fanc-button>
                 <fanc-button type="info" @click="showNoIcon">无图标通知</fanc-button>
                 <fanc-button type="warning" @click="showLongDuration">显示时间长</fanc-button>
@@ -20,42 +27,40 @@
             </view>
         </view>
 
-        <view class="message-demo__section">
-            <view class="message-demo__section-title">带操作按钮</view>
-            <view class="message-demo__buttons">
+        <view class="example-page__section">
+            <view class="example-page__section-title">带操作按钮</view>
+            <view class="example-page__section-desc">消息通知可以包含操作按钮，方便用户快速操作</view>
+            <view class="example-page__button-group">
                 <fanc-button type="primary" @click="showWithAction">普通操作按钮</fanc-button>
                 <fanc-button type="success" @click="showSuccessAction">成功操作按钮</fanc-button>
                 <fanc-button type="warning" @click="showWarningAction">警告操作按钮</fanc-button>
                 <fanc-button type="danger" @click="showErrorAction">错误操作按钮</fanc-button>
             </view>
-            <view class="message-demo__buttons">
+            <view class="example-page__button-group">
                 <fanc-button type="primary" @click="showQuickAction">快速操作按钮</fanc-button>
                 <fanc-button type="warning" @click="showPersistentAction">持久操作按钮</fanc-button>
                 <fanc-button type="info" @click="showNoCloseOnAction">点击不关闭按钮</fanc-button>
             </view>
         </view>
 
-        <view class="message-demo__section">
-            <view class="message-demo__section-title">横向滚动消息</view>
-            <view class="message-demo__buttons">
+        <view class="example-page__section">
+            <view class="example-page__section-title">横向滚动消息</view>
+            <view class="example-page__section-desc">内容较长时可以使用横向滚动展示完整信息</view>
+            <view class="example-page__button-group">
                 <fanc-button type="primary" @click="showScrollMessage">普通滚动消息</fanc-button>
                 <fanc-button type="success" @click="showSuccessScroll">成功滚动消息</fanc-button>
                 <fanc-button type="warning" @click="showWarningScroll">警告滚动消息</fanc-button>
                 <fanc-button type="danger" @click="showErrorScroll">错误滚动消息</fanc-button>
             </view>
-            <view class="message-demo__form">
-                <view class="message-demo__form-item">
-                    <text class="message-demo__form-label">自定义滚动消息:</text>
-                    <input
-                        class="message-demo__form-input"
-                        v-model="customScrollMessage"
-                        placeholder="输入长文本消息"
-                    />
+            <view class="message-form">
+                <view class="message-form__item">
+                    <text class="message-form__label">自定义滚动消息:</text>
+                    <input class="message-form__input" v-model="customScrollMessage" placeholder="输入长文本消息" />
                 </view>
-                <view class="message-demo__form-item">
-                    <text class="message-demo__form-label">滚动速度:</text>
+                <view class="message-form__item">
+                    <text class="message-form__label">滚动速度:</text>
                     <slider
-                        class="message-demo__form-slider"
+                        class="message-form__slider"
                         min="10"
                         max="100"
                         :value="scrollSpeed"
@@ -63,45 +68,48 @@
                         show-value
                     />
                 </view>
-                <view class="message-demo__form-actions">
+                <view class="message-form__actions">
                     <fanc-button type="primary" @click="showCustomScrollMessage">显示自定义滚动消息</fanc-button>
                 </view>
             </view>
         </view>
 
-        <view class="message-demo__section">
-            <view class="message-demo__section-title">多条消息</view>
-            <view class="message-demo__buttons">
+        <view class="example-page__section">
+            <view class="example-page__section-title">多条消息</view>
+            <view class="example-page__section-desc">可以同时显示多条消息通知，它们会自动堆叠排列</view>
+            <view class="example-page__button-group">
                 <fanc-button type="primary" @click="showMultiple">显示多条</fanc-button>
             </view>
         </view>
 
         <!-- 测试图标显示 -->
-        <view class="message-demo__section" v-if="showIconTest">
-            <view class="message-demo__section-title">图标测试</view>
-            <view class="message-demo__icons">
-                <view class="message-demo__icon-item">
+        <view class="example-page__section" v-if="showIconTest">
+            <view class="example-page__section-title">图标测试</view>
+            <view class="example-page__section-desc">测试不同类型消息的图标显示</view>
+            <view class="icon-test-group">
+                <view class="icon-test-item">
                     <i class="fas fa-info-circle"></i>
                     <text>info</text>
                 </view>
-                <view class="message-demo__icon-item">
+                <view class="icon-test-item">
                     <i class="fas fa-check-circle"></i>
                     <text>success</text>
                 </view>
-                <view class="message-demo__icon-item">
+                <view class="icon-test-item">
                     <i class="fas fa-exclamation-circle"></i>
                     <text>warning</text>
                 </view>
-                <view class="message-demo__icon-item">
+                <view class="icon-test-item">
                     <i class="fas fa-times-circle"></i>
                     <text>error</text>
                 </view>
             </view>
         </view>
 
-        <view class="message-demo__section">
-            <view class="message-demo__section-title">富文本消息</view>
-            <view class="message-demo__buttons">
+        <view class="example-page__section">
+            <view class="example-page__section-title">富文本消息</view>
+            <view class="example-page__section-desc">支持在消息中显示富文本内容，如加粗、颜色等样式</view>
+            <view class="example-page__button-group">
                 <fanc-button type="primary" @click="showHtmlMessage">普通富文本</fanc-button>
                 <fanc-button type="success" @click="showHtmlSuccess">成功富文本</fanc-button>
                 <fanc-button type="warning" @click="showHtmlWithAction">带操作按钮</fanc-button>
@@ -200,30 +208,39 @@ export default {
         // 自定义消息 - 显示时间长
         showLongDuration() {
             try {
-                this.$message.warning({
-                    message: "这条消息会显示5秒",
-                    duration: 5000,
+                this.$message.info({
+                    message: "这条消息会显示较长时间 (10秒)",
+                    duration: 10000,
                 });
-                this.lastMessage = "显示了长时间消息(5秒)";
+                this.lastMessage = "显示了长时间消息";
             } catch (e) {
                 this.handleError(e, "显示长时间消息时出错");
             }
         },
 
-        // 带操作按钮的消息 - 普通
+        // 关闭所有消息
+        closeAll() {
+            try {
+                this.$message.closeAll();
+                this.lastMessage = "关闭了所有消息";
+            } catch (e) {
+                this.handleError(e, "关闭所有消息时出错");
+            }
+        },
+
+        // 带操作按钮的消息
         showWithAction() {
             try {
                 this.$message.info({
                     message: "这是一条带操作按钮的消息",
-                    actionText: "查看详情",
-                    duration: 0, // 不自动关闭
-                    closable: true,
-                    onAction: () => {
-                        this.lastMessage = "点击了操作按钮: 查看详情";
-                        console.log("执行操作: 查看详情");
-                    },
-                    onClose: () => {
-                        this.lastMessage = "关闭了带操作按钮的消息";
+                    action: {
+                        text: "查看详情",
+                        callback: () => {
+                            uni.showToast({
+                                title: "点击了查看详情",
+                                icon: "none",
+                            });
+                        },
                     },
                 });
                 this.lastMessage = "显示了带操作按钮的消息";
@@ -232,32 +249,40 @@ export default {
             }
         },
 
-        // 带操作按钮的消息 - 成功
+        // 带操作按钮的成功消息
         showSuccessAction() {
             try {
                 this.$message.success({
-                    message: "操作已完成",
-                    actionText: "撤销",
-                    onAction: () => {
-                        this.lastMessage = "点击了操作按钮: 撤销";
-                        console.log("执行操作: 撤销");
+                    message: "操作成功",
+                    action: {
+                        text: "撤销",
+                        callback: () => {
+                            uni.showToast({
+                                title: "撤销了操作",
+                                icon: "none",
+                            });
+                        },
                     },
                 });
-                this.lastMessage = "显示了带撤销按钮的成功消息";
+                this.lastMessage = "显示了带操作按钮的成功消息";
             } catch (e) {
                 this.handleError(e, "显示带操作按钮成功消息时出错");
             }
         },
 
-        // 带操作按钮的消息 - 警告
+        // 带操作按钮的警告消息
         showWarningAction() {
             try {
                 this.$message.warning({
-                    message: "检测到潜在风险",
-                    actionText: "查看风险",
-                    onAction: () => {
-                        this.lastMessage = "点击了操作按钮: 查看风险";
-                        console.log("执行操作: 查看风险");
+                    message: "警告提示",
+                    action: {
+                        text: "知道了",
+                        callback: () => {
+                            uni.showToast({
+                                title: "确认已知晓",
+                                icon: "none",
+                            });
+                        },
                     },
                 });
                 this.lastMessage = "显示了带操作按钮的警告消息";
@@ -266,16 +291,19 @@ export default {
             }
         },
 
-        // 带操作按钮的消息 - 错误
+        // 带操作按钮的错误消息
         showErrorAction() {
             try {
                 this.$message.error({
-                    message: "提交失败，请检查表单",
-                    actionText: "重试",
-                    closable: true,
-                    onAction: () => {
-                        this.lastMessage = "点击了操作按钮: 重试";
-                        console.log("执行操作: 重试");
+                    message: "出错了",
+                    action: {
+                        text: "重试",
+                        callback: () => {
+                            uni.showToast({
+                                title: "正在重试",
+                                icon: "none",
+                            });
+                        },
                     },
                 });
                 this.lastMessage = "显示了带操作按钮的错误消息";
@@ -284,11 +312,79 @@ export default {
             }
         },
 
-        // 普通滚动消息
+        // 快速操作按钮
+        showQuickAction() {
+            try {
+                this.$message.info({
+                    message: "这是一条带快速操作按钮的消息",
+                    action: {
+                        text: "快速操作",
+                        callback: () => {
+                            uni.showToast({
+                                title: "执行了快速操作",
+                                icon: "none",
+                            });
+                        },
+                        quick: true,
+                    },
+                });
+                this.lastMessage = "显示了带快速操作按钮的消息";
+            } catch (e) {
+                this.handleError(e, "显示带快速操作按钮消息时出错");
+            }
+        },
+
+        // 持久操作按钮
+        showPersistentAction() {
+            try {
+                this.$message.warning({
+                    message: "这是一条持久显示的消息",
+                    duration: 0,
+                    action: {
+                        text: "确认",
+                        callback: () => {
+                            uni.showToast({
+                                title: "已确认",
+                                icon: "none",
+                            });
+                        },
+                    },
+                });
+                this.lastMessage = "显示了持久消息";
+            } catch (e) {
+                this.handleError(e, "显示持久消息时出错");
+            }
+        },
+
+        // 点击操作不关闭
+        showNoCloseOnAction() {
+            try {
+                this.$message.info({
+                    message: "点击操作按钮后不会自动关闭",
+                    action: {
+                        text: "执行操作",
+                        callback: () => {
+                            uni.showToast({
+                                title: "执行了操作但消息不会关闭",
+                                icon: "none",
+                            });
+                        },
+                        closeOnAction: false,
+                    },
+                });
+                this.lastMessage = "显示了点击不关闭的消息";
+            } catch (e) {
+                this.handleError(e, "显示点击不关闭的消息时出错");
+            }
+        },
+
+        // 滚动消息
         showScrollMessage() {
             try {
-                this.$message.scroll({
-                    message: "这是一条会自动横向滚动的消息，当内容过长时会自动滚动显示全部内容。",
+                this.$message.info({
+                    message:
+                        "这是一条很长的普通消息通知，当内容超过显示区域宽度时，文字会自动滚动展示。这是内容的后半部分，演示滚动效果。",
+                    scrollable: true,
                 });
                 this.lastMessage = "显示了滚动消息";
             } catch (e) {
@@ -296,414 +392,259 @@ export default {
             }
         },
 
-        // 成功滚动消息
+        // 滚动成功消息
         showSuccessScroll() {
             try {
-                this.$message.scroll({
-                    type: "success",
-                    message: "操作已成功完成，这是一条较长的成功消息，会自动横向滚动显示。",
-                    duration: 5000,
+                this.$message.success({
+                    message:
+                        "这是一条很长的成功消息通知，当内容超过显示区域宽度时，文字会自动滚动展示。这是内容的后半部分，演示滚动效果。",
+                    scrollable: true,
                 });
-                this.lastMessage = "显示了成功滚动消息";
+                this.lastMessage = "显示了滚动成功消息";
             } catch (e) {
-                this.handleError(e, "显示成功滚动消息时出错");
+                this.handleError(e, "显示滚动成功消息时出错");
             }
         },
 
-        // 警告滚动消息
+        // 滚动警告消息
         showWarningScroll() {
             try {
-                this.$message.scroll({
-                    type: "warning",
-                    message: "警告：系统检测到潜在风险，请注意安全，这是一条较长的警告消息，会自动横向滚动显示。",
-                    actionText: "查看详情",
-                    onAction: () => {
-                        this.lastMessage = "点击了滚动消息的操作按钮";
-                    },
+                this.$message.warning({
+                    message:
+                        "这是一条很长的警告消息通知，当内容超过显示区域宽度时，文字会自动滚动展示。这是内容的后半部分，演示滚动效果。",
+                    scrollable: true,
                 });
-                this.lastMessage = "显示了警告滚动消息";
+                this.lastMessage = "显示了滚动警告消息";
             } catch (e) {
-                this.handleError(e, "显示警告滚动消息时出错");
+                this.handleError(e, "显示滚动警告消息时出错");
             }
         },
 
-        // 错误滚动消息
+        // 滚动错误消息
         showErrorScroll() {
             try {
-                this.$message.scroll({
-                    type: "error",
-                    message: "错误：提交表单失败，请检查输入并重试。这是一条较长的错误消息，会自动横向滚动显示。",
-                    closable: true,
+                this.$message.error({
+                    message:
+                        "这是一条很长的错误消息通知，当内容超过显示区域宽度时，文字会自动滚动展示。这是内容的后半部分，演示滚动效果。",
+                    scrollable: true,
                 });
-                this.lastMessage = "显示了错误滚动消息";
+                this.lastMessage = "显示了滚动错误消息";
             } catch (e) {
-                this.handleError(e, "显示错误滚动消息时出错");
+                this.handleError(e, "显示滚动错误消息时出错");
             }
         },
 
         // 自定义滚动消息
         showCustomScrollMessage() {
             try {
-                if (!this.customScrollMessage) {
-                    this.customScrollMessage = "这是默认的滚动消息文本";
+                if (!this.customScrollMessage.trim()) {
+                    uni.showToast({
+                        title: "请输入滚动消息内容",
+                        icon: "none",
+                    });
+                    return;
                 }
 
-                this.$message.scroll({
+                this.$message.info({
                     message: this.customScrollMessage,
+                    scrollable: true,
                     scrollSpeed: this.scrollSpeed,
-                    duration: 8000,
-                    closable: true,
                 });
-
                 this.lastMessage = "显示了自定义滚动消息";
             } catch (e) {
                 this.handleError(e, "显示自定义滚动消息时出错");
             }
         },
 
-        // 滚动速度变化
+        // 滑块变化
         onSpeedChange(e) {
             this.scrollSpeed = e.detail.value;
         },
 
-        // 显示多条消息
+        // 多条消息
         showMultiple() {
             try {
-                this.$message.info("第一条消息");
-
+                this.$message.info("这是第一条消息");
                 setTimeout(() => {
-                    this.$message.success("第二条消息");
+                    this.$message.success("这是第二条消息");
                 }, 300);
-
                 setTimeout(() => {
-                    this.$message.warning("第三条消息");
+                    this.$message.warning("这是第三条消息");
                 }, 600);
-
                 setTimeout(() => {
-                    this.$message.scroll("第四条消息：这是一条会自动滚动的长消息");
+                    this.$message.error("这是第四条消息");
                 }, 900);
-
                 this.lastMessage = "显示了多条消息";
             } catch (e) {
                 this.handleError(e, "显示多条消息时出错");
             }
         },
 
-        // 关闭所有消息
-        closeAll() {
-            try {
-                this.$message.closeAll();
-                this.lastMessage = "已关闭所有消息";
-            } catch (e) {
-                this.handleError(e, "关闭所有消息时出错");
-            }
-        },
-
-        // 快速操作按钮
-        showQuickAction() {
-            try {
-                this.$message.action({
-                    message: "使用快捷方法创建的操作按钮消息",
-                    actionText: "确认",
-                    type: "info",
-                    onAction: () => {
-                        this.lastMessage = "点击了快速操作按钮: 确认";
-                        console.log("执行操作: 确认");
-                    },
-                });
-                this.lastMessage = "显示了快速操作按钮消息";
-            } catch (e) {
-                this.handleError(e, "显示快速操作按钮消息时出错");
-            }
-        },
-
-        // 持久操作按钮
-        showPersistentAction() {
-            try {
-                this.$message.action({
-                    message: "此消息将持续显示直到点击操作按钮或关闭",
-                    actionText: "我知道了",
-                    type: "warning",
-                    closable: true,
-                    onAction: () => {
-                        this.lastMessage = "点击了持久操作按钮: 我知道了";
-                        console.log("执行操作: 我知道了");
-                    },
-                });
-                this.lastMessage = "显示了持久操作按钮消息";
-            } catch (e) {
-                this.handleError(e, "显示持久操作按钮消息时出错");
-            }
-        },
-
-        // 点击操作按钮不关闭消息
-        showNoCloseOnAction() {
-            try {
-                this.$message.action({
-                    message: "点击操作按钮不会关闭此消息",
-                    actionText: "执行操作",
-                    type: "info",
-                    closeOnAction: false,
-                    closable: true,
-                    duration: 0,
-                    onAction: () => {
-                        this.lastMessage = "执行了操作但消息保持显示";
-                        // 显示操作已执行但消息保持显示
-                        this.$message.info({
-                            message: "操作已执行，但原消息保持显示",
-                            duration: 2000,
-                        });
-                    },
-                });
-                this.lastMessage = "显示了点击不关闭的操作按钮消息";
-            } catch (e) {
-                this.handleError(e, "显示点击不关闭的操作按钮消息时出错");
-            }
-        },
-
-        // 普通富文本消息
+        // 富文本消息
         showHtmlMessage() {
             try {
-                this.$message.html('<span style="color: #409eff;">蓝色文本</span> 和 <b>粗体文本</b>');
-                this.lastMessage = "显示了普通富文本消息";
+                this.$message.info({
+                    message:
+                        "<span style='color: blue; font-weight: bold;'>这是一条富文本消息</span>，支持自定义样式。",
+                    enableHtml: true,
+                });
+                this.lastMessage = "显示了富文本消息";
             } catch (e) {
                 this.handleError(e, "显示富文本消息时出错");
             }
         },
 
-        // 成功富文本消息
+        // 富文本成功消息
         showHtmlSuccess() {
             try {
-                this.$message.html({
-                    type: "success",
-                    message: '操作 <b>成功</b>，请查看 <span style="text-decoration: underline;">详情</span>',
-                    duration: 5000,
+                this.$message.success({
+                    message:
+                        "<span style='font-weight: bold;'>操作成功</span> - <span style='color: #52c41a;'>数据已保存</span>",
+                    enableHtml: true,
                 });
-                this.lastMessage = "显示了成功富文本消息";
+                this.lastMessage = "显示了富文本成功消息";
             } catch (e) {
-                this.handleError(e, "显示成功富文本消息时出错");
+                this.handleError(e, "显示富文本成功消息时出错");
             }
         },
 
-        // 带操作按钮的富文本消息
+        // 富文本消息带操作按钮
         showHtmlWithAction() {
             try {
-                this.$message.html({
-                    type: "warning",
-                    message: '检测到 <b>安全风险</b>，请及时 <span style="color: #ff4d4f;">处理</span>',
-                    actionText: "查看详情",
-                    closable: true,
-                    onAction: () => {
-                        this.lastMessage = "点击了富文本消息的操作按钮";
-                        console.log("执行操作: 查看详情");
+                this.$message.warning({
+                    message:
+                        "<span style='color: #faad14; font-weight: bold;'>注意</span>：此操作不可撤销，请谨慎处理。",
+                    enableHtml: true,
+                    action: {
+                        text: "了解详情",
+                        callback: () => {
+                            uni.showToast({
+                                title: "查看详细说明",
+                                icon: "none",
+                            });
+                        },
                     },
                 });
-                this.lastMessage = "显示了带操作按钮的富文本消息";
+                this.lastMessage = "显示了富文本带操作按钮的消息";
             } catch (e) {
-                this.handleError(e, "显示带操作按钮的富文本消息时出错");
+                this.handleError(e, "显示富文本带操作按钮消息时出错");
             }
         },
 
-        // 滚动富文本消息
+        // 富文本滚动消息
         showHtmlScroll() {
             try {
-                const htmlContent =
-                    '<span style="color: #ff4d4f;">重要通知：</span> 这是一条包含 <b>富文本格式</b> 的滚动消息，支持 <i>各种</i> <u>HTML</u> <span style="color: #52c41a;">样式</span> 和 <span style="font-size: 16px;">格式</span>';
-
-                this.$message.html({
-                    type: "error",
-                    message: htmlContent,
+                this.$message.error({
+                    message:
+                        "<span style='color: #f5222d; font-weight: bold;'>错误</span>：系统检测到异常，<span style='text-decoration: underline;'>请立即联系管理员</span>进行处理。这是一条很长的富文本消息，将会自动滚动显示。",
+                    enableHtml: true,
                     scrollable: true,
-                    duration: 8000,
-                    closable: true,
                 });
-                this.lastMessage = "显示了滚动富文本消息";
+                this.lastMessage = "显示了富文本滚动消息";
             } catch (e) {
-                this.handleError(e, "显示滚动富文本消息时出错");
+                this.handleError(e, "显示富文本滚动消息时出错");
             }
         },
 
-        // 统一错误处理
-        handleError(error, prefix = "错误") {
-            console.error(error);
-            this.lastMessage = `${prefix}: ${error.message}`;
-
-            // 显示更详细的错误信息
-            this.debugInfo = [
-                { key: "错误类型", value: error.name || "未知类型" },
-                { key: "错误消息", value: error.message },
-                { key: "错误位置", value: error.stack ? error.stack.split("\n")[1] : "未知" },
-            ];
+        // 错误处理
+        handleError(error, context) {
+            console.error(`${context}:`, error);
+            this.debugInfo = {
+                context,
+                error: error.message,
+                stack: error.stack,
+            };
+            uni.showToast({
+                title: `${context}，请查看控制台`,
+                icon: "none",
+                duration: 3000,
+            });
         },
     },
 };
 </script>
 
 <style lang="scss">
-.message-demo {
+@import "../../styles/example-pages.scss";
+
+.message-form {
+    margin-top: 20px;
+    background-color: #f8f9fa;
     padding: 16px;
-    background-color: #f7f8fa;
-    min-height: 100vh;
+    border-radius: 8px;
+    border: 1px solid rgba(0, 0, 0, 0.05);
 
-    &__title {
-        font-size: 1.5rem;
-        font-weight: 600;
-        margin-bottom: 24px;
-        text-align: center;
-        padding: 20px 0;
-        color: #323233;
+    &__item {
+        margin-bottom: 12px;
     }
 
-    &__section {
-        margin-bottom: 24px;
-        padding: 20px;
-        background-color: #fff;
-        border-radius: 8px;
-        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
-    }
-
-    &__section-title {
-        font-size: 1.125rem;
-        margin-bottom: 16px;
-        color: #323233;
-        font-weight: 600;
-        position: relative;
-        padding-left: 12px;
-
-        &::before {
-            content: "";
-            position: absolute;
-            left: 0;
-            top: 4px;
-            height: 16px;
-            width: 4px;
-            background-color: #007bff;
-            border-radius: 2px;
-        }
-    }
-
-    &__buttons {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 12px;
-        margin-bottom: 16px;
-    }
-
-    &__form {
-        margin-top: 20px;
-        background-color: #f8f8f8;
-        padding: 16px;
-        border-radius: 8px;
-
-        &-item {
-            margin-bottom: 16px;
-        }
-
-        &-label {
-            display: block;
-            margin-bottom: 8px;
-            font-size: 14px;
-            color: #323233;
-            font-weight: 500;
-        }
-
-        &-input {
-            width: 100%;
-            box-sizing: border-box;
-            height: 36px;
-            padding: 0 12px;
-            border: 1px solid #e2e2e2;
-            border-radius: 4px;
-            font-size: 14px;
-            color: #646566;
-            background-color: #fff;
-            transition: border-color 0.3s ease;
-
-            &:focus {
-                border-color: #007bff;
-                outline: none;
-            }
-        }
-
-        &-slider {
-            margin: 16px 0;
-        }
-
-        &-actions {
-            margin-top: 24px;
-            display: flex;
-            justify-content: flex-end;
-            gap: 12px;
-        }
-    }
-
-    &__status {
-        margin-top: 16px;
-        padding: 16px;
-        background-color: #f8f8f8;
-        border-radius: 8px;
+    &__label {
+        display: block;
         font-size: 14px;
         color: #646566;
-        line-height: 1.5;
+        margin-bottom: 8px;
     }
 
-    &__debug {
-        margin-top: 16px;
-        padding: 16px;
-        background-color: #f8f8f8;
-        border-radius: 8px;
+    &__input {
+        width: 100%;
+        padding: 8px 12px;
+        background-color: #fff;
+        border: 1px solid #dee2e6;
+        border-radius: 4px;
+        height: 40px;
         font-size: 14px;
-
-        &-title {
-            font-weight: 600;
-            margin-bottom: 12px;
-            color: #323233;
-        }
-
-        &-item {
-            padding: 8px 0;
-            color: #646566;
-            word-break: break-all;
-            border-bottom: 1px solid #ebedf0;
-
-            &:last-child {
-                border-bottom: none;
-            }
-        }
+        color: #333;
+        box-sizing: border-box;
     }
 
-    &__icons {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 20px;
+    &__slider {
+        margin: 8px 0;
+    }
+
+    &__actions {
         margin-top: 16px;
     }
+}
 
-    &__icon-item {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 12px;
-        border-radius: 8px;
-        background-color: #f8f8f8;
-        transition: all 0.3s ease;
+.icon-test-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-top: 12px;
+}
 
-        &:hover {
-            background-color: #e9ecef;
-            transform: translateY(-4px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
+.icon-test-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 12px;
+    background-color: #fff;
+    border-radius: 8px;
+    width: 72px;
 
-        i {
-            font-size: 28px;
-            margin-bottom: 8px;
-            color: #323233;
-        }
+    i {
+        font-size: 24px;
+        margin-bottom: 8px;
+    }
 
-        text {
-            font-size: 14px;
-            color: #646566;
-        }
+    text {
+        font-size: 12px;
+    }
+
+    &:nth-child(1) i {
+        color: #1989fa;
+    }
+
+    &:nth-child(2) i {
+        color: #28a745;
+    }
+
+    &:nth-child(3) i {
+        color: #faad14;
+    }
+
+    &:nth-child(4) i {
+        color: #f44336;
     }
 }
 </style>

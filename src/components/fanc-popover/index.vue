@@ -1,0 +1,321 @@
+<template>
+    <view class="fanc-popover">
+        <view class="fanc-popover__reference" @click="onClick" @touchstart="onTouchStart" @touchend="onTouchEnd">
+            <slot></slot>
+        </view>
+        <view
+            v-if="showPopover"
+            class="fanc-popover__wrapper"
+            :class="[`fanc-popover__wrapper--${placement}`]"
+            @click.stop
+        >
+            <view
+                class="fanc-popover__content"
+                :class="[`fanc-popover__content--${theme}`, `fanc-popover__content--${placement}`]"
+            >
+                <!-- 气泡箭头 -->
+                <view
+                    class="fanc-popover__arrow"
+                    :class="[`fanc-popover__arrow--${theme}`, `fanc-popover__arrow--${placement}`]"
+                ></view>
+                <view class="fanc-popover__inner">
+                    <!-- 自定义标题 -->
+                    <view v-if="title" class="fanc-popover__title">{{ title }}</view>
+                    <!-- 内容插槽 -->
+                    <view class="fanc-popover__text">
+                        <slot name="content">{{ content }}</slot>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+</template>
+
+<script>
+export default {
+    name: "FancPopover",
+    props: {
+        // 展示文本内容
+        content: {
+            type: String,
+            default: "",
+        },
+        // 标题
+        title: {
+            type: String,
+            default: "",
+        },
+        // 主题风格
+        theme: {
+            type: String,
+            default: "dark",
+            validator: (value) => ["light", "dark"].includes(value),
+        },
+        // 触发方式: click, hover
+        trigger: {
+            type: String,
+            default: "click",
+            validator: (value) => ["click", "hover"].includes(value),
+        },
+        // 气泡位置
+        placement: {
+            type: String,
+            default: "top",
+            validator: (value) => ["top", "bottom", "left", "right"].includes(value),
+        },
+        // 自动关闭延时，单位毫秒，0表示不自动关闭
+        duration: {
+            type: Number,
+            default: 0,
+        },
+    },
+    data() {
+        return {
+            showPopover: false,
+            timer: null,
+        };
+    },
+    created() {
+        // #ifdef H5
+        // H5平台，添加点击外部关闭功能
+        if (typeof document !== "undefined") {
+            this._handleDocumentClick = (e) => {
+                const target = e.target;
+                const popover = this.$el;
+                if (popover && !popover.contains(target)) {
+                    this.close();
+                }
+            };
+        }
+        // #endif
+    },
+    watch: {
+        showPopover(newVal) {
+            if (newVal) {
+                this.$emit("open");
+
+                // 添加点击外部关闭功能
+                // #ifdef H5
+                if (typeof document !== "undefined") {
+                    setTimeout(() => {
+                        document.addEventListener("click", this._handleDocumentClick);
+                    }, 0);
+                }
+                // #endif
+
+                // 自动关闭
+                if (this.duration > 0) {
+                    this.timer = setTimeout(() => {
+                        this.close();
+                    }, this.duration);
+                }
+            } else {
+                this.$emit("close");
+
+                // 移除点击外部关闭监听
+                // #ifdef H5
+                if (typeof document !== "undefined") {
+                    document.removeEventListener("click", this._handleDocumentClick);
+                }
+                // #endif
+
+                // 清除计时器
+                if (this.timer) {
+                    clearTimeout(this.timer);
+                    this.timer = null;
+                }
+            }
+        },
+    },
+    methods: {
+        // 切换显示状态
+        toggle() {
+            this.showPopover = !this.showPopover;
+        },
+        // 点击事件
+        onClick() {
+            if (this.trigger === "click") {
+                this.toggle();
+            }
+        },
+        // 触摸开始 (用于模拟hover效果)
+        onTouchStart() {
+            if (this.trigger === "hover") {
+                this.showPopover = true;
+            }
+        },
+        // 触摸结束
+        onTouchEnd() {
+            if (this.trigger === "hover" && this.duration === 0) {
+                setTimeout(() => {
+                    this.showPopover = false;
+                }, 200);
+            }
+        },
+        // 手动打开
+        open() {
+            this.showPopover = true;
+        },
+        // 手动关闭
+        close() {
+            this.showPopover = false;
+        },
+    },
+    beforeDestroy() {
+        // #ifdef H5
+        if (typeof document !== "undefined") {
+            document.removeEventListener("click", this._handleDocumentClick);
+        }
+        // #endif
+
+        // 清除计时器
+        if (this.timer) {
+            clearTimeout(this.timer);
+            this.timer = null;
+        }
+    },
+};
+</script>
+
+<style lang="scss">
+@import "../../styles/_variables.scss";
+
+.fanc-popover {
+    position: relative;
+    display: inline-block;
+
+    &__reference {
+        display: inline-flex;
+    }
+
+    &__wrapper {
+        position: absolute;
+        z-index: 100;
+
+        &--top {
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            margin-bottom: 8px;
+        }
+
+        &--bottom {
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            margin-top: 8px;
+        }
+
+        &--left {
+            right: 100%;
+            top: 50%;
+            transform: translateY(-50%);
+            margin-right: 8px;
+        }
+
+        &--right {
+            left: 100%;
+            top: 50%;
+            transform: translateY(-50%);
+            margin-left: 8px;
+        }
+    }
+
+    &__content {
+        position: relative;
+        border-radius: 4px;
+        padding: 8px 12px;
+        box-shadow: 0 2px 12px 0 rgba($black, 0.1);
+        max-width: 300px;
+        min-width: 150px;
+        word-wrap: break-word;
+        animation: fancPopoverFadeIn 0.15s ease-in-out;
+
+        &--light {
+            background-color: $bg-white;
+            color: $text-primary;
+            border: 1px solid $border-color-light;
+        }
+
+        &--dark {
+            background-color: $dark-color;
+            color: $text-light;
+            border: 1px solid $dark-color;
+        }
+    }
+
+    &__arrow {
+        position: absolute;
+        width: 10px;
+        height: 10px;
+        transform: rotate(45deg);
+
+        &--light {
+            background-color: $bg-white;
+            border: 1px solid $border-color-light;
+        }
+
+        &--dark {
+            background-color: $dark-color;
+            border: 1px solid $dark-color;
+        }
+
+        &--top {
+            bottom: -5px;
+            left: 50%;
+            margin-left: -5px;
+            border-right: none;
+            border-bottom: none;
+        }
+
+        &--bottom {
+            top: -5px;
+            left: 50%;
+            margin-left: -5px;
+            border-left: none;
+            border-top: none;
+        }
+
+        &--left {
+            right: -5px;
+            top: 50%;
+            margin-top: -5px;
+            border-left: none;
+            border-bottom: none;
+        }
+
+        &--right {
+            left: -5px;
+            top: 50%;
+            margin-top: -5px;
+            border-right: none;
+            border-top: none;
+        }
+    }
+
+    &__inner {
+        position: relative;
+    }
+
+    &__title {
+        font-weight: 500;
+        margin-bottom: 4px;
+    }
+
+    &__text {
+        font-size: 14px;
+        line-height: 1.4;
+    }
+}
+
+@keyframes fancPopoverFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+</style>

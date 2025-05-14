@@ -6,67 +6,25 @@
 
 <p align="center">基于uni-app的轻量级跨平台UI组件库</p>
 
-## 介绍
+## 📋 介绍
 
 Fantastic UI 是一套基于 [uni-app](https://uniapp.dcloud.io/) 开发的跨平台 UI 组件库，致力于提供统一、美观的视觉体验。组件库采用 Vue 2 开发，支持在 H5、iOS、Android 以及各类小程序平台使用。
 
-## 特性
+## ✨ 特性
 
 -   🌈 **多平台兼容**: 一套代码，多端运行，支持 H5、iOS、Android 和各类小程序平台
 -   🚀 **性能优先**: 追求轻量化设计，确保高性能体验
 -   💎 **精致 UI**: 提供统一、美观的视觉体验
 -   🧩 **可定制主题**: 灵活的主题配置，支持品牌定制
--   📦 **即插即用**: 支持按需引入组件
 -   📱 **全面适配**: 针对不同尺寸设备进行优化
 
-## 快速上手
-
-### 安装
-
-```bash
-# 使用npm
-npm i fantastic-ui
-
-# 使用yarn
-yarn add fantastic-ui
-
-# 使用pnpm
-pnpm add fantastic-ui
-```
-
-### 引入组件
-
-#### 完整引入
-
-```js
-// main.js
-import Vue from "vue";
-import FantasticUI from "fantastic-ui";
-import "fantastic-ui/lib/index.css";
-
-Vue.use(FantasticUI);
-```
-
-#### 按需引入
-
-```js
-// main.js
-import Vue from "vue";
-import { FancButton, FancIcon } from "fantastic-ui";
-import "fantastic-ui/lib/button/style";
-import "fantastic-ui/lib/icon/style";
-
-Vue.use(FancButton);
-Vue.use(FancIcon);
-```
-
-## 浏览器兼容性
+## 🌐 浏览器兼容性
 
 -   Android 4.4+
 -   iOS 9.0+
 -   支持主流小程序平台
 
-## 组件列表
+## 📦 组件列表
 
 ### 基础组件
 
@@ -75,11 +33,67 @@ Vue.use(FancIcon);
 -   [Cell 单元格](./cell.md)
 -   [CellGroup 单元格组](./cell-group.md)
 -   [Popup 弹出层](./popup.md)
+-   [Popover 弹出气泡](./popover.md)
 
 ### 展示组件
 
 -   [NoticeBar 通知栏](./noticebar.md)
 -   [Message 消息提示](./message.md)
+-   [ActionSheet 动作面板](./ActionSheet.md)
 
+## 📝 更新日志
 
+### v0.0.9 (2025-05-14)
 
+-   ✨ 新增 Popover 弹出气泡组件
+-   🔄 支持多种触发方式和位置
+-   🎨 支持亮色/暗色主题切换
+-   🛠️ 支持自定义内容和手动控制
+
+### v0.0.8 (2025-05-11)
+
+-   ✨ 新增 ActionSheet 动作面板组件
+-   📱 优化移动端动作选择体验
+-   🔧 提供多种自定义配置项
+
+### v0.0.7 (2025-05-08)
+
+-   ✨ 新增 Popup 弹出层组件
+-   🧭 支持多个方向弹出
+-   🎬 提供动画过渡效果
+
+### v0.0.6 (2025-05-05)
+
+-   ✨ 新增 NoticeBar 通知栏组件
+-   📋 支持滚动、多行显示
+-   🎨 提供多种主题样式
+
+### v0.0.5 (2025-05-02)
+
+-   ✨ 新增 Message 消息提示组件
+-   🚦 支持成功、警告、错误等状态
+-   ⏱️ 支持自动关闭和手动关闭
+
+### v0.0.4 (2025-04-29)
+
+-   ✨ 新增 Icon 图标组件
+-   🎨 提供丰富的图标集合
+-   🔧 支持自定义颜色和大小
+
+### v0.0.3 (2025-04-26)
+
+-   ✨ 新增 Cell 单元格组件
+-   ✨ 新增 CellGroup 单元格组组件
+-   📋 支持各种内容展示和交互
+
+### v0.0.2 (2025-04-23)
+
+-   ✨ 新增 Button 按钮组件
+-   🔄 支持多种类型、尺寸和状态
+-   📱 优化按钮点击反馈效果
+
+### v0.0.1 (2025-04-20)
+
+-   🎉 Fantastic UI 项目初始化
+-   📐 建立基础架构和规范
+-   🎨 完成基础设计系统

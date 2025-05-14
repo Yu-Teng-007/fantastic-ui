@@ -83,3 +83,16 @@ $noticebar-error-color: $danger-color;
 $noticebar-action-color: $primary-color;
 $noticebar-action-hover-bg: rgba($black, 0.05);
 $noticebar-close-color: $gray-600;
+
+// Popover 弹出气泡组件颜色
+$popover-dark-bg: $dark-color;
+$popover-dark-color: $white;
+$popover-dark-border: $dark-color;
+
+$popover-light-bg: $white;
+$popover-light-color: $text-primary;
+$popover-light-border: $border-color-light;
+
+$popover-shadow-color: rgba($black, 0.1);
+$popover-title-color: inherit;
+$popover-content-color: inherit;

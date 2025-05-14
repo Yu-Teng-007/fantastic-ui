@@ -1,173 +1,187 @@
 <template>
-    <view class="container">
-        <view class="example-section">
-            <text class="section-title">基础用法</text>
-            <view class="icon-row">
-                <view class="icon-item">
+    <view class="example-page">
+        <view class="example-page__header">
+            <text class="example-page__header-title">图标组件</text>
+            <text class="example-page__header-desc">提供丰富的图标集合，支持自定义颜色、大小和样式</text>
+        </view>
+
+        <view class="example-page__section">
+            <view class="example-page__section-title">基础用法</view>
+            <view class="example-page__section-desc">基本的图标使用，通过name属性指定图标</view>
+            <view class="icon-grid">
+                <view class="icon-cell">
                     <fanc-icon name="home" size="24"></fanc-icon>
                     <text class="icon-name">home</text>
                 </view>
-                <view class="icon-item">
+                <view class="icon-cell">
                     <fanc-icon name="user" size="24"></fanc-icon>
                     <text class="icon-name">user</text>
                 </view>
-                <view class="icon-item">
+                <view class="icon-cell">
                     <fanc-icon name="search" size="24"></fanc-icon>
                     <text class="icon-name">search</text>
                 </view>
-                <view class="icon-item">
+                <view class="icon-cell">
                     <fanc-icon name="heart" size="24"></fanc-icon>
                     <text class="icon-name">heart</text>
                 </view>
-                <view class="icon-item">
+                <view class="icon-cell">
                     <fanc-icon name="star" size="24"></fanc-icon>
                     <text class="icon-name">star</text>
                 </view>
             </view>
         </view>
 
-        <view class="example-section">
-            <text class="section-title">图标类型</text>
-            <view class="icon-row">
-                <view class="icon-item">
+        <view class="example-page__section">
+            <view class="example-page__section-title">图标类型</view>
+            <view class="example-page__section-desc">支持多种类型的图标，包括实心、线性和品牌图标</view>
+            <view class="icon-grid">
+                <view class="icon-cell">
                     <fanc-icon name="user" type="solid" size="24"></fanc-icon>
                     <text class="icon-name">Solid</text>
                 </view>
-                <view class="icon-item">
+                <view class="icon-cell">
                     <fanc-icon name="user" type="regular" size="24"></fanc-icon>
                     <text class="icon-name">Regular</text>
                 </view>
-                <view class="icon-item">
+                <view class="icon-cell">
                     <fanc-icon name="apple" type="brands" size="24"></fanc-icon>
                     <text class="icon-name">Brands</text>
                 </view>
             </view>
         </view>
 
-        <view class="example-section">
-            <text class="section-title">不同颜色</text>
-            <view class="icon-row">
-                <view class="icon-item">
+        <view class="example-page__section">
+            <view class="example-page__section-title">不同颜色</view>
+            <view class="example-page__section-desc">可以自定义图标的颜色，支持各种颜色值</view>
+            <view class="icon-grid">
+                <view class="icon-cell">
                     <fanc-icon name="check" size="24" color="#28a745"></fanc-icon>
                     <text class="icon-name">绿色</text>
                 </view>
-                <view class="icon-item">
+                <view class="icon-cell">
                     <fanc-icon name="times" size="24" color="#dc3545"></fanc-icon>
                     <text class="icon-name">红色</text>
                 </view>
-                <view class="icon-item">
+                <view class="icon-cell">
                     <fanc-icon name="exclamation-triangle" size="24" color="#ffc107"></fanc-icon>
                     <text class="icon-name">黄色</text>
                 </view>
-                <view class="icon-item">
+                <view class="icon-cell">
                     <fanc-icon name="info-circle" size="24" color="#17a2b8"></fanc-icon>
                     <text class="icon-name">蓝色</text>
                 </view>
-                <view class="icon-item">
+                <view class="icon-cell">
                     <fanc-icon name="question-circle" size="24" color="#6c757d"></fanc-icon>
                     <text class="icon-name">灰色</text>
                 </view>
             </view>
         </view>
 
-        <view class="example-section">
-            <text class="section-title">不同尺寸</text>
-            <view class="icon-row">
-                <view class="icon-item">
+        <view class="example-page__section">
+            <view class="example-page__section-title">不同尺寸</view>
+            <view class="example-page__section-desc">可以设置图标的尺寸，单位为px</view>
+            <view class="icon-grid">
+                <view class="icon-cell">
                     <fanc-icon name="cog" size="16"></fanc-icon>
                     <text class="icon-name">16px</text>
                 </view>
-                <view class="icon-item">
+                <view class="icon-cell">
                     <fanc-icon name="cog" size="24"></fanc-icon>
                     <text class="icon-name">24px</text>
                 </view>
-                <view class="icon-item">
+                <view class="icon-cell">
                     <fanc-icon name="cog" size="32"></fanc-icon>
                     <text class="icon-name">32px</text>
                 </view>
-                <view class="icon-item">
+                <view class="icon-cell">
                     <fanc-icon name="cog" size="48"></fanc-icon>
                     <text class="icon-name">48px</text>
                 </view>
             </view>
         </view>
 
-        <view class="example-section">
-            <text class="section-title">小红点(dot)</text>
-            <view class="icon-row">
-                <view class="icon-item">
+        <view class="example-page__section">
+            <view class="example-page__section-title">小红点(dot)</view>
+            <view class="example-page__section-desc">在图标右上角显示一个小红点，常用于消息提醒</view>
+            <view class="icon-grid">
+                <view class="icon-cell">
                     <fanc-icon name="bell" size="24" dot></fanc-icon>
                     <text class="icon-name">消息提醒</text>
                 </view>
-                <view class="icon-item">
+                <view class="icon-cell">
                     <fanc-icon name="envelope" size="24" dot></fanc-icon>
                     <text class="icon-name">邮件提醒</text>
                 </view>
-                <view class="icon-item">
+                <view class="icon-cell">
                     <fanc-icon name="comment" size="24" dot></fanc-icon>
                     <text class="icon-name">评论提醒</text>
                 </view>
             </view>
         </view>
 
-        <view class="example-section">
-            <text class="section-title">徽标(badge)</text>
-            <view class="icon-row">
-                <view class="icon-item">
+        <view class="example-page__section">
+            <view class="example-page__section-title">徽标(badge)</view>
+            <view class="example-page__section-desc">在图标右上角显示徽标数字，用于显示消息数量</view>
+            <view class="icon-grid">
+                <view class="icon-cell">
                     <fanc-icon name="bell" size="24" badge="8"></fanc-icon>
                     <text class="icon-name">8条消息</text>
                 </view>
-                <view class="icon-item">
+                <view class="icon-cell">
                     <fanc-icon name="envelope" size="24" badge="99+"></fanc-icon>
                     <text class="icon-name">99+封邮件</text>
                 </view>
-                <view class="icon-item">
+                <view class="icon-cell">
                     <fanc-icon name="shopping-cart" size="24" badge="5"></fanc-icon>
                     <text class="icon-name">5件商品</text>
                 </view>
             </view>
         </view>
 
-        <view class="example-section">
-            <text class="section-title">旋转动画(spin)</text>
-            <view class="icon-row">
-                <view class="icon-item">
+        <view class="example-page__section">
+            <view class="example-page__section-title">旋转动画(spin)</view>
+            <view class="example-page__section-desc">图标可以添加旋转动画，常用于加载指示</view>
+            <view class="icon-grid">
+                <view class="icon-cell">
                     <fanc-icon name="sync" size="24" spin></fanc-icon>
                     <text class="icon-name">同步</text>
                 </view>
-                <view class="icon-item">
+                <view class="icon-cell">
                     <fanc-icon name="spinner" size="24" spin></fanc-icon>
                     <text class="icon-name">加载中</text>
                 </view>
-                <view class="icon-item">
+                <view class="icon-cell">
                     <fanc-icon name="circle-notch" size="24" spin></fanc-icon>
                     <text class="icon-name">刷新</text>
                 </view>
-                <view class="icon-item">
+                <view class="icon-cell">
                     <fanc-icon name="cog" size="24" spin></fanc-icon>
                     <text class="icon-name">设置</text>
                 </view>
             </view>
         </view>
 
-        <view class="example-section">
-            <text class="section-title">图片图标</text>
-            <view class="icon-row">
-                <view class="icon-item">
+        <view class="example-page__section">
+            <view class="example-page__section-title">图片图标</view>
+            <view class="example-page__section-desc">支持使用图片URL作为图标，适用于自定义图标</view>
+            <view class="icon-grid">
+                <view class="icon-cell">
                     <fanc-icon name="https://img.yzcdn.cn/vant/logo.png" size="32"></fanc-icon>
                     <text class="icon-name">URL图片</text>
                 </view>
-                <view class="icon-item">
+                <view class="icon-cell">
                     <fanc-icon name="https://img.yzcdn.cn/vant/logo.png" size="48" badge="new"></fanc-icon>
                     <text class="icon-name">带徽标</text>
                 </view>
             </view>
         </view>
 
-        <view class="example-section">
-            <text class="section-title">自定义样式</text>
-            <view class="icon-row">
-                <view class="icon-item">
+        <view class="example-page__section">
+            <view class="example-page__section-title">自定义样式</view>
+            <view class="example-page__section-desc">可以通过customStyle属性自定义图标的样式</view>
+            <view class="icon-grid">
+                <view class="icon-cell">
                     <fanc-icon
                         name="star"
                         size="32"
@@ -179,7 +193,7 @@
                     ></fanc-icon>
                     <text class="icon-name">旋转星星</text>
                 </view>
-                <view class="icon-item">
+                <view class="icon-cell">
                     <fanc-icon
                         name="heart"
                         size="32"
@@ -193,22 +207,28 @@
             </view>
         </view>
 
-        <view class="example-section">
-            <text class="section-title">点击事件</text>
-            <view class="icon-row">
-                <view class="icon-item">
+        <view class="example-page__section">
+            <view class="example-page__section-title">点击事件</view>
+            <view class="example-page__section-desc">图标可以绑定点击事件，用于交互操作</view>
+            <view class="icon-grid">
+                <view class="icon-cell">
                     <fanc-icon name="bell" size="32" color="#007bff" clickable @click="handleIconClick"></fanc-icon>
-                    <text class="icon-name">点击我</text>
+                    <text class="icon-name">点击触发</text>
                 </view>
-                <view class="icon-item">
-                    <fanc-icon
-                        name="thumbs-up"
-                        size="32"
-                        :color="isLiked ? '#dc3545' : '#6c757d'"
-                        clickable
-                        @click="toggleLike"
-                    ></fanc-icon>
-                    <text class="icon-name">{{ isLiked ? "已点赞" : "点赞" }}</text>
+                <view class="icon-cell">
+                    <fanc-icon name="thumbs-up" size="32" color="#28a745" clickable @click="handleLike"></fanc-icon>
+                    <text class="icon-name">点赞</text>
+                </view>
+            </view>
+        </view>
+
+        <view class="example-page__section">
+            <view class="example-page__section-title">常用图标集合</view>
+            <view class="example-page__section-desc">一些常用的图标，点击可复制图标名称</view>
+            <view class="icon-grid">
+                <view class="icon-cell" v-for="(icon, index) in commonIcons" :key="index" @click="copyIconName(icon)">
+                    <fanc-icon :name="icon" size="24"></fanc-icon>
+                    <text class="icon-name">{{ icon }}</text>
                 </view>
             </view>
         </view>
@@ -224,112 +244,93 @@ export default {
     },
     data() {
         return {
-            isLiked: false,
+            commonIcons: [
+                "home",
+                "search",
+                "user",
+                "cog",
+                "heart",
+                "star",
+                "bell",
+                "envelope",
+                "camera",
+                "calendar",
+                "chart-bar",
+                "check",
+                "times",
+                "edit",
+                "trash",
+                "download",
+                "upload",
+                "share",
+                "comment",
+                "bookmark",
+            ],
         };
     },
     methods: {
         handleIconClick() {
             uni.showToast({
-                title: "图标被点击了",
+                title: "点击了图标",
                 icon: "none",
             });
         },
-        toggleLike() {
-            this.isLiked = !this.isLiked;
+        handleLike() {
             uni.showToast({
-                title: this.isLiked ? "已点赞" : "已取消点赞",
+                title: "点赞成功",
                 icon: "none",
+            });
+        },
+        copyIconName(name) {
+            uni.setClipboardData({
+                data: name,
+                success: () => {
+                    uni.showToast({
+                        title: `已复制: ${name}`,
+                        icon: "none",
+                    });
+                },
             });
         },
     },
 };
 </script>
 
-<style lang="scss" scoped>
-.container {
-    padding: 16px;
-    background-color: #f7f8fa;
-    min-height: 100vh;
-}
+<style lang="scss">
+@import "../../styles/example-pages.scss";
 
-.header {
-    margin-bottom: 24px;
-    text-align: center;
-    padding: 20px 0;
-}
-
-.title {
-    display: block;
-    margin-bottom: 8px;
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: #323233;
-}
-
-.subtitle {
-    font-size: 0.875rem;
-    color: #969799;
-}
-
-.example-section {
-    margin-bottom: 24px;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
-}
-
-.section-title {
-    display: block;
-    margin-bottom: 16px;
-    font-size: 1.125rem;
-    font-weight: 600;
-    color: #323233;
-    position: relative;
-    padding-left: 12px;
-
-    &::before {
-        content: "";
-        position: absolute;
-        left: 0;
-        top: 4px;
-        height: 16px;
-        width: 4px;
-        background-color: #007bff;
-        border-radius: 2px;
-    }
-}
-
-.icon-row {
-    display: flex;
-    flex-wrap: wrap;
+.icon-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
     gap: 16px;
-    margin-top: 16px;
+    padding: 12px 0;
 }
 
-.icon-item {
+.icon-cell {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 68px;
-    height: 68px;
-    padding: 12px;
-    background-color: #f7f8fa;
+    padding: 12px 8px;
+    background-color: #fff;
     border-radius: 8px;
-    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s;
 
-    &:hover {
-        background-color: #e9ecef;
-        transform: translateY(-4px);
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    &:active {
+        transform: scale(0.96);
+        opacity: 0.8;
     }
-}
 
-.icon-name {
-    margin-top: 10px;
-    font-size: 0.875rem;
-    color: #646566;
-    text-align: center;
+    .icon-name {
+        font-size: 12px;
+        color: #646566;
+        margin-top: 8px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        width: 100%;
+        text-align: center;
+    }
 }
 </style>

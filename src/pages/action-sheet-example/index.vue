@@ -1,7 +1,13 @@
 <template>
-    <view class="action-sheet-example">
-        <view class="action-sheet-example__section">
-            <view class="action-sheet-example__section-title">基础用法</view>
+    <view class="example-page">
+        <view class="example-page__header">
+            <text class="example-page__header-title">动作面板组件</text>
+            <text class="example-page__header-desc">底部弹起的模态面板，提供和当前场景相关的多个操作</text>
+        </view>
+
+        <view class="example-page__section">
+            <view class="example-page__section-title">基础用法</view>
+            <view class="example-page__section-desc">基础动作面板由操作选项组成，点击选项后会触发相应的事件</view>
             <fanc-button type="primary" @click="showBasic = true">基础动作面板</fanc-button>
             <fanc-action-sheet
                 v-model:show="showBasic"
@@ -13,8 +19,9 @@
             />
         </view>
 
-        <view class="action-sheet-example__section">
-            <view class="action-sheet-example__section-title">带标题和描述</view>
+        <view class="example-page__section">
+            <view class="example-page__section-title">带标题和描述</view>
+            <view class="example-page__section-desc">动作面板可以设置标题和描述文本，方便用户理解面板的用途</view>
             <fanc-button type="primary" @click="showWithTitle = true">带标题动作面板</fanc-button>
             <fanc-action-sheet
                 v-model:show="showWithTitle"
@@ -28,8 +35,9 @@
             />
         </view>
 
-        <view class="action-sheet-example__section">
-            <view class="action-sheet-example__section-title">带图标</view>
+        <view class="example-page__section">
+            <view class="example-page__section-title">带图标</view>
+            <view class="example-page__section-desc">可以在选项前显示图标，提升视觉辨识度</view>
             <fanc-button type="primary" @click="showWithIcon = true">带图标动作面板</fanc-button>
             <fanc-action-sheet
                 v-model:show="showWithIcon"
@@ -42,8 +50,9 @@
             />
         </view>
 
-        <view class="action-sheet-example__section">
-            <view class="action-sheet-example__section-title">宫格模式</view>
+        <view class="example-page__section">
+            <view class="example-page__section-title">宫格模式</view>
+            <view class="example-page__section-desc">宫格模式将选项以网格形式展示，适合有图标的场景</view>
             <fanc-button type="primary" @click="showGrid = true">宫格动作面板</fanc-button>
             <fanc-action-sheet
                 v-model:show="showGrid"
@@ -57,8 +66,9 @@
             />
         </view>
 
-        <view class="action-sheet-example__section">
-            <view class="action-sheet-example__section-title">自定义列数</view>
+        <view class="example-page__section">
+            <view class="example-page__section-title">自定义列数</view>
+            <view class="example-page__section-desc">宫格模式支持自定义列数，根据需要调整布局</view>
             <fanc-button type="primary" @click="showCustomColumns = true">自定义列数</fanc-button>
             <fanc-action-sheet
                 v-model:show="showCustomColumns"
@@ -73,8 +83,9 @@
             />
         </view>
 
-        <view class="action-sheet-example__section">
-            <view class="action-sheet-example__section-title">状态示例</view>
+        <view class="example-page__section">
+            <view class="example-page__section-title">状态示例</view>
+            <view class="example-page__section-desc">选项可以设置禁用或加载状态，提供更丰富的交互反馈</view>
             <fanc-button type="primary" @click="showWithStatus = true">状态示例</fanc-button>
             <fanc-action-sheet
                 v-model:show="showWithStatus"
@@ -87,8 +98,9 @@
             />
         </view>
 
-        <view class="action-sheet-example__section">
-            <view class="action-sheet-example__section-title">自定义关闭按钮</view>
+        <view class="example-page__section">
+            <view class="example-page__section-title">自定义关闭按钮</view>
+            <view class="example-page__section-desc">可以显示顶部关闭按钮，并自定义底部取消按钮文本</view>
             <fanc-button type="primary" @click="showWithClose = true">自定义关闭按钮</fanc-button>
             <fanc-action-sheet
                 v-model:show="showWithClose"
@@ -102,8 +114,9 @@
             />
         </view>
 
-        <view class="action-sheet-example__section">
-            <view class="action-sheet-example__section-title">异步操作</view>
+        <view class="example-page__section">
+            <view class="example-page__section-title">异步操作</view>
+            <view class="example-page__section-desc">点击选项后可以执行异步操作，完成后再关闭面板</view>
             <fanc-button type="primary" @click="showAsync = true">异步操作</fanc-button>
             <fanc-action-sheet
                 v-model:show="showAsync"
@@ -116,8 +129,9 @@
             />
         </view>
 
-        <view class="action-sheet-example__section">
-            <view class="action-sheet-example__section-title">分页显示 - 宫格模式</view>
+        <view class="example-page__section">
+            <view class="example-page__section-title">分页显示 - 宫格模式</view>
+            <view class="example-page__section-desc">当选项较多时，可以启用分页功能分批展示内容</view>
             <fanc-button type="primary" @click="showPagination = true">宫格分页</fanc-button>
             <fanc-action-sheet
                 v-model:show="showPagination"
@@ -134,8 +148,9 @@
             />
         </view>
 
-        <view class="action-sheet-example__section">
-            <view class="action-sheet-example__section-title">分页显示 - 列表模式</view>
+        <view class="example-page__section">
+            <view class="example-page__section-title">分页显示 - 列表模式</view>
+            <view class="example-page__section-desc">列表模式同样支持分页功能，适用于选项较多的场景</view>
             <fanc-button type="primary" @click="showListPagination = true">列表分页</fanc-button>
             <fanc-action-sheet
                 v-model:show="showListPagination"
@@ -198,102 +213,130 @@ export default {
                 { name: "抖音", icon: "/static/img/douyin.png", iconColor: "#000000" },
                 { name: "钉钉", icon: "/static/img/ding.png", iconColor: "#1677FF" },
                 { name: "短信", icon: "envelope", iconColor: "#34C759" },
-                { name: "飞书", icon: "/static/img/feishu.png", iconColor: "#3370FF" },
-                { name: "复制链接", icon: "link", iconColor: "#8E8E93" },
-                { name: "浏览器打开", icon: "globe", iconColor: "#5856D6" },
-                { name: "更多", icon: "ellipsis-h", iconColor: "#8E8E93" },
+                { name: "复制链接", icon: "link", iconColor: "#007AFF" },
+                { name: "收藏", icon: "bookmark", iconColor: "#FF9500" },
+                { name: "删除", icon: "trash", iconColor: "#FF3B30" },
             ],
 
-            // 多列宫格模式操作项
+            // 多列宫格操作项
             gridManyActions: [
-                { name: "拍照", icon: "camera", iconColor: "#07C160" },
-                { name: "相册", icon: "/static/img/photo.png", iconColor: "#FF3B30" },
-                { name: "文件", icon: "file-alt", iconColor: "#FF9500" },
-                { name: "位置", icon: "location-arrow", iconColor: "#5AC8FA" },
-                { name: "语音", icon: "microphone", iconColor: "#AF52DE" },
-                { name: "我的收藏", icon: "star", iconColor: "#FF9500" },
+                { name: "拍照", icon: "camera", iconColor: "#1677FF" },
+                { name: "相册", icon: "images", iconColor: "#FF9500" },
+                { name: "文件", icon: "file", iconColor: "#34C759" },
+                { name: "联系人", icon: "user-friends", iconColor: "#007AFF" },
+                { name: "位置", icon: "map-marker-alt", iconColor: "#FF2442" },
+                { name: "日程", icon: "calendar", iconColor: "#5856D6" },
+                { name: "收藏", icon: "star", iconColor: "#FF9500" },
+                { name: "音乐", icon: "music", iconColor: "#FF2D55" },
+                { name: "视频", icon: "video", iconColor: "#FF3B30" },
             ],
 
-            // 不同状态的操作项
+            // 状态示例操作项
             actionsWithStatus: [
-                { name: "正常选项", type: "primary" },
-                { name: "禁用选项", disabled: true },
-                { name: "警告操作", type: "warning" },
-                { name: "危险操作", type: "danger" },
-                { name: "成功操作", type: "success" },
-                { name: "带有副标题", subname: "这是副标题说明文字" },
+                { name: "正常选项", icon: "check", iconColor: "#34C759" },
+                { name: "禁用选项", icon: "ban", iconColor: "#8E8E93", disabled: true },
+                {
+                    name: "加载中选项",
+                    icon: "spinner",
+                    iconColor: "#007AFF",
+                    loading: true,
+                },
+                { name: "危险操作", icon: "trash", iconColor: "#FF3B30", danger: true },
             ],
 
-            // 异步操作项
+            // 异步操作示例
             asyncActions: [
-                { name: "保存", type: "primary" },
-                { name: "删除", type: "danger" },
-                { name: "更新", type: "success" },
+                { name: "保存", icon: "save", iconColor: "#007AFF" },
+                { name: "删除", icon: "trash", iconColor: "#FF3B30", danger: true },
+                { name: "分享", icon: "share", iconColor: "#34C759" },
             ],
         };
     },
-
-    created() {},
-
-    mounted() {},
-
     methods: {
-        // 处理打开事件
-        onOpenAction(type) {},
-
-        // 处理关闭事件
-        onCloseAction(type) {},
-
-        // 处理选择操作项事件
+        // 选择操作项
         onSelectAction(action, index) {
-            this.$message.success({
-                message: `点击了 ${action.name}，索引: ${index}`,
-                duration: 2000,
+            uni.showToast({
+                title: `选择了${action.name}，索引: ${index}`,
+                icon: "none",
             });
         },
 
-        // 处理取消操作
-        onCancel() {
-            this.$message.info({
-                message: "点击了取消按钮",
-                duration: 2000,
-            });
-        },
-
-        // 处理关闭操作
-        onClose() {
-            this.$message.info({
-                message: "点击了关闭按钮",
-                duration: 2000,
-            });
-        },
-
-        // 处理异步操作
+        // 异步操作示例
         onSelectAsyncAction(action, index) {
-            // 更新当前操作项为加载状态
-            this.asyncActions[index].loading = true;
+            // 如果是删除操作，需要确认
+            if (index === 1) {
+                uni.showModal({
+                    title: "确认操作",
+                    content: "确定要删除吗？此操作不可撤销",
+                    success: (res) => {
+                        if (res.confirm) {
+                            // 模拟异步操作
+                            const newActions = [...this.asyncActions];
+                            newActions[index] = {
+                                ...newActions[index],
+                                loading: true,
+                                name: "处理中...",
+                            };
+                            this.asyncActions = newActions;
 
-            // 模拟异步操作
-            setTimeout(() => {
-                // 恢复加载状态
-                this.asyncActions[index].loading = false;
-
-                // 显示操作结果
-                this.$message.success({
-                    message: `完成 ${action.name} 操作`,
-                    duration: 2000,
+                            setTimeout(() => {
+                                uni.showToast({
+                                    title: "删除成功",
+                                    icon: "success",
+                                });
+                                this.showAsync = false;
+                                // 恢复原始数据
+                                this.asyncActions = [
+                                    { name: "保存", icon: "save", iconColor: "#007AFF" },
+                                    { name: "删除", icon: "trash", iconColor: "#FF3B30", danger: true },
+                                    { name: "分享", icon: "share", iconColor: "#34C759" },
+                                ];
+                            }, 2000);
+                        }
+                    },
                 });
+                return;
+            }
 
-                // 关闭动作面板
-                this.showAsync = false;
-            }, 1500);
+            // 其他操作
+            uni.showToast({
+                title: `选择了${action.name}`,
+                icon: "none",
+            });
+            this.showAsync = false;
         },
 
-        // 处理分页变化
+        // 取消事件
+        onCancel() {
+            uni.showToast({
+                title: "点击了取消",
+                icon: "none",
+            });
+        },
+
+        // 关闭事件
+        onClose() {
+            uni.showToast({
+                title: "动作面板已关闭",
+                icon: "none",
+            });
+        },
+
+        // 关闭指定面板
+        onCloseAction(type) {
+            console.log(`${type}面板已关闭`);
+        },
+
+        // 打开指定面板
+        onOpenAction(type) {
+            console.log(`${type}面板已打开`);
+        },
+
+        // 分页切换事件
         onPageChange(page) {
-            this.$message.info({
-                message: `切换到第 ${page} 页`,
-                duration: 2000,
+            uni.showToast({
+                title: `切换到第${page}页`,
+                icon: "none",
             });
         },
     },
@@ -301,41 +344,10 @@ export default {
 </script>
 
 <style lang="scss">
-@import "@/styles/_variables.scss";
+@import "../../styles/example-pages.scss";
 
-.action-sheet-example {
-    padding: 16px;
-    background-color: #f7f8fa;
-    min-height: 100vh;
-
-    &__section {
-        margin-bottom: 24px;
-        padding: 20px;
-        background-color: #fff;
-        border-radius: 8px;
-        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
-    }
-
-    &__section-title {
-        font-size: 1.125rem;
-        font-weight: 600;
-        margin-bottom: 16px;
-        color: #323233;
-        position: relative;
-        padding-left: 12px;
-
-        &::before {
-            content: "";
-            position: absolute;
-            left: 0;
-            top: 4px;
-            height: 16px;
-            width: 4px;
-            background-color: #007bff;
-            border-radius: 2px;
-        }
-    }
-
+// 动作面板示例特有样式
+.example-page {
     .fanc-button {
         margin-bottom: 8px;
     }

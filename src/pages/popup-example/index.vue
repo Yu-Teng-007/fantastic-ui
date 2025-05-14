@@ -1,7 +1,13 @@
 <template>
-    <view class="popup-example">
-        <view class="popup-example__section">
-            <view class="popup-example__section-title">基础用法</view>
+    <view class="example-page">
+        <view class="example-page__header">
+            <text class="example-page__header-title">弹出层组件</text>
+            <text class="example-page__header-desc">弹出层用于展示临时内容，可以从多个方向弹出</text>
+        </view>
+
+        <view class="example-page__section">
+            <view class="example-page__section-title">基础用法</view>
+            <view class="example-page__section-desc">基础弹出层从屏幕中心淡入，点击遮罩层或关闭按钮可关闭</view>
             <fanc-button type="primary" @click="showBasic = true">显示弹出层</fanc-button>
             <fanc-popup :show="showBasic" @close="showBasic = false">
                 <view class="popup-content">
@@ -12,9 +18,10 @@
             </fanc-popup>
         </view>
 
-        <view class="popup-example__section">
-            <view class="popup-example__section-title">弹出位置</view>
-            <view class="popup-example__button-group">
+        <view class="example-page__section">
+            <view class="example-page__section-title">弹出位置</view>
+            <view class="example-page__section-desc">弹出层可以从顶部、底部、左侧和右侧弹出</view>
+            <view class="example-page__button-group">
                 <fanc-button type="primary" size="small" @click="showPosition('top')">顶部弹出</fanc-button>
                 <fanc-button type="success" size="small" @click="showPosition('bottom')">底部弹出</fanc-button>
                 <fanc-button type="warning" size="small" @click="showPosition('left')">左侧弹出</fanc-button>
@@ -54,8 +61,9 @@
             </fanc-popup>
         </view>
 
-        <view class="popup-example__section">
-            <view class="popup-example__section-title">圆角和关闭图标</view>
+        <view class="example-page__section">
+            <view class="example-page__section-title">圆角和关闭图标</view>
+            <view class="example-page__section-desc">可以为弹出层添加圆角样式和关闭图标</view>
             <fanc-button type="primary" @click="showRoundWithClose = true">圆角弹出层带关闭图标</fanc-button>
             <fanc-popup
                 :show="showRoundWithClose"
@@ -72,8 +80,9 @@
             </fanc-popup>
         </view>
 
-        <view class="popup-example__section">
-            <view class="popup-example__section-title">关闭图标位置</view>
+        <view class="example-page__section">
+            <view class="example-page__section-title">关闭图标位置</view>
+            <view class="example-page__section-desc">关闭图标可以设置在弹出层的四个角落</view>
             <fanc-button type="primary" @click="showIconPositionDemo = true">自定义关闭图标位置</fanc-button>
             <fanc-popup
                 :show="showIconPositionDemo"
@@ -103,8 +112,9 @@
             </fanc-popup>
         </view>
 
-        <view class="popup-example__section">
-            <view class="popup-example__section-title">自定义样式</view>
+        <view class="example-page__section">
+            <view class="example-page__section-title">自定义样式</view>
+            <view class="example-page__section-desc">通过customStyle属性可以自定义弹出层的尺寸和样式</view>
             <fanc-button type="primary" @click="showCustomStyle = true">自定义弹出层样式</fanc-button>
             <fanc-popup
                 :show="showCustomStyle"
@@ -121,8 +131,9 @@
             </fanc-popup>
         </view>
 
-        <view class="popup-example__section">
-            <view class="popup-example__section-title">使用v-model控制</view>
+        <view class="example-page__section">
+            <view class="example-page__section-title">使用v-model控制</view>
+            <view class="example-page__section-desc">可以使用v-model实现弹出层的双向数据绑定</view>
             <fanc-button type="primary" @click="showVModel = true">使用v-model控制弹窗</fanc-button>
             <fanc-popup v-model="showVModel" position="center" closeable>
                 <view class="popup-content">
@@ -191,69 +202,7 @@ export default {
 </script>
 
 <style lang="scss">
-.popup-example {
-    padding: 16px;
-    background-color: #f7f8fa;
-    min-height: 100vh;
-
-    &__header {
-        margin-bottom: 24px;
-        text-align: center;
-        padding: 20px 0;
-    }
-
-    &__title {
-        display: block;
-        font-size: 1.5rem;
-        font-weight: 600;
-        margin-bottom: 8px;
-        color: #323233;
-    }
-
-    &__desc {
-        display: block;
-        font-size: 0.875rem;
-        color: #969799;
-    }
-
-    &__section {
-        margin-bottom: 24px;
-        padding: 20px;
-        background-color: #fff;
-        border-radius: 8px;
-        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
-    }
-
-    &__section-title {
-        font-size: 1.125rem;
-        font-weight: 600;
-        margin-bottom: 16px;
-        color: #323233;
-        position: relative;
-        padding-left: 12px;
-
-        &::before {
-            content: "";
-            position: absolute;
-            left: 0;
-            top: 4px;
-            height: 16px;
-            width: 4px;
-            background-color: #007bff;
-            border-radius: 2px;
-        }
-    }
-
-    &__button-group {
-        display: flex;
-        flex-wrap: wrap;
-        margin: -6px;
-
-        .fanc-button {
-            margin: 6px;
-        }
-    }
-}
+@import "../../styles/example-pages.scss";
 
 .popup-content {
     padding: 24px;
@@ -278,11 +227,8 @@ export default {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
-        margin: 12px -6px;
-
-        .fanc-button {
-            margin: 6px;
-        }
+        gap: 8px;
+        margin: 12px 0;
     }
 
     &--position {
