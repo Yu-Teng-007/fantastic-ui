@@ -115,6 +115,41 @@
                 @open="onOpenAction('async')"
             />
         </view>
+
+        <view class="action-sheet-example__section">
+            <view class="action-sheet-example__section-title">分页显示 - 宫格模式</view>
+            <fanc-button type="primary" @click="showPagination = true">宫格分页</fanc-button>
+            <fanc-action-sheet
+                v-model:show="showPagination"
+                :actions="gridActions"
+                grid-mode
+                title="社交应用"
+                :pagination-enabled="true"
+                :page-size="8"
+                @select="onSelectAction"
+                @cancel="onCancel"
+                @close="onCloseAction('pagination')"
+                @open="onOpenAction('pagination')"
+                @pageChange="onPageChange"
+            />
+        </view>
+
+        <view class="action-sheet-example__section">
+            <view class="action-sheet-example__section-title">分页显示 - 列表模式</view>
+            <fanc-button type="primary" @click="showListPagination = true">列表分页</fanc-button>
+            <fanc-action-sheet
+                v-model:show="showListPagination"
+                :actions="gridActions"
+                title="操作菜单"
+                :pagination-enabled="true"
+                :page-size="4"
+                @select="onSelectAction"
+                @cancel="onCancel"
+                @close="onCloseAction('list-pagination')"
+                @open="onOpenAction('list-pagination')"
+                @pageChange="onPageChange"
+            />
+        </view>
     </view>
 </template>
 
@@ -134,6 +169,8 @@ export default {
             showAsync: false,
             showGrid: false,
             showCustomColumns: false,
+            showPagination: false,
+            showListPagination: false,
 
             // 基础操作项
             basicActions: [{ name: "选项一" }, { name: "选项二" }, { name: "选项三" }],
@@ -153,9 +190,18 @@ export default {
                 { name: "QQ", icon: "qq", iconColor: "#1DA1F2" },
                 { name: "企业微信", icon: "comments", iconColor: "#1989FA" },
                 { name: "收藏", icon: "star", iconColor: "#FF9500" },
-                { name: "复制", icon: "copy", iconColor: "#8E8E93" },
-                { name: "下载", icon: "download", iconColor: "#8E8E93" },
-                { name: "复制", icon: "copy", iconColor: "#8E8E93" },
+                { name: "刷新", icon: "sync", iconColor: "#8E8E93" },
+                { name: "下载", icon: "download", iconColor: "#34C759" },
+                { name: "编辑", icon: "edit", iconColor: "#5856D6" },
+                // 第二页的图标
+                { name: "微博", icon: "weibo", iconColor: "#FF2442" },
+                { name: "抖音", icon: "video", iconColor: "#000000" },
+                { name: "钉钉", icon: "phone", iconColor: "#1677FF" },
+                { name: "短信", icon: "envelope", iconColor: "#34C759" },
+                { name: "飞书", icon: "feather", iconColor: "#3370FF" },
+                { name: "复制链接", icon: "link", iconColor: "#8E8E93" },
+                { name: "浏览器打开", icon: "globe", iconColor: "#5856D6" },
+                { name: "更多", icon: "ellipsis-h", iconColor: "#8E8E93" },
             ],
 
             // 多列宫格模式操作项
@@ -241,6 +287,14 @@ export default {
                 // 关闭动作面板
                 this.showAsync = false;
             }, 1500);
+        },
+
+        // 处理分页变化
+        onPageChange(page) {
+            this.$message.info({
+                message: `切换到第 ${page} 页`,
+                duration: 2000,
+            });
         },
     },
 };

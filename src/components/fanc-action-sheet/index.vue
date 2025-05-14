@@ -32,7 +32,7 @@
                 <!-- 操作项列表 - 列表模式 -->
                 <view v-if="!gridMode" class="fanc-action-sheet__content">
                     <view
-                        v-for="(item, index) in actions"
+                        v-for="(item, index) in paginatedActions"
                         :key="index"
                         class="fanc-action-sheet__item"
                         :class="{
@@ -41,7 +41,7 @@
                             [`fanc-action-sheet__item--${item.type || 'default'}`]: item.type,
                         }"
                         :style="item.style || {}"
-                        @click="onSelect(item, index)"
+                        @click="onSelect(item, index + currentPage * pageSize)"
                     >
                         <view v-if="item.loading" class="fanc-action-sheet__loading">
                             <view class="fanc-loading-indicator"></view>
@@ -57,7 +57,7 @@
                 <!-- 操作项列表 - 宫格模式 -->
                 <view v-else class="fanc-action-sheet__grid" :style="gridStyle">
                     <view
-                        v-for="(item, index) in actions"
+                        v-for="(item, index) in paginatedActions"
                         :key="index"
                         class="fanc-action-sheet__grid-item"
                         :class="{
@@ -66,7 +66,7 @@
                             [`fanc-action-sheet__grid-item--${item.type || 'default'}`]: item.type,
                         }"
                         :style="item.style || {}"
-                        @click="onSelect(item, index)"
+                        @click="onSelect(item, index + currentPage * pageSize)"
                     >
                         <view v-if="item.loading" class="fanc-action-sheet__grid-loading">
                             <view class="fanc-loading-indicator"></view>
@@ -76,6 +76,17 @@
                         </view>
                         <text class="fanc-action-sheet__grid-name">{{ item.name }}</text>
                     </view>
+                </view>
+
+                <!-- 分页指示器 -->
+                <view v-if="paginationEnabled && actualPagesCount > 1" class="fanc-action-sheet__pagination">
+                    <view
+                        v-for="page in actualPagesCount"
+                        :key="page"
+                        class="fanc-action-sheet__pagination-dot"
+                        :class="{ 'fanc-action-sheet__pagination-dot--active': currentPage === page - 1 }"
+                        @click="onPageChange(page - 1)"
+                    ></view>
                 </view>
 
                 <!-- 取消按钮 -->
@@ -105,11 +116,15 @@
  * @property {String} customClass - 自定义面板类名
  * @property {Boolean} gridMode - 是否使用宫格模式
  * @property {Number|String} columnNumber - 宫格列数，默认4
+ * @property {Boolean} paginationEnabled - 是否启用分页功能
+ * @property {Number} pagesCount - 分页总数，如果不传入则根据actions长度和pageSize自动计算
+ * @property {Number} pageSize - 每页显示的项目数量，默认为8（宫格模式）或者4（列表模式）
  * @event {Function} select - 选中操作项时触发，回调参数为选中项和索引
  * @event {Function} cancel - 点击取消按钮时触发
  * @event {Function} close - 面板关闭时触发
  * @event {Function} open - 面板打开时触发
  * @event {Function} clickOverlay - 点击遮罩层时触发
+ * @event {Function} pageChange - 分页变化时触发，回调参数为页码
  */
 export default {
     name: "fanc-action-sheet",
@@ -193,10 +208,28 @@ export default {
             type: [Number, String],
             default: 4,
         },
+        // 是否启用分页功能
+        paginationEnabled: {
+            type: Boolean,
+            default: false,
+        },
+        // 分页总数
+        pagesCount: {
+            type: Number,
+            default: 1,
+        },
+        // 每页显示的项目数量
+        pageSize: {
+            type: Number,
+            default: 8,
+        },
     },
 
     data() {
-        return {};
+        return {
+            // 当前页码，从0开始计数
+            currentPage: 0,
+        };
     },
 
     created() {},
@@ -209,6 +242,14 @@ export default {
             return {
                 gridTemplateColumns: `repeat(${this.columnNumber}, 1fr)`,
             };
+        },
+        // 分页后的操作项
+        paginatedActions() {
+            return this.actions.slice(this.currentPage * this.pageSize, (this.currentPage + 1) * this.pageSize);
+        },
+        // 实际分页总数
+        actualPagesCount() {
+            return Math.ceil(this.actions.length / this.pageSize);
         },
     },
 
@@ -252,6 +293,14 @@ export default {
         // 关闭面板
         onClose() {
             this.$emit("update:show", false);
+        },
+
+        // 切换页码
+        onPageChange(page) {
+            if (page !== this.currentPage && page >= 0 && page < this.actualPagesCount) {
+                this.currentPage = page;
+                this.$emit("pageChange", page);
+            }
         },
     },
 };
@@ -502,6 +551,38 @@ export default {
             width: 28px;
             height: 28px;
             animation: fanc-spin 500ms linear infinite;
+        }
+    }
+
+    // 分页指示器样式
+    &__pagination {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 12px 0;
+        background-color: $bg-white;
+    }
+
+    // 分页指示器点
+    &__pagination-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background-color: #dcdee0;
+        margin: 0 4px;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        opacity: 0.6;
+
+        &:hover {
+            opacity: 0.8;
+            transform: scale(1.1);
+        }
+
+        &--active {
+            background-color: #1989fa;
+            transform: scale(1.2);
+            opacity: 1;
         }
     }
 
