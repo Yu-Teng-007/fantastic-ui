@@ -1,10 +1,5 @@
 <template>
     <view class="content">
-        <image class="logo" src="/static/logo.png"></image>
-        <view>
-            <text class="title">{{ title }}</text>
-        </view>
-
         <view class="nav-section">
             <navigator url="/pages/button-example/button-example" class="nav-button">
                 <text class="nav-text">查看按钮示例</text>
@@ -43,12 +38,16 @@ export default {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    padding: 16px;
+    background-color: #f7f8fa;
 }
 
 .logo {
     height: 200rpx;
     width: 200rpx;
-    margin: 200rpx auto 50rpx auto;
+    margin: 100rpx auto 40rpx auto;
+    border-radius: 50%;
+    box-shadow: 0 8px 24px rgba(0, 123, 255, 0.15);
 }
 
 .text-area {
@@ -57,12 +56,14 @@ export default {
 }
 
 .title {
-    font-size: 36rpx;
-    color: #8f8f94;
+    font-size: 40rpx;
+    color: #323233;
+    font-weight: 600;
+    margin-bottom: 60rpx;
 }
 
 .nav-section {
-    margin-top: 50rpx;
+    margin-top: 40rpx;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -72,22 +73,64 @@ export default {
 }
 
 .nav-button {
-    background-color: #007aff;
+    background-color: #007bff;
     color: white;
-    padding: 20rpx 40rpx;
-    border-radius: 10rpx;
+    padding: 24rpx 40rpx;
+    border-radius: 8rpx;
     text-align: center;
-    box-shadow: 0 4rpx 8rpx rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s;
+    box-shadow: 0 4rpx 12rpx rgba(0, 123, 255, 0.2);
+    transition: all 0.3s ease;
     width: 100%;
-    max-width: 400rpx;
+    max-width: 500rpx;
+    position: relative;
+    overflow: hidden;
 }
 
-.nav-button:hover {
-    background-color: #0056b3;
+.nav-button:active {
+    transform: translateY(2rpx);
+    box-shadow: 0 2rpx 6rpx rgba(0, 123, 255, 0.2);
+    background-color: #0069d9;
 }
 
 .nav-text {
     font-size: 32rpx;
+    font-weight: 500;
+    position: relative;
+    z-index: 1;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(0.95);
+        opacity: 0.7;
+    }
+    50% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(0.95);
+        opacity: 0.7;
+    }
+}
+
+.nav-button:nth-child(1) {
+    background-color: #007bff;
+}
+
+.nav-button:nth-child(2) {
+    background-color: #28a745;
+}
+
+.nav-button:nth-child(3) {
+    background-color: #fd7e14;
+}
+
+.nav-button:nth-child(4) {
+    background-color: #dc3545;
+}
+
+.nav-button:nth-child(5) {
+    background-color: #6610f2;
 }
 </style>

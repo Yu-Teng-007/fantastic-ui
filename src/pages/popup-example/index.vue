@@ -1,10 +1,5 @@
 <template>
     <view class="popup-example">
-        <view class="popup-example__header">
-            <text class="popup-example__title">弹出层示例</text>
-            <text class="popup-example__desc">弹出层组件支持多个方向弹出，可自定义内容和样式</text>
-        </view>
-
         <view class="popup-example__section">
             <view class="popup-example__section-title">基础用法</view>
             <fanc-button type="primary" @click="showBasic = true">显示弹出层</fanc-button>
@@ -196,83 +191,102 @@ export default {
 </script>
 
 <style lang="scss">
-@import "@/styles/_variables.scss";
-
 .popup-example {
-    padding: $spacing-lg;
+    padding: 16px;
+    background-color: #f7f8fa;
+    min-height: 100vh;
 
     &__header {
-        margin-bottom: $spacing-xl;
+        margin-bottom: 24px;
         text-align: center;
+        padding: 20px 0;
     }
 
     &__title {
         display: block;
-        font-size: $font-size-lg;
-        font-weight: $font-weight-bold;
-        margin-bottom: $spacing-sm;
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-bottom: 8px;
+        color: #323233;
     }
 
     &__desc {
         display: block;
-        font-size: $font-size-base;
-        color: $gray-600;
+        font-size: 0.875rem;
+        color: #969799;
     }
 
     &__section {
-        margin-bottom: $spacing-xl;
+        margin-bottom: 24px;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
     }
 
     &__section-title {
-        font-size: $font-size-base;
-        font-weight: $font-weight-bold;
-        margin-bottom: $spacing-md;
-        padding-left: $spacing-sm;
-        border-left: 3px solid $primary-color;
+        font-size: 1.125rem;
+        font-weight: 600;
+        margin-bottom: 16px;
+        color: #323233;
+        position: relative;
+        padding-left: 12px;
+
+        &::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 4px;
+            height: 16px;
+            width: 4px;
+            background-color: #007bff;
+            border-radius: 2px;
+        }
     }
 
     &__button-group {
         display: flex;
         flex-wrap: wrap;
-        margin: -$spacing-xs;
+        margin: -6px;
 
         .fanc-button {
-            margin: $spacing-xs;
+            margin: 6px;
         }
     }
 }
 
 .popup-content {
-    padding: $spacing-xl;
+    padding: 24px;
     text-align: center;
 
     &__title {
         display: block;
-        font-size: $font-size-lg;
-        font-weight: $font-weight-bold;
-        margin-bottom: $spacing-md;
+        font-size: 1.125rem;
+        font-weight: 600;
+        margin-bottom: 16px;
+        color: #323233;
     }
 
     &__text {
         display: block;
-        font-size: $font-size-base;
-        color: $gray-700;
-        margin-bottom: $spacing-md;
+        font-size: 0.875rem;
+        color: #646566;
+        margin-bottom: 16px;
     }
 
     &__buttons {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
-        margin: $spacing-sm -$spacing-xs;
+        margin: 12px -6px;
 
         .fanc-button {
-            margin: $spacing-xs;
+            margin: 6px;
         }
     }
 
     &--position {
-        padding: $spacing-xl;
+        padding: 24px;
         min-height: 30vh;
         display: flex;
         flex-direction: column;
@@ -281,8 +295,8 @@ export default {
     }
 
     &--with-close {
-        padding: $spacing-xl;
-        padding-top: $spacing-xl * 1.5;
+        padding: 24px;
+        padding-top: 40px;
     }
 
     &--custom {

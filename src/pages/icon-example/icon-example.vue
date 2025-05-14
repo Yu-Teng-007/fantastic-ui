@@ -1,10 +1,5 @@
 <template>
     <view class="container">
-        <view class="header">
-            <text class="title">Fanc Icon 图标组件</text>
-            <text class="subtitle">基于Font Awesome的图标组件</text>
-        </view>
-
         <view class="example-section">
             <text class="section-title">基础用法</text>
             <view class="icon-row">
@@ -251,52 +246,65 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "@/styles/_variables.scss";
-
 .container {
-    padding: $spacing-lg;
-    background-color: $gray-100;
+    padding: 16px;
+    background-color: #f7f8fa;
+    min-height: 100vh;
 }
 
 .header {
-    margin-bottom: $spacing-xl;
+    margin-bottom: 24px;
     text-align: center;
+    padding: 20px 0;
 }
 
 .title {
     display: block;
-    margin-bottom: $spacing-sm;
-    font-size: $font-size-lg * 1.25;
-    font-weight: $font-weight-bold;
-    color: $gray-800;
+    margin-bottom: 8px;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #323233;
 }
 
 .subtitle {
-    font-size: $font-size-base;
-    color: $gray-600;
+    font-size: 0.875rem;
+    color: #969799;
 }
 
 .example-section {
-    margin-bottom: $spacing-lg;
-    padding: $spacing-md;
-    background-color: $white;
-    border-radius: $border-radius-lg;
-    box-shadow: $box-shadow-sm;
+    margin-bottom: 24px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
 }
 
 .section-title {
     display: block;
-    margin-bottom: $spacing-sm;
-    font-size: $font-size-lg;
-    font-weight: $font-weight-bold;
-    color: $gray-800;
+    margin-bottom: 16px;
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #323233;
+    position: relative;
+    padding-left: 12px;
+
+    &::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 4px;
+        height: 16px;
+        width: 4px;
+        background-color: #007bff;
+        border-radius: 2px;
+    }
 }
 
 .icon-row {
     display: flex;
     flex-wrap: wrap;
-    gap: $spacing-md;
-    margin-top: $spacing-sm;
+    gap: 16px;
+    margin-top: 16px;
 }
 
 .icon-item {
@@ -304,24 +312,24 @@ export default {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 80px;
-    height: 80px;
-    padding: $spacing-sm;
-    background-color: $gray-100;
-    border-radius: $border-radius-md;
-    transition: all $duration-base;
+    width: 68px;
+    height: 68px;
+    padding: 12px;
+    background-color: #f7f8fa;
+    border-radius: 8px;
+    transition: all 0.3s ease;
 
     &:hover {
-        background-color: $gray-200;
-        transform: translateY(-2px);
-        box-shadow: $box-shadow-sm;
+        background-color: #e9ecef;
+        transform: translateY(-4px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     }
 }
 
 .icon-name {
-    margin-top: $spacing-sm;
-    font-size: $font-size-sm;
-    color: $gray-700;
+    margin-top: 10px;
+    font-size: 0.875rem;
+    color: #646566;
     text-align: center;
 }
 </style>

@@ -1,7 +1,5 @@
 <template>
     <view class="message-demo">
-        <view class="message-demo__title">Message 消息通知</view>
-
         <view class="message-demo__section">
             <view class="message-demo__section-title">基础用法</view>
             <view class="message-demo__buttons">
@@ -543,24 +541,45 @@ export default {
 
 <style lang="scss">
 .message-demo {
-    padding: 20px;
+    padding: 16px;
+    background-color: #f7f8fa;
+    min-height: 100vh;
 
     &__title {
-        font-size: 24px;
-        font-weight: bold;
-        margin-bottom: 30px;
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-bottom: 24px;
         text-align: center;
+        padding: 20px 0;
+        color: #323233;
     }
 
     &__section {
-        margin-bottom: 30px;
+        margin-bottom: 24px;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
     }
 
     &__section-title {
-        font-size: 18px;
+        font-size: 1.125rem;
         margin-bottom: 16px;
-        color: #333;
-        font-weight: 500;
+        color: #323233;
+        font-weight: 600;
+        position: relative;
+        padding-left: 12px;
+
+        &::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 4px;
+            height: 16px;
+            width: 4px;
+            background-color: #007bff;
+            border-radius: 2px;
+        }
     }
 
     &__buttons {
@@ -572,9 +591,9 @@ export default {
 
     &__form {
         margin-top: 20px;
-        background-color: #f5f7fa;
+        background-color: #f8f8f8;
         padding: 16px;
-        border-radius: 4px;
+        border-radius: 8px;
 
         &-item {
             margin-bottom: 16px;
@@ -584,7 +603,8 @@ export default {
             display: block;
             margin-bottom: 8px;
             font-size: 14px;
-            color: #606266;
+            color: #323233;
+            font-weight: 500;
         }
 
         &-input {
@@ -592,50 +612,63 @@ export default {
             box-sizing: border-box;
             height: 36px;
             padding: 0 12px;
-            border: 1px solid #dcdfe6;
+            border: 1px solid #e2e2e2;
             border-radius: 4px;
             font-size: 14px;
-            color: #606266;
+            color: #646566;
             background-color: #fff;
+            transition: border-color 0.3s ease;
+
+            &:focus {
+                border-color: #007bff;
+                outline: none;
+            }
         }
 
         &-slider {
-            margin: 10px 0;
+            margin: 16px 0;
         }
 
         &-actions {
-            margin-top: 20px;
+            margin-top: 24px;
             display: flex;
             justify-content: flex-end;
+            gap: 12px;
         }
     }
 
     &__status {
         margin-top: 16px;
-        padding: 12px;
-        background-color: #f5f7fa;
-        border-radius: 4px;
+        padding: 16px;
+        background-color: #f8f8f8;
+        border-radius: 8px;
         font-size: 14px;
-        color: #606266;
+        color: #646566;
+        line-height: 1.5;
     }
 
     &__debug {
         margin-top: 16px;
-        padding: 12px;
-        background-color: #f5f7fa;
-        border-radius: 4px;
+        padding: 16px;
+        background-color: #f8f8f8;
+        border-radius: 8px;
         font-size: 14px;
 
         &-title {
-            font-weight: bold;
-            margin-bottom: 8px;
-            color: #303133;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: #323233;
         }
 
         &-item {
-            padding: 4px 0;
-            color: #606266;
+            padding: 8px 0;
+            color: #646566;
             word-break: break-all;
+            border-bottom: 1px solid #ebedf0;
+
+            &:last-child {
+                border-bottom: none;
+            }
         }
     }
 
@@ -650,14 +683,26 @@ export default {
         display: flex;
         flex-direction: column;
         align-items: center;
+        padding: 12px;
+        border-radius: 8px;
+        background-color: #f8f8f8;
+        transition: all 0.3s ease;
+
+        &:hover {
+            background-color: #e9ecef;
+            transform: translateY(-4px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
 
         i {
-            font-size: 24px;
+            font-size: 28px;
             margin-bottom: 8px;
+            color: #323233;
         }
 
         text {
             font-size: 14px;
+            color: #646566;
         }
     }
 }

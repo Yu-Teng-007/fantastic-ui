@@ -26,7 +26,7 @@
             <fanc-cell title="单元格" content="内容" icon="home" />
             <fanc-cell title="单元格">
                 <template #icon>
-                    <fanc-icon name="user" style="color: #1989fa;margin-right: 4px;"  size="16"/>
+                    <fanc-icon name="user" style="color: #1989fa; margin-right: 4px" size="16" />
                 </template>
             </fanc-cell>
         </view>
@@ -85,26 +85,45 @@ export default {};
 </script>
 
 <style lang="scss">
-
 .cell-demo {
-     padding-bottom: 20px;
+    padding: 16px;
     background-color: #f7f8fa;
+    min-height: 100vh;
 
     .demo-section {
-        margin-bottom: 20px;
-        padding: 15px 0;
+        margin-bottom: 24px;
+        padding: 0;
+        background-color: #fff;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
     }
 
     .demo-title {
         margin: 0;
-        padding: 16px 16px 8px;
-        color: #969799;
-        font-size: 14px;
-        line-height: 16px;
+        padding: 16px;
+        color: #323233;
+        font-size: 1.125rem;
+        font-weight: 600;
+        line-height: 1.4;
+        position: relative;
+        padding-left: 28px;
+
+        &::before {
+            content: "";
+            position: absolute;
+            left: 16px;
+            top: 18px;
+            height: 16px;
+            width: 4px;
+            background-color: #007bff;
+            border-radius: 2px;
+        }
     }
 
     .custom-value {
         color: #1989fa;
+        font-weight: 500;
     }
 
     .custom-title {

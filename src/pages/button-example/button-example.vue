@@ -130,34 +130,46 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "@/styles/_variables.scss";
-
 .button-example-page {
-    padding: 15px;
+    padding: 16px;
     background-color: #f7f8fa;
+    min-height: 100vh;
 }
 
 .example-section {
-    margin-bottom: 20px;
-    padding: 15px;
+    margin-bottom: 24px;
+    padding: 20px;
     background-color: #fff;
-    border-radius: $border-radius-lg;
-    box-shadow: $box-shadow-sm;
+    border-radius: 8px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
 }
 
 .title {
     display: block;
-    margin-bottom: $spacing-sm;
-    font-size: $font-size-lg;
-    font-weight: $font-weight-bold;
-    color: $gray-800;
+    margin-bottom: 16px;
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #323233;
+    position: relative;
+    padding-left: 12px;
+
+    &::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 4px;
+        height: 16px;
+        width: 4px;
+        background-color: #007bff;
+        border-radius: 2px;
+    }
 }
 
 .button-row {
     display: flex;
     flex-wrap: wrap;
-    gap: $spacing-sm; /* 按钮之间的间距 */
-    align-items: center; /* 垂直居中对齐 */
-    margin-bottom: $spacing-xs;
+    gap: 12px;
+    align-items: center;
+    margin-bottom: 8px;
 }
 </style>
