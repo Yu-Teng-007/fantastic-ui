@@ -219,8 +219,7 @@ this.$message.closeAll();
 | action   | 显示带操作按钮的消息 | object        | 消息实例 |
 | scroll   | 显示横向滚动消息     | string/object | 消息实例 |
 | html     | 显示富文本消息       | string/object | 消息实例 |
-| closeAll | 关闭所有消息         | -             | void     |
-| close  | 消息关闭时触发     | 无参数                               |
+| closeAll | 关闭所有消息         | -             | void     |                             |
 
 
 ## 与其他组件结合使用
