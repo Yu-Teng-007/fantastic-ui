@@ -61,7 +61,21 @@ export default {
         placement: {
             type: String,
             default: "top",
-            validator: (value) => ["top", "bottom", "left", "right"].includes(value),
+            validator: (value) =>
+                [
+                    "top",
+                    "bottom",
+                    "left",
+                    "right",
+                    "top-left",
+                    "top-right",
+                    "bottom-left",
+                    "bottom-right",
+                    "left-top",
+                    "left-bottom",
+                    "right-top",
+                    "right-bottom",
+                ].includes(value),
         },
         // 自动关闭延时，单位毫秒，0表示不自动关闭
         duration: {
@@ -192,42 +206,92 @@ export default {
         position: absolute;
         z-index: 100;
 
+        /* 基础位置 */
         &--top {
             bottom: 100%;
             left: 50%;
             transform: translateX(-50%);
-            margin-bottom: 8px;
+            margin-bottom: 10px;
         }
 
         &--bottom {
             top: 100%;
             left: 50%;
             transform: translateX(-50%);
-            margin-top: 8px;
+            margin-top: 10px;
         }
 
         &--left {
             right: 100%;
             top: 50%;
             transform: translateY(-50%);
-            margin-right: 8px;
+            margin-right: 10px;
         }
 
         &--right {
             left: 100%;
             top: 50%;
             transform: translateY(-50%);
-            margin-left: 8px;
+            margin-left: 10px;
+        }
+
+        /* 扩展位置 */
+        &--top-left {
+            bottom: 100%;
+            left: 0;
+            margin-bottom: 10px;
+        }
+
+        &--top-right {
+            bottom: 100%;
+            right: 0;
+            margin-bottom: 10px;
+        }
+
+        &--bottom-left {
+            top: 100%;
+            left: 0;
+            margin-top: 10px;
+        }
+
+        &--bottom-right {
+            top: 100%;
+            right: 0;
+            margin-top: 10px;
+        }
+
+        &--left-top {
+            right: 100%;
+            top: 0;
+            margin-right: 10px;
+        }
+
+        &--left-bottom {
+            right: 100%;
+            bottom: 0;
+            margin-right: 10px;
+        }
+
+        &--right-top {
+            left: 100%;
+            top: 0;
+            margin-left: 10px;
+        }
+
+        &--right-bottom {
+            left: 100%;
+            bottom: 0;
+            margin-left: 10px;
         }
     }
 
     &__content {
         position: relative;
         border-radius: 4px;
-        padding: 8px 12px;
+        padding: 10px 14px;
         box-shadow: 0 2px 12px 0 rgba($black, 0.1);
-        max-width: 300px;
-        min-width: 150px;
+        min-width: 120px;
+        max-width: 280px;
         word-wrap: break-word;
         animation: fancPopoverFadeIn 0.15s ease-in-out;
 
@@ -260,8 +324,9 @@ export default {
             border: 1px solid $dark-color;
         }
 
+        /* 基础箭头位置 */
         &--top {
-            bottom: -5px;
+            bottom: -6px;
             left: 50%;
             margin-left: -5px;
             border-right: none;
@@ -269,7 +334,7 @@ export default {
         }
 
         &--bottom {
-            top: -5px;
+            top: -6px;
             left: 50%;
             margin-left: -5px;
             border-left: none;
@@ -277,7 +342,7 @@ export default {
         }
 
         &--left {
-            right: -5px;
+            right: -6px;
             top: 50%;
             margin-top: -5px;
             border-left: none;
@@ -285,9 +350,66 @@ export default {
         }
 
         &--right {
-            left: -5px;
+            left: -6px;
             top: 50%;
             margin-top: -5px;
+            border-right: none;
+            border-top: none;
+        }
+
+        /* 扩展箭头位置 */
+        &--top-left {
+            bottom: -6px;
+            left: 10px;
+            border-right: none;
+            border-bottom: none;
+        }
+
+        &--top-right {
+            bottom: -6px;
+            right: 10px;
+            border-right: none;
+            border-bottom: none;
+        }
+
+        &--bottom-left {
+            top: -6px;
+            left: 10px;
+            border-left: none;
+            border-top: none;
+        }
+
+        &--bottom-right {
+            top: -6px;
+            right: 10px;
+            border-left: none;
+            border-top: none;
+        }
+
+        &--left-top {
+            right: -6px;
+            top: 10px;
+            border-left: none;
+            border-bottom: none;
+        }
+
+        &--left-bottom {
+            right: -6px;
+            bottom: 10px;
+            border-left: none;
+            border-bottom: none;
+        }
+
+        &--right-top {
+            left: -6px;
+            top: 10px;
+            border-right: none;
+            border-top: none;
+        }
+
+        &--right-bottom {
+            left: -6px;
+            bottom: 10px;
             border-right: none;
             border-top: none;
         }
@@ -316,6 +438,16 @@ export default {
     to {
         opacity: 1;
         transform: scale(1);
+    }
+}
+
+/* 增加容器宽度以确保充分显示 */
+@media screen and (max-width: 375px) {
+    .fanc-popover {
+        &__content {
+            max-width: 240px;
+            padding: 8px 12px;
+        }
     }
 }
 </style>
