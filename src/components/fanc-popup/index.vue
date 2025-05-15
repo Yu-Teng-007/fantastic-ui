@@ -95,7 +95,7 @@ export default {
         // 是否显示圆角
         round: {
             type: Boolean,
-            default: false,
+            default: true,
         },
         // 动画时长
         duration: {
@@ -307,8 +307,8 @@ export default {
             top: 50%;
             left: 50%;
             transform: translate3d(-50%, -50%, 0) scale(0.8);
-            min-width: 300px;
-            max-width: 80%;
+            min-width: 320px;
+            max-width: 90%;
             max-height: 80%;
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
             opacity: 0;
@@ -363,23 +363,23 @@ export default {
     /* 圆角样式 */
     &--round {
         &.fanc-popup--center .fanc-popup__content {
-            border-radius: 6px;
+            border-radius: 16px;
         }
 
         &.fanc-popup--top .fanc-popup__content {
-            border-radius: 0 0 8px 8px;
+            border-radius: 0 0 16px 16px;
         }
 
         &.fanc-popup--bottom .fanc-popup__content {
-            border-radius: 8px 8px 0 0;
+            border-radius: 16px 16px 0 0;
         }
 
         &.fanc-popup--left .fanc-popup__content {
-            border-radius: 0 8px 8px 0;
+            border-radius: 0 16px 16px 0;
         }
 
         &.fanc-popup--right .fanc-popup__content {
-            border-radius: 8px 0 0 8px;
+            border-radius: 16px 0 0 16px;
         }
     }
 

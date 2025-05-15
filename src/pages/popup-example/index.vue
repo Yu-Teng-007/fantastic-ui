@@ -62,19 +62,19 @@
         </view>
 
         <view class="example-page__section">
-            <view class="example-page__section-title">圆角和关闭图标</view>
-            <view class="example-page__section-desc">可以为弹出层添加圆角样式和关闭图标</view>
-            <fanc-button type="primary" @click="showRoundWithClose = true">圆角弹出层带关闭图标</fanc-button>
+            <view class="example-page__section-title">直角和关闭图标</view>
+            <view class="example-page__section-desc">可以为弹出层添加直角样式和关闭图标</view>
+            <fanc-button type="primary" @click="showRoundWithClose = true">直角弹出层带关闭图标</fanc-button>
             <fanc-popup
                 :show="showRoundWithClose"
                 position="bottom"
-                round
+                :round="false"
                 closeable
                 @close="showRoundWithClose = false"
             >
                 <view class="popup-content popup-content--with-close">
-                    <text class="popup-content__title">圆角弹出层</text>
-                    <text class="popup-content__text">这是一个带圆角和关闭图标的弹出层</text>
+                    <text class="popup-content__title">直角弹出层</text>
+                    <text class="popup-content__text">这是一个带直角和关闭图标的弹出层</text>
                     <text class="popup-content__text">点击右上角的关闭图标可以关闭弹出层</text>
                 </view>
             </fanc-popup>
