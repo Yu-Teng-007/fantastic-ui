@@ -96,11 +96,6 @@ const closeMessage = (id) => {
 
 // 定义具体类型的快捷调用方法
 const Message = {
-    // 安装插件
-    install(Vue) {
-        Vue.prototype.$message = Message;
-    },
-
     // 显示消息
     info(options) {
         if (typeof options === "string") {

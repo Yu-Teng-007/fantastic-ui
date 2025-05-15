@@ -74,11 +74,6 @@ const createToast = (options) => {
 
 // 定义Toast插件
 const Toast = {
-    // 安装插件
-    install(Vue) {
-        Vue.prototype.$toast = Toast;
-    },
-
     // 显示文字提示
     text(options) {
         if (typeof options === "string") {
