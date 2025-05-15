@@ -65,6 +65,12 @@
             "style": {
                 "navigationBarTitleText": "对话框示例"
             }
+        },
+        {
+            "path": "pages/swipe-cell-example/index",
+            "style": {
+                "navigationBarTitleText": "滑动单元格示例"
+            }
         }
     ],
     "globalStyle": {

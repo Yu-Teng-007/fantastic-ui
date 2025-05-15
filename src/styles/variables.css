@@ -45,6 +45,18 @@
     --border-color: var(--gray-300);
     --border-color-light: #ebeef5;
 
+    /* 滑动单元格 (fanc-swipe-cell) 颜色 */
+    --swipe-cell-content-bg: var(--white);
+    --swipe-cell-indicator-bg: rgba(0, 0, 0, 0.1);
+    --swipe-cell-indicator-active-bg: rgba(0, 0, 0, 0.2);
+    --swipe-cell-delete-bg: var(--danger-color);
+    --swipe-cell-edit-bg: var(--primary-color);
+    --swipe-cell-collect-bg: var(--warning-color);
+    --swipe-cell-text-color: var(--white);
+    --swipe-cell-disabled-opacity: 0.6;
+    --swipe-cell-transition-duration: 0.3s;
+    --swipe-cell-button-font-size: 14px;
+
     /* 消息组件 (fanc-message) 颜色 */
     --message-info-bg: #f4f4f5;
     --message-info-border: #ebeef5;

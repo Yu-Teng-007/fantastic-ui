@@ -21,6 +21,10 @@
                     <view class="component-card__icon cell-icon"></view>
                     <text class="component-card__name">单元格</text>
                 </navigator>
+                <navigator url="/pages/swipe-cell-example/index" class="component-card">
+                    <view class="component-card__icon swipe-cell-icon"></view>
+                    <text class="component-card__name">滑动单元格</text>
+                </navigator>
             </view>
         </view>
 
@@ -145,6 +149,11 @@ export default {
 .cell-icon {
     background-color: #fd7e14;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ffffff'%3E%3Cpath d='M3 3v18h18V3H3zm16 16H5V5h14v14zM11 7h2v2h-2zM7 7h2v2H7zm8 0h2v2h-2zm-8 4h2v2H7zm4 0h2v2h-2zm4 0h2v2h-2zm-8 4h2v2H7zm4 0h2v2h-2zm4 0h2v2h-2z'/%3E%3C/svg%3E");
+}
+
+.swipe-cell-icon {
+    background-color: #9c27b0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ffffff'%3E%3Cpath d='M20 2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM8 20H4v-4h4v4zm0-6H4v-4h4v4zm0-6H4V4h4v4zm6 12h-4v-4h4v4zm0-6h-4v-4h4v4zm0-6h-4V4h4v4zm6 12h-4v-4h4v4zm0-6h-4v-4h4v4zm0-6h-4V4h4v4z'/%3E%3C/svg%3E");
 }
 
 .popup-icon {

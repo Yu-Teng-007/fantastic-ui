@@ -32,6 +32,7 @@ Fantastic UI 是一套基于 [uni-app](https://uniapp.dcloud.io/) 开发的跨�
 -   [Icon 图标](./icon.md)
 -   [Cell 单元格](./cell.md)
 -   [CellGroup 单元格组](./cell-group.md)
+-   [SwipeCell 滑动单元格](./swipe-cell.md)
 -   [Popup 弹出层](./popup.md)
 -   [Popover 弹出气泡](./popover.md)
 
@@ -47,6 +48,14 @@ Fantastic UI 是一套基于 [uni-app](https://uniapp.dcloud.io/) 开发的跨�
 -   [Toast 轻提示](./toast.md)
 
 ## 📝 更新日志
+
+### v0.1.5 (2025-05-23)
+
+-   ✨ 新增 SwipeCell 滑动单元格组件
+-   🚀 支持左右滑动交互，提供多个操作按钮
+-   🎨 自定义滑动阈值和交互动效
+-   🔧 支持禁用状态和异步操作
+-   📱 优化移动端触摸体验
 
 ### v0.1.4 (2025-05-20)
 
