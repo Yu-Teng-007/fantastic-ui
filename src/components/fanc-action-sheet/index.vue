@@ -594,8 +594,21 @@ export default {
         background-color: var(--bg-white);
         cursor: pointer;
         transition: all 0.2s ease;
+        position: relative;
+        border-top: 8px solid var(--bg-gray-light);
+        box-shadow: 0 -1px 2px rgba(0, 0, 0, 0.05);
 
         &:active {
+            background-color: var(--bg-gray-light);
+        }
+
+        &::before {
+            content: "";
+            position: absolute;
+            top: -8px;
+            left: 0;
+            right: 0;
+            height: 8px;
             background-color: var(--bg-gray-light);
         }
     }
