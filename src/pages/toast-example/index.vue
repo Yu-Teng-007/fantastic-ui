@@ -227,17 +227,7 @@ export default {
         },
 
         showAndCloseAll() {
-            this.$toast.text("即将关闭...");
-
-            // 1秒后关闭所有
-            setTimeout(() => {
-                this.$toast.close();
-
-                // 再显示一个新的提示
-                setTimeout(() => {
-                    this.$toast.success("已关闭提示");
-                }, 500);
-            }, 1000);
+            this.$toast.close();
         },
     },
 
