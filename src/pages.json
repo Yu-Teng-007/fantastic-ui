@@ -59,6 +59,12 @@
             "style": {
                 "navigationBarTitleText": "轻提示示例"
             }
+        },
+        {
+            "path": "pages/dialog-example/index",
+            "style": {
+                "navigationBarTitleText": "对话框示例"
+            }
         }
     ],
     "globalStyle": {

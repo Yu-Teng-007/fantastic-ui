@@ -1,0 +1,136 @@
+/**
+ * CSS变量定义
+ * 确保所有变量在:root作用域下可用
+ */
+
+:root {
+    /* 主题颜色 */
+    --primary-color: #007bff !important;
+    --secondary-color: #6c757d;
+    --success-color: #28a745;
+    --danger-color: #dc3545;
+    --warning-color: #ffc107;
+    --info-color: #17a2b8;
+    --light-color: #f8f9fa;
+    --dark-color: #343a40;
+
+    /* Fantastic UI 颜色 */
+    --fanc-primary-color: var(--primary-color);
+    --fanc-success-color: var(--success-color);
+    --fanc-warning-color: var(--warning-color);
+    --fanc-danger-color: var(--danger-color);
+    --fanc-info-color: var(--info-color);
+
+    /* 中性色阶 */
+    --white: #fff;
+    --black: #000;
+    --gray-600: #6c757d;
+    --gray-300: #dee2e6;
+    --gray-200: #e9ecef;
+    --gray-400: #ced4da;
+    --gray-100: #f8f9fa;
+
+    /* 文本颜色 */
+    --text-primary: var(--dark-color);
+    --text-secondary: var(--gray-600);
+    --text-disabled: #c0c4cc;
+    --text-light: var(--white);
+
+    /* 背景颜色 */
+    --bg-white: var(--white);
+    --bg-gray-light: var(--gray-100);
+    --bg-transparent: transparent;
+
+    /* 边框颜色 */
+    --border-color: var(--gray-300);
+    --border-color-light: #ebeef5;
+
+    /* 消息组件 (fanc-message) 颜色 */
+    --message-info-bg: #f4f4f5;
+    --message-info-border: #ebeef5;
+    --message-info-color: var(--gray-600);
+    --message-info-action-color: var(--primary-color);
+
+    --message-success-bg: #f0f9eb;
+    --message-success-border: #e1f3d8;
+    --message-success-color: var(--success-color);
+
+    --message-warning-bg: #fdf6ec;
+    --message-warning-border: #faecd8;
+    --message-warning-color: var(--warning-color);
+
+    --message-error-bg: #fef0f0;
+    --message-error-border: #fde2e2;
+    --message-error-color: var(--danger-color);
+
+    --message-close-color: var(--gray-600);
+    --message-box-shadow-color: rgba(0, 0, 0, 0.1);
+    --message-action-hover-bg: rgba(0, 0, 0, 0.05);
+
+    /* 公告栏组件 (fanc-noticebar) 颜色 */
+    --noticebar-info-bg: #f0f8ff;
+    --noticebar-info-border: #d0e6ff;
+    --noticebar-info-color: var(--info-color);
+
+    --noticebar-success-bg: #f0f9eb;
+    --noticebar-success-border: #e1f3d8;
+    --noticebar-success-color: var(--success-color);
+
+    --noticebar-warning-bg: #fffbe5;
+    --noticebar-warning-border: #fff1c2;
+    --noticebar-warning-color: var(--warning-color);
+
+    --noticebar-error-bg: #fff2f0;
+    --noticebar-error-border: #ffccc7;
+    --noticebar-error-color: var(--danger-color);
+
+    --noticebar-action-color: var(--primary-color);
+    --noticebar-action-hover-bg: rgba(0, 0, 0, 0.05);
+    --noticebar-close-color: var(--gray-600);
+
+    /* Popover 弹出气泡组件颜色 */
+    --popover-dark-bg: var(--dark-color);
+    --popover-dark-color: var(--white);
+    --popover-dark-border: var(--dark-color);
+
+    --popover-light-bg: var(--white);
+    --popover-light-color: var(--text-primary);
+    --popover-light-border: var(--border-color-light);
+
+    --popover-shadow-color: rgba(0, 0, 0, 0.1);
+    --popover-title-color: inherit;
+    --popover-content-color: inherit;
+
+    /* Toast 轻提示组件颜色 */
+    --toast-bg-color: rgba(0, 0, 0, 0.7);
+    --toast-text-color: var(--white);
+    --toast-icon-color: var(--white);
+    --toast-loading-color: var(--white);
+    --toast-success-color: var(--white);
+    --toast-error-color: var(--white);
+    --toast-warning-color: var(--white);
+    --toast-shadow-color: rgba(0, 0, 0, 0.16);
+    --toast-mask-color: rgba(0, 0, 0, 0.3);
+    --toast-max-width: 70%;
+
+    /* Dialog 对话框组件颜色 */
+    --dialog-bg-color: var(--white);
+    --dialog-title-color: var(--text-primary);
+    --dialog-content-color: var(--text-secondary);
+    --dialog-cancel-color: var(--text-secondary);
+    --dialog-confirm-color: var(--primary-color);
+    --dialog-border-color: var(--border-color-light);
+    --dialog-shadow-color: rgba(0, 0, 0, 0.1);
+    --dialog-mask-color: rgba(0, 0, 0, 0.4);
+    --dialog-mask-color-no-close: rgba(0, 0, 0, 0.6);
+    --dialog-close-color: var(--gray-600);
+    --dialog-close-bg-color: rgba(0, 0, 0, 0.05);
+    --dialog-close-active-bg-color: rgba(0, 0, 0, 0.1);
+    --dialog-button-active-bg: rgba(0, 0, 0, 0.05);
+    --dialog-success-color: var(--success-color);
+    --dialog-warning-color: var(--warning-color);
+    --dialog-error-color: var(--danger-color);
+    --dialog-info-color: var(--info-color);
+    --dialog-z-index: 2000;
+    --dialog-transition-duration: 0.3s;
+} 

@@ -194,8 +194,11 @@ export default {
 
     beforeDestroy() {
         // 组件销毁时，如果挂载到了body需要移除
-        if (this.popupEl && this.mountToBody) {
-            document.body.removeChild(this.popupEl);
+        if (this.popupEl && this.mountToBody && typeof document !== 'undefined') {
+            // 添加安全检查：确保节点仍然是body的子节点
+            if (document.body.contains(this.popupEl)) {
+                document.body.removeChild(this.popupEl);
+            }
         }
     },
 
@@ -259,23 +262,23 @@ export default {
 </script>
 
 <style lang="scss">
-@import "@/styles/_variables.scss";
+/* 导入CSS变量 */
 
 .fanc-popup {
     position: fixed;
-    // 防止内容溢出
+    /* 防止内容溢出 */
     overflow: hidden;
     z-index: 1000;
     pointer-events: auto;
 
-    // 遮罩层样式
+    /* 遮罩层样式 */
     &__overlay {
         position: fixed;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
-        background-color: $black;
+        background-color: var(--black);
         opacity: 0;
         transition: opacity 300ms cubic-bezier(0.34, 0.69, 0.1, 1);
         pointer-events: auto;
@@ -285,10 +288,10 @@ export default {
         }
     }
 
-    // 弹出层内容
+    /* 弹出层内容 */
     &__content {
         position: fixed;
-        background-color: $white;
+        background-color: var(--white);
         transition: all 300ms cubic-bezier(0, 0, 0.2, 1);
         overflow: auto;
         pointer-events: auto;
@@ -298,17 +301,17 @@ export default {
         }
     }
 
-    // 居中弹出
+    /* 居中弹出 */
     &--center {
         .fanc-popup__content {
             top: 50%;
             left: 50%;
             transform: translate3d(-50%, -50%, 0) scale(0.8);
-            min-width: 200px;
+            min-width: 300px;
             max-width: 80%;
             max-height: 80%;
             border-radius: 6px;
-            box-shadow: 0 8px 16px rgba($black, 0.15);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
             opacity: 0;
 
             &--show {
@@ -318,7 +321,7 @@ export default {
         }
     }
 
-    // 顶部弹出
+    /* 顶部弹出 */
     &--top {
         .fanc-popup__content {
             top: 0;
@@ -328,7 +331,7 @@ export default {
         }
     }
 
-    // 底部弹出
+    /* 底部弹出 */
     &--bottom {
         .fanc-popup__content {
             bottom: 0;
@@ -338,7 +341,7 @@ export default {
         }
     }
 
-    // 左侧弹出
+    /* 左侧弹出 */
     &--left {
         .fanc-popup__content {
             top: 0;
@@ -348,7 +351,7 @@ export default {
         }
     }
 
-    // 右侧弹出
+    /* 右侧弹出 */
     &--right {
         .fanc-popup__content {
             top: 0;
@@ -358,7 +361,7 @@ export default {
         }
     }
 
-    // 圆角样式
+    /* 圆角样式 */
     &--round {
         &.fanc-popup--top .fanc-popup__content {
             border-radius: 0 0 8px 8px;
@@ -377,12 +380,12 @@ export default {
         }
     }
 
-    // 关闭图标
+    /* 关闭图标 */
     &__close-icon {
         position: absolute;
         z-index: 1;
         padding: 8px;
-        color: $gray-600;
+        color: var(--gray-600);
         cursor: pointer;
 
         &:active {

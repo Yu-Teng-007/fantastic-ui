@@ -8,8 +8,10 @@ import FancNoticebar from "@/components/fanc-noticebar/index.vue";
 import FancActionSheet from "@/components/fanc-action-sheet/index.vue";
 import FancPopover from "@/components/fanc-popover/index.vue";
 import FancToast from "@/components/fanc-toast/index.vue";
+import FancDialog from "@/components/fanc-dialog/index.vue";
 import Message from "@/plugins/message";
 import Toast from "@/plugins/toast";
+import Dialog from "@/plugins/dialog";
 
 // 组件列表
 const components = [
@@ -23,10 +25,11 @@ const components = [
     FancActionSheet,
     FancPopover,
     FancToast,
+    FancDialog,
 ];
 
 // 组件库版本
-const version = "0.1.3";
+const version = "0.1.4";
 
 // 导出单个组件
 export {
@@ -40,6 +43,7 @@ export {
     FancActionSheet,
     FancPopover,
     FancToast,
+    FancDialog,
 };
 
 // 导出版本信息
@@ -58,5 +62,8 @@ export default {
 
         // 注册Toast全局方法
         Vue.prototype.$toast = Toast;
+
+        // 注册Dialog全局方法
+        Vue.prototype.$dialog = Dialog;
     },
 };

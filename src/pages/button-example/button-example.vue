@@ -147,6 +147,4 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
-@import "../../styles/example-pages.scss";
-</style>
+<style lang="scss" scoped></style>

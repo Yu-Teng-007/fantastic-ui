@@ -221,8 +221,6 @@ export default {
 </script>
 
 <style lang="scss">
-@import "../../styles/example-pages.scss";
-
 .notice-type-group {
     display: flex;
     flex-direction: column;

@@ -102,8 +102,6 @@ export default {};
 </script>
 
 <style lang="scss">
-@import "../../styles/example-pages.scss";
-
 .custom-value {
     color: #1989fa;
     font-weight: 500;

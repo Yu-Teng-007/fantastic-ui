@@ -297,8 +297,6 @@ export default {
 </script>
 
 <style lang="scss">
-@import "../../styles/example-pages.scss";
-
 .icon-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));

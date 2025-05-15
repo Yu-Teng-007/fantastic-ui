@@ -344,8 +344,6 @@ export default {
 </script>
 
 <style lang="scss">
-@import "../../styles/example-pages.scss";
-
 // 动作面板示例特有样式
 .example-page {
     .fanc-button {

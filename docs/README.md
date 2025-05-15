@@ -40,12 +40,21 @@ Fantastic UI 是一套基于 [uni-app](https://uniapp.dcloud.io/) 开发的跨�
 -   [NoticeBar 通知栏](./noticebar.md)
 -   [Message 消息提示](./message.md)
 -   [ActionSheet 动作面板](./ActionSheet.md)
+-   [Dialog 对话框](./dialog.md)
 
 ### 反馈组件
 
 -   [Toast 轻提示](./toast.md)
 
 ## 📝 更新日志
+
+### v0.1.4 (2025-05-20)
+
+-   ✨ 新增 Dialog 对话框组件
+-   🎯 支持函数式调用和组件引用式调用
+-   🎨 提供多种类型、位置和按钮布局
+-   🧩 支持自定义内容和按钮
+-   ⏱️ 支持异步关闭和遮罩控制
 
 ### v0.1.3 (2025-05-17)
 

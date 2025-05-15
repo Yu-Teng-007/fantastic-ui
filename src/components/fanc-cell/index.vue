@@ -159,15 +159,13 @@ export default {
 </script>
 
 <style lang="scss">
-@import "@/styles/_variables.scss";
-
 .fanc-cell {
     position: relative;
     display: flex;
     box-sizing: border-box;
     width: 100%;
     padding: 12px 16px;
-    background-color: $white;
+    background-color: var(--white);
     line-height: 1.5;
 
     &::after {
@@ -178,7 +176,7 @@ export default {
         right: 16px;
         bottom: 0;
         left: 16px;
-        border-bottom: 1px solid $border-color;
+        border-bottom: 1px solid var(--border-color);
         transform: scaleY(0.5);
     }
 
@@ -200,7 +198,7 @@ export default {
     }
 
     &--hover:active {
-        background-color: rgba($black, 0.05);
+        background-color: rgba(var(--black), 0.05);
     }
 
     &__left {
@@ -224,7 +222,7 @@ export default {
         &-inner {
             display: block;
             min-width: 1em;
-            color: $gray-600;
+            color: var(--gray-600);
         }
     }
 
@@ -238,7 +236,7 @@ export default {
 
     &__description {
         margin-top: 4px;
-        color: $gray-600;
+        color: var(--gray-600);
         font-size: 12px;
         line-height: 1.2;
     }
@@ -249,12 +247,12 @@ export default {
         overflow: hidden;
         text-align: right;
         vertical-align: middle;
-        color: $gray-600;
+        color: var(--gray-600);
     }
 
     &__right-icon {
         margin-left: 4px;
-        color: $gray-600;
+        color: var(--gray-600);
         display: flex;
         align-items: center;
 

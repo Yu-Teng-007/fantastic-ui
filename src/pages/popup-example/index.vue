@@ -202,8 +202,6 @@ export default {
 </script>
 
 <style lang="scss">
-@import "../../styles/example-pages.scss";
-
 .popup-content {
     padding: 24px;
     text-align: center;

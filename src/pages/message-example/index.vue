@@ -565,8 +565,6 @@ export default {
 </script>
 
 <style lang="scss">
-@import "../../styles/example-pages.scss";
-
 .message-form {
     margin-top: 20px;
     background-color: #f8f9fa;

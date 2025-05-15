@@ -11,7 +11,11 @@
         >
             <view
                 class="fanc-popover__content"
-                :class="[`fanc-popover__content--${theme}`, `fanc-popover__content--${placement}`]"
+                :class="[
+                    `fanc-popover__content--${theme}`,
+                    `fanc-popover__content--${placement}`,
+                    'fanc-popover-animation',
+                ]"
             >
                 <!-- 气泡箭头 -->
                 <view
@@ -192,8 +196,6 @@ export default {
 </script>
 
 <style lang="scss">
-@import "../../styles/_variables.scss";
-
 .fanc-popover {
     position: relative;
     display: inline-block;
@@ -287,24 +289,25 @@ export default {
 
     &__content {
         position: relative;
-        border-radius: 4px;
-        padding: 10px 14px;
-        box-shadow: 0 2px 12px 0 rgba($black, 0.1);
         min-width: 120px;
-        max-width: 280px;
-        word-wrap: break-word;
-        animation: fancPopoverFadeIn 0.15s ease-in-out;
+        padding: 10px 12px;
+        border-radius: 4px;
+        box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
+        z-index: 999;
+        animation-duration: 0.2s;
 
+        // 亮色主题（默认）
         &--light {
-            background-color: $bg-white;
-            color: $text-primary;
-            border: 1px solid $border-color-light;
+            background-color: var(--bg-white);
+            color: var(--text-primary);
+            border: 1px solid var(--border-color-light);
         }
 
+        // 暗色主题
         &--dark {
-            background-color: $dark-color;
-            color: $text-light;
-            border: 1px solid $dark-color;
+            background-color: var(--dark-color);
+            color: var(--text-light);
+            border: 1px solid var(--dark-color);
         }
     }
 
@@ -314,14 +317,16 @@ export default {
         height: 10px;
         transform: rotate(45deg);
 
+        // 亮色主题（默认）
         &--light {
-            background-color: $bg-white;
-            border: 1px solid $border-color-light;
+            background-color: var(--bg-white);
+            border: 1px solid var(--border-color-light);
         }
 
+        // 暗色主题
         &--dark {
-            background-color: $dark-color;
-            border: 1px solid $dark-color;
+            background-color: var(--dark-color);
+            border: 1px solid var(--dark-color);
         }
 
         /* 基础箭头位置 */
@@ -430,6 +435,10 @@ export default {
     }
 }
 
+.fanc-popover-animation {
+    animation: fancPopoverFadeIn 0.2s ease-in-out;
+}
+
 @keyframes fancPopoverFadeIn {
     from {
         opacity: 0;
@@ -446,7 +455,6 @@ export default {
     .fanc-popover {
         &__content {
             max-width: 240px;
-            padding: 8px 12px;
         }
     }
 }

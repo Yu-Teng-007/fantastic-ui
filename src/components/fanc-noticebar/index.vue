@@ -349,9 +349,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
-@import "@/styles/_variables.scss";
-
+<style lang="scss">
 // 公告栏基础样式
 .fanc-noticebar {
     position: relative;
@@ -363,8 +361,8 @@ export default {
     line-height: 20px;
     box-sizing: border-box;
     word-wrap: break-word;
-    background-color: $noticebar-info-bg;
-    border: 1px solid $noticebar-info-border;
+    background-color: var(--noticebar-info-bg);
+    border: 1px solid var(--noticebar-info-border);
     border-radius: 4px;
     transition: all 0.3s;
 
@@ -373,7 +371,7 @@ export default {
         flex-shrink: 0;
         margin-right: 8px;
         line-height: 1;
-        color: $noticebar-info-color;
+        color: var(--noticebar-info-color);
     }
 
     // 内容区域
@@ -431,12 +429,12 @@ export default {
         cursor: pointer;
 
         &-text {
-            color: $noticebar-action-color;
+            color: var(--noticebar-action-color);
             font-size: 14px;
         }
 
         &:hover {
-            background-color: $noticebar-action-hover-bg;
+            background-color: var(--noticebar-action-hover-bg);
             border-radius: 4px;
         }
     }
@@ -451,11 +449,11 @@ export default {
         display: flex;
         align-items: center;
         justify-content: center;
-        color: $noticebar-info-color;
+        color: var(--noticebar-info-color);
         border-radius: 50%;
 
         &:hover {
-            background-color: $noticebar-action-hover-bg;
+            background-color: var(--noticebar-action-hover-bg);
         }
     }
 
@@ -464,7 +462,7 @@ export default {
         flex-shrink: 0;
         margin-left: 12px;
         cursor: pointer;
-        color: $noticebar-close-color;
+        color: var(--noticebar-close-color);
 
         &:hover {
             opacity: 0.8;
@@ -484,44 +482,44 @@ export default {
 
     // 信息类型样式
     &--info {
-        background-color: $noticebar-info-bg;
-        border-color: $noticebar-info-border;
+        background-color: var(--noticebar-info-bg);
+        border-color: var(--noticebar-info-border);
 
         .fanc-noticebar__icon {
-            color: $noticebar-info-color;
+            color: var(--noticebar-info-color);
         }
     }
 
     // 成功类型样式
     &--success {
-        background-color: $noticebar-success-bg;
-        border-color: $noticebar-success-border;
+        background-color: var(--noticebar-success-bg);
+        border-color: var(--noticebar-success-border);
 
         .fanc-noticebar__icon,
         .fanc-noticebar__play {
-            color: $noticebar-success-color;
+            color: var(--noticebar-success-color);
         }
     }
 
     // 警告类型样式
     &--warning {
-        background-color: $noticebar-warning-bg;
-        border-color: $noticebar-warning-border;
+        background-color: var(--noticebar-warning-bg);
+        border-color: var(--noticebar-warning-border);
 
         .fanc-noticebar__icon,
         .fanc-noticebar__play {
-            color: $noticebar-warning-color;
+            color: var(--noticebar-warning-color);
         }
     }
 
     // 错误类型样式
     &--error {
-        background-color: $noticebar-error-bg;
-        border-color: $noticebar-error-border;
+        background-color: var(--noticebar-error-bg);
+        border-color: var(--noticebar-error-border);
 
         .fanc-noticebar__icon,
         .fanc-noticebar__play {
-            color: $noticebar-error-color;
+            color: var(--noticebar-error-color);
         }
     }
 }

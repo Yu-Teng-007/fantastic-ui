@@ -420,16 +420,14 @@ export default {
 </script>
 
 <style lang="scss">
-@import "@/styles/_variables.scss";
-
 .fanc-message {
     position: fixed;
     min-width: 300px;
     max-width: 80%;
     padding: 12px 16px;
     border-radius: 4px;
-    background-color: $white;
-    box-shadow: 0 2px 12px $message-box-shadow-color;
+    background-color: var(--white);
+    box-shadow: 0 2px 12px var(--message-box-shadow-color);
     display: flex;
     align-items: center;
     box-sizing: border-box;
@@ -495,63 +493,63 @@ export default {
         margin-left: 12px;
         cursor: pointer;
         font-size: 14px;
-        color: $message-close-color;
+        color: var(--message-close-color);
     }
 
     // 不同类型的消息样式
     &--info {
-        background-color: $message-info-bg;
-        border: 1px solid $message-info-border;
-        color: $message-info-color;
+        background-color: var(--message-info-bg);
+        border: 1px solid var(--message-info-border);
+        color: var(--message-info-color);
 
         .fanc-message__icon {
-            color: $message-info-color;
+            color: var(--message-info-color);
         }
 
         .fanc-message__action-text {
-            color: $message-info-action-color;
+            color: var(--message-info-action-color);
         }
     }
 
     &--success {
-        background-color: $message-success-bg;
-        border: 1px solid $message-success-border;
-        color: $message-success-color;
+        background-color: var(--message-success-bg);
+        border: 1px solid var(--message-success-border);
+        color: var(--message-success-color);
 
         .fanc-message__icon {
-            color: $message-success-color;
+            color: var(--message-success-color);
         }
 
         .fanc-message__action-text {
-            color: $message-success-color;
+            color: var(--message-success-color);
         }
     }
 
     &--warning {
-        background-color: $message-warning-bg;
-        border: 1px solid $message-warning-border;
-        color: $message-warning-color;
+        background-color: var(--message-warning-bg);
+        border: 1px solid var(--message-warning-border);
+        color: var(--message-warning-color);
 
         .fanc-message__icon {
-            color: $message-warning-color;
+            color: var(--message-warning-color);
         }
 
         .fanc-message__action-text {
-            color: $message-warning-color;
+            color: var(--message-warning-color);
         }
     }
 
     &--error {
-        background-color: $message-error-bg;
-        border: 1px solid $message-error-border;
-        color: $message-error-color;
+        background-color: var(--message-error-bg);
+        border: 1px solid var(--message-error-border);
+        color: var(--message-error-color);
 
         .fanc-message__icon {
-            color: $message-error-color;
+            color: var(--message-error-color);
         }
 
         .fanc-message__action-text {
-            color: $message-error-color;
+            color: var(--message-error-color);
         }
     }
 
@@ -601,7 +599,7 @@ export default {
 
     .fanc-message__action {
         &:hover {
-            background-color: $message-action-hover-bg;
+            background-color: var(--message-action-hover-bg);
         }
     }
 }

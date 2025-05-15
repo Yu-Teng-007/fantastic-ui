@@ -173,9 +173,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import "@/uni.scss";
-@import "@/styles/_variables.scss";
-
 // 按钮基础样式
 .fanc-button {
     position: relative;
@@ -231,7 +228,7 @@ export default {
 
     // 加载指示器样式
     .fanc-loading-indicator {
-        border: 2px solid rgba($black, 0.1);
+        border: 2px solid rgba(#000, 0.1);
         border-left-color: currentColor;
         border-radius: 50%;
         width: 1em;
@@ -246,109 +243,109 @@ export default {
 
     // 默认按钮样式
     &--default {
-        color: $text-primary;
-        background-color: $bg-white;
-        border-color: $border-color;
+        color: var(--text-primary);
+        background-color: var(--bg-white);
+        border-color: var(--border-color);
 
         &.is-plain {
-            color: $text-primary;
-            background-color: $bg-transparent;
-            border-color: $border-color;
+            color: var(--text-primary);
+            background-color: var(--bg-transparent);
+            border-color: var(--border-color);
         }
 
         &:active:not(.is-disabled) {
-            background-color: darken($bg-white, 5%);
-            border-color: darken($border-color, 10%);
+            background-color: darken(#fff, 5%);
+            border-color: darken(#dee2e6, 10%);
         }
     }
 
     // 主要按钮样式
     &--primary {
-        color: $text-light;
-        background-color: $fanc-primary-color;
-        border-color: $fanc-primary-color;
+        color: var(--text-light);
+        background-color: var(--fanc-primary-color);
+        border-color: var(--fanc-primary-color);
 
         &.is-plain {
-            color: $fanc-primary-color;
-            background-color: $bg-transparent;
-            border-color: $fanc-primary-color;
+            color: var(--fanc-primary-color);
+            background-color: var(--bg-transparent);
+            border-color: var(--fanc-primary-color);
         }
 
         &:active:not(.is-disabled) {
-            background-color: darken($fanc-primary-color, 10%);
-            border-color: darken($fanc-primary-color, 10%);
+            background-color: darken(#007bff, 10%);
+            border-color: darken(#007bff, 10%);
         }
     }
 
     // 成功按钮样式
     &--success {
-        color: $text-light;
-        background-color: $fanc-success-color;
-        border-color: $fanc-success-color;
+        color: var(--text-light);
+        background-color: var(--fanc-success-color);
+        border-color: var(--fanc-success-color);
 
         &.is-plain {
-            color: $fanc-success-color;
-            background-color: $bg-transparent;
-            border-color: $fanc-success-color;
+            color: var(--fanc-success-color);
+            background-color: var(--bg-transparent);
+            border-color: var(--fanc-success-color);
         }
 
         &:active:not(.is-disabled) {
-            background-color: darken($fanc-success-color, 10%);
-            border-color: darken($fanc-success-color, 10%);
+            background-color: darken(#28a745, 10%);
+            border-color: darken(#28a745, 10%);
         }
     }
 
     // 警告按钮样式
     &--warning {
-        color: $text-light;
-        background-color: $fanc-warning-color;
-        border-color: $fanc-warning-color;
+        color: var(--text-light);
+        background-color: var(--fanc-warning-color);
+        border-color: var(--fanc-warning-color);
 
         &.is-plain {
-            color: $fanc-warning-color;
-            background-color: $bg-transparent;
-            border-color: $fanc-warning-color;
+            color: var(--fanc-warning-color);
+            background-color: var(--bg-transparent);
+            border-color: var(--fanc-warning-color);
         }
 
         &:active:not(.is-disabled) {
-            background-color: darken($fanc-warning-color, 10%);
-            border-color: darken($fanc-warning-color, 10%);
+            background-color: darken(#ffc107, 10%);
+            border-color: darken(#ffc107, 10%);
         }
     }
 
     // 危险按钮样式
     &--danger {
-        color: $text-light;
-        background-color: $fanc-danger-color;
-        border-color: $fanc-danger-color;
+        color: var(--text-light);
+        background-color: var(--fanc-danger-color);
+        border-color: var(--fanc-danger-color);
 
         &.is-plain {
-            color: $fanc-danger-color;
-            background-color: $bg-transparent;
-            border-color: $fanc-danger-color;
+            color: var(--fanc-danger-color);
+            background-color: var(--bg-transparent);
+            border-color: var(--fanc-danger-color);
         }
 
         &:active:not(.is-disabled) {
-            background-color: darken($fanc-danger-color, 10%);
-            border-color: darken($fanc-danger-color, 10%);
+            background-color: darken(#dc3545, 10%);
+            border-color: darken(#dc3545, 10%);
         }
     }
 
     // 信息按钮样式
     &--info {
-        color: $text-light;
-        background-color: $fanc-info-color;
-        border-color: $fanc-info-color;
+        color: var(--text-light);
+        background-color: var(--fanc-info-color);
+        border-color: var(--fanc-info-color);
 
         &.is-plain {
-            color: $fanc-info-color;
-            background-color: $bg-transparent;
-            border-color: $fanc-info-color;
+            color: var(--fanc-info-color);
+            background-color: var(--bg-transparent);
+            border-color: var(--fanc-info-color);
         }
 
         &:active:not(.is-disabled) {
-            background-color: darken($fanc-info-color, 10%);
-            border-color: darken($fanc-info-color, 10%);
+            background-color: darken(#17a2b8, 10%);
+            border-color: darken(#17a2b8, 10%);
         }
     }
 
@@ -419,7 +416,7 @@ export default {
 
         // 为不同类型的按钮设置不同的加载指示器颜色
         &.fanc-button--default .fanc-loading-indicator {
-            border-left-color: $text-primary;
+            border-left-color: var(--text-primary);
         }
 
         &.fanc-button--primary .fanc-loading-indicator,
@@ -427,29 +424,29 @@ export default {
         &.fanc-button--warning .fanc-loading-indicator,
         &.fanc-button--danger .fanc-loading-indicator,
         &.fanc-button--info .fanc-loading-indicator {
-            border-left-color: $text-light;
+            border-left-color: var(--text-light);
         }
 
         // 当使用plain模式时，按照按钮的文字颜色来设置加载指示器的颜色
         &.is-plain {
             &.fanc-button--primary .fanc-loading-indicator {
-                border-left-color: $fanc-primary-color;
+                border-left-color: var(--fanc-primary-color);
             }
 
             &.fanc-button--success .fanc-loading-indicator {
-                border-left-color: $fanc-success-color;
+                border-left-color: var(--fanc-success-color);
             }
 
             &.fanc-button--warning .fanc-loading-indicator {
-                border-left-color: $fanc-warning-color;
+                border-left-color: var(--fanc-warning-color);
             }
 
             &.fanc-button--danger .fanc-loading-indicator {
-                border-left-color: $fanc-danger-color;
+                border-left-color: var(--fanc-danger-color);
             }
 
             &.fanc-button--info .fanc-loading-indicator {
-                border-left-color: $fanc-info-color;
+                border-left-color: var(--fanc-info-color);
             }
         }
     }

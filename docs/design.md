@@ -50,14 +50,14 @@ $danger-color: #dc3545;
 $info-color: #17a2b8;
 
 // 中性色板
-$black: #000000;
-$text-primary: #333333;
+var(--black): #000000;
+var(--text-primary): #333333;
 $text-secondary: #666666;
 $text-assist: #999999;
 $text-placeholder: #cccccc;
-$border-color: #e4e7ed;
+var(--border-color): #e4e7ed;
 $background-color: #f5f7fa;
-$white: #ffffff;
+var(--white): #ffffff;
 ```
 
 ## 字体规范
@@ -285,7 +285,7 @@ $button-padding-xs: 4px;
 $input-height: 36px;
 $input-padding: 12px;
 $input-font-size: 14px;
-$input-border: 1px solid $border-color;
+$input-border: 1px solid var(--border-color);
 
 // 卡片规范
 $card-padding: 16px;
@@ -416,10 +416,10 @@ $safe-area-inset-left: env(safe-area-inset-left);
 // 暗色模式变量
 :root {
     // 亮色主题
-    --background-color: #{$white};
+    --background-color: #{var(--white)};
     --background-color-secondary: #{$background-color};
-    --border-color: #{$border-color};
-    --text-primary: #{$text-primary};
+    --border-color: #{var(--border-color)};
+    --text-primary: #{var(--text-primary)};
     --text-secondary: #{$text-secondary};
 }
 
@@ -428,7 +428,7 @@ $safe-area-inset-left: env(safe-area-inset-left);
     --background-color: #121212;
     --background-color-secondary: #1e1e1e;
     --border-color: #333333;
-    --text-primary: #{$white};
+    --text-primary: #{var(--white)};
     --text-secondary: #aaaaaa;
 }
 ```

@@ -33,19 +33,17 @@ export default {
 </script>
 
 <style lang="scss">
-@import "@/styles/_variables.scss";
-
 .fanc-cell-group {
     &__title {
         padding: 16px 16px 8px;
-        color: $gray-600;
+        color: var(--gray-600);
         font-size: 14px;
         line-height: 14px;
     }
 
     &__container {
         position: relative;
-        background-color: $white;
+        background-color: var(--white);
 
         &::after {
             position: absolute;
@@ -56,7 +54,7 @@ export default {
             top: 0;
             right: 0;
             left: 0;
-            border-top: 1px solid $border-color;
+            border-top: 1px solid var(--border-color);
             transform: scaleY(0.5);
         }
 
@@ -69,7 +67,7 @@ export default {
             right: 0;
             bottom: 0;
             left: 0;
-            border-bottom: 1px solid $border-color;
+            border-bottom: 1px solid var(--border-color);
             transform: scaleY(0.5);
         }
 

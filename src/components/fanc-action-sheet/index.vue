@@ -307,8 +307,6 @@ export default {
 </script>
 
 <style lang="scss">
-@import "@/styles/_variables.scss";
-
 .fanc-action-sheet {
     position: relative;
     max-height: 80vh;
@@ -322,14 +320,14 @@ export default {
         font-weight: 500;
         box-sizing: border-box;
         line-height: 24px;
-        border-bottom: 1px solid $border-color-light;
+        border-bottom: 1px solid var(--border-color-light);
     }
 
     // 标题样式
     &__title {
         font-size: 16px;
         font-weight: 500;
-        color: $text-primary;
+        color: var(--text-primary);
     }
 
     // 关闭图标样式
@@ -348,9 +346,9 @@ export default {
         padding: 12px 16px;
         text-align: center;
         font-size: 14px;
-        color: $text-secondary;
+        color: var(--text-secondary);
         line-height: 1.5;
-        border-bottom: 1px solid $border-color-light;
+        border-bottom: 1px solid var(--border-color-light);
     }
 
     // 内容区域样式 - 列表模式
@@ -368,14 +366,14 @@ export default {
         font-size: 16px;
         line-height: 22px;
         text-align: center;
-        color: $text-primary;
-        background-color: $bg-white;
+        color: var(--text-primary);
+        background-color: var(--bg-white);
         cursor: pointer;
         transition: all 0.2s ease;
         flex-direction: column;
 
         &:active {
-            background-color: $bg-gray-light;
+            background-color: var(--bg-gray-light);
         }
 
         &::after {
@@ -385,7 +383,7 @@ export default {
             right: 16px;
             bottom: 0;
             height: 1px;
-            background-color: $border-color-light;
+            background-color: var(--border-color-light);
         }
 
         &:last-child::after {
@@ -394,11 +392,11 @@ export default {
 
         // 禁用状态
         &--disabled {
-            color: $text-disabled;
+            color: var(--text-disabled);
             cursor: not-allowed;
 
             &:active {
-                background-color: $bg-white;
+                background-color: var(--bg-white);
             }
         }
 
@@ -409,19 +407,19 @@ export default {
 
         // 不同类型的样式
         &--primary {
-            color: $fanc-primary-color;
+            color: var(--fanc-primary-color);
         }
 
         &--success {
-            color: $fanc-success-color;
+            color: var(--fanc-success-color);
         }
 
         &--warning {
-            color: $fanc-warning-color;
+            color: var(--fanc-warning-color);
         }
 
         &--danger {
-            color: $fanc-danger-color;
+            color: var(--fanc-danger-color);
         }
     }
 
@@ -435,7 +433,7 @@ export default {
     &__subname {
         margin-top: 4px;
         font-size: 12px;
-        color: $text-secondary;
+        color: var(--text-secondary);
     }
 
     // 操作项图标 - 列表模式
@@ -448,7 +446,7 @@ export default {
         margin-bottom: 8px;
 
         .fanc-loading-indicator {
-            border: 2px solid rgba($black, 0.1);
+            border: 2px solid rgba(0, 0, 0, 0.1);
             border-left-color: currentColor;
             border-radius: 50%;
             width: 20px;
@@ -462,7 +460,7 @@ export default {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
         padding: 16px 8px;
-        background-color: $bg-white;
+        background-color: var(--bg-white);
         gap: 8px;
         border-radius: 8px;
     }
@@ -480,16 +478,16 @@ export default {
         border-radius: 8px;
 
         &:active {
-            background-color: $bg-gray-light;
+            background-color: var(--bg-gray-light);
         }
 
         // 禁用状态
         &--disabled {
-            color: $text-disabled;
+            color: var(--text-disabled);
             cursor: not-allowed;
 
             &:active {
-                background-color: $bg-white;
+                background-color: var(--bg-white);
             }
         }
 
@@ -500,19 +498,19 @@ export default {
 
         // 不同类型的样式
         &--primary {
-            color: $fanc-primary-color;
+            color: var(--fanc-primary-color);
         }
 
         &--success {
-            color: $fanc-success-color;
+            color: var(--fanc-success-color);
         }
 
         &--warning {
-            color: $fanc-warning-color;
+            color: var(--fanc-warning-color);
         }
 
         &--danger {
-            color: $fanc-danger-color;
+            color: var(--fanc-danger-color);
         }
     }
 
@@ -545,7 +543,7 @@ export default {
         justify-content: center;
 
         .fanc-loading-indicator {
-            border: 2px solid rgba($black, 0.1);
+            border: 2px solid rgba(0, 0, 0, 0.1);
             border-left-color: currentColor;
             border-radius: 50%;
             width: 28px;
@@ -560,7 +558,7 @@ export default {
         justify-content: center;
         align-items: center;
         padding: 12px 0;
-        background-color: $bg-white;
+        background-color: var(--bg-white);
     }
 
     // 分页指示器点
@@ -592,13 +590,13 @@ export default {
         padding: 14px 16px;
         text-align: center;
         font-size: 16px;
-        color: $text-primary;
-        background-color: $bg-white;
+        color: var(--text-secondary);
+        background-color: var(--bg-white);
         cursor: pointer;
         transition: all 0.2s ease;
 
         &:active {
-            background-color: $bg-gray-light;
+            background-color: var(--bg-gray-light);
         }
     }
 

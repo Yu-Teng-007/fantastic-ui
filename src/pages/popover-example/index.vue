@@ -214,8 +214,6 @@ export default {
 </script>
 
 <style lang="scss">
-@import "../../styles/example-pages.scss";
-
 .popover-demo {
     display: flex;
     flex-direction: row;

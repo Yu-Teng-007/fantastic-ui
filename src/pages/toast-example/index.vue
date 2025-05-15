@@ -60,17 +60,6 @@
                 <button class="btn btn-outline-warning" @click="showAndCloseAll">关闭所有 Toast</button>
             </view>
         </view>
-
-        <!-- 填充内容使页面可滚动，用于测试锁定背景功能 -->
-        <view v-if="showDummyContent" class="dummy-content">
-            <view class="example-page__section" v-for="i in 10" :key="i">
-                <view class="example-page__section-title">测试内容 {{ i }}</view>
-                <view class="example-page__section-desc">
-                    这是用于测试背景锁定功能的内容。当显示带有锁定背景的 Toast 时，
-                    页面将无法滚动。这有助于聚焦用户注意力或防止用户在某些操作期间与背景内容交互。
-                </view>
-            </view>
-        </view>
     </view>
 </template>
 
@@ -245,8 +234,6 @@ export default {
 </script>
 
 <style lang="scss">
-@import "../../styles/example-pages.scss";
-
 // 示例页面按钮样式
 .btn {
     padding: 8px 16px;

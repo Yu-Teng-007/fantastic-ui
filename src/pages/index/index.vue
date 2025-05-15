@@ -44,6 +44,10 @@
                     <view class="component-card__icon toast-icon"></view>
                     <text class="component-card__name">轻提示</text>
                 </navigator>
+                <navigator url="/pages/dialog-example/index" class="component-card">
+                    <view class="component-card__icon dialog-icon"></view>
+                    <text class="component-card__name">对话框</text>
+                </navigator>
             </view>
         </view>
 
@@ -77,8 +81,6 @@ export default {
 </script>
 
 <style lang="scss">
-@import "../../styles/example-pages.scss";
-
 .example-page {
     &__card-grid {
         display: grid;
@@ -173,5 +175,10 @@ export default {
 .toast-icon {
     background-color: #20c997;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ffffff'%3E%3Cpath d='M20 2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h4v3c0 .55.45 1 1 1h.5c.25 0 .5-.1.7-.29L13.9 18H20c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H13.2l-3.8 3.4V16H4V4h16v12z'/%3E%3Cpath d='M7.5 12h2v2h-2zm4.5 0h2v2h-2zm4.5 0h2v2h-2z'/%3E%3C/svg%3E");
+}
+
+.dialog-icon {
+    background-color: #fd7e14;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ffffff'%3E%3Cpath d='M21 6h-2v9H6v2c0 .55.45 1 1 1h11l4 4V7c0-.55-.45-1-1-1zm-4 6V3c0-.55-.45-1-1-1H3c-.55 0-1 .45-1 1v14l4-4h10c.55 0 1-.45 1-1z'/%3E%3C/svg%3E");
 }
 </style>

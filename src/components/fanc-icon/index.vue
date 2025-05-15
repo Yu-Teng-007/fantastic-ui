@@ -136,9 +136,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
-@import "@/styles/_variables.scss";
-
+<style lang="scss">
 .fanc-icon {
     display: inline-flex;
     align-items: center;
@@ -159,7 +157,7 @@ export default {
         right: 0;
         width: 8px;
         height: 8px;
-        background-color: $fanc-danger-color;
+        background-color: var(--fanc-danger-color);
         border-radius: 50%;
         transform: translate(50%, -50%);
         z-index: 1;
@@ -173,9 +171,9 @@ export default {
         min-width: 16px;
         height: 16px;
         padding: 0 4px;
-        background-color: $fanc-danger-color;
+        background-color: var(--fanc-danger-color);
         border-radius: 8px;
-        color: $white;
+        color: var(--white);
         font-size: 12px;
         line-height: 16px;
         text-align: center;
