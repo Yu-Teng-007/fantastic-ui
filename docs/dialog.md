@@ -78,7 +78,7 @@ this.$dialog.alert({
 
 ## 对话框类型
 
-可以通过 `type` 属性设置不同类型的对话框样式。
+可以通过 `type` 属性设置不同类型的对话框样式。设置为非 default 类型时，标题会自动带有对应类型的图标。
 
 ```js
 // 成功提示
@@ -110,6 +110,64 @@ this.$dialog.alert({
     title: "提示",
     message: "这是一条信息提示",
     type: "info",
+    confirmText: "我知道了",
+});
+```
+
+## 图片对话框
+
+可以通过 `imageUrl` 属性设置对话框中显示的图片，还可以通过 `imageStyle` 自定义图片样式。
+
+```js
+// 基础图片对话框
+this.$dialog.alert({
+    title: "图片对话框",
+    message: "这是一个包含图片的对话框示例",
+    imageUrl: "/static/assets/picture_1.png",
+    confirmText: "我知道了",
+});
+
+// 带类型的图片对话框
+this.$dialog.confirm({
+    title: "确认删除",
+    message: "删除后无法恢复，是否继续？",
+    type: "warning",
+    imageUrl: "/static/assets/warning.svg",
+    imageStyle: "width: 180rpx; height: 180rpx;",
+    confirmText: "确认删除",
+    cancelText: "取消",
+});
+```
+
+## 图片位置
+
+可以通过 `imagePosition` 属性设置图片在对话框中的位置，支持三种位置：`top`（置顶），`default`（默认，标题和内容之间），`bottom`（底部，内容和按钮之间）。
+
+```js
+// 图片置顶
+this.$dialog.alert({
+    title: "图片置顶",
+    message: "图片显示在标题上方，更加醒目",
+    imageUrl: "/static/assets/picture_1.png",
+    imagePosition: "top",
+    confirmText: "我知道了",
+});
+
+// 图片默认位置
+this.$dialog.alert({
+    title: "图片默认位置",
+    message: "图片显示在标题和内容之间",
+    imageUrl: "/static/assets/picture_1.png",
+    imagePosition: "default",
+    confirmText: "我知道了",
+});
+
+// 图片底部位置
+this.$dialog.alert({
+    title: "图片底部",
+    message: "图片显示在内容和按钮之间",
+    imageUrl: "/static/assets/picture_1.png",
+    imagePosition: "bottom",
     confirmText: "我知道了",
 });
 ```
@@ -221,6 +279,54 @@ this.$dialog.confirm({
 });
 ```
 
+## 多按钮布局
+
+在垂直布局下，可以通过 `buttons` 属性设置多个按钮，每个按钮可以有不同的类型和样式。
+
+```js
+this.$dialog.alert({
+    title: "多个按钮",
+    message: "垂直布局下可以显示多个按钮",
+    buttonLayout: "vertical",
+    showCancelButton: false,
+    showConfirmButton: false,
+    buttons: [
+        {
+            text: "立即购买",
+            type: "confirm",
+            callback: () => console.log("立即购买"),
+        },
+        {
+            text: "加入购物车",
+            type: "info",
+            callback: () => console.log("加入购物车"),
+        },
+        {
+            text: "稍后再说",
+            type: "cancel",
+            callback: () => console.log("稍后再说"),
+        },
+        {
+            text: "查看详情",
+            style: "color: #7952b3;",
+            callback: () => console.log("查看详情"),
+        },
+    ],
+    success: (action) => {
+        console.log("点击了按钮:", action);
+    },
+});
+```
+
+按钮配置项格式：
+
+| 属性     | 说明                                                  | 类型          | 默认值    |
+| -------- | ----------------------------------------------------- | ------------- | --------- |
+| text     | 按钮文本                                              | String        | -         |
+| type     | 按钮类型，可选值为 confirm/cancel/info/warning/danger | String        | 'confirm' |
+| style    | 自定义样式                                            | String/Object | -         |
+| callback | 点击回调函数                                          | Function      | -         |
+
 ## 高级配置
 
 ### 显示关闭图标
@@ -291,6 +397,9 @@ this.$dialog.alert({
 | show               | 是否显示对话框                                          | Boolean       | false        |
 | title              | 对话框标题                                              | String        | '提示'       |
 | message            | 对话框内容                                              | String        | ''           |
+| imageUrl           | 对话框图片 URL                                          | String        | ''           |
+| imageStyle         | 图片样式                                                | String/Object | ''           |
+| imagePosition      | 图片位置，可选值为 top/default/bottom                   | String        | 'default'    |
 | type               | 对话框类型，可选值为 default/success/warning/error/info | String        | 'default'    |
 | position           | 对话框位置，可选值为 center/top/bottom                  | String        | 'center'     |
 | showTitle          | 是否显示标题                                            | Boolean       | true         |
@@ -314,14 +423,16 @@ this.$dialog.alert({
 | asyncClose         | 是否异步关闭                                            | Boolean       | false        |
 | duration           | 弹出动画时长（毫秒）                                    | Number        | 300          |
 | zIndex             | z-index 层级                                            | Number        | 2000         |
+| buttons            | 垂直布局时的多按钮配置                                  | Array         | []           |
 
 ### Events
 
-| 事件名  | 说明                     | 回调参数 |
-| ------- | ------------------------ | -------- |
-| confirm | 点击确认按钮时触发       | -        |
-| cancel  | 点击取消按钮时触发       | -        |
-| close   | 点击关闭图标或遮罩时触发 | -        |
+| 事件名      | 说明                     | 回调参数                                |
+| ----------- | ------------------------ | --------------------------------------- |
+| confirm     | 点击确认按钮时触发       | -                                       |
+| cancel      | 点击取消按钮时触发       | -                                       |
+| buttonClick | 点击多按钮中的按钮时触发 | {button: 按钮配置对象, index: 按钮索引} |
+| close       | 点击关闭图标或遮罩时触发 | -                                       |
 
 ### Slots
 

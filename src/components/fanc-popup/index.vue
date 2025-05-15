@@ -194,7 +194,7 @@ export default {
 
     beforeDestroy() {
         // 组件销毁时，如果挂载到了body需要移除
-        if (this.popupEl && this.mountToBody && typeof document !== 'undefined') {
+        if (this.popupEl && this.mountToBody && typeof document !== "undefined") {
             // 添加安全检查：确保节点仍然是body的子节点
             if (document.body.contains(this.popupEl)) {
                 document.body.removeChild(this.popupEl);
@@ -310,7 +310,6 @@ export default {
             min-width: 300px;
             max-width: 80%;
             max-height: 80%;
-            border-radius: 6px;
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
             opacity: 0;
 
@@ -363,6 +362,10 @@ export default {
 
     /* 圆角样式 */
     &--round {
+        &.fanc-popup--center .fanc-popup__content {
+            border-radius: 6px;
+        }
+
         &.fanc-popup--top .fanc-popup__content {
             border-radius: 0 0 8px 8px;
         }
@@ -384,7 +387,7 @@ export default {
     &__close-icon {
         position: absolute;
         z-index: 1;
-        padding: 8px;
+        padding: 10px;
         color: var(--gray-600);
         cursor: pointer;
 

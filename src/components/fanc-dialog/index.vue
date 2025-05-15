@@ -1,7 +1,7 @@
 <template>
     <fanc-popup
         :show="show"
-        position="center"
+        :position="position"
         :overlay="mask"
         :closeable="showClose"
         :close-icon-position="mapCloseIconPosition"
@@ -16,11 +16,30 @@
         @close="handleClose"
         @clickOverlay="$emit('clickOverlay')"
     >
+        <!-- 图片区域（置顶） -->
+        <view v-if="imageUrl && imagePosition === 'top'" class="fanc-dialog-image-container">
+            <image :src="imageUrl" class="fanc-dialog-image" :style="imageStyle" mode="aspectFit"></image>
+        </view>
+
         <!-- 标题栏 -->
         <view v-if="showTitle" class="fanc-dialog-header">
             <slot name="header">
-                <text class="fanc-dialog-title">{{ title }}</text>
+                <view class="fanc-dialog-title-container">
+                    <fanc-icon
+                        v-if="type !== 'default'"
+                        :name="typeIconMap[type]"
+                        :color="typeColorMap[type]"
+                        :size="20"
+                        class="fanc-dialog-title-icon"
+                    />
+                    <text class="fanc-dialog-title">{{ title }}</text>
+                </view>
             </slot>
+        </view>
+
+        <!-- 图片区域（默认） -->
+        <view v-if="imageUrl && imagePosition === 'default'" class="fanc-dialog-image-container">
+            <image :src="imageUrl" class="fanc-dialog-image" :style="imageStyle" mode="aspectFit"></image>
         </view>
 
         <!-- 内容区 -->
@@ -37,27 +56,51 @@
             </slot>
         </view>
 
+        <!-- 图片区域（底部） -->
+        <view v-if="imageUrl && imagePosition === 'bottom'" class="fanc-dialog-image-container">
+            <image :src="imageUrl" class="fanc-dialog-image" :style="imageStyle" mode="aspectFit"></image>
+        </view>
+
         <!-- 按钮区 -->
         <view v-if="showButtons" class="fanc-dialog-footer" :class="[`fanc-dialog-footer-${buttonLayout}`]">
             <slot name="footer">
-                <view
-                    v-if="showCancelButton"
-                    class="fanc-dialog-button fanc-dialog-cancel"
-                    :class="{ 'fanc-dialog-button-full': buttonLayout === 'vertical' }"
-                    :style="cancelButtonStyle"
-                    @click="handleCancel"
-                >
-                    <text>{{ cancelText }}</text>
-                </view>
-                <view
-                    v-if="showConfirmButton"
-                    class="fanc-dialog-button fanc-dialog-confirm"
-                    :class="{ 'fanc-dialog-button-full': buttonLayout === 'vertical' }"
-                    :style="confirmButtonStyle"
-                    @click="handleConfirm"
-                >
-                    <text>{{ confirmText }}</text>
-                </view>
+                <!-- 垂直布局时的多按钮支持 -->
+                <template v-if="buttonLayout === 'vertical' && buttons && buttons.length > 0">
+                    <view
+                        v-for="(button, index) in buttons"
+                        :key="index"
+                        class="fanc-dialog-button"
+                        :class="[
+                            'fanc-dialog-button-full',
+                            button.type ? `fanc-dialog-button-${button.type}` : 'fanc-dialog-confirm',
+                        ]"
+                        :style="button.style || ''"
+                        @click="handleButtonClick(button, index)"
+                    >
+                        <text>{{ button.text }}</text>
+                    </view>
+                </template>
+                <!-- 默认按钮 -->
+                <template v-else>
+                    <view
+                        v-if="showCancelButton"
+                        class="fanc-dialog-button fanc-dialog-cancel"
+                        :class="{ 'fanc-dialog-button-full': buttonLayout === 'vertical' }"
+                        :style="cancelButtonStyle"
+                        @click="handleCancel"
+                    >
+                        <text>{{ cancelText }}</text>
+                    </view>
+                    <view
+                        v-if="showConfirmButton"
+                        class="fanc-dialog-button fanc-dialog-confirm"
+                        :class="{ 'fanc-dialog-button-full': buttonLayout === 'vertical' }"
+                        :style="confirmButtonStyle"
+                        @click="handleConfirm"
+                    >
+                        <text>{{ confirmText }}</text>
+                    </view>
+                </template>
             </slot>
         </view>
 
@@ -68,11 +111,13 @@
 
 <script>
 import FancPopup from "../fanc-popup/index.vue";
+import FancIcon from "../fanc-icon/index.vue";
 
 export default {
     name: "FancDialog",
     components: {
         FancPopup,
+        FancIcon,
     },
     model: {
         prop: "show",
@@ -93,6 +138,22 @@ export default {
         message: {
             type: String,
             default: "",
+        },
+        // 对话框图片URL
+        imageUrl: {
+            type: String,
+            default: "",
+        },
+        // 图片样式
+        imageStyle: {
+            type: [String, Object],
+            default: "",
+        },
+        // 图片位置
+        imagePosition: {
+            type: String,
+            default: "default",
+            validator: (value) => ["top", "default", "bottom"].includes(value),
         },
         // 对话框类型
         type: {
@@ -141,6 +202,12 @@ export default {
             type: String,
             default: "horizontal",
             validator: (value) => ["horizontal", "vertical"].includes(value),
+        },
+        // 多按钮配置（垂直布局时使用）
+        buttons: {
+            type: Array,
+            default: () => [],
+            // 按钮格式：[{text: '按钮文本', type: 'confirm/cancel/info/warning/danger', style: '样式字符串', callback: 回调函数}]
         },
         // 内容对齐方式
         messageAlign: {
@@ -215,6 +282,26 @@ export default {
             default: 2000,
         },
     },
+    data() {
+        return {
+            // 类型与图标的映射
+            typeIconMap: {
+                success: "check-circle",
+                warning: "exclamation-triangle",
+                error: "times-circle",
+                info: "info-circle",
+                default: "",
+            },
+            // 类型与颜色的映射
+            typeColorMap: {
+                success: "var(--success-color)",
+                warning: "var(--warning-color)",
+                error: "var(--danger-color)",
+                info: "var(--primary-color)",
+                default: "",
+            },
+        };
+    },
     computed: {
         // 映射关闭图标位置到popup组件的值
         mapCloseIconPosition() {
@@ -251,6 +338,19 @@ export default {
                 this.$emit("cancel");
             }
         },
+
+        // 处理多按钮点击
+        handleButtonClick(button, index) {
+            if (this.asyncClose) {
+                this.$emit("buttonClick", { button, index });
+            } else {
+                if (typeof button.callback === "function") {
+                    button.callback(button, index);
+                }
+                this.$emit("buttonClick", { button, index });
+                this.$emit("update:show", false);
+            }
+        },
     },
 };
 </script>
@@ -261,6 +361,16 @@ export default {
     text-align: center;
 }
 
+.fanc-dialog-title-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.fanc-dialog-title-icon {
+    margin-right: 15rpx;
+}
+
 .fanc-dialog-title {
     font-size: 34rpx;
     font-weight: 600;
@@ -268,11 +378,23 @@ export default {
     color: var(--dialog-title-color);
 }
 
+.fanc-dialog-image-container {
+    padding: 24rpx 30rpx 0;
+    text-align: center;
+}
+
+.fanc-dialog-image {
+    width: 240rpx;
+    height: 240rpx;
+    max-width: 80%;
+}
+
 .fanc-dialog-content {
     padding: 24rpx 30rpx 32rpx;
     max-height: 60vh;
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
+    text-align: center;
 
     &.fanc-dialog-content-no-title {
         padding-top: 32rpx;
@@ -366,5 +488,17 @@ export default {
 .fanc-dialog-confirm {
     color: var(--dialog-confirm-color);
     font-weight: 500;
+}
+
+.fanc-dialog-button-info {
+    color: var(--primary-color);
+}
+
+.fanc-dialog-button-warning {
+    color: var(--warning-color);
+}
+
+.fanc-dialog-button-danger {
+    color: var(--danger-color);
 }
 </style>

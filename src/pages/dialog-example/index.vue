@@ -47,6 +47,29 @@
                 <button class="btn btn-outline-secondary" @click="showVerticalButtonsDialog">垂直按钮</button>
                 <button class="btn btn-outline-secondary" @click="showSingleButtonDialog">单个按钮</button>
                 <button class="btn btn-outline-secondary" @click="showNoButtonsDialog">无按钮</button>
+                <button class="btn btn-outline-secondary" @click="showMultiButtonsDialog">多按钮</button>
+            </view>
+        </view>
+
+        <!-- 图片对话框 -->
+        <view class="example-page__section">
+            <view class="example-page__section-title">图片对话框</view>
+            <view class="example-page__section-desc">显示带图片的对话框</view>
+            <view class="example-page__button-group">
+                <button class="btn btn-primary" @click="showImageDialog">基础图片对话框</button>
+                <button class="btn btn-success" @click="showImageSuccessDialog">成功图片对话框</button>
+                <button class="btn btn-warning" @click="showImageWarningDialog">警告图片对话框</button>
+            </view>
+        </view>
+
+        <!-- 图片位置 -->
+        <view class="example-page__section">
+            <view class="example-page__section-title">图片位置</view>
+            <view class="example-page__section-desc">控制图片在对话框中的位置</view>
+            <view class="example-page__button-group">
+                <button class="btn btn-outline-primary" @click="showImageTopDialog">图片置顶</button>
+                <button class="btn btn-outline-primary" @click="showImageDefaultDialog">图片居中</button>
+                <button class="btn btn-outline-primary" @click="showImageBottomDialog">图片底部</button>
             </view>
         </view>
 
@@ -81,8 +104,8 @@
             <view class="example-page__button-group">
                 <button class="btn btn-outline-primary" @click="showCustomHeaderDialog">自定义标题</button>
                 <button class="btn btn-outline-primary" @click="showCustomContentDialog">自定义内容</button>
-                <button class="btn btn-outline-primary" @click="showCustomFooterDialog">自定义底部</button>
-                <button class="btn btn-outline-primary" @click="showCustomBottomDialog">底部插槽</button>
+                <button class="btn btn-outline-primary" @click="showCustomFooterDialog">自定义底部按钮</button>
+                <button class="btn btn-outline-primary" @click="showCustomBottomDialog">自定义底部内容</button>
             </view>
         </view>
 
@@ -112,6 +135,11 @@
             :confirm-button-style="dialog.confirmButtonStyle"
             :cancel-button-style="dialog.cancelButtonStyle"
             :async-close="dialog.asyncClose"
+            :image-url="dialog.imageUrl"
+            :image-style="dialog.imageStyle"
+            :image-position="dialog.imagePosition"
+            :buttons="dialog.buttons"
+            @buttonClick="handleButtonClick"
             @confirm="handleConfirm"
             @cancel="handleCancel"
             @close="handleClose"
@@ -119,7 +147,7 @@
             <!-- 自定义内容插槽 -->
             <template v-if="dialog.useCustomContent" #default>
                 <view class="custom-content">
-                    <image class="custom-image" src="../../static/assets/success.svg" mode="aspectFit"></image>
+                    <image class="custom-image" src="../../static/img/picture_2.png" mode="aspectFit"></image>
                     <text class="custom-text">{{ dialog.customContentText }}</text>
                 </view>
             </template>
@@ -197,6 +225,10 @@ export default {
                 confirmButtonStyle: "",
                 cancelButtonStyle: "",
                 asyncClose: false,
+                imageUrl: "",
+                imageStyle: "",
+                imagePosition: "default",
+                buttons: [],
 
                 // 自定义内容相关
                 useCustomContent: false,
@@ -256,6 +288,10 @@ export default {
                 confirmButtonStyle: "",
                 cancelButtonStyle: "",
                 asyncClose: false,
+                imageUrl: "",
+                imageStyle: "",
+                imagePosition: "default",
+                buttons: [],
 
                 useCustomContent: false,
                 customContentText: "",
@@ -377,6 +413,46 @@ export default {
             this.dialog.title = "无按钮";
             this.dialog.message = "这个对话框没有按钮，点击遮罩层关闭。";
             this.dialog.showButtons = false;
+            this.dialog.show = true;
+        },
+
+        showMultiButtonsDialog() {
+            this.resetDialog();
+            this.dialog.title = "多个按钮";
+            this.dialog.message = "垂直布局下可以显示多个按钮，支持不同类型和样式。";
+            this.dialog.buttonLayout = "vertical";
+            this.dialog.showCancelButton = false;
+            this.dialog.showConfirmButton = false;
+            this.dialog.buttons = [
+                {
+                    text: "立即购买",
+                    type: "confirm",
+                    callback: () => {
+                        console.log("点击了立即购买");
+                    },
+                },
+                {
+                    text: "加入购物车",
+                    type: "info",
+                    callback: () => {
+                        console.log("点击了加入购物车");
+                    },
+                },
+                {
+                    text: "稍后再说",
+                    type: "cancel",
+                    callback: () => {
+                        console.log("点击了稍后再说");
+                    },
+                },
+                {
+                    text: "查看详情",
+                    style: "color: #7952b3;",
+                    callback: () => {
+                        console.log("点击了查看详情");
+                    },
+                },
+            ];
             this.dialog.show = true;
         },
 
@@ -534,6 +610,66 @@ export default {
             this.dialog.show = false;
             console.log("点击了自定义取消按钮");
         },
+
+        handleButtonClick({ button, index }) {
+            console.log(`点击了第${index + 1}个按钮:`, button.text);
+        },
+
+        // 图片对话框
+        showImageDialog() {
+            this.resetDialog();
+            this.dialog.title = "图片对话框";
+            this.dialog.message = "这是一个包含图片的对话框示例";
+            this.dialog.imageUrl = "../../static/img/picture_1.png";
+            this.dialog.show = true;
+        },
+
+        showImageSuccessDialog() {
+            this.resetDialog();
+            this.dialog.title = "操作成功";
+            this.dialog.message = "您的文件已上传成功！";
+            this.dialog.type = "success";
+            this.dialog.imageUrl = "../../static/img/picture_3.png";
+            this.dialog.show = true;
+        },
+
+        showImageWarningDialog() {
+            this.resetDialog();
+            this.dialog.title = "确认删除";
+            this.dialog.message = "删除后无法恢复，是否继续？";
+            this.dialog.type = "warning";
+            this.dialog.imageUrl = "../../static/img/picture_4.png";
+            this.dialog.imageStyle = "width: 180rpx; height: 180rpx;";
+            this.dialog.show = true;
+        },
+
+        // 图片位置示例
+        showImageTopDialog() {
+            this.resetDialog();
+            this.dialog.title = "图片置顶";
+            this.dialog.message = "图片显示在标题上方，更加醒目";
+            this.dialog.imageUrl = "../../static/img/picture_1.png";
+            this.dialog.imagePosition = "top";
+            this.dialog.show = true;
+        },
+
+        showImageDefaultDialog() {
+            this.resetDialog();
+            this.dialog.title = "图片默认位置";
+            this.dialog.message = "图片显示在标题和内容之间";
+            this.dialog.imageUrl = "../../static/img/picture_1.png";
+            this.dialog.imagePosition = "default";
+            this.dialog.show = true;
+        },
+
+        showImageBottomDialog() {
+            this.resetDialog();
+            this.dialog.title = "图片底部";
+            this.dialog.message = "图片显示在内容和按钮之间";
+            this.dialog.imageUrl = "../../static/img/picture_1.png";
+            this.dialog.imagePosition = "bottom";
+            this.dialog.show = true;
+        },
     },
 
     beforeDestroy() {
@@ -684,6 +820,7 @@ export default {
 
 // 自定义底部按钮样式
 .custom-footer {
+    width: 100%;
     display: flex;
     padding: 16px 24px;
     justify-content: space-between;
@@ -691,7 +828,6 @@ export default {
 }
 
 .custom-button {
-    padding: 10px 24px;
     border-radius: 4px;
     font-size: 14px;
     border: none;
@@ -705,6 +841,7 @@ export default {
     &.primary {
         background-color: #007bff;
         color: #fff;
+        margin-right: 15px;
     }
 
     &.secondary {
