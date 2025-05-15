@@ -7,7 +7,9 @@ import FancMessage from "@/components/fanc-message/index.vue";
 import FancNoticebar from "@/components/fanc-noticebar/index.vue";
 import FancActionSheet from "@/components/fanc-action-sheet/index.vue";
 import FancPopover from "@/components/fanc-popover/index.vue";
+import FancToast from "@/components/fanc-toast/index.vue";
 import Message from "@/plugins/message";
+import Toast from "@/plugins/toast";
 
 // 组件列表
 const components = [
@@ -20,10 +22,11 @@ const components = [
     FancNoticebar,
     FancActionSheet,
     FancPopover,
+    FancToast,
 ];
 
 // 组件库版本
-const version = "0.1.2";
+const version = "0.1.3";
 
 // 导出单个组件
 export {
@@ -36,6 +39,7 @@ export {
     FancNoticebar,
     FancActionSheet,
     FancPopover,
+    FancToast,
 };
 
 // 导出版本信息
@@ -51,5 +55,8 @@ export default {
 
         // 注册Message全局方法
         Vue.prototype.$message = Message;
+
+        // 注册Toast全局方法
+        Vue.prototype.$toast = Toast;
     },
 };

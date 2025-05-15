@@ -53,6 +53,12 @@
             "style": {
                 "navigationBarTitleText": "弹出气泡示例"
             }
+        },
+        {
+            "path": "pages/toast-example/index",
+            "style": {
+                "navigationBarTitleText": "轻提示示例"
+            }
         }
     ],
     "globalStyle": {

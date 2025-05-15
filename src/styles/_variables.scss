@@ -96,3 +96,29 @@ $popover-light-border: $border-color-light;
 $popover-shadow-color: rgba($black, 0.1);
 $popover-title-color: inherit;
 $popover-content-color: inherit;
+
+// Toast 轻提示组件颜色
+$toast-bg-color: rgba($black, 0.7);
+$toast-text-color: $white;
+$toast-icon-color: $white;
+$toast-loading-color: $white;
+$toast-success-color: $white;
+$toast-error-color: $white;
+$toast-warning-color: $white;
+$toast-shadow-color: rgba($black, 0.16);
+$toast-mask-color: rgba($black, 0.3);
+$toast-max-width: 70%;
+
+:root {
+    // Toast 变量
+    --toast-bg-color: #{$toast-bg-color};
+    --toast-text-color: #{$toast-text-color};
+    --toast-icon-color: #{$toast-icon-color};
+    --toast-loading-color: #{$toast-loading-color};
+    --toast-success-color: #{$toast-success-color};
+    --toast-error-color: #{$toast-error-color};
+    --toast-warning-color: #{$toast-warning-color};
+    --toast-shadow-color: #{$toast-shadow-color};
+    --toast-mask-color: #{$toast-mask-color};
+    --toast-max-width: #{$toast-max-width};
+}
