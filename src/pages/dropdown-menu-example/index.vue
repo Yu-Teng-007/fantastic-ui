@@ -107,6 +107,15 @@ export default {
                         { text: "湖北省", value: "hubei" },
                         { text: "四川省", value: "sichuan" },
                         { text: "广东省", value: "guangdong" },
+                        { text: "湖南省", value: "hunan" },
+                        { text: "山东省", value: "shandong" },
+                        { text: "陕西省", value: "shanxi" },
+                        { text: "河南省", value: "henan" },
+                        { text: "河北省", value: "hebei" },
+                        { text: "北京市", value: "beijing" },
+                        { text: "上海市", value: "shanghai" },
+                        { text: "天津市", value: "tianjin" },
+                        
                     ],
                 },
                 {

@@ -117,10 +117,15 @@ export default {
         // 生成自定义样式，设置CSS变量
         customStyle() {
             if (!this.activeColor) return {};
+
+            // 生成对应的半透明背景色
+            const activeBackgroundColor = this.generateBackgroundColor(this.activeColor);
+
             return {
                 "--dropdown-menu-active-color": this.activeColor,
                 "--dropdown-menu-active-arrow-color": this.activeColor,
                 "--dropdown-menu-option-active-color": this.activeColor,
+                "--dropdown-menu-option-active-bg": activeBackgroundColor,
             };
         },
     },
@@ -286,6 +291,82 @@ export default {
             this.initSelectedValues();
             this.$emit("reset", this.selectedValues);
         },
+
+        // 生成背景色（支持多种颜色格式）
+        generateBackgroundColor(color) {
+            // 默认的背景色（如果无法处理输入颜色）
+            const defaultBgColor = "rgba(0, 123, 255, 0.05)";
+
+            // 检查颜色格式
+            if (!color) return defaultBgColor;
+
+            // 处理十六进制格式
+            if (color.startsWith("#")) {
+                const rgbColor = this.hexToRgb(color);
+                if (rgbColor) {
+                    return `rgba(${rgbColor.r}, ${rgbColor.g}, ${rgbColor.b}, 0.05)`;
+                }
+            }
+
+            // 处理rgb格式
+            if (color.startsWith("rgb(")) {
+                const rgbMatch = color.match(/rgb\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*\)/);
+                if (rgbMatch) {
+                    return `rgba(${rgbMatch[1]}, ${rgbMatch[2]}, ${rgbMatch[3]}, 0.05)`;
+                }
+            }
+
+            // 处理rgba格式（保留原透明度但最小为0.05）
+            if (color.startsWith("rgba(")) {
+                const rgbaMatch = color.match(/rgba\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*,\s*([0-9]*\.?[0-9]+)\s*\)/);
+                if (rgbaMatch) {
+                    // 取原透明度和0.05中较小的值
+                    const alpha = Math.min(parseFloat(rgbaMatch[4]), 0.05);
+                    return `rgba(${rgbaMatch[1]}, ${rgbaMatch[2]}, ${rgbaMatch[3]}, ${alpha})`;
+                }
+            }
+
+            // 对于其他格式，或无法识别的格式，直接使用原始颜色但设置较低透明度
+            try {
+                // 可以使用自定义div测试颜色是否有效
+                const testDiv = document.createElement("div");
+                testDiv.style.color = color;
+
+                // 如果能成功设置颜色，返回带透明度的同色系背景
+                if (testDiv.style.color !== "") {
+                    return `${color.split(")")[0]})`.replace("rgb(", "rgba(").replace(")", ", 0.05)");
+                }
+            } catch (e) {
+                // 忽略异常，使用默认色
+            }
+
+            return defaultBgColor;
+        },
+
+        // 将十六进制颜色转为RGB格式
+        hexToRgb(hex) {
+            // 移除#号（如果有）
+            hex = hex.replace(/^#/, "");
+
+            // 根据颜色字符串长度处理不同格式
+            let r, g, b;
+            if (hex.length === 3) {
+                // 短格式 #RGB
+                r = parseInt(hex.charAt(0) + hex.charAt(0), 16);
+                g = parseInt(hex.charAt(1) + hex.charAt(1), 16);
+                b = parseInt(hex.charAt(2) + hex.charAt(2), 16);
+            } else if (hex.length === 6) {
+                // 标准格式 #RRGGBB
+                r = parseInt(hex.substring(0, 2), 16);
+                g = parseInt(hex.substring(2, 4), 16);
+                b = parseInt(hex.substring(4, 6), 16);
+            } else {
+                // 无效的格式
+                return null;
+            }
+
+            return { r, g, b };
+        },
     },
     beforeDestroy() {
         // #ifdef H5
@@ -315,6 +396,7 @@ export default {
         display: flex;
         min-width: 100%;
         height: 100%;
+        overflow: -moz-scrollbars-none; /* 额外处理Firefox旧版本 */
     }
 
     &__item {
@@ -381,8 +463,7 @@ export default {
         background-color: var(--dropdown-menu-bg);
         box-shadow: 0 2px 12px var(--dropdown-menu-shadow-color);
         z-index: var(--dropdown-menu-z-index);
-        max-height: 60vh;
-        overflow-y: auto;
+        overflow: hidden;
         transform-origin: center top;
         animation: fanc-dropdown-in var(--dropdown-menu-transition-duration) both;
 
@@ -401,6 +482,8 @@ export default {
 
     &__content {
         padding: 4px 0;
+        max-height: calc(48px * 6); /* 最多显示6个选项 */
+        overflow-y: auto;
     }
 
     &__option {
@@ -411,6 +494,8 @@ export default {
         cursor: pointer;
         transition: all calc(var(--dropdown-menu-transition-duration) * 0.6);
         background-color: var(--dropdown-menu-option-bg);
+        height: 48px;
+        box-sizing: border-box;
 
         &:active {
             background-color: var(--dropdown-menu-option-active-bg);
