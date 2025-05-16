@@ -44,12 +44,24 @@ Fantastic UI 是一套基于 [uni-app](https://uniapp.dcloud.io/) 开发的跨�
 -   [ActionSheet 动作面板](./action-sheet.md)
 -   [Dialog 对话框](./dialog.md)
 -   [Image 图片](./image.md)
+-   [Calendar 日历](./calendar.md)
 
 ### 反馈组件
 
 -   [Toast 轻提示](./toast.md)
 
 ## 📝 更新日志
+
+### v0.1.8 (2025-06-01)
+
+-   ✨ 新增 Calendar 日历组件
+-   📅 支持选择单个日期、多个日期、日期范围
+-   🎨 支持自定义颜色和按钮文字
+-   📝 支持自定义日期文案，展示节假日等信息
+-   📊 支持自定义周起始日，适应不同国家/地区习惯
+-   🔍 支持平铺展示和滚动展示多个月份
+-   🔒 支持设置可选日期范围限制
+-   💫 优化交互动画和选择体验
 
 ### v0.1.7 (2025-05-29)
 

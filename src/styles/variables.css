@@ -171,4 +171,22 @@
     --dialog-info-color: var(--info-color);
     --dialog-z-index: 2000;
     --dialog-transition-duration: 0.3s;
+    
+    /* Calendar 日历组件颜色 */
+    --calendar-bg-color: var(--white);
+    --calendar-title-color: var(--text-primary);
+    --calendar-subtitle-color: var(--text-secondary);
+    --calendar-weekday-color: var(--text-secondary);
+    --calendar-day-color: var(--text-primary);
+    --calendar-day-disabled-color: var(--text-disabled);
+    --calendar-day-selected-color: var(--white);
+    --calendar-day-selected-bg: var(--primary-color);
+    --calendar-day-range-bg: rgba(0, 123, 255, 0.1);
+    --calendar-toolbar-color: var(--text-secondary);
+    --calendar-border-color: var(--border-color-light);
+    --calendar-button-active-bg: rgba(0, 0, 0, 0.05);
+    --calendar-month-title-color: var(--text-primary);
+    --calendar-day-text-color: inherit;
+    --calendar-transition-duration: 0.3s;
+    --calendar-z-index: 2000;
 } 

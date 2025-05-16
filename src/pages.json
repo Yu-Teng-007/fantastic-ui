@@ -83,6 +83,12 @@
             "style": {
                 "navigationBarTitleText": "图片示例"
             }
+        },
+        {
+            "path": "pages/calendar-example/index",
+            "style": {
+                "navigationBarTitleText": "日历示例"
+            }
         }
     ],
     "globalStyle": {
