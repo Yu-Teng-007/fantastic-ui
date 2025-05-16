@@ -45,6 +45,15 @@
     --border-color: var(--gray-300);
     --border-color-light: #ebeef5;
 
+    /* Image 图片组件颜色 */
+    --image-bg-color: var(--gray-100);
+    --image-error-bg-color: var(--gray-100);
+    --image-error-icon-color: var(--gray-400);
+    --image-error-text-color: var(--gray-600);
+    --image-loading-bg-color: var(--gray-100);
+    --image-loading-icon-color: var(--gray-400);
+    --image-loading-text-color: var(--gray-600);
+    
     /* 下拉菜单栏组件 (fanc-dropdown-menu) 颜色 */
     --dropdown-menu-bg: var(--white);
     --dropdown-menu-active-color: var(--fanc-primary-color);

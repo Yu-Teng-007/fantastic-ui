@@ -77,6 +77,12 @@
             "style": {
                 "navigationBarTitleText": "下拉菜单栏示例"
             }
+        },
+        {
+            "path": "pages/image-example/index",
+            "style": {
+                "navigationBarTitleText": "图片示例"
+            }
         }
     ],
     "globalStyle": {

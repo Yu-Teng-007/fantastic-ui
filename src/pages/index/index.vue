@@ -71,6 +71,10 @@
                     <view class="component-card__icon dropdown-icon"></view>
                     <text class="component-card__name">下拉菜单栏</text>
                 </navigator>
+                <navigator url="/pages/image-example/index" class="component-card">
+                    <view class="component-card__icon image-icon"></view>
+                    <text class="component-card__name">图片</text>
+                </navigator>
             </view>
         </view>
     </view>
@@ -198,5 +202,10 @@ export default {
 .dropdown-icon {
     background-color: #3498db;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ffffff'%3E%3Cpath d='M7 10l5 5 5-5H7z'/%3E%3Cpath d='M3 4h18v2H3V4zm0 7h18v2H3v-2zm0 7h18v2H3v-2z'/%3E%3C/svg%3E");
+}
+
+.image-icon {
+    background-color: #4caf50;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ffffff'%3E%3Cpath d='M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z'/%3E%3C/svg%3E");
 }
 </style>

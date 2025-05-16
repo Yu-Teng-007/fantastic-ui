@@ -43,12 +43,22 @@ Fantastic UI 是一套基于 [uni-app](https://uniapp.dcloud.io/) 开发的跨�
 -   [Message 消息提示](./message.md)
 -   [ActionSheet 动作面板](./action-sheet.md)
 -   [Dialog 对话框](./dialog.md)
+-   [Image 图片](./image.md)
 
 ### 反馈组件
 
 -   [Toast 轻提示](./toast.md)
 
 ## 📝 更新日志
+
+### v0.1.7 (2025-05-29)
+
+-   ✨ 新增 Image 图片组件
+-   🖼️ 支持多种图片填充模式(fit 属性)和位置设置(position 属性)
+-   🔄 支持图片懒加载功能，优化性能
+-   ⚡ 内置加载中和加载失败提示
+-   📱 支持圆形图片和长按菜单
+-   🎨 完全可定制的样式
 
 ### v0.1.6 (2025-05-26)
 
