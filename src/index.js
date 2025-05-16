@@ -14,6 +14,8 @@ import FancSwipeCell from "@/components/fanc-swipe-cell/index.vue";
 import FancDropdownMenu from "@/components/fanc-dropdown-menu/index.vue";
 import FancImage from "@/components/fanc-image/index.vue";
 import FancCalendar from "@/components/fanc-calendar/index.vue";
+import FancForm from "@/components/fanc-form/index.vue";
+import FancFormItem from "@/components/fanc-form-item/index.vue";
 import Message from "@/plugins/message";
 import Toast from "@/plugins/toast";
 import Dialog from "@/plugins/dialog";
@@ -36,6 +38,8 @@ const components = [
     FancDropdownMenu,
     FancImage,
     FancCalendar,
+    FancForm,
+    FancFormItem,
 ];
 
 // 组件库版本
@@ -59,6 +63,8 @@ export {
     FancDropdownMenu,
     FancImage,
     FancCalendar,
+    FancForm,
+    FancFormItem,
 };
 
 // 导出版本信息

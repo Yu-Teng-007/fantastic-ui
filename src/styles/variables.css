@@ -61,6 +61,21 @@
     --field-word-limit-color: var(--text-secondary);
     --field-border-color: var(--border-color);
 
+    /* Form 表单组件颜色 */
+    --form-bg-color: var(--white);
+    --form-item-label-color: var(--text-primary);
+    --form-item-content-color: var(--text-primary);
+    --form-item-error-color: var(--fanc-danger-color);
+    --form-item-required-color: var(--fanc-danger-color);
+    --form-disabled-opacity: 0.6;
+    --form-item-margin-bottom: 14px;
+    --form-item-error-font-size: 12px;
+    --form-item-label-font-size: 14px;
+    --form-item-content-font-size: 14px;
+    --form-item-label-line-height: 24px;
+    --form-item-content-line-height: 24px;
+    --form-border-color: var(--border-color-light);
+
     /* Image 图片组件颜色 */
     --image-bg-color: var(--gray-100);
     --image-error-bg-color: var(--gray-100);

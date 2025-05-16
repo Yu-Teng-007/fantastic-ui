@@ -34,7 +34,7 @@ fantastic-ui/
 组件系统是项目的核心部分，位于`src/components/`目录下，包含了所有UI组件。组件按功能分类：
 
 - **基础组件**：Button、Icon、Cell、CellGroup等
-- **表单组件**：Calendar等
+- **表单组件**：Form、FormItem、Field、Calendar等
 - **反馈组件**：Toast、Dialog、Message、ActionSheet等
 - **展示组件**：Image、Popover、Noticebar等
 - **导航组件**：DropdownMenu等
@@ -79,6 +79,8 @@ fantastic-ui/
 - 项目分析报告
 - 项目文件说明
 
+添加更新日志到`docs/README.md`
+
 ## 三、数据流转
 
 Fantastic-UI组件库的数据流转遵循Vue组件通信机制：
@@ -101,13 +103,16 @@ Fantastic-UI组件库的数据流转遵循Vue组件通信机制：
 
 ### 1. 组件开发流程
 
-1. 确定组件需求和API设计
+1. 确定组件需求和功能样式设计
 2. 在`src/components/`下创建组件目录
 3. 实现组件的模板、脚本和样式
 4. 在`src/configs/`中添加默认配置(如需)
 5. 在`src/plugins/`中添加全局方法(如需)
 6. 在`src/index.js`中注册组件
-7. 编写组件文档
+7. 在`src/pages/`中添加示例页面，统一风格
+8. 更新pages.json文件，将组件示例页面添加到路由中
+9. 更新首页代码（pages\index\index.vue），将示例页面的跳转添加上去
+7. 在`docs/`中编写组件文档
 8. 测试组件功能和样式
 
 ### 2. 主题定制流程

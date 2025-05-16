@@ -29,6 +29,10 @@
                     <view class="component-card__icon swipe-cell-icon"></view>
                     <text class="component-card__name">滑动单元格</text>
                 </navigator>
+                <navigator url="/pages/form-example/index" class="component-card">
+                    <view class="component-card__icon form-icon"></view>
+                    <text class="component-card__name">表单</text>
+                </navigator>
             </view>
         </view>
 
@@ -225,5 +229,10 @@ export default {
 .calendar-icon {
     background-color: #4a6cf7;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ffffff'%3E%3Cpath d='M19 3h-1V1h-2v2H8V1H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z'/%3E%3C/svg%3E");
+}
+
+.form-icon {
+    background-color: #6f42c1;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ffffff'%3E%3Cpath d='M19 3h-1V1h-2v2H8V1H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14zM7 12h10v2H7z'/%3E%3C/svg%3E");
 }
 </style>
