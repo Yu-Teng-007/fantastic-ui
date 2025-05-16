@@ -1,5 +1,5 @@
 <template>
-    <view class="fanc-dropdown-menu">
+    <view class="fanc-dropdown-menu" :style="customStyle">
         <scroll-view class="fanc-dropdown-menu__bar" scroll-x :scroll-with-animation="true" :show-scrollbar="false">
             <view class="fanc-dropdown-menu__bar-inner">
                 <view
@@ -12,7 +12,7 @@
                     }"
                     @click="onMenuClick(index, item)"
                 >
-                    <text class="fanc-dropdown-menu__title">{{ item.title }}</text>
+                    <text class="fanc-dropdown-menu__title">{{ getMenuText(item, index) }}</text>
                     <view
                         class="fanc-dropdown-menu__arrow"
                         :class="{ 'fanc-dropdown-menu__arrow--active': activeIndex === index }"
@@ -98,6 +98,11 @@ export default {
             type: Function,
             default: null,
         },
+        // 自定义选中态颜色
+        activeColor: {
+            type: String,
+            default: "",
+        },
     },
     data() {
         return {
@@ -105,7 +110,19 @@ export default {
             showPopup: false,
             selectedValues: [],
             tempSelectedValue: null,
+            selectedTexts: [], // 存储选中的文本值
         };
+    },
+    computed: {
+        // 生成自定义样式，设置CSS变量
+        customStyle() {
+            if (!this.activeColor) return {};
+            return {
+                "--dropdown-menu-active-color": this.activeColor,
+                "--dropdown-menu-active-arrow-color": this.activeColor,
+                "--dropdown-menu-option-active-color": this.activeColor,
+            };
+        },
     },
     created() {
         // 初始化选中项
@@ -135,7 +152,30 @@ export default {
                     }
                     return item.options && item.options.length > 0 ? item.options[0].value : null;
                 });
+
+                // 初始化选中文本
+                this.updateSelectedTexts();
             }
+        },
+
+        // 更新选中文本
+        updateSelectedTexts() {
+            this.selectedTexts = this.options.map((item, index) => {
+                const selectedValue = this.selectedValues[index];
+                if (selectedValue !== null && item.options) {
+                    const selectedOption = item.options.find((option) => option.value === selectedValue);
+                    return selectedOption ? selectedOption.text : item.title;
+                }
+                return item.title;
+            });
+        },
+
+        // 获取菜单显示文本
+        getMenuText(item, index) {
+            if (this.selectedTexts && this.selectedTexts[index]) {
+                return this.selectedTexts[index];
+            }
+            return item.title;
         },
 
         // 点击菜单项
@@ -177,6 +217,9 @@ export default {
             // 更新选中值
             this.selectedValues[this.activeIndex] = option.value;
 
+            // 更新选中文本
+            this.selectedTexts[this.activeIndex] = option.text;
+
             // 关闭菜单
             this.closeMenu();
 
@@ -185,6 +228,7 @@ export default {
                 menuIndex: this.activeIndex,
                 option: option,
                 value: option.value,
+                text: option.text,
             });
         },
 
@@ -193,6 +237,7 @@ export default {
             // 如果设置了关闭后重置，则恢复临时值
             if (this.resetOnClose && this.tempSelectedValue !== null) {
                 this.selectedValues[this.activeIndex] = this.tempSelectedValue;
+                this.updateSelectedTexts(); // 更新选中文本
             }
 
             this.showPopup = false;
@@ -219,9 +264,19 @@ export default {
         updateValue(menuIndex, value) {
             if (menuIndex >= 0 && menuIndex < this.selectedValues.length) {
                 this.selectedValues[menuIndex] = value;
+
+                // 更新选中文本
+                if (this.options[menuIndex] && this.options[menuIndex].options) {
+                    const selectedOption = this.options[menuIndex].options.find((option) => option.value === value);
+                    if (selectedOption) {
+                        this.selectedTexts[menuIndex] = selectedOption.text;
+                    }
+                }
+
                 this.$emit("change", {
                     menuIndex: menuIndex,
                     value: value,
+                    text: this.selectedTexts[menuIndex],
                 });
             }
         },
@@ -252,6 +307,8 @@ export default {
         height: 48px;
         background-color: var(--dropdown-menu-bg);
         border-bottom: 1px solid var(--dropdown-menu-border-color);
+        box-shadow: 0 2px 8px var(--dropdown-menu-shadow-color);
+        position: relative;
     }
 
     &__bar-inner {
@@ -264,6 +321,7 @@ export default {
         display: flex;
         align-items: center;
         justify-content: center;
+        flex: 1;
         min-width: 96px;
         height: 100%;
         padding: 0 16px;
@@ -273,6 +331,11 @@ export default {
 
         &--active {
             color: var(--dropdown-menu-active-color);
+
+            .fanc-dropdown-menu__title {
+                color: var(--dropdown-menu-active-color);
+                font-weight: 500;
+            }
         }
 
         &--disabled {
@@ -292,6 +355,7 @@ export default {
         text-align: center;
         margin-right: 4px;
         color: var(--dropdown-menu-title-color);
+        transition: color var(--dropdown-menu-transition-duration);
     }
 
     &__arrow {

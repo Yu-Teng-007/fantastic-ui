@@ -65,6 +65,24 @@
         </view>
 
         <view class="example-page__section">
+            <view class="example-page__section-title">自定义选中态颜色</view>
+            <view class="example-page__section-desc">可以自定义选中状态的颜色，搭配不同风格的页面</view>
+            <view class="example-page__content">
+                <fanc-dropdown-menu
+                    :options="basicOptions"
+                    active-color="#ff4757"
+                    style="margin-bottom: 16px"
+                ></fanc-dropdown-menu>
+                <fanc-dropdown-menu
+                    :options="basicOptions"
+                    active-color="#2ed573"
+                    style="margin-bottom: 16px"
+                ></fanc-dropdown-menu>
+                <fanc-dropdown-menu :options="basicOptions" active-color="#ff8f00"></fanc-dropdown-menu>
+            </view>
+        </view>
+
+        <view class="example-page__section">
             <view class="example-page__section-title">事件监听</view>
             <view class="example-page__section-desc">监听菜单栏的选择事件</view>
             <view class="example-page__content">
@@ -184,12 +202,9 @@ export default {
         onSelect(event) {
             console.log("选中项:", event);
             // 查找选中的文本
-            const { menuIndex, value } = event;
+            const { menuIndex, value, text } = event;
             if (this.basicOptions[menuIndex]) {
-                const option = this.basicOptions[menuIndex].options.find((item) => item.value === value);
-                if (option) {
-                    this.selectedText = `${this.basicOptions[menuIndex].title}: ${option.text}`;
-                }
+                this.selectedText = `${this.basicOptions[menuIndex].title}: ${text}`;
             }
         },
 
