@@ -2,6 +2,7 @@ import FancButton from "@/components/fanc-button/index.vue";
 import FancIcon from "@/components/fanc-icon/index.vue";
 import FancCell from "@/components/fanc-cell";
 import FancCellGroup from "@/components/fanc-cell-group";
+import FancField from "@/components/fanc-field/index.vue";
 import FancPopup from "@/components/fanc-popup/index.vue";
 import FancMessage from "@/components/fanc-message/index.vue";
 import FancNoticebar from "@/components/fanc-noticebar/index.vue";
@@ -23,6 +24,7 @@ const components = [
     FancIcon,
     FancCell,
     FancCellGroup,
+    FancField,
     FancPopup,
     FancMessage,
     FancNoticebar,
@@ -45,6 +47,7 @@ export {
     FancIcon,
     FancCell,
     FancCellGroup,
+    FancField,
     FancPopup,
     FancMessage,
     FancNoticebar,

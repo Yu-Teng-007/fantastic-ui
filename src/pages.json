@@ -25,6 +25,12 @@
             }
         },
         {
+            "path": "pages/field-example/index",
+            "style": {
+                "navigationBarTitleText": "输入框示例"
+            }
+        },
+        {
             "path": "pages/popup-example/index",
             "style": {
                 "navigationBarTitleText": "弹出层示例"

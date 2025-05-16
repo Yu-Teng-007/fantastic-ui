@@ -45,6 +45,22 @@
     --border-color: var(--gray-300);
     --border-color-light: #ebeef5;
 
+    /* Field 输入框组件颜色 */
+    --field-bg-color: var(--white);
+    --field-label-color: var(--text-primary);
+    --field-input-color: var(--text-primary);
+    --field-placeholder-color: var(--text-disabled);
+    --field-error-color: var(--fanc-danger-color);
+    --field-disabled-opacity: 0.6;
+    --field-required-color: var(--fanc-danger-color);
+    --field-icon-color: var(--gray-600);
+    --field-clear-icon-color: var(--text-disabled);
+    --field-clear-icon-active-color: var(--text-secondary);
+    --field-right-icon-color: var(--gray-600);
+    --field-error-message-color: var(--fanc-danger-color);
+    --field-word-limit-color: var(--text-secondary);
+    --field-border-color: var(--border-color);
+
     /* Image 图片组件颜色 */
     --image-bg-color: var(--gray-100);
     --image-error-bg-color: var(--gray-100);
