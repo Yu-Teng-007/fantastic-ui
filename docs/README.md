@@ -10,6 +10,10 @@
 
 Fantastic UI 是一套基于 [uni-app](https://uniapp.dcloud.io/) 开发的跨平台 UI 组件库，致力于提供统一、美观的视觉体验。组件库采用 Vue 2 开发，支持在 H5、iOS、Android 以及各类小程序平台使用。
 
+- [项目分析报告](./core/project-analysis.md)
+- [项目文件说明](./core/project-files.md)
+- [项目架构和逻辑结构](./core/project-architecture.md)
+
 ## ✨ 特性
 
 -   🌈 **多平台兼容**: 一套代码，多端运行，支持 H5、iOS、Android 和各类小程序平台
