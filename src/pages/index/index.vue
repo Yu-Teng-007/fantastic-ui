@@ -67,6 +67,10 @@
                     <view class="component-card__icon popover-icon"></view>
                     <text class="component-card__name">弹出气泡</text>
                 </navigator>
+                <navigator url="/pages/dropdown-menu-example/index" class="component-card">
+                    <view class="component-card__icon dropdown-icon"></view>
+                    <text class="component-card__name">下拉菜单栏</text>
+                </navigator>
             </view>
         </view>
     </view>
@@ -189,5 +193,10 @@ export default {
 .dialog-icon {
     background-color: #fd7e14;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ffffff'%3E%3Cpath d='M21 6h-2v9H6v2c0 .55.45 1 1 1h11l4 4V7c0-.55-.45-1-1-1zm-4 6V3c0-.55-.45-1-1-1H3c-.55 0-1 .45-1 1v14l4-4h10c.55 0 1-.45 1-1z'/%3E%3C/svg%3E");
+}
+
+.dropdown-icon {
+    background-color: #3498db;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ffffff'%3E%3Cpath d='M7 10l5 5 5-5H7z'/%3E%3Cpath d='M3 4h18v2H3V4zm0 7h18v2H3v-2zm0 7h18v2H3v-2z'/%3E%3C/svg%3E");
 }
 </style>

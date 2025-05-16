@@ -71,6 +71,12 @@
             "style": {
                 "navigationBarTitleText": "滑动单元格示例"
             }
+        },
+        {
+            "path": "pages/dropdown-menu-example/index",
+            "style": {
+                "navigationBarTitleText": "下拉菜单栏示例"
+            }
         }
     ],
     "globalStyle": {

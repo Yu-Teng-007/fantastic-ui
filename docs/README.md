@@ -35,12 +35,13 @@ Fantastic UI 是一套基于 [uni-app](https://uniapp.dcloud.io/) 开发的跨�
 -   [SwipeCell 滑动单元格](./swipe-cell.md)
 -   [Popup 弹出层](./popup.md)
 -   [Popover 弹出气泡](./popover.md)
+-   [DropdownMenu 下拉菜单栏](./dropdown-menu.md)
 
 ### 展示组件
 
 -   [NoticeBar 通知栏](./noticebar.md)
 -   [Message 消息提示](./message.md)
--   [ActionSheet 动作面板](./ActionSheet.md)
+-   [ActionSheet 动作面板](./action-sheet.md)
 -   [Dialog 对话框](./dialog.md)
 
 ### 反馈组件
@@ -48,6 +49,16 @@ Fantastic UI 是一套基于 [uni-app](https://uniapp.dcloud.io/) 开发的跨�
 -   [Toast 轻提示](./toast.md)
 
 ## 📝 更新日志
+
+### v0.1.6 (2025-05-26)
+
+-   ✨ 新增 DropdownMenu 下拉菜单栏组件
+-   🚀 支持多个菜单选项，超过四个可横向滑动
+-   🛠️ 支持向上或向下展开下拉内容
+-   🎛️ 配置是否显示遮罩层
+-   ✅ 选中项显示对勾标记
+-   🔄 支持自定义排序功能
+-   ⚙️ 支持禁用特定菜单
 
 ### v0.1.5 (2025-05-23)
 

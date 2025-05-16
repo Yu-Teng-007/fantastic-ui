@@ -10,6 +10,7 @@ import FancPopover from "@/components/fanc-popover/index.vue";
 import FancToast from "@/components/fanc-toast/index.vue";
 import FancDialog from "@/components/fanc-dialog/index.vue";
 import FancSwipeCell from "@/components/fanc-swipe-cell/index.vue";
+import FancDropdownMenu from "@/components/fanc-dropdown-menu/index.vue";
 import Message from "@/plugins/message";
 import Toast from "@/plugins/toast";
 import Dialog from "@/plugins/dialog";
@@ -28,10 +29,11 @@ const components = [
     FancToast,
     FancDialog,
     FancSwipeCell,
+    FancDropdownMenu,
 ];
 
 // 组件库版本
-const version = "0.1.5";
+const version = "0.1.6";
 
 // 导出单个组件
 export {
@@ -47,6 +49,7 @@ export {
     FancToast,
     FancDialog,
     FancSwipeCell,
+    FancDropdownMenu,
 };
 
 // 导出版本信息

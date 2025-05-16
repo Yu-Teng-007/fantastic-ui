@@ -45,6 +45,23 @@
     --border-color: var(--gray-300);
     --border-color-light: #ebeef5;
 
+    /* 下拉菜单栏组件 (fanc-dropdown-menu) 颜色 */
+    --dropdown-menu-bg: var(--white);
+    --dropdown-menu-active-color: var(--fanc-primary-color);
+    --dropdown-menu-disabled-color: var(--text-disabled);
+    --dropdown-menu-disabled-opacity: 0.6;
+    --dropdown-menu-title-color: var(--text-primary);
+    --dropdown-menu-option-active-color: var(--fanc-primary-color);
+    --dropdown-menu-option-bg: var(--white);
+    --dropdown-menu-option-active-bg: rgba(0, 123, 255, 0.05);
+    --dropdown-menu-shadow-color: rgba(0, 0, 0, 0.1);
+    --dropdown-menu-mask-color: var(--dialog-mask-color);
+    --dropdown-menu-arrow-color: var(--text-secondary);
+    --dropdown-menu-border-color: var(--border-color-light);
+    --dropdown-menu-active-arrow-color: var(--fanc-primary-color);
+    --dropdown-menu-transition-duration: 0.3s;
+    --dropdown-menu-z-index: 10;
+
     /* 滑动单元格 (fanc-swipe-cell) 颜色 */
     --swipe-cell-content-bg: var(--white);
     --swipe-cell-indicator-bg: rgba(0, 0, 0, 0.1);
