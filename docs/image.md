@@ -10,48 +10,39 @@
 <fanc-image src="https://example.com/image.jpg" width="200" height="200" />
 ```
 
-## 填充模式
+## 图片模式
 
-通过 `fit` 属性可以设置图片填充模式，等同于原生的 `object-fit` 属性。
-
-```html
-<fanc-image src="https://example.com/image.jpg" width="100" height="100" fit="cover" />
-```
-
-### fit 属性值说明
-
-| 值         | 说明                                                     |
-| ---------- | -------------------------------------------------------- |
-| contain    | 保持宽高比缩放图片，使图片的长边能完全显示出来           |
-| cover      | 保持宽高比缩放图片，使图片的短边能完全显示出来，裁剪长边 |
-| fill       | 拉伸图片，使图片填满元素                                 |
-| none       | 保持图片原有尺寸                                         |
-| scale-down | 取 `none` 或 `contain` 中较小的一个                      |
-
-## 图片位置
-
-通过 `position` 属性可以设置图片位置，结合 `fit` 属性使用，等同于原生的 `object-position` 属性。
+通过 `mode` 属性可以设置图片裁剪、缩放的模式，与 UniApp 原生 image 组件的 mode 属性完全一致。
 
 ```html
-<fanc-image src="https://example.com/image.jpg" width="100" height="100" fit="cover" position="center" />
+<fanc-image src="https://example.com/image.jpg" width="100" height="100" mode="aspectFill" />
 ```
 
-### position 属性值说明
+### mode 属性值说明
 
-| 值     | 说明               |
-| ------ | ------------------ |
-| center | 居中对齐（默认值） |
-| top    | 顶部对齐           |
-| right  | 右侧对齐           |
-| bottom | 底部对齐           |
-| left   | 左侧对齐           |
+| 值           | 说明                                                                                      |
+| ------------ | ----------------------------------------------------------------------------------------- |
+| scaleToFill  | 不保持纵横比缩放图片，使图片完全拉伸填满元素                                              |
+| aspectFit    | 保持纵横比缩放图片，使图片的长边能完全显示出来（等同于 CSS 的 contain）                   |
+| aspectFill   | 保持纵横比缩放图片，只保证图片的短边能完全显示出来，长边将会被裁剪（等同于 CSS 的 cover） |
+| widthFix     | 宽度不变，高度自动变化，保持原图宽高比不变                                                |
+| heightFix    | 高度不变，宽度自动变化，保持原图宽高比不变                                                |
+| top          | 不缩放图片，只显示图片的顶部区域                                                          |
+| bottom       | 不缩放图片，只显示图片的底部区域                                                          |
+| center       | 不缩放图片，只显示图片的中间区域                                                          |
+| left         | 不缩放图片，只显示图片的左边区域                                                          |
+| right        | 不缩放图片，只显示图片的右边区域                                                          |
+| top left     | 不缩放图片，只显示图片的左上边区域                                                        |
+| top right    | 不缩放图片，只显示图片的右上边区域                                                        |
+| bottom left  | 不缩放图片，只显示图片的左下边区域                                                        |
+| bottom right | 不缩放图片，只显示图片的右下边区域                                                        |
 
 ## 圆形图片
 
 通过 `round` 属性可以设置图片变圆。
 
 ```html
-<fanc-image src="https://example.com/image.jpg" width="100" height="100" fit="cover" round />
+<fanc-image src="https://example.com/image.jpg" width="100" height="100" mode="aspectFill" round />
 ```
 
 ## 图片懒加载
@@ -149,21 +140,20 @@ export default {
 
 ### Props
 
-| 参数                   | 说明                                          | 类型               | 默认值   |
-| ---------------------- | --------------------------------------------- | ------------------ | -------- |
-| src                    | 图片链接                                      | _string_           | -        |
-| fit                    | 图片填充模式，等同于原生的 `object-fit` 属性  | _string_           | `fill`   |
-| position               | 图片位置，等同于原生的 `object-position` 属性 | _string_           | `center` |
-| width                  | 宽度，支持数值或带单位字符串                  | _number \| string_ | `100px`  |
-| height                 | 高度，支持数值或带单位字符串                  | _number \| string_ | `100px`  |
-| round                  | 是否显示为圆形                                | _boolean_          | `false`  |
-| lazy-load              | 是否开启图片懒加载                            | _boolean_          | `false`  |
-| loading-text           | 加载中提示文字                                | _string_           | -        |
-| error-text             | 加载失败提示文字                              | _string_           | -        |
-| background             | 背景颜色                                      | _string_           | -        |
-| show-menu-by-longpress | 是否开启长按图片显示识别小程序码菜单          | _boolean_          | `false`  |
-| custom-style           | 自定义样式对象                                | _object_           | -        |
-| fallbackSrc            | 加载失败时显示的替代图片                      | _string_           | -        |
+| 参数                   | 说明                                          | 类型               | 默认值       |
+| ---------------------- | --------------------------------------------- | ------------------ | ------------ |
+| src                    | 图片链接                                      | _string_           | -            |
+| mode                   | 图片裁剪、缩放的模式，同 UniApp 的 image 组件 | _string_           | `aspectFill` |
+| width                  | 宽度，支持数值或带单位字符串                  | _number \| string_ | `100px`      |
+| height                 | 高度，支持数值或带单位字符串                  | _number \| string_ | `100px`      |
+| round                  | 是否显示为圆形                                | _boolean_          | `false`      |
+| lazy-load              | 是否开启图片懒加载                            | _boolean_          | `false`      |
+| loading-text           | 加载中提示文字                                | _string_           | -            |
+| error-text             | 加载失败提示文字                              | _string_           | -            |
+| background             | 背景颜色                                      | _string_           | -            |
+| show-menu-by-longpress | 是否开启长按图片显示识别小程序码菜单          | _boolean_          | `false`      |
+| custom-style           | 自定义样式对象                                | _object_           | -            |
+| fallbackSrc            | 加载失败时显示的替代图片                      | _string_           | -            |
 
 ### Events
 

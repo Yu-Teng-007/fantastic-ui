@@ -3,7 +3,7 @@
         class="fanc-image"
         :class="[
             round ? 'fanc-image--round' : '',
-            `fanc-image--${mode}`,
+            `fanc-image--mode-${mode}`,
             showError ? 'fanc-image--error' : '',
             showLoading ? 'fanc-image--loading' : '',
         ]"
@@ -17,7 +17,6 @@
             :mode="mode"
             :lazy-load="lazyLoad"
             class="fanc-image__img"
-            :style="imgStyle"
             :show-menu-by-longpress="showMenuByLongpress"
             @load="onImgLoad"
             @error="onSrcImgError"
@@ -30,7 +29,6 @@
             :mode="mode"
             :lazy-load="lazyLoad"
             class="fanc-image__img"
-            :style="imgStyle"
             :show-menu-by-longpress="showMenuByLongpress"
             @load="onFallbackImgLoad"
             @error="onFallbackImgError"
@@ -82,18 +80,28 @@ export default {
             type: String,
             default: "",
         },
-        // 裁剪模式
-        fit: {
+        // 图片裁剪、缩放的模式
+        mode: {
             type: String,
-            default: "fill",
+            default: "aspectFill",
             validator: (value) => {
-                return ["contain", "cover", "fill", "none", "scale-down"].includes(value);
+                return [
+                    "scaleToFill",
+                    "aspectFit",
+                    "aspectFill",
+                    "widthFix",
+                    "heightFix",
+                    "top",
+                    "bottom",
+                    "center",
+                    "left",
+                    "right",
+                    "top left",
+                    "top right",
+                    "bottom left",
+                    "bottom right",
+                ].includes(value);
             },
-        },
-        // 图片位置
-        position: {
-            type: String,
-            default: "center",
         },
         // 宽度，支持数值或带单位字符串
         width: {
@@ -146,7 +154,6 @@ export default {
         return {
             isLoading: true,
             isError: false,
-            mode: "aspectFill", // 默认uni-app图片模式
             useFallback: false, // 是否使用替代图片
             fallbackLoaded: false, // 替代图片是否加载成功
             fallbackError: false, // 替代图片是否加载失败
@@ -175,16 +182,6 @@ export default {
             return style;
         },
 
-        // 图片样式
-        imgStyle() {
-            const style = {
-                objectFit: this.fit,
-                objectPosition: this.position,
-            };
-
-            return style;
-        },
-
         // 是否显示加载中
         showLoading() {
             return this.isLoading && !this.isError;
@@ -197,32 +194,6 @@ export default {
     },
 
     watch: {
-        fit: {
-            immediate: true,
-            handler(value) {
-                // 根据fit属性设置uni-app的mode属性
-                switch (value) {
-                    case "contain":
-                        this.mode = "aspectFit";
-                        break;
-                    case "cover":
-                        this.mode = "aspectFill";
-                        break;
-                    case "fill":
-                        this.mode = "scaleToFill";
-                        break;
-                    case "none":
-                    case "scale-down":
-                        this.mode = "aspectFit"; // 小程序没有完全等价的模式，使用aspectFit近似
-                        break;
-                    default:
-                        this.mode = "aspectFill";
-                }
-
-                // 合并位置属性到mode
-            },
-        },
-
         src(newVal) {
             if (newVal) {
                 this.isLoading = true;

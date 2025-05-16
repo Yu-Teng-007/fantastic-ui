@@ -14,26 +14,14 @@
             </view>
         </view>
 
-        <!-- 填充模式 -->
+        <!-- 图片模式 -->
         <view class="example-page__section">
-            <view class="example-page__section-title">填充模式</view>
-            <view class="example-page__section-desc">通过 fit 属性可以设置图片填充模式</view>
-            <view class="example-page__content image-fit-demo">
-                <view class="image-fit-item" v-for="(item, index) in fits" :key="index">
-                    <fanc-image :src="demoImageUrl" width="80" height="80" :fit="item" />
-                    <text class="image-fit-text">{{ item }}</text>
-                </view>
-            </view>
-        </view>
-
-        <!-- 图片位置 -->
-        <view class="example-page__section">
-            <view class="example-page__section-title">图片位置</view>
-            <view class="example-page__section-desc">通过 position 属性可以设置图片位置</view>
-            <view class="example-page__content image-position-demo">
-                <view class="image-position-item" v-for="(item, index) in positions" :key="index">
-                    <fanc-image :src="demoImageUrl" width="100" height="100" fit="cover" :position="item" />
-                    <text class="image-position-text">{{ item }}</text>
+            <view class="example-page__section-title">图片模式</view>
+            <view class="example-page__section-desc">通过 mode 属性可以设置图片裁剪、缩放的模式</view>
+            <view class="example-page__content image-mode-demo">
+                <view class="image-mode-item" v-for="(item, index) in modes" :key="index">
+                    <fanc-image :src="demoImageUrl" width="80" height="80" :mode="item" />
+                    <text class="image-mode-text">{{ item }}</text>
                 </view>
             </view>
         </view>
@@ -43,7 +31,7 @@
             <view class="example-page__section-title">圆形图片</view>
             <view class="example-page__section-desc">通过 round 属性可以设置图片变圆</view>
             <view class="example-page__content">
-                <fanc-image :src="demoImageUrl" width="100" height="100" fit="cover" round />
+                <fanc-image :src="demoImageUrl" width="100" height="100" mode="aspectFill" round />
             </view>
         </view>
 
@@ -91,7 +79,7 @@
                     :src="item"
                     width="100%"
                     height="200"
-                    fit="cover"
+                    mode="aspectFill"
                     lazy-load
                 />
             </view>
@@ -123,8 +111,22 @@ export default {
     data() {
         return {
             demoImageUrl: "/static/img/demo/cat.jpeg",
-            fits: ["contain", "cover", "fill", "none", "scale-down"],
-            positions: ["center", "top", "right", "bottom", "left"],
+            modes: [
+                "scaleToFill",
+                "aspectFit",
+                "aspectFill",
+                "widthFix",
+                "heightFix",
+                "top",
+                "bottom",
+                "center",
+                "left",
+                "right",
+                "top left",
+                "top right",
+                "bottom left",
+                "bottom right",
+            ],
             lazyImages: [
                 "/static/img/demo/little_pig_with_trumpet.png",
                 "/static/img/demo/little_dog_with_trumpet.png",
@@ -155,36 +157,21 @@ export default {
 </script>
 
 <style lang="scss">
-.image-fit-demo {
+.image-mode-demo {
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-between;
 
-    .image-fit-item {
+    .image-mode-item {
         margin: 0 12px 12px 0;
         text-align: center;
 
-        .image-fit-text {
+        .image-mode-text {
             font-size: 12px;
             color: #969799;
             margin-top: 6px;
             display: block;
-        }
-    }
-}
-
-.image-position-demo {
-    display: flex;
-    flex-wrap: wrap;
-
-    .image-position-item {
-        margin: 0 12px 12px 0;
-        text-align: center;
-
-        .image-position-text {
-            font-size: 12px;
-            color: #969799;
-            margin-top: 6px;
-            display: block;
+            word-break: break-word;
         }
     }
 }
