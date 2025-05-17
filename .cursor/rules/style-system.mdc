@@ -1,0 +1,62 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+# Fantastic-UI样式系统
+
+样式系统位于[src/styles/](mdc:src/styles/)目录，使用CSS变量和SCSS预处理器，实现主题定制和样式复用。
+
+## 核心文件
+
+- [variables.css](mdc:src/styles/variables.css) - 定义全局CSS变量
+- [global.scss](mdc:src/styles/global.scss) - 定义全局基础样式
+- [index.scss](mdc:src/styles/index.scss) - 样式入口文件
+- [example-pages.scss](mdc:src/styles/example-pages.scss) - 示例页面样式
+
+## CSS变量体系
+
+Fantastic-UI采用CSS变量定义颜色、尺寸、动画等属性，便于主题定制。主要包括：
+
+- 主题色变量: `--fanc-primary-color`, `--fanc-success-color`等
+- 背景色变量: `--fanc-background-color-light`等
+- 文字颜色变量: `--fanc-text-color-primary`等
+- 边框变量: `--fanc-border-radius`等
+- 间距变量: `--fanc-spacing-sm`, `--fanc-spacing-md`等
+- 动画变量: `--fanc-animation-duration-fast`等
+
+## 样式命名规范
+
+项目采用BEM命名方式：
+
+```css
+.fanc-{组件名}__{元素名}--{修饰符}
+```
+
+例如：
+- `.fanc-button` - 按钮组件
+- `.fanc-button__text` - 按钮文本元素
+- `.fanc-button--primary` - 主要类型的按钮
+
+## 主题定制方法
+
+修改主题有两种方式：
+
+1. 全局覆盖CSS变量:
+```css
+:root {
+  --fanc-primary-color: #ff6b00;
+  --fanc-success-color: #07c160;
+}
+```
+
+2. 局部作用域覆盖:
+```css
+.custom-theme {
+  --fanc-primary-color: #8a2be2;
+}
+```
+
+## 常用样式工具
+
+常用的样式工具类和混合宏可以在全局样式中找到，推荐在组件开发中复用这些工具而非重复编写。

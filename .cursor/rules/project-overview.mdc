@@ -1,0 +1,29 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Fantastic-UI项目概览
+
+Fantastic-UI是一个基于uni-app框架的跨平台UI组件库，旨在提供统一、美观的UI组件，支持H5、App和各种小程序平台。
+
+## 核心特点
+
+- **多平台兼容**：支持H5、iOS、Android和各类小程序平台
+- **性能优先**：轻量化设计，确保高性能体验
+- **可定制主题**：使用CSS变量实现灵活的主题配置
+- **风格统一**：所有组件遵循统一的设计语言
+- **即插即用**：支持按需引入组件
+
+## 核心文件和目录
+
+- 入口文件：[src/main.js](mdc:src/main.js)和[src/index.js](mdc:src/index.js)
+- 组件系统：[src/components/](mdc:src/components)目录
+- 样式系统：[src/styles/](mdc:src/styles)目录
+- 插件系统：[src/plugins/](mdc:src/plugins)目录
+- 配置系统：[src/configs/](mdc:src/configs)目录
+- 文档系统：[docs/](mdc:docs)目录
+
+## 架构文档
+
+详细的项目架构说明可在[docs/core/project-architecture.md](mdc:docs/core/project-architecture.md)中查阅。

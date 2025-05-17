@@ -1,0 +1,51 @@
+---
+description:
+globs:
+alwaysApply: false
+---
+# Fantastic-UI开发流程
+
+本规则描述了Fantastic-UI项目的标准开发流程和最佳实践。
+
+## 组件开发流程
+
+开发新组件时，请遵循以下步骤：
+
+1. 确定组件需求和功能样式设计
+2. 在[src/components/](mdc:src/components/)下创建组件目录，命名为`fanc-组件名`
+3. 实现组件的模板、脚本和样式，主文件为`index.vue`
+4. 在[src/configs/](mdc:src/configs/)中添加默认配置(如需)
+5. 在[src/plugins/](mdc:src/plugins/)中添加全局方法(如需)
+6. 在[src/index.js](mdc:src/index.js)中注册组件
+7. 在[src/pages/](mdc:src/pages/)中添加示例页面
+8. 更新[pages.json](mdc:src/pages.json)文件，将组件示例页面添加到路由中
+9. 在[docs/](mdc:docs/)中编写组件文档，命名为`组件名.md`
+10. 测试组件功能和样式
+
+## 代码提交规范
+
+提交代码时请遵循以下规范：
+
+1. 提交信息格式：`类型: 简短描述`
+   - 类型包括: `feat`(新功能), `fix`(修复), `docs`(文档), `style`(格式), `refactor`(重构), `perf`(性能优化), `test`(测试), `chore`(构建/工具)
+   - 例如: `feat: 添加按钮组件的加载状态`
+
+2. 提交前确保代码通过lint检查
+3. 保持提交粒度适中，每个提交有明确的功能点
+
+## 文档编写规范
+
+每个组件的文档应包含以下部分：
+
+1. 组件简介和使用场景
+2. 基础用法示例
+3. 组件API说明，包括Props、Events、Slots
+4. 特殊说明(如兼容性问题、性能注意事项等)
+
+## 项目文件和功能说明
+
+核心文件和目录的详细说明可参考[docs/core/project-files.md](mdc:docs/core/project-files.md)。
+
+## 项目架构
+
+项目整体架构设计可参考[docs/core/project-architecture.md](mdc:docs/core/project-architecture.md)。
