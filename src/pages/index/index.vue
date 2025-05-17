@@ -43,6 +43,10 @@
                     <view class="component-card__icon cascader-icon"></view>
                     <text class="component-card__name">级联选择</text>
                 </navigator>
+                <navigator url="/pages/number-keyboard-example/index" class="component-card">
+                    <view class="component-card__icon keyboard-icon"></view>
+                    <text class="component-card__name">数字键盘</text>
+                </navigator>
             </view>
         </view>
 
@@ -248,12 +252,19 @@ export default {
 
 // 添加复选框图标样式
 .checkbox-icon {
-    background-color: #20c997;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ffffff'%3E%3Cpath d='M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-8.29 13.29c-.39.39-1.02.39-1.41 0L5.71 12.7c-.39-.39-.39-1.02 0-1.41.39-.39 1.02-.39 1.41 0L10 14.17l6.88-6.88c.39-.39 1.02-.39 1.41 0 .39.39.39 1.02 0 1.41l-7.58 7.59z'/%3E%3C/svg%3E");
+    background-color: #ff9800;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ffffff'%3E%3Cpath d='M19 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V5a2 2 0 00-2-2zm-9 14l-5-5 1.4-1.4 3.6 3.6 7.6-7.6L19 8l-9 9z'/%3E%3C/svg%3E");
 }
 
+// 添加级联选择图标样式
 .cascader-icon {
-    background-color: #9370db;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ffffff'%3E%3Cpath d='M4 14h4v-4h2v4h4v2h-4v4h-2v-4H4v-2zm16-4V4H8v2h10v10h2v-6zm-6-8h10v10h-2V4h-8V2z'/%3E%3C/svg%3E");
+    background-color: #03a9f4;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ffffff'%3E%3Cpath d='M3 9h4V5H3v4zm0 5h4v-4H3v4zm5 0h4v-4H8v4zm5 0h4v-4h-4v4zM8 9h4V5H8v4zm5-4v4h4V5h-4zm5 9h4v-4h-4v4zm0-9v4h4V5h-4z'/%3E%3C/svg%3E");
+}
+
+// 添加数字键盘图标样式
+.keyboard-icon {
+    background-color: #9c27b0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ffffff'%3E%3Cpath d='M20 5H4c-1.1 0-1.99.9-1.99 2L2 17c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm-9 3h2v2h-2V8zm0 3h2v2h-2v-2zM8 8h2v2H8V8zm0 3h2v2H8v-2zm-1 2H5v-2h2v2zm0-3H5V8h2v2zm9 7H8v-2h8v2zm0-4h-2v-2h2v2zm0-3h-2V8h2v2zm3 3h-2v-2h2v2zm0-3h-2V8h2v2z'/%3E%3C/svg%3E");
 }
 </style>

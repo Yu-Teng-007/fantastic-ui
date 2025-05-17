@@ -137,6 +137,12 @@
             "style": {
                 "navigationBarTitleText": "级联选择器示例"
             }
+        },
+        {
+            "path": "pages/number-keyboard-example/index",
+            "style": {
+                "navigationBarTitleText": "数字键盘示例"
+            }
         }
     ],
     "globalStyle": {

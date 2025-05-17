@@ -258,4 +258,18 @@
     --cascader-option-disabled-color: #c8c9cc;
     --cascader-arrow-size: 5px;
     --cascader-transition-duration: 0.3s;
+
+    /* NumberKeyboard 数字键盘组件颜色 */
+    --keyboard-bg-color: #f2f3f5;
+    --keyboard-header-bg-color: #f7f8fa;
+    --keyboard-border-color: #ebedf0;
+    --keyboard-title-color: #323233;
+    --keyboard-close-color: var(--fanc-primary-color);
+    --keyboard-key-bg-color: #fff;
+    --keyboard-key-color: #323233;
+    --keyboard-key-active-bg-color: #e6e6e6;
+    --keyboard-function-key-color: var(--text-secondary);
+    --keyboard-delete-key-color: var(--text-secondary);
+    --keyboard-transition-duration: 0.3s;
+    --keyboard-z-index: 100;
 }
