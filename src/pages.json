@@ -125,6 +125,12 @@
             "style": {
                 "navigationBarTitleText": "高级表单"
             }
+        },
+        {
+            "path": "pages/checkbox-example/index",
+            "style": {
+                "navigationBarTitleText": "复选框示例"
+            }
         }
     ],
     "globalStyle": {

@@ -33,6 +33,10 @@
                     <view class="component-card__icon form-icon"></view>
                     <text class="component-card__name">表单</text>
                 </navigator>
+                <navigator url="/pages/checkbox-example/index" class="component-card">
+                    <view class="component-card__icon checkbox-icon"></view>
+                    <text class="component-card__name">复选框</text>
+                </navigator>
             </view>
         </view>
 
@@ -234,5 +238,11 @@ export default {
 .form-icon {
     background-color: #6f42c1;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ffffff'%3E%3Cpath d='M19 3h-1V1h-2v2H8V1H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14zM7 12h10v2H7z'/%3E%3C/svg%3E");
+}
+
+// 添加复选框图标样式
+.checkbox-icon {
+    background-color: #20c997;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ffffff'%3E%3Cpath d='M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-8.29 13.29c-.39.39-1.02.39-1.41 0L5.71 12.7c-.39-.39-.39-1.02 0-1.41.39-.39 1.02-.39 1.41 0L10 14.17l6.88-6.88c.39-.39 1.02-.39 1.41 0 .39.39.39 1.02 0 1.41l-7.58 7.59z'/%3E%3C/svg%3E");
 }
 </style>

@@ -16,6 +16,8 @@ import FancImage from "@/components/fanc-image/index.vue";
 import FancCalendar from "@/components/fanc-calendar/index.vue";
 import FancForm from "@/components/fanc-form/index.vue";
 import FancFormItem from "@/components/fanc-form-item/index.vue";
+import FancCheckbox from "@/components/fanc-checkbox/index.vue";
+import FancCheckboxGroup from "@/components/fanc-checkbox-group/index.vue";
 import Message from "@/plugins/message";
 import Toast from "@/plugins/toast";
 import Dialog from "@/plugins/dialog";
@@ -40,6 +42,8 @@ const components = [
     FancCalendar,
     FancForm,
     FancFormItem,
+    FancCheckbox,
+    FancCheckboxGroup,
 ];
 
 // 组件库版本
@@ -65,6 +69,8 @@ export {
     FancCalendar,
     FancForm,
     FancFormItem,
+    FancCheckbox,
+    FancCheckboxGroup,
 };
 
 // 导出版本信息
