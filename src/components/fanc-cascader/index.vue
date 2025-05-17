@@ -220,12 +220,19 @@ export default {
                 return `rgba(${color}, 0.1)`;
             };
 
-            const cssVars = {
+            // 更新CSS根变量，这样弹窗也能使用自定义颜色
+            const rootElement = document.documentElement;
+            rootElement.style.setProperty("--cascader-active-color", this.activeColor);
+            rootElement.style.setProperty(
+                "--cascader-active-background",
+                generateLightColor(this.activeColor)
+            );
+
+            // 同时也返回本地样式对象，保持向前兼容
+            return {
                 "--cascader-active-color": this.activeColor,
                 "--cascader-active-background": generateLightColor(this.activeColor),
             };
-
-            return cssVars;
         },
     },
 
@@ -248,7 +255,94 @@ export default {
         },
     },
 
+    // 在组件销毁时恢复默认颜色
+    beforeDestroy() {
+        // 检查是否设置了自定义颜色
+        if (this.activeColor) {
+            // 恢复根元素上的默认CSS变量
+            const rootElement = document.documentElement;
+            rootElement.style.removeProperty("--cascader-active-color");
+            rootElement.style.removeProperty("--cascader-active-background");
+
+            // 移除动态创建的样式元素
+            if (this._styleElements && this._styleElements.length) {
+                this._styleElements.forEach((style) => {
+                    if (style && style.parentNode) {
+                        style.parentNode.removeChild(style);
+                    }
+                });
+                this._styleElements = [];
+            }
+        }
+    },
+
     methods: {
+        // 应用自定义颜色到弹窗元素
+        applyCustomColor() {
+            if (!this.activeColor) return;
+
+            this.$nextTick(() => {
+                const generateLightColor = (color) => {
+                    if (color.startsWith("#")) {
+                        return `${color}1A`;
+                    } else if (color.startsWith("rgb")) {
+                        if (color.startsWith("rgba")) {
+                            return color;
+                        }
+                        return color.replace("rgb", "rgba").replace(")", ", 0.1)");
+                    }
+                    return `rgba(${color}, 0.1)`;
+                };
+
+                // 查找弹窗的所有级联选择器相关元素
+                const popupContent = document.querySelector(".fanc-popup__content");
+                if (popupContent) {
+                    // 设置确认按钮的颜色
+                    const confirmBtn = popupContent.querySelector(".fanc-cascader__confirm");
+                    if (confirmBtn) {
+                        confirmBtn.style.color = this.activeColor;
+                    }
+
+                    // 设置选项卡激活状态颜色
+                    const activeTabs = popupContent.querySelectorAll(".fanc-cascader__tab--active");
+                    activeTabs.forEach((tab) => {
+                        tab.style.color = this.activeColor;
+                        // 注意：:after伪元素不能通过JS直接选择，需要用样式表处理
+                    });
+
+                    // 设置伪元素的背景色
+                    const style = document.createElement("style");
+                    style.textContent = `
+                        .fanc-popup__content .fanc-cascader__tab--active::after {
+                            background-color: ${this.activeColor} !important;
+                        }
+                    `;
+                    document.head.appendChild(style);
+
+                    // 记录style元素，以便可以后续移除
+                    if (!this._styleElements) this._styleElements = [];
+                    this._styleElements.push(style);
+
+                    // 设置选项激活状态颜色和背景
+                    const activeOptions = popupContent.querySelectorAll(
+                        ".fanc-cascader__option--active"
+                    );
+                    activeOptions.forEach((option) => {
+                        option.style.color = this.activeColor;
+                        option.style.backgroundColor = generateLightColor(this.activeColor);
+                    });
+
+                    // 设置选中项的勾选图标颜色
+                    const checkIcons = popupContent.querySelectorAll(
+                        ".fanc-cascader__option-check"
+                    );
+                    checkIcons.forEach((icon) => {
+                        icon.style.borderColor = this.activeColor;
+                    });
+                }
+            });
+        },
+
         // 初始化选择状态
         initSelectedState(values) {
             if (!this.options.length) return;
@@ -302,6 +396,9 @@ export default {
             // 设置默认激活的选项卡
             this.activeTab = Math.max(0, this.tempSelectedOptions.length - 1);
 
+            // 弹窗打开后，确保自定义颜色被应用到弹窗
+            this.applyCustomColor();
+
             this.$emit("open");
         },
 
@@ -333,6 +430,8 @@ export default {
         // 切换选项卡
         switchTab(index) {
             this.activeTab = index;
+            // 切换选项卡后应用自定义颜色
+            this.applyCustomColor();
         },
 
         // 判断选项是否被选中
@@ -354,6 +453,9 @@ export default {
 
             // 更新选项卡
             this.updateTabs();
+
+            // 应用自定义颜色
+            this.applyCustomColor();
 
             // 如果有子级，跳转到下一级
             if (option.children && option.children.length) {

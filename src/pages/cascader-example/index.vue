@@ -70,9 +70,9 @@
             <fanc-cascader
                 v-model="selectedColor3"
                 :options="colorOptions"
-                placeholder="蓝色主题"
+                placeholder="紫色主题"
                 title="选择颜色"
-                active-color="#409EFF"
+                active-color="#7859c5"
                 @change="onColor3Change"
             ></fanc-cascader>
         </view>

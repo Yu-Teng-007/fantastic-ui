@@ -241,21 +241,21 @@
     /* Cascader 级联选择器组件颜色 */
     --cascader-active-color: var(--fanc-primary-color);
     --cascader-active-background: rgba(0, 123, 255, 0.1);
-    --cascader-text-color: #323233;
+    --cascader-text-color: #333;
+    --cascader-border-color: #e8e8e8;
     --cascader-disabled-color: #c8c9cc;
     --cascader-disabled-opacity: 0.6;
-    --cascader-border-color: #e8e8e8;
     --cascader-header-border-color: #ebedf0;
-    --cascader-tab-height: 44px;
-    --cascader-option-height: 44px;
     --cascader-cancel-color: #969799;
-    --cascader-option-disabled-color: #c8c9cc;
-    --cascader-toolbar-height: 44px;
-    --cascader-tab-active-line-width: 40px;
-    --cascader-tab-active-line-height: 2px;
     --cascader-font-size: 14px;
     --cascader-title-font-size: 16px;
     --cascader-option-font-size: 14px;
-    --cascader-transition-duration: 0.3s;
+    --cascader-toolbar-height: 44px;
+    --cascader-tab-height: 44px;
+    --cascader-option-height: 44px;
+    --cascader-tab-active-line-width: 40px;
+    --cascader-tab-active-line-height: 2px;
+    --cascader-option-disabled-color: #c8c9cc;
     --cascader-arrow-size: 5px;
+    --cascader-transition-duration: 0.3s;
 }
