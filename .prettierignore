@@ -1,0 +1,35 @@
+# 构建输出
+dist
+build
+
+# 依赖目录
+node_modules
+
+# 包管理文件
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# 自动生成的文件
+*.min.js
+*.min.css
+
+# 配置文件
+.eslintrc
+.babelrc
+.editorconfig
+
+# 其他文件
+*.md
+*.svg
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.json5
+*.yaml
+*.yml
+
+# 特定目录
+public/
+static/ 

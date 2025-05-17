@@ -1,6 +1,11 @@
 <template>
     <view class="fanc-popover">
-        <view class="fanc-popover__reference" @click="onClick" @touchstart="onTouchStart" @touchend="onTouchEnd">
+        <view
+            class="fanc-popover__reference"
+            @click="onClick"
+            @touchstart="onTouchStart"
+            @touchend="onTouchEnd"
+        >
             <slot></slot>
         </view>
         <view

@@ -2,7 +2,9 @@
     <view class="example-page">
         <view class="example-page__header">
             <text class="example-page__header-title">Image 图片</text>
-            <text class="example-page__header-desc">增强版的图片组件，支持懒加载、加载中提示、加载失败提示等特性</text>
+            <text class="example-page__header-desc"
+                >增强版的图片组件，支持懒加载、加载中提示、加载失败提示等特性</text
+            >
         </view>
 
         <!-- 基础用法 -->
@@ -10,14 +12,20 @@
             <view class="example-page__section-title">基础用法</view>
             <view class="example-page__section-desc">基础的图片用法</view>
             <view class="example-page__content">
-                <fanc-image src="/static/img/demo/little_boy_with_trumpet.png" width="200" height="200" />
+                <fanc-image
+                    src="/static/img/demo/little_boy_with_trumpet.png"
+                    width="200"
+                    height="200"
+                />
             </view>
         </view>
 
         <!-- 图片模式 -->
         <view class="example-page__section">
             <view class="example-page__section-title">图片模式</view>
-            <view class="example-page__section-desc">通过 mode 属性可以设置图片裁剪、缩放的模式</view>
+            <view class="example-page__section-desc"
+                >通过 mode 属性可以设置图片裁剪、缩放的模式</view
+            >
             <view class="example-page__content image-mode-demo">
                 <view class="image-mode-item" v-for="(item, index) in modes" :key="index">
                     <fanc-image :src="demoImageUrl" width="80" height="80" :mode="item" />

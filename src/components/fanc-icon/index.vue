@@ -6,8 +6,18 @@
         @click="handleClick"
         :hover-class="clickable ? 'fanc-icon--hover' : ''"
     >
-        <i v-if="!isSvgIcon && !isImageIcon" :class="`fa${iconType} fa-${name}`" :style="iconStyle"></i>
-        <image v-if="isImageIcon" :src="name" :style="iconStyle" class="fanc-icon__image" mode="aspectFit"></image>
+        <i
+            v-if="!isSvgIcon && !isImageIcon"
+            :class="`fa${iconType} fa-${name}`"
+            :style="iconStyle"
+        ></i>
+        <image
+            v-if="isImageIcon"
+            :src="name"
+            :style="iconStyle"
+            class="fanc-icon__image"
+            mode="aspectFit"
+        ></image>
         <view v-if="dot" class="fanc-icon__dot"></view>
         <view v-if="badge" class="fanc-icon__badge">{{ badge }}</view>
     </view>

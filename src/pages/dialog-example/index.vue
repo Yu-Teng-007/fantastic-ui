@@ -2,7 +2,9 @@
     <view class="example-page">
         <view class="example-page__header">
             <text class="example-page__header-title">对话框</text>
-            <text class="example-page__header-desc">用于展示重要信息或需要用户进行操作的弹出式对话框</text>
+            <text class="example-page__header-desc"
+                >用于展示重要信息或需要用户进行操作的弹出式对话框</text
+            >
         </view>
 
         <!-- 基础用法 -->
@@ -11,7 +13,9 @@
             <view class="example-page__section-desc">展示基本的对话框</view>
             <view class="example-page__button-group">
                 <button class="btn btn-primary" @click="showBasicDialog">基础对话框</button>
-                <button class="btn btn-secondary" @click="showLongContentDialog">长文本对话框</button>
+                <button class="btn btn-secondary" @click="showLongContentDialog">
+                    长文本对话框
+                </button>
             </view>
         </view>
 
@@ -33,8 +37,12 @@
             <view class="example-page__section-desc">可以设置对话框显示在顶部、中间或底部</view>
             <view class="example-page__button-group">
                 <button class="btn btn-outline-primary" @click="showTopDialog">顶部对话框</button>
-                <button class="btn btn-outline-primary" @click="showCenterDialog">中间对话框</button>
-                <button class="btn btn-outline-primary" @click="showBottomDialog">底部对话框</button>
+                <button class="btn btn-outline-primary" @click="showCenterDialog">
+                    中间对话框
+                </button>
+                <button class="btn btn-outline-primary" @click="showBottomDialog">
+                    底部对话框
+                </button>
             </view>
         </view>
 
@@ -43,11 +51,21 @@
             <view class="example-page__section-title">按钮布局</view>
             <view class="example-page__section-desc">配置按钮的显示方式和布局</view>
             <view class="example-page__button-group">
-                <button class="btn btn-outline-secondary" @click="showHorizontalButtonsDialog">水平按钮</button>
-                <button class="btn btn-outline-secondary" @click="showVerticalButtonsDialog">垂直按钮</button>
-                <button class="btn btn-outline-secondary" @click="showSingleButtonDialog">单个按钮</button>
-                <button class="btn btn-outline-secondary" @click="showNoButtonsDialog">无按钮</button>
-                <button class="btn btn-outline-secondary" @click="showMultiButtonsDialog">多按钮</button>
+                <button class="btn btn-outline-secondary" @click="showHorizontalButtonsDialog">
+                    水平按钮
+                </button>
+                <button class="btn btn-outline-secondary" @click="showVerticalButtonsDialog">
+                    垂直按钮
+                </button>
+                <button class="btn btn-outline-secondary" @click="showSingleButtonDialog">
+                    单个按钮
+                </button>
+                <button class="btn btn-outline-secondary" @click="showNoButtonsDialog">
+                    无按钮
+                </button>
+                <button class="btn btn-outline-secondary" @click="showMultiButtonsDialog">
+                    多按钮
+                </button>
             </view>
         </view>
 
@@ -57,8 +75,12 @@
             <view class="example-page__section-desc">显示带图片的对话框</view>
             <view class="example-page__button-group">
                 <button class="btn btn-primary" @click="showImageDialog">基础图片对话框</button>
-                <button class="btn btn-success" @click="showImageSuccessDialog">成功图片对话框</button>
-                <button class="btn btn-warning" @click="showImageWarningDialog">警告图片对话框</button>
+                <button class="btn btn-success" @click="showImageSuccessDialog">
+                    成功图片对话框
+                </button>
+                <button class="btn btn-warning" @click="showImageWarningDialog">
+                    警告图片对话框
+                </button>
             </view>
         </view>
 
@@ -67,9 +89,15 @@
             <view class="example-page__section-title">图片位置</view>
             <view class="example-page__section-desc">控制图片在对话框中的位置</view>
             <view class="example-page__button-group">
-                <button class="btn btn-outline-primary" @click="showImageTopDialog">图片置顶</button>
-                <button class="btn btn-outline-primary" @click="showImageDefaultDialog">图片居中</button>
-                <button class="btn btn-outline-primary" @click="showImageBottomDialog">图片底部</button>
+                <button class="btn btn-outline-primary" @click="showImageTopDialog">
+                    图片置顶
+                </button>
+                <button class="btn btn-outline-primary" @click="showImageDefaultDialog">
+                    图片居中
+                </button>
+                <button class="btn btn-outline-primary" @click="showImageBottomDialog">
+                    图片底部
+                </button>
             </view>
         </view>
 
@@ -78,12 +106,22 @@
             <view class="example-page__section-title">高级配置</view>
             <view class="example-page__section-desc">更多高级配置选项</view>
             <view class="example-page__button-group">
-                <button class="btn btn-outline-info" @click="showCloseIconDialog">显示关闭图标</button>
+                <button class="btn btn-outline-info" @click="showCloseIconDialog">
+                    显示关闭图标
+                </button>
                 <button class="btn btn-outline-info" @click="showNoMaskDialog">无遮罩层</button>
-                <button class="btn btn-outline-danger" @click="showNoMaskCloseDialog">遮罩不可关闭</button>
-                <button class="btn btn-outline-warning" @click="showRoundedDialog">圆角对话框</button>
-                <button class="btn btn-outline-warning" @click="showNoRoundedDialog">直角对话框</button>
-                <button class="btn btn-outline-success" @click="showCustomStyleDialog">自定义样式</button>
+                <button class="btn btn-outline-danger" @click="showNoMaskCloseDialog">
+                    遮罩不可关闭
+                </button>
+                <button class="btn btn-outline-warning" @click="showRoundedDialog">
+                    圆角对话框
+                </button>
+                <button class="btn btn-outline-warning" @click="showNoRoundedDialog">
+                    直角对话框
+                </button>
+                <button class="btn btn-outline-success" @click="showCustomStyleDialog">
+                    自定义样式
+                </button>
             </view>
         </view>
 
@@ -102,10 +140,18 @@
             <view class="example-page__section-title">插槽用法</view>
             <view class="example-page__section-desc">使用插槽自定义对话框内容</view>
             <view class="example-page__button-group">
-                <button class="btn btn-outline-primary" @click="showCustomHeaderDialog">自定义标题</button>
-                <button class="btn btn-outline-primary" @click="showCustomContentDialog">自定义内容</button>
-                <button class="btn btn-outline-primary" @click="showCustomFooterDialog">自定义底部按钮</button>
-                <button class="btn btn-outline-primary" @click="showCustomBottomDialog">自定义底部内容</button>
+                <button class="btn btn-outline-primary" @click="showCustomHeaderDialog">
+                    自定义标题
+                </button>
+                <button class="btn btn-outline-primary" @click="showCustomContentDialog">
+                    自定义内容
+                </button>
+                <button class="btn btn-outline-primary" @click="showCustomFooterDialog">
+                    自定义底部按钮
+                </button>
+                <button class="btn btn-outline-primary" @click="showCustomBottomDialog">
+                    自定义底部内容
+                </button>
             </view>
         </view>
 
@@ -147,7 +193,11 @@
             <!-- 自定义内容插槽 -->
             <template v-if="dialog.useCustomContent" #default>
                 <view class="custom-content">
-                    <image class="custom-image" src="../../static/img/picture_2.png" mode="aspectFit"></image>
+                    <image
+                        class="custom-image"
+                        src="../../static/img/picture_2.png"
+                        mode="aspectFit"
+                    ></image>
                     <text class="custom-text">{{ dialog.customContentText }}</text>
                 </view>
             </template>
@@ -502,7 +552,8 @@ export default {
             this.resetDialog();
             this.dialog.title = "自定义样式";
             this.dialog.message = "这个对话框使用了自定义样式。";
-            this.dialog.customStyle = "background-color: #f0f9ff; box-shadow: 0 0 20px rgba(0, 123, 255, 0.15);";
+            this.dialog.customStyle =
+                "background-color: #f0f9ff; box-shadow: 0 0 20px rgba(0, 123, 255, 0.15);";
             this.dialog.confirmButtonStyle = "color: #007bff; font-weight: bold;";
             this.dialog.cancelButtonStyle = "color: #6c757d;";
             this.dialog.show = true;
@@ -549,7 +600,8 @@ export default {
             this.resetDialog();
             this.dialog.title = "自定义内容";
             this.dialog.useCustomContent = true;
-            this.dialog.customContentText = "这是使用插槽自定义的内容区域，可以包含图片或其他组件。";
+            this.dialog.customContentText =
+                "这是使用插槽自定义的内容区域，可以包含图片或其他组件。";
             this.dialog.show = true;
         },
 

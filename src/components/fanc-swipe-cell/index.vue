@@ -96,7 +96,9 @@ export default {
         contentStyle() {
             return {
                 transform: `translateX(${this.offset}px)`,
-                transitionDuration: this.isDragging ? "0s" : "var(--swipe-cell-transition-duration)",
+                transitionDuration: this.isDragging
+                    ? "0s"
+                    : "var(--swipe-cell-transition-duration)",
             };
         },
     },
@@ -118,7 +120,10 @@ export default {
             const newOffset = this.startOffset + deltaX;
 
             // 限制滑动范围
-            if ((newOffset > 0 && this.leftWidthPx === 0) || (newOffset < 0 && this.rightWidthPx === 0)) {
+            if (
+                (newOffset > 0 && this.leftWidthPx === 0) ||
+                (newOffset < 0 && this.rightWidthPx === 0)
+            ) {
                 return;
             }
 

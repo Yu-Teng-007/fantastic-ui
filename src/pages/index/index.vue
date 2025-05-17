@@ -7,7 +7,9 @@
 
         <view class="example-page__section">
             <view class="example-page__section-title">基础组件</view>
-            <view class="example-page__section-desc">提供丰富的基础 UI 组件，满足常见的界面交互需求</view>
+            <view class="example-page__section-desc"
+                >提供丰富的基础 UI 组件，满足常见的界面交互需求</view
+            >
             <view class="example-page__card-grid">
                 <navigator url="/pages/button-example/button-example" class="component-card">
                     <view class="component-card__icon button-icon"></view>
@@ -36,6 +38,10 @@
                 <navigator url="/pages/checkbox-example/index" class="component-card">
                     <view class="component-card__icon checkbox-icon"></view>
                     <text class="component-card__name">复选框</text>
+                </navigator>
+                <navigator url="/pages/cascader-example/index" class="component-card">
+                    <view class="component-card__icon cascader-icon"></view>
+                    <text class="component-card__name">级联选择</text>
                 </navigator>
             </view>
         </view>
@@ -244,5 +250,10 @@ export default {
 .checkbox-icon {
     background-color: #20c997;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ffffff'%3E%3Cpath d='M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-8.29 13.29c-.39.39-1.02.39-1.41 0L5.71 12.7c-.39-.39-.39-1.02 0-1.41.39-.39 1.02-.39 1.41 0L10 14.17l6.88-6.88c.39-.39 1.02-.39 1.41 0 .39.39.39 1.02 0 1.41l-7.58 7.59z'/%3E%3C/svg%3E");
+}
+
+.cascader-icon {
+    background-color: #9370db;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ffffff'%3E%3Cpath d='M4 14h4v-4h2v4h4v2h-4v4h-2v-4H4v-2zm16-4V4H8v2h10v10h2v-6zm-6-8h10v10h-2V4h-8V2z'/%3E%3C/svg%3E");
 }
 </style>

@@ -55,6 +55,7 @@ Fantastic UI 是一套基于 [uni-app](https://uniapp.dcloud.io/) 开发的跨�
 -   [Field 输入框](./field.md)
 -   [Form 表单](./form.md)
 -   [Checkbox 复选框](./checkbox.md)
+-   [Cascader.md 级联选择](./cascader.md)
 
 ### 反馈组件
 

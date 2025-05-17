@@ -36,7 +36,11 @@
             <view class="example-page__section-desc">可以在滑动单元格中放入任意内容</view>
             <fanc-swipe-cell right-width="70">
                 <view class="custom-content">
-                    <image class="custom-image" src="/static/placeholder.jpg" mode="aspectFill"></image>
+                    <image
+                        class="custom-image"
+                        src="/static/placeholder.jpg"
+                        mode="aspectFill"
+                    ></image>
                     <view class="custom-info">
                         <text class="custom-title">自定义内容</text>
                         <text class="custom-desc">你可以放入任何自定义内容</text>
@@ -65,7 +69,9 @@
             <fanc-swipe-cell right-width="70" ref="asyncCell">
                 <fanc-cell title="异步操作" content="点击删除触发" />
                 <template #right>
-                    <view class="swipe-cell-right delete-button" @click="handleAsyncDelete">删除</view>
+                    <view class="swipe-cell-right delete-button" @click="handleAsyncDelete"
+                        >删除</view
+                    >
                 </template>
             </fanc-swipe-cell>
         </view>

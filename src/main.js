@@ -6,7 +6,7 @@ import installUI from "./index";
 // 引入Font Awesome图标库
 import "@fortawesome/fontawesome-free/css/all.min.css";
 
-import '@/styles/index.scss';
+import "@/styles/index.scss";
 
 Vue.use(installUI);
 Vue.config.productionTip = false;

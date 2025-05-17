@@ -28,9 +28,12 @@
 
                 <!-- 日历头部：星期 -->
                 <view class="fanc-calendar__weekdays">
-                    <view v-for="(weekday, index) in weekdaysWithOffset" :key="index" class="fanc-calendar__weekday">{{
-                        weekday
-                    }}</view>
+                    <view
+                        v-for="(weekday, index) in weekdaysWithOffset"
+                        :key="index"
+                        class="fanc-calendar__weekday"
+                        >{{ weekday }}</view
+                    >
                 </view>
 
                 <!-- 当前月的日期 -->
@@ -44,14 +47,20 @@
                     >
                         <view class="fanc-calendar__day-content">
                             <text>{{ day.day }}</text>
-                            <view class="fanc-calendar__day-text" v-if="day.text">{{ day.text }}</view>
+                            <view class="fanc-calendar__day-text" v-if="day.text">{{
+                                day.text
+                            }}</view>
                         </view>
                     </view>
                 </view>
 
                 <!-- 滚动模式：显示多个月 -->
                 <view class="fanc-calendar__months" v-if="scroll">
-                    <view class="fanc-calendar__month" v-for="(month, monthIndex) in months" :key="monthIndex">
+                    <view
+                        class="fanc-calendar__month"
+                        v-for="(month, monthIndex) in months"
+                        :key="monthIndex"
+                    >
                         <view class="fanc-calendar__month-title">
                             {{ formatYearMonthTitle(month.year, month.month) }}
                         </view>
@@ -65,7 +74,9 @@
                             >
                                 <view class="fanc-calendar__day-content">
                                     <text>{{ day.day }}</text>
-                                    <view class="fanc-calendar__day-text" v-if="day.text">{{ day.text }}</view>
+                                    <view class="fanc-calendar__day-text" v-if="day.text">{{
+                                        day.text
+                                    }}</view>
                                 </view>
                             </view>
                         </view>
@@ -73,9 +84,14 @@
                 </view>
             </view>
             <view class="fanc-calendar__footer">
-                <fanc-button v-if="showConfirm" block :disabled="!canConfirm" :color="color" @click="confirm">{{
-                    confirmText || "确认"
-                }}</fanc-button>
+                <fanc-button
+                    v-if="showConfirm"
+                    block
+                    :disabled="!canConfirm"
+                    :color="color"
+                    @click="confirm"
+                    >{{ confirmText || "确认" }}</fanc-button
+                >
             </view>
         </fanc-popup>
     </view>
@@ -446,7 +462,9 @@ export default {
                 }
             } else if (this.type === "multiple" || this.type === "range") {
                 const dates = Array.isArray(this.defaultDate)
-                    ? this.defaultDate.map((d) => this.parseDate(d)).filter((d) => d && !this.isDateDisabled(d))
+                    ? this.defaultDate
+                          .map((d) => this.parseDate(d))
+                          .filter((d) => d && !this.isDateDisabled(d))
                     : [];
                 this.selectedDates = dates;
             }
@@ -577,7 +595,9 @@ export default {
         // 获取格式化后的选中值
         getSelectedValues() {
             if (this.type === "single") {
-                return this.selectedDates.length > 0 ? this.formatDate(this.selectedDates[0]) : null;
+                return this.selectedDates.length > 0
+                    ? this.formatDate(this.selectedDates[0])
+                    : null;
             } else {
                 return this.selectedDates.map((date) => this.formatDate(date));
             }

@@ -2,12 +2,16 @@
     <view class="example-page">
         <view class="example-page__header">
             <text class="example-page__header-title">单元格组件</text>
-            <text class="example-page__header-desc">单元格为列表中的单个项目，可以包含标题、内容、图标等</text>
+            <text class="example-page__header-desc"
+                >单元格为列表中的单个项目，可以包含标题、内容、图标等</text
+            >
         </view>
 
         <view class="example-page__section">
             <view class="example-page__section-title">基础用法</view>
-            <view class="example-page__section-desc">单元格可以单独使用，也可以与单元格组搭配使用</view>
+            <view class="example-page__section-desc"
+                >单元格可以单独使用，也可以与单元格组搭配使用</view
+            >
             <fanc-cell title="单元格" content="内容" />
             <fanc-cell title="单元格" content="内容" description="描述信息" />
         </view>
@@ -23,7 +27,9 @@
 
         <view class="example-page__section">
             <view class="example-page__section-title">圆角卡片</view>
-            <view class="example-page__section-desc">设置 inset 属性后，单元格组会以圆角卡片的形式展示</view>
+            <view class="example-page__section-desc"
+                >设置 inset 属性后，单元格组会以圆角卡片的形式展示</view
+            >
             <fanc-cell-group inset>
                 <fanc-cell title="单元格" content="内容" />
                 <fanc-cell title="单元格" content="内容" />
@@ -32,7 +38,9 @@
 
         <view class="example-page__section">
             <view class="example-page__section-title">使用图标</view>
-            <view class="example-page__section-desc">通过 icon 属性或 icon 插槽在单元格左侧展示图标</view>
+            <view class="example-page__section-desc"
+                >通过 icon 属性或 icon 插槽在单元格左侧展示图标</view
+            >
             <fanc-cell title="单元格" content="内容" icon="home" />
             <fanc-cell title="单元格">
                 <template #icon>

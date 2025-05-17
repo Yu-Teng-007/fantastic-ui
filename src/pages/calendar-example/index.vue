@@ -2,7 +2,9 @@
     <view class="example-page">
         <view class="example-page__header">
             <text class="example-page__header-title">日历 Calendar</text>
-            <text class="example-page__header-desc">日历组件用于选择日期，支持单个日期、多个日期、日期范围选择</text>
+            <text class="example-page__header-desc"
+                >日历组件用于选择日期，支持单个日期、多个日期、日期范围选择</text
+            >
         </view>
 
         <!-- 基础用法 -->
@@ -22,7 +24,9 @@
             <view class="example-page__section-title">自定义样式</view>
             <view class="example-page__section-desc">可以自定义主题颜色和按钮文字</view>
             <view class="example-page__content">
-                <fanc-button block color="#ff6b6b" @click="showColorCalendar">自定义颜色和按钮文字</fanc-button>
+                <fanc-button block color="#ff6b6b" @click="showColorCalendar"
+                    >自定义颜色和按钮文字</fanc-button
+                >
                 <view class="example-page__result" v-if="selectedColorDate">
                     <view>选择日期: {{ selectedColorDate }}</view>
                 </view>
@@ -35,7 +39,10 @@
             <view class="example-page__section-desc">可以选择多个日期</view>
             <view class="example-page__content">
                 <fanc-button block @click="showMultipleCalendar">选择多个日期</fanc-button>
-                <view class="example-page__result" v-if="selectedMultipleDates && selectedMultipleDates.length">
+                <view
+                    class="example-page__result"
+                    v-if="selectedMultipleDates && selectedMultipleDates.length"
+                >
                     <view>已选择 {{ selectedMultipleDates.length }} 个日期</view>
                     <view v-for="(date, index) in selectedMultipleDates" :key="index">
                         {{ date }}
@@ -50,7 +57,10 @@
             <view class="example-page__section-desc">可以选择日期范围</view>
             <view class="example-page__content">
                 <fanc-button block @click="showRangeCalendar">选择日期范围</fanc-button>
-                <view class="example-page__result" v-if="selectedDateRange && selectedDateRange.length === 2">
+                <view
+                    class="example-page__result"
+                    v-if="selectedDateRange && selectedDateRange.length === 2"
+                >
                     <view>开始日期: {{ selectedDateRange[0] }}</view>
                     <view>结束日期: {{ selectedDateRange[1] }}</view>
                 </view>
@@ -230,7 +240,8 @@ export default {
                 if (month === new Date().getMonth() + 1) {
                     if (day === 1) return "月初";
                     if (day === 15) return "中旬";
-                    if (day === new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate()) return "月末";
+                    if (day === new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate())
+                        return "月末";
                 }
 
                 // 周末添加文案

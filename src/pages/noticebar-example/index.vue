@@ -15,26 +15,40 @@
         <!-- 不同类型 -->
         <view class="example-page__section">
             <view class="example-page__section-title">不同类型</view>
-            <view class="example-page__section-desc">公告栏支持多种类型，用于不同场景的信息展示</view>
+            <view class="example-page__section-desc"
+                >公告栏支持多种类型，用于不同场景的信息展示</view
+            >
             <view class="notice-type-group">
                 <view class="notice-type-item">
                     <text class="notice-type-label">信息类型</text>
-                    <fanc-noticebar type="info" text="信息类型公告栏，适用于普通信息展示"></fanc-noticebar>
+                    <fanc-noticebar
+                        type="info"
+                        text="信息类型公告栏，适用于普通信息展示"
+                    ></fanc-noticebar>
                 </view>
 
                 <view class="notice-type-item">
                     <text class="notice-type-label">成功类型</text>
-                    <fanc-noticebar type="success" text="成功类型公告栏，适用于成功消息提示"></fanc-noticebar>
+                    <fanc-noticebar
+                        type="success"
+                        text="成功类型公告栏，适用于成功消息提示"
+                    ></fanc-noticebar>
                 </view>
 
                 <view class="notice-type-item">
                     <text class="notice-type-label">警告类型</text>
-                    <fanc-noticebar type="warning" text="警告类型公告栏，用于警示性消息展示"></fanc-noticebar>
+                    <fanc-noticebar
+                        type="warning"
+                        text="警告类型公告栏，用于警示性消息展示"
+                    ></fanc-noticebar>
                 </view>
 
                 <view class="notice-type-item">
                     <text class="notice-type-label">错误类型</text>
-                    <fanc-noticebar type="error" text="错误类型公告栏，展示错误或重要警告信息"></fanc-noticebar>
+                    <fanc-noticebar
+                        type="error"
+                        text="错误类型公告栏，展示错误或重要警告信息"
+                    ></fanc-noticebar>
                 </view>
             </view>
         </view>
@@ -51,7 +65,9 @@
                 @close="onCloseNotice"
             ></fanc-noticebar>
             <view v-else class="reset-btn-wrap">
-                <fanc-button size="small" type="primary" @click="resetClosable">重新显示</fanc-button>
+                <fanc-button size="small" type="primary" @click="resetClosable"
+                    >重新显示</fanc-button
+                >
             </view>
         </view>
 
@@ -78,7 +94,9 @@
         <!-- 带操作按钮 -->
         <view class="example-page__section">
             <view class="example-page__section-title">带操作按钮</view>
-            <view class="example-page__section-desc">在公告栏右侧添加操作按钮，方便用户快速操作</view>
+            <view class="example-page__section-desc"
+                >在公告栏右侧添加操作按钮，方便用户快速操作</view
+            >
             <fanc-noticebar
                 text="这是一条带有操作按钮的公告栏，点击右侧按钮可执行相关操作"
                 actionText="详情"
@@ -90,22 +108,35 @@
         <view class="example-page__section">
             <view class="example-page__section-title">多条公告轮播</view>
             <view class="example-page__section-desc">支持多条消息轮播展示，点击可查看详情</view>
-            <fanc-noticebar :text="noticeList" showPlayBtn @click="onNoticeItemClick"></fanc-noticebar>
+            <fanc-noticebar
+                :text="noticeList"
+                showPlayBtn
+                @click="onNoticeItemClick"
+            ></fanc-noticebar>
 
             <view class="example-page__button-group control-panel">
-                <fanc-button size="small" type="primary" icon="plus" @click="addNotice">添加公告</fanc-button>
-                <fanc-button size="small" type="danger" icon="refresh" @click="resetNotices">重置</fanc-button>
+                <fanc-button size="small" type="primary" icon="plus" @click="addNotice"
+                    >添加公告</fanc-button
+                >
+                <fanc-button size="small" type="danger" icon="refresh" @click="resetNotices"
+                    >重置</fanc-button
+                >
             </view>
         </view>
 
         <!-- 自定义图标 -->
         <view class="example-page__section">
             <view class="example-page__section-title">自定义图标</view>
-            <view class="example-page__section-desc">可以自定义公告栏左侧的图标，或者完全隐藏图标</view>
+            <view class="example-page__section-desc"
+                >可以自定义公告栏左侧的图标，或者完全隐藏图标</view
+            >
             <fanc-noticebar text="这是一条使用自定义图标的公告栏" iconName="bell"></fanc-noticebar>
 
             <view class="custom-margin">
-                <fanc-noticebar text="这是一条不显示图标的公告栏" :showIcon="false"></fanc-noticebar>
+                <fanc-noticebar
+                    text="这是一条不显示图标的公告栏"
+                    :showIcon="false"
+                ></fanc-noticebar>
             </view>
         </view>
 

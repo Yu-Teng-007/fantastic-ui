@@ -36,7 +36,9 @@
 
         <view class="example-page__section">
             <view class="example-page__section-title">扩展位置</view>
-            <view class="example-page__section-desc">气泡支持12种不同的位置，可以根据实际需要选择合适的展示位置</view>
+            <view class="example-page__section-desc"
+                >气泡支持12种不同的位置，可以根据实际需要选择合适的展示位置</view
+            >
 
             <view class="example-page__subsection">
                 <view class="example-page__subsection-title">上方位置</view>
@@ -72,7 +74,12 @@
                 <view class="example-page__subsection-title">左侧位置</view>
                 <view
                     class="popover-positions"
-                    style="display: flex; flex-direction: column; align-items: center; transform: translateX(60px)"
+                    style="
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        transform: translateX(60px);
+                    "
                 >
                     <fanc-popover content="左侧靠上" placement="left-top">
                         <fanc-button size="small">左上</fanc-button>
@@ -90,7 +97,12 @@
                 <view class="example-page__subsection-title">右侧位置</view>
                 <view
                     class="popover-positions"
-                    style="display: flex; flex-direction: column; align-items: center; transform: translateX(-60px)"
+                    style="
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        transform: translateX(-60px);
+                    "
                 >
                     <fanc-popover content="右侧靠上" placement="right-top">
                         <fanc-button size="small">右上</fanc-button>
@@ -135,7 +147,11 @@
             <view class="example-page__section-title">带标题的气泡</view>
             <view class="example-page__section-desc">气泡框可以设置标题，用于强调内容的重要性</view>
             <view class="popover-demo" style="height: 100px">
-                <fanc-popover style="margin-top: 80px" title="提示标题" content="这是一条带有标题的气泡提示">
+                <fanc-popover
+                    style="margin-top: 80px"
+                    title="提示标题"
+                    content="这是一条带有标题的气泡提示"
+                >
                     <fanc-button size="small" type="primary">带标题气泡</fanc-button>
                 </fanc-popover>
             </view>
@@ -143,7 +159,9 @@
 
         <view class="example-page__section">
             <view class="example-page__section-title">自动关闭</view>
-            <view class="example-page__section-desc">设置duration属性可以控制气泡自动关闭的时间</view>
+            <view class="example-page__section-desc"
+                >设置duration属性可以控制气泡自动关闭的时间</view
+            >
             <view class="popover-demo">
                 <fanc-popover content="3秒后自动关闭" :duration="3000">
                     <fanc-button size="small" type="warning">点击查看</fanc-button>
@@ -153,7 +171,9 @@
 
         <view class="example-page__section">
             <view class="example-page__section-title">自定义内容</view>
-            <view class="example-page__section-desc">通过slot可以自定义气泡的内容，如图标、列表等</view>
+            <view class="example-page__section-desc"
+                >通过slot可以自定义气泡的内容，如图标、列表等</view
+            >
             <view class="popover-demo" style="height: 150px">
                 <fanc-popover style="margin-top: 130px">
                     <fanc-button size="small" type="primary">自定义内容</fanc-button>
@@ -179,7 +199,9 @@
 
         <view class="example-page__section">
             <view class="example-page__section-title">手动控制</view>
-            <view class="example-page__section-desc">通过ref可以获取组件实例，手动控制气泡的显示和隐藏</view>
+            <view class="example-page__section-desc"
+                >通过ref可以获取组件实例，手动控制气泡的显示和隐藏</view
+            >
             <view
                 class="popover-demo"
                 style="height: 100px; display: flex; align-items: center; flex-direction: column"
@@ -189,8 +211,12 @@
                 </fanc-popover>
 
                 <view class="control-buttons">
-                    <fanc-button size="small" type="success" @click="openPopover">打开气泡</fanc-button>
-                    <fanc-button size="small" type="danger" @click="closePopover">关闭气泡</fanc-button>
+                    <fanc-button size="small" type="success" @click="openPopover"
+                        >打开气泡</fanc-button
+                    >
+                    <fanc-button size="small" type="danger" @click="closePopover"
+                        >关闭气泡</fanc-button
+                    >
                 </view>
             </view>
         </view>

@@ -7,7 +7,10 @@
         </view>
 
         <!-- 单元格容器 -->
-        <view class="fanc-cell-group__container" :class="{ 'fanc-cell-group__container--inset': inset }">
+        <view
+            class="fanc-cell-group__container"
+            :class="{ 'fanc-cell-group__container--inset': inset }"
+        >
             <slot></slot>
         </view>
     </view>

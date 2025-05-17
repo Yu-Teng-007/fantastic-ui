@@ -31,7 +31,8 @@
                 class="fanc-noticebar__content-inner"
                 :class="{
                     'fanc-noticebar__content-inner--scroll': scrollable && shouldScroll,
-                    'fanc-noticebar__content-inner--scrolling': scrollable && shouldScroll && !isScrollPaused,
+                    'fanc-noticebar__content-inner--scrolling':
+                        scrollable && shouldScroll && !isScrollPaused,
                 }"
                 :style="scrollStyle"
                 :data-content="Array.isArray(text) ? text[currentIndex] : text"
@@ -42,7 +43,9 @@
                         v-for="(item, index) in text"
                         :key="index"
                         class="fanc-noticebar__item"
-                        :class="{ 'fanc-noticebar__item--active': currentIndex === index && autoPlay }"
+                        :class="{
+                            'fanc-noticebar__item--active': currentIndex === index && autoPlay,
+                        }"
                     >
                         <rich-text v-if="enableHtml" :nodes="item"></rich-text>
                         <text v-else>{{ item }}</text>
@@ -61,7 +64,11 @@
         </view>
 
         <!-- 播放控制按钮 -->
-        <view v-if="showPlayBtn && Array.isArray(text)" class="fanc-noticebar__play" @click="togglePlay">
+        <view
+            v-if="showPlayBtn && Array.isArray(text)"
+            class="fanc-noticebar__play"
+            @click="togglePlay"
+        >
             <fanc-icon :name="playing ? 'pause' : 'play'" :size="14"></fanc-icon>
         </view>
 

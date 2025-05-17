@@ -2,7 +2,9 @@
     <view class="example-page">
         <view class="example-page__header">
             <text class="example-page__header-title">下拉菜单栏</text>
-            <text class="example-page__header-desc">用于在页面中展示多个菜单选项，支持横向滑动和下拉选择</text>
+            <text class="example-page__header-desc"
+                >用于在页面中展示多个菜单选项，支持横向滑动和下拉选择</text
+            >
         </view>
 
         <view class="example-page__section">
@@ -34,7 +36,9 @@
 
         <view class="example-page__section">
             <view class="example-page__section-title">向上展开</view>
-            <view class="example-page__section-desc">菜单可以向上展开，适合固定在页面底部的场景</view>
+            <view class="example-page__section-desc"
+                >菜单可以向上展开，适合固定在页面底部的场景</view
+            >
             <view class="example-page__content">
                 <fanc-dropdown-menu :options="basicOptions" direction="up"></fanc-dropdown-menu>
             </view>
@@ -42,7 +46,9 @@
 
         <view class="example-page__section">
             <view class="example-page__section-title">不显示遮罩层</view>
-            <view class="example-page__section-desc">可以配置不显示遮罩层，允许同时操作页面其他内容</view>
+            <view class="example-page__section-desc"
+                >可以配置不显示遮罩层，允许同时操作页面其他内容</view
+            >
             <view class="example-page__content">
                 <fanc-dropdown-menu :options="basicOptions" :overlay="false"></fanc-dropdown-menu>
             </view>
@@ -60,13 +66,18 @@
             <view class="example-page__section-title">自定义排序</view>
             <view class="example-page__section-desc">支持自定义排序下拉选项</view>
             <view class="example-page__content">
-                <fanc-dropdown-menu :options="sortableOptions" :sortFunction="sortByName"></fanc-dropdown-menu>
+                <fanc-dropdown-menu
+                    :options="sortableOptions"
+                    :sortFunction="sortByName"
+                ></fanc-dropdown-menu>
             </view>
         </view>
 
         <view class="example-page__section">
             <view class="example-page__section-title">自定义选中态颜色</view>
-            <view class="example-page__section-desc">可以自定义选中状态的颜色，搭配不同风格的页面</view>
+            <view class="example-page__section-desc"
+                >可以自定义选中状态的颜色，搭配不同风格的页面</view
+            >
             <view class="example-page__content">
                 <fanc-dropdown-menu
                     :options="basicOptions"
@@ -78,7 +89,10 @@
                     active-color="#2ed573"
                     style="margin-bottom: 16px"
                 ></fanc-dropdown-menu>
-                <fanc-dropdown-menu :options="basicOptions" active-color="#ff8f00"></fanc-dropdown-menu>
+                <fanc-dropdown-menu
+                    :options="basicOptions"
+                    active-color="#ff8f00"
+                ></fanc-dropdown-menu>
             </view>
         </view>
 
@@ -87,7 +101,9 @@
             <view class="example-page__section-desc">监听菜单栏的选择事件</view>
             <view class="example-page__content">
                 <fanc-dropdown-menu :options="basicOptions" @select="onSelect"></fanc-dropdown-menu>
-                <view v-if="selectedText" class="example-page__result"> 当前选择: {{ selectedText }} </view>
+                <view v-if="selectedText" class="example-page__result">
+                    当前选择: {{ selectedText }}
+                </view>
             </view>
         </view>
     </view>
@@ -115,7 +131,6 @@ export default {
                         { text: "北京市", value: "beijing" },
                         { text: "上海市", value: "shanghai" },
                         { text: "天津市", value: "tianjin" },
-                        
                     ],
                 },
                 {

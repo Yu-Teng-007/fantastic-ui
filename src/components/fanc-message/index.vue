@@ -20,7 +20,10 @@
         </view>
 
         <!-- 消息内容 -->
-        <view class="fanc-message__content" :class="{ 'fanc-message__content--scroll': scrollable }">
+        <view
+            class="fanc-message__content"
+            :class="{ 'fanc-message__content--scroll': scrollable }"
+        >
             <view
                 class="fanc-message__content-inner"
                 :class="{ 'fanc-message__content-inner--scroll': scrollable && shouldScroll }"
@@ -159,7 +162,9 @@ export default {
                 top: `${this.offsetTop}px`,
                 position: "fixed",
                 left: "50%",
-                transform: this.isShow ? "translateX(-50%) translateY(0)" : "translateX(-50%) translateY(-100%)",
+                transform: this.isShow
+                    ? "translateX(-50%) translateY(0)"
+                    : "translateX(-50%) translateY(-100%)",
                 opacity: this.isShow ? 1 : 0,
             };
         },
@@ -356,7 +361,10 @@ export default {
             if (!contentEl) return;
 
             // 计算滚动范围，考虑padding
-            const maxScroll = this.contentWidth - this.containerWidth + (this.closable || this.actionText ? 20 : 0); // 如果有按钮，增加边距补偿
+            const maxScroll =
+                this.contentWidth -
+                this.containerWidth +
+                (this.closable || this.actionText ? 20 : 0); // 如果有按钮，增加边距补偿
 
             if (maxScroll <= 0) return;
 

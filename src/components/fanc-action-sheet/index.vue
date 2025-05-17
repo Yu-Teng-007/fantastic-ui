@@ -47,10 +47,16 @@
                             <view class="fanc-loading-indicator"></view>
                         </view>
                         <view v-else-if="item.icon" class="fanc-action-sheet__icon">
-                            <fanc-icon :name="item.icon" :size="item.iconSize || '18'" :color="item.iconColor" />
+                            <fanc-icon
+                                :name="item.icon"
+                                :size="item.iconSize || '18'"
+                                :color="item.iconColor"
+                            />
                         </view>
                         <text class="fanc-action-sheet__name">{{ item.name }}</text>
-                        <text v-if="item.subname" class="fanc-action-sheet__subname">{{ item.subname }}</text>
+                        <text v-if="item.subname" class="fanc-action-sheet__subname">{{
+                            item.subname
+                        }}</text>
                     </view>
                 </view>
 
@@ -72,19 +78,28 @@
                             <view class="fanc-loading-indicator"></view>
                         </view>
                         <view v-else-if="item.icon" class="fanc-action-sheet__grid-icon">
-                            <fanc-icon :name="item.icon" :size="item.iconSize || '28'" :color="item.iconColor" />
+                            <fanc-icon
+                                :name="item.icon"
+                                :size="item.iconSize || '28'"
+                                :color="item.iconColor"
+                            />
                         </view>
                         <text class="fanc-action-sheet__grid-name">{{ item.name }}</text>
                     </view>
                 </view>
 
                 <!-- 分页指示器 -->
-                <view v-if="paginationEnabled && actualPagesCount > 1" class="fanc-action-sheet__pagination">
+                <view
+                    v-if="paginationEnabled && actualPagesCount > 1"
+                    class="fanc-action-sheet__pagination"
+                >
                     <view
                         v-for="page in actualPagesCount"
                         :key="page"
                         class="fanc-action-sheet__pagination-dot"
-                        :class="{ 'fanc-action-sheet__pagination-dot--active': currentPage === page - 1 }"
+                        :class="{
+                            'fanc-action-sheet__pagination-dot--active': currentPage === page - 1,
+                        }"
                         @click="onPageChange(page - 1)"
                     ></view>
                 </view>
@@ -245,7 +260,10 @@ export default {
         },
         // 分页后的操作项
         paginatedActions() {
-            return this.actions.slice(this.currentPage * this.pageSize, (this.currentPage + 1) * this.pageSize);
+            return this.actions.slice(
+                this.currentPage * this.pageSize,
+                (this.currentPage + 1) * this.pageSize
+            );
         },
         // 实际分页总数
         actualPagesCount() {

@@ -4,11 +4,11 @@
 
 export default {
     // 输入框类型，可选值为 text、textarea、password、number、digit、idcard、tel
-    type: 'text',
+    type: "text",
     // 输入框占位文本
-    placeholder: '请输入',
+    placeholder: "请输入",
     // 标签宽度，可选值为 auto / fixed
-    labelWidth: '',
+    labelWidth: "",
     // 是否禁用输入框
     disabled: false,
     // 是否只读
@@ -28,7 +28,7 @@ export default {
     // 是否隐藏底部边框
     borderless: false,
     // 输入框内容对齐方式，可选值为 left、center、right
-    inputAlign: 'left',
+    inputAlign: "left",
     // 是否自动获取焦点
     focus: false,
     // 键盘弹起时，是否自动上推页面
@@ -38,9 +38,9 @@ export default {
     // focus时，点击页面的时候不收起键盘
     holdKeyboard: false,
     // 设置键盘右下角按钮的文字，可选值为 send、search、next、go、done
-    confirmType: 'done',
+    confirmType: "done",
     // 是否显示键盘上方带有"完成"按钮那一栏
     showConfirmBar: true,
     // 是否自动增高（仅文本域有效）
-    autoHeight: false
-}; 
+    autoHeight: false,
+};

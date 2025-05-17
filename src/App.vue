@@ -20,7 +20,7 @@ page {
     /* 在uni-app中，page标签相当于根节点 */
     background-color: var(--white, #fff);
     color: var(--dark-color, #343a40);
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans",
-        "Helvetica Neue", sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell,
+        "Open Sans", "Helvetica Neue", sans-serif;
 }
 </style>

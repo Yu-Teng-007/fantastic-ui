@@ -1,6 +1,11 @@
 <template>
     <view class="fanc-dropdown-menu" :style="customStyle">
-        <scroll-view class="fanc-dropdown-menu__bar" scroll-x :scroll-with-animation="true" :show-scrollbar="false">
+        <scroll-view
+            class="fanc-dropdown-menu__bar"
+            scroll-x
+            :scroll-with-animation="true"
+            :show-scrollbar="false"
+        >
             <view class="fanc-dropdown-menu__bar-inner">
                 <view
                     v-for="(item, index) in options"
@@ -35,11 +40,17 @@
                     v-for="(option, idx) in options[activeIndex].options"
                     :key="idx"
                     class="fanc-dropdown-menu__option"
-                    :class="{ 'fanc-dropdown-menu__option--active': selectedValues[activeIndex] === option.value }"
+                    :class="{
+                        'fanc-dropdown-menu__option--active':
+                            selectedValues[activeIndex] === option.value,
+                    }"
                     @click="onOptionClick(option)"
                 >
                     <text class="fanc-dropdown-menu__option-text">{{ option.text }}</text>
-                    <view v-if="selectedValues[activeIndex] === option.value" class="fanc-dropdown-menu__option-icon">
+                    <view
+                        v-if="selectedValues[activeIndex] === option.value"
+                        class="fanc-dropdown-menu__option-icon"
+                    >
                         <view class="fanc-dropdown-menu__option-icon-check"></view>
                     </view>
                 </view>
@@ -168,7 +179,9 @@ export default {
             this.selectedTexts = this.options.map((item, index) => {
                 const selectedValue = this.selectedValues[index];
                 if (selectedValue !== null && item.options) {
-                    const selectedOption = item.options.find((option) => option.value === selectedValue);
+                    const selectedOption = item.options.find(
+                        (option) => option.value === selectedValue
+                    );
                     return selectedOption ? selectedOption.text : item.title;
                 }
                 return item.title;
@@ -272,7 +285,9 @@ export default {
 
                 // 更新选中文本
                 if (this.options[menuIndex] && this.options[menuIndex].options) {
-                    const selectedOption = this.options[menuIndex].options.find((option) => option.value === value);
+                    const selectedOption = this.options[menuIndex].options.find(
+                        (option) => option.value === value
+                    );
                     if (selectedOption) {
                         this.selectedTexts[menuIndex] = selectedOption.text;
                     }
@@ -318,7 +333,9 @@ export default {
 
             // 处理rgba格式（保留原透明度但最小为0.05）
             if (color.startsWith("rgba(")) {
-                const rgbaMatch = color.match(/rgba\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*,\s*([0-9]*\.?[0-9]+)\s*\)/);
+                const rgbaMatch = color.match(
+                    /rgba\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*,\s*([0-9]*\.?[0-9]+)\s*\)/
+                );
                 if (rgbaMatch) {
                     // 取原透明度和0.05中较小的值
                     const alpha = Math.min(parseFloat(rgbaMatch[4]), 0.05);
@@ -334,7 +351,9 @@ export default {
 
                 // 如果能成功设置颜色，返回带透明度的同色系背景
                 if (testDiv.style.color !== "") {
-                    return `${color.split(")")[0]})`.replace("rgb(", "rgba(").replace(")", ", 0.05)");
+                    return `${color.split(")")[0]})`
+                        .replace("rgb(", "rgba(")
+                        .replace(")", ", 0.05)");
                 }
             } catch (e) {
                 // 忽略异常，使用默认色

@@ -66,7 +66,8 @@ export default {
         type: {
             type: String,
             default: "default",
-            validator: (value) => ["default", "primary", "success", "warning", "danger", "info"].includes(value),
+            validator: (value) =>
+                ["default", "primary", "success", "warning", "danger", "info"].includes(value),
         },
         // 是否为朴素按钮
         plain: Boolean,
@@ -124,7 +125,10 @@ export default {
         // 判断图标是否为URL
         isIconUrl() {
             return (
-                this.icon && (this.icon.startsWith("http") || this.icon.startsWith("/") || this.icon.startsWith("."))
+                this.icon &&
+                (this.icon.startsWith("http") ||
+                    this.icon.startsWith("/") ||
+                    this.icon.startsWith("."))
             );
         },
         // 计算按钮样式
@@ -145,7 +149,9 @@ export default {
 
             // 阴影效果
             if (this.shadow && !this.disabled && !this.plain) {
-                style.boxShadow = `0 ${this.size === "large" ? "8px" : "4px"} 12px rgba(0, 0, 0, 0.1)`;
+                style.boxShadow = `0 ${
+                    this.size === "large" ? "8px" : "4px"
+                } 12px rgba(0, 0, 0, 0.1)`;
             }
 
             return style;

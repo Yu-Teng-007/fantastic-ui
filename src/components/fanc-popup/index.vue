@@ -2,7 +2,11 @@
     <view
         v-if="showPopup"
         class="fanc-popup"
-        :class="[position ? `fanc-popup--${position}` : '', round ? 'fanc-popup--round' : '', customClass]"
+        :class="[
+            position ? `fanc-popup--${position}` : '',
+            round ? 'fanc-popup--round' : '',
+            customClass,
+        ]"
         :style="popupStyle"
     >
         <!-- 遮罩层 -->
@@ -90,7 +94,8 @@ export default {
         closeIconPosition: {
             type: String,
             default: "top-right",
-            validator: (value) => ["top-right", "top-left", "bottom-right", "bottom-left"].includes(value),
+            validator: (value) =>
+                ["top-right", "top-left", "bottom-right", "bottom-left"].includes(value),
         },
         // 是否显示圆角
         round: {

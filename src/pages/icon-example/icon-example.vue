@@ -2,7 +2,9 @@
     <view class="example-page">
         <view class="example-page__header">
             <text class="example-page__header-title">图标组件</text>
-            <text class="example-page__header-desc">提供丰富的图标集合，支持自定义颜色、大小和样式</text>
+            <text class="example-page__header-desc"
+                >提供丰富的图标集合，支持自定义颜色、大小和样式</text
+            >
         </view>
 
         <view class="example-page__section">
@@ -34,7 +36,9 @@
 
         <view class="example-page__section">
             <view class="example-page__section-title">图标类型</view>
-            <view class="example-page__section-desc">支持多种类型的图标，包括实心、线性和品牌图标</view>
+            <view class="example-page__section-desc"
+                >支持多种类型的图标，包括实心、线性和品牌图标</view
+            >
             <view class="icon-grid">
                 <view class="icon-cell">
                     <fanc-icon name="user" type="solid" size="24"></fanc-icon>
@@ -103,7 +107,9 @@
 
         <view class="example-page__section">
             <view class="example-page__section-title">小红点(dot)</view>
-            <view class="example-page__section-desc">在图标右上角显示一个小红点，常用于消息提醒</view>
+            <view class="example-page__section-desc"
+                >在图标右上角显示一个小红点，常用于消息提醒</view
+            >
             <view class="icon-grid">
                 <view class="icon-cell">
                     <fanc-icon name="bell" size="24" dot></fanc-icon>
@@ -122,7 +128,9 @@
 
         <view class="example-page__section">
             <view class="example-page__section-title">徽标(badge)</view>
-            <view class="example-page__section-desc">在图标右上角显示徽标数字，用于显示消息数量</view>
+            <view class="example-page__section-desc"
+                >在图标右上角显示徽标数字，用于显示消息数量</view
+            >
             <view class="icon-grid">
                 <view class="icon-cell">
                     <fanc-icon name="bell" size="24" badge="8"></fanc-icon>
@@ -164,14 +172,20 @@
 
         <view class="example-page__section">
             <view class="example-page__section-title">图片图标</view>
-            <view class="example-page__section-desc">支持使用图片URL作为图标，适用于自定义图标</view>
+            <view class="example-page__section-desc"
+                >支持使用图片URL作为图标，适用于自定义图标</view
+            >
             <view class="icon-grid">
                 <view class="icon-cell">
                     <fanc-icon name="https://img.yzcdn.cn/vant/logo.png" size="32"></fanc-icon>
                     <text class="icon-name">URL图片</text>
                 </view>
                 <view class="icon-cell">
-                    <fanc-icon name="https://img.yzcdn.cn/vant/logo.png" size="48" badge="new"></fanc-icon>
+                    <fanc-icon
+                        name="https://img.yzcdn.cn/vant/logo.png"
+                        size="48"
+                        badge="new"
+                    ></fanc-icon>
                     <text class="icon-name">带徽标</text>
                 </view>
             </view>
@@ -212,11 +226,23 @@
             <view class="example-page__section-desc">图标可以绑定点击事件，用于交互操作</view>
             <view class="icon-grid">
                 <view class="icon-cell">
-                    <fanc-icon name="bell" size="32" color="#007bff" clickable @click="handleIconClick"></fanc-icon>
+                    <fanc-icon
+                        name="bell"
+                        size="32"
+                        color="#007bff"
+                        clickable
+                        @click="handleIconClick"
+                    ></fanc-icon>
                     <text class="icon-name">点击触发</text>
                 </view>
                 <view class="icon-cell">
-                    <fanc-icon name="thumbs-up" size="32" color="#28a745" clickable @click="handleLike"></fanc-icon>
+                    <fanc-icon
+                        name="thumbs-up"
+                        size="32"
+                        color="#28a745"
+                        clickable
+                        @click="handleLike"
+                    ></fanc-icon>
                     <text class="icon-name">点赞</text>
                 </view>
             </view>
@@ -226,7 +252,12 @@
             <view class="example-page__section-title">常用图标集合</view>
             <view class="example-page__section-desc">一些常用的图标，点击可复制图标名称</view>
             <view class="icon-grid">
-                <view class="icon-cell" v-for="(icon, index) in commonIcons" :key="index" @click="copyIconName(icon)">
+                <view
+                    class="icon-cell"
+                    v-for="(icon, index) in commonIcons"
+                    :key="index"
+                    @click="copyIconName(icon)"
+                >
                     <fanc-icon :name="icon" size="24"></fanc-icon>
                     <text class="icon-name">{{ icon }}</text>
                 </view>

@@ -84,3 +84,36 @@ Vue.use(FancIcon);
 ## 开源协议
 
 本项目基于 [MIT 协议](LICENSE)
+
+## 代码格式化规范
+
+项目使用 Prettier 进行代码格式化，确保团队代码风格统一。
+
+### 格式化配置
+
+主要格式化规则：
+- 使用双引号 `"` 而非单引号 `'`
+- 每行最大长度为 100 字符
+- 使用 2 个空格缩进
+- 语句末尾使用分号
+- 使用 ES5 风格的尾随逗号
+- 箭头函数参数始终使用括号
+- Vue 文件中的 script 和 style 块不缩进
+
+### 如何使用
+
+1. **自动格式化**：
+   - 在保存文件时自动格式化（需要 VSCode + Prettier 插件）
+   - 使用命令行：`npm run format` 或 `yarn format`
+
+2. **检查格式问题**：
+   - 使用命令行：`npm run format:check` 或 `yarn format:check`
+
+3. **编辑器配置**：
+   - 项目根目录已配置 `.vscode/settings.json`，使用 VSCode 可以自动格式化代码
+   - 需要安装 [Prettier 插件](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
+
+### 注意事项
+
+- 提交代码前请确保已格式化
+- 若需特殊处理某些文件，可在 `.prettierignore` 中配置

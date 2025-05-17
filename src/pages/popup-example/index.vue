@@ -2,18 +2,24 @@
     <view class="example-page">
         <view class="example-page__header">
             <text class="example-page__header-title">弹出层组件</text>
-            <text class="example-page__header-desc">弹出层用于展示临时内容，可以从多个方向弹出</text>
+            <text class="example-page__header-desc"
+                >弹出层用于展示临时内容，可以从多个方向弹出</text
+            >
         </view>
 
         <view class="example-page__section">
             <view class="example-page__section-title">基础用法</view>
-            <view class="example-page__section-desc">基础弹出层从屏幕中心淡入，点击遮罩层或关闭按钮可关闭</view>
+            <view class="example-page__section-desc"
+                >基础弹出层从屏幕中心淡入，点击遮罩层或关闭按钮可关闭</view
+            >
             <fanc-button type="primary" @click="showBasic = true">显示弹出层</fanc-button>
             <fanc-popup :show="showBasic" @close="showBasic = false">
                 <view class="popup-content">
                     <text class="popup-content__title">基础弹出层</text>
                     <text class="popup-content__text">这是一个居中显示的基础弹出层</text>
-                    <fanc-button size="small" type="primary" @click="showBasic = false">关闭</fanc-button>
+                    <fanc-button size="small" type="primary" @click="showBasic = false"
+                        >关闭</fanc-button
+                    >
                 </view>
             </fanc-popup>
         </view>
@@ -22,17 +28,27 @@
             <view class="example-page__section-title">弹出位置</view>
             <view class="example-page__section-desc">弹出层可以从顶部、底部、左侧和右侧弹出</view>
             <view class="example-page__button-group">
-                <fanc-button type="primary" size="small" @click="showPosition('top')">顶部弹出</fanc-button>
-                <fanc-button type="success" size="small" @click="showPosition('bottom')">底部弹出</fanc-button>
-                <fanc-button type="warning" size="small" @click="showPosition('left')">左侧弹出</fanc-button>
-                <fanc-button type="danger" size="small" @click="showPosition('right')">右侧弹出</fanc-button>
+                <fanc-button type="primary" size="small" @click="showPosition('top')"
+                    >顶部弹出</fanc-button
+                >
+                <fanc-button type="success" size="small" @click="showPosition('bottom')"
+                    >底部弹出</fanc-button
+                >
+                <fanc-button type="warning" size="small" @click="showPosition('left')"
+                    >左侧弹出</fanc-button
+                >
+                <fanc-button type="danger" size="small" @click="showPosition('right')"
+                    >右侧弹出</fanc-button
+                >
             </view>
 
             <fanc-popup :show="showTop" position="top" @close="showTop = false">
                 <view class="popup-content popup-content--position">
                     <text class="popup-content__title">顶部弹出</text>
                     <text class="popup-content__text">这是一个从顶部弹出的弹出层</text>
-                    <fanc-button size="small" type="primary" @click="showTop = false">关闭</fanc-button>
+                    <fanc-button size="small" type="primary" @click="showTop = false"
+                        >关闭</fanc-button
+                    >
                 </view>
             </fanc-popup>
 
@@ -40,7 +56,9 @@
                 <view class="popup-content popup-content--position">
                     <text class="popup-content__title">底部弹出</text>
                     <text class="popup-content__text">这是一个从底部弹出的弹出层</text>
-                    <fanc-button size="small" type="primary" @click="showBottom = false">关闭</fanc-button>
+                    <fanc-button size="small" type="primary" @click="showBottom = false"
+                        >关闭</fanc-button
+                    >
                 </view>
             </fanc-popup>
 
@@ -48,7 +66,9 @@
                 <view class="popup-content popup-content--position">
                     <text class="popup-content__title">左侧弹出</text>
                     <text class="popup-content__text">这是一个从左侧弹出的弹出层</text>
-                    <fanc-button size="small" type="primary" @click="showLeft = false">关闭</fanc-button>
+                    <fanc-button size="small" type="primary" @click="showLeft = false"
+                        >关闭</fanc-button
+                    >
                 </view>
             </fanc-popup>
 
@@ -56,7 +76,9 @@
                 <view class="popup-content popup-content--position">
                     <text class="popup-content__title">右侧弹出</text>
                     <text class="popup-content__text">这是一个从右侧弹出的弹出层</text>
-                    <fanc-button size="small" type="primary" @click="showRight = false">关闭</fanc-button>
+                    <fanc-button size="small" type="primary" @click="showRight = false"
+                        >关闭</fanc-button
+                    >
                 </view>
             </fanc-popup>
         </view>
@@ -64,7 +86,9 @@
         <view class="example-page__section">
             <view class="example-page__section-title">直角和关闭图标</view>
             <view class="example-page__section-desc">可以为弹出层添加直角样式和关闭图标</view>
-            <fanc-button type="primary" @click="showRoundWithClose = true">直角弹出层带关闭图标</fanc-button>
+            <fanc-button type="primary" @click="showRoundWithClose = true"
+                >直角弹出层带关闭图标</fanc-button
+            >
             <fanc-popup
                 :show="showRoundWithClose"
                 position="bottom"
@@ -83,7 +107,9 @@
         <view class="example-page__section">
             <view class="example-page__section-title">关闭图标位置</view>
             <view class="example-page__section-desc">关闭图标可以设置在弹出层的四个角落</view>
-            <fanc-button type="primary" @click="showIconPositionDemo = true">自定义关闭图标位置</fanc-button>
+            <fanc-button type="primary" @click="showIconPositionDemo = true"
+                >自定义关闭图标位置</fanc-button
+            >
             <fanc-popup
                 :show="showIconPositionDemo"
                 position="center"
@@ -95,16 +121,28 @@
                     <text class="popup-content__title">关闭图标位置</text>
                     <text class="popup-content__text">当前位置：{{ closeIconPosition }}</text>
                     <view class="popup-content__buttons">
-                        <fanc-button size="mini" type="primary" @click="changeCloseIconPosition('top-left')"
+                        <fanc-button
+                            size="mini"
+                            type="primary"
+                            @click="changeCloseIconPosition('top-left')"
                             >左上角</fanc-button
                         >
-                        <fanc-button size="mini" type="success" @click="changeCloseIconPosition('top-right')"
+                        <fanc-button
+                            size="mini"
+                            type="success"
+                            @click="changeCloseIconPosition('top-right')"
                             >右上角</fanc-button
                         >
-                        <fanc-button size="mini" type="warning" @click="changeCloseIconPosition('bottom-left')"
+                        <fanc-button
+                            size="mini"
+                            type="warning"
+                            @click="changeCloseIconPosition('bottom-left')"
                             >左下角</fanc-button
                         >
-                        <fanc-button size="mini" type="danger" @click="changeCloseIconPosition('bottom-right')"
+                        <fanc-button
+                            size="mini"
+                            type="danger"
+                            @click="changeCloseIconPosition('bottom-right')"
                             >右下角</fanc-button
                         >
                     </view>
@@ -114,8 +152,12 @@
 
         <view class="example-page__section">
             <view class="example-page__section-title">自定义样式</view>
-            <view class="example-page__section-desc">通过customStyle属性可以自定义弹出层的尺寸和样式</view>
-            <fanc-button type="primary" @click="showCustomStyle = true">自定义弹出层样式</fanc-button>
+            <view class="example-page__section-desc"
+                >通过customStyle属性可以自定义弹出层的尺寸和样式</view
+            >
+            <fanc-button type="primary" @click="showCustomStyle = true"
+                >自定义弹出层样式</fanc-button
+            >
             <fanc-popup
                 :show="showCustomStyle"
                 position="center"
@@ -125,8 +167,12 @@
                 <view class="popup-content popup-content--custom">
                     <text class="popup-content__title">自定义样式</text>
                     <text class="popup-content__text">这是一个使用自定义样式的弹出层</text>
-                    <text class="popup-content__text">可以通过customStyle属性自定义弹出层的宽度、高度等样式</text>
-                    <fanc-button size="small" type="primary" @click="showCustomStyle = false">关闭</fanc-button>
+                    <text class="popup-content__text"
+                        >可以通过customStyle属性自定义弹出层的宽度、高度等样式</text
+                    >
+                    <fanc-button size="small" type="primary" @click="showCustomStyle = false"
+                        >关闭</fanc-button
+                    >
                 </view>
             </fanc-popup>
         </view>
@@ -140,7 +186,9 @@
                     <text class="popup-content__title">v-model控制</text>
                     <text class="popup-content__text">这个示例使用v-model实现双向绑定</text>
                     <text class="popup-content__text">点击按钮或遮罩层都可以关闭弹窗</text>
-                    <fanc-button size="small" type="primary" @click="showVModel = false">关闭弹窗</fanc-button>
+                    <fanc-button size="small" type="primary" @click="showVModel = false"
+                        >关闭弹窗</fanc-button
+                    >
                 </view>
             </fanc-popup>
         </view>

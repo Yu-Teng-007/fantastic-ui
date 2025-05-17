@@ -2,12 +2,16 @@
     <view class="example-page">
         <view class="example-page__header">
             <text class="example-page__header-title">动作面板组件</text>
-            <text class="example-page__header-desc">底部弹起的模态面板，提供和当前场景相关的多个操作</text>
+            <text class="example-page__header-desc"
+                >底部弹起的模态面板，提供和当前场景相关的多个操作</text
+            >
         </view>
 
         <view class="example-page__section">
             <view class="example-page__section-title">基础用法</view>
-            <view class="example-page__section-desc">基础动作面板由操作选项组成，点击选项后会触发相应的事件</view>
+            <view class="example-page__section-desc"
+                >基础动作面板由操作选项组成，点击选项后会触发相应的事件</view
+            >
             <fanc-button type="primary" @click="showBasic = true">基础动作面板</fanc-button>
             <fanc-action-sheet
                 v-model:show="showBasic"
@@ -21,7 +25,9 @@
 
         <view class="example-page__section">
             <view class="example-page__section-title">带标题和描述</view>
-            <view class="example-page__section-desc">动作面板可以设置标题和描述文本，方便用户理解面板的用途</view>
+            <view class="example-page__section-desc"
+                >动作面板可以设置标题和描述文本，方便用户理解面板的用途</view
+            >
             <fanc-button type="primary" @click="showWithTitle = true">带标题动作面板</fanc-button>
             <fanc-action-sheet
                 v-model:show="showWithTitle"
@@ -52,7 +58,9 @@
 
         <view class="example-page__section">
             <view class="example-page__section-title">宫格模式</view>
-            <view class="example-page__section-desc">宫格模式将选项以网格形式展示，适合有图标的场景</view>
+            <view class="example-page__section-desc"
+                >宫格模式将选项以网格形式展示，适合有图标的场景</view
+            >
             <fanc-button type="primary" @click="showGrid = true">宫格动作面板</fanc-button>
             <fanc-action-sheet
                 v-model:show="showGrid"
@@ -85,7 +93,9 @@
 
         <view class="example-page__section">
             <view class="example-page__section-title">状态示例</view>
-            <view class="example-page__section-desc">选项可以设置禁用或加载状态，提供更丰富的交互反馈</view>
+            <view class="example-page__section-desc"
+                >选项可以设置禁用或加载状态，提供更丰富的交互反馈</view
+            >
             <fanc-button type="primary" @click="showWithStatus = true">状态示例</fanc-button>
             <fanc-action-sheet
                 v-model:show="showWithStatus"
@@ -100,7 +110,9 @@
 
         <view class="example-page__section">
             <view class="example-page__section-title">自定义关闭按钮</view>
-            <view class="example-page__section-desc">可以显示顶部关闭按钮，并自定义底部取消按钮文本</view>
+            <view class="example-page__section-desc"
+                >可以显示顶部关闭按钮，并自定义底部取消按钮文本</view
+            >
             <fanc-button type="primary" @click="showWithClose = true">自定义关闭按钮</fanc-button>
             <fanc-action-sheet
                 v-model:show="showWithClose"
@@ -116,7 +128,9 @@
 
         <view class="example-page__section">
             <view class="example-page__section-title">异步操作</view>
-            <view class="example-page__section-desc">点击选项后可以执行异步操作，完成后再关闭面板</view>
+            <view class="example-page__section-desc"
+                >点击选项后可以执行异步操作，完成后再关闭面板</view
+            >
             <fanc-button type="primary" @click="showAsync = true">异步操作</fanc-button>
             <fanc-action-sheet
                 v-model:show="showAsync"
@@ -131,7 +145,9 @@
 
         <view class="example-page__section">
             <view class="example-page__section-title">分页显示 - 宫格模式</view>
-            <view class="example-page__section-desc">当选项较多时，可以启用分页功能分批展示内容</view>
+            <view class="example-page__section-desc"
+                >当选项较多时，可以启用分页功能分批展示内容</view
+            >
             <fanc-button type="primary" @click="showPagination = true">宫格分页</fanc-button>
             <fanc-action-sheet
                 v-model:show="showPagination"
@@ -150,7 +166,9 @@
 
         <view class="example-page__section">
             <view class="example-page__section-title">分页显示 - 列表模式</view>
-            <view class="example-page__section-desc">列表模式同样支持分页功能，适用于选项较多的场景</view>
+            <view class="example-page__section-desc"
+                >列表模式同样支持分页功能，适用于选项较多的场景</view
+            >
             <fanc-button type="primary" @click="showListPagination = true">列表分页</fanc-button>
             <fanc-action-sheet
                 v-model:show="showListPagination"
@@ -288,7 +306,12 @@ export default {
                                 // 恢复原始数据
                                 this.asyncActions = [
                                     { name: "保存", icon: "save", iconColor: "#007AFF" },
-                                    { name: "删除", icon: "trash", iconColor: "#FF3B30", danger: true },
+                                    {
+                                        name: "删除",
+                                        icon: "trash",
+                                        iconColor: "#FF3B30",
+                                        danger: true,
+                                    },
                                     { name: "分享", icon: "share", iconColor: "#34C759" },
                                 ];
                             }, 2000);

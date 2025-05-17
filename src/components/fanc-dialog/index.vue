@@ -18,7 +18,12 @@
     >
         <!-- 图片区域（置顶） -->
         <view v-if="imageUrl && imagePosition === 'top'" class="fanc-dialog-image-container">
-            <image :src="imageUrl" class="fanc-dialog-image" :style="imageStyle" mode="aspectFit"></image>
+            <image
+                :src="imageUrl"
+                class="fanc-dialog-image"
+                :style="imageStyle"
+                mode="aspectFit"
+            ></image>
         </view>
 
         <!-- 标题栏 -->
@@ -39,13 +44,21 @@
 
         <!-- 图片区域（默认） -->
         <view v-if="imageUrl && imagePosition === 'default'" class="fanc-dialog-image-container">
-            <image :src="imageUrl" class="fanc-dialog-image" :style="imageStyle" mode="aspectFit"></image>
+            <image
+                :src="imageUrl"
+                class="fanc-dialog-image"
+                :style="imageStyle"
+                mode="aspectFit"
+            ></image>
         </view>
 
         <!-- 内容区 -->
         <view
             class="fanc-dialog-content"
-            :class="{ 'fanc-dialog-content-no-title': !showTitle, 'fanc-dialog-content-no-buttons': !showButtons }"
+            :class="{
+                'fanc-dialog-content-no-title': !showTitle,
+                'fanc-dialog-content-no-buttons': !showButtons,
+            }"
         >
             <slot>
                 <text
@@ -58,11 +71,20 @@
 
         <!-- 图片区域（底部） -->
         <view v-if="imageUrl && imagePosition === 'bottom'" class="fanc-dialog-image-container">
-            <image :src="imageUrl" class="fanc-dialog-image" :style="imageStyle" mode="aspectFit"></image>
+            <image
+                :src="imageUrl"
+                class="fanc-dialog-image"
+                :style="imageStyle"
+                mode="aspectFit"
+            ></image>
         </view>
 
         <!-- 按钮区 -->
-        <view v-if="showButtons" class="fanc-dialog-footer" :class="[`fanc-dialog-footer-${buttonLayout}`]">
+        <view
+            v-if="showButtons"
+            class="fanc-dialog-footer"
+            :class="[`fanc-dialog-footer-${buttonLayout}`]"
+        >
             <slot name="footer">
                 <!-- 垂直布局时的多按钮支持 -->
                 <template v-if="buttonLayout === 'vertical' && buttons && buttons.length > 0">
@@ -72,7 +94,9 @@
                         class="fanc-dialog-button"
                         :class="[
                             'fanc-dialog-button-full',
-                            button.type ? `fanc-dialog-button-${button.type}` : 'fanc-dialog-confirm',
+                            button.type
+                                ? `fanc-dialog-button-${button.type}`
+                                : 'fanc-dialog-confirm',
                         ]"
                         :style="button.style || ''"
                         @click="handleButtonClick(button, index)"
@@ -159,7 +183,8 @@ export default {
         type: {
             type: String,
             default: "default",
-            validator: (value) => ["default", "success", "warning", "error", "info"].includes(value),
+            validator: (value) =>
+                ["default", "success", "warning", "error", "info"].includes(value),
         },
         // 对话框位置 (仅支持center, 由于是Dialog)
         position: {

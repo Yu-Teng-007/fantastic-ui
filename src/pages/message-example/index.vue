@@ -29,7 +29,9 @@
 
         <view class="example-page__section">
             <view class="example-page__section-title">带操作按钮</view>
-            <view class="example-page__section-desc">消息通知可以包含操作按钮，方便用户快速操作</view>
+            <view class="example-page__section-desc"
+                >消息通知可以包含操作按钮，方便用户快速操作</view
+            >
             <view class="example-page__button-group">
                 <fanc-button type="primary" @click="showWithAction">普通操作按钮</fanc-button>
                 <fanc-button type="success" @click="showSuccessAction">成功操作按钮</fanc-button>
@@ -55,7 +57,11 @@
             <view class="message-form">
                 <view class="message-form__item">
                     <text class="message-form__label">自定义滚动消息:</text>
-                    <input class="message-form__input" v-model="customScrollMessage" placeholder="输入长文本消息" />
+                    <input
+                        class="message-form__input"
+                        v-model="customScrollMessage"
+                        placeholder="输入长文本消息"
+                    />
                 </view>
                 <view class="message-form__item">
                     <text class="message-form__label">滚动速度:</text>
@@ -69,14 +75,18 @@
                     />
                 </view>
                 <view class="message-form__actions">
-                    <fanc-button type="primary" @click="showCustomScrollMessage">显示自定义滚动消息</fanc-button>
+                    <fanc-button type="primary" @click="showCustomScrollMessage"
+                        >显示自定义滚动消息</fanc-button
+                    >
                 </view>
             </view>
         </view>
 
         <view class="example-page__section">
             <view class="example-page__section-title">多条消息</view>
-            <view class="example-page__section-desc">可以同时显示多条消息通知，它们会自动堆叠排列</view>
+            <view class="example-page__section-desc"
+                >可以同时显示多条消息通知，它们会自动堆叠排列</view
+            >
             <view class="example-page__button-group">
                 <fanc-button type="primary" @click="showMultiple">显示多条</fanc-button>
             </view>
@@ -108,7 +118,9 @@
 
         <view class="example-page__section">
             <view class="example-page__section-title">富文本消息</view>
-            <view class="example-page__section-desc">支持在消息中显示富文本内容，如加粗、颜色等样式</view>
+            <view class="example-page__section-desc"
+                >支持在消息中显示富文本内容，如加粗、颜色等样式</view
+            >
             <view class="example-page__button-group">
                 <fanc-button type="primary" @click="showHtmlMessage">普通富文本</fanc-button>
                 <fanc-button type="success" @click="showHtmlSuccess">成功富文本</fanc-button>

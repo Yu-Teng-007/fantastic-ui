@@ -2,7 +2,9 @@
     <view class="example-page">
         <view class="example-page__header">
             <text class="example-page__header-title">轻提示</text>
-            <text class="example-page__header-desc">用于在不打断用户操作的情况下提供简短的操作反馈</text>
+            <text class="example-page__header-desc"
+                >用于在不打断用户操作的情况下提供简短的操作反馈</text
+            >
         </view>
 
         <!-- 基础用法 -->
@@ -43,10 +45,16 @@
             <view class="example-page__section-title">高级配置</view>
             <view class="example-page__section-desc">配置持续时间和遮罩层</view>
             <view class="example-page__button-group">
-                <button class="btn btn-outline-secondary" @click="showCustomDurationToast">自定义时长</button>
+                <button class="btn btn-outline-secondary" @click="showCustomDurationToast">
+                    自定义时长
+                </button>
                 <button class="btn btn-outline-secondary" @click="showMaskToast">显示遮罩</button>
-                <button class="btn btn-outline-secondary" @click="showMaskClosableToast">点击遮罩关闭</button>
-                <button class="btn btn-outline-secondary" @click="showLockBackgroundToast">锁定背景滚动</button>
+                <button class="btn btn-outline-secondary" @click="showMaskClosableToast">
+                    点击遮罩关闭
+                </button>
+                <button class="btn btn-outline-secondary" @click="showLockBackgroundToast">
+                    锁定背景滚动
+                </button>
             </view>
         </view>
 
@@ -55,9 +63,15 @@
             <view class="example-page__section-title">动态控制</view>
             <view class="example-page__section-desc">动态更新或手动关闭 Toast</view>
             <view class="example-page__button-group">
-                <button class="btn btn-outline-info" @click="showLoadingThenSuccess">加载后成功</button>
-                <button class="btn btn-outline-danger" @click="showMultipleToast">多个 Toast</button>
-                <button class="btn btn-outline-warning" @click="showAndCloseAll">关闭所有 Toast</button>
+                <button class="btn btn-outline-info" @click="showLoadingThenSuccess">
+                    加载后成功
+                </button>
+                <button class="btn btn-outline-danger" @click="showMultipleToast">
+                    多个 Toast
+                </button>
+                <button class="btn btn-outline-warning" @click="showAndCloseAll">
+                    关闭所有 Toast
+                </button>
             </view>
         </view>
     </view>

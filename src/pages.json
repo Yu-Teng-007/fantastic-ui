@@ -131,6 +131,12 @@
             "style": {
                 "navigationBarTitleText": "复选框示例"
             }
+        },
+        {
+            "path": "pages/cascader-example/index",
+            "style": {
+                "navigationBarTitleText": "级联选择器示例"
+            }
         }
     ],
     "globalStyle": {

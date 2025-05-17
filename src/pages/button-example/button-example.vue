@@ -33,7 +33,9 @@
 
         <view class="example-page__section">
             <view class="example-page__section-title">禁用状态 (Disabled)</view>
-            <view class="example-page__section-desc">禁用状态的按钮不可点击，常用于表单校验失败的场景</view>
+            <view class="example-page__section-desc"
+                >禁用状态的按钮不可点击，常用于表单校验失败的场景</view
+            >
             <view class="example-page__button-group">
                 <fanc-button disabled>禁用按钮</fanc-button>
                 <fanc-button type="primary" disabled>禁用按钮</fanc-button>
@@ -42,7 +44,9 @@
 
         <view class="example-page__section">
             <view class="example-page__section-title">加载状态 (Loading)</view>
-            <view class="example-page__section-desc">加载状态用于异步操作的过程中，防止用户重复点击</view>
+            <view class="example-page__section-desc"
+                >加载状态用于异步操作的过程中，防止用户重复点击</view
+            >
             <view class="example-page__button-group">
                 <fanc-button loading>加载中</fanc-button>
                 <fanc-button type="primary" loading loadingText="处理中...">加载中</fanc-button>
@@ -75,7 +79,12 @@
             <view class="example-page__button-group">
                 <fanc-button icon="search">搜索</fanc-button>
                 <fanc-button type="primary" icon="edit" iconSize="18">编辑</fanc-button>
-                <fanc-button type="primary" icon="apple-alt" iconColor="#ff0000" plain></fanc-button>
+                <fanc-button
+                    type="primary"
+                    icon="apple-alt"
+                    iconColor="#ff0000"
+                    plain
+                ></fanc-button>
                 <fanc-button icon="https://img.yzcdn.cn/vant/logo.png">图片图标</fanc-button>
             </view>
         </view>
@@ -111,7 +120,9 @@
             <view class="example-page__button-group">
                 <fanc-button color="#7232dd">单色按钮</fanc-button>
                 <fanc-button color="#7232dd" plain>单色按钮 (朴素)</fanc-button>
-                <fanc-button color="linear-gradient(to right, #ff6034, #ee0a24)">渐变色按钮</fanc-button>
+                <fanc-button color="linear-gradient(to right, #ff6034, #ee0a24)"
+                    >渐变色按钮</fanc-button
+                >
             </view>
         </view>
 
@@ -126,7 +137,9 @@
 
         <view class="example-page__section">
             <view class="example-page__section-title">页面跳转 (URL/To)</view>
-            <view class="example-page__section-desc">按钮可以配置跳转链接，点击后自动跳转到指定页面</view>
+            <view class="example-page__section-desc"
+                >按钮可以配置跳转链接，点击后自动跳转到指定页面</view
+            >
             <view class="example-page__button-group">
                 <fanc-button url="/pages/index/index" type="primary">跳转到首页 (URL)</fanc-button>
             </view>
