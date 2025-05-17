@@ -56,7 +56,7 @@
             <fanc-number-keyboard
                 :show="showCustomExtraKeyboard"
                 title="输入金额"
-                extra-key="00"
+                extra-key="."
                 @input="onCustomExtraInput"
                 @delete="onCustomExtraDelete"
                 @close="showCustomExtraKeyboard = false"
@@ -74,6 +74,20 @@
                 @input="onNoHeaderInput"
                 @delete="onNoHeaderDelete"
                 @close="showNoHeaderKeyboard = false"
+            />
+        </view>
+
+        <view class="section">
+            <view class="section-title">带关闭图标的键盘</view>
+            <view class="input-display">{{ closeIconValue || "点击输入内容" }}</view>
+            <fanc-button type="primary" @click="showCloseIconKeyboard = true">显示键盘</fanc-button>
+            <fanc-number-keyboard
+                :show="showCloseIconKeyboard"
+                title="带关闭图标的键盘"
+                :show-close-icon="true"
+                @input="onCloseIconInput"
+                @delete="onCloseIconDelete"
+                @close="showCloseIconKeyboard = false"
             />
         </view>
     </view>
@@ -102,6 +116,10 @@ export default {
             // 无标题栏键盘
             showNoHeaderKeyboard: false,
             noHeaderValue: "",
+
+            // 带关闭图标的键盘
+            showCloseIconKeyboard: false,
+            closeIconValue: "",
         };
     },
     methods: {
@@ -149,6 +167,14 @@ export default {
         },
         onNoHeaderDelete() {
             this.noHeaderValue = this.noHeaderValue.slice(0, -1);
+        },
+
+        // 带关闭图标的键盘
+        onCloseIconInput(key) {
+            this.closeIconValue = (this.closeIconValue || "") + key;
+        },
+        onCloseIconDelete() {
+            this.closeIconValue = this.closeIconValue.slice(0, -1);
         },
     },
 };

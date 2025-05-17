@@ -105,6 +105,21 @@ methods: {
 />
 ```
 
+## 带关闭图标的键盘
+
+通过 `show-close-icon` 属性可以显示一个关闭图标，点击该图标可以关闭键盘。
+
+```html
+<fanc-number-keyboard
+  :show="showKeyboard"
+  title="带关闭图标的键盘"
+  :show-close-icon="true"
+  @input="onInput"
+  @delete="onDelete"
+  @close="showKeyboard = false"
+/>
+```
+
 ## API
 
 ### Props
@@ -122,6 +137,7 @@ methods: {
 | random-key-order | 是否随机排序键盘按键 | `Boolean` | `false` |
 | extra-key | 额外按键的内容 | `String` | `.` |
 | show-header | 是否显示键盘头部 | `Boolean` | `true` |
+| show-close-icon | 是否显示关闭图标 | `Boolean` | `true` |
 
 ### Events
 
@@ -151,4 +167,4 @@ methods: {
 | --keyboard-delete-key-color | `var(--text-secondary)` | 删除键文字颜色 |
 | --keyboard-transition-duration | `0.3s` | 过渡动画持续时间 |
 | --keyboard-z-index | `100` | 键盘 z-index 层级 |
-``` 
+```
