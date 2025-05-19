@@ -252,4 +252,18 @@
     --keyboard-delete-key-color: var(--text-secondary);
     --keyboard-transition-duration: 0.3s;
     --keyboard-z-index: 100;
+
+    /* Cascader 级联选择组件颜色 */
+    --cascader-bg-color: var(--white);
+    --cascader-active-color: var(--fanc-primary-color);
+    --cascader-text-color: var(--text-primary);
+    --cascader-disabled-color: var(--text-disabled);
+    --cascader-border-color: var(--border-color-light);
+    --cascader-option-active-bg: rgba(0, 123, 255, 0.05);
+    --cascader-disabled-opacity: 0.6;
+    --cascader-z-index: 10;
+    --cascader-tab-height: 40px;
+    --cascader-option-height: 44px;
+    --cascader-header-height: 46px;
+    --cascader-transition-duration: 0.3s;
 }

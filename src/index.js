@@ -18,6 +18,7 @@ import FancCheckbox from "@/components/fanc-checkbox/index.vue";
 import FancCheckboxGroup from "@/components/fanc-checkbox-group/index.vue";
 import FancNumberKeyboard from "@/components/fanc-number-keyboard/index.vue";
 import FancForm from "@/components/fanc-form/index.vue";
+import FancCascader from "@/components/fanc-cascader/index.vue";
 import Message from "@/plugins/message";
 import Toast from "@/plugins/toast";
 import Dialog from "@/plugins/dialog";
@@ -44,6 +45,7 @@ const components = [
     FancCheckboxGroup,
     FancNumberKeyboard,
     FancForm,
+    FancCascader,
 ];
 
 // 组件库版本
@@ -71,6 +73,7 @@ export {
     FancCheckboxGroup,
     FancNumberKeyboard,
     FancForm,
+    FancCascader,
 };
 
 // 导出版本信息
