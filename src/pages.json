@@ -31,6 +31,24 @@
             }
         },
         {
+            "path": "pages/field-example/demo",
+            "style": {
+                "navigationBarTitleText": "输入框简单示例"
+            }
+        },
+        {
+            "path": "pages/field-example/login-form",
+            "style": {
+                "navigationBarTitleText": "登录表单示例"
+            }
+        },
+        {
+            "path": "pages/field-example/advanced-form",
+            "style": {
+                "navigationBarTitleText": "高级表单示例"
+            }
+        },
+        {
             "path": "pages/popup-example/index",
             "style": {
                 "navigationBarTitleText": "弹出层示例"

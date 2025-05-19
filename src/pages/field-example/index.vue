@@ -1,165 +1,38 @@
 <template>
-    <view class="container">
-        <view class="page-title">Field 输入框</view>
-
-        <view class="section-title">基础用法</view>
-        <view class="example-block">
-            <fanc-field v-model="value" label="文本" placeholder="请输入文本"></fanc-field>
+    <view class="example-page">
+        <view class="example-page__header">
+            <text class="example-page__header-title">输入框组件</text>
+            <text class="example-page__header-desc"
+                >输入框用于接收用户输入的信息，支持多种类型和自定义样式</text
+            >
         </view>
 
-        <view class="section-title">输入框类型</view>
-        <view class="example-block">
-            <fanc-field v-model="text" label="文本" placeholder="请输入文本"></fanc-field>
-            <fanc-field
-                v-model="password"
-                type="password"
-                label="密码"
-                placeholder="请输入密码"
-            ></fanc-field>
-            <fanc-field
-                v-model="number"
-                type="number"
-                label="数字"
-                placeholder="请输入数字"
-            ></fanc-field>
-            <fanc-field
-                v-model="idcard"
-                type="idcard"
-                label="身份证"
-                placeholder="请输入身份证号码"
-            ></fanc-field>
-            <fanc-field
-                v-model="tel"
-                type="tel"
-                label="手机号"
-                placeholder="请输入手机号"
-            ></fanc-field>
-            <fanc-field
-                v-model="message"
-                type="textarea"
-                label="留言"
-                placeholder="请输入留言"
-            ></fanc-field>
-        </view>
+        <view class="example-page__section">
+            <view class="example-page__section-title">应用场景示例</view>
+            <view class="example-page__section-desc">提供多种真实场景下的输入框使用示例</view>
+            <view class="example-page__content">
+                <view class="example-entries">
+                    <fanc-button type="primary" class="example-entry-btn" @click="goToDemo('demo')">
+                        简单示例
+                    </fanc-button>
 
-        <view class="section-title">禁用和只读</view>
-        <view class="example-block">
-            <fanc-field
-                v-model="disabled"
-                label="禁用"
-                disabled
-                placeholder="禁用状态"
-            ></fanc-field>
-            <fanc-field
-                v-model="readonly"
-                label="只读"
-                readonly
-                placeholder="只读状态"
-            ></fanc-field>
-        </view>
+                    <fanc-button
+                        type="success"
+                        class="example-entry-btn"
+                        @click="goToDemo('login-form')"
+                    >
+                        登录表单
+                    </fanc-button>
 
-        <view class="section-title">必填项和错误提示</view>
-        <view class="example-block">
-            <fanc-field
-                v-model="required"
-                label="用户名"
-                required
-                placeholder="请输入用户名"
-            ></fanc-field>
-            <fanc-field
-                v-model="error"
-                label="邮箱"
-                placeholder="请输入邮箱"
-                error
-                error-message="邮箱格式不正确"
-            ></fanc-field>
-        </view>
-
-        <view class="section-title">图标和清除按钮</view>
-        <view class="example-block">
-            <fanc-field
-                v-model="leftIcon"
-                label="用户名"
-                left-icon="user"
-                placeholder="请输入用户名"
-            ></fanc-field>
-            <fanc-field
-                v-model="rightIcon"
-                label="搜索"
-                right-icon="search"
-                placeholder="请输入搜索关键词"
-            ></fanc-field>
-            <fanc-field
-                v-model="clearable"
-                label="输入内容"
-                clearable
-                placeholder="可清除内容"
-            ></fanc-field>
-        </view>
-
-        <view class="section-title">字数统计</view>
-        <view class="example-block">
-            <fanc-field
-                v-model="wordLimit"
-                label="留言"
-                type="textarea"
-                placeholder="请输入留言"
-                maxlength="50"
-                show-word-limit
-            ></fanc-field>
-        </view>
-
-        <view class="section-title">自动高度</view>
-        <view class="example-block">
-            <fanc-field
-                v-model="autoHeight"
-                label="留言"
-                type="textarea"
-                placeholder="请输入留言"
-                auto-height
-            ></fanc-field>
-        </view>
-
-        <view class="section-title">输入对齐方式</view>
-        <view class="example-block">
-            <fanc-field
-                v-model="alignLeft"
-                label="居左"
-                input-align="left"
-                placeholder="居左对齐"
-            ></fanc-field>
-            <fanc-field
-                v-model="alignCenter"
-                label="居中"
-                input-align="center"
-                placeholder="居中对齐"
-            ></fanc-field>
-            <fanc-field
-                v-model="alignRight"
-                label="居右"
-                input-align="right"
-                placeholder="居右对齐"
-            ></fanc-field>
-        </view>
-
-        <view class="section-title">插槽用法</view>
-        <view class="example-block">
-            <fanc-field v-model="slots" placeholder="请输入金额">
-                <!-- 自定义标签 -->
-                <template #label>
-                    <text style="color: var(--fanc-primary-color)">金额</text>
-                </template>
-
-                <!-- 输入框前内容 -->
-                <template #input-prefix>
-                    <text style="margin-right: 4px">¥</text>
-                </template>
-
-                <!-- 输入框后内容 -->
-                <template #input-suffix>
-                    <text style="margin-left: 4px">元</text>
-                </template>
-            </fanc-field>
+                    <fanc-button
+                        type="info"
+                        class="example-entry-btn"
+                        @click="goToDemo('advanced-form')"
+                    >
+                        高级表单
+                    </fanc-button>
+                </view>
+            </view>
         </view>
     </view>
 </template>
@@ -188,7 +61,34 @@ export default {
             alignCenter: "",
             alignRight: "",
             slots: "",
+            username: "",
+            phone: "",
+            code: "",
+            validation: {
+                required: "",
+                email: "",
+                mobile: "",
+                password: "",
+            },
         };
+    },
+    methods: {
+        // 跳转到示例页面
+        goToDemo(page) {
+            uni.navigateTo({
+                url: `/pages/field-example/${page}`,
+            });
+        },
+        onValidate(field, isValid) {
+            // 处理验证结果
+            console.log(`${field} 验证结果:`, isValid);
+        },
+        validateAll() {
+            // 实现验证全部字段的逻辑
+        },
+        resetValidation() {
+            // 实现重置验证的逻辑
+        },
     },
 };
 </script>
@@ -196,27 +96,22 @@ export default {
 <style lang="scss">
 @import "@/styles/example-pages.scss";
 
-.container {
-    padding: 20px;
+// 自定义样式补充
+.example-page {
+    &__content {
+        padding: 0 16px;
+    }
 }
 
-.page-title {
-    font-size: 18px;
-    font-weight: bold;
-    margin-bottom: 20px;
-    text-align: center;
-}
+.example-entries {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 8px 0 12px;
 
-.section-title {
-    margin: 20px 0 10px;
-    font-size: 16px;
-    font-weight: bold;
-}
-
-.example-block {
-    background-color: #fff;
-    border-radius: 8px;
-    overflow: hidden;
-    margin-bottom: 16px;
+    .example-entry-btn {
+        flex: 1;
+        min-width: 100px;
+    }
 }
 </style>
