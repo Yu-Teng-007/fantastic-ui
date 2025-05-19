@@ -1,6 +1,6 @@
 // 示例页面容器
 .example-page {
-    padding: 24px 16px;
+    padding: 24px 0;
     background-color: #f7f8fa;
     min-height: 100vh;
     box-sizing: border-box;
@@ -43,11 +43,10 @@
     // 示例区块
     &__section {
         margin-bottom: 24px;
-        padding: 20px;
         background-color: #fff;
-        border-radius: 12px;
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
         transition: all 0.3s;
+        padding-bottom: 16px;
 
         &:hover {
             box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
@@ -57,18 +56,18 @@
             font-size: 16px;
             font-weight: 600;
             margin-bottom: 16px;
+            padding: 12px 32px 0;
             color: #323233;
             position: relative;
-            padding-left: 12px;
             display: flex;
             align-items: center;
 
             &::before {
                 content: "";
                 position: absolute;
-                left: 0;
+                left: 16px;
                 top: 50%;
-                transform: translateY(-50%);
+                transform: translateY(calc(-50% + 6px));
                 height: 16px;
                 width: 4px;
                 background: linear-gradient(var(--primary-color), var(--info-color));
@@ -80,7 +79,7 @@
             font-size: 14px;
             color: #969799;
             margin-bottom: 16px;
-            padding-left: 12px;
+            padding: 0 16px;
         }
     }
 
@@ -180,11 +179,7 @@
 
     // 响应式调整
     @media screen and (max-width: 768px) {
-        padding: 16px 12px;
-
-        &__section {
-            padding: 16px;
-        }
+        padding: 16px 0;
 
         &__header-title {
             font-size: 18px;

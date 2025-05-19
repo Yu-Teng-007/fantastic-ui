@@ -61,21 +61,7 @@ export default {
             transform: scaleY(0.5);
         }
 
-        &::before {
-            position: absolute;
-            box-sizing: border-box;
-            content: " ";
-            pointer-events: none;
-            z-index: 1;
-            right: 0;
-            bottom: 0;
-            left: 0;
-            border-bottom: 1px solid var(--border-color);
-            transform: scaleY(0.5);
-        }
-
         &--inset {
-            margin: 0 16px;
             border-radius: 8px;
             overflow: hidden;
 

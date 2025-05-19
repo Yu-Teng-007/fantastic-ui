@@ -24,7 +24,8 @@
     /* 中性色阶 */
     --white: #fff;
     --black: #000;
-    --gray-600: #6c757d;
+    --black-300: #323233;
+    --gray-600: #969799;
     --gray-300: #dee2e6;
     --gray-200: #e9ecef;
     --gray-400: #ced4da;
@@ -42,7 +43,7 @@
     --bg-transparent: transparent;
 
     /* 边框颜色 */
-    --border-color: var(--gray-300);
+    --border-color: #ebedf0;
     --border-color-light: #ebeef5;
 
     /* Field 输入框组件颜色 */

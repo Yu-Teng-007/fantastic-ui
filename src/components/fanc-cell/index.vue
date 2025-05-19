@@ -3,27 +3,25 @@
         class="fanc-cell"
         :class="[
             center ? 'fanc-cell--center' : '',
-            isLink ? 'fanc-cell--clickable' : '',
             borderless ? 'fanc-cell--borderless' : '',
             large ? 'fanc-cell--large' : '',
-            isLink ? 'fanc-cell--hover' : '',
+            isLink ? 'fanc-cell--hover fanc-cell--clickable' : '',
         ]"
         @click="onClick"
     >
         <view :class="['fanc-cell__left', titleWidth ? 'fanc-cell__left--' + titleWidth : '']">
-            <!-- 自定义左侧图标 -->
-            <slot name="icon" v-if="$slots.icon"> </slot>
-            <!-- 默认图标 -->
-            <view class="fanc-cell__icon" v-else-if="icon">
-                <fanc-icon :name="icon" class="fanc-cell__icon-inner" size="16" />
+            <view class="fanc-cell__icon" v-if="icon || $slots.icon">
+                <slot name="icon">
+                    <fanc-icon :name="icon" class="fanc-cell__icon-inner" size="16" />
+                </slot>
             </view>
 
             <view class="fanc-cell__title">
                 <!-- 自定义标题 -->
-                <slot name="title" v-if="$slots.title"> </slot>
+                <slot name="label" v-if="$slots.label"> </slot>
                 <!-- 默认标题 -->
-                <block v-else>
-                    <text>{{ title }}</text>
+                <block v-else class="fanc-cell__title-inner">
+                    <text>{{ label }}</text>
                 </block>
 
                 <!-- 自定义标题下方描述 -->
@@ -62,7 +60,7 @@ export default {
 
     props: {
         // 单元格标题
-        title: {
+        label: {
             type: String,
             default: "",
         },
@@ -198,7 +196,7 @@ export default {
     }
 
     &--hover:active {
-        background-color: rgba(var(--black), 0.05);
+        background-color: rgba(#323233, 0.05);
     }
 
     &__left {
@@ -216,8 +214,12 @@ export default {
     }
 
     &__icon {
-        margin-right: 4px;
-        font-size: 14px;
+        margin-right: 6px;
+        width: 16px;
+        height: 16px;
+        text-align: center;
+        display: flex;
+        justify-content: center;
 
         &-inner {
             display: block;
@@ -228,6 +230,7 @@ export default {
 
     &__title {
         flex: 1;
+        color: var(--black-300);
 
         &:empty {
             display: none;
@@ -255,10 +258,13 @@ export default {
         color: var(--gray-600);
         display: flex;
         align-items: center;
+        justify-content: center;
 
         &-inner {
             display: block;
-            font-size: 14px;
+            width: 16px;
+            height: 16px;
+            text-align: center;
         }
     }
 }
