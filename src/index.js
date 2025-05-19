@@ -14,8 +14,6 @@ import FancSwipeCell from "@/components/fanc-swipe-cell/index.vue";
 import FancDropdownMenu from "@/components/fanc-dropdown-menu/index.vue";
 import FancImage from "@/components/fanc-image/index.vue";
 import FancCalendar from "@/components/fanc-calendar/index.vue";
-import FancForm from "@/components/fanc-form/index.vue";
-import FancFormItem from "@/components/fanc-form-item/index.vue";
 import FancCheckbox from "@/components/fanc-checkbox/index.vue";
 import FancCheckboxGroup from "@/components/fanc-checkbox-group/index.vue";
 import FancCascader from "@/components/fanc-cascader/index.vue";
@@ -42,8 +40,6 @@ const components = [
     FancDropdownMenu,
     FancImage,
     FancCalendar,
-    FancForm,
-    FancFormItem,
     FancCheckbox,
     FancCheckboxGroup,
     FancCascader,
@@ -71,8 +67,6 @@ export {
     FancDropdownMenu,
     FancImage,
     FancCalendar,
-    FancForm,
-    FancFormItem,
     FancCheckbox,
     FancCheckboxGroup,
     FancCascader,
