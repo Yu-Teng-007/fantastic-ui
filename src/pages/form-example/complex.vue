@@ -82,76 +82,24 @@
                             </fanc-checkbox-group>
                         </view>
                     </view>
-
-                    <view class="form-group">
-                        <view class="form-group__label">出生日期</view>
-                        <view class="form-group__content">
-                            <view class="calendar-field" @click="showCalendar = true">
-                                <fanc-field
-                                    v-model="formData.birthdate"
-                                    name="birthdate"
-                                    placeholder="请选择出生日期"
-                                    readonly
-                                    right-icon="calendar-alt"
-                                    borderless
-                                ></fanc-field>
-                            </view>
-                            <fanc-popup v-model="showCalendar" position="bottom">
-                                <view class="calendar-container">
-                                    <view class="calendar-header">
-                                        <text class="calendar-title">选择日期</text>
-                                        <fanc-icon
-                                            name="times"
-                                            size="20"
-                                            @click="showCalendar = false"
-                                            class="calendar-close"
-                                        ></fanc-icon>
-                                    </view>
-                                    <fanc-calendar
-                                        :value="formData.birthdate"
-                                        @confirm="onSelectDate"
-                                        :max-date="maxDate"
-                                        @close="showCalendar = false"
-                                    ></fanc-calendar>
-                                </view>
-                            </fanc-popup>
-                        </view>
-                    </view>
-
-                    <view class="form-group">
-                        <view class="form-group__label">所在地区</view>
-                        <view class="form-group__content">
-                            <view class="cascader-field" @click="showCascader = true">
-                                <fanc-field
-                                    v-model="formData.regionText"
-                                    name="region"
-                                    placeholder="请选择所在地区"
-                                    readonly
-                                    right-icon="map-marker-alt"
-                                    borderless
-                                ></fanc-field>
-                            </view>
-                            <fanc-popup v-model="showCascader" position="bottom">
-                                <view class="cascader-container">
-                                    <view class="cascader-header">
-                                        <text class="cascader-title">选择地区</text>
-                                        <fanc-icon
-                                            name="times"
-                                            size="20"
-                                            @click="showCascader = false"
-                                            class="cascader-close"
-                                        ></fanc-icon>
-                                    </view>
-                                    <fanc-cascader
-                                        :options="regionOptions"
-                                        :value="formData.region"
-                                        @change="onRegionChange"
-                                        @close="showCascader = false"
-                                    ></fanc-cascader>
-                                </view>
-                            </fanc-popup>
-                        </view>
-                    </view>
+                    <fanc-field
+                        label="出生日期"
+                        v-model="formData.birthdate"
+                        name="birthdate"
+                        placeholder="请选择出生日期"
+                        readonly
+                        right-icon="calendar-alt"
+                        @click-right-icon="showCalendar = true"
+                    ></fanc-field>
+                    <fanc-field
+                        label="所在地区"
+                        v-model="formData.regionText"
+                        name="region"
+                        placeholder="请选择所在地区"
+                        readonly
+                        right-icon="map-marker-alt"
+                        @click-right-icon="showCascader = true"
+                    ></fanc-field>
 
                     <fanc-field
                         v-model="formData.address"
@@ -209,6 +157,30 @@
                 </view>
             </view>
         </fanc-dialog>
+
+        <!-- 日历组件 -->
+        <fanc-calendar
+            v-model="showCalendar"
+            type="single"
+            title="选择出生日期"
+            :default-date="formData.birthdate"
+            :max-date="maxDate"
+            color="#007bff"
+            round
+            show-confirm
+            confirm-text="确定"
+            @confirm="onSelectDate"
+        />
+
+        <!-- 级联选择器 -->
+        <fanc-cascader
+            v-model="formData.region"
+            :options="regionOptions"
+            title="选择地区"
+            active-color="#007bff"
+            @change="onRegionChange"
+            @finish="onCascaderFinish"
+        />
     </view>
 </template>
 
@@ -283,59 +255,59 @@ export default {
             maxDate: new Date().toISOString().split("T")[0], // 今天日期
             regionOptions: [
                 {
+                    text: "北京市",
                     value: "110000",
-                    label: "北京市",
                     children: [
                         {
+                            text: "北京市",
                             value: "110100",
-                            label: "北京市",
                             children: [
-                                { value: "110101", label: "东城区" },
-                                { value: "110102", label: "西城区" },
-                                { value: "110105", label: "朝阳区" },
-                                { value: "110106", label: "丰台区" },
+                                { text: "东城区", value: "110101" },
+                                { text: "西城区", value: "110102" },
+                                { text: "朝阳区", value: "110105" },
+                                { text: "丰台区", value: "110106" },
                             ],
                         },
                     ],
                 },
                 {
+                    text: "广东省",
                     value: "440000",
-                    label: "广东省",
                     children: [
                         {
+                            text: "广州市",
                             value: "440100",
-                            label: "广州市",
                             children: [
-                                { value: "440103", label: "荔湾区" },
-                                { value: "440104", label: "越秀区" },
-                                { value: "440105", label: "海珠区" },
-                                { value: "440106", label: "天河区" },
+                                { text: "荔湾区", value: "440103" },
+                                { text: "越秀区", value: "440104" },
+                                { text: "海珠区", value: "440105" },
+                                { text: "天河区", value: "440106" },
                             ],
                         },
                         {
+                            text: "深圳市",
                             value: "440300",
-                            label: "深圳市",
                             children: [
-                                { value: "440303", label: "罗湖区" },
-                                { value: "440304", label: "福田区" },
-                                { value: "440305", label: "南山区" },
-                                { value: "440306", label: "宝安区" },
+                                { text: "罗湖区", value: "440303" },
+                                { text: "福田区", value: "440304" },
+                                { text: "南山区", value: "440305" },
+                                { text: "宝安区", value: "440306" },
                             ],
                         },
                     ],
                 },
                 {
+                    text: "浙江省",
                     value: "330000",
-                    label: "浙江省",
                     children: [
                         {
+                            text: "杭州市",
                             value: "330100",
-                            label: "杭州市",
                             children: [
-                                { value: "330102", label: "上城区" },
-                                { value: "330103", label: "下城区" },
-                                { value: "330104", label: "江干区" },
-                                { value: "330105", label: "拱墅区" },
+                                { text: "上城区", value: "330102" },
+                                { text: "下城区", value: "330103" },
+                                { text: "江干区", value: "330104" },
+                                { text: "拱墅区", value: "330105" },
                             ],
                         },
                     ],
@@ -365,14 +337,28 @@ export default {
 
         // 日期选择器回调
         onSelectDate(date) {
-            this.formData.birthdate = date;
-            this.showCalendar = false;
+            if (typeof date === "object" && date.detail) {
+                this.formData.birthdate = date.detail.value;
+            } else {
+                this.formData.birthdate = date;
+            }
         },
 
         // 地区选择器回调
         onRegionChange(value, selectedOptions) {
-            this.formData.region = value;
-            this.formData.regionText = selectedOptions.map((option) => option.label).join(" / ");
+            if (!selectedOptions) return;
+
+            // 如果selectedOptions存在，更新显示文本
+            if (Array.isArray(selectedOptions)) {
+                this.formData.regionText = selectedOptions
+                    .map((option) => option.text || option.label)
+                    .join(" / ");
+            }
+        },
+
+        // 级联选择器完成回调
+        onCascaderFinish(value, selectedOptions) {
+            // 在用户完成选择时关闭弹窗
             this.showCascader = false;
         },
     },
@@ -397,7 +383,7 @@ export default {
 
     &__label {
         font-size: 14px;
-        color: var(--text-primary);
+        color: #323233;
         margin-bottom: 8px;
         font-weight: 500;
     }
@@ -414,7 +400,7 @@ export default {
         right: 16px;
         bottom: 0;
         left: 16px;
-        border-bottom: 1px solid var(--border-color);
+        border-bottom: 1px solid #ebedf0;
         transform: scaleY(0.5);
     }
 
@@ -435,8 +421,10 @@ export default {
 
 .calendar-container,
 .cascader-container {
-    height: 50vh;
+    height: 60vh;
     background-color: #fff;
+    display: flex;
+    flex-direction: column;
 }
 
 .calendar-header,
@@ -445,7 +433,8 @@ export default {
     justify-content: space-between;
     align-items: center;
     padding: 12px 16px;
-    border-bottom: 1px solid var(--border-color-light);
+    border-bottom: 1px solid #ebeef5;
+    flex-shrink: 0;
 }
 
 .calendar-title,
@@ -464,7 +453,7 @@ export default {
 }
 
 .agreement-link {
-    color: var(--fanc-primary-color);
+    color: #007bff;
 }
 
 .agreement-content {
@@ -484,11 +473,18 @@ export default {
 
 .agreement-section-text {
     font-size: 14px;
-    color: var(--text-secondary);
+    color: #969799;
     line-height: 1.5;
 }
 
 .form-buttons {
     margin-top: 24px;
+}
+
+/* 确保内容部分可以滚动 */
+.fanc-calendar,
+.fanc-cascader {
+    flex: 1;
+    overflow-y: auto;
 }
 </style>

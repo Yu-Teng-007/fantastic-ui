@@ -295,7 +295,66 @@ data() {
 | validateField | 对特定字段进行校验，返回Promise | (name: string) 要校验的字段名 |
 | resetFields | 重置表单 | (fields: string \| string[]) 要重置的字段，不传则重置所有字段 |
 | clearValidate | 清除验证状态 | (fields: string \| string[]) 要清除的字段，不传则清除所有字段 |
-| submitForm | 提交表单 | (event: Event) 事件对象 |
+| submitForm | 提交表单，会先进行校验，然后触发submit事件 | (event: Event) 事件对象 |
+
+### submitForm方法详解
+
+`submitForm`方法是表单提交的便捷方式，它会先对表单进行校验，然后触发表单的`submit`事件。通常有以下使用场景：
+
+1. 直接调用表单组件的submitForm方法
+```js
+// 在组件方法中
+submitFormDirectly() {
+    // 直接调用表单组件的submitForm方法
+    this.$refs.form.submitForm();
+}
+```
+
+2. 与原生表单submit事件配合使用
+```html
+<form @submit.prevent="handleFormSubmit">
+    <fanc-form ref="form" :model="formData" :rules="formRules">
+        <!-- 表单内容 -->
+        <button type="submit">提交</button>
+    </fanc-form>
+</form>
+
+<script>
+export default {
+    methods: {
+        handleFormSubmit(event) {
+            // 表单提交事件触发时，调用表单组件的submitForm方法
+            this.$refs.form.submitForm(event);
+        }
+    }
+}
+</script>
+```
+
+3. 与validateTrigger="submit"配合使用
+```html
+<fanc-form ref="form" :model="formData" :rules="formRules" validate-trigger="submit">
+    <!-- 表单内容 -->
+    <fanc-button @click="$refs.form.submitForm()">提交</fanc-button>
+</fanc-form>
+```
+
+当`validateTrigger`设置为`submit`时，表单只会在调用`submitForm`方法时进行验证，这对于复杂表单或需要批量验证的情况很有用。
+
+提交表单后，会触发表单的`submit`事件，回调参数包含验证结果、错误字段信息和表单数据：
+
+```js
+// 监听表单提交事件
+handleSubmit(result) {
+    if (result.valid) {
+        // 验证通过，可以进行提交操作
+        console.log("表单数据:", result.model);
+    } else {
+        // 验证失败，显示错误信息
+        console.log("验证失败字段:", result.invalidFields);
+    }
+}
+```
 
 ## Field Props 与表单相关的属性
 

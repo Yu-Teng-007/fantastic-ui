@@ -31,6 +31,14 @@
                     <fanc-button type="info" class="example-entry-btn" @click="goToDemo('complex')">
                         复杂表单
                     </fanc-button>
+
+                    <fanc-button
+                        type="warning"
+                        class="example-entry-btn"
+                        @click="goToDemo('form-submit')"
+                    >
+                        表单提交方式
+                    </fanc-button>
                 </view>
             </view>
         </view>
