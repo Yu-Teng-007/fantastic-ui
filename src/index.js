@@ -16,7 +16,6 @@ import FancImage from "@/components/fanc-image/index.vue";
 import FancCalendar from "@/components/fanc-calendar/index.vue";
 import FancCheckbox from "@/components/fanc-checkbox/index.vue";
 import FancCheckboxGroup from "@/components/fanc-checkbox-group/index.vue";
-import FancCascader from "@/components/fanc-cascader/index.vue";
 import FancNumberKeyboard from "@/components/fanc-number-keyboard/index.vue";
 import FancForm from "@/components/fanc-form/index.vue";
 import Message from "@/plugins/message";
@@ -43,7 +42,6 @@ const components = [
     FancCalendar,
     FancCheckbox,
     FancCheckboxGroup,
-    FancCascader,
     FancNumberKeyboard,
     FancForm,
 ];
@@ -71,7 +69,6 @@ export {
     FancCalendar,
     FancCheckbox,
     FancCheckboxGroup,
-    FancCascader,
     FancNumberKeyboard,
     FancForm,
 };

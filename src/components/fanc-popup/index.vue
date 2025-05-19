@@ -29,7 +29,7 @@
             <view
                 v-if="closeable"
                 class="fanc-popup__close-icon"
-                :class="[`fanc-popup__close-icon--${closeIconPosition}`]"
+                :class="[`fanc-popup__close-icon--${closeIconPosition}`, closeIconClass]"
                 @click="close"
             >
                 <fanc-icon name="close" size="18" />
@@ -50,6 +50,7 @@
  * @property {Boolean} overlay - 是否显示遮罩层
  * @property {Boolean} closeable - 是否显示关闭图标
  * @property {String} closeIconPosition - 关闭图标位置，可选值为 top-right/top-left/bottom-right/bottom-left
+ * @property {String} closeIconClass - 关闭图标自定义类名
  * @property {Boolean} round - 是否显示圆角
  * @property {Number|String} duration - 动画时长，单位为毫秒
  * @property {Number|String} zIndex - 弹出层的z-index值
@@ -96,6 +97,11 @@ export default {
             default: "top-right",
             validator: (value) =>
                 ["top-right", "top-left", "bottom-right", "bottom-left"].includes(value),
+        },
+        // 关闭图标自定义类名
+        closeIconClass: {
+            type: String,
+            default: "",
         },
         // 是否显示圆角
         round: {
