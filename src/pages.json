@@ -131,6 +131,30 @@
             "style": {
                 "navigationBarTitleText": "数字键盘示例"
             }
+        },
+        {
+            "path": "pages/form-example/index",
+            "style": {
+                "navigationBarTitleText": "表单示例"
+            }
+        },
+        {
+            "path": "pages/form-example/basic",
+            "style": {
+                "navigationBarTitleText": "基础表单"
+            }
+        },
+        {
+            "path": "pages/form-example/validation",
+            "style": {
+                "navigationBarTitleText": "表单验证"
+            }
+        },
+        {
+            "path": "pages/form-example/complex",
+            "style": {
+                "navigationBarTitleText": "复杂表单"
+            }
         }
     ],
     "globalStyle": {

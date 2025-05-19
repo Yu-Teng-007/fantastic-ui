@@ -380,7 +380,17 @@ export default {
             internalError: false,
             // 内部错误信息
             internalErrorMessage: "",
+            // 父表单组件引用
+            parentForm: null,
+            // 内部规则存储
+            internalRules: [],
         };
+    },
+
+    inject: {
+        fancForm: {
+            default: null,
+        },
     },
 
     computed: {
@@ -415,6 +425,30 @@ export default {
                 this.validate();
             }
         },
+
+        // 监听外部规则变化
+        rules: {
+            handler(val) {
+                if (val) {
+                    this.internalRules = Array.isArray(val) ? [...val] : [val];
+                } else {
+                    this.internalRules = [];
+                }
+            },
+            immediate: true,
+            deep: true,
+        },
+    },
+
+    created() {
+        // 监听父组件触发的规则更新事件
+        this.$on("update:rules", (rules) => {
+            if (rules) {
+                this.internalRules = Array.isArray(rules) ? [...rules] : [rules];
+            } else {
+                this.internalRules = [];
+            }
+        });
     },
 
     methods: {
@@ -483,88 +517,140 @@ export default {
         // 校验函数
         validate(callback) {
             // 如果没有规则或者字段被禁用，则跳过校验
-            if (!this.rules || this.rules.length === 0 || this.disabled) {
-                callback && callback(true);
+            if (
+                (!this.internalRules || this.internalRules.length === 0) &&
+                !this.required &&
+                !this.parentForm
+            ) {
+                callback && callback({ valid: true });
                 return true;
             }
 
             // 防止重复校验
             if (this.validateDisabled) {
-                callback && callback(true);
+                callback && callback({ valid: true });
                 return true;
             }
 
             this.validateDisabled = true;
 
             const value = this.value;
-            const rules = Array.isArray(this.rules) ? this.rules : [this.rules];
+            const rules = [...this.internalRules];
+
+            // 如果设置了required但没有规则，添加必填规则
+            if (this.required && !rules.some((rule) => rule.required)) {
+                rules.push({
+                    required: true,
+                    message: `${this.label || this.name || "此字段"}不能为空`,
+                });
+            }
 
             // 执行所有校验规则
             let valid = true;
             let message = "";
 
-            for (let i = 0; i < rules.length; i++) {
-                const rule = rules[i];
+            // 如果没有规则，则简单校验空值
+            if (rules.length === 0) {
+                if (this.required && (value === "" || value === undefined || value === null)) {
+                    valid = false;
+                    message = `${this.label || this.name || "此字段"}不能为空`;
+                }
+
+                this.setValidateInfo(valid, message);
+                this.validateDisabled = false;
+                callback && callback({ valid, message });
+                return valid;
+            }
+
+            // 执行校验规则
+            const validateRule = (index) => {
+                if (index >= rules.length) {
+                    this.setValidateInfo(true, "");
+                    this.validateDisabled = false;
+                    callback && callback({ valid: true, message: "" });
+                    return true;
+                }
+
+                const rule = rules[index];
 
                 // 必填校验
                 if (rule.required && (value === "" || value === undefined || value === null)) {
                     valid = false;
-                    message = rule.message || "此字段不能为空";
-                    break;
+                    message = rule.message || `${this.label || this.name || "此字段"}不能为空`;
+                    this.setValidateInfo(valid, message);
+                    this.validateDisabled = false;
+                    callback && callback({ valid, message });
+                    return valid;
+                }
+
+                // 如果字段为空且非必填，则跳过其他校验
+                if ((value === "" || value === undefined || value === null) && !rule.required) {
+                    return validateRule(index + 1);
                 }
 
                 // 正则校验
                 if (rule.pattern && !rule.pattern.test(value)) {
                     valid = false;
                     message = rule.message || "格式不正确";
-                    break;
+                    this.setValidateInfo(valid, message);
+                    this.validateDisabled = false;
+                    callback && callback({ valid, message });
+                    return valid;
                 }
 
                 // 最小长度校验
                 if (rule.min !== undefined && value.length < rule.min) {
                     valid = false;
                     message = rule.message || `最少需要输入 ${rule.min} 个字符`;
-                    break;
+                    this.setValidateInfo(valid, message);
+                    this.validateDisabled = false;
+                    callback && callback({ valid, message });
+                    return valid;
                 }
 
                 // 最大长度校验
                 if (rule.max !== undefined && value.length > rule.max) {
                     valid = false;
                     message = rule.message || `最多只能输入 ${rule.max} 个字符`;
-                    break;
+                    this.setValidateInfo(valid, message);
+                    this.validateDisabled = false;
+                    callback && callback({ valid, message });
+                    return valid;
                 }
 
                 // 指定长度校验
                 if (rule.len !== undefined && value.length !== rule.len) {
                     valid = false;
                     message = rule.message || `长度必须为 ${rule.len} 个字符`;
-                    break;
+                    this.setValidateInfo(valid, message);
+                    this.validateDisabled = false;
+                    callback && callback({ valid, message });
+                    return valid;
                 }
 
                 // 自定义校验函数
                 if (typeof rule.validator === "function") {
                     try {
-                        const result = rule.validator(rule, value);
-
-                        // 如果返回的是Promise
-                        if (result && typeof result.then === "function") {
-                            result
-                                .then(() => {
-                                    this.validateDisabled = false;
-                                })
-                                .catch((error) => {
-                                    valid = false;
-                                    message = error.message || rule.message || "校验失败";
-                                    this.setValidateInfo(valid, message);
-                                    this.validateDisabled = false;
-                                    callback && callback(false, message);
-                                });
-                            return;
-                        }
+                        // 使用标准callback形式调用验证器
+                        rule.validator(rule, value, (error) => {
+                            if (error) {
+                                valid = false;
+                                message = error || rule.message || "校验失败";
+                                this.setValidateInfo(valid, message);
+                                this.validateDisabled = false;
+                                callback && callback({ valid, message });
+                            } else {
+                                validateRule(index + 1);
+                            }
+                        });
+                        return;
                     } catch (error) {
                         valid = false;
                         message = error.message || rule.message || "校验失败";
-                        break;
+                        this.setValidateInfo(valid, message);
+                        this.validateDisabled = false;
+                        callback && callback({ valid, message });
+                        return valid;
                     }
                 }
 
@@ -572,7 +658,10 @@ export default {
                 if (rule.enum && Array.isArray(rule.enum) && !rule.enum.includes(value)) {
                     valid = false;
                     message = rule.message || `输入值必须是 ${rule.enum.join(", ")} 其中之一`;
-                    break;
+                    this.setValidateInfo(valid, message);
+                    this.validateDisabled = false;
+                    callback && callback({ valid, message });
+                    return valid;
                 }
 
                 // 类型校验
@@ -605,15 +694,19 @@ export default {
                     if (!typeValid) {
                         valid = false;
                         message = rule.message || `请输入正确的${rule.type}格式`;
-                        break;
+                        this.setValidateInfo(valid, message);
+                        this.validateDisabled = false;
+                        callback && callback({ valid, message });
+                        return valid;
                     }
                 }
-            }
 
-            this.setValidateInfo(valid, message);
-            this.validateDisabled = false;
-            callback && callback(valid, message);
-            return valid;
+                // 继续验证下一个规则
+                return validateRule(index + 1);
+            };
+
+            // 开始验证第一个规则
+            return validateRule(0);
         },
 
         // 设置校验信息
@@ -632,6 +725,31 @@ export default {
                 valid: valid,
                 message: message,
             });
+        },
+
+        // 在mounted生命周期中查找父表单组件
+        mounted() {
+            // 查找父级表单组件
+            let parent = this.$parent;
+            while (parent) {
+                if (parent.$options.name === "fanc-form") {
+                    this.parentForm = parent;
+                    break;
+                }
+                parent = parent.$parent;
+            }
+
+            // 向父表单注册自身
+            if (this.parentForm && this.name) {
+                this.parentForm.registerField(this);
+            }
+        },
+
+        // 在beforeDestroy生命周期中取消注册
+        beforeDestroy() {
+            if (this.parentForm && this.name) {
+                this.parentForm.unregisterField(this);
+            }
         },
     },
 };

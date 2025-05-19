@@ -43,6 +43,10 @@
                     <view class="component-card__icon keyboard-icon"></view>
                     <text class="component-card__name">数字键盘</text>
                 </navigator>
+                <navigator url="/pages/form-example/index" class="component-card">
+                    <view class="component-card__icon form-icon"></view>
+                    <text class="component-card__name">表单</text>
+                </navigator>
             </view>
         </view>
 
