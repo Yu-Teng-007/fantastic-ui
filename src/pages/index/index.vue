@@ -31,10 +31,6 @@
                     <view class="component-card__icon swipe-cell-icon"></view>
                     <text class="component-card__name">滑动单元格</text>
                 </navigator>
-                <navigator url="/pages/form-example/index" class="component-card">
-                    <view class="component-card__icon form-icon"></view>
-                    <text class="component-card__name">表单</text>
-                </navigator>
                 <navigator url="/pages/checkbox-example/index" class="component-card">
                     <view class="component-card__icon checkbox-icon"></view>
                     <text class="component-card__name">复选框</text>

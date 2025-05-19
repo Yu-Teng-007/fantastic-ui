@@ -115,36 +115,6 @@
             }
         },
         {
-            "path": "pages/form-example/index",
-            "style": {
-                "navigationBarTitleText": "表单示例"
-            }
-        },
-        {
-            "path": "pages/form-example/basic",
-            "style": {
-                "navigationBarTitleText": "基础表单"
-            }
-        },
-        {
-            "path": "pages/form-example/layout",
-            "style": {
-                "navigationBarTitleText": "表单布局"
-            }
-        },
-        {
-            "path": "pages/form-example/validation",
-            "style": {
-                "navigationBarTitleText": "表单验证"
-            }
-        },
-        {
-            "path": "pages/form-example/advanced",
-            "style": {
-                "navigationBarTitleText": "高级表单"
-            }
-        },
-        {
             "path": "pages/checkbox-example/index",
             "style": {
                 "navigationBarTitleText": "复选框示例"
