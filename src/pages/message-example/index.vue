@@ -5,55 +5,53 @@
             <text class="example-page__header-desc">用于展示操作反馈或提示信息的轻量级组件</text>
         </view>
 
-        <view class="example-page__section">
-            <view class="example-page__section-title">基础用法</view>
-            <view class="example-page__section-desc">支持不同类型的消息通知，用于不同场景</view>
-            <view class="example-page__button-group">
-                <fanc-button type="primary" @click="showInfo">普通通知</fanc-button>
-                <fanc-button type="success" @click="showSuccess">成功通知</fanc-button>
-                <fanc-button type="warning" @click="showWarning">警示通知</fanc-button>
-                <fanc-button type="danger" @click="showError">错误通知</fanc-button>
-            </view>
-        </view>
+        <fanc-cell-group 
+            title="基础用法" 
+            description="支持不同类型的消息通知，用于不同场景" 
+            inset
+        >
+            <fanc-cell title="普通通知" is-link @click="showInfo" />
+            <fanc-cell title="成功通知" is-link @click="showSuccess" />
+            <fanc-cell title="警示通知" is-link @click="showWarning" />
+            <fanc-cell title="错误通知" is-link @click="showError" />
+        </fanc-cell-group>
 
-        <view class="example-page__section">
-            <view class="example-page__section-title">自定义配置</view>
-            <view class="example-page__section-desc">可以自定义消息的关闭按钮、图标和显示时间</view>
-            <view class="example-page__button-group">
-                <fanc-button type="primary" @click="showCustom">带关闭按钮</fanc-button>
-                <fanc-button type="info" @click="showNoIcon">无图标通知</fanc-button>
-                <fanc-button type="warning" @click="showLongDuration">显示时间长</fanc-button>
-                <fanc-button type="danger" @click="closeAll">关闭所有</fanc-button>
-            </view>
-        </view>
+        <fanc-cell-group 
+            title="自定义配置" 
+            description="可以自定义消息的关闭按钮、图标和显示时间" 
+            inset
+        >
+            <fanc-cell title="带关闭按钮" is-link @click="showCustom" />
+            <fanc-cell title="无图标通知" is-link @click="showNoIcon" />
+            <fanc-cell title="显示时间长" is-link @click="showLongDuration" />
+            <fanc-cell title="关闭所有" is-link @click="closeAll" />
+        </fanc-cell-group>
 
-        <view class="example-page__section">
-            <view class="example-page__section-title">带操作按钮</view>
-            <view class="example-page__section-desc"
-                >消息通知可以包含操作按钮，方便用户快速操作</view
-            >
-            <view class="example-page__button-group">
-                <fanc-button type="primary" @click="showWithAction">普通操作按钮</fanc-button>
-                <fanc-button type="success" @click="showSuccessAction">成功操作按钮</fanc-button>
-                <fanc-button type="warning" @click="showWarningAction">警告操作按钮</fanc-button>
-                <fanc-button type="danger" @click="showErrorAction">错误操作按钮</fanc-button>
-            </view>
-            <view class="example-page__button-group">
-                <fanc-button type="primary" @click="showQuickAction">快速操作按钮</fanc-button>
-                <fanc-button type="warning" @click="showPersistentAction">持久操作按钮</fanc-button>
-                <fanc-button type="info" @click="showNoCloseOnAction">点击不关闭按钮</fanc-button>
-            </view>
-        </view>
+        <fanc-cell-group 
+            title="带操作按钮" 
+            description="消息通知可以包含操作按钮，方便用户快速操作" 
+            inset
+        >
+            <fanc-cell title="普通操作按钮" is-link @click="showWithAction" />
+            <fanc-cell title="成功操作按钮" is-link @click="showSuccessAction" />
+            <fanc-cell title="警告操作按钮" is-link @click="showWarningAction" />
+            <fanc-cell title="错误操作按钮" is-link @click="showErrorAction" />
+            
+            <fanc-cell title="快速操作按钮" is-link @click="showQuickAction" />
+            <fanc-cell title="持久操作按钮" is-link @click="showPersistentAction" />
+            <fanc-cell title="点击不关闭按钮" is-link @click="showNoCloseOnAction" />
+        </fanc-cell-group>
 
-        <view class="example-page__section">
-            <view class="example-page__section-title">横向滚动消息</view>
-            <view class="example-page__section-desc">内容较长时可以使用横向滚动展示完整信息</view>
-            <view class="example-page__button-group">
-                <fanc-button type="primary" @click="showScrollMessage">普通滚动消息</fanc-button>
-                <fanc-button type="success" @click="showSuccessScroll">成功滚动消息</fanc-button>
-                <fanc-button type="warning" @click="showWarningScroll">警告滚动消息</fanc-button>
-                <fanc-button type="danger" @click="showErrorScroll">错误滚动消息</fanc-button>
-            </view>
+        <fanc-cell-group 
+            title="横向滚动消息" 
+            description="内容较长时可以使用横向滚动展示完整信息" 
+            inset
+        >
+            <fanc-cell title="普通滚动消息" is-link @click="showScrollMessage" />
+            <fanc-cell title="成功滚动消息" is-link @click="showSuccessScroll" />
+            <fanc-cell title="警告滚动消息" is-link @click="showWarningScroll" />
+            <fanc-cell title="错误滚动消息" is-link @click="showErrorScroll" />
+            
             <view class="message-form">
                 <view class="message-form__item">
                     <text class="message-form__label">自定义滚动消息:</text>
@@ -80,22 +78,23 @@
                     >
                 </view>
             </view>
-        </view>
+        </fanc-cell-group>
 
-        <view class="example-page__section">
-            <view class="example-page__section-title">多条消息</view>
-            <view class="example-page__section-desc"
-                >可以同时显示多条消息通知，它们会自动堆叠排列</view
+        <fanc-cell-group 
+            title="多条消息" 
+            description="可以同时显示多条消息通知，它们会自动堆叠排列" 
+            inset
             >
-            <view class="example-page__button-group">
-                <fanc-button type="primary" @click="showMultiple">显示多条</fanc-button>
-            </view>
-        </view>
+            <fanc-cell title="显示多条" is-link @click="showMultiple" />
+        </fanc-cell-group>
 
         <!-- 测试图标显示 -->
-        <view class="example-page__section" v-if="showIconTest">
-            <view class="example-page__section-title">图标测试</view>
-            <view class="example-page__section-desc">测试不同类型消息的图标显示</view>
+        <fanc-cell-group 
+            v-if="showIconTest" 
+            title="图标测试" 
+            description="测试不同类型消息的图标显示" 
+            inset
+        >
             <view class="icon-test-group">
                 <view class="icon-test-item">
                     <i class="fas fa-info-circle"></i>
@@ -114,20 +113,18 @@
                     <text>error</text>
                 </view>
             </view>
-        </view>
+        </fanc-cell-group>
 
-        <view class="example-page__section">
-            <view class="example-page__section-title">富文本消息</view>
-            <view class="example-page__section-desc"
-                >支持在消息中显示富文本内容，如加粗、颜色等样式</view
-            >
-            <view class="example-page__button-group">
-                <fanc-button type="primary" @click="showHtmlMessage">普通富文本</fanc-button>
-                <fanc-button type="success" @click="showHtmlSuccess">成功富文本</fanc-button>
-                <fanc-button type="warning" @click="showHtmlWithAction">带操作按钮</fanc-button>
-                <fanc-button type="danger" @click="showHtmlScroll">滚动富文本</fanc-button>
-            </view>
-        </view>
+        <fanc-cell-group 
+            title="富文本消息" 
+            description="支持在消息中显示富文本内容，如加粗、颜色等样式" 
+            inset
+        >
+            <fanc-cell title="普通富文本" is-link @click="showHtmlMessage" />
+            <fanc-cell title="成功富文本" is-link @click="showHtmlSuccess" />
+            <fanc-cell title="带操作按钮" is-link @click="showHtmlWithAction" />
+            <fanc-cell title="滚动富文本" is-link @click="showHtmlScroll" />
+        </fanc-cell-group>
     </view>
 </template>
 
@@ -656,5 +653,9 @@ export default {
     &:nth-child(4) i {
         color: #f44336;
     }
+}
+
+.example-page {
+    padding-bottom: 32px;
 }
 </style>

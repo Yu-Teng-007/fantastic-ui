@@ -7,12 +7,13 @@
             >
         </view>
 
-        <view class="example-page__section">
-            <view class="example-page__section-title">基础用法</view>
-            <view class="example-page__section-desc"
-                >基础弹出层从屏幕中心淡入，点击遮罩层或关闭按钮可关闭</view
-            >
-            <fanc-button type="primary" @click="showBasic = true">显示弹出层</fanc-button>
+        <fanc-cell-group title="基础用法">
+            <fanc-cell 
+                title="基础弹出层" 
+                description="基础弹出层从屏幕中心淡入，点击遮罩层或关闭按钮可关闭"
+                is-link
+                @click="showBasic = true"
+            />
             <fanc-popup :show="showBasic" @close="showBasic = false">
                 <view class="popup-content">
                     <text class="popup-content__title">基础弹出层</text>
@@ -22,25 +23,33 @@
                     >
                 </view>
             </fanc-popup>
-        </view>
+        </fanc-cell-group>
 
-        <view class="example-page__section">
-            <view class="example-page__section-title">弹出位置</view>
-            <view class="example-page__section-desc">弹出层可以从顶部、底部、左侧和右侧弹出</view>
-            <view class="example-page__button-group">
-                <fanc-button type="primary" size="small" @click="showPosition('top')"
-                    >顶部弹出</fanc-button
-                >
-                <fanc-button type="success" size="small" @click="showPosition('bottom')"
-                    >底部弹出</fanc-button
-                >
-                <fanc-button type="warning" size="small" @click="showPosition('left')"
-                    >左侧弹出</fanc-button
-                >
-                <fanc-button type="danger" size="small" @click="showPosition('right')"
-                    >右侧弹出</fanc-button
-                >
-            </view>
+        <fanc-cell-group title="弹出位置">
+            <fanc-cell 
+                title="顶部弹出" 
+                description="弹出层从顶部滑入"
+                is-link
+                @click="showTop = true"
+            />
+            <fanc-cell 
+                title="底部弹出" 
+                description="弹出层从底部滑入"
+                is-link
+                @click="showBottom = true"
+            />
+            <fanc-cell 
+                title="左侧弹出" 
+                description="弹出层从左侧滑入"
+                is-link
+                @click="showLeft = true"
+            />
+            <fanc-cell 
+                title="右侧弹出" 
+                description="弹出层从右侧滑入"
+                is-link
+                @click="showRight = true"
+            />
 
             <fanc-popup :show="showTop" position="top" @close="showTop = false">
                 <view class="popup-content popup-content--position">
@@ -81,14 +90,15 @@
                     >
                 </view>
             </fanc-popup>
-        </view>
+        </fanc-cell-group>
 
-        <view class="example-page__section">
-            <view class="example-page__section-title">直角和关闭图标</view>
-            <view class="example-page__section-desc">可以为弹出层添加直角样式和关闭图标</view>
-            <fanc-button type="primary" @click="showRoundWithClose = true"
-                >直角弹出层带关闭图标</fanc-button
-            >
+        <fanc-cell-group title="直角和关闭图标">
+            <fanc-cell 
+                title="直角弹出层带关闭图标" 
+                description="可以为弹出层添加直角样式和关闭图标"
+                is-link
+                @click="showRoundWithClose = true"
+            />
             <fanc-popup
                 :show="showRoundWithClose"
                 position="bottom"
@@ -102,14 +112,15 @@
                     <text class="popup-content__text">点击右上角的关闭图标可以关闭弹出层</text>
                 </view>
             </fanc-popup>
-        </view>
+        </fanc-cell-group>
 
-        <view class="example-page__section">
-            <view class="example-page__section-title">关闭图标位置</view>
-            <view class="example-page__section-desc">关闭图标可以设置在弹出层的四个角落</view>
-            <fanc-button type="primary" @click="showIconPositionDemo = true"
-                >自定义关闭图标位置</fanc-button
-            >
+        <fanc-cell-group title="关闭图标位置">
+            <fanc-cell 
+                title="自定义关闭图标位置" 
+                description="关闭图标可以设置在弹出层的四个角落"
+                is-link
+                @click="showIconPositionDemo = true"
+            />
             <fanc-popup
                 :show="showIconPositionDemo"
                 position="center"
@@ -148,16 +159,15 @@
                     </view>
                 </view>
             </fanc-popup>
-        </view>
+        </fanc-cell-group>
 
-        <view class="example-page__section">
-            <view class="example-page__section-title">自定义样式</view>
-            <view class="example-page__section-desc"
-                >通过customStyle属性可以自定义弹出层的尺寸和样式</view
-            >
-            <fanc-button type="primary" @click="showCustomStyle = true"
-                >自定义弹出层样式</fanc-button
-            >
+        <fanc-cell-group title="自定义样式">
+            <fanc-cell 
+                title="自定义弹出层样式" 
+                description="通过customStyle属性可以自定义弹出层的尺寸和样式"
+                is-link
+                @click="showCustomStyle = true"
+            />
             <fanc-popup
                 :show="showCustomStyle"
                 position="center"
@@ -175,12 +185,15 @@
                     >
                 </view>
             </fanc-popup>
-        </view>
+        </fanc-cell-group>
 
-        <view class="example-page__section">
-            <view class="example-page__section-title">使用v-model控制</view>
-            <view class="example-page__section-desc">可以使用v-model实现弹出层的双向数据绑定</view>
-            <fanc-button type="primary" @click="showVModel = true">使用v-model控制弹窗</fanc-button>
+        <fanc-cell-group title="使用v-model控制">
+            <fanc-cell 
+                title="使用v-model控制弹窗" 
+                description="可以使用v-model实现弹出层的双向数据绑定"
+                is-link
+                @click="showVModel = true"
+            />
             <fanc-popup v-model="showVModel" position="center" closeable>
                 <view class="popup-content">
                     <text class="popup-content__title">v-model控制</text>
@@ -191,7 +204,7 @@
                     >
                 </view>
             </fanc-popup>
-        </view>
+        </fanc-cell-group>
     </view>
 </template>
 
@@ -223,24 +236,6 @@ export default {
         };
     },
     methods: {
-        // 显示不同位置的弹出层
-        showPosition(position) {
-            switch (position) {
-                case "top":
-                    this.showTop = true;
-                    break;
-                case "bottom":
-                    this.showBottom = true;
-                    break;
-                case "left":
-                    this.showLeft = true;
-                    break;
-                case "right":
-                    this.showRight = true;
-                    break;
-            }
-        },
-
         // 改变关闭图标位置
         changeCloseIconPosition(position) {
             this.closeIconPosition = position;

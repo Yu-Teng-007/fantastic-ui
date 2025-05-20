@@ -15,7 +15,7 @@
             <view class="example-page__content">
                 <fanc-cell
                     :content="basicSelectedText || '请选择'"
-                    label="地区"
+                    title="地区"
                     is-link
                     @click="showBasicCascader = true"
                 />
@@ -35,7 +35,7 @@
             <view class="example-page__content">
                 <fanc-cell
                     :content="customTitleSelectedText || '请选择'"
-                    label="收货地址"
+                    title="收货地址"
                     is-link
                     @click="showCustomTitleCascader = true"
                 />
@@ -56,7 +56,7 @@
             <view class="example-page__content">
                 <fanc-cell
                     :content="customButtonSelectedText || '请选择'"
-                    label="地址"
+                    title="地址"
                     is-link
                     @click="showCustomButtonCascader = true"
                 />
@@ -78,7 +78,7 @@
             <view class="example-page__content">
                 <fanc-cell
                     :content="defaultValueSelectedText"
-                    label="默认地址"
+                    title="默认地址"
                     is-link
                     @click="showDefaultValueCascader = true"
                 />
@@ -101,7 +101,7 @@
             <view class="example-page__content">
                 <fanc-cell
                     :content="noHeaderSelectedResult || '请选择'"
-                    label="地址选择"
+                    title="地址选择"
                     is-link
                     @click="showNoHeaderCascaderWithHeader = true"
                 />
@@ -125,7 +125,7 @@
             <view class="example-page__content">
                 <fanc-cell
                     :content="customColorSelectedText || '请选择'"
-                    label="地址"
+                    title="地址"
                     is-link
                     @click="showCustomColorCascader = true"
                     custom-class="custom-color-cell"
@@ -149,7 +149,7 @@
             <view class="example-page__content">
                 <fanc-cell
                     :content="eventSelectedText || '请选择'"
-                    label="地址"
+                    title="地址"
                     is-link
                     @click="showEventCascader = true"
                 />
@@ -174,7 +174,7 @@
             <view class="example-page__content">
                 <fanc-cell
                     :content="centerSelectedText || '请选择'"
-                    label="地址"
+                    title="地址"
                     is-link
                     center
                     @click="showCenterCascader = true"
@@ -200,7 +200,7 @@
             <view class="example-page__content">
                 <fanc-cell
                     content="完全自定义弹窗"
-                    label="高级选项"
+                    title="高级选项"
                     is-link
                     large
                     icon="settings-o"

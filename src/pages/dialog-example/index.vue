@@ -8,152 +8,72 @@
         </view>
 
         <!-- 基础用法 -->
-        <view class="example-page__section">
-            <view class="example-page__section-title">基础用法</view>
-            <view class="example-page__section-desc">展示基本的对话框</view>
-            <view class="example-page__button-group">
-                <button class="btn btn-primary" @click="showBasicDialog">基础对话框</button>
-                <button class="btn btn-secondary" @click="showLongContentDialog">
-                    长文本对话框
-                </button>
-            </view>
-        </view>
+        <fanc-cell-group title="基础用法" description="展示基本的对话框" inset>
+            <fanc-cell title="基础对话框" is-link @click="showBasicDialog" />
+            <fanc-cell title="长文本对话框" is-link @click="showLongContentDialog" />
+        </fanc-cell-group>
 
         <!-- 对话框类型 -->
-        <view class="example-page__section">
-            <view class="example-page__section-title">对话框类型</view>
-            <view class="example-page__section-desc">Dialog 支持不同类型的对话框</view>
-            <view class="example-page__button-group">
-                <button class="btn btn-success" @click="showSuccessDialog">成功对话框</button>
-                <button class="btn btn-danger" @click="showErrorDialog">错误对话框</button>
-                <button class="btn btn-warning" @click="showWarningDialog">警告对话框</button>
-                <button class="btn btn-info" @click="showInfoDialog">信息对话框</button>
-            </view>
-        </view>
+        <fanc-cell-group title="对话框类型" description="Dialog 支持不同类型的对话框" inset>
+            <fanc-cell title="成功对话框" is-link @click="showSuccessDialog" />
+            <fanc-cell title="错误对话框" is-link @click="showErrorDialog" />
+            <fanc-cell title="警告对话框" is-link @click="showWarningDialog" />
+            <fanc-cell title="信息对话框" is-link @click="showInfoDialog" />
+        </fanc-cell-group>
 
         <!-- 对话框位置 -->
-        <view class="example-page__section">
-            <view class="example-page__section-title">对话框位置</view>
-            <view class="example-page__section-desc">可以设置对话框显示在顶部、中间或底部</view>
-            <view class="example-page__button-group">
-                <button class="btn btn-outline-primary" @click="showTopDialog">顶部对话框</button>
-                <button class="btn btn-outline-primary" @click="showCenterDialog">
-                    中间对话框
-                </button>
-                <button class="btn btn-outline-primary" @click="showBottomDialog">
-                    底部对话框
-                </button>
-            </view>
-        </view>
+        <fanc-cell-group title="对话框位置" description="可以设置对话框显示在顶部、中间或底部" inset>
+            <fanc-cell title="顶部对话框" is-link @click="showTopDialog" />
+            <fanc-cell title="中间对话框" is-link @click="showCenterDialog" />
+            <fanc-cell title="底部对话框" is-link @click="showBottomDialog" />
+        </fanc-cell-group>
 
         <!-- 按钮布局 -->
-        <view class="example-page__section">
-            <view class="example-page__section-title">按钮布局</view>
-            <view class="example-page__section-desc">配置按钮的显示方式和布局</view>
-            <view class="example-page__button-group">
-                <button class="btn btn-outline-secondary" @click="showHorizontalButtonsDialog">
-                    水平按钮
-                </button>
-                <button class="btn btn-outline-secondary" @click="showVerticalButtonsDialog">
-                    垂直按钮
-                </button>
-                <button class="btn btn-outline-secondary" @click="showSingleButtonDialog">
-                    单个按钮
-                </button>
-                <button class="btn btn-outline-secondary" @click="showNoButtonsDialog">
-                    无按钮
-                </button>
-                <button class="btn btn-outline-secondary" @click="showMultiButtonsDialog">
-                    多按钮
-                </button>
-            </view>
-        </view>
+        <fanc-cell-group title="按钮布局" description="配置按钮的显示方式和布局" inset>
+            <fanc-cell title="水平按钮" is-link @click="showHorizontalButtonsDialog" />
+            <fanc-cell title="垂直按钮" is-link @click="showVerticalButtonsDialog" />
+            <fanc-cell title="单个按钮" is-link @click="showSingleButtonDialog" />
+            <fanc-cell title="无按钮" is-link @click="showNoButtonsDialog" />
+            <fanc-cell title="多按钮" is-link @click="showMultiButtonsDialog" />
+        </fanc-cell-group>
 
         <!-- 图片对话框 -->
-        <view class="example-page__section">
-            <view class="example-page__section-title">图片对话框</view>
-            <view class="example-page__section-desc">显示带图片的对话框</view>
-            <view class="example-page__button-group">
-                <button class="btn btn-primary" @click="showImageDialog">基础图片对话框</button>
-                <button class="btn btn-success" @click="showImageSuccessDialog">
-                    成功图片对话框
-                </button>
-                <button class="btn btn-warning" @click="showImageWarningDialog">
-                    警告图片对话框
-                </button>
-            </view>
-        </view>
+        <fanc-cell-group title="图片对话框" description="显示带图片的对话框" inset>
+            <fanc-cell title="基础图片对话框" is-link @click="showImageDialog" />
+            <fanc-cell title="成功图片对话框" is-link @click="showImageSuccessDialog" />
+            <fanc-cell title="警告图片对话框" is-link @click="showImageWarningDialog" />
+        </fanc-cell-group>
 
         <!-- 图片位置 -->
-        <view class="example-page__section">
-            <view class="example-page__section-title">图片位置</view>
-            <view class="example-page__section-desc">控制图片在对话框中的位置</view>
-            <view class="example-page__button-group">
-                <button class="btn btn-outline-primary" @click="showImageTopDialog">
-                    图片置顶
-                </button>
-                <button class="btn btn-outline-primary" @click="showImageDefaultDialog">
-                    图片居中
-                </button>
-                <button class="btn btn-outline-primary" @click="showImageBottomDialog">
-                    图片底部
-                </button>
-            </view>
-        </view>
+        <fanc-cell-group title="图片位置" description="控制图片在对话框中的位置" inset>
+            <fanc-cell title="图片置顶" is-link @click="showImageTopDialog" />
+            <fanc-cell title="图片居中" is-link @click="showImageDefaultDialog" />
+            <fanc-cell title="图片底部" is-link @click="showImageBottomDialog" />
+        </fanc-cell-group>
 
         <!-- 高级配置 -->
-        <view class="example-page__section">
-            <view class="example-page__section-title">高级配置</view>
-            <view class="example-page__section-desc">更多高级配置选项</view>
-            <view class="example-page__button-group">
-                <button class="btn btn-outline-info" @click="showCloseIconDialog">
-                    显示关闭图标
-                </button>
-                <button class="btn btn-outline-info" @click="showNoMaskDialog">无遮罩层</button>
-                <button class="btn btn-outline-danger" @click="showNoMaskCloseDialog">
-                    遮罩不可关闭
-                </button>
-                <button class="btn btn-outline-warning" @click="showRoundedDialog">
-                    圆角对话框
-                </button>
-                <button class="btn btn-outline-warning" @click="showNoRoundedDialog">
-                    直角对话框
-                </button>
-                <button class="btn btn-outline-success" @click="showCustomStyleDialog">
-                    自定义样式
-                </button>
-            </view>
-        </view>
+        <fanc-cell-group title="高级配置" description="更多高级配置选项" inset>
+            <fanc-cell title="显示关闭图标" is-link @click="showCloseIconDialog" />
+            <fanc-cell title="无遮罩层" is-link @click="showNoMaskDialog" />
+            <fanc-cell title="遮罩不可关闭" is-link @click="showNoMaskCloseDialog" />
+            <fanc-cell title="圆角对话框" is-link @click="showRoundedDialog" />
+            <fanc-cell title="直角对话框" is-link @click="showNoRoundedDialog" />
+            <fanc-cell title="自定义样式" is-link @click="showCustomStyleDialog" />
+        </fanc-cell-group>
 
         <!-- 异步操作 -->
-        <view class="example-page__section">
-            <view class="example-page__section-title">异步操作</view>
-            <view class="example-page__section-desc">控制对话框的异步关闭</view>
-            <view class="example-page__button-group">
-                <button class="btn btn-primary" @click="showAsyncDialog">异步关闭</button>
-                <button class="btn btn-danger" @click="showLoadingDialog">加载状态</button>
-            </view>
-        </view>
+        <fanc-cell-group title="异步操作" description="控制对话框的异步关闭" inset>
+            <fanc-cell title="异步关闭" is-link @click="showAsyncDialog" />
+            <fanc-cell title="加载状态" is-link @click="showLoadingDialog" />
+        </fanc-cell-group>
 
         <!-- 插槽用法 -->
-        <view class="example-page__section">
-            <view class="example-page__section-title">插槽用法</view>
-            <view class="example-page__section-desc">使用插槽自定义对话框内容</view>
-            <view class="example-page__button-group">
-                <button class="btn btn-outline-primary" @click="showCustomHeaderDialog">
-                    自定义标题
-                </button>
-                <button class="btn btn-outline-primary" @click="showCustomContentDialog">
-                    自定义内容
-                </button>
-                <button class="btn btn-outline-primary" @click="showCustomFooterDialog">
-                    自定义底部按钮
-                </button>
-                <button class="btn btn-outline-primary" @click="showCustomBottomDialog">
-                    自定义底部内容
-                </button>
-            </view>
-        </view>
+        <fanc-cell-group title="插槽用法" description="使用插槽自定义对话框内容" inset>
+            <fanc-cell title="自定义标题" is-link @click="showCustomHeaderDialog" />
+            <fanc-cell title="自定义内容" is-link @click="showCustomContentDialog" />
+            <fanc-cell title="自定义底部按钮" is-link @click="showCustomFooterDialog" />
+            <fanc-cell title="自定义底部内容" is-link @click="showCustomBottomDialog" />
+        </fanc-cell-group>
 
         <!-- Dialog 组件 -->
         <fanc-dialog
@@ -735,99 +655,8 @@ export default {
 </script>
 
 <style lang="scss">
-// 示例页面按钮样式
-.btn {
-    padding: 8px 16px;
-    border-radius: 4px;
-    font-size: 14px;
-    min-width: 100px;
-    text-align: center;
-    transition: all 0.3s;
-    margin: 0 8px 8px 0;
-
-    &:active {
-        opacity: 0.8;
-        transform: scale(0.98);
-    }
-
-    // 主要按钮
-    &-primary {
-        background-color: #007bff;
-        color: #fff;
-        border: none;
-    }
-
-    // 次要按钮
-    &-secondary {
-        background-color: #6c757d;
-        color: #fff;
-        border: none;
-    }
-
-    // 成功按钮
-    &-success {
-        background-color: #28a745;
-        color: #fff;
-        border: none;
-    }
-
-    // 危险按钮
-    &-danger {
-        background-color: #dc3545;
-        color: #fff;
-        border: none;
-    }
-
-    // 警告按钮
-    &-warning {
-        background-color: #ffc107;
-        color: #212529;
-        border: none;
-    }
-
-    // 信息按钮
-    &-info {
-        background-color: #17a2b8;
-        color: #fff;
-        border: none;
-    }
-
-    // 轮廓按钮样式
-    &-outline-primary {
-        background-color: transparent;
-        color: #007bff;
-        border: 1px solid #007bff;
-    }
-
-    &-outline-secondary {
-        background-color: transparent;
-        color: #6c757d;
-        border: 1px solid #6c757d;
-    }
-
-    &-outline-success {
-        background-color: transparent;
-        color: #28a745;
-        border: 1px solid #28a745;
-    }
-
-    &-outline-danger {
-        background-color: transparent;
-        color: #dc3545;
-        border: 1px solid #dc3545;
-    }
-
-    &-outline-warning {
-        background-color: transparent;
-        color: #ffc107;
-        border: 1px solid #ffc107;
-    }
-
-    &-outline-info {
-        background-color: transparent;
-        color: #17a2b8;
-        border: 1px solid #17a2b8;
-    }
+.example-page {
+    padding-bottom: 32px;
 }
 
 // 自定义内容样式

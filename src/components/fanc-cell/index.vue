@@ -231,6 +231,9 @@ export default {
     &__title {
         flex: 1;
         color: var(--black-300);
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
 
         &:empty {
             display: none;
@@ -245,12 +248,14 @@ export default {
     }
 
     &__content {
-        flex: 1;
+        flex: 2;
         position: relative;
-        overflow: hidden;
         text-align: right;
         vertical-align: middle;
         color: var(--gray-600);
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
     }
 
     &__right-icon {
