@@ -19,20 +19,6 @@
             </view>
         </view>
 
-        <!-- 自定义颜色和按钮文字 -->
-        <view class="example-page__section">
-            <view class="example-page__section-title">自定义样式</view>
-            <view class="example-page__section-desc">可以自定义主题颜色和按钮文字</view>
-            <view class="example-page__content">
-                <fanc-button block color="#ff6b6b" @click="showColorCalendar"
-                    >自定义颜色和按钮文字</fanc-button
-                >
-                <view class="example-page__result" v-if="selectedColorDate">
-                    <view>选择日期: {{ selectedColorDate }}</view>
-                </view>
-            </view>
-        </view>
-
         <!-- 多选模式 -->
         <view class="example-page__section">
             <view class="example-page__section-title">多选模式</view>
@@ -195,17 +181,6 @@ export default {
             this.currentAction = "basic";
         },
 
-        // 显示自定义颜色和按钮文字的日历
-        showColorCalendar() {
-            this.resetCalendarConfig();
-            this.calendarType = "single";
-            this.calendarTitle = "选择日期";
-            this.calendarColor = "#ff6b6b";
-            this.calendarConfirmText = "完成";
-            this.showCalendar = true;
-            this.currentAction = "color";
-        },
-
         // 显示多选日历
         showMultipleCalendar() {
             this.resetCalendarConfig();
@@ -278,7 +253,7 @@ export default {
         // 显示日期范围限制的日历
         showLimitCalendar() {
             this.resetCalendarConfig();
-            this.calendarType = "single";
+            this.calendarType = "range";
             this.calendarTitle = "日期范围限制";
 
             // 设置可选日期范围（今天开始的10天内）

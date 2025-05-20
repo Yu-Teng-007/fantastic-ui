@@ -84,14 +84,9 @@
                 </view>
             </view>
             <view class="fanc-calendar__footer">
-                <fanc-button
-                    v-if="showConfirm"
-                    block
-                    :disabled="!canConfirm"
-                    :color="color"
-                    @click="confirm"
-                    >{{ confirmText || "确认" }}</fanc-button
-                >
+                <fanc-button v-if="showConfirm" block :disabled="!canConfirm" @click="confirm">{{
+                    confirmText || "确认"
+                }}</fanc-button>
             </view>
         </fanc-popup>
     </view>
@@ -105,7 +100,6 @@
  * @property {String} type - 选择类型，可选值为 single/multiple/range
  * @property {String} title - 日历标题
  * @property {String} subtitle - 日历副标题
- * @property {String} color - 主题色
  * @property {String} position - 弹出位置，可选值为 center/bottom
  * @property {Boolean} round - 是否显示圆角
  * @property {Boolean} overlay - 是否显示遮罩层
@@ -153,11 +147,6 @@ export default {
         },
         // 日历副标题
         subtitle: {
-            type: String,
-            default: "",
-        },
-        // 主题色
-        color: {
             type: String,
             default: "",
         },
@@ -325,11 +314,33 @@ export default {
     },
 
     watch: {
-        show(val) {
-            this.showCalendar = val;
-            if (val) {
-                this.initCalendar();
+        show: {
+            immediate: true,
+            handler(val) {
+                if (this.showCalendar !== val) {
+                    this.showCalendar = val;
+                    if (val) {
+                        this.initCalendar();
+                    }
+                }
+            },
+        },
+        showCalendar(val) {
+            if (this.show !== val) {
+                this.$emit("update:show", val);
             }
+        },
+        type: {
+            handler(val) {
+                // 当类型变化时重置选中状态
+                this.selectedDates = [];
+                if (val === "single") {
+                    const today = new Date();
+                    this.selectedDates = [today];
+                }
+                // 重新初始化日历数据
+                this.initCalendar();
+            },
         },
     },
 
@@ -445,7 +456,7 @@ export default {
         // 初始化默认选中日期
         initSelectedDates() {
             if (!this.defaultDate) {
-                // 如果没有默认日期，默认选中今天
+                // 如果没有默认日期，默认选中今天（只针对单选模式）
                 if (this.type === "single") {
                     const today = new Date();
                     this.selectedDates = [today];
@@ -459,14 +470,26 @@ export default {
                 const date = this.parseDate(this.defaultDate);
                 if (date && !this.isDateDisabled(date)) {
                     this.selectedDates = [date];
+                } else {
+                    this.selectedDates = [];
                 }
             } else if (this.type === "multiple" || this.type === "range") {
-                const dates = Array.isArray(this.defaultDate)
-                    ? this.defaultDate
-                          .map((d) => this.parseDate(d))
-                          .filter((d) => d && !this.isDateDisabled(d))
-                    : [];
-                this.selectedDates = dates;
+                // 确保defaultDate是数组
+                if (!Array.isArray(this.defaultDate)) {
+                    this.selectedDates = [];
+                    return;
+                }
+
+                const dates = this.defaultDate
+                    .map((d) => this.parseDate(d))
+                    .filter((d) => d && !this.isDateDisabled(d));
+
+                if (this.type === "range" && dates.length > 2) {
+                    // 如果是范围选择，只取前两个日期
+                    this.selectedDates = dates.slice(0, 2).sort((a, b) => a - b);
+                } else {
+                    this.selectedDates = dates;
+                }
             }
         },
 
@@ -517,12 +540,18 @@ export default {
 
             // 处理范围选择
             if (this.type === "range" && this.selectedDates.length === 2) {
-                const [startDate, endDate] = this.selectedDates.sort((a, b) => a - b);
+                const [startDate, endDate] = [...this.selectedDates].sort((a, b) => a - b);
 
-                if (day.date > startDate && day.date < endDate) {
+                const currentTime = day.date ? day.date.getTime() : 0;
+                const startTime = startDate.getTime();
+                const endTime = endDate.getTime();
+
+                // 范围内的日期
+                if (currentTime > startTime && currentTime < endTime) {
                     classes.push("fanc-calendar__day--range");
                 }
 
+                // 开始日期
                 if (
                     day.date &&
                     startDate &&
@@ -533,6 +562,7 @@ export default {
                     classes.push("fanc-calendar__day--start");
                 }
 
+                // 结束日期
                 if (
                     day.date &&
                     endDate &&
@@ -572,12 +602,27 @@ export default {
                     this.selectedDates.push(day.date);
                 }
             } else if (this.type === "range") {
+                // 如果没有选择或已经选择了2个日期，则重新开始选择
                 if (this.selectedDates.length === 0 || this.selectedDates.length === 2) {
-                    // 如果没有选择或已经选择了2个日期，则重新开始选择
-                    this.selectedDates = [day.date];
+                    this.selectedDates = [new Date(day.date)];
                 } else {
                     // 已经选择了1个日期，现在选择第2个
-                    this.selectedDates.push(day.date);
+                    // 创建新日期对象避免引用问题
+                    const secondDate = new Date(day.date);
+
+                    // 检查是否与第一个日期相同
+                    const firstDate = this.selectedDates[0];
+                    if (
+                        firstDate.getFullYear() === secondDate.getFullYear() &&
+                        firstDate.getMonth() === secondDate.getMonth() &&
+                        firstDate.getDate() === secondDate.getDate()
+                    ) {
+                        // 如果选择了相同的日期，则取消第一次选择
+                        this.selectedDates = [];
+                        return;
+                    }
+
+                    this.selectedDates.push(secondDate);
                     // 确保开始日期早于结束日期
                     this.selectedDates.sort((a, b) => a - b);
                 }
@@ -634,13 +679,23 @@ export default {
         // 关闭日历弹窗
         close() {
             this.showCalendar = false;
-            this.$emit("update:show", false);
             this.$emit("close");
         },
 
         // 点击弹窗外部时关闭
         onClose() {
             this.close();
+        },
+
+        // 重置选择状态
+        reset() {
+            if (this.type === "single") {
+                const today = new Date();
+                this.selectedDates = [today];
+            } else {
+                this.selectedDates = [];
+            }
+            this.$emit("change", this.getSelectedValues());
         },
 
         // 空函数，防止点击内容区域关闭弹窗
@@ -657,18 +712,18 @@ export default {
 .fanc-calendar__header {
     padding: 16px;
     text-align: center;
-    border-bottom: 1px solid var(--border-color-light);
+    border-bottom: 1px solid #ebedf0;
 }
 
 .fanc-calendar__title {
     font-size: 16px;
     font-weight: 500;
-    color: var(--text-primary);
+    color: #323233;
 }
 
 .fanc-calendar__subtitle {
     font-size: 14px;
-    color: var(--text-secondary);
+    color: #969799;
     margin-top: 4px;
 }
 
@@ -691,7 +746,7 @@ export default {
 .fanc-calendar__toolbar-title {
     font-size: 16px;
     font-weight: 500;
-    color: var(--text-primary);
+    color: #323233;
 }
 
 .fanc-calendar__toolbar-button {
@@ -700,7 +755,7 @@ export default {
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--text-secondary);
+    color: #969799;
     border-radius: 4px;
     cursor: pointer;
 }
@@ -718,7 +773,7 @@ export default {
     flex: 1;
     text-align: center;
     font-size: 14px;
-    color: var(--text-secondary);
+    color: #969799;
     padding: 8px 0;
 }
 
@@ -744,36 +799,51 @@ export default {
     margin: 0 auto;
     border-radius: 50%;
     font-size: 14px;
-    color: var(--text-primary);
+    color: #323233;
     cursor: pointer;
     position: relative;
 }
 
 .fanc-calendar__day--disabled .fanc-calendar__day-content {
-    color: var(--text-disabled);
+    color: #c8c9cc;
     cursor: not-allowed;
 }
 
 .fanc-calendar__day--selected .fanc-calendar__day-content {
-    background-color: var(--primary-color);
+    background-color: #1989fa;
     color: #fff;
 }
 
 .fanc-calendar__day--range .fanc-calendar__day-content {
-    background-color: rgba(0, 123, 255, 0.1);
+    background-color: rgba(25, 137, 250, 0.1);
     border-radius: 0;
+    width: 100%;
 }
 
 .fanc-calendar__day--start .fanc-calendar__day-content {
-    background-color: var(--primary-color);
+    background-color: #1989fa;
     color: #fff;
-    border-radius: 50% 0 0 50%;
+    border-top-left-radius: 50%;
+    border-bottom-left-radius: 50%;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
 }
 
 .fanc-calendar__day--end .fanc-calendar__day-content {
-    background-color: var(--primary-color);
+    background-color: #1989fa;
     color: #fff;
-    border-radius: 0 50% 50% 0;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-top-right-radius: 50%;
+    border-bottom-right-radius: 50%;
+}
+
+/* 确保单独的start和end日期也能显示为圆形 */
+.fanc-calendar__day--start:not(.fanc-calendar__day--range):not(.fanc-calendar__day--end)
+    .fanc-calendar__day-content,
+.fanc-calendar__day--end:not(.fanc-calendar__day--range):not(.fanc-calendar__day--start)
+    .fanc-calendar__day-content {
+    border-radius: 50%;
 }
 
 .fanc-calendar__day-text {
@@ -798,7 +868,7 @@ export default {
 .fanc-calendar__month-title {
     font-size: 16px;
     font-weight: 500;
-    color: var(--text-primary);
+    color: #323233;
     text-align: center;
     margin-bottom: 12px;
 }
@@ -810,17 +880,6 @@ export default {
 
 .fanc-calendar__footer {
     padding: 12px 16px;
-    border-top: 1px solid var(--border-color-light);
-}
-
-/* 当自定义颜色时覆盖默认主题色 */
-.fanc-calendar__day--selected .fanc-calendar__day-content,
-.fanc-calendar__day--start .fanc-calendar__day-content,
-.fanc-calendar__day--end .fanc-calendar__day-content {
-    background-color: var(--primary-color);
-}
-
-.fanc-calendar__day--range .fanc-calendar__day-content {
-    background-color: rgba(0, 123, 255, 0.1);
+    border-top: 1px solid #ebedf0;
 }
 </style>
