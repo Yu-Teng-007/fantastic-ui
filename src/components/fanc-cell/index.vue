@@ -18,10 +18,10 @@
 
             <view class="fanc-cell__title">
                 <!-- 自定义标题 -->
-                <slot name="label" v-if="$slots.label"> </slot>
+                <slot name="title" v-if="$slots.title"> </slot>
                 <!-- 默认标题 -->
                 <block v-else class="fanc-cell__title-inner">
-                    <text>{{ label }}</text>
+                    <text>{{ title }}</text>
                 </block>
 
                 <!-- 自定义标题下方描述 -->
@@ -60,7 +60,7 @@ export default {
 
     props: {
         // 单元格标题
-        label: {
+        title: {
             type: String,
             default: "",
         },

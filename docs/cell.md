@@ -8,7 +8,7 @@
 
 ```html
 <fanc-cell title="单元格" value="内容" />
-<fanc-cell title="单元格" value="内容" label="描述信息" />
+<fanc-cell title="单元格" value="内容" title="描述信息" />
 <fanc-cell title="单元格" icon="home" value="内容" />
 ```
 
@@ -76,7 +76,7 @@
 通过 `center` 属性可以让单元格的内容垂直居中对齐。
 
 ```html
-<fanc-cell title="单元格" value="内容" center /> <fanc-cell title="单元格" label="描述信息" value="内容" center />
+<fanc-cell title="单元格" value="内容" center /> <fanc-cell title="单元格" title="描述信息" value="内容" center />
 ```
 
 ## 可点击的单元格
@@ -105,9 +105,9 @@
 
 | 参数            | 说明                                              | 类型             | 默认值    |
 | --------------- | ------------------------------------------------- | ---------------- | --------- |
-| label           | 标题                                              | String           | -         |
+| title           | 标题                                              | String           | -         |
 | value           | 右侧内容                                          | String           | -         |
-| label           | 标题下方的描述                                    | String           | -         |
+| description           | 标题下方的描述                                    | String           | -         |
 | icon            | 左侧图标名称或图片链接                            | String           | -         |
 | size            | 单元格大小，可选值为 `large` `default` `small`    | String           | `default` |
 | is-link         | 是否显示右侧箭头，并且可点击                      | Boolean          | `false`   |
@@ -120,7 +120,7 @@
 | required        | 是否显示表单必填星号                              | Boolean          | `false`   |
 | title-style     | 标题样式                                          | String \| Object | -         |
 | value-style     | 右侧内容样式                                      | String \| Object | -         |
-| label-style     | 描述信息样式                                      | String \| Object | -         |
+| title-style     | 描述信息样式                                      | String \| Object | -         |
 
 ### Cell Events
 
@@ -134,7 +134,7 @@
 | ---------- | ------------------ |
 | default    | 自定义右侧内容     |
 | title      | 自定义左侧标题     |
-| label      | 自定义标题下方描述 |
+| description      | 自定义标题下方描述 |
 | icon       | 自定义左侧图标     |
 | right-icon | 自定义右侧图标     |
 
@@ -159,7 +159,7 @@
 
 -   标题应简洁明了，通常为名词或短语
 -   内容应尽量简短，避免过长内容导致换行
--   使用 `label` 属性提供额外的描述信息
+-   使用 `title` 属性提供额外的描述信息
 
 ### 交互设计
 
