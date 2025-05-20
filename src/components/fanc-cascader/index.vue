@@ -105,7 +105,6 @@
  * @property {Boolean} resetOnClose - 关闭时是否重置选中值
  * @property {Boolean} overlay - 是否显示遮罩层
  * @property {Boolean} round - 是否显示圆角
- * @property {Boolean} closeable - 是否显示关闭图标
  * @property {String} closeIconPosition - 关闭图标位置
  * @property {Number|String} zIndex - 弹出层层级
  * @property {Boolean} overlayClosable - 是否点击遮罩层关闭弹窗
@@ -186,11 +185,6 @@ export default {
         },
         // 是否显示圆角
         round: {
-            type: Boolean,
-            default: true,
-        },
-        // 是否显示关闭图标
-        closeable: {
             type: Boolean,
             default: true,
         },
@@ -502,13 +496,6 @@ export default {
     background-color: #fff;
     user-select: none;
     width: 100%;
-
-    /* 颜色变量，可通过props覆盖 */
-    --cascader-active-color: var(--fanc-primary-color, #007bff);
-    --cascader-option-active-bg: rgba(0, 123, 255, 0.1);
-    --cascader-border-color: var(--border-color-light, #ebeef5);
-    --cascader-disabled-color: var(--text-disabled, #c0c4cc);
-    --cascader-text-color: var(--text-primary, #323233);
 }
 
 /* 头部样式 */
