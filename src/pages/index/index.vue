@@ -1,100 +1,240 @@
 <template>
     <view class="example-page">
         <view class="example-page__header">
-            <text class="example-page__header-title">Fantastic UI 组件示例</text>
-            <text class="example-page__header-desc">现代、高效、美观的移动端 UI 组件库</text>
+            <image class="example-page__logo" src="@/static/logo.png" mode="aspectFit"></image>
+            <text class="example-page__header-title">Fantastic UI</text>
+            <text class="example-page__header-desc">现代、高效、美观的移动端组件库</text>
         </view>
 
-        <view class="example-page__section">
-            <view class="example-page__section-title">基础组件</view>
-            <view class="example-page__section-desc"
-                >提供丰富的基础 UI 组件，满足常见的界面交互需求</view
+        <!-- 基础组件 -->
+        <fanc-cell-group title="基础组件" description="满足常见的界面交互需求" inset>
+            <fanc-cell 
+                title="按钮" 
+                is-link 
+                url="/pages/example/button/button-example"
+                center
             >
-            <view class="example-page__card-grid">
-                <navigator url="/pages/button-example/button-example" class="component-card">
-                    <view class="component-card__icon button-icon"></view>
-                    <text class="component-card__name">按钮</text>
-                </navigator>
-                <navigator url="/pages/icon-example/icon-example" class="component-card">
-                    <view class="component-card__icon icon-demo-icon"></view>
-                    <text class="component-card__name">图标</text>
-                </navigator>
-                <navigator url="/pages/cell-example/index" class="component-card">
-                    <view class="component-card__icon cell-icon"></view>
-                    <text class="component-card__name">单元格</text>
-                </navigator>
-                <navigator url="/pages/swipe-cell-example/index" class="component-card">
-                    <view class="component-card__icon swipe-cell-icon"></view>
-                    <text class="component-card__name">滑动单元格</text>
-                </navigator>
-                <navigator url="/pages/checkbox-example/index" class="component-card">
-                    <view class="component-card__icon checkbox-icon"></view>
-                    <text class="component-card__name">复选框</text>
-                </navigator>
-                <navigator url="/pages/cascader-example/index" class="component-card">
-                    <view class="component-card__icon cascader-icon"></view>
-                    <text class="component-card__name">级联选择</text>
-                </navigator>
-                <navigator url="/pages/number-keyboard-example/index" class="component-card">
-                    <view class="component-card__icon keyboard-icon"></view>
-                    <text class="component-card__name">数字键盘</text>
-                </navigator>
-            </view>
-        </view>
+                <template #icon>
+                    <view class="component-icon">
+                        <fanc-icon name="square" size="18" color="#666666"></fanc-icon>
+                    </view>
+                </template>
+            </fanc-cell>
+            
+            <fanc-cell 
+                title="图标" 
+                is-link 
+                url="/pages/example/icon/icon-example"
+                center
+            >
+                <template #icon>
+                    <view class="component-icon">
+                        <fanc-icon name="icons" size="18" color="#666666"></fanc-icon>
+                    </view>
+                </template>
+            </fanc-cell>
+            
+            <fanc-cell 
+                title="单元格" 
+                is-link 
+                url="/pages/example/cell/index"
+                center
+            >
+                <template #icon>
+                    <view class="component-icon">
+                        <fanc-icon name="table-cells" size="18" color="#666666"></fanc-icon>
+                    </view>
+                </template>
+            </fanc-cell>
+            
+            <fanc-cell 
+                title="滑动单元格" 
+                is-link 
+                url="/pages/example/swipe-cell/index"
+                center
+            >
+                <template #icon>
+                    <view class="component-icon">
+                        <fanc-icon name="arrows-left-right" size="18" color="#666666"></fanc-icon>
+                    </view>
+                </template>
+            </fanc-cell>
+            
+            <fanc-cell 
+                title="复选框" 
+                is-link 
+                url="/pages/example/checkbox/index"
+                center
+            >
+                <template #icon>
+                    <view class="component-icon">
+                        <fanc-icon name="check-square" size="18" color="#666666"></fanc-icon>
+                    </view>
+                </template>
+            </fanc-cell>
+            
+            <fanc-cell 
+                title="级联选择" 
+                is-link 
+                url="/pages/example/cascader/index"
+                center
+            >
+                <template #icon>
+                    <view class="component-icon">
+                        <fanc-icon name="sitemap" size="18" color="#666666"></fanc-icon>
+                    </view>
+                </template>
+            </fanc-cell>
+            
+            <fanc-cell 
+                title="数字键盘" 
+                is-link 
+                url="/pages/example/number-keyboard/index"
+                center
+            >
+                <template #icon>
+                    <view class="component-icon">
+                        <fanc-icon name="calculator" size="18" color="#666666"></fanc-icon>
+                    </view>
+                </template>
+            </fanc-cell>
+        </fanc-cell-group>
 
-        <view class="example-page__section">
-            <view class="example-page__section-title">反馈组件</view>
-            <view class="example-page__section-desc">用于向用户提供操作反馈的组件</view>
-            <view class="example-page__card-grid">
-                <navigator url="/pages/popup-example/index" class="component-card">
-                    <view class="component-card__icon popup-icon"></view>
-                    <text class="component-card__name">弹出层</text>
-                </navigator>
-                <navigator url="/pages/message-example/index" class="component-card">
-                    <view class="component-card__icon message-icon"></view>
-                    <text class="component-card__name">消息通知</text>
-                </navigator>
-                <navigator url="/pages/action-sheet-example/index" class="component-card">
-                    <view class="component-card__icon action-sheet-icon"></view>
-                    <text class="component-card__name">动作面板</text>
-                </navigator>
-                <navigator url="/pages/toast-example/index" class="component-card">
-                    <view class="component-card__icon toast-icon"></view>
-                    <text class="component-card__name">轻提示</text>
-                </navigator>
-                <navigator url="/pages/dialog-example/index" class="component-card">
-                    <view class="component-card__icon dialog-icon"></view>
-                    <text class="component-card__name">对话框</text>
-                </navigator>
-            </view>
-        </view>
+        <!-- 反馈组件 -->
+        <fanc-cell-group title="反馈组件" description="提供操作反馈的交互组件" inset>
+            <fanc-cell 
+                title="弹出层" 
+                is-link 
+                url="/pages/example/popup/index"
+                center
+            >
+                <template #icon>
+                    <view class="component-icon">
+                        <fanc-icon name="layer-group" size="18" color="#666666"></fanc-icon>
+                    </view>
+                </template>
+            </fanc-cell>
+            
+            <fanc-cell 
+                title="消息通知" 
+                is-link 
+                url="/pages/example/message/index"
+                center
+            >
+                <template #icon>
+                    <view class="component-icon">
+                        <fanc-icon name="comment" size="18" color="#666666"></fanc-icon>
+                    </view>
+                </template>
+            </fanc-cell>
+            
+            <fanc-cell 
+                title="动作面板" 
+                is-link 
+                url="/pages/example/action-sheet/index"
+                center
+            >
+                <template #icon>
+                    <view class="component-icon">
+                        <fanc-icon name="list" size="18" color="#666666"></fanc-icon>
+                    </view>
+                </template>
+            </fanc-cell>
+            
+            <fanc-cell 
+                title="轻提示" 
+                is-link 
+                url="/pages/example/toast/index"
+                center
+            >
+                <template #icon>
+                    <view class="component-icon">
+                        <fanc-icon name="comment-dots" size="18" color="#666666"></fanc-icon>
+                    </view>
+                </template>
+            </fanc-cell>
+            
+            <fanc-cell 
+                title="对话框" 
+                is-link 
+                url="/pages/example/dialog/index"
+                center
+            >
+                <template #icon>
+                    <view class="component-icon">
+                        <fanc-icon name="comments" size="18" color="#666666"></fanc-icon>
+                    </view>
+                </template>
+            </fanc-cell>
+        </fanc-cell-group>
 
-        <view class="example-page__section">
-            <view class="example-page__section-title">展示组件</view>
-            <view class="example-page__section-desc">用于展示内容的组件</view>
-            <view class="example-page__card-grid">
-                <navigator url="/pages/noticebar-example/index" class="component-card">
-                    <view class="component-card__icon noticebar-icon"></view>
-                    <text class="component-card__name">公告栏</text>
-                </navigator>
-                <navigator url="/pages/popover-example/index" class="component-card">
-                    <view class="component-card__icon popover-icon"></view>
-                    <text class="component-card__name">弹出气泡</text>
-                </navigator>
-                <navigator url="/pages/dropdown-menu-example/index" class="component-card">
-                    <view class="component-card__icon dropdown-icon"></view>
-                    <text class="component-card__name">下拉菜单栏</text>
-                </navigator>
-                <navigator url="/pages/image-example/index" class="component-card">
-                    <view class="component-card__icon image-icon"></view>
-                    <text class="component-card__name">图片</text>
-                </navigator>
-                <navigator url="/pages/calendar-example/index" class="component-card">
-                    <view class="component-card__icon calendar-icon"></view>
-                    <text class="component-card__name">日历</text>
-                </navigator>
-            </view>
-        </view>
+        <!-- 展示组件 -->
+        <fanc-cell-group title="展示组件" description="用于内容展示的组件" inset>
+            <fanc-cell 
+                title="公告栏" 
+                is-link 
+                url="/pages/example/noticebar/index"
+                center
+            >
+                <template #icon>
+                    <view class="component-icon">
+                        <fanc-icon name="bell" size="18" color="#666666"></fanc-icon>
+                    </view>
+                </template>
+            </fanc-cell>
+            
+            <fanc-cell 
+                title="弹出气泡" 
+                is-link 
+                url="/pages/example/popover/index"
+                center
+            >
+                <template #icon>
+                    <view class="component-icon">
+                        <fanc-icon name="message" size="18" color="#666666"></fanc-icon>
+                    </view>
+                </template>
+            </fanc-cell>
+            
+            <fanc-cell 
+                title="下拉菜单" 
+                is-link 
+                url="/pages/example/dropdown-menu/index"
+                center
+            >
+                <template #icon>
+                    <view class="component-icon">
+                        <fanc-icon name="caret-down" size="18" color="#666666"></fanc-icon>
+                    </view>
+                </template>
+            </fanc-cell>
+            
+            <fanc-cell 
+                title="图片" 
+                is-link 
+                url="/pages/example/image/index"
+                center
+            >
+                <template #icon>
+                    <view class="component-icon">
+                        <fanc-icon name="image" size="18" color="#666666"></fanc-icon>
+                    </view>
+                </template>
+            </fanc-cell>
+            
+            <fanc-cell 
+                title="日历" 
+                is-link 
+                url="/pages/example/calendar/index"
+                center
+            >
+                <template #icon>
+                    <view class="component-icon">
+                        <fanc-icon name="calendar" size="18" color="#666666"></fanc-icon>
+                    </view>
+                </template>
+            </fanc-cell>
+        </fanc-cell-group>
     </view>
 </template>
 
@@ -103,7 +243,42 @@ export default {
     data() {
         return {
             title: "Fantastic UI",
+            iconList: [
+                // 基础图标
+                'home', 'user', 'cog', 'bell', 'heart', 'star', 'check', 'times',
+                'search', 'envelope', 'phone', 'lock', 'unlock', 'key', 'link',
+                // 文件相关
+                'file', 'folder', 'folder-open', 'file-pdf', 'file-image', 'file-alt',
+                // 箭头
+                'arrow-up', 'arrow-down', 'arrow-left', 'arrow-right',
+                'angle-up', 'angle-down', 'angle-left', 'angle-right',
+                // 媒体控制
+                'play', 'pause', 'stop', 'volume-up', 'volume-down', 'volume-mute',
+                // 形状
+                'circle', 'square', 'triangle', 'pentagon', 'hexagon',
+                // 通信
+                'comment', 'comments', 'message', 'comment-dots',
+                // 设备
+                'laptop', 'mobile', 'tablet', 'desktop', 'camera', 'headphones',
+                // 图表
+                'chart-bar', 'chart-line', 'chart-pie', 'chart-area',
+                // 网络
+                'wifi', 'signal', 'globe', 'cloud', 'server',
+                // 电商
+                'shopping-cart', 'gift', 'tag', 'barcode', 'credit-card',
+                // 编辑
+                'edit', 'copy', 'paste', 'cut', 'trash', 'save',
+                // 互动
+                'thumbs-up', 'thumbs-down', 'share', 'bookmark', 'flag'
+            ]
         };
+    },
+    computed: {
+        randomIcon() {
+            return (index) => {
+                return this.iconList[Math.floor(Math.random() * this.iconList.length)];
+            };
+        }
     },
     onLoad() {},
     methods: {},
@@ -111,142 +286,96 @@ export default {
 </script>
 
 <style lang="scss">
+page {
+    background-color: #f5f7fa;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --white: #ffffff;
+    --border-color: #ebedf0;
+    --black-300: #323233;
+    --gray-500: #999999;
+    --gray-600: #666666;
+}
+
 .example-page {
-    &__card-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-        gap: 16px;
-        padding: 8px 0;
-    }
-}
+    padding: 20px 12px;
+    padding-bottom: 32px;
 
-.component-card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 16px 8px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-    transition: all 0.3s ease;
-
-    &:active {
-        transform: scale(0.98);
-    }
-
-    &:hover {
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        transform: translateY(-2px);
-    }
-
-    &__icon {
-        width: 40px;
-        height: 40px;
-        border-radius: 8px;
-        margin-bottom: 12px;
+    &__header {
         display: flex;
+        flex-direction: column;
         align-items: center;
-        justify-content: center;
-        color: #fff;
-        font-size: 20px;
-        background-size: 24px;
-        background-repeat: no-repeat;
-        background-position: center;
+        padding: 24px 0;
+        margin-bottom: 16px;
     }
 
-    &__name {
+    &__logo {
+        width: 72px;
+        height: 72px;
+        margin-bottom: 12px;
+    }
+
+    &__header-title {
+        font-size: 24px;
+        font-weight: 600;
+        color: #4a6cf7;
+        margin-bottom: 6px;
+    }
+
+    &__header-desc {
         font-size: 14px;
-        color: #323233;
-        font-weight: 500;
+        color: #666666;
+        text-align: center;
     }
 }
 
-// 组件图标样式
-.button-icon {
-    background-color: #007bff;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ffffff'%3E%3Cpath d='M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14z'/%3E%3Cpath d='M7 12h10v2H7z'/%3E%3C/svg%3E");
+// 单元格组间距
+::v-deep .fanc-cell-group {
+    margin-bottom: 12px;
 }
 
-.icon-demo-icon {
-    background-color: #28a745;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ffffff'%3E%3Cpath d='M16 6v6c0 1.1-.9 2-2 2h-4v3.73c-.63.23-1.29.36-2 .36-3.31 0-6-2.69-6-6s2.69-6 6-6c.34 0 .67.04 1 .09V2.71c-.5-.08-1-.12-1.5-.12-5.52 0-10 4.48-10 10s4.48 10 10 10c1.55 0 3.03-.36 4.38-1.01l2.9 2.9 2.2-2.2-4.2-4.2c-.22-.24-.38-.5-.5-.78V9h3c1.1 0 2-.9 2-2V4h-7l2-2-1.4-1.4L9.4 6h6.6z'/%3E%3C/svg%3E");
+// 自定义组件图标
+.component-icon {
+    width: 24px;
+    height: 24px;
+    border-radius: 4px;
+    margin-right: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f2f3f5;
+    flex-shrink: 0;
 }
 
-.cell-icon {
-    background-color: #fd7e14;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ffffff'%3E%3Cpath d='M3 3v18h18V3H3zm16 16H5V5h14v14zM11 7h2v2h-2zM7 7h2v2H7zm8 0h2v2h-2zm-8 4h2v2H7zm4 0h2v2h-2zm4 0h2v2h-2zm-8 4h2v2H7zm4 0h2v2h-2zm4 0h2v2h-2z'/%3E%3C/svg%3E");
+// 调整单元格样式
+::v-deep .fanc-cell {
+    padding: 10px 12px;
+    align-items: center; /* 确保单元格内容垂直居中 */
 }
 
-.swipe-cell-icon {
-    background-color: #9c27b0;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ffffff'%3E%3Cpath d='M20 2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM8 20H4v-4h4v4zm0-6H4v-4h4v4zm0-6H4V4h4v4zm6 12h-4v-4h4v4zm0-6h-4v-4h4v4zm0-6h-4V4h4v4zm6 12h-4v-4h4v4zm0-6h-4v-4h4v4zm0-6h-4V4h4v4z'/%3E%3C/svg%3E");
+/* 调整icon容器 */
+::v-deep .fanc-cell__icon {
+    display: flex;
+    align-items: center;
+    height: 24px;
 }
 
-.popup-icon {
-    background-color: #dc3545;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ffffff'%3E%3Cpath d='M19 3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14z'/%3E%3Cpath d='M7 12h4v4h2v-4h4v-2h-4V6h-2v4H7z'/%3E%3C/svg%3E");
+/* 调整单元格左侧内容布局 */
+::v-deep .fanc-cell__left {
+    display: flex;
+    align-items: center;
 }
 
-.message-icon {
-    background-color: #6610f2;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ffffff'%3E%3Cpath d='M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z'/%3E%3C/svg%3E");
+::v-deep .fanc-cell-group__header {
+    padding: 12px 12px 6px;
 }
 
-.noticebar-icon {
-    background-color: #17a2b8;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ffffff'%3E%3Cpath d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z'/%3E%3C/svg%3E");
+::v-deep .fanc-cell-group__title {
+    font-size: 14px;
+    font-weight: 500;
 }
 
-.action-sheet-icon {
-    background-color: #6f42c1;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ffffff'%3E%3Cpath d='M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z'/%3E%3C/svg%3E");
-}
-
-.popover-icon {
-    background-color: #e83e8c;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ffffff'%3E%3Cpath d='M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z'/%3E%3Cpath d='M8 14H6v-2h2v2zm6 0h-4v-2h4v2zm2-6H6V6h10v2z'/%3E%3C/svg%3E");
-}
-
-.toast-icon {
-    background-color: #20c997;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ffffff'%3E%3Cpath d='M20 2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h4v3c0 .55.45 1 1 1h.5c.25 0 .5-.1.7-.29L13.9 18H20c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H13.2l-3.8 3.4V16H4V4h16v12z'/%3E%3Cpath d='M7.5 12h2v2h-2zm4.5 0h2v2h-2zm4.5 0h2v2h-2z'/%3E%3C/svg%3E");
-}
-
-.dialog-icon {
-    background-color: #fd7e14;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ffffff'%3E%3Cpath d='M21 6h-2v9H6v2c0 .55.45 1 1 1h11l4 4V7c0-.55-.45-1-1-1zm-4 6V3c0-.55-.45-1-1-1H3c-.55 0-1 .45-1 1v14l4-4h10c.55 0 1-.45 1-1z'/%3E%3C/svg%3E");
-}
-
-.dropdown-icon {
-    background-color: #3498db;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ffffff'%3E%3Cpath d='M7 10l5 5 5-5H7z'/%3E%3Cpath d='M3 4h18v2H3V4zm0 7h18v2H3v-2zm0 7h18v2H3v-2z'/%3E%3C/svg%3E");
-}
-
-.image-icon {
-    background-color: #4caf50;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ffffff'%3E%3Cpath d='M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z'/%3E%3C/svg%3E");
-}
-
-.calendar-icon {
-    background-color: #4a6cf7;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ffffff'%3E%3Cpath d='M19 3h-1V1h-2v2H8V1H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z'/%3E%3C/svg%3E");
-}
-
-// 添加复选框图标样式
-.checkbox-icon {
-    background-color: #ff9800;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ffffff'%3E%3Cpath d='M19 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V5a2 2 0 00-2-2zm-9 14l-5-5 1.4-1.4 3.6 3.6 7.6-7.6L19 8l-9 9z'/%3E%3C/svg%3E");
-}
-
-// 添加级联选择图标样式
-.cascader-icon {
-    background-color: #03a9f4;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ffffff'%3E%3Cpath d='M3 9h4V5H3v4zm0 5h4v-4H3v4zm5 0h4v-4H8v4zm5 0h4v-4h-4v4zM8 9h4V5H8v4zm5-4v4h4V5h-4zm5 9h4v-4h-4v4zm0-9v4h4V5h-4z'/%3E%3C/svg%3E");
-}
-
-// 添加数字键盘图标样式
-.keyboard-icon {
-    background-color: #9c27b0;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ffffff'%3E%3Cpath d='M20 5H4c-1.1 0-1.99.9-1.99 2L2 17c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm-9 3h2v2h-2V8zm0 3h2v2h-2v-2zM8 8h2v2H8V8zm0 3h2v2H8v-2zm-1 2H5v-2h2v2zm0-3H5V8h2v2zm9 7H8v-2h8v2zm0-4h-2v-2h2v2zm0-3h-2V8h2v2zm3 3h-2v-2h2v2zm0-3h-2V8h2v2z'/%3E%3C/svg%3E");
+::v-deep .fanc-cell-group__description {
+    font-size: 12px;
+    color: #999;
 }
 </style>

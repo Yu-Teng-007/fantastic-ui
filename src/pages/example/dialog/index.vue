@@ -22,7 +22,11 @@
         </fanc-cell-group>
 
         <!-- 对话框位置 -->
-        <fanc-cell-group title="对话框位置" description="可以设置对话框显示在顶部、中间或底部" inset>
+        <fanc-cell-group
+            title="对话框位置"
+            description="可以设置对话框显示在顶部、中间或底部"
+            inset
+        >
             <fanc-cell title="顶部对话框" is-link @click="showTopDialog" />
             <fanc-cell title="中间对话框" is-link @click="showCenterDialog" />
             <fanc-cell title="底部对话框" is-link @click="showBottomDialog" />
@@ -115,7 +119,7 @@
                 <view class="custom-content">
                     <image
                         class="custom-image"
-                        src="../../static/img/picture_2.png"
+                        src="@/static/img/picture_2.png"
                         mode="aspectFit"
                     ></image>
                     <text class="custom-text">{{ dialog.customContentText }}</text>
@@ -592,7 +596,7 @@ export default {
             this.resetDialog();
             this.dialog.title = "图片对话框";
             this.dialog.message = "这是一个包含图片的对话框示例";
-            this.dialog.imageUrl = "../../static/img/picture_1.png";
+            this.dialog.imageUrl = "@/static/img/picture_1.png";
             this.dialog.show = true;
         },
 
@@ -601,7 +605,7 @@ export default {
             this.dialog.title = "操作成功";
             this.dialog.message = "您的文件已上传成功！";
             this.dialog.type = "success";
-            this.dialog.imageUrl = "../../static/img/picture_3.png";
+            this.dialog.imageUrl = "@/static/img/picture_3.png";
             this.dialog.show = true;
         },
 
@@ -610,7 +614,7 @@ export default {
             this.dialog.title = "确认删除";
             this.dialog.message = "删除后无法恢复，是否继续？";
             this.dialog.type = "warning";
-            this.dialog.imageUrl = "../../static/img/picture_4.png";
+            this.dialog.imageUrl = "@/static/img/picture_4.png";
             this.dialog.imageStyle = "width: 180rpx; height: 180rpx;";
             this.dialog.show = true;
         },
@@ -620,7 +624,7 @@ export default {
             this.resetDialog();
             this.dialog.title = "图片置顶";
             this.dialog.message = "图片显示在标题上方，更加醒目";
-            this.dialog.imageUrl = "../../static/img/picture_1.png";
+            this.dialog.imageUrl = "@/static/img/picture_1.png";
             this.dialog.imagePosition = "top";
             this.dialog.show = true;
         },
@@ -629,7 +633,7 @@ export default {
             this.resetDialog();
             this.dialog.title = "图片默认位置";
             this.dialog.message = "图片显示在标题和内容之间";
-            this.dialog.imageUrl = "../../static/img/picture_1.png";
+            this.dialog.imageUrl = "@/static/img/picture_1.png";
             this.dialog.imagePosition = "default";
             this.dialog.show = true;
         },
@@ -638,7 +642,7 @@ export default {
             this.resetDialog();
             this.dialog.title = "图片底部";
             this.dialog.message = "图片显示在内容和按钮之间";
-            this.dialog.imageUrl = "../../static/img/picture_1.png";
+            this.dialog.imageUrl = "@/static/img/picture_1.png";
             this.dialog.imagePosition = "bottom";
             this.dialog.show = true;
         },
