@@ -1,19 +1,19 @@
 {
     "pages": [
         {
-            "path": "pages/index/index",
+            "path": "pages/home/index",
             "style": {
                 "navigationBarTitleText": "uni-app"
             }
         },
         {
-            "path": "pages/example/button/button-example",
+            "path": "pages/example/button/index",
             "style": {
                 "navigationBarTitleText": "按钮示例"
             }
         },
         {
-            "path": "pages/example/icon/icon-example",
+            "path": "pages/example/icon/index",
             "style": {
                 "navigationBarTitleText": "图标示例"
             }
