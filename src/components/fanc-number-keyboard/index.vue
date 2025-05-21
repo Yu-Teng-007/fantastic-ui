@@ -12,12 +12,6 @@
         >
             <view class="fanc-number-keyboard__header" v-if="showHeader">
                 <text class="fanc-number-keyboard__title">{{ title }}</text>
-                <view class="fanc-number-keyboard__close" @click="onClose">{{
-                    closeButtonText
-                }}</view>
-            </view>
-            <view class="fanc-number-keyboard__close-icon" @click="onClose" v-if="showCloseIcon">
-                <view class="fanc-number-keyboard__close-icon-inner"></view>
             </view>
             <view
                 class="fanc-number-keyboard__body"
@@ -45,14 +39,14 @@
                         @click="onKeyPress(key)"
                     >
                         <template v-if="key.type === 'delete'">
-                            <view class="fanc-number-keyboard__delete-icon"></view>
+                            <fanc-icon name="backspace" size="24" color="#5e5d5d"></fanc-icon>
                         </template>
                         <template v-else-if="key.type === 'empty'"> </template>
                         <template v-else-if="key.type === 'function'">
                             {{ key.text }}
                         </template>
                         <template v-else-if="key.type === 'keyboard'">
-                            <view class="fanc-number-keyboard__keyboard-icon"></view>
+                            <fanc-icon name="keyboard" size="24" color="#5e5d5d"></fanc-icon>
                         </template>
                         <template v-else>
                             {{ key.text }}
@@ -75,7 +69,7 @@
                         @click="onKeyPress(key)"
                     >
                         <template v-if="key.type === 'delete'">
-                            <view class="fanc-number-keyboard__delete-icon"></view>
+                            <fanc-icon name="backspace" size="24"></fanc-icon>
                         </template>
                         <template v-else>
                             {{ key.text }}
@@ -98,17 +92,15 @@ import fancIcon from "../fanc-icon/index.vue";
  * @property {Boolean} zIndex - 键盘层级
  * @property {Boolean} round - 是否为圆角键盘
  * @property {Boolean} fixed - 是否固定在底部
- * @property {String} closeButtonText - 关闭按钮文字
  * @property {Boolean} showDeleteKey - 是否显示删除键
  * @property {Boolean} hideOnClickOutside - 是否在点击外部时关闭键盘
  * @property {Boolean} randomKeyOrder - 是否随机排序键盘按键
  * @property {String} extraKey - 额外按键的内容
+ * @property {Boolean} showExtraKey - 是否显示额外按键
  * @property {Boolean} showHeader - 是否显示键盘头部
- * @property {Boolean} showCloseIcon - 是否显示关闭图标
  * @property {String} theme - 键盘主题，可选值为 'default'、'idcard'、'custom'
  * @property {Boolean} showSidebar - 是否显示右侧栏，仅在 theme 为 'custom' 时有效
  * @property {String} confirmButtonText - 确认按钮文字，仅在 theme 为 'custom' 且 showSidebar 为 true 时有效
- * @property {Boolean} showHideButton - 是否显示底部收起按钮
  * @event {Function} input - 点击按键时触发
  * @event {Function} delete - 点击删除键时触发
  * @event {Function} close - 点击关闭按钮时触发
@@ -147,11 +139,6 @@ export default {
             type: Boolean,
             default: true,
         },
-        // 关闭按钮文字
-        closeButtonText: {
-            type: String,
-            default: "完成",
-        },
         // 是否显示删除键
         showDeleteKey: {
             type: Boolean,
@@ -172,13 +159,13 @@ export default {
             type: String,
             default: ".",
         },
+        // 是否显示额外按键
+        showExtraKey: {
+            type: Boolean,
+            default: false,
+        },
         // 是否显示键盘头部
         showHeader: {
-            type: Boolean,
-            default: true,
-        },
-        // 是否显示关闭图标
-        showCloseIcon: {
             type: Boolean,
             default: false,
         },
@@ -198,28 +185,9 @@ export default {
             type: String,
             default: "确认",
         },
-        // 是否显示底部收起按钮
-        showHideButton: {
-            type: Boolean,
-            default: true,
-        },
     },
     data() {
         return {
-            // 基础按键配置
-            baseKeys: [
-                { text: "1", value: "1" },
-                { text: "2", value: "2" },
-                { text: "3", value: "3" },
-                { text: "4", value: "4" },
-                { text: "5", value: "5" },
-                { text: "6", value: "6" },
-                { text: "7", value: "7" },
-                { text: "8", value: "8" },
-                { text: "9", value: "9" },
-                { text: this.extraKey, value: this.extraKey, type: "function" },
-                { text: "0", value: "0", wider: true },
-            ],
             // 键盘实际显示状态
             isVisible: false,
             // 点击外部事件处理器
@@ -234,6 +202,39 @@ export default {
                 style.zIndex = this.zIndex;
             }
             return style;
+        },
+        // 基础按键配置
+        baseKeys() {
+            let keys = [
+                { text: "1", value: "1" },
+                { text: "2", value: "2" },
+                { text: "3", value: "3" },
+                { text: "4", value: "4" },
+                { text: "5", value: "5" },
+                { text: "6", value: "6" },
+                { text: "7", value: "7" },
+                { text: "8", value: "8" },
+                { text: "9", value: "9" },
+            ];
+
+            // 第一个位置：额外键或键盘键
+            if (this.showExtraKey) {
+                keys.push({ text: this.extraKey, value: this.extraKey, type: "function" });
+            } else {
+                keys.push({ type: "keyboard", value: "keyboard" });
+            }
+
+            // 第二个位置：始终是数字0
+            keys.push({ text: "0", value: "0" });
+
+            // 第三个位置：删除键
+            if (this.showDeleteKey) {
+                keys.push({ type: "delete", value: "delete" });
+            } else {
+                keys.push({ type: "empty" });
+            }
+
+            return keys;
         },
         // 计算显示的按键
         displayKeys() {
@@ -272,18 +273,28 @@ export default {
                     { text: "7", value: "7" },
                     { text: "8", value: "8" },
                     { text: "9", value: "9" },
-                    { text: this.extraKey, value: this.extraKey, type: "function" },
-                    { text: "0", value: "0" },
-                    { type: "keyboard" },
                 ];
+
+                // 额外键（如果有）
+                if (this.showExtraKey) {
+                    keys.push({ text: this.extraKey, value: this.extraKey, type: "function" });
+                } else {
+                    // 使用键盘键
+                    keys.push({ type: "keyboard", value: "keyboard" });
+                }
+
+                // 添加0键，在有侧边栏时占据两倍宽度
+                keys.push({ text: "0", value: "0", wider: true });
             } else {
                 // 默认键盘布局
                 keys = [...this.baseKeys];
 
-                // 随机排序数字键
+                // 随机排序数字键（仅排序1-9）
                 if (this.randomKeyOrder) {
-                    const numberKeys = keys.filter((key) => !isNaN(key.value) && key.value !== "0");
-                    const otherKeys = keys.filter((key) => isNaN(key.value) || key.value === "0");
+                    // 提取1-9数字键
+                    const numberKeys = keys.slice(0, 9);
+                    // 提取底部一行按键（不参与随机排序）
+                    const bottomRowKeys = keys.slice(9);
 
                     // Fisher-Yates 洗牌算法
                     for (let i = numberKeys.length - 1; i > 0; i--) {
@@ -291,15 +302,7 @@ export default {
                         [numberKeys[i], numberKeys[j]] = [numberKeys[j], numberKeys[i]];
                     }
 
-                    keys = [...numberKeys, ...otherKeys];
-                }
-                // 添加收起键盘按钮
-                if (this.showHideButton) {
-                    keys.push({ type: "keyboard", value: "keyboard" });
-                }
-                // 添加删除键（如果不显示右侧栏）
-                if (this.showDeleteKey && !(this.theme === "custom" && this.showSidebar)) {
-                    keys.push({ type: "delete", value: "delete" });
+                    keys = [...numberKeys, ...bottomRowKeys];
                 }
             }
 
@@ -339,16 +342,12 @@ export default {
             } else if (key.type === "empty") {
                 // 空白键不做任何操作
             } else if (key.type === "keyboard") {
-                // 使用onClose方法保持一致的关闭逻辑
-                this.onClose();
+                // 收起键盘
+                this.hideKeyboard();
+                this.$emit("close");
             } else {
                 this.$emit("input", key.value);
             }
-        },
-        // 关闭键盘
-        onClose() {
-            this.$emit("close");
-            this.hideKeyboard();
         },
         // 显示键盘
         showKeyboard() {
@@ -381,8 +380,8 @@ export default {
                     // 检查点击是否在键盘外部
                     const keyboardEl = event.target.closest(".fanc-number-keyboard");
                     if (!keyboardEl && this.hideOnClickOutside) {
-                        this.$emit("close");
                         this.hideKeyboard();
+                        this.$emit("close");
                     }
                 };
 
@@ -431,6 +430,18 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+/* 
+ * 数字键盘组件样式
+ * 结构:
+ * - .fanc-number-keyboard 主容器
+ *   - __header 键盘头部
+ *   - __body 键盘主体
+ *     - __keys 按键区域
+ *       - __key 单个按键
+ *     - __sidebar 右侧栏（可选）
+ *       - __sidebar-key 右侧栏按键
+ */
+
 .fanc-number-keyboard {
     position: relative;
     background-color: var(--keyboard-bg-color, #f2f3f5);
@@ -473,64 +484,6 @@ export default {
         font-weight: 400;
     }
 
-    // 关闭按钮
-    &__close {
-        position: absolute;
-        right: 16px;
-        font-size: 14px;
-        color: var(--keyboard-close-color, var(--fanc-primary-color, #007bff));
-        cursor: pointer;
-        padding: 8px 12px;
-    }
-
-    // 关闭图标
-    &__close-icon {
-        position: absolute;
-        top: 6px;
-        left: 22px;
-        width: 30px;
-        height: 30px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        z-index: 1;
-        border-radius: 15px;
-        background-color: var(--keyboard-key-bg-color, #fff);
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        cursor: pointer;
-
-        &:active {
-            background-color: var(--keyboard-key-active-bg-color, #e6e6e6);
-        }
-    }
-
-    // 关闭图标内部样式（X形状）
-    &__close-icon-inner {
-        position: relative;
-        width: 16px;
-        height: 16px;
-
-        &::before,
-        &::after {
-            content: "";
-            position: absolute;
-            top: 50%;
-            left: 0;
-            width: 16px;
-            height: 2px;
-            background-color: var(--keyboard-close-color, var(--fanc-primary-color, #007bff));
-            transform-origin: center;
-        }
-
-        &::before {
-            transform: translateY(-50%) rotate(45deg);
-        }
-
-        &::after {
-            transform: translateY(-50%) rotate(-45deg);
-        }
-    }
-
     // 键盘主体
     &__body {
         padding: 6px 0;
@@ -540,7 +493,7 @@ export default {
         }
     }
 
-    // 键盘按键区域
+    // 按键区域
     &__keys {
         display: flex;
         flex-wrap: wrap;
@@ -620,21 +573,13 @@ export default {
             background-color: var(--keyboard-key-active-bg-color, #e6e6e6);
         }
 
-        // 0键宽度加倍
-        &.is-zero,
-        &.is-delete:not(.is-normal-delete) {
-            width: calc(100% / 3 * 2 - 9px);
-        }
-
         // 功能键
         &.is-function {
-            font-size: 16px;
             color: var(--keyboard-function-key-color, var(--text-secondary, #6c757d));
         }
 
         // 删除键
         &.is-delete {
-            font-size: 16px;
             color: var(--keyboard-delete-key-color, var(--text-secondary, #6c757d));
         }
 
@@ -650,29 +595,27 @@ export default {
             font-size: 18px;
             font-weight: 600;
         }
+
+        // 键盘按钮
+        &.is-keyboard {
+            color: var(--keyboard-function-key-color, var(--text-secondary, #6c757d));
+        }
+
+        // 0键加宽样式 - 默认模式
+        &.is-zero {
+            width: calc(100% / 3 * 2 - 9px);
+        }
     }
 
-    // 删除图标
-    &__delete-icon {
-        width: 24px;
-        height: 16px;
-        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 22' fill='%23323233'%3E%3Cpath d='M28.8 0H10.4c-.8 0-1.6.4-2.4.8L.8 8c-.4.4-.4 1.2 0 1.6l7.2 7.2c.8.8 1.6.8 2.4.8h18.4c1.6 0 3.2-1.6 3.2-3.2V3.2C32 1.6 30.4 0 28.8 0zM25.6 14.4L23.2 12l2.4-2.4c.4-.4.4-1.2 0-1.6s-1.2-.4-1.6 0L21.6 10.4 19.2 8c-.4-.4-1.2-.4-1.6 0s-.4 1.2 0 1.6l2.4 2.4-2.4 2.4c-.4.4-.4 1.2 0 1.6.4.4 1.2.4 1.6 0l2.4-2.4 2.4 2.4c.4.4 1.2.4 1.6 0s.4-1.2 0-1.6z'/%3E%3C/svg%3E");
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: center;
-    }
-
-    // 键盘图标
-    &__keyboard-icon {
-        width: 24px;
-        height: 16px;
-        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 22' fill='%23323233'%3E%3Cpath d='M31 0H1C0.4 0 0 0.4 0 1v20c0 0.6 0.4 1 1 1h30c0.6 0 1-0.4 1-1V1c0-0.6-0.4-1-1-1zm-1 19H2V2h28v17zM6 5H4v2h2V5zm4 0H8v2h2V5zm4 0h-2v2h2V5zm4 0h-2v2h2V5zm4 0h-2v2h2V5zm4 0h-2v2h2V5zM6 9H4v2h2V9zm4 0H8v2h2V9zm4 0h-2v2h2V9zm4 0h-2v2h2V9zm4 0h-2v2h2V9zm4 0h-2v2h2V9zM6 13H4v2h2v-2zm4 0H8v2h2v-2zm4 0h-2v2h2v-2zm8 0h-6v2h6v-2zm4 0h-2v2h2v-2z'/%3E%3C/svg%3E");
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-position: center;
+    // 键盘带侧边栏时的0键特殊样式
+    &__keys.with-sidebar {
+        .fanc-number-keyboard__key.is-zero {
+            width: calc((100% / 3) * 2 - 6px); // 精确占据两个按键的宽度
+        }
     }
 }
 
+/* 键盘动画效果 */
 // 键盘弹出动画
 @keyframes fanc-slide-up {
     from {

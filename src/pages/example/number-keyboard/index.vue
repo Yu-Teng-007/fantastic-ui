@@ -1,310 +1,290 @@
 <template>
-    <view class="container">
+    <view class="page">
         <view class="header">
-            <text class="title">数字键盘示例</text>
-            <text class="desc">常用于输入密码、验证码等纯数字场景</text>
+            <view class="header-content">
+                <view class="title">数字键盘</view>
+                <view class="description">适用于输入密码、验证码、金额等场景</view>
+            </view>
+            <view class="header-decoration"></view>
         </view>
 
-        <!-- 使用cell-group组件展示所有场景 -->
-        <fanc-cell-group title="键盘类型示例" inset>
+        <fanc-cell-group title="键盘类型" inset>
             <!-- 基础用法 -->
-            <fanc-cell title="基础用法" is-link @click="showBasicKeyboard = true">
+            <fanc-cell title="基础用法" is-link @click="showKeyboard('basic')">
                 <template #value>
-                    <text class="cell-value">{{ basicValue || "点击选择" }}</text>
+                    <text class="cell-value">{{ basicValue || "点击输入" }}</text>
                 </template>
             </fanc-cell>
 
-            <!-- 自定义标题 -->
-            <fanc-cell title="自定义标题" is-link @click="showCustomTitleKeyboard = true">
+            <!-- 带额外按键 -->
+            <fanc-cell title="带额外按键" is-link @click="showKeyboard('withExtraKey')">
                 <template #value>
-                    <text class="cell-value">{{ customTitleValue || "点击选择" }}</text>
-                </template>
-            </fanc-cell>
-
-            <!-- 随机数字键盘 -->
-            <fanc-cell title="随机数字键盘" is-link @click="showRandomKeyboard = true">
-                <template #value>
-                    <text class="cell-value">{{ randomValue || "点击选择" }}</text>
-                </template>
-            </fanc-cell>
-
-            <!-- 自定义额外键 -->
-            <fanc-cell title="自定义额外键" is-link @click="showCustomExtraKeyboard = true">
-                <template #value>
-                    <text class="cell-value">{{ customExtraValue || "点击选择" }}</text>
-                </template>
-            </fanc-cell>
-
-            <!-- 无标题栏键盘 -->
-            <fanc-cell title="无标题栏键盘" is-link @click="showNoHeaderKeyboard = true">
-                <template #value>
-                    <text class="cell-value">{{ noHeaderValue || "点击选择" }}</text>
-                </template>
-            </fanc-cell>
-
-            <!-- 带关闭图标的键盘 -->
-            <fanc-cell title="带关闭图标的键盘" is-link @click="showCloseIconKeyboard = true">
-                <template #value>
-                    <text class="cell-value">{{ closeIconValue || "点击选择" }}</text>
+                    <text class="cell-value">{{ extraValue || "点击输入" }}</text>
                 </template>
             </fanc-cell>
 
             <!-- 身份证键盘 -->
-            <fanc-cell title="身份证键盘" is-link @click="showIdCardKeyboard = true">
+            <fanc-cell title="身份证键盘" is-link @click="showKeyboard('idcard')">
                 <template #value>
-                    <text class="cell-value">{{ idCardValue || "点击选择" }}</text>
+                    <text class="cell-value">{{ idcardValue || "点击输入" }}</text>
                 </template>
             </fanc-cell>
 
-            <!-- 带右侧栏的键盘 -->
-            <fanc-cell title="带右侧栏的键盘" is-link @click="showSidebarKeyboard = true">
+            <!-- 自定义主题 -->
+            <fanc-cell title="自定义主题" is-link @click="showKeyboard('custom')">
                 <template #value>
-                    <text class="cell-value">{{ sidebarValue || "点击选择" }}</text>
+                    <text class="cell-value">{{ customValue || "点击输入" }}</text>
+                </template>
+            </fanc-cell>
+
+            <!-- 随机数字 -->
+            <fanc-cell title="随机数字" is-link @click="showKeyboard('random')">
+                <template #value>
+                    <text class="cell-value">{{ randomValue || "点击输入" }}</text>
                 </template>
             </fanc-cell>
         </fanc-cell-group>
 
-        <!-- 键盘组件 -->
         <!-- 基础键盘 -->
         <fanc-number-keyboard
-            :show="showBasicKeyboard"
+            :show="keyboardTypes.basic"
+            @update:show="(val) => (keyboardTypes.basic = val)"
             @input="onBasicInput"
             @delete="onBasicDelete"
-            @close="showBasicKeyboard = false"
+            @close="onClose('basic')"
         />
 
-        <!-- 自定义标题键盘 -->
+        <!-- 带额外按键 -->
         <fanc-number-keyboard
-            :show="showCustomTitleKeyboard"
-            title="请输入支付密码"
-            close-button-text="确定"
-            @input="onCustomTitleInput"
-            @delete="onCustomTitleDelete"
-            @close="showCustomTitleKeyboard = false"
-        />
-
-        <!-- 随机数字键盘 -->
-        <fanc-number-keyboard
-            :show="showRandomKeyboard"
-            title="安全键盘"
-            :random-key-order="true"
-            @input="onRandomInput"
-            @delete="onRandomDelete"
-            @close="showRandomKeyboard = false"
-        />
-
-        <!-- 自定义额外键键盘 -->
-        <fanc-number-keyboard
-            :show="showCustomExtraKeyboard"
-            title="输入金额"
-            extra-key="."
-            @input="onCustomExtraInput"
-            @delete="onCustomExtraDelete"
-            @close="showCustomExtraKeyboard = false"
-            @function="onFunctionKey"
-        />
-
-        <!-- 无标题栏键盘 -->
-        <fanc-number-keyboard
-            :show="showNoHeaderKeyboard"
-            :show-header="false"
-            @input="onNoHeaderInput"
-            @delete="onNoHeaderDelete"
-            @close="showNoHeaderKeyboard = false"
-        />
-
-        <!-- 带关闭图标的键盘 -->
-        <fanc-number-keyboard
-            :show="showCloseIconKeyboard"
-            title="带关闭图标的键盘"
-            :show-close-icon="true"
-            @input="onCloseIconInput"
-            @delete="onCloseIconDelete"
-            @close="showCloseIconKeyboard = false"
+            :show="keyboardTypes.withExtraKey"
+            @update:show="(val) => (keyboardTypes.withExtraKey = val)"
+            :showExtraKey="true"
+            extraKey="."
+            @input="onExtraInput"
+            @delete="onExtraDelete"
+            @function="onExtraFunction"
+            @close="onClose('withExtraKey')"
         />
 
         <!-- 身份证键盘 -->
         <fanc-number-keyboard
-            :show="showIdCardKeyboard"
-            title="请输入身份证号"
+            :show="keyboardTypes.idcard"
+            @update:show="(val) => (keyboardTypes.idcard = val)"
             theme="idcard"
-            @input="onIdCardInput"
-            @delete="onIdCardDelete"
-            @close="showIdCardKeyboard = false"
+            @input="onIdcardInput"
+            @delete="onIdcardDelete"
+            @close="onClose('idcard')"
         />
 
-        <!-- 带右侧栏的键盘 -->
+        <!-- 自定义主题 -->
         <fanc-number-keyboard
-            :show="showSidebarKeyboard"
-            title="带右侧栏的键盘"
+            :show="keyboardTypes.custom"
+            @update:show="(val) => (keyboardTypes.custom = val)"
             theme="custom"
-            :show-sidebar="true"
-            confirm-button-text="确认"
-            @input="onSidebarInput"
-            @delete="onSidebarDelete"
-            @close="showSidebarKeyboard = false"
-            @confirm="onSidebarConfirm"
+            :showSidebar="true"
+            :showHeader="true"
+            title="自定义键盘"
+            confirmButtonText="确认"
+            @input="onCustomInput"
+            @delete="onCustomDelete"
+            @confirm="onCustomConfirm"
+            @close="onClose('custom')"
+        />
+
+        <!-- 随机数字 -->
+        <fanc-number-keyboard
+            :show="keyboardTypes.random"
+            @update:show="(val) => (keyboardTypes.random = val)"
+            :randomKeyOrder="true"
+            :showExtraKey="true"
+            extraKey="#"
+            @input="onRandomInput"
+            @delete="onRandomDelete"
+            @close="onClose('random')"
         />
     </view>
 </template>
 
 <script>
+import fancNumberKeyboard from "../../../components/fanc-number-keyboard/index.vue";
+import fancCellGroup from "../../../components/fanc-cell-group/index.vue";
+import fancCell from "../../../components/fanc-cell/index.vue";
+
 export default {
+    components: {
+        fancNumberKeyboard,
+        fancCellGroup,
+        fancCell,
+    },
     data() {
         return {
-            // 基础键盘
-            showBasicKeyboard: false,
+            // 键盘显示状态
+            keyboardTypes: {
+                basic: false,
+                withExtraKey: false,
+                idcard: false,
+                custom: false,
+                random: false,
+            },
+            // 输入值
             basicValue: "",
-
-            // 自定义标题键盘
-            showCustomTitleKeyboard: false,
-            customTitleValue: "",
-
-            // 随机数字键盘
-            showRandomKeyboard: false,
+            extraValue: "",
+            idcardValue: "",
+            customValue: "",
             randomValue: "",
-
-            // 自定义额外键键盘
-            showCustomExtraKeyboard: false,
-            customExtraValue: "",
-
-            // 无标题栏键盘
-            showNoHeaderKeyboard: false,
-            noHeaderValue: "",
-
-            // 带关闭图标的键盘
-            showCloseIconKeyboard: false,
-            closeIconValue: "",
-
-            // 身份证键盘
-            showIdCardKeyboard: false,
-            idCardValue: "",
-
-            // 带右侧栏的键盘
-            showSidebarKeyboard: false,
-            sidebarValue: "",
+            // 限制长度
+            maxLength: 6,
         };
     },
     methods: {
-        // 基础键盘
-        onBasicInput(key) {
-            this.basicValue = (this.basicValue || "") + key;
+        // 显示指定类型的键盘
+        showKeyboard(type) {
+            // 先关闭所有键盘
+            Object.keys(this.keyboardTypes).forEach((key) => {
+                this.keyboardTypes[key] = false;
+            });
+
+            // 显示指定类型的键盘
+            this.keyboardTypes[type] = true;
+        },
+
+        // 关闭键盘
+        onClose(type) {
+            this.keyboardTypes[type] = false;
+        },
+
+        // 基础键盘输入处理
+        onBasicInput(value) {
+            if (this.basicValue.length < this.maxLength) {
+                this.basicValue += value;
+            }
         },
         onBasicDelete() {
-            this.basicValue = this.basicValue.slice(0, -1);
+            if (this.basicValue.length > 0) {
+                this.basicValue = this.basicValue.slice(0, -1);
+            }
         },
 
-        // 自定义标题键盘
-        onCustomTitleInput(key) {
-            this.customTitleValue = (this.customTitleValue || "") + key;
+        // 带额外按键的键盘输入处理
+        onExtraInput(value) {
+            if (this.extraValue.length < this.maxLength) {
+                this.extraValue += value;
+            }
         },
-        onCustomTitleDelete() {
-            this.customTitleValue = this.customTitleValue.slice(0, -1);
+        onExtraDelete() {
+            if (this.extraValue.length > 0) {
+                this.extraValue = this.extraValue.slice(0, -1);
+            }
+        },
+        onExtraFunction(value) {
+            if (this.extraValue.length < this.maxLength && !this.extraValue.includes(".")) {
+                this.extraValue += value;
+            }
         },
 
-        // 随机数字键盘
-        onRandomInput(key) {
-            this.randomValue = (this.randomValue || "") + key;
+        // 身份证键盘输入处理
+        onIdcardInput(value) {
+            if (this.idcardValue.length < 18) {
+                this.idcardValue += value;
+            }
+        },
+        onIdcardDelete() {
+            if (this.idcardValue.length > 0) {
+                this.idcardValue = this.idcardValue.slice(0, -1);
+            }
+        },
+
+        // 自定义主题键盘输入处理
+        onCustomInput(value) {
+            if (this.customValue.length < this.maxLength) {
+                this.customValue += value;
+            }
+        },
+        onCustomDelete() {
+            if (this.customValue.length > 0) {
+                this.customValue = this.customValue.slice(0, -1);
+            }
+        },
+        onCustomConfirm() {
+            this.keyboardTypes.custom = false;
+            this.$toast
+                ? this.$toast.success("确认输入: " + this.customValue)
+                : uni.showToast({ title: "确认输入: " + this.customValue, icon: "none" });
+        },
+
+        // 随机数字键盘输入处理
+        onRandomInput(value) {
+            if (this.randomValue.length < this.maxLength) {
+                this.randomValue += value;
+            }
         },
         onRandomDelete() {
-            this.randomValue = this.randomValue.slice(0, -1);
-        },
-
-        // 自定义额外键键盘
-        onCustomExtraInput(key) {
-            this.customExtraValue = (this.customExtraValue || "") + key;
-        },
-        onCustomExtraDelete() {
-            this.customExtraValue = this.customExtraValue.slice(0, -1);
-        },
-        onFunctionKey(key) {
-            // 小数点只能输入一次
-            if (key === "." && !this.customExtraValue.includes(".")) {
-                this.customExtraValue = (this.customExtraValue || "") + key;
+            if (this.randomValue.length > 0) {
+                this.randomValue = this.randomValue.slice(0, -1);
             }
-        },
-
-        // 无标题栏键盘
-        onNoHeaderInput(key) {
-            this.noHeaderValue = (this.noHeaderValue || "") + key;
-        },
-        onNoHeaderDelete() {
-            this.noHeaderValue = this.noHeaderValue.slice(0, -1);
-        },
-
-        // 带关闭图标的键盘
-        onCloseIconInput(key) {
-            this.closeIconValue = (this.closeIconValue || "") + key;
-        },
-        onCloseIconDelete() {
-            this.closeIconValue = this.closeIconValue.slice(0, -1);
-        },
-
-        // 身份证键盘
-        onIdCardInput(key) {
-            // 身份证号最多18位
-            if (this.idCardValue && this.idCardValue.length >= 18) {
-                return;
-            }
-            this.idCardValue = (this.idCardValue || "") + key;
-        },
-        onIdCardDelete() {
-            this.idCardValue = this.idCardValue.slice(0, -1);
-        },
-
-        // 带右侧栏的键盘
-        onSidebarInput(key) {
-            this.sidebarValue = (this.sidebarValue || "") + key;
-        },
-        onSidebarDelete() {
-            this.sidebarValue = this.sidebarValue.slice(0, -1);
-        },
-        onSidebarConfirm() {
-            // 点击确认按钮时的操作
-            this.showSidebarKeyboard = false;
-            // 可以在这里添加确认后的逻辑，比如提交表单等
-            uni.showToast({
-                title: "已确认输入: " + this.sidebarValue,
-                icon: "none",
-            });
         },
     },
 };
 </script>
 
 <style lang="scss" scoped>
-.container {
-    padding: 16px;
+.page {
+    padding: 0;
     background-color: #f8f8f8;
     min-height: 100vh;
 }
 
 .header {
-    margin-bottom: 24px;
+    position: relative;
+    padding: 30px 20px 40px;
+    background: linear-gradient(
+        135deg,
+        var(--fanc-primary-color, #007bff),
+        var(--fanc-primary-dark-color, #0056b3)
+    );
+    color: #fff;
+    border-radius: 0 0 15px 15px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 
-    .title {
-        font-size: 24px;
-        font-weight: 600;
-        color: #323233;
-        display: block;
-        margin-bottom: 8px;
+    .header-content {
+        position: relative;
+        z-index: 2;
     }
 
-    .desc {
+    .header-decoration {
+        position: absolute;
+        bottom: -30px;
+        right: -30px;
+        width: 150px;
+        height: 150px;
+        border-radius: 75px;
+        background: rgba(255, 255, 255, 0.1);
+        z-index: 1;
+    }
+
+    .title {
+        font-size: 28px;
+        font-weight: 700;
+        margin-bottom: 8px;
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    }
+
+    .description {
         font-size: 14px;
-        color: #969799;
-        display: block;
+        opacity: 0.9;
+        font-weight: 300;
+        max-width: 80%;
     }
 }
 
-// 单元格值样式
 .cell-value {
-    color: #969799;
     font-size: 14px;
+    color: #999;
+    max-width: 150px;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
-    max-width: 180px;
-    display: inline-block;
 }
 </style>
