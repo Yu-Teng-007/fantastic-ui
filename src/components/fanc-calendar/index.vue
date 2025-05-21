@@ -16,12 +16,18 @@
                 <view class="fanc-calendar__subtitle" v-if="subtitle">{{ subtitle }}</view>
             </view>
             <view class="fanc-calendar__body" :class="{ 'fanc-calendar__body--scroll': scroll }">
-                <view class="fanc-calendar__toolbar">
-                    <view class="fanc-calendar__toolbar-button" @click="prevMonth">
+                <view class="fanc-calendar__toolbar" v-if="!scroll || (scroll && showToolbar)">
+                    <view class="fanc-calendar__toolbar-button" @click="prevYear" v-if="scroll">
+                        <fanc-icon name="arrow-left" size="16" />
+                    </view>
+                    <view class="fanc-calendar__toolbar-button" @click="prevMonth" v-if="!scroll">
                         <fanc-icon name="arrow-left" size="16" />
                     </view>
                     <view class="fanc-calendar__toolbar-title">{{ formatYearMonth }}</view>
-                    <view class="fanc-calendar__toolbar-button" @click="nextMonth">
+                    <view class="fanc-calendar__toolbar-button" @click="nextMonth" v-if="!scroll">
+                        <fanc-icon name="arrow-right" size="16" />
+                    </view>
+                    <view class="fanc-calendar__toolbar-button" @click="nextYear" v-if="scroll">
                         <fanc-icon name="arrow-right" size="16" />
                     </view>
                 </view>
@@ -55,11 +61,21 @@
                 </view>
 
                 <!-- 滚动模式：显示多个月 -->
-                <view class="fanc-calendar__months" v-if="scroll">
+                <scroll-view
+                    class="fanc-calendar__months"
+                    v-if="scroll"
+                    scroll-y
+                    :scroll-into-view="scrollIntoId"
+                    :scroll-with-animation="scrollWithAnimation"
+                    :scroll-animation-duration="scrollAnimationDuration"
+                >
                     <view
                         class="fanc-calendar__month"
                         v-for="(month, monthIndex) in months"
                         :key="monthIndex"
+                        :data-month="month.month"
+                        :data-year="month.year"
+                        :id="'month-' + month.year + '-' + month.month"
                     >
                         <view class="fanc-calendar__month-title">
                             {{ formatYearMonthTitle(month.year, month.month) }}
@@ -81,7 +97,7 @@
                             </view>
                         </view>
                     </view>
-                </view>
+                </scroll-view>
             </view>
             <view class="fanc-calendar__footer">
                 <fanc-button v-if="showConfirm" block :disabled="!canConfirm" @click="confirm">{{
@@ -111,6 +127,9 @@
  * @property {String} confirmText - 确认按钮文字
  * @property {Number} firstDayOfWeek - 周起始日，0 表示周日，1-6 表示周一至周六
  * @property {Boolean} scroll - 是否使用滚动模式
+ * @property {Boolean} showToolbar - 是否在滚动模式下显示年份切换工具栏，默认为 true
+ * @property {Boolean} scrollWithAnimation - 是否在滚动时使用动画效果，默认为 true
+ * @property {Number} scrollAnimationDuration - 滚动动画持续时间(ms)，默认为 100
  * @property {Array} defaultDate - 默认选中的日期，type 为 single 时为字符串，multiple/range 时为数组
  * @property {String|Array} minDate - 可选择的最小日期
  * @property {String|Array} maxDate - 可选择的最大日期
@@ -119,6 +138,8 @@
  * @event {Function} change - 选择日期时触发
  * @event {Function} confirm - 点击确认按钮时触发
  * @event {Function} close - 关闭弹窗时触发
+ * @description 范围选择（type="range"）支持选择同一天作为起止日期
+ * @description 滚动模式（scroll=true）下只支持切换年份，不支持切换月份
  */
 export default {
     name: "fanc-calendar",
@@ -232,6 +253,21 @@ export default {
             type: String,
             default: "",
         },
+        // 是否在滚动模式下显示工具栏
+        showToolbar: {
+            type: Boolean,
+            default: true,
+        },
+        // 是否在滚动时使用动画效果
+        scrollWithAnimation: {
+            type: Boolean,
+            default: true,
+        },
+        // 滚动动画持续时间(ms)
+        scrollAnimationDuration: {
+            type: Number,
+            default: 100,
+        },
     },
 
     data() {
@@ -242,12 +278,18 @@ export default {
             selectedDates: [],
             months: [],
             weekdays: ["日", "一", "二", "三", "四", "五", "六"],
+            scrollIntoId: "", // 用于scroll-into-view
         };
     },
 
     computed: {
         // 格式化当前年月
         formatYearMonth() {
+            // 滚动模式下只显示年份
+            if (this.scroll) {
+                return `${this.currentYear}年`;
+            }
+            // 非滚动模式下显示年月
             return `${this.currentYear}年${this.currentMonth + 1}月`;
         },
 
@@ -331,10 +373,10 @@ export default {
             }
         },
         type: {
-            handler(val) {
+            handler() {
                 // 当类型变化时重置选中状态
                 this.selectedDates = [];
-                if (val === "single") {
+                if (this.type === "single") {
                     const today = new Date();
                     this.selectedDates = [today];
                 }
@@ -357,6 +399,7 @@ export default {
     methods: {
         // 格式化日期为YYYY-MM-DD
         formatDate(date) {
+            if (!date) return '';
             const year = date.getFullYear();
             const month = String(date.getMonth() + 1).padStart(2, "0");
             const day = String(date.getDate()).padStart(2, "0");
@@ -367,9 +410,9 @@ export default {
         parseDate(dateString) {
             if (!dateString) return null;
             if (dateString instanceof Date) return dateString;
-
-            const [year, month, day] = dateString.split("-");
-            return new Date(parseInt(year), parseInt(month) - 1, parseInt(day));
+            
+            const [year, month, day] = dateString.split("-").map(Number);
+            return new Date(year, month - 1, day);
         },
 
         // 格式化年月标题
@@ -380,36 +423,67 @@ export default {
         // 初始化日历数据
         initCalendar() {
             if (this.scroll) {
+                // 设置为当前年份并生成月份数据
+                const today = new Date();
+                this.currentYear = today.getFullYear();
                 this.generateMonths();
+                
+                // 初始化时滚动到当前月份
+                setTimeout(() => {
+                    this.scrollToMonth(today.getMonth(), false);
+                }, 50);
             }
         },
 
         // 生成滚动模式下的多个月份数据
         generateMonths() {
             const months = [];
-            const startDate = this.minDate ? this.parseDate(this.minDate) : new Date();
-            const endDate = this.maxDate
-                ? this.parseDate(this.maxDate)
-                : new Date(startDate.getFullYear() + 1, startDate.getMonth(), startDate.getDate());
-
-            let currentDate = new Date(startDate);
-            while (currentDate <= endDate) {
-                const year = currentDate.getFullYear();
-                const month = currentDate.getMonth();
-
-                const monthData = {
+            const year = this.currentYear;
+            const startMonth = 0;
+            const endMonth = 11;
+            
+            // 获取日期限制
+            const minLimit = this.getDateLimit(this.minDate);
+            const maxLimit = this.getDateLimit(this.maxDate);
+            
+            // 检查年份限制
+            if (minLimit && year < minLimit.year) {
+                this.currentYear = minLimit.year;
+                return this.generateMonths();
+            }
+            
+            if (maxLimit && year > maxLimit.year) {
+                this.currentYear = maxLimit.year;
+                return this.generateMonths();
+            }
+            
+            // 在当前年份范围内生成所有月份
+            for (let month = startMonth; month <= endMonth; month++) {
+                // 检查月份是否在限制范围内
+                if (minLimit && year === minLimit.year && month < minLimit.month) continue;
+                if (maxLimit && year === maxLimit.year && month > maxLimit.month) continue;
+                
+                months.push({
                     year,
                     month,
                     days: this.generateDaysForMonth(year, month),
-                };
-
-                months.push(monthData);
-
-                // 移至下一个月
-                currentDate.setMonth(currentDate.getMonth() + 1);
+                });
             }
-
+            
             this.months = months;
+        },
+
+        // 获取日期限制
+        getDateLimit(date) {
+            if (!date) return null;
+            const parsedDate = this.parseDate(date);
+            if (!parsedDate) return null;
+            
+            return {
+                year: parsedDate.getFullYear(),
+                month: parsedDate.getMonth(),
+                day: parsedDate.getDate()
+            };
         },
 
         // 生成指定月份的日期数据
@@ -496,19 +570,21 @@ export default {
         // 判断日期是否在可选范围内
         isDateDisabled(date) {
             if (!date) return true;
-
-            // 检查最小日期限制
-            if (this.minDate) {
-                const minDate = this.parseDate(this.minDate);
-                if (minDate && date < minDate) return true;
+            
+            // 使用日期限制辅助函数
+            const minLimit = this.getDateLimit(this.minDate);
+            const maxLimit = this.getDateLimit(this.maxDate);
+            
+            if (minLimit) {
+                const minDate = new Date(minLimit.year, minLimit.month, minLimit.day);
+                if (date < minDate) return true;
             }
-
-            // 检查最大日期限制
-            if (this.maxDate) {
-                const maxDate = this.parseDate(this.maxDate);
-                if (maxDate && date > maxDate) return true;
+            
+            if (maxLimit) {
+                const maxDate = new Date(maxLimit.year, maxLimit.month, maxLimit.day);
+                if (date > maxDate) return true;
             }
-
+            
             return false;
         },
 
@@ -525,15 +601,7 @@ export default {
             }
 
             // 检查是否选中
-            const isSelected = this.selectedDates.some(
-                (d) =>
-                    d &&
-                    day.date &&
-                    d.getFullYear() === day.date.getFullYear() &&
-                    d.getMonth() === day.date.getMonth() &&
-                    d.getDate() === day.date.getDate()
-            );
-
+            const isSelected = this.selectedDates.some(d => d && day.date && this.isSameDate(d, day.date));
             if (isSelected) {
                 classes.push("fanc-calendar__day--selected");
             }
@@ -541,8 +609,19 @@ export default {
             // 处理范围选择
             if (this.type === "range" && this.selectedDates.length === 2) {
                 const [startDate, endDate] = [...this.selectedDates].sort((a, b) => a - b);
+                
+                if (!day.date) return classes;
+                
+                // 检查是否是同一天
+                const isSameDay = this.isSameDate(startDate, endDate);
+                
+                // 如果是同一天被选为范围
+                if (isSameDay && this.isSameDate(day.date, startDate)) {
+                    classes.push("fanc-calendar__day--same-day-range");
+                    return classes;
+                }
 
-                const currentTime = day.date ? day.date.getTime() : 0;
+                const currentTime = day.date.getTime();
                 const startTime = startDate.getTime();
                 const endTime = endDate.getTime();
 
@@ -552,24 +631,12 @@ export default {
                 }
 
                 // 开始日期
-                if (
-                    day.date &&
-                    startDate &&
-                    day.date.getFullYear() === startDate.getFullYear() &&
-                    day.date.getMonth() === startDate.getMonth() &&
-                    day.date.getDate() === startDate.getDate()
-                ) {
+                if (this.isSameDate(day.date, startDate)) {
                     classes.push("fanc-calendar__day--start");
                 }
 
                 // 结束日期
-                if (
-                    day.date &&
-                    endDate &&
-                    day.date.getFullYear() === endDate.getFullYear() &&
-                    day.date.getMonth() === endDate.getMonth() &&
-                    day.date.getDate() === endDate.getDate()
-                ) {
+                if (this.isSameDate(day.date, endDate)) {
                     classes.push("fanc-calendar__day--end");
                 }
             }
@@ -577,75 +644,81 @@ export default {
             return classes;
         },
 
-        // 选择日期
+        // 选择日期 - 精简实现
         selectDate(day) {
-            if (!day.isCurrentMonth || !day.day || day.disabled) {
-                return;
-            }
+            if (!day.isCurrentMonth || !day.day || day.disabled) return;
 
-            if (this.type === "single") {
-                this.selectedDates = [day.date];
-            } else if (this.type === "multiple") {
-                // 检查是否已经选择
-                const index = this.selectedDates.findIndex(
-                    (d) =>
-                        d.getFullYear() === day.date.getFullYear() &&
-                        d.getMonth() === day.date.getMonth() &&
-                        d.getDate() === day.date.getDate()
-                );
-
-                if (index > -1) {
-                    // 如果已选择，则取消选择
-                    this.selectedDates.splice(index, 1);
-                } else {
-                    // 否则添加选择
-                    this.selectedDates.push(day.date);
-                }
-            } else if (this.type === "range") {
-                // 如果没有选择或已经选择了2个日期，则重新开始选择
-                if (this.selectedDates.length === 0 || this.selectedDates.length === 2) {
-                    this.selectedDates = [new Date(day.date)];
-                } else {
-                    // 已经选择了1个日期，现在选择第2个
-                    // 创建新日期对象避免引用问题
-                    const secondDate = new Date(day.date);
-
-                    // 检查是否与第一个日期相同
-                    const firstDate = this.selectedDates[0];
-                    if (
-                        firstDate.getFullYear() === secondDate.getFullYear() &&
-                        firstDate.getMonth() === secondDate.getMonth() &&
-                        firstDate.getDate() === secondDate.getDate()
-                    ) {
-                        // 如果选择了相同的日期，则取消第一次选择
-                        this.selectedDates = [];
-                        return;
+            const newDate = new Date(day.date);
+            
+            switch (this.type) {
+                case "single":
+                    this.selectedDates = [newDate];
+                    break;
+                
+                case "multiple":
+                    // 检查是否已选择该日期
+                    const index = this.findSelectedDateIndex(newDate);
+                    if (index > -1) {
+                        this.selectedDates.splice(index, 1); // 取消选择
+                    } else {
+                        this.selectedDates.push(newDate); // 添加选择
                     }
-
-                    this.selectedDates.push(secondDate);
-                    // 确保开始日期早于结束日期
-                    this.selectedDates.sort((a, b) => a - b);
-                }
+                    break;
+                
+                case "range":
+                    if (this.selectedDates.length === 0 || this.selectedDates.length === 2) {
+                        this.selectedDates = [newDate]; // 重新开始选择
+                    } else {
+                        // 检查是否与第一个日期相同
+                        if (this.isSameDate(this.selectedDates[0], newDate)) {
+                            this.selectedDates.push(newDate); // 允许选择同一天
+                        } else {
+                            this.selectedDates.push(newDate);
+                            this.selectedDates.sort((a, b) => a - b); // 排序
+                        }
+                    }
+                    break;
             }
 
             // 发送选择变更事件
             this.$emit("change", this.getSelectedValues());
 
-            // 如果是单选模式且不需要确认按钮，直接确认
+            // 单选无需确认时自动确认
             if (this.type === "single" && !this.showConfirm) {
                 this.confirm();
             }
         },
 
+        // 查找选中日期的索引
+        findSelectedDateIndex(date) {
+            return this.selectedDates.findIndex(d => this.isSameDate(d, date));
+        },
+
+        // 判断两个日期是否为同一天
+        isSameDate(date1, date2) {
+            return date1.getFullYear() === date2.getFullYear() &&
+                   date1.getMonth() === date2.getMonth() &&
+                   date1.getDate() === date2.getDate();
+        },
+
         // 获取格式化后的选中值
         getSelectedValues() {
             if (this.type === "single") {
-                return this.selectedDates.length > 0
-                    ? this.formatDate(this.selectedDates[0])
-                    : null;
-            } else {
-                return this.selectedDates.map((date) => this.formatDate(date));
+                return this.selectedDates.length > 0 ? this.formatDate(this.selectedDates[0]) : null;
             }
+            return this.selectedDates.map(date => this.formatDate(date));
+        },
+
+        // 切换到上一年
+        prevYear() {
+            this.currentYear--;
+            this.generateMonths();
+        },
+
+        // 切换到下一年
+        nextYear() {
+            this.currentYear++;
+            this.generateMonths();
         },
 
         // 切换到上个月
@@ -671,7 +744,6 @@ export default {
         // 确认选择
         confirm() {
             if (!this.canConfirm) return;
-
             this.$emit("confirm", this.getSelectedValues());
             this.close();
         },
@@ -689,17 +761,29 @@ export default {
 
         // 重置选择状态
         reset() {
-            if (this.type === "single") {
-                const today = new Date();
-                this.selectedDates = [today];
-            } else {
-                this.selectedDates = [];
-            }
+            this.selectedDates = this.type === "single" ? [new Date()] : [];
             this.$emit("change", this.getSelectedValues());
         },
 
         // 空函数，防止点击内容区域关闭弹窗
         noop() {},
+
+        // 滚动到指定月份
+        scrollToMonth(month, useAnimation = true) {
+            // 设置滚动目标ID
+            this.scrollIntoId = `month-${this.currentYear}-${month}`;
+            
+            // 如果不使用动画，临时关闭
+            if (!useAnimation) {
+                const originalAnimation = this.scrollWithAnimation;
+                this.scrollWithAnimation = false;
+                
+                // 恢复原来的动画设置
+                setTimeout(() => {
+                    this.scrollWithAnimation = originalAnimation;
+                }, 50);
+            }
+        },
     },
 };
 </script>
@@ -814,6 +898,44 @@ export default {
     color: #fff;
 }
 
+/* 同一天被选为范围的特殊样式 */
+.fanc-calendar__day--same-day-range .fanc-calendar__day-content {
+    background-color: #1989fa;
+    color: #fff;
+    border-radius: 50%;
+    position: relative;
+    /* 添加阴影增强立体感 */
+    box-shadow: 0 2px 8px rgba(25, 137, 250, 0.4);
+}
+
+/* 添加一个特殊标记，显示这是范围的起止点 */
+.fanc-calendar__day--same-day-range .fanc-calendar__day-content::after {
+    content: "";
+    position: absolute;
+    bottom: 4px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 16px;
+    height: 4px;
+    background-color: #fff;
+    border-radius: 2px;
+    /* 添加小阴影增强视觉效果 */
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+/* 添加一个额外的标记，增强同一天选择的视觉区分度 */
+.fanc-calendar__day--same-day-range .fanc-calendar__day-content::before {
+    content: "";
+    position: absolute;
+    bottom: -4px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 4px;
+    background-color: #fff;
+    border-radius: 50%;
+}
+
 .fanc-calendar__day--range .fanc-calendar__day-content {
     background-color: rgba(25, 137, 250, 0.1);
     border-radius: 0;
@@ -855,6 +977,7 @@ export default {
 .fanc-calendar__months {
     display: flex;
     flex-direction: column;
+    height: 60vh; /* 固定高度以启用滚动 */
 }
 
 .fanc-calendar__month {
