@@ -25,30 +25,6 @@
             }
         },
         {
-            "path": "pages/field-example/index",
-            "style": {
-                "navigationBarTitleText": "输入框示例"
-            }
-        },
-        {
-            "path": "pages/field-example/demo",
-            "style": {
-                "navigationBarTitleText": "输入框简单示例"
-            }
-        },
-        {
-            "path": "pages/field-example/login-form",
-            "style": {
-                "navigationBarTitleText": "登录表单示例"
-            }
-        },
-        {
-            "path": "pages/field-example/advanced-form",
-            "style": {
-                "navigationBarTitleText": "高级表单示例"
-            }
-        },
-        {
             "path": "pages/popup-example/index",
             "style": {
                 "navigationBarTitleText": "弹出层示例"
@@ -124,36 +100,6 @@
             "path": "pages/number-keyboard-example/index",
             "style": {
                 "navigationBarTitleText": "数字键盘示例"
-            }
-        },
-        {
-            "path": "pages/form-example/index",
-            "style": {
-                "navigationBarTitleText": "表单示例"
-            }
-        },
-        {
-            "path": "pages/form-example/basic",
-            "style": {
-                "navigationBarTitleText": "基础表单"
-            }
-        },
-        {
-            "path": "pages/form-example/validation",
-            "style": {
-                "navigationBarTitleText": "表单验证"
-            }
-        },
-        {
-            "path": "pages/form-example/complex",
-            "style": {
-                "navigationBarTitleText": "复杂表单"
-            }
-        },
-        {
-            "path": "pages/form-example/form-submit",
-            "style": {
-                "navigationBarTitleText": "表单提交方式"
             }
         },
         {

@@ -2,7 +2,6 @@ import FancButton from "@/components/fanc-button/index.vue";
 import FancIcon from "@/components/fanc-icon/index.vue";
 import FancCell from "@/components/fanc-cell";
 import FancCellGroup from "@/components/fanc-cell-group";
-import FancField from "@/components/fanc-field/index.vue";
 import FancPopup from "@/components/fanc-popup/index.vue";
 import FancMessage from "@/components/fanc-message/index.vue";
 import FancNoticebar from "@/components/fanc-noticebar/index.vue";
@@ -17,7 +16,6 @@ import FancCalendar from "@/components/fanc-calendar/index.vue";
 import FancCheckbox from "@/components/fanc-checkbox/index.vue";
 import FancCheckboxGroup from "@/components/fanc-checkbox-group/index.vue";
 import FancNumberKeyboard from "@/components/fanc-number-keyboard/index.vue";
-import FancForm from "@/components/fanc-form/index.vue";
 import FancCascader from "@/components/fanc-cascader/index.vue";
 import Message from "@/plugins/message";
 import Toast from "@/plugins/toast";
@@ -29,7 +27,6 @@ const components = [
     FancIcon,
     FancCell,
     FancCellGroup,
-    FancField,
     FancPopup,
     FancMessage,
     FancNoticebar,
@@ -44,7 +41,6 @@ const components = [
     FancCheckbox,
     FancCheckboxGroup,
     FancNumberKeyboard,
-    FancForm,
     FancCascader,
 ];
 
@@ -57,7 +53,6 @@ export {
     FancIcon,
     FancCell,
     FancCellGroup,
-    FancField,
     FancPopup,
     FancMessage,
     FancNoticebar,
@@ -72,7 +67,6 @@ export {
     FancCheckbox,
     FancCheckboxGroup,
     FancNumberKeyboard,
-    FancForm,
     FancCascader,
 };
 
