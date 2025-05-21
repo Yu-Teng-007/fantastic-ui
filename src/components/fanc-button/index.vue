@@ -247,6 +247,11 @@ export default {
         margin-left: 4px;
     }
 
+    // plain按钮点击统一背景色
+    &.is-plain:active:not(.is-disabled) {
+        background-color: var(--gray-100) !important; // 使用淡灰色作为统一背景色
+    }
+
     // 默认按钮样式
     &--default {
         color: var(--text-primary);
