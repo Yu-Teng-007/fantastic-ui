@@ -11,7 +11,7 @@
             <fanc-cell 
                 title="按钮" 
                 is-link 
-                url="/pages/example/button/button-example"
+                url="/pages/example/button/index"
                 center
             >
                 <template #icon>
@@ -24,7 +24,7 @@
             <fanc-cell 
                 title="图标" 
                 is-link 
-                url="/pages/example/icon/icon-example"
+                url="/pages/example/icon/index"
                 center
             >
                 <template #icon>
