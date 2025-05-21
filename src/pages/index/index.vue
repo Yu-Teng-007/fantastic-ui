@@ -23,10 +23,6 @@
                     <view class="component-card__icon cell-icon"></view>
                     <text class="component-card__name">单元格</text>
                 </navigator>
-                <navigator url="/pages/field-example/index" class="component-card">
-                    <view class="component-card__icon field-icon"></view>
-                    <text class="component-card__name">输入框</text>
-                </navigator>
                 <navigator url="/pages/swipe-cell-example/index" class="component-card">
                     <view class="component-card__icon swipe-cell-icon"></view>
                     <text class="component-card__name">滑动单元格</text>
@@ -42,10 +38,6 @@
                 <navigator url="/pages/number-keyboard-example/index" class="component-card">
                     <view class="component-card__icon keyboard-icon"></view>
                     <text class="component-card__name">数字键盘</text>
-                </navigator>
-                <navigator url="/pages/form-example/index" class="component-card">
-                    <view class="component-card__icon form-icon"></view>
-                    <text class="component-card__name">表单</text>
                 </navigator>
             </view>
         </view>
@@ -185,11 +177,6 @@ export default {
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ffffff'%3E%3Cpath d='M3 3v18h18V3H3zm16 16H5V5h14v14zM11 7h2v2h-2zM7 7h2v2H7zm8 0h2v2h-2zm-8 4h2v2H7zm4 0h2v2h-2zm4 0h2v2h-2zm-8 4h2v2H7zm4 0h2v2h-2zm4 0h2v2h-2z'/%3E%3C/svg%3E");
 }
 
-.field-icon {
-    background-color: #0dcaf0;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ffffff'%3E%3Cpath d='M21 3H3c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H3V5h18v14zM5 15h14v2H5zm0-8h14v2H5zm0 4h14v2H5z'/%3E%3C/svg%3E");
-}
-
 .swipe-cell-icon {
     background-color: #9c27b0;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ffffff'%3E%3Cpath d='M20 2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM8 20H4v-4h4v4zm0-6H4v-4h4v4zm0-6H4V4h4v4zm6 12h-4v-4h4v4zm0-6h-4v-4h4v4zm0-6h-4V4h4v4zm6 12h-4v-4h4v4zm0-6h-4v-4h4v4zm0-6h-4V4h4v4z'/%3E%3C/svg%3E");
@@ -243,11 +230,6 @@ export default {
 .calendar-icon {
     background-color: #4a6cf7;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ffffff'%3E%3Cpath d='M19 3h-1V1h-2v2H8V1H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z'/%3E%3C/svg%3E");
-}
-
-.form-icon {
-    background-color: #6f42c1;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ffffff'%3E%3Cpath d='M19 3h-1V1h-2v2H8V1H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14zM7 12h10v2H7z'/%3E%3C/svg%3E");
 }
 
 // 添加复选框图标样式
