@@ -7,103 +7,103 @@
             }
         },
         {
-            "path": "pages/button-example/button-example",
+            "path": "pages/example/button/button-example",
             "style": {
                 "navigationBarTitleText": "按钮示例"
             }
         },
         {
-            "path": "pages/icon-example/icon-example",
+            "path": "pages/example/icon/icon-example",
             "style": {
                 "navigationBarTitleText": "图标示例"
             }
         },
         {
-            "path": "pages/cell-example/index",
+            "path": "pages/example/cell/index",
             "style": {
                 "navigationBarTitleText": "单元格示例"
             }
         },
         {
-            "path": "pages/popup-example/index",
+            "path": "pages/example/popup/index",
             "style": {
                 "navigationBarTitleText": "弹出层示例"
             }
         },
         {
-            "path": "pages/message-example/index",
+            "path": "pages/example/message/index",
             "style": {
                 "navigationBarTitleText": "消息通知示例"
             }
         },
         {
-            "path": "pages/noticebar-example/index",
+            "path": "pages/example/noticebar/index",
             "style": {
                 "navigationBarTitleText": "公告栏示例"
             }
         },
         {
-            "path": "pages/action-sheet-example/index",
+            "path": "pages/example/action-sheet/index",
             "style": {
                 "navigationBarTitleText": "动作面板示例"
             }
         },
         {
-            "path": "pages/popover-example/index",
+            "path": "pages/example/popover/index",
             "style": {
                 "navigationBarTitleText": "弹出气泡示例"
             }
         },
         {
-            "path": "pages/toast-example/index",
+            "path": "pages/example/toast/index",
             "style": {
                 "navigationBarTitleText": "轻提示示例"
             }
         },
         {
-            "path": "pages/dialog-example/index",
+            "path": "pages/example/dialog/index",
             "style": {
                 "navigationBarTitleText": "对话框示例"
             }
         },
         {
-            "path": "pages/swipe-cell-example/index",
+            "path": "pages/example/swipe-cell/index",
             "style": {
                 "navigationBarTitleText": "滑动单元格示例"
             }
         },
         {
-            "path": "pages/dropdown-menu-example/index",
+            "path": "pages/example/dropdown-menu/index",
             "style": {
                 "navigationBarTitleText": "下拉菜单栏示例"
             }
         },
         {
-            "path": "pages/image-example/index",
+            "path": "pages/example/image/index",
             "style": {
                 "navigationBarTitleText": "图片示例"
             }
         },
         {
-            "path": "pages/calendar-example/index",
+            "path": "pages/example/calendar/index",
             "style": {
                 "navigationBarTitleText": "日历示例"
             }
         },
         {
-            "path": "pages/checkbox-example/index",
+            "path": "pages/example/checkbox/index",
             "style": {
                 "navigationBarTitleText": "复选框示例"
             }
         },
         {
-            "path": "pages/number-keyboard-example/index",
+            "path": "pages/example/number-keyboard/index",
             "style": {
                 "navigationBarTitleText": "数字键盘示例"
             }
         },
         {
-            "path": "pages/cascader-example/index",
+            "path": "pages/example/cascader/index",
             "style": {
                 "navigationBarTitleText": "级联选择示例"
             }
