@@ -79,6 +79,9 @@ export default {
          * @param {String|Number|Boolean} name 复选框的name
          */
         toggleValue(name) {
+            // 如果组件禁用，则不处理
+            if (this.disabled) return;
+
             // 当前选中值的副本
             const currentValue = [...this.value];
             const index = currentValue.indexOf(name);
@@ -101,65 +104,6 @@ export default {
             currentValue.push(name);
             this.$emit("input", currentValue);
             this.$emit("change", currentValue);
-        },
-
-        /**
-         * 全选
-         */
-        selectAll() {
-            // 获取所有子checkbox的name值
-            const allCheckboxNames = this.getAllCheckboxNames();
-            // 最大数量限制检查
-            const selectedNames =
-                this.max > 0 ? allCheckboxNames.slice(0, this.max) : allCheckboxNames;
-
-            this.$emit("input", selectedNames);
-            this.$emit("change", selectedNames);
-
-            if (this.max > 0 && allCheckboxNames.length > this.max) {
-                this.$emit("exceed-max", this.max);
-            }
-        },
-
-        /**
-         * 取消全选
-         */
-        unselectAll() {
-            this.$emit("input", []);
-            this.$emit("change", []);
-        },
-
-        /**
-         * 获取所有子checkbox的name值
-         */
-        getAllCheckboxNames() {
-            // 获取所有子checkboxes
-            const checkboxes = this.getCheckboxes();
-            // 提取所有checkbox的name值
-            return checkboxes
-                .filter((checkbox) => !checkbox.disabled)
-                .map((checkbox) => checkbox.name);
-        },
-
-        /**
-         * 获取所有子checkbox组件实例
-         */
-        getCheckboxes() {
-            const result = [];
-            const traverse = (children) => {
-                if (!children) return;
-
-                children.forEach((child) => {
-                    if (child.$options.name === "fanc-checkbox") {
-                        result.push(child);
-                    } else if (child.$children) {
-                        traverse(child.$children);
-                    }
-                });
-            };
-
-            traverse(this.$children);
-            return result;
         },
     },
 };

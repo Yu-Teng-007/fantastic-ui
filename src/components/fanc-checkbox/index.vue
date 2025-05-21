@@ -165,9 +165,15 @@ export default {
          * 点击复选框
          */
         onClick() {
-            if (this.disabled) return;
+            // 如果复选框本身禁用或者复选框组禁用，则不处理
+            if (this.disabled || (this.fancCheckboxGroup && this.fancCheckboxGroup.disabled)) {
+                return;
+            }
 
             const newValue = !this.checked;
+
+            // 记录调试日志
+            console.log("复选框点击:", this.name, "新值:", newValue, "当前值:", this.checked);
 
             // 如果在checkbox-group中，通知group更新
             if (this.fancCheckboxGroup) {
@@ -203,8 +209,8 @@ export default {
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
-    width: var(--checkbox-icon-size-normal, 16px);
-    height: var(--checkbox-icon-size-normal, 16px);
+    width: var(--checkbox-icon-size-normal, 14px);
+    height: var(--checkbox-icon-size-normal, 14px);
 }
 
 .fanc-checkbox__icon-box {
@@ -257,12 +263,12 @@ export default {
 
 /* 确保图标大小不同时的一致性 */
 .fanc-checkbox__icon--small {
-    width: var(--checkbox-icon-size-small, 14px);
-    height: var(--checkbox-icon-size-small, 14px);
+    width: var(--checkbox-icon-size-small, 12px);
+    height: var(--checkbox-icon-size-small, 12px);
 }
 
 .fanc-checkbox__icon--large {
-    width: var(--checkbox-icon-size-large, 20px);
-    height: var(--checkbox-icon-size-large, 20px);
+    width: var(--checkbox-icon-size-large, 16px);
+    height: var(--checkbox-icon-size-large, 16px);
 }
 </style>

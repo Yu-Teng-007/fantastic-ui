@@ -82,8 +82,16 @@
 </template>
 
 <script>
+import FancCheckbox from "../components/fanc-checkbox/index.vue";
+import FancCheckboxGroup from "../components/fanc-checkbox-group/index.vue";
+
 export default {
     name: "checkbox-demo",
+
+    components: {
+        FancCheckbox,
+        FancCheckboxGroup,
+    },
 
     data() {
         return {
