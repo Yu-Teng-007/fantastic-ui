@@ -13,19 +13,13 @@
             <view
                 class="fanc-checkbox__icon-box"
                 :style="{
-                    borderColor: !checked
-                        ? disabled
-                            ? iconDisabledColor
-                            : iconColor
-                        : disabled
-                        ? iconDisabledColor
-                        : iconCheckedColor,
+                    borderColor: getBorderColor,
                     backgroundColor: checked ? (disabled ? '#ebedf0' : iconCheckedColor) : '',
                 }"
             ></view>
             <fanc-icon
                 v-if="checked"
-                :name="iconName"
+                :name="icon"
                 :size="iconSizeValue"
                 class="fanc-checkbox__icon-check"
             />
@@ -35,7 +29,9 @@
             v-if="label || $slots.default"
             class="fanc-checkbox__label"
             :style="{
-                color: disabled ? labelDisabledColor : labelColor,
+                color: disabled
+                    ? 'var(--checkbox-disabled-label-color, var(--text-disabled))'
+                    : 'var(--checkbox-label-color, var(--text-primary))',
                 marginLeft: iconSize === 'large' ? '8px' : '4px',
             }"
         >
@@ -122,13 +118,10 @@ export default {
 
         // 选中状态的图标颜色
         iconCheckedColor() {
-            // 优先使用props传入的颜色
             if (this.checkedColor) return this.checkedColor;
-            // 其次使用checkbox-group的颜色
-            if (this.fancCheckboxGroup && this.fancCheckboxGroup.checkedColor) {
+            if (this.fancCheckboxGroup?.checkedColor) {
                 return this.fancCheckboxGroup.checkedColor;
             }
-            // 最后使用CSS变量定义的主题色
             return "var(--checkbox-checked-icon-color, var(--fanc-primary-color))";
         },
 
@@ -149,14 +142,20 @@ export default {
 
         // 图标大小值
         iconSizeValue() {
-            switch (this.iconSize) {
-                case "small":
-                    return "12px";
-                case "large":
-                    return "20px";
-                default:
-                    return "16px";
+            const sizes = {
+                small: "12px",
+                large: "20px",
+                normal: "16px",
+            };
+            return sizes[this.iconSize] || sizes.normal;
+        },
+
+        getBorderColor() {
+            const disabledColor = "var(--checkbox-disabled-icon-color, #c8c9cc)";
+            if (this.checked) {
+                return this.disabled ? disabledColor : this.iconCheckedColor;
             }
+            return this.disabled ? disabledColor : "var(--checkbox-icon-color, #c8c9cc)";
         },
     },
 
@@ -171,9 +170,6 @@ export default {
             }
 
             const newValue = !this.checked;
-
-            // 记录调试日志
-            console.log("复选框点击:", this.name, "新值:", newValue, "当前值:", this.checked);
 
             // 如果在checkbox-group中，通知group更新
             if (this.fancCheckboxGroup) {
