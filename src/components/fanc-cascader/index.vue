@@ -238,18 +238,15 @@ export default {
         customStyle() {
             if (!this.activeColor) return {};
 
-            // 生成对应的半透明背景色
-            const activeBackgroundColor = this.generateBackgroundColor(this.activeColor);
-
             return {
                 "--cascader-active-color": this.activeColor,
-                "--cascader-option-active-bg": activeBackgroundColor,
+                "--cascader-option-active-bg": `${this.activeColor}1A`, // 10%透明度
             };
         },
     },
     watch: {
         options: {
-            handler(newOptions) {
+            handler() {
                 this.initCascader();
             },
             immediate: true,
@@ -471,12 +468,6 @@ export default {
             }
 
             this.$emit("close");
-        },
-
-        // 生成半透明背景色
-        generateBackgroundColor(hexColor) {
-            // 简单方式：添加0.1的透明度
-            return hexColor ? `${hexColor}1A` : "rgba(0, 123, 255, 0.1)"; // 1A相当于10%透明度
         },
 
         // 重置选择
