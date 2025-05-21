@@ -88,7 +88,6 @@
 </template>
 
 <script>
-import keyboardManager from "./keyboard-manager";
 import fancIcon from "../fanc-icon/index.vue";
 
 /**
@@ -221,10 +220,10 @@ export default {
                 { text: this.extraKey, value: this.extraKey, type: "function" },
                 { text: "0", value: "0", wider: true },
             ],
-            // 是否已经注册到键盘管理器
-            isRegistered: false,
             // 键盘实际显示状态
             isVisible: false,
+            // 点击外部事件处理器
+            clickOutsideHandler: null,
         };
     },
     computed: {
@@ -348,136 +347,85 @@ export default {
         },
         // 关闭键盘
         onClose() {
-            // 发送关闭事件
             this.$emit("close");
-
-            // 如果键盘是活跃键盘，优先通过管理器隐藏
-            if (keyboardManager.isActive(this)) {
-                keyboardManager.hideActive();
-            } else {
-                // 否则直接隐藏
-                this.hideKeyboard();
-            }
+            this.hideKeyboard();
         },
         // 显示键盘
         showKeyboard() {
-            // 先更新本地状态，触发isVisible监听器
             this.isVisible = true;
-
-            // 通知键盘管理器显示当前键盘
-            keyboardManager.show(this);
-
-            // 通知父组件
             this.$emit("update:show", true);
+
+            // 添加点击外部事件监听
+            this.setupClickOutsideListener();
         },
         // 隐藏键盘
         hideKeyboard() {
-            // 立即更新视图状态，确保键盘隐藏，触发isVisible监听器
             this.isVisible = false;
-
-            // 通知父组件更新状态
             this.$emit("update:show", false);
             this.$emit("blur");
+
+            // 移除点击外部事件监听
+            this.removeClickOutsideListener();
         },
-        // 点击外部事件
-        onClickOutside(event) {
-            // 如果键盘已经隐藏，不做任何处理
-            if (!this.isVisible) return;
+        // 设置点击外部监听器
+        setupClickOutsideListener() {
+            if (this.hideOnClickOutside) {
+                // 先移除已有的监听器，防止重复绑定
+                this.removeClickOutsideListener();
 
-            // 检查点击是否在键盘外部
-            const keyboardEl = event.target.closest(".fanc-number-keyboard");
-            if (!keyboardEl && this.hideOnClickOutside) {
-                // 使用与其他关闭方法相同的逻辑
-                this.$emit("close");
+                // 创建点击外部处理函数
+                this.clickOutsideHandler = (event) => {
+                    // 如果键盘已经隐藏，不做任何处理
+                    if (!this.isVisible) return;
 
-                // 如果键盘是活跃键盘，优先通过管理器隐藏
-                if (keyboardManager.isActive(this)) {
-                    keyboardManager.hideActive();
-                } else {
-                    // 否则直接隐藏
-                    this.hideKeyboard();
-                }
+                    // 检查点击是否在键盘外部
+                    const keyboardEl = event.target.closest(".fanc-number-keyboard");
+                    if (!keyboardEl && this.hideOnClickOutside) {
+                        this.$emit("close");
+                        this.hideKeyboard();
+                    }
+                };
+
+                // 延迟添加点击监听，避免触发当前点击事件
+                setTimeout(() => {
+                    if (this.isVisible) {
+                        document.addEventListener("click", this.clickOutsideHandler);
+                    }
+                }, 50);
             }
         },
-        // 确保键盘状态与父组件同步
+        // 移除点击外部监听器
+        removeClickOutsideListener() {
+            if (this.clickOutsideHandler) {
+                document.removeEventListener("click", this.clickOutsideHandler);
+                this.clickOutsideHandler = null;
+            }
+        },
+        // 同步显示状态
         syncVisible(value) {
             if (value === this.isVisible) return;
 
             if (value) {
                 this.showKeyboard();
             } else {
-                // 如果已经是活跃键盘，则通过管理器隐藏
-                if (keyboardManager.isActive(this)) {
-                    keyboardManager.hideActive();
-                } else {
-                    this.hideKeyboard();
-                }
+                this.hideKeyboard();
             }
         },
     },
     watch: {
         // 监听显示状态
         show(newVal) {
-            // 使用syncVisible方法处理状态同步
             this.syncVisible(newVal);
         },
-
-        // 监听内部可见状态变化
-        isVisible(newVal) {
-            // 确保外部属性与内部状态保持同步
-            if (this.show !== newVal) {
-                this.$emit("update:show", newVal);
-            }
-
-            // 根据可见状态管理点击监听器
-            if (newVal && this.hideOnClickOutside) {
-                // 先移除已有的监听器，防止重复绑定
-                document.removeEventListener("click", this.onClickOutside);
-
-                // 延迟添加点击监听，避免触发当前点击事件
-                setTimeout(() => {
-                    if (this.isVisible) {
-                        // 再次检查以防状态变化
-                        document.addEventListener("click", this.onClickOutside);
-                    }
-                }, 50);
-            } else {
-                // 当键盘隐藏时移除监听器
-                document.removeEventListener("click", this.onClickOutside);
-            }
-        },
-    },
-    created() {
-        // 在组件创建时注册到键盘管理器
-        keyboardManager.register(this);
-        this.isRegistered = true;
-    },
-    beforeDestroy() {
-        // 在组件销毁前从键盘管理器中注销
-        document.removeEventListener("click", this.onClickOutside);
-        if (this.isRegistered) {
-            keyboardManager.unregister(this);
-            this.isRegistered = false;
-        }
     },
     mounted() {
         if (this.show) {
-            // 如果初始状态为显示，通知键盘管理器
-            keyboardManager.show(this);
             this.isVisible = true;
-
-            if (this.hideOnClickOutside) {
-                // 先确保没有重复的事件监听器
-                document.removeEventListener("click", this.onClickOutside);
-                // 延迟添加事件监听器
-                setTimeout(() => {
-                    if (this.isVisible) {
-                        // 仅当键盘仍然可见时添加
-                        document.addEventListener("click", this.onClickOutside);
-                    }
-                }, 10);
-            }
+            this.setupClickOutsideListener();
         }
+    },
+    beforeDestroy() {
+        this.removeClickOutsideListener();
     },
 };
 </script>
@@ -747,14 +695,10 @@ export default {
 
 // 过渡动画类
 .fanc-keyboard-enter-active {
-    animation: fanc-slide-up 0.3s ease-out;
-    will-change: transform;
-    transform: translateZ(0);
+    animation: fanc-slide-up 0.3s both ease-out;
 }
 
 .fanc-keyboard-leave-active {
-    animation: fanc-slide-down 0.3s ease-in;
-    will-change: transform;
-    transform: translateZ(0);
+    animation: fanc-slide-down 0.3s both ease-in;
 }
 </style>
