@@ -24,9 +24,15 @@
                 </view>
 
                 <!-- 级联选择主体 -->
-                <view class="fanc-cascader__content">
-                    <!-- 选项卡 -->
+                <view
+                    :class="[
+                        'fanc-cascader__content',
+                        { 'fanc-cascader__content--vertical': mode === 'vertical' },
+                    ]"
+                >
+                    <!-- 水平模式选项卡 -->
                     <scroll-view
+                        v-if="mode === 'horizontal'"
                         class="fanc-cascader__tabs"
                         scroll-x="true"
                         scroll-with-animation="true"
@@ -48,13 +54,39 @@
                         </view>
                     </scroll-view>
 
+                    <!-- 垂直模式选项卡 -->
+                    <scroll-view
+                        v-if="mode === 'vertical'"
+                        class="fanc-cascader__tabs-vertical"
+                        scroll-y="true"
+                    >
+                        <view class="fanc-cascader__tabs-vertical-inner">
+                            <view
+                                v-for="(tab, index) in tabs"
+                                :key="index"
+                                :id="`tab-${index}`"
+                                :class="[
+                                    'fanc-cascader__tab-vertical',
+                                    { 'fanc-cascader__tab-vertical--active': activeTab === index },
+                                ]"
+                                @click="onTabClick(index)"
+                            >
+                                {{ tab }}
+                            </view>
+                        </view>
+                    </scroll-view>
+
                     <!-- 选项内容 -->
                     <swiper
                         class="fanc-cascader__options"
                         :current="activeTab"
                         @change="onSwiperChange"
                     >
-                        <swiper-item v-for="(options, tabIndex) in optionsList" :key="tabIndex">
+                        <swiper-item
+                            v-for="(options, tabIndex) in optionsList"
+                            :key="tabIndex"
+                            class="fanc-cascader__swiper-item"
+                        >
                             <scroll-view class="fanc-cascader__option-list" scroll-y="true">
                                 <view
                                     v-for="(option, index) in options"
@@ -108,6 +140,7 @@
  * @property {String} closeIconPosition - 关闭图标位置
  * @property {Number|String} zIndex - 弹出层层级
  * @property {Boolean} overlayClosable - 是否点击遮罩层关闭弹窗
+ * @property {String} mode - 选项卡显示模式，可选值为 horizontal 或 vertical
  * @event {Function} change - 选中项变化时触发
  * @event {Function} pathSelected - 选择完成一个完整路径时触发
  * @event {Function} finish - 点击确认按钮时触发
@@ -208,6 +241,14 @@ export default {
             type: String,
             default: "bottom",
         },
+        // 选项卡显示模式
+        mode: {
+            type: String,
+            default: "horizontal",
+            validator: (value) => {
+                return ["horizontal", "vertical"].includes(value);
+            },
+        },
     },
     data() {
         return {
@@ -236,11 +277,15 @@ export default {
         },
         // 生成自定义样式，设置CSS变量
         customStyle() {
-            if (!this.activeColor) return {};
+            const defaultColor = "#1989fa";
+            const color = this.activeColor || defaultColor;
 
             return {
-                "--cascader-active-color": this.activeColor,
-                "--cascader-option-active-bg": `${this.activeColor}1A`, // 10%透明度
+                "--cascader-active-color": color,
+                "--cascader-option-active-bg": `${color}1A`, // 10%透明度
+                "--cascader-text-color": "#323233",
+                "--cascader-border-color": "#ebedf0",
+                "--cascader-disabled-color": "#c8c9cc",
             };
         },
     },
@@ -532,6 +577,12 @@ export default {
     flex-direction: column;
 }
 
+/* 垂直布局内容区域样式 */
+.fanc-cascader__content--vertical {
+    flex-direction: row;
+    height: 640rpx;
+}
+
 /* 标签栏样式 */
 .fanc-cascader__tabs {
     width: 100%;
@@ -573,10 +624,62 @@ export default {
     border-radius: 2rpx;
 }
 
+/* 垂直标签栏样式 */
+.fanc-cascader__tabs-vertical {
+    width: 200rpx;
+    height: 100%;
+    border-right: 1px solid var(--cascader-border-color);
+    background-color: #f7f8fa;
+}
+
+.fanc-cascader__tabs-vertical-inner {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.fanc-cascader__tab-vertical {
+    display: flex;
+    align-items: center;
+    padding: 0 20rpx;
+    height: 88rpx;
+    font-size: 28rpx;
+    color: var(--cascader-text-color);
+    position: relative;
+}
+
+.fanc-cascader__tab-vertical--active {
+    color: var(--cascader-active-color);
+    font-weight: 500;
+    background-color: #fff;
+}
+
+.fanc-cascader__tab-vertical--active::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 4rpx;
+    height: 40rpx;
+    background-color: var(--cascader-active-color);
+    border-radius: 2rpx;
+}
+
 /* 选项列表样式 */
 .fanc-cascader__options {
     flex: 1;
     width: 100%;
+}
+
+/* 垂直模式下的选项列表样式 */
+.fanc-cascader__content--vertical .fanc-cascader__options {
+    height: 100%;
+}
+
+.fanc-cascader__swiper-item {
+    height: 100%;
+    overflow: hidden;
 }
 
 .fanc-cascader__option-list {

@@ -30,6 +30,27 @@
         </view>
 
         <view class="example-page__section">
+            <view class="example-page__section-title">垂直布局</view>
+            <view class="example-page__section-desc">选项卡在左侧垂直布局，适合分类较多的场景</view>
+            <view class="example-page__content">
+                <fanc-cell
+                    :content="verticalSelectedText || '请选择'"
+                    title="地区"
+                    is-link
+                    @click="showVerticalCascader = true"
+                />
+
+                <fanc-cascader
+                    v-model="showVerticalCascader"
+                    :options="addressOptions"
+                    mode="vertical"
+                    @finish="onVerticalFinish"
+                >
+                </fanc-cascader>
+            </view>
+        </view>
+
+        <view class="example-page__section">
             <view class="example-page__section-title">自定义标题</view>
             <view class="example-page__section-desc">可以自定义顶部标题文字</view>
             <view class="example-page__content">
@@ -227,6 +248,34 @@
                 </view>
             </view>
         </view>
+
+        <view class="example-page__section">
+            <view class="example-page__section-title">垂直布局 + 自定义颜色</view>
+            <view class="example-page__section-desc"
+                >垂直布局结合自定义颜色，适合分类较多的场景</view
+            >
+            <view class="example-page__content">
+                <fanc-cell
+                    :content="verticalColorSelectedText || '请选择'"
+                    title="分类选择"
+                    is-link
+                    @click="showVerticalColorCascader = true"
+                />
+
+                <fanc-cascader
+                    v-model="showVerticalColorCascader"
+                    :options="addressOptions"
+                    mode="vertical"
+                    active-color="#e324a7"
+                    @finish="onVerticalColorFinish"
+                >
+                </fanc-cascader>
+
+                <view v-if="verticalColorSelectedText" class="result-display">
+                    <text>已选择: {{ verticalColorSelectedText }}</text>
+                </view>
+            </view>
+        </view>
     </view>
 </template>
 
@@ -236,6 +285,7 @@ export default {
         return {
             // 弹窗显示状态
             showBasicCascader: false,
+            showVerticalCascader: false,
             showCustomTitleCascader: false,
             showCustomButtonCascader: false,
             showDefaultValueCascader: false,
@@ -245,9 +295,11 @@ export default {
             showEventCascader: false,
             showCenterCascader: false,
             showCustomCascader: false,
+            showVerticalColorCascader: false,
 
             // 选中结果文本
             basicSelectedText: "",
+            verticalSelectedText: "",
             customTitleSelectedText: "",
             customButtonSelectedText: "",
             defaultValueSelectedText: "广东省 - 深圳市 - 南山区",
@@ -257,6 +309,7 @@ export default {
             currentChangeValue: "",
             centerSelectedText: "",
             customSelectedText: "",
+            verticalColorSelectedText: "",
 
             // 默认选中值
             defaultSelectedValue: ["guangdong", "shenzhen", "nanshan"],
@@ -396,6 +449,12 @@ export default {
             this.basicSelectedText = this.formatSelectedText(result);
         },
 
+        // 垂直布局回调
+        onVerticalFinish(result) {
+            console.log("垂直布局选择结果:", result);
+            this.verticalSelectedText = this.formatSelectedText(result);
+        },
+
         // 自定义标题回调
         onCustomTitleFinish(result) {
             console.log("自定义标题选择结果:", result);
@@ -464,6 +523,11 @@ export default {
         // 完全自定义的级联选择器完成回调
         onCustomFinish(data) {
             this.customSelectedText = data.texts.join(" / ");
+        },
+
+        // 垂直布局 + 自定义颜色回调
+        onVerticalColorFinish(data) {
+            this.verticalColorSelectedText = data.texts.join(" / ");
         },
     },
 };

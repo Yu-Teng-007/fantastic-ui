@@ -121,7 +121,7 @@ export default {
 
     methods: {
         onExceedMax(max) {
-            alert(`最多只能选择${max}项`);
+            this.$toast.warning(`最多只能选择${max}项`);
         },
     },
 };
