@@ -17,19 +17,47 @@
             </view>
             <view class="fanc-calendar__body" :class="{ 'fanc-calendar__body--scroll': scroll }">
                 <view class="fanc-calendar__toolbar" v-if="!scroll || (scroll && showToolbar)">
-                    <view class="fanc-calendar__toolbar-button" @click="prevYear" v-if="scroll">
-                        <fanc-icon name="arrow-left" size="16" />
-                    </view>
-                    <view class="fanc-calendar__toolbar-button" @click="prevMonth" v-if="!scroll">
-                        <fanc-icon name="arrow-left" size="16" />
-                    </view>
-                    <view class="fanc-calendar__toolbar-title">{{ formatYearMonth }}</view>
-                    <view class="fanc-calendar__toolbar-button" @click="nextMonth" v-if="!scroll">
-                        <fanc-icon name="arrow-right" size="16" />
-                    </view>
-                    <view class="fanc-calendar__toolbar-button" @click="nextYear" v-if="scroll">
-                        <fanc-icon name="arrow-right" size="16" />
-                    </view>
+                    <!-- 滚动模式下只显示年份切换 -->
+                    <template v-if="scroll">
+                        <view class="fanc-calendar__toolbar-button" @click="prevYear">
+                            <fanc-icon name="angle-left" size="16" />
+                        </view>
+                        <view class="fanc-calendar__toolbar-title">{{ formatYearMonth }}</view>
+                        <view class="fanc-calendar__toolbar-button" @click="nextYear">
+                            <fanc-icon name="angle-right" size="16" />
+                        </view>
+                    </template>
+                    
+                    <!-- 非滚动模式 -->
+                    <template v-else>
+                        <!-- year-month模式：显示年份和月份切换 -->
+                        <template v-if="mode === 'year-month'">
+                            <view class="fanc-calendar__toolbar-button" @click="prevYear">
+                                <fanc-icon name="angle-double-left" size="16" />
+                            </view>
+                            <view class="fanc-calendar__toolbar-button" @click="prevMonth">
+                                <fanc-icon name="angle-left" size="16" />
+                            </view>
+                            <view class="fanc-calendar__toolbar-title">{{ formatYearMonth }}</view>
+                            <view class="fanc-calendar__toolbar-button" @click="nextMonth">
+                                <fanc-icon name="angle-right" size="16" />
+                            </view>
+                            <view class="fanc-calendar__toolbar-button" @click="nextYear">
+                                <fanc-icon name="angle-double-right" size="16" />
+                            </view>
+                        </template>
+                        
+                        <!-- month模式：只显示月份切换 -->
+                        <template v-else>
+                            <view class="fanc-calendar__toolbar-button" @click="prevMonth">
+                                <fanc-icon name="angle-left" size="16" />
+                            </view>
+                            <view class="fanc-calendar__toolbar-title">{{ formatYearMonth }}</view>
+                            <view class="fanc-calendar__toolbar-button" @click="nextMonth">
+                                <fanc-icon name="angle-right" size="16" />
+                            </view>
+                        </template>
+                    </template>
                 </view>
 
                 <!-- 日历头部：星期 -->
@@ -66,7 +94,7 @@
                     v-if="scroll"
                     scroll-y
                     :scroll-into-view="scrollIntoId"
-                    :scroll-with-animation="scrollWithAnimation"
+                    :scroll-with-animation="localScrollWithAnimation"
                     :scroll-animation-duration="scrollAnimationDuration"
                 >
                     <view
@@ -100,7 +128,7 @@
                 </scroll-view>
             </view>
             <view class="fanc-calendar__footer">
-                <fanc-button v-if="showConfirm" block :disabled="!canConfirm" @click="confirm">{{
+                <fanc-button v-if="showConfirm" type="primary" block :disabled="!canConfirm" @click="confirm">{{
                     confirmText || "确认"
                 }}</fanc-button>
             </view>
@@ -114,6 +142,7 @@
  * @description 日历选择器，支持单个日期、多个日期、日期范围选择
  * @property {Boolean} show - 是否显示日历
  * @property {String} type - 选择类型，可选值为 single/multiple/range
+ * @property {String} mode - 工具栏模式，可选值为 year-month/month，year-month支持年月切换，month仅支持月份切换
  * @property {String} title - 日历标题
  * @property {String} subtitle - 日历副标题
  * @property {String} position - 弹出位置，可选值为 center/bottom
@@ -160,6 +189,12 @@ export default {
             type: String,
             default: "single",
             validator: (val) => ["single", "multiple", "range"].includes(val),
+        },
+        // 工具栏模式：year-month支持年月切换，month仅支持月份切换
+        mode: {
+            type: String,
+            default: "month",
+            validator: (val) => ["year-month", "month"].includes(val),
         },
         // 日历标题
         title: {
@@ -279,6 +314,7 @@ export default {
             months: [],
             weekdays: ["日", "一", "二", "三", "四", "五", "六"],
             scrollIntoId: "", // 用于scroll-into-view
+            localScrollWithAnimation: true, // 本地动画控制变量
         };
     },
 
@@ -376,7 +412,7 @@ export default {
             handler() {
                 // 当类型变化时重置选中状态
                 this.selectedDates = [];
-                if (this.type === "single") {
+                if (this.type === "single" || this.type === "multiple") {
                     const today = new Date();
                     this.selectedDates = [today];
                 }
@@ -384,6 +420,12 @@ export default {
                 this.initCalendar();
             },
         },
+        scrollWithAnimation: {
+            immediate: true,
+            handler(val) {
+                this.localScrollWithAnimation = val;
+            }
+        }
     },
 
     created() {
@@ -394,6 +436,9 @@ export default {
 
         // 初始化默认选中日期
         this.initSelectedDates();
+        
+        // 初始化本地动画控制状态
+        this.localScrollWithAnimation = this.scrollWithAnimation;
     },
 
     methods: {
@@ -530,8 +575,8 @@ export default {
         // 初始化默认选中日期
         initSelectedDates() {
             if (!this.defaultDate) {
-                // 如果没有默认日期，默认选中今天（只针对单选模式）
-                if (this.type === "single") {
+                // 如果没有默认日期，默认选中今天（针对单选和多选模式）
+                if (this.type === "single" || this.type === "multiple") {
                     const today = new Date();
                     this.selectedDates = [today];
                 } else {
@@ -761,7 +806,7 @@ export default {
 
         // 重置选择状态
         reset() {
-            this.selectedDates = this.type === "single" ? [new Date()] : [];
+            this.selectedDates = this.type === "single" || this.type === "multiple" ? [new Date()] : [];
             this.$emit("change", this.getSelectedValues());
         },
 
@@ -775,12 +820,12 @@ export default {
             
             // 如果不使用动画，临时关闭
             if (!useAnimation) {
-                const originalAnimation = this.scrollWithAnimation;
-                this.scrollWithAnimation = false;
+                const originalAnimation = this.localScrollWithAnimation;
+                this.localScrollWithAnimation = false;
                 
                 // 恢复原来的动画设置
                 setTimeout(() => {
-                    this.scrollWithAnimation = originalAnimation;
+                    this.localScrollWithAnimation = originalAnimation;
                 }, 50);
             }
         },

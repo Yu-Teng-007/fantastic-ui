@@ -21,6 +21,30 @@
                 <text v-else>请选择</text>
             </fanc-cell>
 
+            <!-- 年月切换模式 -->
+            <fanc-cell
+                title="年月切换模式"
+                description="可同时切换年份和月份"
+                is-link
+                center
+                @click="showYearMonthCalendar"
+            >
+                <text v-if="selectedYearMonthDate">{{ selectedYearMonthDate }}</text>
+                <text v-else>请选择</text>
+            </fanc-cell>
+
+            <!-- 月份切换模式 -->
+            <fanc-cell
+                title="月份切换模式"
+                description="只能切换月份"
+                is-link
+                center
+                @click="showMonthCalendar"
+            >
+                <text v-if="selectedMonthDate">{{ selectedMonthDate }}</text>
+                <text v-else>请选择</text>
+            </fanc-cell>
+
             <!-- 多选模式 -->
             <fanc-cell
                 title="多选模式"
@@ -154,6 +178,7 @@
             :min-date="calendarMinDate"
             :max-date="calendarMaxDate"
             :text-formatter="calendarTextFormatter"
+            :mode="calendarMode"
             @confirm="onCalendarConfirm"
             @change="onCalendarChange"
         />
@@ -173,6 +198,8 @@ export default {
             selectedScrollDate: "",
             selectedLimitDate: "",
             selectedCenterDate: "",
+            selectedYearMonthDate: "",
+            selectedMonthDate: "",
 
             // 日历配置
             showCalendar: false,
@@ -188,6 +215,7 @@ export default {
             calendarMinDate: null,
             calendarMaxDate: null,
             calendarTextFormatter: null,
+            calendarMode: "month",
 
             // 当前操作类型，用于在确认回调中区分处理逻辑
             currentAction: "",
@@ -205,7 +233,9 @@ export default {
                 this.selectedWeekDate ||
                 this.selectedScrollDate ||
                 this.selectedLimitDate ||
-                this.selectedCenterDate
+                this.selectedCenterDate ||
+                this.selectedYearMonthDate ||
+                this.selectedMonthDate
             );
         },
 
@@ -216,7 +246,10 @@ export default {
                 this.selectedTextDate ||
                 this.selectedWeekDate ||
                 this.selectedScrollDate ||
-                this.selectedCenterDate
+                this.selectedCenterDate ||
+                this.selectedLimitDate ||
+                this.selectedYearMonthDate ||
+                this.selectedMonthDate
             );
         },
 
@@ -238,7 +271,9 @@ export default {
                 this.selectedWeekDate ||
                 this.selectedScrollDate ||
                 this.selectedCenterDate ||
-                this.selectedLimitDate
+                this.selectedLimitDate ||
+                this.selectedYearMonthDate ||
+                this.selectedMonthDate
             );
         },
 
@@ -364,6 +399,26 @@ export default {
             this.currentAction = "center";
         },
 
+        // 显示年月切换模式的日历
+        showYearMonthCalendar() {
+            this.resetCalendarConfig();
+            this.calendarType = "single";
+            this.calendarTitle = "年月切换模式";
+            this.calendarMode = "year-month";
+            this.showCalendar = true;
+            this.currentAction = "year-month";
+        },
+
+        // 显示月份切换模式的日历
+        showMonthCalendar() {
+            this.resetCalendarConfig();
+            this.calendarType = "single";
+            this.calendarTitle = "月份切换模式";
+            this.calendarMode = "month";
+            this.showCalendar = true;
+            this.currentAction = "month";
+        },
+
         // 格式化日期
         formatDate(date) {
             const year = date.getFullYear();
@@ -386,6 +441,7 @@ export default {
             this.calendarMinDate = null;
             this.calendarMaxDate = null;
             this.calendarTextFormatter = null;
+            this.calendarMode = "month";
         },
 
         // 日历确认回调
@@ -414,6 +470,12 @@ export default {
                     break;
                 case "center":
                     this.selectedCenterDate = value;
+                    break;
+                case "year-month":
+                    this.selectedYearMonthDate = value;
+                    break;
+                case "month":
+                    this.selectedMonthDate = value;
                     break;
             }
         },

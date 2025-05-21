@@ -41,13 +41,6 @@
             <fanc-cell title="多按钮" is-link @click="showMultiButtonsDialog" />
         </fanc-cell-group>
 
-        <!-- 图片对话框 -->
-        <fanc-cell-group title="图片对话框" description="显示带图片的对话框" inset>
-            <fanc-cell title="基础图片对话框" is-link @click="showImageDialog" />
-            <fanc-cell title="成功图片对话框" is-link @click="showImageSuccessDialog" />
-            <fanc-cell title="警告图片对话框" is-link @click="showImageWarningDialog" />
-        </fanc-cell-group>
-
         <!-- 图片位置 -->
         <fanc-cell-group title="图片位置" description="控制图片在对话框中的位置" inset>
             <fanc-cell title="图片置顶" is-link @click="showImageTopDialog" />
@@ -591,40 +584,12 @@ export default {
             console.log(`点击了第${index + 1}个按钮:`, button.text);
         },
 
-        // 图片对话框
-        showImageDialog() {
-            this.resetDialog();
-            this.dialog.title = "图片对话框";
-            this.dialog.message = "这是一个包含图片的对话框示例";
-            this.dialog.imageUrl = "@/static/img/picture_1.png";
-            this.dialog.show = true;
-        },
-
-        showImageSuccessDialog() {
-            this.resetDialog();
-            this.dialog.title = "操作成功";
-            this.dialog.message = "您的文件已上传成功！";
-            this.dialog.type = "success";
-            this.dialog.imageUrl = "@/static/img/picture_3.png";
-            this.dialog.show = true;
-        },
-
-        showImageWarningDialog() {
-            this.resetDialog();
-            this.dialog.title = "确认删除";
-            this.dialog.message = "删除后无法恢复，是否继续？";
-            this.dialog.type = "warning";
-            this.dialog.imageUrl = "@/static/img/picture_4.png";
-            this.dialog.imageStyle = "width: 180rpx; height: 180rpx;";
-            this.dialog.show = true;
-        },
-
         // 图片位置示例
         showImageTopDialog() {
             this.resetDialog();
             this.dialog.title = "图片置顶";
             this.dialog.message = "图片显示在标题上方，更加醒目";
-            this.dialog.imageUrl = "@/static/img/picture_1.png";
+            this.dialog.imageUrl = "/static/img/picture_1.png";
             this.dialog.imagePosition = "top";
             this.dialog.show = true;
         },
@@ -633,7 +598,7 @@ export default {
             this.resetDialog();
             this.dialog.title = "图片默认位置";
             this.dialog.message = "图片显示在标题和内容之间";
-            this.dialog.imageUrl = "@/static/img/picture_1.png";
+            this.dialog.imageUrl = "/static/img/picture_1.png";
             this.dialog.imagePosition = "default";
             this.dialog.show = true;
         },
@@ -642,7 +607,7 @@ export default {
             this.resetDialog();
             this.dialog.title = "图片底部";
             this.dialog.message = "图片显示在内容和按钮之间";
-            this.dialog.imageUrl = "@/static/img/picture_1.png";
+            this.dialog.imageUrl = "/static/img/picture_1.png";
             this.dialog.imagePosition = "bottom";
             this.dialog.show = true;
         },
