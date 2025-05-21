@@ -153,9 +153,9 @@ export default {
                 case "small":
                     return "12px";
                 case "large":
-                    return "16px";
+                    return "20px";
                 default:
-                    return "14px";
+                    return "16px";
             }
         },
     },
@@ -209,8 +209,8 @@ export default {
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
-    width: var(--checkbox-icon-size-normal, 14px);
-    height: var(--checkbox-icon-size-normal, 14px);
+    width: var(--checkbox-icon-size-normal, 16px);
+    height: var(--checkbox-icon-size-normal, 16px);
 }
 
 .fanc-checkbox__icon-box {
@@ -268,7 +268,7 @@ export default {
 }
 
 .fanc-checkbox__icon--large {
-    width: var(--checkbox-icon-size-large, 16px);
-    height: var(--checkbox-icon-size-large, 16px);
+    width: var(--checkbox-icon-size-large, 20px);
+    height: var(--checkbox-icon-size-large, 20px);
 }
 </style>

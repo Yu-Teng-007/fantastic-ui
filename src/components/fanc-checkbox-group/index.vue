@@ -109,19 +109,10 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
 .fanc-checkbox-group {
     display: flex;
     flex-wrap: wrap;
-}
-
-.fanc-checkbox-group--vertical {
-    flex-direction: column;
-}
-
-.fanc-checkbox-group--vertical .fanc-checkbox {
-    margin-right: 0;
-    margin-bottom: 8px;
 }
 
 .fanc-checkbox-group--disabled {
@@ -131,5 +122,13 @@ export default {
 
 .fanc-checkbox-group .fanc-checkbox {
     margin: var(--checkbox-group-margin, 0 8px 8px 0);
+}
+
+.fanc-checkbox-group--vertical {
+    flex-direction: column;
+    ::v-deep.fanc-checkbox {
+        margin-right: 0;
+        margin-bottom: 8px;
+    }
 }
 </style>
