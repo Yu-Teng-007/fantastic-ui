@@ -107,6 +107,12 @@
             "style": {
                 "navigationBarTitleText": "级联选择示例"
             }
+        },
+        {
+            "path": "pages/example/picker/index",
+            "style": {
+                "navigationBarTitleText": "选择器示例"
+            }
         }
     ],
     "globalStyle": {

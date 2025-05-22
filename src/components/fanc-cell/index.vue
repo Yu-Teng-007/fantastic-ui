@@ -37,7 +37,9 @@
             <!-- 自定义右侧内容 -->
             <slot v-if="$slots.default"> </slot>
             <!-- 默认内容 -->
-            <text v-else-if="content">{{ content }}</text>
+            <slot name="content" v-else-if="content || $slots.content">
+                <text>{{ content }}</text>
+            </slot>
         </view>
 
         <!-- 自定义右侧图标 -->

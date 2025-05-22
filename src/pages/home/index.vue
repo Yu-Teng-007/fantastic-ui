@@ -8,90 +8,63 @@
 
         <!-- 基础组件 -->
         <fanc-cell-group title="基础组件" description="满足常见的界面交互需求" inset>
-            <fanc-cell 
-                title="按钮" 
-                is-link 
-                url="/pages/example/button/index"
-                center
-            >
+            <fanc-cell title="按钮" is-link url="/pages/example/button/index" center>
                 <template #icon>
                     <view class="component-icon">
                         <fanc-icon name="square" size="18" color="#666666"></fanc-icon>
                     </view>
                 </template>
             </fanc-cell>
-            
-            <fanc-cell 
-                title="图标" 
-                is-link 
-                url="/pages/example/icon/index"
-                center
-            >
+
+            <fanc-cell title="图标" is-link url="/pages/example/icon/index" center>
                 <template #icon>
                     <view class="component-icon">
                         <fanc-icon name="icons" size="18" color="#666666"></fanc-icon>
                     </view>
                 </template>
             </fanc-cell>
-            
-            <fanc-cell 
-                title="单元格" 
-                is-link 
-                url="/pages/example/cell/index"
-                center
-            >
+
+            <fanc-cell title="单元格" is-link url="/pages/example/cell/index" center>
                 <template #icon>
                     <view class="component-icon">
                         <fanc-icon name="table-cells" size="18" color="#666666"></fanc-icon>
                     </view>
                 </template>
             </fanc-cell>
-            
-            <fanc-cell 
-                title="滑动单元格" 
-                is-link 
-                url="/pages/example/swipe-cell/index"
-                center
-            >
+
+            <fanc-cell title="滑动单元格" is-link url="/pages/example/swipe-cell/index" center>
                 <template #icon>
                     <view class="component-icon">
                         <fanc-icon name="arrows-left-right" size="18" color="#666666"></fanc-icon>
                     </view>
                 </template>
             </fanc-cell>
-            
-            <fanc-cell 
-                title="复选框" 
-                is-link 
-                url="/pages/example/checkbox/index"
-                center
-            >
+
+            <fanc-cell title="复选框" is-link url="/pages/example/checkbox/index" center>
                 <template #icon>
                     <view class="component-icon">
                         <fanc-icon name="check-square" size="18" color="#666666"></fanc-icon>
                     </view>
                 </template>
             </fanc-cell>
-            
-            <fanc-cell 
-                title="级联选择" 
-                is-link 
-                url="/pages/example/cascader/index"
-                center
-            >
+
+            <fanc-cell title="级联选择" is-link url="/pages/example/cascader/index" center>
                 <template #icon>
                     <view class="component-icon">
                         <fanc-icon name="sitemap" size="18" color="#666666"></fanc-icon>
                     </view>
                 </template>
             </fanc-cell>
-            
-            <fanc-cell 
-                title="数字键盘" 
-                is-link 
-                url="/pages/example/number-keyboard/index"
-                center
-            >
+
+            <fanc-cell title="选择器" is-link url="/pages/example/picker/index" center>
+                <template #icon>
+                    <view class="component-icon">
+                        <fanc-icon name="list-ul" size="18" color="#666666"></fanc-icon>
+                    </view>
+                </template>
+            </fanc-cell>
+
+            <fanc-cell title="数字键盘" is-link url="/pages/example/number-keyboard/index" center>
                 <template #icon>
                     <view class="component-icon">
                         <fanc-icon name="calculator" size="18" color="#666666"></fanc-icon>
@@ -102,64 +75,39 @@
 
         <!-- 反馈组件 -->
         <fanc-cell-group title="反馈组件" description="提供操作反馈的交互组件" inset>
-            <fanc-cell 
-                title="弹出层" 
-                is-link 
-                url="/pages/example/popup/index"
-                center
-            >
+            <fanc-cell title="弹出层" is-link url="/pages/example/popup/index" center>
                 <template #icon>
                     <view class="component-icon">
                         <fanc-icon name="layer-group" size="18" color="#666666"></fanc-icon>
                     </view>
                 </template>
             </fanc-cell>
-            
-            <fanc-cell 
-                title="消息通知" 
-                is-link 
-                url="/pages/example/message/index"
-                center
-            >
+
+            <fanc-cell title="消息通知" is-link url="/pages/example/message/index" center>
                 <template #icon>
                     <view class="component-icon">
                         <fanc-icon name="comment" size="18" color="#666666"></fanc-icon>
                     </view>
                 </template>
             </fanc-cell>
-            
-            <fanc-cell 
-                title="动作面板" 
-                is-link 
-                url="/pages/example/action-sheet/index"
-                center
-            >
+
+            <fanc-cell title="动作面板" is-link url="/pages/example/action-sheet/index" center>
                 <template #icon>
                     <view class="component-icon">
                         <fanc-icon name="list" size="18" color="#666666"></fanc-icon>
                     </view>
                 </template>
             </fanc-cell>
-            
-            <fanc-cell 
-                title="轻提示" 
-                is-link 
-                url="/pages/example/toast/index"
-                center
-            >
+
+            <fanc-cell title="轻提示" is-link url="/pages/example/toast/index" center>
                 <template #icon>
                     <view class="component-icon">
                         <fanc-icon name="comment-dots" size="18" color="#666666"></fanc-icon>
                     </view>
                 </template>
             </fanc-cell>
-            
-            <fanc-cell 
-                title="对话框" 
-                is-link 
-                url="/pages/example/dialog/index"
-                center
-            >
+
+            <fanc-cell title="对话框" is-link url="/pages/example/dialog/index" center>
                 <template #icon>
                     <view class="component-icon">
                         <fanc-icon name="comments" size="18" color="#666666"></fanc-icon>
@@ -170,64 +118,39 @@
 
         <!-- 展示组件 -->
         <fanc-cell-group title="展示组件" description="用于内容展示的组件" inset>
-            <fanc-cell 
-                title="公告栏" 
-                is-link 
-                url="/pages/example/noticebar/index"
-                center
-            >
+            <fanc-cell title="公告栏" is-link url="/pages/example/noticebar/index" center>
                 <template #icon>
                     <view class="component-icon">
                         <fanc-icon name="bell" size="18" color="#666666"></fanc-icon>
                     </view>
                 </template>
             </fanc-cell>
-            
-            <fanc-cell 
-                title="弹出气泡" 
-                is-link 
-                url="/pages/example/popover/index"
-                center
-            >
+
+            <fanc-cell title="弹出气泡" is-link url="/pages/example/popover/index" center>
                 <template #icon>
                     <view class="component-icon">
                         <fanc-icon name="message" size="18" color="#666666"></fanc-icon>
                     </view>
                 </template>
             </fanc-cell>
-            
-            <fanc-cell 
-                title="下拉菜单" 
-                is-link 
-                url="/pages/example/dropdown-menu/index"
-                center
-            >
+
+            <fanc-cell title="下拉菜单" is-link url="/pages/example/dropdown-menu/index" center>
                 <template #icon>
                     <view class="component-icon">
                         <fanc-icon name="caret-down" size="18" color="#666666"></fanc-icon>
                     </view>
                 </template>
             </fanc-cell>
-            
-            <fanc-cell 
-                title="图片" 
-                is-link 
-                url="/pages/example/image/index"
-                center
-            >
+
+            <fanc-cell title="图片" is-link url="/pages/example/image/index" center>
                 <template #icon>
                     <view class="component-icon">
                         <fanc-icon name="image" size="18" color="#666666"></fanc-icon>
                     </view>
                 </template>
             </fanc-cell>
-            
-            <fanc-cell 
-                title="日历" 
-                is-link 
-                url="/pages/example/calendar/index"
-                center
-            >
+
+            <fanc-cell title="日历" is-link url="/pages/example/calendar/index" center>
                 <template #icon>
                     <view class="component-icon">
                         <fanc-icon name="calendar" size="18" color="#666666"></fanc-icon>
@@ -245,32 +168,93 @@ export default {
             title: "Fantastic UI",
             iconList: [
                 // 基础图标
-                'home', 'user', 'cog', 'bell', 'heart', 'star', 'check', 'times',
-                'search', 'envelope', 'phone', 'lock', 'unlock', 'key', 'link',
+                "home",
+                "user",
+                "cog",
+                "bell",
+                "heart",
+                "star",
+                "check",
+                "times",
+                "search",
+                "envelope",
+                "phone",
+                "lock",
+                "unlock",
+                "key",
+                "link",
                 // 文件相关
-                'file', 'folder', 'folder-open', 'file-pdf', 'file-image', 'file-alt',
+                "file",
+                "folder",
+                "folder-open",
+                "file-pdf",
+                "file-image",
+                "file-alt",
                 // 箭头
-                'arrow-up', 'arrow-down', 'arrow-left', 'arrow-right',
-                'angle-up', 'angle-down', 'angle-left', 'angle-right',
+                "arrow-up",
+                "arrow-down",
+                "arrow-left",
+                "arrow-right",
+                "angle-up",
+                "angle-down",
+                "angle-left",
+                "angle-right",
                 // 媒体控制
-                'play', 'pause', 'stop', 'volume-up', 'volume-down', 'volume-mute',
+                "play",
+                "pause",
+                "stop",
+                "volume-up",
+                "volume-down",
+                "volume-mute",
                 // 形状
-                'circle', 'square', 'triangle', 'pentagon', 'hexagon',
+                "circle",
+                "square",
+                "triangle",
+                "pentagon",
+                "hexagon",
                 // 通信
-                'comment', 'comments', 'message', 'comment-dots',
+                "comment",
+                "comments",
+                "message",
+                "comment-dots",
                 // 设备
-                'laptop', 'mobile', 'tablet', 'desktop', 'camera', 'headphones',
+                "laptop",
+                "mobile",
+                "tablet",
+                "desktop",
+                "camera",
+                "headphones",
                 // 图表
-                'chart-bar', 'chart-line', 'chart-pie', 'chart-area',
+                "chart-bar",
+                "chart-line",
+                "chart-pie",
+                "chart-area",
                 // 网络
-                'wifi', 'signal', 'globe', 'cloud', 'server',
+                "wifi",
+                "signal",
+                "globe",
+                "cloud",
+                "server",
                 // 电商
-                'shopping-cart', 'gift', 'tag', 'barcode', 'credit-card',
+                "shopping-cart",
+                "gift",
+                "tag",
+                "barcode",
+                "credit-card",
                 // 编辑
-                'edit', 'copy', 'paste', 'cut', 'trash', 'save',
+                "edit",
+                "copy",
+                "paste",
+                "cut",
+                "trash",
+                "save",
                 // 互动
-                'thumbs-up', 'thumbs-down', 'share', 'bookmark', 'flag'
-            ]
+                "thumbs-up",
+                "thumbs-down",
+                "share",
+                "bookmark",
+                "flag",
+            ],
         };
     },
     computed: {
@@ -278,7 +262,7 @@ export default {
             return (index) => {
                 return this.iconList[Math.floor(Math.random() * this.iconList.length)];
             };
-        }
+        },
     },
     onLoad() {},
     methods: {},

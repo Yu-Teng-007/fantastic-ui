@@ -266,4 +266,26 @@
     --cascader-option-height: 44px;
     --cascader-header-height: 46px;
     --cascader-transition-duration: 0.3s;
+
+    /* Picker 选择器组件颜色 */
+    --picker-bg-color: var(--white);
+    --picker-header-bg-color: var(--white);
+    --picker-header-height: 44px;
+    --picker-header-padding: 16px;
+    --picker-title-font-size: 16px;
+    --picker-title-color: var(--text-primary);
+    --picker-action-font-size: 14px;
+    --picker-action-padding: 16px;
+    --picker-confirm-color: var(--fanc-primary-color);
+    --picker-cancel-color: var(--text-secondary);
+    --picker-item-font-size: 16px;
+    --picker-item-padding: 8px;
+    --picker-item-color: var(--text-primary);
+    --picker-item-disabled-color: var(--text-disabled);
+    --picker-mask-color: rgba(0, 0, 0, 0.6);
+    --picker-border-color: var(--border-color);
+    --picker-border-radius: 16px;
+    --picker-disabled-opacity: 0.6;
+    --picker-transition-duration: 0.3s;
+    --picker-z-index: 1000;
 }

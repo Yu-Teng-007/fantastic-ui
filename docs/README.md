@@ -56,6 +56,7 @@ Fantastic UI 是一套基于 [uni-app](https://uniapp.dcloud.io/) 开发的跨�
 -   [Form 表单](./form.md)
 -   [Checkbox 复选框](./checkbox.md)
 -   [Cascader 级联选择](./components/cascader.md)
+-   [Picker 选择器](./components/picker.md)
 
 ### 反馈组件
 
@@ -63,7 +64,19 @@ Fantastic UI 是一套基于 [uni-app](https://uniapp.dcloud.io/) 开发的跨�
 
 ## 📝 更新日志
 
-### v0.2.0 (当前版本)
+### v0.2.1 (当前版本)
+
+-   ✨ 新增 Picker 选择器组件
+-   🎛️ 支持单列和多列数据选择
+-   🔍 支持对象数组格式，可自定义文本和值的键名
+-   🎨 支持自定义标题、按钮文字和样式
+-   🔒 支持禁用特定选项
+-   📱 优化移动端选择体验
+-   🎯 提供完整的事件回调和状态管理
+-   🧩 支持默认选中值和无顶部栏模式
+-   🔄 与Popup组件风格一致，支持圆角和遮罩层配置
+
+### v0.2.0 (2025-06-20)
 
 -   ✨ 新增 Cascader 级联选择组件
 -   🌐 支持多级联动选择，适用于省市区选择等场景
