@@ -41,7 +41,7 @@
                             }"
                         ></view>
                     </view>
-                    <fanc-icon v-else :name="iconName" :size="24"></fanc-icon>
+                    <fanc-icon v-else :name="realIconName" :size="24"></fanc-icon>
                 </view>
 
                 <!-- 消息内容 -->
@@ -146,6 +146,9 @@ export default {
     computed: {
         // 根据类型获取对应的图标
         showIcon() {
+            return this.iconName || TOAST_ICON_MAP[this.type] || "";
+        },
+        realIconName() {
             return this.iconName || TOAST_ICON_MAP[this.type] || "";
         },
     },
