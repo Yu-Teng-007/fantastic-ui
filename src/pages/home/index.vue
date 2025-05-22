@@ -79,6 +79,14 @@
                     </view>
                 </template>
             </fanc-cell>
+
+            <fanc-cell title="签名" is-link url="/pages/example/signature/index" center>
+                <template #icon>
+                    <view class="component-icon">
+                        <fanc-icon name="signature" size="18" color="#666666"></fanc-icon>
+                    </view>
+                </template>
+            </fanc-cell>
         </fanc-cell-group>
 
         <!-- 反馈组件 -->

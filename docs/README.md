@@ -41,6 +41,7 @@ Fantastic UI 是一套基于 [uni-app](https://uniapp.dcloud.io/) 开发的跨�
 -   [Popover 弹出气泡](./popover.md)
 -   [DropdownMenu 下拉菜单栏](./dropdown-menu.md)
 -   [Stepper 步进器](./stepper.md)
+-   [Signature 签名](./signature.md)
 
 ### 展示组件
 
@@ -66,7 +67,20 @@ Fantastic UI 是一套基于 [uni-app](https://uniapp.dcloud.io/) 开发的跨�
 
 ## 📝 更新日志
 
-### v0.2.2 (当前版本)
+### v0.2.3 (当前版本)
+
+-   ✨ 新增 Signature 签名组件
+-   ✍️ 支持手写签名并导出为图片
+-   🖌️ 支持自定义画笔颜色和宽度
+-   📏 支持自定义签名区域大小
+-   🎨 提供多种自定义选项和交互方式
+-   🔄 支持透明背景导出
+-   🔍 针对不同设备像素密度优化
+-   🎯 提供完整的事件回调和状态管理
+-   📱 优化移动端触摸体验
+-   🧩 适用于电子合同、快递签收等场景
+
+### v0.2.2
 
 -   ✨ 新增 Stepper 步进器组件
 -   🔢 支持数值递增递减操作

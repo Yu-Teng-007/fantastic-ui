@@ -93,11 +93,9 @@ const Toast = {
             options = {
                 message: options,
                 type: "success",
-                showIcon: true,
             };
         } else {
             options.type = "success";
-            options.showIcon = options.showIcon !== false;
         }
         return createToast(options);
     },
@@ -108,11 +106,9 @@ const Toast = {
             options = {
                 message: options,
                 type: "error",
-                showIcon: true,
             };
         } else {
             options.type = "error";
-            options.showIcon = options.showIcon !== false;
         }
         return createToast(options);
     },
@@ -123,11 +119,9 @@ const Toast = {
             options = {
                 message: options,
                 type: "warning",
-                showIcon: true,
             };
         } else {
             options.type = "warning";
-            options.showIcon = options.showIcon !== false;
         }
         return createToast(options);
     },

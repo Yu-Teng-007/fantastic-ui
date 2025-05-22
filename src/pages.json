@@ -119,6 +119,12 @@
             "style": {
                 "navigationBarTitleText": "步进器示例"
             }
+        },
+        {
+            "path": "pages/example/signature/index",
+            "style": {
+                "navigationBarTitleText": "签名示例"
+            }
         }
     ],
     "globalStyle": {

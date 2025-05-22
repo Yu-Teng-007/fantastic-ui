@@ -63,7 +63,7 @@
  * @property {Boolean} maskClosable - 点击遮罩是否可关闭
  * @property {Boolean} lockBackground - 遮罩显示时是否锁定背景
  * @property {Number} duration - 展示时长(ms)，值为 0 时，toast 不会自动消失
- * @property {Boolean} showIcon - 是否显示图标，loading 类型下不生效
+ * @property {String} iconName - 图标名称
  * @property {Number} zIndex - 层级
  * @property {String} maxWidth - 最大宽度，默认为 70%
  * @property {Object} customStyle - 自定义样式
@@ -87,6 +87,10 @@ export default {
             default: "",
         },
         message: {
+            type: String,
+            default: "",
+        },
+        iconName: {
             type: String,
             default: "",
         },
@@ -116,10 +120,6 @@ export default {
             type: Number,
             default: TOAST_DEFAULT_DURATION,
         },
-        showIcon: {
-            type: Boolean,
-            default: false,
-        },
         zIndex: {
             type: Number,
             default: TOAST_ZINDEX,
@@ -145,8 +145,8 @@ export default {
 
     computed: {
         // 根据类型获取对应的图标
-        iconName() {
-            return TOAST_ICON_MAP[this.type] || "";
+        showIcon() {
+            return this.iconName || TOAST_ICON_MAP[this.type] || "";
         },
     },
 

@@ -19,6 +19,7 @@ import FancNumberKeyboard from "@/components/fanc-number-keyboard/index.vue";
 import FancCascader from "@/components/fanc-cascader/index.vue";
 import FancPicker from "@/components/fanc-picker/index.vue";
 import FancStepper from "@/components/fanc-stepper/index.vue";
+import FancSignature from "@/components/fanc-signature/index.vue";
 import Message from "@/plugins/message";
 import Toast from "@/plugins/toast";
 import Dialog from "@/plugins/dialog";
@@ -46,6 +47,7 @@ const components = [
     FancCascader,
     FancPicker,
     FancStepper,
+    FancSignature,
 ];
 
 // 导出单个组件
@@ -71,6 +73,7 @@ export {
     FancCascader,
     FancPicker,
     FancStepper,
+    FancSignature,
 };
 
 // 批量注册组件

@@ -310,4 +310,12 @@
     --stepper-border-radius-left: 4px 0 0 4px;
     --stepper-border-radius-right: 0 4px 4px 0;
     --stepper-disabled-opacity: 0.6;
+
+    /* Signature 签名组件颜色 */
+    --signature-bg-color: var(--white);
+    --signature-border-color: var(--border-color);
+    --signature-border-width: 1px;
+    --signature-border-radius: 4px;
+    --signature-actions-margin-top: 12px;
+    --signature-disabled-opacity: 0.6;
 }
