@@ -104,6 +104,23 @@
     --checkbox-group-margin: 0 8px 8px 0;
     --checkbox-disabled-opacity: var(--form-disabled-opacity);
 
+    /* Radio 单选框组件颜色 */
+    --radio-bg-color: var(--white);
+    --radio-icon-color: #c8c9cc;
+    --radio-disabled-icon-color: #c8c9cc;
+    --radio-checked-icon-color: var(--fanc-primary-color);
+    --radio-disabled-checked-icon-color: #c8c9cc;
+    --radio-disabled-bg-color: #f2f2f2;
+    --radio-label-color: var(--text-primary);
+    --radio-disabled-label-color: var(--text-disabled);
+    --radio-label-margin: 4px;
+    --radio-icon-size-small: 14px;
+    --radio-icon-size-normal: 18px;
+    --radio-icon-size-large: 22px;
+    --radio-transition-duration: 0.2s;
+    --radio-group-margin: 0 8px 8px 0;
+    --radio-disabled-opacity: var(--form-disabled-opacity);
+
     /* Image 图片组件颜色 */
     --image-bg-color: var(--gray-100);
     --image-error-bg-color: var(--gray-100);

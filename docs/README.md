@@ -58,6 +58,7 @@ Fantastic UI 是一套基于 [uni-app](https://uniapp.dcloud.io/) 开发的跨�
 -   [Field 输入框](./field.md)
 -   [Form 表单](./form.md)
 -   [Checkbox 复选框](./checkbox.md)
+-   [Radio 单选框](./radio.md)
 -   [Cascader 级联选择](./components/cascader.md)
 -   [Picker 选择器](./components/picker.md)
 -   [Stepper 步进器](./components/stepper.md)
@@ -69,7 +70,21 @@ Fantastic UI 是一套基于 [uni-app](https://uniapp.dcloud.io/) 开发的跨�
 
 ## 📝 更新日志
 
-### v0.2.4 (当前版本)
+### v0.2.5 (当前版本)
+
+-   ✨ 新增 Radio 单选框组件
+-   🔘 支持基础单选框功能，实现多选一交互
+-   🎛️ 支持单选框组，更便捷地管理选项
+-   📏 提供小、中、大三种尺寸规格
+-   🎨 支持自定义选中颜色
+-   🔒 支持禁用状态
+-   📊 提供水平和垂直两种排列方式
+-   🔄 支持v-model双向绑定
+-   💫 完整的选中状态切换事件
+-   �� 灵活的插槽定制，支持自定义标签内容
+-   🔶 支持圆形和方形两种外观样式
+
+### v0.2.4 (2023-07-15)
 
 -   ✨ 新增 Search 搜索组件
 -   🔍 支持基础搜索框功能
@@ -170,7 +185,7 @@ Fantastic UI 是一套基于 [uni-app](https://uniapp.dcloud.io/) 开发的跨�
 ### v0.1.7 (2025-05-29)
 
 -   ✨ 新增 Image 图片组件
--   ��️ 支持多种图片填充模式(fit 属性)和位置设置(position 属性)
+-   🎨 支持多种图片填充模式(fit 属性)和位置设置(position 属性)
 -   🔄 支持图片懒加载功能，优化性能
 -   ⚡ 内置加载中和加载失败提示
 -   📱 支持圆形图片和长按菜单

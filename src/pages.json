@@ -97,6 +97,12 @@
             }
         },
         {
+            "path": "pages/example/radio/index",
+            "style": {
+                "navigationBarTitleText": "单选框示例"
+            }
+        },
+        {
             "path": "pages/example/number-keyboard/index",
             "style": {
                 "navigationBarTitleText": "数字键盘示例"

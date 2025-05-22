@@ -48,6 +48,14 @@
                 </template>
             </fanc-cell>
 
+            <fanc-cell title="单选框" is-link url="/pages/example/radio/index" center>
+                <template #icon>
+                    <view class="component-icon">
+                        <fanc-icon name="dot-circle" size="18" color="#666666"></fanc-icon>
+                    </view>
+                </template>
+            </fanc-cell>
+
             <fanc-cell title="搜索" is-link url="/pages/example/search/index" center>
                 <template #icon>
                     <view class="component-icon">
