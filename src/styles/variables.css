@@ -46,6 +46,16 @@
     --border-color: #ebedf0;
     --border-color-light: #ebeef5;
 
+    /* Search 搜索组件颜色 */
+    --search-background-color: var(--white);
+    --search-content-background: var(--gray-100);
+    --search-label-color: var(--text-primary);
+    --search-input-color: var(--text-primary);
+    --search-icon-color: var(--gray-600);
+    --search-clear-icon-color: var(--text-disabled);
+    --search-action-color: var(--fanc-primary-color);
+    --search-placeholder-color: var(--text-disabled);
+
     /* Field 输入框组件颜色 */
     --field-bg-color: var(--white);
     --field-label-color: var(--text-primary);

@@ -42,6 +42,7 @@ Fantastic UI 是一套基于 [uni-app](https://uniapp.dcloud.io/) 开发的跨�
 -   [DropdownMenu 下拉菜单栏](./dropdown-menu.md)
 -   [Stepper 步进器](./stepper.md)
 -   [Signature 签名](./signature.md)
+-   [Search 搜索](./search.md)
 
 ### 展示组件
 
@@ -60,6 +61,7 @@ Fantastic UI 是一套基于 [uni-app](https://uniapp.dcloud.io/) 开发的跨�
 -   [Cascader 级联选择](./components/cascader.md)
 -   [Picker 选择器](./components/picker.md)
 -   [Stepper 步进器](./components/stepper.md)
+-   [Search 搜索](./components/search.md)
 
 ### 反馈组件
 
@@ -67,7 +69,20 @@ Fantastic UI 是一套基于 [uni-app](https://uniapp.dcloud.io/) 开发的跨�
 
 ## 📝 更新日志
 
-### v0.2.3 (当前版本)
+### v0.2.4 (当前版本)
+
+-   ✨ 新增 Search 搜索组件
+-   🔍 支持基础搜索框功能
+-   🎨 提供圆形和方形两种外观样式
+-   📝 支持自定义占位提示文本和标签
+-   🔄 支持清除按钮和自定义图标
+-   📱 提供右侧操作按钮，可自定义文本
+-   ⚡ 完整的事件监听机制，包括输入、搜索、清除等
+-   🎯 支持禁用状态和只读状态
+-   🖌️ 支持自定义背景色和图标颜色
+-   📐 适用于各种搜索场景，如商品搜索、地点搜索等
+
+### v0.2.3
 
 -   ✨ 新增 Signature 签名组件
 -   ✍️ 支持手写签名并导出为图片
@@ -155,7 +170,7 @@ Fantastic UI 是一套基于 [uni-app](https://uniapp.dcloud.io/) 开发的跨�
 ### v0.1.7 (2025-05-29)
 
 -   ✨ 新增 Image 图片组件
--   🖼️ 支持多种图片填充模式(fit 属性)和位置设置(position 属性)
+-   ��️ 支持多种图片填充模式(fit 属性)和位置设置(position 属性)
 -   🔄 支持图片懒加载功能，优化性能
 -   ⚡ 内置加载中和加载失败提示
 -   📱 支持圆形图片和长按菜单
