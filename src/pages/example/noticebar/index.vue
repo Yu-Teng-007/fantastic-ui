@@ -413,7 +413,6 @@ body {
 .type-item {
     background-color: #fafafa;
     border-radius: 6px;
-    padding: 12px;
     transition: var(--transition-standard);
 
     &:hover {
