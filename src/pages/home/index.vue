@@ -64,6 +64,14 @@
                 </template>
             </fanc-cell>
 
+            <fanc-cell title="输入框" is-link url="/pages/example/field/index" center>
+                <template #icon>
+                    <view class="component-icon">
+                        <fanc-icon name="keyboard" size="18" color="#666666"></fanc-icon>
+                    </view>
+                </template>
+            </fanc-cell>
+
             <fanc-cell title="级联选择" is-link url="/pages/example/cascader/index" center>
                 <template #icon>
                     <view class="component-icon">

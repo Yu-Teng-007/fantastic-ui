@@ -137,6 +137,12 @@
             "style": {
                 "navigationBarTitleText": "搜索示例"
             }
+        },
+        {
+            "path": "pages/example/field/index",
+            "style": {
+                "navigationBarTitleText": "输入框示例"
+            }
         }
     ],
     "globalStyle": {

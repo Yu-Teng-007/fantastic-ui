@@ -23,6 +23,7 @@ import FancPicker from "@/components/fanc-picker/index.vue";
 import FancStepper from "@/components/fanc-stepper/index.vue";
 import FancSignature from "@/components/fanc-signature/index.vue";
 import FancSearch from "@/components/fanc-search/index.vue";
+import FancField from "@/components/fanc-field/index.vue";
 import Message from "@/plugins/message";
 import Toast from "@/plugins/toast";
 import Dialog from "@/plugins/dialog";
@@ -54,6 +55,7 @@ const components = [
     FancStepper,
     FancSignature,
     FancSearch,
+    FancField,
 ];
 
 // 导出单个组件
@@ -83,6 +85,7 @@ export {
     FancStepper,
     FancSignature,
     FancSearch,
+    FancField,
 };
 
 // 批量注册组件
