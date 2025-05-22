@@ -73,96 +73,97 @@ const createToast = (options) => {
 };
 
 // 定义Toast插件
-const Toast = {
-    // 显示文字提示
-    text(options) {
-        if (typeof options === "string") {
-            options = {
-                message: options,
-                type: "text",
-            };
-        } else {
-            options.type = "text";
-        }
-        return createToast(options);
-    },
+const Toast = function (options) {
+    // 直接调用Toast函数时，使用text类型
+    return Toast.text(options);
+};
 
-    // 成功提示
-    success(options) {
-        if (typeof options === "string") {
-            options = {
-                message: options,
-                type: "success",
-            };
-        } else {
-            options.type = "success";
-        }
-        return createToast(options);
-    },
+// 添加各种方法
+Toast.text = function (options) {
+    if (typeof options === "string") {
+        options = {
+            message: options,
+            type: "text",
+        };
+    }
+    return createToast(options);
+};
 
-    // 错误提示
-    error(options) {
-        if (typeof options === "string") {
-            options = {
-                message: options,
-                type: "error",
-            };
-        } else {
-            options.type = "error";
-        }
-        return createToast(options);
-    },
+// 成功提示
+Toast.success = function (options) {
+    if (typeof options === "string") {
+        options = {
+            message: options,
+            type: "success",
+        };
+    } else {
+        options.type = "success";
+    }
+    return createToast(options);
+};
 
-    // 警告提示
-    warning(options) {
-        if (typeof options === "string") {
-            options = {
-                message: options,
-                type: "warning",
-            };
-        } else {
-            options.type = "warning";
-        }
-        return createToast(options);
-    },
+// 错误提示
+Toast.error = function (options) {
+    if (typeof options === "string") {
+        options = {
+            message: options,
+            type: "error",
+        };
+    } else {
+        options.type = "error";
+    }
+    return createToast(options);
+};
 
-    // 加载提示
-    loading(options) {
-        if (typeof options === "string") {
-            options = {
-                message: options,
-                type: "loading",
-                duration: 0, // 加载状态默认不自动关闭
-            };
-        } else {
-            options.type = "loading";
-            if (options.duration === undefined) {
-                options.duration = 0;
-            }
-        }
-        return createToast(options);
-    },
+// 警告提示
+Toast.warning = function (options) {
+    if (typeof options === "string") {
+        options = {
+            message: options,
+            type: "warning",
+        };
+    } else {
+        options.type = "warning";
+    }
+    return createToast(options);
+};
 
-    // 自定义Toast
-    custom(options) {
-        return createToast(options);
-    },
-
-    // 关闭当前实例
-    close() {
-        if (currentToast) {
-            currentToast.close();
-            currentToast = null;
+// 加载提示
+Toast.loading = function (options) {
+    if (typeof options === "string") {
+        options = {
+            message: options,
+            type: "loading",
+            duration: 0, // 加载状态默认不自动关闭
+        };
+    } else {
+        options.type = "loading";
+        if (options.duration === undefined) {
+            options.duration = 0;
         }
-    },
+    }
+    return createToast(options);
+};
 
-    // 关闭所有实例（为了保持API兼容性，实际上只有一个实例）
-    closeAll() {
-        if (currentToast) {
-            currentToast.close();
-            currentToast = null;
-        }
-    },
+// 自定义Toast
+Toast.custom = function (options) {
+    return createToast(options);
+};
+
+// 关闭当前实例
+Toast.close = function () {
+    if (currentToast) {
+        currentToast.close();
+        currentToast = null;
+    }
+};
+
+// 关闭所有实例（为了保持API兼容性，实际上只有一个实例）
+Toast.closeAll = function () {
+    if (currentToast) {
+        currentToast.close();
+        currentToast = null;
+    }
 };
 
 export default Toast;

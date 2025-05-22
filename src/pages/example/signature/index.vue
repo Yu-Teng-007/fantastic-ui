@@ -178,10 +178,7 @@ export default {
         // 隐藏部分按钮
         onConfirm5(base64) {
             this.signatureImage5 = base64;
-            this.$toast.custom({
-                message: "无取消按钮签名已确认",
-                iconName: "check",
-            });
+            this.$toast({ message: "无取消按钮签名已确认", iconName: "check" });
         },
         onClear5() {
             this.signatureImage5 = "";
