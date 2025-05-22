@@ -18,6 +18,7 @@ import FancCheckboxGroup from "@/components/fanc-checkbox-group/index.vue";
 import FancNumberKeyboard from "@/components/fanc-number-keyboard/index.vue";
 import FancCascader from "@/components/fanc-cascader/index.vue";
 import FancPicker from "@/components/fanc-picker/index.vue";
+import FancStepper from "@/components/fanc-stepper/index.vue";
 import Message from "@/plugins/message";
 import Toast from "@/plugins/toast";
 import Dialog from "@/plugins/dialog";
@@ -44,10 +45,8 @@ const components = [
     FancNumberKeyboard,
     FancCascader,
     FancPicker,
+    FancStepper,
 ];
-
-// 组件库版本
-const version = "0.1.8";
 
 // 导出单个组件
 export {
@@ -71,14 +70,11 @@ export {
     FancNumberKeyboard,
     FancCascader,
     FancPicker,
+    FancStepper,
 };
-
-// 导出版本信息
-export { version };
 
 // 批量注册组件
 export default {
-    version,
     install(Vue) {
         components.forEach((component) => {
             Vue.component(component.name, component);

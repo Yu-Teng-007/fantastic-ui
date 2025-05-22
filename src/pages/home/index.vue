@@ -71,6 +71,14 @@
                     </view>
                 </template>
             </fanc-cell>
+
+            <fanc-cell title="步进器" is-link url="/pages/example/stepper/index" center>
+                <template #icon>
+                    <view class="component-icon">
+                        <fanc-icon name="plus-minus" size="18" color="#666666"></fanc-icon>
+                    </view>
+                </template>
+            </fanc-cell>
         </fanc-cell-group>
 
         <!-- 反馈组件 -->

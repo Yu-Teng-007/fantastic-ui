@@ -288,4 +288,26 @@
     --picker-disabled-opacity: 0.6;
     --picker-transition-duration: 0.3s;
     --picker-z-index: 1000;
+
+    /* Stepper 步进器组件颜色 */
+    --stepper-button-width: 28px;
+    --stepper-button-height: 28px;
+    --stepper-button-bg-color: var(--white);
+    --stepper-button-border-color: var(--border-color);
+    --stepper-button-disabled-bg-color: var(--gray-100);
+    --stepper-button-disabled-border-color: var(--border-color);
+    --stepper-button-disabled-color: var(--text-disabled);
+    --stepper-button-icon-color: var(--text-primary);
+    --stepper-button-active-bg-color: var(--gray-100);
+    --stepper-input-width: 40px;
+    --stepper-input-height: 28px;
+    --stepper-input-font-size: 14px;
+    --stepper-input-text-color: var(--text-primary);
+    --stepper-input-bg-color: var(--white);
+    --stepper-input-border-color: var(--border-color);
+    --stepper-input-disabled-bg-color: var(--gray-100);
+    --stepper-input-disabled-text-color: var(--text-disabled);
+    --stepper-border-radius-left: 4px 0 0 4px;
+    --stepper-border-radius-right: 0 4px 4px 0;
+    --stepper-disabled-opacity: 0.6;
 }
