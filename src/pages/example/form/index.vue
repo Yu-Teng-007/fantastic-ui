@@ -419,6 +419,7 @@ export default {
     background-color: #fff;
     border-radius: 6px;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+    box-sizing: border-box;
 
     .fanc-field {
         margin-bottom: 16px;

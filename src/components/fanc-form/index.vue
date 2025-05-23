@@ -4,7 +4,6 @@
         :class="{
             'fanc-form--disabled': disabled,
             'fanc-form--inline': inline,
-            [`fanc-form--${size}`]: size,
             'fanc-form--top': labelPosition === 'top',
         }"
     >
@@ -63,12 +62,6 @@ export default {
             type: String,
             default: "left",
             validator: (val) => ["left", "top"].includes(val),
-        },
-        // 表单项尺寸
-        size: {
-            type: String,
-            default: "default",
-            validator: (val) => ["small", "default", "large"].includes(val),
         },
         // 是否为内联表单
         inline: {
@@ -277,22 +270,6 @@ export default {
             width: auto;
             flex: 0 0 auto;
             margin-right: var(--form-inline-item-margin-right, 16px);
-        }
-    }
-
-    &--small {
-        .fanc-field {
-            font-size: var(--form-item-small-font-size, 12px);
-            line-height: var(--form-item-small-line-height, 20px);
-            padding: 8px 12px;
-        }
-    }
-
-    &--large {
-        .fanc-field {
-            font-size: var(--form-item-large-font-size, 16px);
-            line-height: var(--form-item-large-line-height, 28px);
-            padding: 14px 16px;
         }
     }
 
