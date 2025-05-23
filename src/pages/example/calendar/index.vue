@@ -14,7 +14,6 @@
                     title="基础用法"
                     description="选择单个日期"
                     is-link
-                    center
                     @click="showBasicCalendar"
                 >
                     <text v-if="selectedDate">{{ selectedDate }}</text>
@@ -26,7 +25,6 @@
                     title="年月切换模式"
                     description="可同时切换年份和月份"
                     is-link
-                    center
                     @click="showYearMonthCalendar"
                 >
                     <text v-if="selectedYearMonthDate">{{ selectedYearMonthDate }}</text>
@@ -38,7 +36,6 @@
                     title="月份切换模式"
                     description="只能切换月份"
                     is-link
-                    center
                     @click="showMonthCalendar"
                 >
                     <text v-if="selectedMonthDate">{{ selectedMonthDate }}</text>
@@ -55,7 +52,6 @@
                     title="多选模式"
                     description="可以选择多个日期"
                     is-link
-                    center
                     @click="showMultipleCalendar"
                 >
                     <text v-if="selectedMultipleDates && selectedMultipleDates.length">
@@ -69,7 +65,6 @@
                     title="日期范围选择"
                     description="可以选择日期范围"
                     is-link
-                    center
                     @click="showRangeCalendar"
                 >
                     <text v-if="selectedDateRange && selectedDateRange.length === 2">
@@ -88,7 +83,6 @@
                     title="自定义日期文案"
                     description="可以为特定日期添加自定义文案"
                     is-link
-                    center
                     @click="showTextCalendar"
                 >
                     <text v-if="selectedTextDate">{{ selectedTextDate }}</text>
@@ -100,7 +94,6 @@
                     title="自定义周起始日"
                     description="可以设置以周一为一周的开始"
                     is-link
-                    center
                     @click="showWeekCalendar"
                 >
                     <text v-if="selectedWeekDate">{{ selectedWeekDate }}</text>
@@ -112,7 +105,6 @@
                     title="滚动模式"
                     description="显示多个月份，可以滚动选择"
                     is-link
-                    center
                     @click="showScrollCalendar"
                 >
                     <text v-if="selectedScrollDate">{{ selectedScrollDate }}</text>
@@ -124,10 +116,11 @@
                     title="日期范围限制"
                     description="限制可选日期的范围"
                     is-link
-                    center
                     @click="showLimitCalendar"
                 >
-                    <text v-if="selectedLimitDate">{{ selectedLimitDate }}</text>
+                    <text v-if="selectedLimitDate">
+                        {{ selectedLimitDate[0] }} 至 {{ selectedLimitDate[1] }}</text
+                    >
                     <text v-else>请选择</text>
                 </fanc-cell>
 
@@ -136,7 +129,6 @@
                     title="弹出位置"
                     description="可以设置从中心弹出"
                     is-link
-                    center
                     @click="showCenterCalendar"
                 >
                     <text v-if="selectedCenterDate">{{ selectedCenterDate }}</text>

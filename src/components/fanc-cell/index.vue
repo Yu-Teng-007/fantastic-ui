@@ -167,6 +167,7 @@ export default {
     padding: 12px 16px;
     background-color: var(--white);
     line-height: 1.5;
+    align-items: flex-start;
 
     &::after {
         position: absolute;
@@ -203,7 +204,7 @@ export default {
 
     &__left {
         display: flex;
-        align-items: center;
+        align-items: flex-start;
         flex: 1;
 
         &--auto {
@@ -222,6 +223,7 @@ export default {
         text-align: center;
         display: flex;
         justify-content: center;
+        margin-top: 2px;
 
         &-inner {
             display: block;
@@ -236,6 +238,8 @@ export default {
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
+        line-height: 24px;
+        font-size: 14px;
 
         &:empty {
             display: none;
@@ -253,11 +257,13 @@ export default {
         flex: 2;
         position: relative;
         text-align: right;
-        vertical-align: middle;
         color: var(--gray-600);
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
+        line-height: 24px;
+        font-size: 14px;
+        padding-top: 0;
     }
 
     &__right-icon {
@@ -266,6 +272,7 @@ export default {
         display: flex;
         align-items: center;
         justify-content: center;
+        padding-top: 4px;
 
         &-inner {
             display: block;
