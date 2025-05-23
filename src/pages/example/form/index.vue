@@ -142,51 +142,6 @@
             </view>
         </view>
 
-        <!-- 自定义尺寸 -->
-        <view class="example-page__section form-section">
-            <view class="example-page__section-title">自定义尺寸</view>
-            <view class="example-page__section-desc">通过size属性设置表单项尺寸。</view>
-            <view class="example-section__content">
-                <view class="form-size-group">
-                    <view class="form-size-item">
-                        <view class="example-section__sub-title">小尺寸</view>
-                        <fanc-form :model="form7" size="small" class="form-container">
-                            <fanc-field
-                                v-model="form7.username"
-                                label="用户名"
-                                label-width="60px"
-                                placeholder="请输入用户名"
-                            ></fanc-field>
-                        </fanc-form>
-                    </view>
-
-                    <view class="form-size-item">
-                        <view class="example-section__sub-title">默认尺寸</view>
-                        <fanc-form :model="form8" class="form-container">
-                            <fanc-field
-                                v-model="form8.username"
-                                label="用户名"
-                                label-width="80px"
-                                placeholder="请输入用户名"
-                            ></fanc-field>
-                        </fanc-form>
-                    </view>
-
-                    <view class="form-size-item">
-                        <view class="example-section__sub-title">大尺寸</view>
-                        <fanc-form :model="form9" size="large" class="form-container">
-                            <fanc-field
-                                v-model="form9.username"
-                                label="用户名"
-                                label-width="80px"
-                                placeholder="请输入用户名"
-                            ></fanc-field>
-                        </fanc-form>
-                    </view>
-                </view>
-            </view>
-        </view>
-
         <!-- 标签位置 -->
         <view class="example-page__section form-section">
             <view class="example-page__section-title">标签位置</view>
