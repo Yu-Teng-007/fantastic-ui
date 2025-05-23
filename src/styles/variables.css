@@ -362,4 +362,18 @@
     --signature-border-radius: 4px;
     --signature-actions-margin-top: 12px;
     --signature-disabled-opacity: 0.6;
+
+    /* DatePicker 日期选择器组件颜色 */
+    --date-picker-bg-color: var(--white);
+    --date-picker-text-color: var(--text-primary);
+    --date-picker-disabled-opacity: var(--form-disabled-opacity);
+    --date-picker-title-color: var(--text-primary);
+    --date-picker-confirm-color: var(--fanc-primary-color);
+    --date-picker-cancel-color: var(--text-secondary);
+    --date-picker-item-color: var(--text-primary);
+    --date-picker-item-disabled-color: var(--text-disabled);
+    --date-picker-item-active-color: var(--fanc-primary-color);
+    --date-picker-toolbar-height: 44px;
+    --date-picker-item-height: 40px;
+    --date-picker-indicator-border-color: var(--border-color);
 }

@@ -149,6 +149,12 @@
             "style": {
                 "navigationBarTitleText": "表单示例"
             }
+        },
+        {
+            "path": "pages/example/date-picker/index",
+            "style": {
+                "navigationBarTitleText": "日期选择器示例"
+            }
         }
     ],
     "globalStyle": {

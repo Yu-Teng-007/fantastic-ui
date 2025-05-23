@@ -25,6 +25,7 @@ import FancSignature from "@/components/fanc-signature/index.vue";
 import FancSearch from "@/components/fanc-search/index.vue";
 import FancField from "@/components/fanc-field/index.vue";
 import FancForm from "@/components/fanc-form/index.vue";
+import FancDatePicker from "@/components/fanc-date-picker/index.vue";
 import Message from "@/plugins/message";
 import Toast from "@/plugins/toast";
 import Dialog from "@/plugins/dialog";
@@ -59,6 +60,7 @@ const components = [
     FancSearch,
     FancField,
     FancForm,
+    FancDatePicker,
 ];
 
 // 导出单个组件
@@ -90,6 +92,7 @@ export {
     FancSearch,
     FancField,
     FancForm,
+    FancDatePicker,
 };
 
 // 批量注册组件

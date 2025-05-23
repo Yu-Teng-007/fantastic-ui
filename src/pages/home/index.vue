@@ -96,6 +96,14 @@
                 </template>
             </fanc-cell>
 
+            <fanc-cell title="日期选择器" is-link url="/pages/example/date-picker/index" center>
+                <template #icon>
+                    <view class="component-icon">
+                        <fanc-icon name="calendar-days" size="18" color="#666666"></fanc-icon>
+                    </view>
+                </template>
+            </fanc-cell>
+
             <fanc-cell title="数字键盘" is-link url="/pages/example/number-keyboard/index" center>
                 <template #icon>
                     <view class="component-icon">

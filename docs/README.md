@@ -32,45 +32,59 @@ Fantastic UI 是一套基于 [uni-app](https://uniapp.dcloud.io/) 开发的跨�
 
 ### 基础组件
 
--   [Button 按钮](./button.md)
--   [Icon 图标](./icon.md)
--   [Cell 单元格](./cell.md)
--   [CellGroup 单元格组](./cell-group.md)
--   [SwipeCell 滑动单元格](./swipe-cell.md)
--   [Popup 弹出层](./popup.md)
--   [Popover 弹出气泡](./popover.md)
--   [DropdownMenu 下拉菜单栏](./dropdown-menu.md)
--   [Stepper 步进器](./stepper.md)
--   [Signature 签名](./signature.md)
--   [Search 搜索](./search.md)
+-   [Button 按钮](./components/button.md)
+-   [Icon 图标](./components/icon.md)
+-   [Cell 单元格](./components/cell.md)
+-   [CellGroup 单元格组](./components/cell-group.md)
+-   [SwipeCell 滑动单元格](./components/swipe-cell.md)
+-   [Popup 弹出层](./components/popup.md)
+-   [Popover 弹出气泡](./components/popover.md)
+-   [DropdownMenu 下拉菜单栏](./components/dropdown-menu.md)
+-   [Stepper 步进器](./components/stepper.md)
+-   [Signature 签名](./components/signature.md)
+-   [Search 搜索](./components/search.md)
 
 ### 展示组件
 
--   [NoticeBar 通知栏](./noticebar.md)
--   [Message 消息提示](./message.md)
--   [ActionSheet 动作面板](./action-sheet.md)
--   [Dialog 对话框](./dialog.md)
--   [Image 图片](./image.md)
--   [Calendar 日历](./calendar.md)
+-   [NoticeBar 通知栏](./components/noticebar.md)
+-   [Message 消息提示](./components/message.md)
+-   [ActionSheet 动作面板](./components/action-sheet.md)
+-   [Dialog 对话框](./components/dialog.md)
+-   [Image 图片](./components/image.md)
+-   [Calendar 日历](./components/calendar.md)
 
 ### 表单组件
 
--   [Field 输入框](./field.md)
--   [Form 表单](./form.md)
--   [Checkbox 复选框](./checkbox.md)
--   [Radio 单选框](./radio.md)
+-   [Field 输入框](./components/field.md)
+-   [Form 表单](./components/form.md)
+-   [Checkbox 复选框](./components/checkbox.md)
+-   [Radio 单选框](./components/radio.md)
 -   [Cascader 级联选择](./components/cascader.md)
 -   [Picker 选择器](./components/picker.md)
+-   [DatePicker 日期选择器](./components/date-picker.md)
 -   [Stepper 步进器](./components/stepper.md)
 -   [Search 搜索](./components/search.md)
 
 ### 反馈组件
 
--   [Toast 轻提示](./toast.md)
+-   [Toast 轻提示](./components/toast.md)
 
 ## 📝 更新日志
 
-### v0.2.7 (当前版本)
+### v0.2.8 (当前版本)
+
+-   ✨ 新增 DatePicker 日期选择器组件
+-   📅 支持日期、年月、月日、年份四种选择类型
+-   🎚️ 丰富的日期范围设置，支持最小/最大日期限制
+-   🎯 灵活的默认值设置，支持时间戳和日期字符串格式
+-   🎨 自定义日期后缀文本，支持年、月、日文本自定义
+-   🔍 提供精确的日期选择，自动计算每月天数
+-   📱 优化移动端触摸体验，滚动选择更平滑
+-   🎛️ 完整的组件生命周期钩子和事件回调
+-   🧩 与Popup组件配合使用，实现底部弹出选择
+-   🎮 支持禁用状态和自定义样式
+
+### v0.2.7
 
 -   ✨ 新增 Form 表单组件
 -   📋 支持表单数据绑定和验证功能
@@ -109,10 +123,10 @@ Fantastic UI 是一套基于 [uni-app](https://uniapp.dcloud.io/) 开发的跨�
 -   📊 提供水平和垂直两种排列方式
 -   🔄 支持v-model双向绑定
 -   💫 完整的选中状态切换事件
--    灵活的插槽定制，支持自定义标签内容
+-   🧩 灵活的插槽定制，支持自定义标签内容
 -   🔶 支持圆形和方形两种外观样式
 
-### v0.2.4 (2023-07-15)
+### v0.2.4
 
 -   ✨ 新增 Search 搜索组件
 -   🔍 支持基础搜索框功能
@@ -150,7 +164,7 @@ Fantastic UI 是一套基于 [uni-app](https://uniapp.dcloud.io/) 开发的跨�
 -   🔄 提供完整的事件回调和状态管理
 -   ⚡ 支持异步控制和精确数值计算
 
-### v0.2.1 (2025-06-25)
+### v0.2.1
 
 -   ✨ 新增 Picker 选择器组件
 -   🎛️ 支持单列和多列数据选择
@@ -162,7 +176,7 @@ Fantastic UI 是一套基于 [uni-app](https://uniapp.dcloud.io/) 开发的跨�
 -   🧩 支持默认选中值和无顶部栏模式
 -   🔄 与Popup组件风格一致，支持圆角和遮罩层配置
 
-### v0.2.0 (2025-06-20)
+### v0.2.0
 
 -   ✨ 新增 Cascader 级联选择组件
 -   🌐 支持多级联动选择，适用于省市区选择等场景
@@ -175,31 +189,7 @@ Fantastic UI 是一套基于 [uni-app](https://uniapp.dcloud.io/) 开发的跨�
 -   🔄 与Popup组件配合使用，实现底部弹出选择
 -   ⚡ 智能交互：选择最后一级选项时自动确认并关闭
 
-### v0.1.9 (2025-06-15)
-
--   ✨ 新增 Form 表单组件
--   📋 支持表单数据绑定和验证功能
--   🔍 支持多种验证规则和自定义验证
--   🎛 支持多种表单布局方式
--   📱 优化移动端表单交互体验
--   🎯 提供完整的表单提交和重置功能
--   🎮 支持表单项校验状态和错误提示
--   🧩 直接基于Field输入框组件实现，无需额外的FormItem包装组件
--   ⚡ 优化表单结构，减少嵌套层级，提升性能和简化使用
--   🔄 改进表单验证流程，提高验证效率
-
-### v0.1.8.5 (2025-06-10)
-
--   ✨ 新增 Field 输入框组件
--   📝 支持文本输入、密码输入、多行文本等类型
--   🔒 提供禁用状态和只读状态
--   📏 支持字数统计和最大长度限制
--   🎨 支持自定义样式和图标
--   🔍 提供输入值验证和错误提示
--   🔄 支持自动高度调整和清空按钮
--   💫 添加聚焦和失焦事件回调
-
-### v0.1.8 (2025-06-01)
+### v0.1.8
 
 -   ✨ 新增 Calendar 日历组件
 -   📅 支持选择单个日期、多个日期、日期范围
@@ -210,7 +200,7 @@ Fantastic UI 是一套基于 [uni-app](https://uniapp.dcloud.io/) 开发的跨�
 -   🔒 支持设置可选日期范围限制
 -   💫 优化交互动画和选择体验
 
-### v0.1.7 (2025-05-29)
+### v0.1.7
 
 -   ✨ 新增 Image 图片组件
 -   🎨 支持多种图片填充模式(fit 属性)和位置设置(position 属性)
@@ -219,7 +209,7 @@ Fantastic UI 是一套基于 [uni-app](https://uniapp.dcloud.io/) 开发的跨�
 -   📱 支持圆形图片和长按菜单
 -   🎨 完全可定制的样式
 
-### v0.1.6 (2025-05-26)
+### v0.1.6
 
 -   ✨ 新增 DropdownMenu 下拉菜单栏组件
 -   🚀 支持多个菜单选项，超过四个可横向滑动
@@ -229,7 +219,7 @@ Fantastic UI 是一套基于 [uni-app](https://uniapp.dcloud.io/) 开发的跨�
 -   🔄 支持自定义排序功能
 -   ⚙️ 支持禁用特定菜单
 
-### v0.1.5 (2025-05-23)
+### v0.1.5
 
 -   ✨ 新增 SwipeCell 滑动单元格组件
 -   🚀 支持左右滑动交互，提供多个操作按钮
@@ -237,7 +227,7 @@ Fantastic UI 是一套基于 [uni-app](https://uniapp.dcloud.io/) 开发的跨�
 -   🔧 支持禁用状态和异步操作
 -   📱 优化移动端触摸体验
 
-### v0.1.4 (2025-05-20)
+### v0.1.4
 
 -   ✨ 新增 Dialog 对话框组件
 -   🎯 支持函数式调用和组件引用式调用
@@ -245,63 +235,48 @@ Fantastic UI 是一套基于 [uni-app](https://uniapp.dcloud.io/) 开发的跨�
 -   🧩 支持自定义内容和按钮
 -   ⏱️ 支持异步关闭和遮罩控制
 
-### v0.1.3 (2025-05-17)
+### v0.1.3
 
 -   ✨ 新增 Toast 轻提示组件
 -   🎯 支持多种提示类型和提示位置
 -   🔄 支持遮罩层和手动控制
 -   ⏱️ 提供自定义时长和动态控制 API
 
-### v0.0.9 (2025-05-14)
+### v0.1.2
 
 -   ✨ 新增 Popover 弹出气泡组件
 -   🔄 支持多种触发方式和位置
 -   🎨 支持亮色/暗色主题切换
 -   🛠️ 支持自定义内容和手动控制
 
-### v0.0.8 (2025-05-11)
+### v0.1.1
 
 -   ✨ 新增 ActionSheet 动作面板组件
 -   📱 优化移动端动作选择体验
 -   🔧 提供多种自定义配置项
-
-### v0.0.7 (2025-05-08)
-
 -   ✨ 新增 Popup 弹出层组件
 -   🧭 支持多个方向弹出
 -   🎬 提供动画过渡效果
-
-### v0.0.6 (2025-05-05)
-
 -   ✨ 新增 NoticeBar 通知栏组件
 -   📋 支持滚动、多行显示
 -   🎨 提供多种主题样式
-
-### v0.0.5 (2025-05-02)
-
 -   ✨ 新增 Message 消息提示组件
 -   🚦 支持成功、警告、错误等状态
 -   ⏱️ 支持自动关闭和手动关闭
 
-### v0.0.4 (2025-04-29)
+### v0.1.0
 
 -   ✨ 新增 Icon 图标组件
 -   🎨 提供丰富的图标集合
 -   🔧 支持自定义颜色和大小
-
-### v0.0.3 (2025-04-26)
-
 -   ✨ 新增 Cell 单元格组件
 -   ✨ 新增 CellGroup 单元格组组件
 -   📋 支持各种内容展示和交互
-
-### v0.0.2 (2025-04-23)
-
 -   ✨ 新增 Button 按钮组件
 -   🔄 支持多种类型、尺寸和状态
 -   📱 优化按钮点击反馈效果
 
-### v0.0.1 (2025-04-20)
+### v0.0.1
 
 -   🎉 Fantastic UI 项目初始化
 -   📐 建立基础架构和规范
