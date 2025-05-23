@@ -26,69 +26,68 @@
         <fanc-cell-group
             title="基础输入"
             description="文本输入与表单交互组件"
-            inset
             :id="categories[0].id"
         >
             <fanc-cell title="按钮" is-link url="/pages/example/button/index" center>
                 <template #icon>
-                    <view class="component-icon" style="background-color: #e6f7ff">
-                        <fanc-icon name="square" size="18" color="#1890ff"></fanc-icon>
+                    <view class="component-icon" >
+                        <fanc-icon name="square" size="18" ></fanc-icon>
                     </view>
                 </template>
             </fanc-cell>
 
             <fanc-cell title="输入框" is-link url="/pages/example/field/index" center>
                 <template #icon>
-                    <view class="component-icon" style="background-color: #e6f7ff">
-                        <fanc-icon name="keyboard" size="18" color="#1890ff"></fanc-icon>
+                    <view class="component-icon" >
+                        <fanc-icon name="keyboard" size="18" ></fanc-icon>
                     </view>
                 </template>
             </fanc-cell>
 
             <fanc-cell title="表单" is-link url="/pages/example/form/index" center>
                 <template #icon>
-                    <view class="component-icon" style="background-color: #e6f7ff">
-                        <fanc-icon name="clipboard-list" size="18" color="#1890ff"></fanc-icon>
+                    <view class="component-icon" >
+                        <fanc-icon name="clipboard-list" size="18" ></fanc-icon>
                     </view>
                 </template>
             </fanc-cell>
 
             <fanc-cell title="搜索" is-link url="/pages/example/search/index" center>
                 <template #icon>
-                    <view class="component-icon" style="background-color: #e6f7ff">
-                        <fanc-icon name="search" size="18" color="#1890ff"></fanc-icon>
+                    <view class="component-icon" >
+                        <fanc-icon name="search" size="18" ></fanc-icon>
                     </view>
                 </template>
             </fanc-cell>
 
             <fanc-cell title="复选框" is-link url="/pages/example/checkbox/index" center>
                 <template #icon>
-                    <view class="component-icon" style="background-color: #e6f7ff">
-                        <fanc-icon name="check-square" size="18" color="#1890ff"></fanc-icon>
+                    <view class="component-icon" >
+                        <fanc-icon name="check-square" size="18" ></fanc-icon>
                     </view>
                 </template>
             </fanc-cell>
 
             <fanc-cell title="单选框" is-link url="/pages/example/radio/index" center>
                 <template #icon>
-                    <view class="component-icon" style="background-color: #e6f7ff">
-                        <fanc-icon name="dot-circle" size="18" color="#1890ff"></fanc-icon>
+                    <view class="component-icon" >
+                        <fanc-icon name="dot-circle" size="18" ></fanc-icon>
                     </view>
                 </template>
             </fanc-cell>
 
             <fanc-cell title="步进器" is-link url="/pages/example/stepper/index" center>
                 <template #icon>
-                    <view class="component-icon" style="background-color: #e6f7ff">
-                        <fanc-icon name="plus-minus" size="18" color="#1890ff"></fanc-icon>
+                    <view class="component-icon" >
+                        <fanc-icon name="plus-minus" size="18" ></fanc-icon>
                     </view>
                 </template>
             </fanc-cell>
 
             <fanc-cell title="数字键盘" is-link url="/pages/example/number-keyboard/index" center>
                 <template #icon>
-                    <view class="component-icon" style="background-color: #e6f7ff">
-                        <fanc-icon name="calculator" size="18" color="#1890ff"></fanc-icon>
+                    <view class="component-icon" >
+                        <fanc-icon name="calculator" size="18" ></fanc-icon>
                     </view>
                 </template>
             </fanc-cell>
@@ -98,37 +97,36 @@
         <fanc-cell-group
             title="选择与日期"
             description="多元化的选择器和日期相关组件"
-            inset
             :id="categories[1].id"
         >
             <fanc-cell title="选择器" is-link url="/pages/example/picker/index" center>
                 <template #icon>
-                    <view class="component-icon" style="background-color: #f6ffed">
-                        <fanc-icon name="list-ul" size="18" color="#52c41a"></fanc-icon>
+                    <view class="component-icon" >
+                        <fanc-icon name="list-ul" size="18" ></fanc-icon>
                     </view>
                 </template>
             </fanc-cell>
 
             <fanc-cell title="级联选择" is-link url="/pages/example/cascader/index" center>
                 <template #icon>
-                    <view class="component-icon" style="background-color: #f6ffed">
-                        <fanc-icon name="sitemap" size="18" color="#52c41a"></fanc-icon>
+                    <view class="component-icon" >
+                        <fanc-icon name="sitemap" size="18" ></fanc-icon>
                     </view>
                 </template>
             </fanc-cell>
 
             <fanc-cell title="日期选择器" is-link url="/pages/example/date-picker/index" center>
                 <template #icon>
-                    <view class="component-icon" style="background-color: #f6ffed">
-                        <fanc-icon name="calendar-days" size="18" color="#52c41a"></fanc-icon>
+                    <view class="component-icon" >
+                        <fanc-icon name="calendar-days" size="18" ></fanc-icon>
                     </view>
                 </template>
             </fanc-cell>
 
             <fanc-cell title="日历" is-link url="/pages/example/calendar/index" center>
                 <template #icon>
-                    <view class="component-icon" style="background-color: #f6ffed">
-                        <fanc-icon name="calendar" size="18" color="#52c41a"></fanc-icon>
+                    <view class="component-icon" >
+                        <fanc-icon name="calendar" size="18" ></fanc-icon>
                     </view>
                 </template>
             </fanc-cell>
@@ -138,45 +136,44 @@
         <fanc-cell-group
             title="内容展示"
             description="用于信息呈现和内容展示的组件"
-            inset
             :id="categories[2].id"
         >
             <fanc-cell title="单元格" is-link url="/pages/example/cell/index" center>
                 <template #icon>
-                    <view class="component-icon" style="background-color: #fff0f6">
-                        <fanc-icon name="table-cells" size="18" color="#eb2f96"></fanc-icon>
+                    <view class="component-icon" >
+                        <fanc-icon name="table-cells" size="18" ></fanc-icon>
                     </view>
                 </template>
             </fanc-cell>
 
             <fanc-cell title="图标" is-link url="/pages/example/icon/index" center>
                 <template #icon>
-                    <view class="component-icon" style="background-color: #fff0f6">
-                        <fanc-icon name="icons" size="18" color="#eb2f96"></fanc-icon>
+                    <view class="component-icon" >
+                        <fanc-icon name="icons" size="18" ></fanc-icon>
                     </view>
                 </template>
             </fanc-cell>
 
             <fanc-cell title="图片" is-link url="/pages/example/image/index" center>
                 <template #icon>
-                    <view class="component-icon" style="background-color: #fff0f6">
-                        <fanc-icon name="image" size="18" color="#eb2f96"></fanc-icon>
+                    <view class="component-icon" >
+                        <fanc-icon name="image" size="18" ></fanc-icon>
                     </view>
                 </template>
             </fanc-cell>
 
             <fanc-cell title="公告栏" is-link url="/pages/example/noticebar/index" center>
                 <template #icon>
-                    <view class="component-icon" style="background-color: #fff0f6">
-                        <fanc-icon name="bell" size="18" color="#eb2f96"></fanc-icon>
+                    <view class="component-icon" >
+                        <fanc-icon name="bell" size="18" ></fanc-icon>
                     </view>
                 </template>
             </fanc-cell>
 
             <fanc-cell title="下拉菜单" is-link url="/pages/example/dropdown-menu/index" center>
                 <template #icon>
-                    <view class="component-icon" style="background-color: #fff0f6">
-                        <fanc-icon name="caret-down" size="18" color="#eb2f96"></fanc-icon>
+                    <view class="component-icon" >
+                        <fanc-icon name="caret-down" size="18" ></fanc-icon>
                     </view>
                 </template>
             </fanc-cell>
@@ -186,53 +183,52 @@
         <fanc-cell-group
             title="操作反馈"
             description="用户交互与操作反馈相关组件"
-            inset
             :id="categories[3].id"
         >
             <fanc-cell title="弹出层" is-link url="/pages/example/popup/index" center>
                 <template #icon>
-                    <view class="component-icon" style="background-color: #f9f0ff">
-                        <fanc-icon name="layer-group" size="18" color="#722ed1"></fanc-icon>
+                    <view class="component-icon" >
+                        <fanc-icon name="layer-group" size="18" ></fanc-icon>
                     </view>
                 </template>
             </fanc-cell>
 
             <fanc-cell title="弹出气泡" is-link url="/pages/example/popover/index" center>
                 <template #icon>
-                    <view class="component-icon" style="background-color: #f9f0ff">
-                        <fanc-icon name="message" size="18" color="#722ed1"></fanc-icon>
+                    <view class="component-icon" >
+                        <fanc-icon name="message" size="18" ></fanc-icon>
                     </view>
                 </template>
             </fanc-cell>
 
             <fanc-cell title="消息通知" is-link url="/pages/example/message/index" center>
                 <template #icon>
-                    <view class="component-icon" style="background-color: #f9f0ff">
-                        <fanc-icon name="comment" size="18" color="#722ed1"></fanc-icon>
+                    <view class="component-icon" >
+                        <fanc-icon name="comment" size="18" ></fanc-icon>
                     </view>
                 </template>
             </fanc-cell>
 
             <fanc-cell title="轻提示" is-link url="/pages/example/toast/index" center>
                 <template #icon>
-                    <view class="component-icon" style="background-color: #f9f0ff">
-                        <fanc-icon name="comment-dots" size="18" color="#722ed1"></fanc-icon>
+                    <view class="component-icon" >
+                        <fanc-icon name="comment-dots" size="18" ></fanc-icon>
                     </view>
                 </template>
             </fanc-cell>
 
             <fanc-cell title="对话框" is-link url="/pages/example/dialog/index" center>
                 <template #icon>
-                    <view class="component-icon" style="background-color: #f9f0ff">
-                        <fanc-icon name="comments" size="18" color="#722ed1"></fanc-icon>
+                    <view class="component-icon" >
+                        <fanc-icon name="comments" size="18" ></fanc-icon>
                     </view>
                 </template>
             </fanc-cell>
 
             <fanc-cell title="动作面板" is-link url="/pages/example/action-sheet/index" center>
                 <template #icon>
-                    <view class="component-icon" style="background-color: #f9f0ff">
-                        <fanc-icon name="list" size="18" color="#722ed1"></fanc-icon>
+                    <view class="component-icon" >
+                        <fanc-icon name="list" size="18" ></fanc-icon>
                     </view>
                 </template>
             </fanc-cell>
@@ -242,21 +238,20 @@
         <fanc-cell-group
             title="高级交互"
             description="提供复杂交互体验的功能组件"
-            inset
             :id="categories[4].id"
         >
             <fanc-cell title="滑动单元格" is-link url="/pages/example/swipe-cell/index" center>
                 <template #icon>
-                    <view class="component-icon" style="background-color: #fff7e6">
-                        <fanc-icon name="arrows-left-right" size="18" color="#fa8c16"></fanc-icon>
+                    <view class="component-icon" >
+                        <fanc-icon name="arrows-left-right" size="18" ></fanc-icon>
                     </view>
                 </template>
             </fanc-cell>
 
             <fanc-cell title="签名" is-link url="/pages/example/signature/index" center>
                 <template #icon>
-                    <view class="component-icon" style="background-color: #fff7e6">
-                        <fanc-icon name="signature" size="18" color="#fa8c16"></fanc-icon>
+                    <view class="component-icon" >
+                        <fanc-icon name="signature" size="18" ></fanc-icon>
                     </view>
                 </template>
             </fanc-cell>
@@ -427,7 +422,7 @@ page {
     align-items: center;
     padding: 32px 0;
     margin-bottom: 20px;
-    background: linear-gradient(135deg, #4a6cf7 0%, #6080ff 100%);
+    background: linear-gradient(135deg, #1d3cbd 0%, #494e63 100%);
     border-radius: 12px;
     box-shadow: var(--shadow);
 
@@ -575,7 +570,7 @@ page {
 ::v-deep .fanc-cell-group__title {
     font-size: 16px;
     font-weight: 600;
-    color: var(--primary-color);
+    color: #4d4d57;
 }
 
 ::v-deep .fanc-cell-group__description {
