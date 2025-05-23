@@ -183,7 +183,6 @@ export default {
     background-color: #ffffff;
     border-radius: 8px;
     overflow: hidden;
-    padding-bottom: 16px;
 }
 
 .section-title {

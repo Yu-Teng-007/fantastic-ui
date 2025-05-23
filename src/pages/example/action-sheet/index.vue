@@ -1,28 +1,32 @@
 <template>
-    <view class="example-page">
-        <view class="example-page__header">
-            <text class="example-page__header-title">动作面板组件</text>
-            <text class="example-page__header-desc"
-                >底部弹起的模态面板，提供和当前场景相关的多个操作</text
-            >
+    <view class="container">
+        <view class="header">
+            <view class="title">动作面板</view>
+            <view class="subtitle">底部弹起的模态面板，提供和当前场景相关的多个操作</view>
         </view>
 
-        <fanc-cell-group title="基础用法" description="基础动作面板由操作选项组成，点击选项后会触发相应的事件" inset>
-            <fanc-cell title="基础动作面板" is-link @click="showBasic = true" />
+        <view class="section">
+            <view class="section-title">基础用法</view>
+            <fanc-cell-group>
+                <fanc-cell title="基础动作面板" is-link @click="showBasic = true" />
+            </fanc-cell-group>
             <fanc-action-sheet
-                v-model:show="showBasic"
+                v-model="showBasic"
                 :actions="basicActions"
                 @select="onSelectAction"
                 @cancel="onCancel"
                 @close="onCloseAction('basic')"
                 @open="onOpenAction('basic')"
             />
-        </fanc-cell-group>
+        </view>
 
-        <fanc-cell-group title="带标题和描述" description="动作面板可以设置标题和描述文本，方便用户理解面板的用途" inset>
-            <fanc-cell title="带标题动作面板" is-link @click="showWithTitle = true" />
+        <view class="section">
+            <view class="section-title">带标题和描述</view>
+            <fanc-cell-group>
+                <fanc-cell title="带标题动作面板" is-link @click="showWithTitle = true" />
+            </fanc-cell-group>
             <fanc-action-sheet
-                v-model:show="showWithTitle"
+                v-model="showWithTitle"
                 :actions="basicActions"
                 title="订单操作"
                 description="请选择要执行的操作"
@@ -31,12 +35,15 @@
                 @close="onCloseAction('title')"
                 @open="onOpenAction('title')"
             />
-        </fanc-cell-group>
+        </view>
 
-        <fanc-cell-group title="带图标" description="可以在选项前显示图标，提升视觉辨识度" inset>
-            <fanc-cell title="带图标动作面板" is-link @click="showWithIcon = true" />
+        <view class="section">
+            <view class="section-title">带图标</view>
+            <fanc-cell-group>
+                <fanc-cell title="带图标动作面板" is-link @click="showWithIcon = true" />
+            </fanc-cell-group>
             <fanc-action-sheet
-                v-model:show="showWithIcon"
+                v-model="showWithIcon"
                 :actions="actionsWithIcon"
                 title="请选择操作"
                 @select="onSelectAction"
@@ -44,12 +51,15 @@
                 @close="onCloseAction('icon')"
                 @open="onOpenAction('icon')"
             />
-        </fanc-cell-group>
+        </view>
 
-        <fanc-cell-group title="宫格模式" description="宫格模式将选项以网格形式展示，适合有图标的场景" inset>
-            <fanc-cell title="宫格动作面板" is-link @click="showGrid = true" />
+        <view class="section">
+            <view class="section-title">宫格模式</view>
+            <fanc-cell-group>
+                <fanc-cell title="宫格动作面板" is-link @click="showGrid = true" />
+            </fanc-cell-group>
             <fanc-action-sheet
-                v-model:show="showGrid"
+                v-model="showGrid"
                 :actions="gridActions"
                 grid-mode
                 title="分享到"
@@ -58,12 +68,15 @@
                 @close="onCloseAction('grid')"
                 @open="onOpenAction('grid')"
             />
-        </fanc-cell-group>
+        </view>
 
-        <fanc-cell-group title="自定义列数" description="宫格模式支持自定义列数，根据需要调整布局" inset>
-            <fanc-cell title="自定义列数" is-link @click="showCustomColumns = true" />
+        <view class="section">
+            <view class="section-title">自定义列数</view>
+            <fanc-cell-group>
+                <fanc-cell title="自定义列数" is-link @click="showCustomColumns = true" />
+            </fanc-cell-group>
             <fanc-action-sheet
-                v-model:show="showCustomColumns"
+                v-model="showCustomColumns"
                 :actions="gridManyActions"
                 grid-mode
                 :column-number="3"
@@ -73,12 +86,15 @@
                 @close="onCloseAction('columns')"
                 @open="onOpenAction('columns')"
             />
-        </fanc-cell-group>
+        </view>
 
-        <fanc-cell-group title="状态示例" description="选项可以设置禁用或加载状态，提供更丰富的交互反馈" inset>
-            <fanc-cell title="状态示例" is-link @click="showWithStatus = true" />
+        <view class="section">
+            <view class="section-title">状态示例</view>
+            <fanc-cell-group>
+                <fanc-cell title="状态示例" is-link @click="showWithStatus = true" />
+            </fanc-cell-group>
             <fanc-action-sheet
-                v-model:show="showWithStatus"
+                v-model="showWithStatus"
                 :actions="actionsWithStatus"
                 title="状态示例"
                 @select="onSelectAction"
@@ -86,12 +102,15 @@
                 @close="onCloseAction('status')"
                 @open="onOpenAction('status')"
             />
-        </fanc-cell-group>
+        </view>
 
-        <fanc-cell-group title="自定义关闭按钮" description="可以显示顶部关闭按钮，并自定义底部取消按钮文本" inset>
-            <fanc-cell title="自定义关闭按钮" is-link @click="showWithClose = true" />
+        <view class="section">
+            <view class="section-title">自定义关闭按钮</view>
+            <fanc-cell-group>
+                <fanc-cell title="自定义关闭按钮" is-link @click="showWithClose = true" />
+            </fanc-cell-group>
             <fanc-action-sheet
-                v-model:show="showWithClose"
+                v-model="showWithClose"
                 :actions="basicActions"
                 title="自定义关闭"
                 :show-close="true"
@@ -100,12 +119,15 @@
                 @close="onClose"
                 @open="onOpenAction('close')"
             />
-        </fanc-cell-group>
+        </view>
 
-        <fanc-cell-group title="异步操作" description="点击选项后可以执行异步操作，完成后再关闭面板" inset>
-            <fanc-cell title="异步操作" is-link @click="showAsync = true" />
+        <view class="section">
+            <view class="section-title">异步操作</view>
+            <fanc-cell-group>
+                <fanc-cell title="异步操作" is-link @click="showAsync = true" />
+            </fanc-cell-group>
             <fanc-action-sheet
-                v-model:show="showAsync"
+                v-model="showAsync"
                 :actions="asyncActions"
                 title="异步操作示例"
                 @select="onSelectAsyncAction"
@@ -113,12 +135,15 @@
                 @close="onCloseAction('async')"
                 @open="onOpenAction('async')"
             />
-        </fanc-cell-group>
+        </view>
 
-        <fanc-cell-group title="分页显示 - 宫格模式" description="当选项较多时，可以启用分页功能分批展示内容" inset>
-            <fanc-cell title="宫格分页" is-link @click="showPagination = true" />
+        <view class="section">
+            <view class="section-title">分页显示 - 宫格模式</view>
+            <fanc-cell-group>
+                <fanc-cell title="宫格分页" is-link @click="showPagination = true" />
+            </fanc-cell-group>
             <fanc-action-sheet
-                v-model:show="showPagination"
+                v-model="showPagination"
                 :actions="gridActions"
                 grid-mode
                 title="社交应用"
@@ -130,12 +155,15 @@
                 @open="onOpenAction('pagination')"
                 @pageChange="onPageChange"
             />
-        </fanc-cell-group>
+        </view>
 
-        <fanc-cell-group title="分页显示 - 列表模式" description="列表模式同样支持分页功能，适用于选项较多的场景" inset>
-            <fanc-cell title="列表分页" is-link @click="showListPagination = true" />
+        <view class="section">
+            <view class="section-title">分页显示 - 列表模式</view>
+            <fanc-cell-group>
+                <fanc-cell title="列表分页" is-link @click="showListPagination = true" />
+            </fanc-cell-group>
             <fanc-action-sheet
-                v-model:show="showListPagination"
+                v-model="showListPagination"
                 :actions="gridActions"
                 title="操作菜单"
                 :pagination-enabled="true"
@@ -146,7 +174,7 @@
                 @open="onOpenAction('list-pagination')"
                 @pageChange="onPageChange"
             />
-        </fanc-cell-group>
+        </view>
     </view>
 </template>
 
@@ -330,8 +358,42 @@ export default {
 };
 </script>
 
-<style lang="scss">
-.example-page {
-    padding-bottom: 32px;
+<style>
+.container {
+    padding: 20px;
+    background-color: #f8f8f8;
+    min-height: 100vh;
+}
+
+.header {
+    margin-bottom: 24px;
+}
+
+.title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #323233;
+    margin-bottom: 8px;
+}
+
+.subtitle {
+    font-size: 14px;
+    color: #969799;
+    line-height: 1.5;
+}
+
+.section {
+    margin-bottom: 24px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.section-title {
+    font-size: 16px;
+    font-weight: bold;
+    color: #323233;
+    padding: 16px;
+    border-bottom: 1px solid #f2f2f2;
 }
 </style>

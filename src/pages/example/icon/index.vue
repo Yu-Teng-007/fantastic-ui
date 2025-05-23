@@ -346,23 +346,21 @@ export default {
     background-color: #ffffff;
     border-radius: 8px;
     overflow: hidden;
-    padding: 16px;
 }
 
 .section-title {
     font-size: 16px;
     font-weight: bold;
     color: #323233;
-    padding-bottom: 16px;
+    padding: 16px;
     border-bottom: 1px solid #f2f2f2;
-    margin-bottom: 16px;
 }
 
 .icon-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
     gap: 16px;
-    padding: 12px 0;
+    padding: 16px;
 }
 
 .icon-cell {

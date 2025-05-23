@@ -364,16 +364,18 @@ export default {
     background-color: #ffffff;
     border-radius: 8px;
     overflow: hidden;
-    padding: 16px;
 }
 
 .section-title {
     font-size: 16px;
     font-weight: bold;
     color: #323233;
-    padding-bottom: 16px;
+    padding: 16px;
     border-bottom: 1px solid #f2f2f2;
-    margin-bottom: 16px;
+}
+
+.form-container {
+    padding: 16px;
 }
 
 .sub-title {
@@ -395,12 +397,6 @@ export default {
     height: 14px;
     background-color: var(--primary-color);
     border-radius: 2px;
-}
-
-.form-container {
-    background-color: #fff;
-    border-radius: 6px;
-    box-sizing: border-box;
 }
 
 .form-button-group {

@@ -1,19 +1,20 @@
 <template>
-    <view class="example-page">
-        <view class="example-page__header">
-            <text class="example-page__header-title">弹出层组件</text>
-            <text class="example-page__header-desc"
-                >弹出层用于展示临时内容，可以从多个方向弹出</text
-            >
+    <view class="container">
+        <view class="header">
+            <view class="title">弹出层</view>
+            <view class="subtitle">弹出层用于展示临时内容，可以从多个方向弹出</view>
         </view>
 
-        <fanc-cell-group title="基础用法">
-            <fanc-cell 
-                title="基础弹出层" 
-                description="基础弹出层从屏幕中心淡入，点击遮罩层或关闭按钮可关闭"
-                is-link
-                @click="showBasic = true"
-            />
+        <view class="section">
+            <view class="section-title">基础用法</view>
+            <fanc-cell-group>
+                <fanc-cell
+                    title="基础弹出层"
+                    description="基础弹出层从屏幕中心淡入，点击遮罩层或关闭按钮可关闭"
+                    is-link
+                    @click="showBasic = true"
+                />
+            </fanc-cell-group>
             <fanc-popup :show="showBasic" @close="showBasic = false">
                 <view class="popup-content">
                     <text class="popup-content__title">基础弹出层</text>
@@ -23,33 +24,36 @@
                     >
                 </view>
             </fanc-popup>
-        </fanc-cell-group>
+        </view>
 
-        <fanc-cell-group title="弹出位置">
-            <fanc-cell 
-                title="顶部弹出" 
-                description="弹出层从顶部滑入"
-                is-link
-                @click="showTop = true"
-            />
-            <fanc-cell 
-                title="底部弹出" 
-                description="弹出层从底部滑入"
-                is-link
-                @click="showBottom = true"
-            />
-            <fanc-cell 
-                title="左侧弹出" 
-                description="弹出层从左侧滑入"
-                is-link
-                @click="showLeft = true"
-            />
-            <fanc-cell 
-                title="右侧弹出" 
-                description="弹出层从右侧滑入"
-                is-link
-                @click="showRight = true"
-            />
+        <view class="section">
+            <view class="section-title">弹出位置</view>
+            <fanc-cell-group>
+                <fanc-cell
+                    title="顶部弹出"
+                    description="弹出层从顶部滑入"
+                    is-link
+                    @click="showTop = true"
+                />
+                <fanc-cell
+                    title="底部弹出"
+                    description="弹出层从底部滑入"
+                    is-link
+                    @click="showBottom = true"
+                />
+                <fanc-cell
+                    title="左侧弹出"
+                    description="弹出层从左侧滑入"
+                    is-link
+                    @click="showLeft = true"
+                />
+                <fanc-cell
+                    title="右侧弹出"
+                    description="弹出层从右侧滑入"
+                    is-link
+                    @click="showRight = true"
+                />
+            </fanc-cell-group>
 
             <fanc-popup :show="showTop" position="top" @close="showTop = false">
                 <view class="popup-content popup-content--position">
@@ -90,15 +94,18 @@
                     >
                 </view>
             </fanc-popup>
-        </fanc-cell-group>
+        </view>
 
-        <fanc-cell-group title="直角和关闭图标">
-            <fanc-cell 
-                title="直角弹出层带关闭图标" 
-                description="可以为弹出层添加直角样式和关闭图标"
-                is-link
-                @click="showRoundWithClose = true"
-            />
+        <view class="section">
+            <view class="section-title">直角和关闭图标</view>
+            <fanc-cell-group>
+                <fanc-cell
+                    title="直角弹出层带关闭图标"
+                    description="可以为弹出层添加直角样式和关闭图标"
+                    is-link
+                    @click="showRoundWithClose = true"
+                />
+            </fanc-cell-group>
             <fanc-popup
                 :show="showRoundWithClose"
                 position="bottom"
@@ -112,15 +119,18 @@
                     <text class="popup-content__text">点击右上角的关闭图标可以关闭弹出层</text>
                 </view>
             </fanc-popup>
-        </fanc-cell-group>
+        </view>
 
-        <fanc-cell-group title="关闭图标位置">
-            <fanc-cell 
-                title="自定义关闭图标位置" 
-                description="关闭图标可以设置在弹出层的四个角落"
-                is-link
-                @click="showIconPositionDemo = true"
-            />
+        <view class="section">
+            <view class="section-title">关闭图标位置</view>
+            <fanc-cell-group>
+                <fanc-cell
+                    title="自定义关闭图标位置"
+                    description="关闭图标可以设置在弹出层的四个角落"
+                    is-link
+                    @click="showIconPositionDemo = true"
+                />
+            </fanc-cell-group>
             <fanc-popup
                 :show="showIconPositionDemo"
                 position="center"
@@ -159,15 +169,18 @@
                     </view>
                 </view>
             </fanc-popup>
-        </fanc-cell-group>
+        </view>
 
-        <fanc-cell-group title="自定义样式">
-            <fanc-cell 
-                title="自定义弹出层样式" 
-                description="通过customStyle属性可以自定义弹出层的尺寸和样式"
-                is-link
-                @click="showCustomStyle = true"
-            />
+        <view class="section">
+            <view class="section-title">自定义样式</view>
+            <fanc-cell-group>
+                <fanc-cell
+                    title="自定义弹出层样式"
+                    description="通过customStyle属性可以自定义弹出层的尺寸和样式"
+                    is-link
+                    @click="showCustomStyle = true"
+                />
+            </fanc-cell-group>
             <fanc-popup
                 :show="showCustomStyle"
                 position="center"
@@ -185,15 +198,18 @@
                     >
                 </view>
             </fanc-popup>
-        </fanc-cell-group>
+        </view>
 
-        <fanc-cell-group title="使用v-model控制">
-            <fanc-cell 
-                title="使用v-model控制弹窗" 
-                description="可以使用v-model实现弹出层的双向数据绑定"
-                is-link
-                @click="showVModel = true"
-            />
+        <view class="section">
+            <view class="section-title">使用v-model控制</view>
+            <fanc-cell-group>
+                <fanc-cell
+                    title="使用v-model控制弹窗"
+                    description="可以使用v-model实现弹出层的双向数据绑定"
+                    is-link
+                    @click="showVModel = true"
+                />
+            </fanc-cell-group>
             <fanc-popup v-model="showVModel" position="center" closeable>
                 <view class="popup-content">
                     <text class="popup-content__title">v-model控制</text>
@@ -204,7 +220,7 @@
                     >
                 </view>
             </fanc-popup>
-        </fanc-cell-group>
+        </view>
     </view>
 </template>
 
@@ -244,54 +260,92 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style>
+.container {
+    padding: 20px;
+    background-color: #f8f8f8;
+    min-height: 100vh;
+}
+
+.header {
+    margin-bottom: 24px;
+}
+
+.title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #323233;
+    margin-bottom: 8px;
+}
+
+.subtitle {
+    font-size: 14px;
+    color: #969799;
+    line-height: 1.5;
+}
+
+.section {
+    margin-bottom: 24px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.section-title {
+    font-size: 16px;
+    font-weight: bold;
+    color: #323233;
+    padding: 16px;
+    border-bottom: 1px solid #f2f2f2;
+}
+
 .popup-content {
     padding: 24px;
     text-align: center;
+}
 
-    &__title {
-        display: block;
-        font-size: 1.125rem;
-        font-weight: 600;
-        margin-bottom: 16px;
-        color: #323233;
-    }
+.popup-content__title {
+    display: block;
+    font-size: 1.125rem;
+    font-weight: 600;
+    margin-bottom: 16px;
+    color: #323233;
+}
 
-    &__text {
-        display: block;
-        font-size: 0.875rem;
-        color: #646566;
-        margin-bottom: 16px;
-    }
+.popup-content__text {
+    display: block;
+    font-size: 0.875rem;
+    color: #646566;
+    margin-bottom: 16px;
+}
 
-    &__buttons {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 8px;
-        margin: 12px 0;
-    }
+.popup-content__buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    margin: 12px 0;
+}
 
-    &--position {
-        padding: 24px;
-        min-height: 30vh;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
+.popup-content--position {
+    padding: 24px;
+    min-height: 30vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 
-    &--with-close {
-        padding: 24px;
-        padding-top: 40px;
-    }
+.popup-content--with-close {
+    padding: 24px;
+    padding-top: 40px;
+}
 
-    &--custom {
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
+.popup-content--custom {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 </style>

@@ -1,76 +1,94 @@
 <template>
-    <view class="example-page">
-        <view class="example-page__header">
-            <text class="example-page__header-title">对话框</text>
-            <text class="example-page__header-desc"
-                >用于展示重要信息或需要用户进行操作的弹出式对话框</text
-            >
+    <view class="container">
+        <view class="header">
+            <view class="title">对话框</view>
+            <view class="subtitle">用于展示重要信息或需要用户进行操作的弹出式对话框</view>
         </view>
 
         <!-- 基础用法 -->
-        <fanc-cell-group title="基础用法" description="展示基本的对话框" inset>
-            <fanc-cell title="基础对话框" is-link @click="showBasicDialog" />
-            <fanc-cell title="长文本对话框" is-link @click="showLongContentDialog" />
-        </fanc-cell-group>
+        <view class="section">
+            <view class="section-title">基础用法</view>
+            <fanc-cell-group>
+                <fanc-cell title="基础对话框" is-link @click="showBasicDialog" />
+                <fanc-cell title="长文本对话框" is-link @click="showLongContentDialog" />
+            </fanc-cell-group>
+        </view>
 
         <!-- 对话框类型 -->
-        <fanc-cell-group title="对话框类型" description="Dialog 支持不同类型的对话框" inset>
-            <fanc-cell title="成功对话框" is-link @click="showSuccessDialog" />
-            <fanc-cell title="错误对话框" is-link @click="showErrorDialog" />
-            <fanc-cell title="警告对话框" is-link @click="showWarningDialog" />
-            <fanc-cell title="信息对话框" is-link @click="showInfoDialog" />
-        </fanc-cell-group>
+        <view class="section">
+            <view class="section-title">对话框类型</view>
+            <fanc-cell-group>
+                <fanc-cell title="成功对话框" is-link @click="showSuccessDialog" />
+                <fanc-cell title="错误对话框" is-link @click="showErrorDialog" />
+                <fanc-cell title="警告对话框" is-link @click="showWarningDialog" />
+                <fanc-cell title="信息对话框" is-link @click="showInfoDialog" />
+            </fanc-cell-group>
+        </view>
 
         <!-- 对话框位置 -->
-        <fanc-cell-group
-            title="对话框位置"
-            description="可以设置对话框显示在顶部、中间或底部"
-            inset
-        >
-            <fanc-cell title="顶部对话框" is-link @click="showTopDialog" />
-            <fanc-cell title="中间对话框" is-link @click="showCenterDialog" />
-            <fanc-cell title="底部对话框" is-link @click="showBottomDialog" />
-        </fanc-cell-group>
+        <view class="section">
+            <view class="section-title">对话框位置</view>
+            <fanc-cell-group>
+                <fanc-cell title="顶部对话框" is-link @click="showTopDialog" />
+                <fanc-cell title="中间对话框" is-link @click="showCenterDialog" />
+                <fanc-cell title="底部对话框" is-link @click="showBottomDialog" />
+            </fanc-cell-group>
+        </view>
 
         <!-- 按钮布局 -->
-        <fanc-cell-group title="按钮布局" description="配置按钮的显示方式和布局" inset>
-            <fanc-cell title="水平按钮" is-link @click="showHorizontalButtonsDialog" />
-            <fanc-cell title="垂直按钮" is-link @click="showVerticalButtonsDialog" />
-            <fanc-cell title="单个按钮" is-link @click="showSingleButtonDialog" />
-            <fanc-cell title="无按钮" is-link @click="showNoButtonsDialog" />
-            <fanc-cell title="多按钮" is-link @click="showMultiButtonsDialog" />
-        </fanc-cell-group>
+        <view class="section">
+            <view class="section-title">按钮布局</view>
+            <fanc-cell-group>
+                <fanc-cell title="水平按钮" is-link @click="showHorizontalButtonsDialog" />
+                <fanc-cell title="垂直按钮" is-link @click="showVerticalButtonsDialog" />
+                <fanc-cell title="单个按钮" is-link @click="showSingleButtonDialog" />
+                <fanc-cell title="无按钮" is-link @click="showNoButtonsDialog" />
+                <fanc-cell title="多按钮" is-link @click="showMultiButtonsDialog" />
+            </fanc-cell-group>
+        </view>
 
         <!-- 图片位置 -->
-        <fanc-cell-group title="图片位置" description="控制图片在对话框中的位置" inset>
-            <fanc-cell title="图片置顶" is-link @click="showImageTopDialog" />
-            <fanc-cell title="图片居中" is-link @click="showImageDefaultDialog" />
-            <fanc-cell title="图片底部" is-link @click="showImageBottomDialog" />
-        </fanc-cell-group>
+        <view class="section">
+            <view class="section-title">图片位置</view>
+            <fanc-cell-group>
+                <fanc-cell title="图片置顶" is-link @click="showImageTopDialog" />
+                <fanc-cell title="图片居中" is-link @click="showImageDefaultDialog" />
+                <fanc-cell title="图片底部" is-link @click="showImageBottomDialog" />
+            </fanc-cell-group>
+        </view>
 
         <!-- 高级配置 -->
-        <fanc-cell-group title="高级配置" description="更多高级配置选项" inset>
-            <fanc-cell title="显示关闭图标" is-link @click="showCloseIconDialog" />
-            <fanc-cell title="无遮罩层" is-link @click="showNoMaskDialog" />
-            <fanc-cell title="遮罩不可关闭" is-link @click="showNoMaskCloseDialog" />
-            <fanc-cell title="圆角对话框" is-link @click="showRoundedDialog" />
-            <fanc-cell title="直角对话框" is-link @click="showNoRoundedDialog" />
-            <fanc-cell title="自定义样式" is-link @click="showCustomStyleDialog" />
-        </fanc-cell-group>
+        <view class="section">
+            <view class="section-title">高级配置</view>
+            <fanc-cell-group>
+                <fanc-cell title="显示关闭图标" is-link @click="showCloseIconDialog" />
+                <fanc-cell title="无遮罩层" is-link @click="showNoMaskDialog" />
+                <fanc-cell title="遮罩不可关闭" is-link @click="showNoMaskCloseDialog" />
+                <fanc-cell title="圆角对话框" is-link @click="showRoundedDialog" />
+                <fanc-cell title="直角对话框" is-link @click="showNoRoundedDialog" />
+                <fanc-cell title="自定义样式" is-link @click="showCustomStyleDialog" />
+            </fanc-cell-group>
+        </view>
 
         <!-- 异步操作 -->
-        <fanc-cell-group title="异步操作" description="控制对话框的异步关闭" inset>
-            <fanc-cell title="异步关闭" is-link @click="showAsyncDialog" />
-            <fanc-cell title="加载状态" is-link @click="showLoadingDialog" />
-        </fanc-cell-group>
+        <view class="section">
+            <view class="section-title">异步操作</view>
+            <fanc-cell-group>
+                <fanc-cell title="异步关闭" is-link @click="showAsyncDialog" />
+                <fanc-cell title="加载状态" is-link @click="showLoadingDialog" />
+            </fanc-cell-group>
+        </view>
 
         <!-- 插槽用法 -->
-        <fanc-cell-group title="插槽用法" description="使用插槽自定义对话框内容" inset>
-            <fanc-cell title="自定义标题" is-link @click="showCustomHeaderDialog" />
-            <fanc-cell title="自定义内容" is-link @click="showCustomContentDialog" />
-            <fanc-cell title="自定义底部按钮" is-link @click="showCustomFooterDialog" />
-            <fanc-cell title="自定义底部内容" is-link @click="showCustomBottomDialog" />
-        </fanc-cell-group>
+        <view class="section">
+            <view class="section-title">插槽用法</view>
+            <fanc-cell-group>
+                <fanc-cell title="自定义标题" is-link @click="showCustomHeaderDialog" />
+                <fanc-cell title="自定义内容" is-link @click="showCustomContentDialog" />
+                <fanc-cell title="自定义底部按钮" is-link @click="showCustomFooterDialog" />
+                <fanc-cell title="自定义底部内容" is-link @click="showCustomBottomDialog" />
+            </fanc-cell-group>
+        </view>
 
         <!-- Dialog 组件 -->
         <fanc-dialog
@@ -623,12 +641,46 @@ export default {
 };
 </script>
 
-<style lang="scss">
-.example-page {
-    padding-bottom: 32px;
+<style>
+.container {
+    padding: 20px;
+    background-color: #f8f8f8;
+    min-height: 100vh;
 }
 
-// 自定义内容样式
+.header {
+    margin-bottom: 24px;
+}
+
+.title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #323233;
+    margin-bottom: 8px;
+}
+
+.subtitle {
+    font-size: 14px;
+    color: #969799;
+    line-height: 1.5;
+}
+
+.section {
+    margin-bottom: 24px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.section-title {
+    font-size: 16px;
+    font-weight: bold;
+    color: #323233;
+    padding: 16px;
+    border-bottom: 1px solid #f2f2f2;
+}
+
+/* 保留原有的自定义样式 */
 .custom-content {
     display: flex;
     flex-direction: column;
@@ -648,7 +700,6 @@ export default {
     color: #333;
 }
 
-// 自定义标题样式
 .custom-header {
     padding: 24px 24px 0;
     text-align: center;
@@ -668,7 +719,6 @@ export default {
     display: block;
 }
 
-// 自定义底部按钮样式
 .custom-footer {
     width: 100%;
     display: flex;
@@ -701,7 +751,6 @@ export default {
     }
 }
 
-// 自定义底部内容样式
 .custom-bottom {
     padding: 12px 24px;
     text-align: center;
@@ -714,7 +763,6 @@ export default {
     color: #6c757d;
 }
 
-// 加载内容样式
 .loading-content {
     display: flex;
     flex-direction: column;

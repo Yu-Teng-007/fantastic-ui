@@ -1,167 +1,181 @@
 <template>
-    <view class="example-page">
-        <view class="example-page__header">
-            <text class="example-page__header-title">日历 Calendar</text>
-            <text class="example-page__header-desc"
-                >日历组件用于选择日期，支持单个日期、多个日期、日期范围选择</text
-            >
+    <view class="container">
+        <view class="header">
+            <view class="title">日历</view>
+            <view class="subtitle">日历组件用于选择日期，支持单个日期、多个日期、日期范围选择</view>
         </view>
 
         <!-- 使用单元格组展示所有示例 -->
-        <fanc-cell-group title="日历功能演示" inset>
-            <!-- 基础用法 -->
-            <fanc-cell
-                title="基础用法"
-                description="选择单个日期"
-                is-link
-                center
-                @click="showBasicCalendar"
-            >
-                <text v-if="selectedDate">{{ selectedDate }}</text>
-                <text v-else>请选择</text>
-            </fanc-cell>
+        <view class="section">
+            <view class="section-title">基础用法</view>
+            <fanc-cell-group>
+                <!-- 基础用法 -->
+                <fanc-cell
+                    title="基础用法"
+                    description="选择单个日期"
+                    is-link
+                    center
+                    @click="showBasicCalendar"
+                >
+                    <text v-if="selectedDate">{{ selectedDate }}</text>
+                    <text v-else>请选择</text>
+                </fanc-cell>
 
-            <!-- 年月切换模式 -->
-            <fanc-cell
-                title="年月切换模式"
-                description="可同时切换年份和月份"
-                is-link
-                center
-                @click="showYearMonthCalendar"
-            >
-                <text v-if="selectedYearMonthDate">{{ selectedYearMonthDate }}</text>
-                <text v-else>请选择</text>
-            </fanc-cell>
+                <!-- 年月切换模式 -->
+                <fanc-cell
+                    title="年月切换模式"
+                    description="可同时切换年份和月份"
+                    is-link
+                    center
+                    @click="showYearMonthCalendar"
+                >
+                    <text v-if="selectedYearMonthDate">{{ selectedYearMonthDate }}</text>
+                    <text v-else>请选择</text>
+                </fanc-cell>
 
-            <!-- 月份切换模式 -->
-            <fanc-cell
-                title="月份切换模式"
-                description="只能切换月份"
-                is-link
-                center
-                @click="showMonthCalendar"
-            >
-                <text v-if="selectedMonthDate">{{ selectedMonthDate }}</text>
-                <text v-else>请选择</text>
-            </fanc-cell>
+                <!-- 月份切换模式 -->
+                <fanc-cell
+                    title="月份切换模式"
+                    description="只能切换月份"
+                    is-link
+                    center
+                    @click="showMonthCalendar"
+                >
+                    <text v-if="selectedMonthDate">{{ selectedMonthDate }}</text>
+                    <text v-else>请选择</text>
+                </fanc-cell>
+            </fanc-cell-group>
+        </view>
 
-            <!-- 多选模式 -->
-            <fanc-cell
-                title="多选模式"
-                description="可以选择多个日期"
-                is-link
-                center
-                @click="showMultipleCalendar"
-            >
-                <text v-if="selectedMultipleDates && selectedMultipleDates.length">
-                    已选 {{ selectedMultipleDates.length }} 个日期
-                </text>
-                <text v-else>请选择</text>
-            </fanc-cell>
+        <view class="section">
+            <view class="section-title">选择模式</view>
+            <fanc-cell-group>
+                <!-- 多选模式 -->
+                <fanc-cell
+                    title="多选模式"
+                    description="可以选择多个日期"
+                    is-link
+                    center
+                    @click="showMultipleCalendar"
+                >
+                    <text v-if="selectedMultipleDates && selectedMultipleDates.length">
+                        已选 {{ selectedMultipleDates.length }} 个日期
+                    </text>
+                    <text v-else>请选择</text>
+                </fanc-cell>
 
-            <!-- 日期范围选择 -->
-            <fanc-cell
-                title="日期范围选择"
-                description="可以选择日期范围"
-                is-link
-                center
-                @click="showRangeCalendar"
-            >
-                <text v-if="selectedDateRange && selectedDateRange.length === 2">
-                    {{ selectedDateRange[0] }} 至 {{ selectedDateRange[1] }}
-                </text>
-                <text v-else>请选择</text>
-            </fanc-cell>
+                <!-- 日期范围选择 -->
+                <fanc-cell
+                    title="日期范围选择"
+                    description="可以选择日期范围"
+                    is-link
+                    center
+                    @click="showRangeCalendar"
+                >
+                    <text v-if="selectedDateRange && selectedDateRange.length === 2">
+                        {{ selectedDateRange[0] }} 至 {{ selectedDateRange[1] }}
+                    </text>
+                    <text v-else>请选择</text>
+                </fanc-cell>
+            </fanc-cell-group>
+        </view>
 
-            <!-- 自定义日期文案 -->
-            <fanc-cell
-                title="自定义日期文案"
-                description="可以为特定日期添加自定义文案"
-                is-link
-                center
-                @click="showTextCalendar"
-            >
-                <text v-if="selectedTextDate">{{ selectedTextDate }}</text>
-                <text v-else>请选择</text>
-            </fanc-cell>
+        <view class="section">
+            <view class="section-title">自定义配置</view>
+            <fanc-cell-group>
+                <!-- 自定义日期文案 -->
+                <fanc-cell
+                    title="自定义日期文案"
+                    description="可以为特定日期添加自定义文案"
+                    is-link
+                    center
+                    @click="showTextCalendar"
+                >
+                    <text v-if="selectedTextDate">{{ selectedTextDate }}</text>
+                    <text v-else>请选择</text>
+                </fanc-cell>
 
-            <!-- 自定义周起始日 -->
-            <fanc-cell
-                title="自定义周起始日"
-                description="可以设置以周一为一周的开始"
-                is-link
-                center
-                @click="showWeekCalendar"
-            >
-                <text v-if="selectedWeekDate">{{ selectedWeekDate }}</text>
-                <text v-else>请选择</text>
-            </fanc-cell>
+                <!-- 自定义周起始日 -->
+                <fanc-cell
+                    title="自定义周起始日"
+                    description="可以设置以周一为一周的开始"
+                    is-link
+                    center
+                    @click="showWeekCalendar"
+                >
+                    <text v-if="selectedWeekDate">{{ selectedWeekDate }}</text>
+                    <text v-else>请选择</text>
+                </fanc-cell>
 
-            <!-- 滚动模式 -->
-            <fanc-cell
-                title="滚动模式"
-                description="显示多个月份，可以滚动选择"
-                is-link
-                center
-                @click="showScrollCalendar"
-            >
-                <text v-if="selectedScrollDate">{{ selectedScrollDate }}</text>
-                <text v-else>请选择</text>
-            </fanc-cell>
+                <!-- 滚动模式 -->
+                <fanc-cell
+                    title="滚动模式"
+                    description="显示多个月份，可以滚动选择"
+                    is-link
+                    center
+                    @click="showScrollCalendar"
+                >
+                    <text v-if="selectedScrollDate">{{ selectedScrollDate }}</text>
+                    <text v-else>请选择</text>
+                </fanc-cell>
 
-            <!-- 日期范围限制 -->
-            <fanc-cell
-                title="日期范围限制"
-                description="限制可选日期的范围"
-                is-link
-                center
-                @click="showLimitCalendar"
-            >
-                <text v-if="selectedLimitDate">{{ selectedLimitDate }}</text>
-                <text v-else>请选择</text>
-            </fanc-cell>
+                <!-- 日期范围限制 -->
+                <fanc-cell
+                    title="日期范围限制"
+                    description="限制可选日期的范围"
+                    is-link
+                    center
+                    @click="showLimitCalendar"
+                >
+                    <text v-if="selectedLimitDate">{{ selectedLimitDate }}</text>
+                    <text v-else>请选择</text>
+                </fanc-cell>
 
-            <!-- 弹出位置 -->
-            <fanc-cell
-                title="弹出位置"
-                description="可以设置从中心弹出"
-                is-link
-                center
-                @click="showCenterCalendar"
-            >
-                <text v-if="selectedCenterDate">{{ selectedCenterDate }}</text>
-                <text v-else>请选择</text>
-            </fanc-cell>
-        </fanc-cell-group>
+                <!-- 弹出位置 -->
+                <fanc-cell
+                    title="弹出位置"
+                    description="可以设置从中心弹出"
+                    is-link
+                    center
+                    @click="showCenterCalendar"
+                >
+                    <text v-if="selectedCenterDate">{{ selectedCenterDate }}</text>
+                    <text v-else>请选择</text>
+                </fanc-cell>
+            </fanc-cell-group>
+        </view>
 
         <!-- 选择结果展示 -->
-        <fanc-cell-group v-if="hasSelectedData" title="选择结果" inset class="result-group">
-            <!-- 单选或滚动模式结果 -->
-            <fanc-cell v-if="isSingleSelect" title="选择日期" :content="getSingleSelectedDate">
-            </fanc-cell>
-
-            <!-- 多选模式结果 -->
-            <template v-if="isMultipleSelect">
-                <fanc-cell
-                    title="已选日期数"
-                    :content="selectedMultipleDates.length + '个'"
-                ></fanc-cell>
-                <fanc-cell
-                    v-for="(date, index) in selectedMultipleDates"
-                    :key="index"
-                    :title="'日期 ' + (index + 1)"
-                    :content="date"
-                >
+        <view class="section" v-if="hasSelectedData">
+            <view class="section-title">选择结果</view>
+            <fanc-cell-group>
+                <!-- 单选或滚动模式结果 -->
+                <fanc-cell v-if="isSingleSelect" title="选择日期" :content="getSingleSelectedDate">
                 </fanc-cell>
-            </template>
 
-            <!-- 范围选择结果 -->
-            <template v-if="isRangeSelect">
-                <fanc-cell title="开始日期" :content="selectedDateRange[0]"></fanc-cell>
-                <fanc-cell title="结束日期" :content="selectedDateRange[1]"></fanc-cell>
-                <fanc-cell title="共计天数" :content="getRangeDays + '天'"> </fanc-cell>
-            </template>
-        </fanc-cell-group>
+                <!-- 多选模式结果 -->
+                <template v-if="isMultipleSelect">
+                    <fanc-cell
+                        title="已选日期数"
+                        :content="selectedMultipleDates.length + '个'"
+                    ></fanc-cell>
+                    <fanc-cell
+                        v-for="(date, index) in selectedMultipleDates"
+                        :key="index"
+                        :title="'日期 ' + (index + 1)"
+                        :content="date"
+                    >
+                    </fanc-cell>
+                </template>
+
+                <!-- 范围选择结果 -->
+                <template v-if="isRangeSelect">
+                    <fanc-cell title="开始日期" :content="selectedDateRange[0]"></fanc-cell>
+                    <fanc-cell title="结束日期" :content="selectedDateRange[1]"></fanc-cell>
+                    <fanc-cell title="共计天数" :content="getRangeDays + '天'"> </fanc-cell>
+                </template>
+            </fanc-cell-group>
+        </view>
 
         <!-- 日历组件实例 -->
         <fanc-calendar
@@ -490,26 +504,41 @@ export default {
 </script>
 
 <style>
-.example-page__header {
-    padding: 16px;
-    text-align: center;
+.container {
+    padding: 20px;
+    background-color: #f8f8f8;
+    min-height: 100vh;
 }
 
-.example-page__header-title {
-    font-size: 18px;
+.header {
+    margin-bottom: 24px;
+}
+
+.title {
+    font-size: 24px;
     font-weight: bold;
     color: #323233;
-    display: block;
     margin-bottom: 8px;
 }
 
-.example-page__header-desc {
+.subtitle {
     font-size: 14px;
     color: #969799;
-    display: block;
+    line-height: 1.5;
 }
 
-.result-group {
-    margin-top: 16px;
+.section {
+    margin-bottom: 24px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.section-title {
+    font-size: 16px;
+    font-weight: bold;
+    color: #323233;
+    padding: 16px;
+    border-bottom: 1px solid #f2f2f2;
 }
 </style>

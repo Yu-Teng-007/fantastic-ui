@@ -1,18 +1,13 @@
 <template>
-    <view class="example-page">
-        <view class="example-page__header">
-            <text class="example-page__header-title">级联选择</text>
-            <text class="example-page__header-desc"
-                >用于从一组相关联的数据集合中进行选择，常用于省市区地址选择</text
-            >
+    <view class="container">
+        <view class="header">
+            <view class="title">级联选择</view>
+            <view class="subtitle">用于从一组相关联的数据集合中进行选择，常用于省市区地址选择</view>
         </view>
 
-        <view class="example-page__section">
-            <view class="example-page__section-title">基础用法</view>
-            <view class="example-page__section-desc"
-                >基础的级联选择用法，选择最后一级会自动确认并关闭</view
-            >
-            <view class="example-page__content">
+        <view class="section">
+            <view class="section-title">基础用法</view>
+            <view class="section-content">
                 <fanc-cell
                     :content="basicSelectedText || '请选择'"
                     title="地区"
@@ -29,10 +24,9 @@
             </view>
         </view>
 
-        <view class="example-page__section">
-            <view class="example-page__section-title">垂直布局</view>
-            <view class="example-page__section-desc">选项卡在左侧垂直布局，适合分类较多的场景</view>
-            <view class="example-page__content">
+        <view class="section">
+            <view class="section-title">垂直布局</view>
+            <view class="section-content">
                 <fanc-cell
                     :content="verticalSelectedText || '请选择'"
                     title="地区"
@@ -50,10 +44,9 @@
             </view>
         </view>
 
-        <view class="example-page__section">
-            <view class="example-page__section-title">自定义标题</view>
-            <view class="example-page__section-desc">可以自定义顶部标题文字</view>
-            <view class="example-page__content">
+        <view class="section">
+            <view class="section-title">自定义标题</view>
+            <view class="section-content">
                 <fanc-cell
                     :content="customTitleSelectedText || '请选择'"
                     title="收货地址"
@@ -71,10 +64,9 @@
             </view>
         </view>
 
-        <view class="example-page__section">
-            <view class="example-page__section-title">自定义按钮文字</view>
-            <view class="example-page__section-desc">可以自定义确认和取消按钮的文字</view>
-            <view class="example-page__content">
+        <view class="section">
+            <view class="section-title">自定义按钮文字</view>
+            <view class="section-content">
                 <fanc-cell
                     :content="customButtonSelectedText || '请选择'"
                     title="地址"
@@ -93,10 +85,9 @@
             </view>
         </view>
 
-        <view class="example-page__section">
-            <view class="example-page__section-title">默认选中值</view>
-            <view class="example-page__section-desc">可以指定默认选中的选项</view>
-            <view class="example-page__content">
+        <view class="section">
+            <view class="section-title">默认选中值</view>
+            <view class="section-content">
                 <fanc-cell
                     :content="defaultValueSelectedText"
                     title="默认地址"
@@ -114,12 +105,9 @@
             </view>
         </view>
 
-        <view class="example-page__section">
-            <view class="example-page__section-title">无头部样式</view>
-            <view class="example-page__section-desc"
-                >可以隐藏顶部标题栏，适用于自定义头部的场景，选择最后一级仍会自动关闭</view
-            >
-            <view class="example-page__content">
+        <view class="section">
+            <view class="section-title">无头部样式</view>
+            <view class="section-content">
                 <fanc-cell
                     :content="noHeaderSelectedResult || '请选择'"
                     title="地址选择"
@@ -140,10 +128,9 @@
             </view>
         </view>
 
-        <view class="example-page__section">
-            <view class="example-page__section-title">自定义颜色</view>
-            <view class="example-page__section-desc">可以自定义选中状态的颜色</view>
-            <view class="example-page__content">
+        <view class="section">
+            <view class="section-title">自定义颜色</view>
+            <view class="section-content">
                 <fanc-cell
                     :content="customColorSelectedText || '请选择'"
                     title="地址"
@@ -162,12 +149,9 @@
             </view>
         </view>
 
-        <view class="example-page__section">
-            <view class="example-page__section-title">选项变化事件</view>
-            <view class="example-page__section-desc"
-                >监听选项变化事件，并在选择完成路径时自动关闭</view
-            >
-            <view class="example-page__content">
+        <view class="section">
+            <view class="section-title">选项变化事件</view>
+            <view class="section-content">
                 <fanc-cell
                     :content="eventSelectedText || '请选择'"
                     title="地址"
@@ -189,10 +173,9 @@
             </view>
         </view>
 
-        <view class="example-page__section">
-            <view class="example-page__section-title">弹出位置</view>
-            <view class="example-page__section-desc">可以设置从中心弹出</view>
-            <view class="example-page__content">
+        <view class="section">
+            <view class="section-title">弹出位置</view>
+            <view class="section-content">
                 <fanc-cell
                     :content="centerSelectedText || '请选择'"
                     title="地址"
@@ -215,10 +198,9 @@
             </view>
         </view>
 
-        <view class="example-page__section">
-            <view class="example-page__section-title">完全自定义</view>
-            <view class="example-page__section-desc">可以自定义弹窗的各种属性</view>
-            <view class="example-page__content">
+        <view class="section">
+            <view class="section-title">完全自定义</view>
+            <view class="section-content">
                 <fanc-cell
                     content="完全自定义弹窗"
                     title="高级选项"
@@ -249,12 +231,9 @@
             </view>
         </view>
 
-        <view class="example-page__section">
-            <view class="example-page__section-title">垂直布局 + 自定义颜色</view>
-            <view class="example-page__section-desc"
-                >垂直布局结合自定义颜色，适合分类较多的场景</view
-            >
-            <view class="example-page__content">
+        <view class="section">
+            <view class="section-title">垂直布局 + 自定义颜色</view>
+            <view class="section-content">
                 <fanc-cell
                     :content="verticalColorSelectedText || '请选择'"
                     title="分类选择"
@@ -533,13 +512,55 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
-// 结果显示样式
+<style>
+.container {
+    padding: 20px;
+    background-color: #f8f8f8;
+    min-height: 100vh;
+}
+
+.header {
+    margin-bottom: 24px;
+}
+
+.title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #323233;
+    margin-bottom: 8px;
+}
+
+.subtitle {
+    font-size: 14px;
+    color: #969799;
+    line-height: 1.5;
+}
+
+.section {
+    margin-bottom: 24px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.section-title {
+    font-size: 16px;
+    font-weight: bold;
+    color: #323233;
+    padding: 16px;
+    border-bottom: 1px solid #f2f2f2;
+}
+
+.section-content {
+    padding: 16px;
+}
+
+/* 结果显示样式 */
 .result-display {
-    margin-top: 24rpx;
-    padding: 24rpx;
+    margin-top: 12px;
+    padding: 12px;
     background-color: #f8f9fa;
-    border-radius: 8rpx;
-    font-size: 28rpx;
+    border-radius: 4px;
+    font-size: 14px;
 }
 </style>

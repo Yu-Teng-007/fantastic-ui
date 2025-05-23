@@ -1,73 +1,72 @@
 <template>
-    <view class="example-page">
-        <view class="example-page__header">
-            <text class="example-page__header-title">选择器组件</text>
-            <text class="example-page__header-desc">用于在多个选项中选择一项或多项</text>
+    <view class="container">
+        <view class="header">
+            <view class="title">选择器组件</view>
+            <view class="subtitle">用于在多个选项中选择一项或多项</view>
         </view>
 
-        <fanc-cell-group title="基础用法" description="单列选择器，最简单的用法" inset>
+        <view class="section">
+            <view class="section-title">基础用法</view>
             <fanc-cell title="单列选择器" is-link @click="showBasicPicker = true">
                 <template #content>
                     <view class="picker-result">{{ basicResult || "请选择" }}</view>
                 </template>
             </fanc-cell>
-        </fanc-cell-group>
+        </view>
 
-        <fanc-cell-group title="多列选择器" description="支持同时选择多列数据" inset>
+        <view class="section">
+            <view class="section-title">多列选择器</view>
             <fanc-cell title="多列选择器" is-link @click="showMultiPicker = true">
                 <template #content>
                     <view class="picker-result">{{ multiResult || "请选择" }}</view>
                 </template>
             </fanc-cell>
-        </fanc-cell-group>
+        </view>
 
-        <fanc-cell-group
-            title="对象数组"
-            description="数据为对象数组格式，可通过textKey和valueKey指定显示的文本和值"
-            inset
-        >
+        <view class="section">
+            <view class="section-title">对象数组</view>
             <fanc-cell title="对象选择器" is-link @click="showObjectPicker = true">
                 <template #content>
                     <view class="picker-result">{{ objectResult || "请选择" }}</view>
                 </template>
             </fanc-cell>
-        </fanc-cell-group>
+        </view>
 
-        <fanc-cell-group title="自定义样式" description="自定义标题、按钮文字和样式" inset>
+        <view class="section">
+            <view class="section-title">自定义样式</view>
             <fanc-cell title="自定义样式" is-link @click="showCustomPicker = true">
                 <template #content>
                     <view class="picker-result">{{ customResult || "请选择" }}</view>
                 </template>
             </fanc-cell>
-        </fanc-cell-group>
+        </view>
 
-        <fanc-cell-group title="禁用选项" description="禁用某些选项，使其不可选择" inset>
+        <view class="section">
+            <view class="section-title">禁用选项</view>
             <fanc-cell title="禁用选项" is-link @click="showDisabledPicker = true">
                 <template #content>
                     <view class="picker-result">{{ disabledResult || "请选择" }}</view>
                 </template>
             </fanc-cell>
-        </fanc-cell-group>
+        </view>
 
-        <fanc-cell-group
-            title="无顶部栏"
-            description="不显示顶部栏，通常用于嵌入到其他组件中"
-            inset
-        >
+        <view class="section">
+            <view class="section-title">无顶部栏</view>
             <fanc-cell title="无顶部栏" is-link @click="showNoToolbarPicker = true">
                 <template #content>
                     <view class="picker-result">{{ noToolbarResult || "请选择" }}</view>
                 </template>
             </fanc-cell>
-        </fanc-cell-group>
+        </view>
 
-        <fanc-cell-group title="级联选择" description="选择一项会联动地改变下一列的选项内容" inset>
+        <view class="section">
+            <view class="section-title">级联选择</view>
             <fanc-cell title="级联选择" is-link @click="showCascadePicker = true">
                 <template #content>
                     <view class="picker-result">{{ cascadeResult || "请选择" }}</view>
                 </template>
             </fanc-cell>
-        </fanc-cell-group>
+        </view>
 
         <!-- 选择器组件 -->
         <fanc-picker
@@ -369,37 +368,47 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style>
+.container {
+    padding: 20px;
+    background-color: #f8f8f8;
+    min-height: 100vh;
+}
+
+.header {
+    margin-bottom: 24px;
+}
+
+.title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #323233;
+    margin-bottom: 8px;
+}
+
+.subtitle {
+    font-size: 14px;
+    color: #969799;
+    line-height: 1.5;
+}
+
+.section {
+    margin-bottom: 24px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.section-title {
+    font-size: 16px;
+    font-weight: bold;
+    color: #323233;
+    padding: 16px;
+    border-bottom: 1px solid #f2f2f2;
+}
+
 .picker-result {
     color: var(--text-secondary);
     font-size: 14px;
-}
-
-.example-page {
-    padding-bottom: 40px;
-}
-
-.example-page__header {
-    padding: 24px 16px;
-    background-color: #ffffff;
-    margin-bottom: 12px;
-}
-
-.example-page__header-title {
-    font-size: 20px;
-    font-weight: 600;
-    color: #323233;
-    margin-bottom: 8px;
-    display: block;
-}
-
-.example-page__header-desc {
-    font-size: 14px;
-    color: #969799;
-    display: block;
-}
-
-::v-deep .fanc-cell-group {
-    margin-bottom: 12px;
 }
 </style>

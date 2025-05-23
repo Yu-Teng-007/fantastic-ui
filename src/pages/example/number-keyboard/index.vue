@@ -1,49 +1,64 @@
 <template>
-    <view class="page">
+    <view class="container">
         <view class="header">
-            <view class="header-content">
-                <view class="title">数字键盘</view>
-                <view class="description">适用于输入密码、验证码、金额等场景</view>
-            </view>
-            <view class="header-decoration"></view>
+            <view class="title">数字键盘</view>
+            <view class="subtitle">适用于输入密码、验证码、金额等场景</view>
         </view>
 
-        <fanc-cell-group title="键盘类型" inset>
-            <!-- 基础用法 -->
-            <fanc-cell title="基础用法" is-link @click="showKeyboard('basic')">
-                <template #value>
-                    <text class="cell-value">{{ basicValue || "点击输入" }}</text>
-                </template>
-            </fanc-cell>
+        <view class="section">
+            <view class="section-title">基础用法</view>
+            <view class="section-content">
+                <fanc-cell title="基础用法" is-link @click="showKeyboard('basic')">
+                    <template #value>
+                        <text class="cell-value">{{ basicValue || "点击输入" }}</text>
+                    </template>
+                </fanc-cell>
+            </view>
+        </view>
 
-            <!-- 带额外按键 -->
-            <fanc-cell title="带额外按键" is-link @click="showKeyboard('withExtraKey')">
-                <template #value>
-                    <text class="cell-value">{{ extraValue || "点击输入" }}</text>
-                </template>
-            </fanc-cell>
+        <view class="section">
+            <view class="section-title">带额外按键</view>
+            <view class="section-content">
+                <fanc-cell title="带额外按键" is-link @click="showKeyboard('withExtraKey')">
+                    <template #value>
+                        <text class="cell-value">{{ extraValue || "点击输入" }}</text>
+                    </template>
+                </fanc-cell>
+            </view>
+        </view>
 
-            <!-- 身份证键盘 -->
-            <fanc-cell title="身份证键盘" is-link @click="showKeyboard('idcard')">
-                <template #value>
-                    <text class="cell-value">{{ idcardValue || "点击输入" }}</text>
-                </template>
-            </fanc-cell>
+        <view class="section">
+            <view class="section-title">身份证键盘</view>
+            <view class="section-content">
+                <fanc-cell title="身份证键盘" is-link @click="showKeyboard('idcard')">
+                    <template #value>
+                        <text class="cell-value">{{ idcardValue || "点击输入" }}</text>
+                    </template>
+                </fanc-cell>
+            </view>
+        </view>
 
-            <!-- 自定义主题 -->
-            <fanc-cell title="自定义主题" is-link @click="showKeyboard('custom')">
-                <template #value>
-                    <text class="cell-value">{{ customValue || "点击输入" }}</text>
-                </template>
-            </fanc-cell>
+        <view class="section">
+            <view class="section-title">自定义主题</view>
+            <view class="section-content">
+                <fanc-cell title="自定义主题" is-link @click="showKeyboard('custom')">
+                    <template #value>
+                        <text class="cell-value">{{ customValue || "点击输入" }}</text>
+                    </template>
+                </fanc-cell>
+            </view>
+        </view>
 
-            <!-- 随机数字 -->
-            <fanc-cell title="随机数字" is-link @click="showKeyboard('random')">
-                <template #value>
-                    <text class="cell-value">{{ randomValue || "点击输入" }}</text>
-                </template>
-            </fanc-cell>
-        </fanc-cell-group>
+        <view class="section">
+            <view class="section-title">随机数字</view>
+            <view class="section-content">
+                <fanc-cell title="随机数字" is-link @click="showKeyboard('random')">
+                    <template #value>
+                        <text class="cell-value">{{ randomValue || "点击输入" }}</text>
+                    </template>
+                </fanc-cell>
+            </view>
+        </view>
 
         <!-- 基础键盘 -->
         <fanc-number-keyboard
@@ -227,56 +242,43 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
-.page {
-    padding: 0;
+<style>
+.container {
+    padding: 20px;
     background-color: #f8f8f8;
     min-height: 100vh;
 }
 
 .header {
-    position: relative;
-    padding: 30px 20px 40px;
-    background: linear-gradient(
-        135deg,
-        var(--fanc-primary-color, #007bff),
-        var(--fanc-primary-dark-color, #0056b3)
-    );
-    color: #fff;
-    border-radius: 0 0 15px 15px;
-    margin-bottom: 20px;
+    margin-bottom: 24px;
+}
+
+.title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #323233;
+    margin-bottom: 8px;
+}
+
+.subtitle {
+    font-size: 14px;
+    color: #969799;
+    line-height: 1.5;
+}
+
+.section {
+    margin-bottom: 24px;
+    background-color: #ffffff;
+    border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
 
-    .header-content {
-        position: relative;
-        z-index: 2;
-    }
-
-    .header-decoration {
-        position: absolute;
-        bottom: -30px;
-        right: -30px;
-        width: 150px;
-        height: 150px;
-        border-radius: 75px;
-        background: rgba(255, 255, 255, 0.1);
-        z-index: 1;
-    }
-
-    .title {
-        font-size: 28px;
-        font-weight: 700;
-        margin-bottom: 8px;
-        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-    }
-
-    .description {
-        font-size: 14px;
-        opacity: 0.9;
-        font-weight: 300;
-        max-width: 80%;
-    }
+.section-title {
+    font-size: 16px;
+    font-weight: bold;
+    color: #323233;
+    padding: 16px;
+    border-bottom: 1px solid #f2f2f2;
 }
 
 .cell-value {

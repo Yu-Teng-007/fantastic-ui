@@ -1,60 +1,66 @@
 <template>
-    <view class="example-page">
-        <view class="example-page__header">
-            <text class="example-page__header-title">消息通知组件</text>
-            <text class="example-page__header-desc">用于展示操作反馈或提示信息的轻量级组件</text>
+    <view class="container">
+        <view class="header">
+            <view class="title">消息通知</view>
+            <view class="subtitle">用于展示操作反馈或提示信息的轻量级组件</view>
         </view>
 
-        <fanc-cell-group 
-            title="基础用法" 
-            description="支持不同类型的消息通知，用于不同场景" 
-            inset
-        >
-            <fanc-cell title="普通通知" is-link @click="showInfo" />
-            <fanc-cell title="成功通知" is-link @click="showSuccess" />
-            <fanc-cell title="警示通知" is-link @click="showWarning" />
-            <fanc-cell title="错误通知" is-link @click="showError" />
-        </fanc-cell-group>
+        <view class="section">
+            <view class="section-title">基础用法</view>
+            <view class="section-content">
+                <fanc-cell-group>
+                    <fanc-cell title="普通通知" is-link @click="showInfo" />
+                    <fanc-cell title="成功通知" is-link @click="showSuccess" />
+                    <fanc-cell title="警示通知" is-link @click="showWarning" />
+                    <fanc-cell title="错误通知" is-link @click="showError" />
+                </fanc-cell-group>
+            </view>
+        </view>
 
-        <fanc-cell-group 
-            title="自定义配置" 
-            description="可以自定义消息的关闭按钮、图标和显示时间" 
-            inset
-        >
-            <fanc-cell title="带关闭按钮" is-link @click="showCustom" />
-            <fanc-cell title="无图标通知" is-link @click="showNoIcon" />
-            <fanc-cell title="显示时间长" is-link @click="showLongDuration" />
-            <fanc-cell title="关闭所有" is-link @click="closeAll" />
-        </fanc-cell-group>
+        <view class="section">
+            <view class="section-title">自定义配置</view>
+            <view class="section-content">
+                <fanc-cell-group>
+                    <fanc-cell title="带关闭按钮" is-link @click="showCustom" />
+                    <fanc-cell title="无图标通知" is-link @click="showNoIcon" />
+                    <fanc-cell title="显示时间长" is-link @click="showLongDuration" />
+                    <fanc-cell title="关闭所有" is-link @click="closeAll" />
+                </fanc-cell-group>
+            </view>
+        </view>
 
-        <fanc-cell-group 
-            title="带操作按钮" 
-            description="消息通知可以包含操作按钮，方便用户快速操作" 
-            inset
-        >
-            <fanc-cell title="普通操作按钮" is-link @click="showWithAction" />
-            <fanc-cell title="成功操作按钮" is-link @click="showSuccessAction" />
-            <fanc-cell title="警告操作按钮" is-link @click="showWarningAction" />
-            <fanc-cell title="错误操作按钮" is-link @click="showErrorAction" />
-            
-            <fanc-cell title="快速操作按钮" is-link @click="showQuickAction" />
-            <fanc-cell title="持久操作按钮" is-link @click="showPersistentAction" />
-            <fanc-cell title="点击不关闭按钮" is-link @click="showNoCloseOnAction" />
-        </fanc-cell-group>
+        <view class="section">
+            <view class="section-title">带操作按钮</view>
+            <view class="section-content">
+                <fanc-cell-group>
+                    <fanc-cell title="普通操作按钮" is-link @click="showWithAction" />
+                    <fanc-cell title="成功操作按钮" is-link @click="showSuccessAction" />
+                    <fanc-cell title="警告操作按钮" is-link @click="showWarningAction" />
+                    <fanc-cell title="错误操作按钮" is-link @click="showErrorAction" />
 
-        <fanc-cell-group 
-            title="横向滚动消息" 
-            description="内容较长时可以使用横向滚动展示完整信息" 
-            inset
-        >
-            <fanc-cell title="普通滚动消息" is-link @click="showScrollMessage" />
-            <fanc-cell title="成功滚动消息" is-link @click="showSuccessScroll" />
-            <fanc-cell title="警告滚动消息" is-link @click="showWarningScroll" />
-            <fanc-cell title="错误滚动消息" is-link @click="showErrorScroll" />
-            
+                    <fanc-cell title="快速操作按钮" is-link @click="showQuickAction" />
+                    <fanc-cell title="持久操作按钮" is-link @click="showPersistentAction" />
+                    <fanc-cell title="点击不关闭按钮" is-link @click="showNoCloseOnAction" />
+                </fanc-cell-group>
+            </view>
+        </view>
+
+        <view class="section">
+            <view class="section-title">横向滚动消息</view>
+            <view class="section-content">
+                <fanc-cell-group>
+                    <fanc-cell title="普通滚动消息" is-link @click="showScrollMessage" />
+                    <fanc-cell title="成功滚动消息" is-link @click="showSuccessScroll" />
+                    <fanc-cell title="警告滚动消息" is-link @click="showWarningScroll" />
+                    <fanc-cell title="错误滚动消息" is-link @click="showErrorScroll" />
+                </fanc-cell-group>
+            </view>
+        </view>
+
+        <view class="section">
+            <view class="section-title">自定义滚动消息</view>
             <view class="message-form">
                 <view class="message-form__item">
-                    <text class="message-form__label">自定义滚动消息:</text>
                     <input
                         class="message-form__input"
                         v-model="customScrollMessage"
@@ -78,53 +84,53 @@
                     >
                 </view>
             </view>
-        </fanc-cell-group>
+        </view>
 
-        <fanc-cell-group 
-            title="多条消息" 
-            description="可以同时显示多条消息通知，它们会自动堆叠排列" 
-            inset
-            >
-            <fanc-cell title="显示多条" is-link @click="showMultiple" />
-        </fanc-cell-group>
+        <view class="section">
+            <view class="section-title">多条消息</view>
+            <view class="section-content">
+                <fanc-cell-group>
+                    <fanc-cell title="显示多条" is-link @click="showMultiple" />
+                </fanc-cell-group>
+            </view>
+        </view>
 
         <!-- 测试图标显示 -->
-        <fanc-cell-group 
-            v-if="showIconTest" 
-            title="图标测试" 
-            description="测试不同类型消息的图标显示" 
-            inset
-        >
-            <view class="icon-test-group">
-                <view class="icon-test-item">
-                    <i class="fas fa-info-circle"></i>
-                    <text>info</text>
-                </view>
-                <view class="icon-test-item">
-                    <i class="fas fa-check-circle"></i>
-                    <text>success</text>
-                </view>
-                <view class="icon-test-item">
-                    <i class="fas fa-exclamation-circle"></i>
-                    <text>warning</text>
-                </view>
-                <view class="icon-test-item">
-                    <i class="fas fa-times-circle"></i>
-                    <text>error</text>
+        <view class="section" v-if="showIconTest">
+            <view class="section-title">图标测试</view>
+            <view class="section-content">
+                <view class="icon-test-group">
+                    <view class="icon-test-item">
+                        <i class="fas fa-info-circle"></i>
+                        <text>info</text>
+                    </view>
+                    <view class="icon-test-item">
+                        <i class="fas fa-check-circle"></i>
+                        <text>success</text>
+                    </view>
+                    <view class="icon-test-item">
+                        <i class="fas fa-exclamation-circle"></i>
+                        <text>warning</text>
+                    </view>
+                    <view class="icon-test-item">
+                        <i class="fas fa-times-circle"></i>
+                        <text>error</text>
+                    </view>
                 </view>
             </view>
-        </fanc-cell-group>
+        </view>
 
-        <fanc-cell-group 
-            title="富文本消息" 
-            description="支持在消息中显示富文本内容，如加粗、颜色等样式" 
-            inset
-        >
-            <fanc-cell title="普通富文本" is-link @click="showHtmlMessage" />
-            <fanc-cell title="成功富文本" is-link @click="showHtmlSuccess" />
-            <fanc-cell title="带操作按钮" is-link @click="showHtmlWithAction" />
-            <fanc-cell title="滚动富文本" is-link @click="showHtmlScroll" />
-        </fanc-cell-group>
+        <view class="section">
+            <view class="section-title">富文本消息</view>
+            <view class="section-content">
+                <fanc-cell-group>
+                    <fanc-cell title="普通富文本" is-link @click="showHtmlMessage" />
+                    <fanc-cell title="成功富文本" is-link @click="showHtmlSuccess" />
+                    <fanc-cell title="带操作按钮" is-link @click="showHtmlWithAction" />
+                    <fanc-cell title="滚动富文本" is-link @click="showHtmlScroll" />
+                </fanc-cell-group>
+            </view>
+        </view>
     </view>
 </template>
 
@@ -573,44 +579,78 @@ export default {
 };
 </script>
 
-<style lang="scss">
-.message-form {
-    margin-top: 20px;
-    background-color: #f8f9fa;
-    padding: 16px;
+<style>
+.container {
+    padding: 20px;
+    background-color: #f8f8f8;
+    min-height: 100vh;
+}
+
+.header {
+    margin-bottom: 24px;
+}
+
+.title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #323233;
+    margin-bottom: 8px;
+}
+
+.subtitle {
+    font-size: 14px;
+    color: #969799;
+    line-height: 1.5;
+}
+
+.section {
+    margin-bottom: 24px;
+    background-color: #ffffff;
     border-radius: 8px;
-    border: 1px solid rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+}
 
-    &__item {
-        margin-bottom: 12px;
-    }
+.section-title {
+    font-size: 16px;
+    font-weight: bold;
+    color: #323233;
+    padding: 16px;
+    border-bottom: 1px solid #f2f2f2;
+}
 
-    &__label {
-        display: block;
-        font-size: 14px;
-        color: #646566;
-        margin-bottom: 8px;
-    }
+.message-form {
+    padding: 16px;
+}
 
-    &__input {
-        width: 100%;
-        padding: 8px 12px;
-        background-color: #fff;
-        border: 1px solid #dee2e6;
-        border-radius: 4px;
-        height: 40px;
-        font-size: 14px;
-        color: #333;
-        box-sizing: border-box;
-    }
+.message-form__item {
+    margin-bottom: 12px;
+}
 
-    &__slider {
-        margin: 8px 0;
-    }
+.message-form__label {
+    display: block;
+    font-size: 14px;
+    color: #646566;
+    margin-bottom: 8px;
+}
 
-    &__actions {
-        margin-top: 16px;
-    }
+.message-form__input {
+    width: 100%;
+    padding: 8px 12px;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+    height: 40px;
+    font-size: 14px;
+    color: #333;
+    box-sizing: border-box;
+}
+
+.message-form__slider {
+    margin: 8px 0;
+}
+
+.message-form__actions {
+    margin-top: 16px;
 }
 
 .icon-test-group {
@@ -628,34 +668,30 @@ export default {
     background-color: #fff;
     border-radius: 8px;
     width: 72px;
-
-    i {
-        font-size: 24px;
-        margin-bottom: 8px;
-    }
-
-    text {
-        font-size: 12px;
-    }
-
-    &:nth-child(1) i {
-        color: #1989fa;
-    }
-
-    &:nth-child(2) i {
-        color: #28a745;
-    }
-
-    &:nth-child(3) i {
-        color: #faad14;
-    }
-
-    &:nth-child(4) i {
-        color: #f44336;
-    }
 }
 
-.example-page {
-    padding-bottom: 32px;
+.icon-test-item i {
+    font-size: 24px;
+    margin-bottom: 8px;
+}
+
+.icon-test-item text {
+    font-size: 12px;
+}
+
+.icon-test-item:nth-child(1) i {
+    color: #1989fa;
+}
+
+.icon-test-item:nth-child(2) i {
+    color: #28a745;
+}
+
+.icon-test-item:nth-child(3) i {
+    color: #faad14;
+}
+
+.icon-test-item:nth-child(4) i {
+    color: #f44336;
 }
 </style>

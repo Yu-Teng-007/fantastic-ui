@@ -1,46 +1,34 @@
 <template>
-    <view class="example-page">
-        <view class="example-page__header">
-            <text class="example-page__header-title">单元格组件</text>
-            <text class="example-page__header-desc"
-                >单元格为列表中的单个项目，可以包含标题、内容、图标等</text
-            >
+    <view class="container">
+        <view class="header">
+            <view class="title">单元格</view>
+            <view class="subtitle">单元格为列表中的单个项目，可以包含标题、内容、图标等</view>
         </view>
 
-        <view class="example-page__section">
-            <view class="example-page__section-title">基础用法</view>
-            <view class="example-page__section-desc"
-                >单元格可以单独使用，也可以与单元格组搭配使用</view
-            >
+        <view class="section">
+            <view class="section-title">基础用法</view>
             <fanc-cell title="单元格" content="内容" />
             <fanc-cell title="单元格" content="内容" description="描述信息" />
         </view>
 
-        <view class="example-page__section">
-            <view class="example-page__section-title">单元格组</view>
-            <view class="example-page__section-desc">单元格组可以为单元格提供上下外边框</view>
+        <view class="section">
+            <view class="section-title">单元格组</view>
             <fanc-cell-group title="单元格组">
                 <fanc-cell title="单元格" content="内容" />
                 <fanc-cell title="单元格" content="内容" />
             </fanc-cell-group>
         </view>
 
-        <view class="example-page__section" style="background-color: #f7f7f7;">
-            <view class="example-page__section-title">圆角卡片</view>
-            <view class="example-page__section-desc"
-                >设置 inset 属性后，单元格组会以圆角卡片的形式展示</view
-            >
+        <view class="section">
+            <view class="section-title">圆角卡片</view>
             <fanc-cell-group inset>
                 <fanc-cell title="单元格" content="内容" />
                 <fanc-cell title="单元格" content="内容" />
             </fanc-cell-group>
         </view>
 
-        <view class="example-page__section">
-            <view class="example-page__section-title">使用图标</view>
-            <view class="example-page__section-desc"
-                >通过 icon 属性或 icon 插槽在单元格左侧展示图标</view
-            >
+        <view class="section">
+            <view class="section-title">使用图标</view>
             <fanc-cell title="单元格" content="内容" icon="home" />
             <fanc-cell title="单元格">
                 <template #icon>
@@ -49,26 +37,21 @@
             </fanc-cell>
         </view>
 
-        <view class="example-page__section">
-            <view class="example-page__section-title">展示箭头</view>
-            <view class="example-page__section-desc"
-                >设置 is-link 属性后，单元格右侧会显示箭头，并且可以设置箭头方向</view
-            >
+        <view class="section">
+            <view class="section-title">展示箭头</view>
             <fanc-cell title="单元格" is-link />
             <fanc-cell title="单元格" is-link content="内容" />
             <fanc-cell title="单元格" is-link arrow-direction="down" content="内容" />
         </view>
 
-        <view class="example-page__section">
-            <view class="example-page__section-title">页面导航</view>
-            <view class="example-page__section-desc">可以通过 url 或 to 属性进行页面跳转</view>
+        <view class="section">
+            <view class="section-title">页面导航</view>
             <fanc-cell title="URL 跳转" is-link url="/pages/index/index" />
             <fanc-cell title="路由跳转" is-link to="/pages/index/index" />
         </view>
 
-        <view class="example-page__section">
-            <view class="example-page__section-title">使用插槽</view>
-            <view class="example-page__section-desc">通过插槽可以自定义单元格的各个部分</view>
+        <view class="section">
+            <view class="section-title">使用插槽</view>
             <fanc-cell title="单元格">
                 <template #default>
                     <view class="custom-value">自定义内容</view>
@@ -91,15 +74,13 @@
             </fanc-cell>
         </view>
 
-        <view class="example-page__section">
-            <view class="example-page__section-title">垂直居中</view>
-            <view class="example-page__section-desc">通过 center 属性可以使单元格垂直居中对齐</view>
+        <view class="section">
+            <view class="section-title">垂直居中</view>
             <fanc-cell title="单元格" content="内容" description="描述信息" center />
         </view>
 
-        <view class="example-page__section">
-            <view class="example-page__section-title">大号单元格</view>
-            <view class="example-page__section-desc">通过 large 属性可以增大单元格高度</view>
+        <view class="section">
+            <view class="section-title">大号单元格</view>
             <fanc-cell title="单元格" content="内容" large />
         </view>
     </view>
@@ -109,7 +90,45 @@
 export default {};
 </script>
 
-<style lang="scss">
+<style>
+.container {
+    padding: 20px;
+    background-color: #f8f8f8;
+    min-height: 100vh;
+}
+
+.header {
+    margin-bottom: 24px;
+}
+
+.title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #323233;
+    margin-bottom: 8px;
+}
+
+.subtitle {
+    font-size: 14px;
+    color: #969799;
+    line-height: 1.5;
+}
+
+.section {
+    margin-bottom: 24px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.section-title {
+    font-size: 16px;
+    font-weight: bold;
+    color: #323233;
+    padding: 16px;
+    border-bottom: 1px solid #f2f2f2;
+}
+
 .custom-value {
     color: #1989fa;
     font-weight: 500;

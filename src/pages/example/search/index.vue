@@ -252,21 +252,20 @@ export default {
     background-color: #ffffff;
     border-radius: 8px;
     overflow: hidden;
-    padding: 16px;
 }
 
 .section-title {
     font-size: 16px;
     font-weight: bold;
     color: #323233;
-    padding-bottom: 16px;
+    padding: 16px;
     border-bottom: 1px solid #f2f2f2;
-    margin-bottom: 16px;
 }
 
 .search-content {
     display: flex;
     flex-direction: column;
+    padding: 16px;
 }
 
 .search-item {

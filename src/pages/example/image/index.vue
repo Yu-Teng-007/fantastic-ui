@@ -1,17 +1,16 @@
 <template>
-    <view class="example-page">
-        <view class="example-page__header">
-            <text class="example-page__header-title">Image 图片</text>
-            <text class="example-page__header-desc"
-                >增强版的图片组件，支持懒加载、加载中提示、加载失败提示等特性</text
+    <view class="container">
+        <view class="header">
+            <view class="title">图片</view>
+            <view class="subtitle"
+                >增强版的图片组件，支持懒加载、加载中提示、加载失败提示等特性</view
             >
         </view>
 
         <!-- 基础用法 -->
-        <view class="example-page__section">
-            <view class="example-page__section-title">基础用法</view>
-            <view class="example-page__section-desc">基础的图片用法</view>
-            <view class="example-page__content">
+        <view class="section">
+            <view class="section-title">基础用法</view>
+            <view class="section-content">
                 <fanc-image
                     src="/static/img/demo/little_boy_with_trumpet.png"
                     width="200"
@@ -21,33 +20,30 @@
         </view>
 
         <!-- 图片模式 -->
-        <view class="example-page__section">
-            <view class="example-page__section-title">图片模式</view>
-            <view class="example-page__section-desc"
-                >通过 mode 属性可以设置图片裁剪、缩放的模式</view
-            >
-            <view class="example-page__content image-mode-demo">
-                <view class="image-mode-item" v-for="(item, index) in modes" :key="index">
-                    <fanc-image :src="demoImageUrl" width="80" height="80" :mode="item" />
-                    <text class="image-mode-text">{{ item }}</text>
+        <view class="section">
+            <view class="section-title">图片模式</view>
+            <view class="section-content">
+                <view class="image-mode-demo">
+                    <view class="image-mode-item" v-for="(item, index) in modes" :key="index">
+                        <fanc-image :src="demoImageUrl" width="80" height="80" :mode="item" />
+                        <text class="image-mode-text">{{ item }}</text>
+                    </view>
                 </view>
             </view>
         </view>
 
         <!-- 圆形图片 -->
-        <view class="example-page__section">
-            <view class="example-page__section-title">圆形图片</view>
-            <view class="example-page__section-desc">通过 round 属性可以设置图片变圆</view>
-            <view class="example-page__content">
+        <view class="section">
+            <view class="section-title">圆形图片</view>
+            <view class="section-content">
                 <fanc-image :src="demoImageUrl" width="100" height="100" mode="aspectFill" round />
             </view>
         </view>
 
         <!-- 加载中提示 -->
-        <view class="example-page__section">
-            <view class="example-page__section-title">加载中提示</view>
-            <view class="example-page__section-desc">Image 组件提供了默认的加载中提示</view>
-            <view class="example-page__content">
+        <view class="section">
+            <view class="section-title">加载中提示</view>
+            <view class="section-content">
                 <view class="loading-demo">
                     <fanc-image
                         :key="loadingKey"
@@ -62,10 +58,9 @@
         </view>
 
         <!-- 加载失败提示 -->
-        <view class="example-page__section">
-            <view class="example-page__section-title">加载失败提示</view>
-            <view class="example-page__section-desc">Image 组件提供了默认的加载失败提示</view>
-            <view class="example-page__content">
+        <view class="section">
+            <view class="section-title">加载失败提示</view>
+            <view class="section-content">
                 <fanc-image
                     src="https://1.jpg"
                     width="100"
@@ -77,27 +72,27 @@
         </view>
 
         <!-- 图片懒加载 -->
-        <view class="example-page__section">
-            <view class="example-page__section-title">图片懒加载</view>
-            <view class="example-page__section-desc">设置 lazy-load 属性来开启图片懒加载</view>
-            <view class="example-page__content lazy-load-demo">
-                <fanc-image
-                    v-for="(item, index) in lazyImages"
-                    :key="index"
-                    :src="item"
-                    width="100%"
-                    height="200"
-                    mode="aspectFill"
-                    lazy-load
-                />
+        <view class="section">
+            <view class="section-title">图片懒加载</view>
+            <view class="section-content">
+                <view class="lazy-load-demo">
+                    <fanc-image
+                        v-for="(item, index) in lazyImages"
+                        :key="index"
+                        :src="item"
+                        width="100%"
+                        height="200"
+                        mode="aspectFill"
+                        lazy-load
+                    />
+                </view>
             </view>
         </view>
 
         <!-- 事件监听 -->
-        <view class="example-page__section">
-            <view class="example-page__section-title">事件监听</view>
-            <view class="example-page__section-desc">监听图片的加载成功和失败事件</view>
-            <view class="example-page__content">
+        <view class="section">
+            <view class="section-title">事件监听</view>
+            <view class="section-content">
                 <fanc-image
                     src="/static/img/demo/woman_with_trumpet.png"
                     width="200"
@@ -164,48 +159,90 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style>
+.container {
+    padding: 20px;
+    background-color: #f8f8f8;
+    min-height: 100vh;
+}
+
+.header {
+    margin-bottom: 24px;
+}
+
+.title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #323233;
+    margin-bottom: 8px;
+}
+
+.subtitle {
+    font-size: 14px;
+    color: #969799;
+    line-height: 1.5;
+}
+
+.section {
+    margin-bottom: 24px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.section-title {
+    font-size: 16px;
+    font-weight: bold;
+    color: #323233;
+    padding: 16px;
+    border-bottom: 1px solid #f2f2f2;
+}
+
+.section-content {
+    padding: 16px;
+}
+
 .image-mode-demo {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+}
 
-    .image-mode-item {
-        margin: 0 12px 12px 0;
-        text-align: center;
+.image-mode-item {
+    margin: 0 12px 12px 0;
+    text-align: center;
+}
 
-        .image-mode-text {
-            font-size: 12px;
-            color: #969799;
-            margin-top: 6px;
-            display: block;
-            word-break: break-word;
-        }
-    }
+.image-mode-text {
+    font-size: 12px;
+    color: #969799;
+    margin-top: 6px;
+    display: block;
+    word-break: break-word;
 }
 
 .loading-demo {
     display: flex;
     align-items: center;
+}
 
-    .loading-demo-btn {
-        background-color: #007bff;
-        color: #fff;
-        font-size: 14px;
-        padding: 8px 16px;
-        border-radius: 4px;
-        margin-left: 16px;
-        cursor: pointer;
-    }
+.loading-demo-btn {
+    background-color: #007bff;
+    color: #fff;
+    font-size: 14px;
+    padding: 8px 16px;
+    border-radius: 4px;
+    margin-left: 16px;
+    cursor: pointer;
 }
 
 .lazy-load-demo {
     display: flex;
     flex-direction: column;
+}
 
-    .fanc-image {
-        margin-bottom: 12px;
-    }
+.lazy-load-demo .fanc-image {
+    margin-bottom: 12px;
 }
 
 .event-result {
@@ -213,10 +250,10 @@ export default {
     padding: 12px;
     background-color: #f7f8fa;
     border-radius: 4px;
+}
 
-    .event-result-text {
-        font-size: 14px;
-        color: #323233;
-    }
+.event-result-text {
+    font-size: 14px;
+    color: #323233;
 }
 </style>

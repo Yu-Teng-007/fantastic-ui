@@ -1,24 +1,20 @@
 <template>
-    <view class="example-page">
-        <view class="example-page__header">
-            <text class="example-page__header-title">下拉菜单栏</text>
-            <text class="example-page__header-desc"
-                >用于在页面中展示多个菜单选项，支持横向滑动和下拉选择</text
-            >
+    <view class="container">
+        <view class="header">
+            <view class="title">下拉菜单栏</view>
+            <view class="subtitle">用于在页面中展示多个菜单选项，支持横向滑动和下拉选择</view>
         </view>
 
-        <view class="example-page__section">
-            <view class="example-page__section-title">基础用法</view>
-            <view class="example-page__section-desc">基础的下拉菜单栏用法，展示多个筛选条件</view>
-            <view class="example-page__content">
+        <view class="section">
+            <view class="section-title">基础用法</view>
+            <view class="section-content">
                 <fanc-dropdown-menu :options="basicOptions"></fanc-dropdown-menu>
             </view>
         </view>
 
-        <view class="example-page__section">
-            <view class="example-page__section-title">自定义默认值</view>
-            <view class="example-page__section-desc">可以通过默认值配置初始选中的选项</view>
-            <view class="example-page__content">
+        <view class="section">
+            <view class="section-title">自定义默认值</view>
+            <view class="section-content">
                 <fanc-dropdown-menu
                     :options="basicOptions"
                     :defaultValues="['zhejiang', 'noodles']"
@@ -26,46 +22,37 @@
             </view>
         </view>
 
-        <view class="example-page__section">
-            <view class="example-page__section-title">禁用菜单</view>
-            <view class="example-page__section-desc">可以禁用特定的菜单项</view>
-            <view class="example-page__content">
+        <view class="section">
+            <view class="section-title">禁用菜单</view>
+            <view class="section-content">
                 <fanc-dropdown-menu :options="disabledOptions"></fanc-dropdown-menu>
             </view>
         </view>
 
-        <view class="example-page__section">
-            <view class="example-page__section-title">向上展开</view>
-            <view class="example-page__section-desc"
-                >菜单可以向上展开，适合固定在页面底部的场景</view
-            >
-            <view class="example-page__content">
+        <view class="section">
+            <view class="section-title">向上展开</view>
+            <view class="section-content">
                 <fanc-dropdown-menu :options="basicOptions" direction="up"></fanc-dropdown-menu>
             </view>
         </view>
 
-        <view class="example-page__section">
-            <view class="example-page__section-title">不显示遮罩层</view>
-            <view class="example-page__section-desc"
-                >可以配置不显示遮罩层，允许同时操作页面其他内容</view
-            >
-            <view class="example-page__content">
+        <view class="section">
+            <view class="section-title">不显示遮罩层</view>
+            <view class="section-content">
                 <fanc-dropdown-menu :options="basicOptions" :overlay="false"></fanc-dropdown-menu>
             </view>
         </view>
 
-        <view class="example-page__section">
-            <view class="example-page__section-title">横向滑动</view>
-            <view class="example-page__section-desc">当菜单项较多时，支持横向滑动菜单栏</view>
-            <view class="example-page__content">
+        <view class="section">
+            <view class="section-title">横向滑动</view>
+            <view class="section-content">
                 <fanc-dropdown-menu :options="manyOptions"></fanc-dropdown-menu>
             </view>
         </view>
 
-        <view class="example-page__section">
-            <view class="example-page__section-title">自定义排序</view>
-            <view class="example-page__section-desc">支持自定义排序下拉选项</view>
-            <view class="example-page__content">
+        <view class="section">
+            <view class="section-title">自定义排序</view>
+            <view class="section-content">
                 <fanc-dropdown-menu
                     :options="sortableOptions"
                     :sortFunction="sortByName"
@@ -73,12 +60,9 @@
             </view>
         </view>
 
-        <view class="example-page__section">
-            <view class="example-page__section-title">自定义选中态颜色</view>
-            <view class="example-page__section-desc"
-                >可以自定义选中状态的颜色，搭配不同风格的页面</view
-            >
-            <view class="example-page__content">
+        <view class="section">
+            <view class="section-title">自定义选中态颜色</view>
+            <view class="section-content">
                 <fanc-dropdown-menu
                     :options="basicOptions"
                     active-color="#ff4757"
@@ -96,14 +80,11 @@
             </view>
         </view>
 
-        <view class="example-page__section">
-            <view class="example-page__section-title">事件监听</view>
-            <view class="example-page__section-desc">监听菜单栏的选择事件</view>
-            <view class="example-page__content">
+        <view class="section">
+            <view class="section-title">事件监听</view>
+            <view class="section-content">
                 <fanc-dropdown-menu :options="basicOptions" @select="onSelect"></fanc-dropdown-menu>
-                <view v-if="selectedText" class="example-page__result">
-                    当前选择: {{ selectedText }}
-                </view>
+                <view v-if="selectedText" class="result-box"> 当前选择: {{ selectedText }} </view>
             </view>
         </view>
     </view>
@@ -240,4 +221,54 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped></style>
+<style>
+.container {
+    padding: 20px;
+    background-color: #f8f8f8;
+    min-height: 100vh;
+}
+
+.header {
+    margin-bottom: 24px;
+}
+
+.title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #323233;
+    margin-bottom: 8px;
+}
+
+.subtitle {
+    font-size: 14px;
+    color: #969799;
+    line-height: 1.5;
+}
+
+.section {
+    margin-bottom: 24px;
+    background-color: #ffffff;
+    border-radius: 8px;
+}
+
+.section-title {
+    font-size: 16px;
+    font-weight: bold;
+    color: #323233;
+    padding: 16px;
+    border-bottom: 1px solid #f2f2f2;
+}
+
+.section-content {
+    padding: 16px;
+}
+
+.result-box {
+    margin-top: 16px;
+    padding: 12px;
+    background-color: #f5f7fa;
+    border-radius: 4px;
+    font-size: 14px;
+    color: #323233;
+}
+</style>

@@ -1,15 +1,12 @@
 <template>
-    <view class="example-page">
-        <view class="example-page__header">
-            <text class="example-page__header-title">签名组件</text>
-            <text class="example-page__header-desc">用于手写签名场景，支持导出签名图片</text>
+    <view class="container">
+        <view class="header">
+            <view class="title">签名组件</view>
+            <view class="subtitle">用于手写签名场景，支持导出签名图片</view>
         </view>
 
-        <view class="example-page__section">
-            <view class="example-page__section-title">基础用法</view>
-            <view class="example-page__section-desc"
-                >基础的签名组件用法，提供清除、确认和取消操作</view
-            >
+        <view class="section">
+            <view class="section-title">基础用法</view>
             <view class="signature-container">
                 <fanc-signature @confirm="onConfirm1" @cancel="onCancel1" @clear="onClear1" />
             </view>
@@ -18,9 +15,8 @@
             </view>
         </view>
 
-        <view class="example-page__section">
-            <view class="example-page__section-title">自定义画笔</view>
-            <view class="example-page__section-desc">可以自定义画笔颜色和宽度</view>
+        <view class="section">
+            <view class="section-title">自定义画笔</view>
             <view class="signature-container">
                 <fanc-signature
                     penColor="#007bff"
@@ -34,9 +30,8 @@
             </view>
         </view>
 
-        <view class="example-page__section">
-            <view class="example-page__section-title">自定义尺寸</view>
-            <view class="example-page__section-desc">可以自定义签名区域的宽度和高度</view>
+        <view class="section">
+            <view class="section-title">自定义尺寸</view>
             <view class="signature-container">
                 <fanc-signature
                     width="100%"
@@ -50,9 +45,8 @@
             </view>
         </view>
 
-        <view class="example-page__section">
-            <view class="example-page__section-title">自定义按钮文本</view>
-            <view class="example-page__section-desc">可以自定义操作按钮的文本</view>
+        <view class="section">
+            <view class="section-title">自定义按钮文本</view>
             <view class="signature-container">
                 <fanc-signature
                     clearText="重写"
@@ -67,9 +61,8 @@
             </view>
         </view>
 
-        <view class="example-page__section">
-            <view class="example-page__section-title">隐藏部分按钮</view>
-            <view class="example-page__section-desc">可以选择性地隐藏某些操作按钮</view>
+        <view class="section">
+            <view class="section-title">隐藏部分按钮</view>
             <view class="signature-container">
                 <fanc-signature :showCancel="false" @confirm="onConfirm5" @clear="onClear5" />
             </view>
@@ -78,17 +71,15 @@
             </view>
         </view>
 
-        <view class="example-page__section">
-            <view class="example-page__section-title">禁用状态</view>
-            <view class="example-page__section-desc">禁用状态下无法进行签名操作</view>
+        <view class="section">
+            <view class="section-title">禁用状态</view>
             <view class="signature-container">
                 <fanc-signature disabled />
             </view>
         </view>
 
-        <view class="example-page__section">
-            <view class="example-page__section-title">透明背景</view>
-            <view class="example-page__section-desc">导出的签名图片可以使用透明背景</view>
+        <view class="section">
+            <view class="section-title">透明背景</view>
             <view class="signature-container">
                 <fanc-signature
                     :isTransparent="true"
@@ -199,21 +190,54 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
-.signature-container {
-    margin: 16px 0;
-    padding: 16px;
+<style>
+.container {
+    padding: 20px;
+    background-color: #f8f8f8;
+    min-height: 100vh;
+}
+
+.header {
+    margin-bottom: 24px;
+}
+
+.title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #323233;
+    margin-bottom: 8px;
+}
+
+.subtitle {
+    font-size: 14px;
+    color: #969799;
+    line-height: 1.5;
+}
+
+.section {
+    margin-bottom: 24px;
     background-color: #ffffff;
     border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+}
+
+.section-title {
+    font-size: 16px;
+    font-weight: bold;
+    color: #323233;
+    padding: 16px;
+    border-bottom: 1px solid #f2f2f2;
+}
+
+.signature-container {
+    padding: 16px;
+    background-color: #ffffff;
+    border-bottom: 1px solid #f2f2f2;
 }
 
 .signature-result {
-    margin: 16px 0;
     padding: 16px;
     background-color: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
     display: flex;
     justify-content: center;
 }
@@ -224,5 +248,43 @@ export default {
     border: 1px solid #ebedf0;
     border-radius: 4px;
     background-color: #f7f8fa;
+}
+
+.cell {
+    display: flex;
+    align-items: center;
+    padding: 16px;
+    border-bottom: 1px solid #f2f2f2;
+    position: relative;
+}
+
+.cell:last-child {
+    border-bottom: none;
+}
+
+.cell-title {
+    flex: 1;
+    font-size: 14px;
+    color: #323233;
+}
+
+.cell-value {
+    font-size: 14px;
+    color: #969799;
+    margin-right: 8px;
+}
+
+.cell-arrow {
+    width: 16px;
+    height: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.arrow-icon {
+    font-size: 14px;
+    color: #c8c9cc;
+    transform: rotate(90deg);
 }
 </style>

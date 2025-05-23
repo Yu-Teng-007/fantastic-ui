@@ -1,16 +1,15 @@
 <template>
-    <view class="example-page">
-        <view class="example-page__header">
-            <text class="example-page__header-title">输入框组件</text>
-            <text class="example-page__header-desc"
-                >输入框组件用于用户信息输入，支持文本、密码、数字等类型，并提供多种输入控制和外观定制选项</text
+    <view class="container">
+        <view class="header">
+            <view class="title">输入框组件</view>
+            <view class="subtitle"
+                >输入框组件用于用户信息输入，支持文本、密码、数字等类型，并提供多种输入控制和外观定制选项</view
             >
         </view>
 
-        <view class="example-page__section">
-            <view class="example-page__section-title">基础用法</view>
-            <view class="example-page__section-desc">基础的输入框用法，提供左侧标签。</view>
-            <view class="example-section__content">
+        <view class="section">
+            <view class="section-title">基础用法</view>
+            <view class="section-content">
                 <fanc-field v-model="value1" label="文本" placeholder="请输入文本"></fanc-field>
                 <fanc-field v-model="value2" label="手机号" placeholder="请输入手机号"></fanc-field>
                 <fanc-field v-model="value3" label="整数" placeholder="请输入整数"></fanc-field>
@@ -29,12 +28,9 @@
             </view>
         </view>
 
-        <view class="example-page__section">
-            <view class="example-page__section-title">自定义类型</view>
-            <view class="example-page__section-desc"
-                >输入框支持多种类型输入，可通过type属性控制。</view
-            >
-            <view class="example-section__content">
+        <view class="section">
+            <view class="section-title">自定义类型</view>
+            <view class="section-content">
                 <fanc-field
                     v-model="value6"
                     label="文本域"
@@ -57,12 +53,9 @@
             </view>
         </view>
 
-        <view class="example-page__section">
-            <view class="example-page__section-title">禁用和只读</view>
-            <view class="example-page__section-desc"
-                >通过 disabled 和 readonly 属性控制输入框状态。</view
-            >
-            <view class="example-section__content">
+        <view class="section">
+            <view class="section-title">禁用和只读</view>
+            <view class="section-content">
                 <fanc-field
                     v-model="value9"
                     label="禁用输入框"
@@ -78,12 +71,9 @@
             </view>
         </view>
 
-        <view class="example-page__section">
-            <view class="example-page__section-title">显示图标</view>
-            <view class="example-page__section-desc"
-                >通过 leftIcon 和 rightIcon 属性设置输入框两侧的图标。</view
-            >
-            <view class="example-section__content">
+        <view class="section">
+            <view class="section-title">显示图标</view>
+            <view class="section-content">
                 <fanc-field
                     v-model="value11"
                     label="用户名"
@@ -101,12 +91,9 @@
             </view>
         </view>
 
-        <view class="example-page__section">
-            <view class="example-page__section-title">错误提示</view>
-            <view class="example-page__section-desc"
-                >通过 error 和 errorMessage 属性显示错误提示。</view
-            >
-            <view class="example-section__content">
+        <view class="section">
+            <view class="section-title">错误提示</view>
+            <view class="section-content">
                 <fanc-field
                     v-model="value13"
                     label="用户名"
@@ -129,12 +116,9 @@
             </view>
         </view>
 
-        <view class="example-page__section">
-            <view class="example-page__section-title">显示清除按钮</view>
-            <view class="example-page__section-desc"
-                >通过 clearable 属性在输入框有内容时显示清除按钮。</view
-            >
-            <view class="example-section__content">
+        <view class="section">
+            <view class="section-title">显示清除按钮</view>
+            <view class="section-content">
                 <fanc-field
                     v-model="value15"
                     label="用户名"
@@ -151,12 +135,9 @@
             </view>
         </view>
 
-        <view class="example-page__section">
-            <view class="example-page__section-title">字数统计</view>
-            <view class="example-page__section-desc"
-                >通过 maxlength 和 showWordLimit 属性显示字数统计。</view
-            >
-            <view class="example-section__content">
+        <view class="section">
+            <view class="section-title">字数统计</view>
+            <view class="section-content">
                 <fanc-field
                     v-model="value17"
                     label="留言"
@@ -170,10 +151,9 @@
             </view>
         </view>
 
-        <view class="example-page__section">
-            <view class="example-page__section-title">垂直居中</view>
-            <view class="example-page__section-desc">通过 center 属性使输入框垂直居中对齐。</view>
-            <view class="example-section__content">
+        <view class="section">
+            <view class="section-title">垂直居中</view>
+            <view class="section-content">
                 <fanc-field
                     v-model="value18"
                     center
@@ -188,10 +168,9 @@
             </view>
         </view>
 
-        <view class="example-page__section">
-            <view class="example-page__section-title">必填标识</view>
-            <view class="example-page__section-desc">通过 required 属性显示必填标识。</view>
-            <view class="example-section__content">
+        <view class="section">
+            <view class="section-title">必填标识</view>
+            <view class="section-content">
                 <fanc-field
                     v-model="value20"
                     required
@@ -208,12 +187,9 @@
             </view>
         </view>
 
-        <view class="example-page__section">
-            <view class="example-page__section-title">左侧图标</view>
-            <view class="example-page__section-desc"
-                >通过leftIcon属性设置图标，图标会显示在标签之前。</view
-            >
-            <view class="example-section__content">
+        <view class="section">
+            <view class="section-title">左侧图标</view>
+            <view class="section-content">
                 <fanc-field
                     v-model="value24"
                     leftIcon="user"
@@ -242,12 +218,9 @@
             </view>
         </view>
 
-        <view class="example-page__section">
-            <view class="example-page__section-title">自定义按钮</view>
-            <view class="example-page__section-desc"
-                >使用插槽可以自定义右侧内容，如添加按钮等。</view
-            >
-            <view class="example-section__content">
+        <view class="section">
+            <view class="section-title">自定义按钮</view>
+            <view class="section-content">
                 <fanc-field
                     v-model="value22"
                     label="短信验证码"
@@ -362,11 +335,47 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
-.example-section__content {
-    padding: 0;
-    background-color: #fff;
+<style>
+.container {
+    padding: 20px;
+    background-color: #f8f8f8;
+    min-height: 100vh;
+}
+
+.header {
+    margin-bottom: 24px;
+}
+
+.title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #323233;
+    margin-bottom: 8px;
+}
+
+.subtitle {
+    font-size: 14px;
+    color: #969799;
+    line-height: 1.5;
+}
+
+.section {
+    margin-bottom: 24px;
+    background-color: #ffffff;
     border-radius: 8px;
+    overflow: hidden;
+}
+
+.section-title {
+    font-size: 16px;
+    font-weight: bold;
+    color: #323233;
+    padding: 16px;
+    border-bottom: 1px solid #f2f2f2;
+}
+
+.section-content {
+    background-color: #fff;
     overflow: hidden;
 }
 

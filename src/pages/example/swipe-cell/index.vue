@@ -1,13 +1,12 @@
 <template>
-    <view class="example-page">
-        <view class="example-page__header">
-            <text class="example-page__header-title">滑动单元格</text>
-            <text class="example-page__header-desc">可以左右滑动来展示操作按钮的单元格组件</text>
+    <view class="container">
+        <view class="header">
+            <view class="title">滑动单元格</view>
+            <view class="subtitle">可以左右滑动来展示操作按钮的单元格组件</view>
         </view>
 
-        <view class="example-page__section">
-            <view class="example-page__section-title">基础用法</view>
-            <view class="example-page__section-desc">左滑显示删除按钮，点击单元格关闭</view>
+        <view class="section">
+            <view class="section-title">基础用法</view>
             <fanc-swipe-cell right-width="70">
                 <fanc-cell title="基础用法" content="向左滑动" />
                 <template #right>
@@ -16,9 +15,8 @@
             </fanc-swipe-cell>
         </view>
 
-        <view class="example-page__section">
-            <view class="example-page__section-title">左右滑动</view>
-            <view class="example-page__section-desc">可以同时设置左滑和右滑两个方向的按钮</view>
+        <view class="section">
+            <view class="section-title">左右滑动</view>
             <fanc-swipe-cell left-width="80" right-width="140">
                 <fanc-cell title="左右滑动" content="支持多个按钮" />
                 <template #left>
@@ -31,9 +29,8 @@
             </fanc-swipe-cell>
         </view>
 
-        <view class="example-page__section">
-            <view class="example-page__section-title">自定义内容</view>
-            <view class="example-page__section-desc">可以在滑动单元格中放入任意内容</view>
+        <view class="section">
+            <view class="section-title">自定义内容</view>
             <fanc-swipe-cell right-width="70">
                 <view class="custom-content">
                     <fanc-icon
@@ -55,9 +52,8 @@
             </fanc-swipe-cell>
         </view>
 
-        <view class="example-page__section">
-            <view class="example-page__section-title">禁用状态</view>
-            <view class="example-page__section-desc">设置disabled属性可以禁用滑动</view>
+        <view class="section">
+            <view class="section-title">禁用状态</view>
             <fanc-swipe-cell right-width="70" disabled>
                 <fanc-cell title="禁用状态" content="无法滑动" />
                 <template #right>
@@ -66,9 +62,8 @@
             </fanc-swipe-cell>
         </view>
 
-        <view class="example-page__section">
-            <view class="example-page__section-title">异步关闭</view>
-            <view class="example-page__section-desc">点击删除后，触发异步操作，完成后关闭</view>
+        <view class="section">
+            <view class="section-title">异步关闭</view>
             <fanc-swipe-cell right-width="70" ref="asyncCell">
                 <fanc-cell title="异步操作" content="点击删除触发" />
                 <template #right>
@@ -79,9 +74,8 @@
             </fanc-swipe-cell>
         </view>
 
-        <view class="example-page__section">
-            <view class="example-page__section-title">事件监听</view>
-            <view class="example-page__section-desc">可以监听单元格的点击、打开和关闭事件</view>
+        <view class="section">
+            <view class="section-title">事件监听</view>
             <fanc-swipe-cell
                 right-width="70"
                 ref="eventCell"
@@ -96,9 +90,8 @@
             </fanc-swipe-cell>
         </view>
 
-        <view class="example-page__section">
-            <view class="example-page__section-title">滑动阈值</view>
-            <view class="example-page__section-desc">设置threshold属性可自定义滑动阈值比例</view>
+        <view class="section">
+            <view class="section-title">滑动阈值</view>
             <fanc-swipe-cell right-width="70" :threshold="0.5">
                 <fanc-cell title="滑动阈值" content="需要滑动超过50%才会触发" />
                 <template #right>
@@ -145,8 +138,46 @@ export default {
 };
 </script>
 
-<style lang="scss">
-// 左侧操作按钮样式
+<style>
+.container {
+    padding: 20px;
+    background-color: #f8f8f8;
+    min-height: 100vh;
+}
+
+.header {
+    margin-bottom: 24px;
+}
+
+.title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #323233;
+    margin-bottom: 8px;
+}
+
+.subtitle {
+    font-size: 14px;
+    color: #969799;
+    line-height: 1.5;
+}
+
+.section {
+    margin-bottom: 24px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.section-title {
+    font-size: 16px;
+    font-weight: bold;
+    color: #323233;
+    padding: 16px;
+    border-bottom: 1px solid #f2f2f2;
+}
+
+/* 左侧操作按钮样式 */
 .swipe-cell-left {
     display: flex;
     align-items: center;
@@ -158,7 +189,7 @@ export default {
     font-size: 14px;
 }
 
-// 右侧操作按钮样式
+/* 右侧操作按钮样式 */
 .swipe-cell-right {
     display: flex;
     align-items: center;
@@ -170,22 +201,22 @@ export default {
     font-size: 14px;
 }
 
-// 删除按钮
+/* 删除按钮 */
 .delete-button {
     background-color: #ff4d4f;
 }
 
-// 编辑按钮
+/* 编辑按钮 */
 .edit-button {
     background-color: #1989fa;
 }
 
-// 收藏按钮
+/* 收藏按钮 */
 .collect-button {
     background-color: #ff9800;
 }
 
-// 自定义内容
+/* 自定义内容 */
 .custom-content {
     display: flex;
     align-items: center;
