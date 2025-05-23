@@ -185,8 +185,8 @@ export default {
     }
 
     &--large {
-        padding-top: 12px;
-        padding-bottom: 12px;
+        padding-top: 14px;
+        padding-bottom: 14px;
     }
 
     &--center {
