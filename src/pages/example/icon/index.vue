@@ -1,15 +1,13 @@
 <template>
-    <view class="example-page">
-        <view class="example-page__header">
-            <text class="example-page__header-title">图标组件</text>
-            <text class="example-page__header-desc"
-                >提供丰富的图标集合，支持自定义颜色、大小和样式</text
-            >
+    <view class="container">
+        <view class="header">
+            <view class="title">图标</view>
+            <view class="subtitle">提供丰富的图标集合，支持自定义颜色、大小和样式</view>
         </view>
 
-        <view class="example-page__section">
-            <view class="example-page__section-title">基础用法</view>
-            <view class="example-page__section-desc">基本的图标使用，通过name属性指定图标</view>
+        <!-- 基础用法 -->
+        <view class="section">
+            <view class="section-title">基础用法</view>
             <view class="icon-grid">
                 <view class="icon-cell">
                     <fanc-icon name="home" size="24"></fanc-icon>
@@ -34,11 +32,9 @@
             </view>
         </view>
 
-        <view class="example-page__section">
-            <view class="example-page__section-title">图标类型</view>
-            <view class="example-page__section-desc"
-                >支持多种类型的图标，包括实心、线性和品牌图标</view
-            >
+        <!-- 图标类型 -->
+        <view class="section">
+            <view class="section-title">图标类型</view>
             <view class="icon-grid">
                 <view class="icon-cell">
                     <fanc-icon name="user" type="solid" size="24"></fanc-icon>
@@ -55,9 +51,9 @@
             </view>
         </view>
 
-        <view class="example-page__section">
-            <view class="example-page__section-title">不同颜色</view>
-            <view class="example-page__section-desc">可以自定义图标的颜色，支持各种颜色值</view>
+        <!-- 不同颜色 -->
+        <view class="section">
+            <view class="section-title">不同颜色</view>
             <view class="icon-grid">
                 <view class="icon-cell">
                     <fanc-icon name="check" size="24" color="#28a745"></fanc-icon>
@@ -82,9 +78,9 @@
             </view>
         </view>
 
-        <view class="example-page__section">
-            <view class="example-page__section-title">不同尺寸</view>
-            <view class="example-page__section-desc">可以设置图标的尺寸，单位为px</view>
+        <!-- 不同尺寸 -->
+        <view class="section">
+            <view class="section-title">不同尺寸</view>
             <view class="icon-grid">
                 <view class="icon-cell">
                     <fanc-icon name="cog" size="16"></fanc-icon>
@@ -105,11 +101,9 @@
             </view>
         </view>
 
-        <view class="example-page__section">
-            <view class="example-page__section-title">小红点(dot)</view>
-            <view class="example-page__section-desc"
-                >在图标右上角显示一个小红点，常用于消息提醒</view
-            >
+        <!-- 小红点 -->
+        <view class="section">
+            <view class="section-title">小红点(dot)</view>
             <view class="icon-grid">
                 <view class="icon-cell">
                     <fanc-icon name="bell" size="24" dot></fanc-icon>
@@ -126,11 +120,9 @@
             </view>
         </view>
 
-        <view class="example-page__section">
-            <view class="example-page__section-title">徽标(badge)</view>
-            <view class="example-page__section-desc"
-                >在图标右上角显示徽标数字，用于显示消息数量</view
-            >
+        <!-- 徽标 -->
+        <view class="section">
+            <view class="section-title">徽标(badge)</view>
             <view class="icon-grid">
                 <view class="icon-cell">
                     <fanc-icon name="bell" size="24" badge="8"></fanc-icon>
@@ -147,9 +139,9 @@
             </view>
         </view>
 
-        <view class="example-page__section">
-            <view class="example-page__section-title">旋转动画(spin)</view>
-            <view class="example-page__section-desc">图标可以添加旋转动画，常用于加载指示</view>
+        <!-- 旋转动画 -->
+        <view class="section">
+            <view class="section-title">旋转动画(spin)</view>
             <view class="icon-grid">
                 <view class="icon-cell">
                     <fanc-icon name="sync" size="24" spin></fanc-icon>
@@ -170,11 +162,9 @@
             </view>
         </view>
 
-        <view class="example-page__section">
-            <view class="example-page__section-title">图片图标</view>
-            <view class="example-page__section-desc"
-                >支持使用图片URL作为图标，适用于自定义图标</view
-            >
+        <!-- 图片图标 -->
+        <view class="section">
+            <view class="section-title">图片图标</view>
             <view class="icon-grid">
                 <view class="icon-cell">
                     <fanc-icon name="https://img.yzcdn.cn/vant/logo.png" size="32"></fanc-icon>
@@ -191,9 +181,9 @@
             </view>
         </view>
 
-        <view class="example-page__section">
-            <view class="example-page__section-title">自定义样式</view>
-            <view class="example-page__section-desc">可以通过customStyle属性自定义图标的样式</view>
+        <!-- 自定义样式 -->
+        <view class="section">
+            <view class="section-title">自定义样式</view>
             <view class="icon-grid">
                 <view class="icon-cell">
                     <fanc-icon
@@ -221,9 +211,9 @@
             </view>
         </view>
 
-        <view class="example-page__section">
-            <view class="example-page__section-title">点击事件</view>
-            <view class="example-page__section-desc">图标可以绑定点击事件，用于交互操作</view>
+        <!-- 点击事件 -->
+        <view class="section">
+            <view class="section-title">点击事件</view>
             <view class="icon-grid">
                 <view class="icon-cell">
                     <fanc-icon
@@ -248,9 +238,9 @@
             </view>
         </view>
 
-        <view class="example-page__section">
-            <view class="example-page__section-title">常用图标集合</view>
-            <view class="example-page__section-desc">一些常用的图标，点击可复制图标名称</view>
+        <!-- 常用图标集合 -->
+        <view class="section">
+            <view class="section-title">常用图标集合</view>
             <view class="icon-grid">
                 <view
                     class="icon-cell"
@@ -327,7 +317,47 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style>
+.container {
+    padding: 20px;
+    background-color: #f8f8f8;
+    min-height: 100vh;
+}
+
+.header {
+    margin-bottom: 24px;
+}
+
+.title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #323233;
+    margin-bottom: 8px;
+}
+
+.subtitle {
+    font-size: 14px;
+    color: #969799;
+    line-height: 1.5;
+}
+
+.section {
+    margin-bottom: 24px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+    padding: 16px;
+}
+
+.section-title {
+    font-size: 16px;
+    font-weight: bold;
+    color: #323233;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #f2f2f2;
+    margin-bottom: 16px;
+}
+
 .icon-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
@@ -345,21 +375,21 @@ export default {
     border-radius: 8px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
     transition: all 0.3s;
+}
 
-    &:active {
-        transform: scale(0.96);
-        opacity: 0.8;
-    }
+.icon-cell:active {
+    transform: scale(0.96);
+    opacity: 0.8;
+}
 
-    .icon-name {
-        font-size: 12px;
-        color: #646566;
-        margin-top: 8px;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        width: 100%;
-        text-align: center;
-    }
+.icon-name {
+    font-size: 12px;
+    color: #646566;
+    margin-top: 8px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: 100%;
+    text-align: center;
 }
 </style>

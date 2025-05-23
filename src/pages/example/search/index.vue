@@ -1,43 +1,41 @@
 <template>
-    <view class="example-page">
-        <view class="example-page__header">
-            <text class="example-page__header-title">搜索组件</text>
-            <text class="example-page__header-desc">搜索组件用于展示搜索框，通常用于搜索场景</text>
+    <view class="container">
+        <view class="header">
+            <view class="title">搜索</view>
+            <view class="subtitle">搜索组件用于展示搜索框，通常用于搜索场景</view>
         </view>
 
-        <view class="example-page__section">
-            <view class="example-page__section-title">基础用法</view>
-            <view class="example-page__section-desc">基础的搜索框用法，提供了左侧搜索图标。</view>
-            <view class="example-section__content">
+        <!-- 基础用法 -->
+        <view class="section">
+            <view class="section-title">基础用法</view>
+            <view class="search-content">
                 <fanc-search v-model="value1" placeholder="请输入搜索关键词"></fanc-search>
             </view>
         </view>
 
-        <view class="example-page__section">
-            <view class="example-page__section-title">搜索框形状</view>
-            <view class="example-page__section-desc">搜索框支持圆形和方形两种样式。</view>
-            <view class="example-section__content">
+        <!-- 搜索框形状 -->
+        <view class="section">
+            <view class="section-title">搜索框形状</view>
+            <view class="search-content">
                 <fanc-search
                     v-model="value2"
                     placeholder="圆形搜索框"
                     shape="round"
-                    class="shape-demo"
+                    class="search-item"
                 ></fanc-search>
                 <fanc-search
                     v-model="value3"
                     placeholder="方形搜索框"
                     shape="square"
-                    class="shape-demo"
+                    class="search-item"
                 ></fanc-search>
             </view>
         </view>
 
-        <view class="example-page__section">
-            <view class="example-page__section-title">显示标签文本</view>
-            <view class="example-page__section-desc"
-                >通过 label 属性可以在搜索框左侧显示文本标签。</view
-            >
-            <view class="example-section__content">
+        <!-- 显示标签文本 -->
+        <view class="section">
+            <view class="section-title">显示标签文本</view>
+            <view class="search-content">
                 <fanc-search
                     v-model="value4"
                     label="商品"
@@ -46,12 +44,10 @@
             </view>
         </view>
 
-        <view class="example-page__section">
-            <view class="example-page__section-title">显示操作按钮</view>
-            <view class="example-page__section-desc"
-                >通过 showActionButton 属性可以在搜索框右侧显示"搜索"按钮。</view
-            >
-            <view class="example-section__content">
+        <!-- 显示操作按钮 -->
+        <view class="section">
+            <view class="section-title">显示操作按钮</view>
+            <view class="search-content">
                 <fanc-search
                     v-model="value5"
                     placeholder="请输入搜索内容"
@@ -62,10 +58,10 @@
             </view>
         </view>
 
-        <view class="example-page__section">
-            <view class="example-page__section-title">自定义按钮文本</view>
-            <view class="example-page__section-desc">可以通过 actionText 属性自定义按钮文本。</view>
-            <view class="example-section__content">
+        <!-- 自定义按钮文本 -->
+        <view class="section">
+            <view class="section-title">自定义按钮文本</view>
+            <view class="search-content">
                 <fanc-search
                     v-model="value6"
                     placeholder="请输入搜索内容"
@@ -77,17 +73,15 @@
             </view>
         </view>
 
-        <view class="example-page__section">
-            <view class="example-page__section-title">自定义图标</view>
-            <view class="example-page__section-desc"
-                >可以自定义左右图标，根据需求调整搜索框样式。</view
-            >
-            <view class="example-section__content">
+        <!-- 自定义图标 -->
+        <view class="section">
+            <view class="section-title">自定义图标</view>
+            <view class="search-content">
                 <fanc-search
                     v-model="value7"
                     leftIcon="map-marker-alt"
                     placeholder="搜索地点"
-                    class="icon-demo"
+                    class="search-item"
                 >
                 </fanc-search>
                 <fanc-search
@@ -96,29 +90,25 @@
                     rightIcon="qrcode"
                     placeholder="搜索用户"
                     @right-icon-click="onRightIconClick"
-                    class="icon-demo"
+                    class="search-item"
                 >
                 </fanc-search>
             </view>
         </view>
 
-        <view class="example-page__section">
-            <view class="example-page__section-title">禁用状态</view>
-            <view class="example-page__section-desc"
-                >通过 disabled 属性可以将搜索框设置为禁用状态。</view
-            >
-            <view class="example-section__content">
+        <!-- 禁用状态 -->
+        <view class="section">
+            <view class="section-title">禁用状态</view>
+            <view class="search-content">
                 <fanc-search v-model="value9" disabled placeholder="禁用状态的搜索框">
                 </fanc-search>
             </view>
         </view>
 
-        <view class="example-page__section">
-            <view class="example-page__section-title">事件监听</view>
-            <view class="example-page__section-desc"
-                >搜索组件提供了多种事件，包括输入、清除、搜索等。</view
-            >
-            <view class="example-section__content">
+        <!-- 事件监听 -->
+        <view class="section">
+            <view class="section-title">事件监听</view>
+            <view class="search-content">
                 <fanc-search
                     v-model="value10"
                     placeholder="监听事件"
@@ -129,49 +119,45 @@
                     @blur="onBlur"
                 >
                 </fanc-search>
-                <view class="event-result" v-if="eventResult">
+                <view class="result-value" v-if="eventResult">
                     <text>事件类型：{{ eventResult.type }}</text>
                     <text v-if="eventResult.value !== undefined">值：{{ eventResult.value }}</text>
                 </view>
             </view>
         </view>
 
-        <view class="example-page__section">
-            <view class="example-page__section-title">自定义背景色</view>
-            <view class="example-page__section-desc"
-                >可以通过 background 属性自定义搜索框的背景颜色。</view
-            >
-            <view class="example-section__content">
+        <!-- 自定义背景色 -->
+        <view class="section">
+            <view class="section-title">自定义背景色</view>
+            <view class="search-content">
                 <fanc-search v-model="value11" placeholder="自定义背景色" background="#f0f9ff">
                 </fanc-search>
             </view>
         </view>
 
-        <view class="example-page__section">
-            <view class="example-page__section-title">输入框对齐方式</view>
-            <view class="example-page__section-desc"
-                >通过 align 属性可以设置输入框内容的对齐方式。</view
-            >
-            <view class="example-section__content">
+        <!-- 输入框对齐方式 -->
+        <view class="section">
+            <view class="section-title">输入框对齐方式</view>
+            <view class="search-content">
                 <fanc-search
                     v-model="value12"
                     placeholder="左对齐(默认)"
                     align="left"
-                    class="align-demo"
+                    class="search-item"
                 >
                 </fanc-search>
                 <fanc-search
                     v-model="value13"
                     placeholder="居中对齐"
                     align="center"
-                    class="align-demo"
+                    class="search-item"
                 >
                 </fanc-search>
                 <fanc-search
                     v-model="value14"
                     placeholder="右对齐"
                     align="right"
-                    class="align-demo"
+                    class="search-item"
                 >
                 </fanc-search>
             </view>
@@ -237,37 +223,68 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
-.example-section__content {
-    padding: 16px;
-    background-color: #f6f6f6;
+<style>
+.container {
+    padding: 20px;
+    background-color: #f8f8f8;
+    min-height: 100vh;
+}
+
+.header {
+    margin-bottom: 24px;
+}
+
+.title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #323233;
+    margin-bottom: 8px;
+}
+
+.subtitle {
+    font-size: 14px;
+    color: #969799;
+    line-height: 1.5;
+}
+
+.section {
+    margin-bottom: 24px;
+    background-color: #ffffff;
     border-radius: 8px;
+    overflow: hidden;
+    padding: 16px;
 }
 
-.shape-demo {
+.section-title {
+    font-size: 16px;
+    font-weight: bold;
+    color: #323233;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #f2f2f2;
     margin-bottom: 16px;
 }
 
-.icon-demo {
+.search-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.search-item {
     margin-bottom: 16px;
 }
 
-.align-demo {
-    margin-bottom: 16px;
-}
-
-.event-result {
+.result-value {
     margin-top: 12px;
-    background-color: #f8f9fa;
-    padding: 10px;
+    padding: 8px;
+    background-color: #f8f8f8;
     border-radius: 4px;
+    font-size: 14px;
+    color: #323233;
     border-left: 3px solid #007bff;
+}
 
-    text {
-        display: block;
-        font-size: 14px;
-        color: #343a40;
-        line-height: 1.5;
-    }
+.result-value text {
+    display: block;
+    line-height: 1.5;
 }
 </style>
