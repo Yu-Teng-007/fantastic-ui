@@ -2,15 +2,16 @@
     <view
         class="fanc-field"
         :class="[
-            error ? 'fanc-field--error' : '',
+            showError ? 'fanc-field--error' : '',
             disabled ? 'fanc-field--disabled' : '',
             readonly ? 'fanc-field--readonly' : '',
             'fanc-field--' + type,
-            required ? 'fanc-field--required' : '',
+            isRequired ? 'fanc-field--required' : '',
             clickable ? 'fanc-field--clickable' : '',
             border ? 'fanc-field--border' : '',
             center ? 'fanc-field--center' : '',
-            errorMessage ? 'fanc-field--with-error-msg' : '',
+            actualErrorMessage ? 'fanc-field--with-error-msg' : '',
+            actualLabelPosition === 'top' ? 'fanc-field--label-top' : '',
         ]"
     >
         <!-- 左侧图标 -->
@@ -21,7 +22,11 @@
         </view>
 
         <!-- 标签 -->
-        <view v-if="label || $slots.label" class="fanc-field__label" :style="{ width: labelWidth }">
+        <view
+            v-if="label || $slots.label"
+            class="fanc-field__label"
+            :style="{ width: actualLabelPosition === 'top' ? '100%' : actualLabelWidth }"
+        >
             <slot name="label">{{ label }}</slot>
         </view>
 
@@ -87,11 +92,11 @@
 
                 <!-- 清除按钮 -->
                 <view
-                    v-if="clearable && value && !readonly && !disabled"
-                    class="fanc-field__clear"
+                    v-if="showClear"
+                    class="fanc-field__right-icon fanc-field__clear"
                     @click="onClear"
                 >
-                    <fanc-icon name="times-circle" size="16" class="fanc-field__clear-icon" />
+                    <fanc-icon name="times-circle" size="16" class="fanc-field__icon" />
                 </view>
 
                 <!-- 密码可见按钮 -->
@@ -129,14 +134,16 @@
             </view>
 
             <!-- 错误提示 -->
-            <view v-if="errorMessage" class="fanc-field__error-message">
-                {{ errorMessage }}
+            <view v-if="actualErrorMessage" class="fanc-field__error-message">
+                {{ actualErrorMessage }}
             </view>
         </view>
     </view>
 </template>
 
 <script>
+import AsyncValidator from "async-validator";
+
 export default {
     name: "fanc-field",
 
@@ -231,16 +238,6 @@ export default {
             type: Boolean,
             default: false,
         },
-        // 确认按钮的文字
-        confirmType: {
-            type: String,
-            default: "done",
-        },
-        // 点击键盘确认按钮时是否维持键盘不收起
-        confirmHold: {
-            type: Boolean,
-            default: false,
-        },
         // 是否可点击
         clickable: {
             type: Boolean,
@@ -251,45 +248,76 @@ export default {
             type: Boolean,
             default: false,
         },
+        // 输入框聚焦时是否上推页面
+        adjustPosition: {
+            type: Boolean,
+            default: true,
+        },
+        // 输入框聚焦时光标与键盘的距离
+        cursorSpacing: {
+            type: Number,
+            default: 0,
+        },
         // 是否自动聚焦
         focus: {
             type: Boolean,
             default: false,
         },
+        // 设置键盘右下角按钮的文字，仅在type='text'时生效
+        confirmType: {
+            type: String,
+            default: "done",
+        },
+        // 点击键盘右下角按钮时是否保持键盘不收起
+        confirmHold: {
+            type: Boolean,
+            default: false,
+        },
         // 指定focus时的光标位置
         cursor: {
-            type: [String, Number],
+            type: Number,
             default: -1,
         },
-        // 键盘弹起时，是否自动上推页面
-        adjustPosition: {
-            type: Boolean,
-            default: true,
+        // 表单字段名称，与表单model对应的属性名
+        name: {
+            type: String,
+            default: "",
         },
-        // 是否显示键盘上方带有"完成"按钮那一栏
-        showConfirmBar: {
-            type: Boolean,
-            default: true,
+        // 表单验证规则
+        rules: {
+            type: [Object, Array],
+            default: () => [],
         },
-        // 指定光标与键盘的距离，单位px
-        cursorSpacing: {
-            type: [String, Number],
-            default: 0,
+        // 标签位置，可选值为 'top' 或 'left'
+        labelPosition: {
+            type: String,
+            default: "left",
+        },
+    },
+
+    inject: {
+        fancForm: {
+            default: null,
         },
     },
 
     data() {
         return {
             showPassword: false, // 是否显示密码
+            textareaHeight: null, // 文本域高度
+            validateState: "", // 校验状态 success/error
+            validateMessage: "", // 校验错误信息
+            isValidating: false, // 是否正在校验
+            focused: false, // 是否聚焦
         };
     },
 
     computed: {
-        // 根据type属性确定输入框的实际type
+        // 实际输入框类型
         inputType() {
             const map = {
                 text: "text",
-                password: "text", // 密码框使用text类型，通过password属性控制安全显示
+                password: "text",
                 number: "number",
                 digit: "digit",
                 idcard: "idcard",
@@ -297,52 +325,157 @@ export default {
             };
             return map[this.type] || "text";
         },
+        // 是否显示清除按钮
+        showClear() {
+            return (
+                this.clearable &&
+                !this.readonly &&
+                !this.disabled &&
+                (this.value !== "" || this.value !== 0) &&
+                this.focused
+            );
+        },
+        // 表单验证规则
+        fieldRules() {
+            let formRules = this.fancForm && this.fancForm.rules;
+            const selfRules = this.rules;
 
-        // 计算错误信息的左侧边距
-        errorMessageStyle() {
-            // 如果有左侧图标，需要添加图标的宽度和间距
-            const leftIconWidth = this.leftIcon || this.$slots["left-icon"] ? "24px" : "0";
-            // 如果有标签，需要添加标签的宽度
-            const labelWidth = this.label || this.$slots.label ? this.labelWidth : "0";
+            // 从Form的rules中获取当前字段的规则
+            formRules = formRules && this.name ? formRules[this.name] : [];
 
-            return {
-                marginLeft:
-                    leftIconWidth === "0" && labelWidth === "0"
-                        ? "16px"
-                        : `calc(${leftIconWidth} + ${labelWidth})`,
-            };
+            // 合并Form规则和Field自身规则
+            const rules = [].concat(selfRules || formRules || []);
+
+            // 如果设置了required属性，则添加必填规则
+            if (this.required && !rules.some((rule) => rule.required)) {
+                rules.push({
+                    required: true,
+                    message: `${this.label || this.name || "此项"}不能为空`,
+                });
+            }
+
+            return rules;
+        },
+        // 是否为必填项
+        isRequired() {
+            // 如果设置了required属性，直接返回true
+            if (this.required) return true;
+
+            // 检查规则中是否有required: true的规则
+            if (this.fieldRules && this.fieldRules.length) {
+                return this.fieldRules.some((rule) => rule.required);
+            }
+
+            return false;
+        },
+        // 实际错误信息
+        actualErrorMessage() {
+            return this.errorMessage || this.validateMessage;
+        },
+        // 是否显示错误状态
+        showError() {
+            return this.error || this.validateState === "error";
+        },
+        // 实际标签位置，优先使用自身设置，其次使用表单设置
+        actualLabelPosition() {
+            if (this.labelPosition !== "left") {
+                return this.labelPosition;
+            }
+            return this.fancForm && this.fancForm.labelPosition
+                ? this.fancForm.labelPosition
+                : "left";
+        },
+        // 实际标签宽度，优先使用自身设置，其次使用表单设置
+        actualLabelWidth() {
+            return this.labelWidth || (this.fancForm && this.fancForm.labelWidth) || "88px";
         },
     },
 
+    watch: {
+        value() {
+            // 值变化时触发验证
+            this.onFieldChange("change");
+
+            // 自动调整文本域高度
+            if (this.type === "textarea" && this.autosize) {
+                this.$nextTick(this.adjustTextareaHeight);
+            }
+        },
+    },
+
+    created() {
+        // 字段创建时，注册到Form
+        if (this.fancForm && this.name) {
+            this.fancForm.registerField(this);
+        }
+    },
+
+    mounted() {
+        // 自动调整文本域高度
+        if (this.type === "textarea" && this.autosize) {
+            this.adjustTextareaHeight();
+        }
+    },
+
+    beforeDestroy() {
+        // 字段销毁时，从Form解注册
+        if (this.fancForm && this.name) {
+            this.fancForm.unregisterField(this);
+        }
+    },
+
     methods: {
-        // 输入事件
+        // 输入事件处理
         onInput(event) {
-            const { value = "" } = event.detail || event.target || {};
+            let value = event.detail.value;
             this.$emit("input", value);
+            this.$emit("update:value", value);
             this.$emit("change", value);
         },
 
-        // 聚焦事件
+        // 聚焦事件处理
         onFocus(event) {
+            this.focused = true;
             this.$emit("focus", event);
         },
 
-        // 失焦事件
+        // 失焦事件处理
         onBlur(event) {
+            this.focused = false;
             this.$emit("blur", event);
+            // 失焦时触发验证
+            this.onFieldChange("blur");
         },
 
-        // 点击清除按钮
+        // 确认事件处理
+        onConfirm(event) {
+            this.$emit("confirm", event);
+        },
+
+        // 清除内容
         onClear() {
             this.$emit("input", "");
+            this.$emit("update:value", "");
             this.$emit("change", "");
             this.$emit("clear");
+            this.$emit("click-icon", "clear");
         },
 
-        // 键盘确认事件
-        onConfirm(event) {
-            const { value = "" } = event.detail || {};
-            this.$emit("confirm", value);
+        // 自动调整文本域高度
+        adjustTextareaHeight() {
+            if (!this.autosize || this.type !== "textarea") return;
+
+            const textarea = this.$el.querySelector("textarea");
+            if (!textarea) return;
+
+            textarea.style.height = "auto";
+            let height = textarea.scrollHeight;
+
+            // 设置最小高度为60px
+            if (height < 60) height = 60;
+
+            textarea.style.height = height + "px";
+            this.textareaHeight = height;
         },
 
         // 切换密码显示状态
@@ -360,6 +493,100 @@ export default {
         // 键盘高度变化事件
         onKeyboardHeightChange(event) {
             this.$emit("keyboardheightchange", event);
+        },
+
+        /**
+         * 重置字段值和验证状态
+         */
+        resetField() {
+            this.validateState = "";
+            this.validateMessage = "";
+
+            // 如果有表单和字段名，重置表单中的对应字段值
+            if (this.fancForm && this.name && this.fancForm.model) {
+                // 将字段值重置为初始值或空值
+                const model = this.fancForm.model;
+                model[this.name] = "";
+                this.$emit("input", "");
+                this.$emit("update:value", "");
+                this.$emit("change", "");
+            }
+        },
+
+        /**
+         * 清除校验状态
+         */
+        clearValidate() {
+            this.validateState = "";
+            this.validateMessage = "";
+        },
+
+        /**
+         * 获取表单项的值
+         * @returns {any} 字段值
+         */
+        getFieldValue() {
+            if (this.fancForm && this.name) {
+                const model = this.fancForm.model || {};
+                return model[this.name];
+            }
+            return this.value;
+        },
+
+        /**
+         * 验证字段
+         * @returns {Promise} 验证结果
+         */
+        validateField() {
+            // 如果没有规则，直接返回验证成功
+            if (!this.name || !this.fieldRules || this.fieldRules.length === 0) {
+                return Promise.resolve();
+            }
+
+            this.isValidating = true;
+            const value = this.getFieldValue();
+
+            // 创建验证规则
+            const descriptor = { [this.name]: this.fieldRules };
+            const validator = new AsyncValidator(descriptor);
+            const model = { [this.name]: value };
+
+            // 开始验证
+            return new Promise((resolve, reject) => {
+                validator.validate(model, { firstFields: true }, (errors, fields) => {
+                    this.isValidating = false;
+
+                    if (errors) {
+                        // 验证失败
+                        this.validateState = "error";
+                        this.validateMessage = errors[0].message || "验证失败";
+                        reject(this.validateMessage);
+                    } else {
+                        // 验证成功
+                        this.validateState = "success";
+                        this.validateMessage = "";
+                        resolve();
+                    }
+                });
+            });
+        },
+
+        /**
+         * 处理验证触发器
+         * @param {String} trigger 触发类型 change/blur/submit
+         */
+        onFieldChange(trigger) {
+            if (!this.fancForm) return;
+
+            const validateTrigger = this.fancForm.validateTrigger;
+            const shouldValidate =
+                (validateTrigger === "onChange" && trigger === "change") ||
+                (validateTrigger === "onBlur" && trigger === "blur") ||
+                (validateTrigger === "onSubmit" && trigger === "submit");
+
+            if (shouldValidate && this.fancForm.validateOnChange) {
+                this.validateField().catch(() => {});
+            }
         },
     },
 };
@@ -607,6 +834,27 @@ export default {
         .fanc-field__label {
             align-self: flex-start;
             padding-top: 2px;
+        }
+    }
+
+    // 标签顶部对齐模式
+    &--label-top {
+        flex-direction: column;
+        align-items: flex-start;
+
+        .fanc-field__label {
+            width: 100% !important;
+            text-align: left;
+            margin-bottom: 8px;
+            margin-right: 0;
+        }
+
+        .fanc-field__value-wrapper {
+            width: 100%;
+        }
+
+        .fanc-field__left-icon {
+            margin-bottom: 8px;
         }
     }
 }

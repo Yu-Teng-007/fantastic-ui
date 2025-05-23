@@ -72,6 +72,14 @@
                 </template>
             </fanc-cell>
 
+            <fanc-cell title="表单" is-link url="/pages/example/form/index" center>
+                <template #icon>
+                    <view class="component-icon">
+                        <fanc-icon name="clipboard-list" size="18" color="#666666"></fanc-icon>
+                    </view>
+                </template>
+            </fanc-cell>
+
             <fanc-cell title="级联选择" is-link url="/pages/example/cascader/index" center>
                 <template #icon>
                     <view class="component-icon">

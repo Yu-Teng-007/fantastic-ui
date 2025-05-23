@@ -143,6 +143,12 @@
             "style": {
                 "navigationBarTitleText": "输入框示例"
             }
+        },
+        {
+            "path": "pages/example/form/index",
+            "style": {
+                "navigationBarTitleText": "表单示例"
+            }
         }
     ],
     "globalStyle": {

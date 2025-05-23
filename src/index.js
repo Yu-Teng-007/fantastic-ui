@@ -24,9 +24,11 @@ import FancStepper from "@/components/fanc-stepper/index.vue";
 import FancSignature from "@/components/fanc-signature/index.vue";
 import FancSearch from "@/components/fanc-search/index.vue";
 import FancField from "@/components/fanc-field/index.vue";
+import FancForm from "@/components/fanc-form/index.vue";
 import Message from "@/plugins/message";
 import Toast from "@/plugins/toast";
 import Dialog from "@/plugins/dialog";
+import Validator from "@/plugins/validator";
 
 // 组件列表
 const components = [
@@ -56,6 +58,7 @@ const components = [
     FancSignature,
     FancSearch,
     FancField,
+    FancForm,
 ];
 
 // 导出单个组件
@@ -86,6 +89,7 @@ export {
     FancSignature,
     FancSearch,
     FancField,
+    FancForm,
 };
 
 // 批量注册组件
@@ -103,5 +107,8 @@ export default {
 
         // 注册Dialog全局方法
         Vue.prototype.$dialog = Dialog;
+
+        // 注册Validator全局方法
+        Vue.prototype.$validator = Validator.validator;
     },
 };
