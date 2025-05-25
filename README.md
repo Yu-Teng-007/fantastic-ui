@@ -11,13 +11,6 @@
 -   📦 **即插即用**: 支持按需引入组件
 -   📱 **全面适配**: 针对不同尺寸设备进行优化
 
-## 文档
-
-- [开发文档](docs/README.md)
-- [设计规范](docs/core/design.md)
-- [项目分析报告](docs/core/project-analysis.md)
-- [项目文件说明](docs/core/project-files.md)
-- [项目架构和逻辑结构](docs/core/project-architecture.md)
 
 ## 安装
 
