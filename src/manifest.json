@@ -56,6 +56,29 @@
     "quickapp": {
         /* 快应用特有相关 */
     },
+    "h5": {
+        "title": "Fantastic UI",
+        "router": {
+            "mode": "hash",
+            "base": "/fantastic-ui/"
+        },
+        "publicPath": "/fantastic-ui/",
+        "template": "index.html",
+        "optimization": {
+            "treeShaking": {
+                "enable": true
+            }
+        },
+        "async": {
+            "loading": "AsyncLoading",
+            "error": "AsyncError",
+            "delay": 200,
+            "timeout": 60000
+        },
+        "devServer": {
+            "https": false
+        }
+    },
     "mp-weixin": {
         /* 微信小程序特有相关 */ "appid": "",
         "setting": {
