@@ -23,4 +23,22 @@ page {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell,
         "Open Sans", "Helvetica Neue", sans-serif;
 }
+
+/* 隐藏滚动条 - 适用于uni-app所有平台 */
+::-webkit-scrollbar {
+    display: none;
+}
+
+/* 在page中设置以适应小程序环境 */
+page {
+    overflow: hidden;
+}
+
+/* 所有可滚动元素都隐藏滚动条但保留滚动功能 */
+view,
+scroll-view {
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
 </style>

@@ -15,3 +15,18 @@ body {
     // 确保CSS变量在各个浏览器中正确应用
     color-scheme: light;
 }
+
+// 全局隐藏滚动条样式
+::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Edge 隐藏滚动条 */
+}
+
+/* 适用于Firefox */
+* {
+    scrollbar-width: none;
+}
+
+/* 适用于IE */
+* {
+    -ms-overflow-style: none;
+}
