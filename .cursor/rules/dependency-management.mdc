@@ -1,0 +1,63 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# 依赖管理规范
+
+## 国内镜像配置
+优先使用国内镜像站点安装依赖：
+
+- npm包使用淘宝镜像：
+```bash
+npm config set registry https://registry.npmmirror.com/
+```
+
+- yarn设置：
+```bash
+yarn config set registry https://registry.npmmirror.com
+```
+
+- pnpm设置：
+```bash
+pnpm config set registry https://registry.npmmirror.com
+```
+
+## 依赖安装
+- 开发依赖使用 `--save-dev` 或 `-D` 参数
+- 生产依赖使用 `--save` 或 `-S` 参数
+- 指定依赖版本，避免使用 `^` 或 `~` 前缀
+
+示例：
+```bash
+# 安装生产依赖
+npm install vue@2.6.14 --save
+
+# 安装开发依赖
+npm install sass@1.62.1 --save-dev
+```
+
+## 依赖管理策略
+- 定期更新依赖包以修复安全漏洞
+- 主要依赖更新前进行充分测试
+- 记录所有依赖的具体版本和来源以便追踪
+- 使用 `npm audit` 检查依赖安全问题
+
+## 依赖冲突解决
+- 使用 `npm ls <package-name>` 查看依赖树
+- 使用 `npm dedupe` 减少重复依赖
+- 必要时使用 `resolutions` 字段解决版本冲突
+
+## 私有依赖管理
+- 内部组件可发布为私有npm包
+- 使用scope区分私有包：`@company-name/package-name`
+- 配置私有registry：
+```bash
+npm config set @company-name:registry http://private-registry.company.com/
+```
+
+## 依赖引入原则
+- 谨慎添加新依赖，评估必要性
+- 优先使用轻量级依赖
+- 避免引入有安全风险的依赖
+- 考虑依赖的维护状态和社区活跃度

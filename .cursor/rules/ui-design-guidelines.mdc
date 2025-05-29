@@ -1,0 +1,71 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# UI设计规范
+
+## 设计原则
+- **一致性**: 保持视觉和交互的一致性
+- **简洁性**: 简洁明了，减少用户认知负担
+- **可用性**: 易于理解和使用
+- **反馈性**: 为用户操作提供及时反馈
+- **包容性**: 考虑不同能力的用户
+
+## 颜色系统
+使用CSS变量统一管理颜色：
+- 主色: `--fanc-primary-color`
+- 成功色: `--fanc-success-color`
+- 警告色: `--fanc-warning-color`
+- 危险色: `--fanc-danger-color`
+- 信息色: `--fanc-info-color`
+- 背景色: `--fanc-background-color`
+- 文本色: `--fanc-text-color`
+
+## 字体系统
+- 主字体: 系统默认字体
+- 字体大小:
+  - 小号: `--fanc-font-size-sm`
+  - 标准: `--fanc-font-size-md`
+  - 大号: `--fanc-font-size-lg`
+  - 特大: `--fanc-font-size-xl`
+
+## 间距系统
+- 超小间距: `--fanc-padding-xs`
+- 小间距: `--fanc-padding-sm`
+- 中等间距: `--fanc-padding-md`
+- 大间距: `--fanc-padding-lg`
+- 特大间距: `--fanc-padding-xl`
+
+## 圆角系统
+- 无圆角: `--fanc-radius-none`
+- 小圆角: `--fanc-radius-sm`
+- 中等圆角: `--fanc-radius-md`
+- 大圆角: `--fanc-radius-lg`
+- 圆形: `--fanc-radius-circle`
+
+## 阴影系统
+- 无阴影: `--fanc-shadow-none`
+- 小阴影: `--fanc-shadow-sm`
+- 中等阴影: `--fanc-shadow-md`
+- 大阴影: `--fanc-shadow-lg`
+
+## 响应式设计
+- 移动优先设计
+- 断点设置:
+  - 小屏幕: < 576px
+  - 中屏幕: >= 576px
+  - 大屏幕: >= 768px
+  - 超大屏幕: >= 992px
+
+## 无障碍设计
+- 符合WCAG 2.1 AA级标准
+- 提供适当的颜色对比度
+- 支持键盘导航
+- 使用ARIA标签增强屏幕阅读器支持
+
+## 动画与过渡
+- 动画持续时间: `--fanc-animation-duration`
+- 过渡曲线: `--fanc-animation-timing-function`
+- 保持动画简洁，不干扰用户操作
+- 提供动画禁用选项

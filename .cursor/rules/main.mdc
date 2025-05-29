@@ -1,0 +1,47 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# Fantastic UI 项目规则指南
+
+本文档提供了Fantastic UI组件库项目的规则和最佳实践。请参考以下规则文件了解详细信息：
+
+## 项目结构
+[项目结构指南](mdc:.cursor/rules/project-structure.mdc)
+
+## 组件开发
+[组件开发规范](mdc:.cursor/rules/component-guidelines.mdc)
+[组件使用示例](mdc:.cursor/rules/component-examples.mdc)
+
+## 编码规范
+[编码规范](mdc:.cursor/rules/coding-standards.mdc)
+
+## UI设计
+[UI设计规范](mdc:.cursor/rules/ui-design-guidelines.mdc)
+
+## 开发流程
+[开发流程指南](mdc:.cursor/rules/development-workflow.mdc)
+
+## 依赖管理
+[依赖管理规范](mdc:.cursor/rules/dependency-management.mdc)
+
+## 项目概述
+
+Fantastic UI是一个基于uni-app的轻量级跨平台UI组件库，提供高质量的移动端组件，支持H5、App、小程序等多平台。
+
+主要特性：
+- 多平台兼容
+- 性能优先
+- 精致UI
+- 可定制主题
+- 即插即用
+- 全面适配
+
+项目入口文件：
+- [main.js](mdc:src/main.js): 应用入口文件
+- [App.vue](mdc:src/App.vue): 应用根组件
+- [pages.json](mdc:src/pages.json): 页面配置文件
+
+组件库目录：
+- [components](mdc:src/components): 包含所有UI组件

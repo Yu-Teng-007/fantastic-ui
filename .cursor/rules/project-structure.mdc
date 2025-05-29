@@ -1,0 +1,29 @@
+---
+description: 
+globs: 
+alwaysApply: false
+---
+# 项目结构指南
+
+## 目录结构
+- [src](mdc:src): 主要源代码目录
+  - [components](mdc:src/components): UI组件库目录，包含所有Fantastic UI组件
+  - [pages](mdc:src/pages): 应用页面目录
+  - [styles](mdc:src/styles): 全局样式目录
+  - [plugins](mdc:src/plugins): 插件目录
+  - [configs](mdc:src/configs): 配置文件目录
+  - [static](mdc:src/static): 静态资源目录
+- [docs](mdc:docs): 项目文档目录
+- [public](mdc:public): 公共资源目录
+
+## 入口文件
+- [main.js](mdc:src/main.js): 应用入口文件
+- [App.vue](mdc:src/App.vue): 应用根组件
+- [pages.json](mdc:src/pages.json): 页面配置文件
+- [manifest.json](mdc:src/manifest.json): 应用配置文件
+
+## 配置文件
+- [package.json](mdc:package.json): 项目依赖配置
+- [.prettierrc](mdc:.prettierrc): 代码格式化配置
+- [babel.config.js](mdc:babel.config.js): Babel配置
+- [postcss.config.js](mdc:postcss.config.js): PostCSS配置
