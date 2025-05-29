@@ -155,6 +155,12 @@
             "style": {
                 "navigationBarTitleText": "日期选择器示例"
             }
+        },
+        {
+            "path": "pages/example/uploader/index",
+            "style": {
+                "navigationBarTitleText": "文件上传示例"
+            }
         }
     ],
     "globalStyle": {

@@ -28,6 +28,7 @@ Fantastic UI 是一个功能丰富、易于使用的移动端 UI 组件库，提
 | fanc-stepper | 步进器组件，用于数量选择 | [查看文档](./components/fanc-stepper.md) |
 | fanc-search | 搜索组件，用于搜索内容 | [查看文档](./components/fanc-search.md) |
 | fanc-signature | 签名组件，用于电子签名 | [查看文档](./components/fanc-signature.md) |
+| fanc-uploader | 文件上传组件，用于上传图片和文件 | [查看文档](./components/fanc-uploader.md) |
 
 ### 反馈组件
 

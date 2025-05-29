@@ -376,4 +376,26 @@
     --date-picker-toolbar-height: 44px;
     --date-picker-item-height: 40px;
     --date-picker-indicator-border-color: var(--border-color);
+
+    /* Uploader 文件上传组件颜色 */
+    --uploader-bg-color: var(--bg-gray-light);
+    --uploader-border-color: var(--border-color);
+    --uploader-border-radius: 4px;
+    --uploader-item-size-small: 80px;
+    --uploader-item-size-normal: 100px;
+    --uploader-item-size-large: 120px;
+    --uploader-delete-bg-color: rgba(0, 0, 0, 0.6);
+    --uploader-delete-color: var(--white);
+    --uploader-file-icon-color: var(--gray-600);
+    --uploader-file-name-color: var(--text-secondary);
+    --uploader-upload-icon-color: var(--gray-600);
+    --uploader-upload-text-color: var(--text-secondary);
+    --uploader-tips-color: var(--text-secondary);
+    --uploader-progress-color: var(--fanc-primary-color);
+    --uploader-status-bg-color: rgba(0, 0, 0, 0.45);
+    --uploader-status-color: var(--white);
+    --uploader-error-color: var(--fanc-danger-color);
+    --uploader-success-color: var(--fanc-success-color);
+    --uploader-loading-color: var(--white);
+    --uploader-gap: 12px;
 }
