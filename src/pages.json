@@ -161,6 +161,12 @@
             "style": {
                 "navigationBarTitleText": "文件上传示例"
             }
+        },
+        {
+            "path": "pages/example/rate/index",
+            "style": {
+                "navigationBarTitleText": "评分示例"
+            }
         }
     ],
     "globalStyle": {
