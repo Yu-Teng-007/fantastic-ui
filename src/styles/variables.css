@@ -426,4 +426,20 @@
     --tabs-card-padding: 5px;
     --tabs-tab-padding: 0 12px;
     --tabs-tab-min-width: 80px;
+
+    /* TabBar 标签栏组件颜色 */
+    --tabbar-bg-color: var(--white);
+    --tabbar-border-color: var(--border-color);
+    --tabbar-item-color: var(--text-secondary);
+    --tabbar-item-active-color: var(--fanc-primary-color);
+    --tabbar-item-disabled-color: var(--text-disabled);
+    --tabbar-item-disabled-opacity: 0.6;
+    --tabbar-item-icon-size: 24px;
+    --tabbar-item-text-size: 12px;
+    --tabbar-item-text-margin-top: 4px;
+    --tabbar-height: 50px;
+    --tabbar-z-index: 10;
+    --tabbar-shadow-color: rgba(0, 0, 0, 0.05);
+    --tabbar-safe-area-height: 0px;
+    --tabbar-placeholder-height: calc(var(--tabbar-height) + var(--tabbar-safe-area-height));
 }

@@ -201,6 +201,14 @@
                     </view>
                 </template>
             </fanc-cell>
+
+            <fanc-cell title="标签栏" is-link url="/pages/example/tabbar/index" center>
+                <template #icon>
+                    <view class="component-icon">
+                        <fanc-icon name="menu" size="18"></fanc-icon>
+                    </view>
+                </template>
+            </fanc-cell>
         </fanc-cell-group>
 
         <!-- 反馈组件 -->
