@@ -275,7 +275,7 @@ export default {
 .section-desc {
     font-size: 14px;
     color: #969799;
-    padding: 16px 16px 0;
+    padding: 16px ;
     border-bottom: 1px solid #f2f2f2;
 }
 

@@ -83,24 +83,9 @@ export default {
         // 图片裁剪、缩放的模式
         mode: {
             type: String,
-            default: "aspectFill",
+            default: "cover",
             validator: (value) => {
-                return [
-                    "scaleToFill",
-                    "aspectFit",
-                    "aspectFill",
-                    "widthFix",
-                    "heightFix",
-                    "top",
-                    "bottom",
-                    "center",
-                    "left",
-                    "right",
-                    "top left",
-                    "top right",
-                    "bottom left",
-                    "bottom right",
-                ].includes(value);
+                return ["fill", "contain", "cover", "none", "scale-down"].includes(value);
             },
         },
         // 宽度，支持数值或带单位字符串
@@ -290,6 +275,27 @@ export default {
     display: block;
     width: 100%;
     height: 100%;
+}
+
+/* 图片模式 */
+.fanc-image--mode-fill .fanc-image__img {
+    object-fit: fill;
+}
+
+.fanc-image--mode-contain .fanc-image__img {
+    object-fit: contain;
+}
+
+.fanc-image--mode-cover .fanc-image__img {
+    object-fit: cover;
+}
+
+.fanc-image--mode-none .fanc-image__img {
+    object-fit: none;
+}
+
+.fanc-image--mode-scale-down .fanc-image__img {
+    object-fit: scale-down;
 }
 
 /* 圆形图片 */
