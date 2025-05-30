@@ -405,4 +405,25 @@
     --rate-disabled-color: var(--text-disabled);
     --rate-icon-size: 20px;
     --rate-icon-gutter: 4px;
+
+    /* Tabs 选项卡组件颜色 */
+    --tabs-nav-bg-color: var(--white);
+    --tabs-nav-card-bg-color: var(--gray-100);
+    --tabs-active-color: var(--fanc-primary-color);
+    --tabs-inactive-color: var(--text-primary);
+    --tabs-disabled-color: var(--text-disabled);
+    --tabs-disabled-opacity: 0.6;
+    --tabs-line-color: var(--fanc-primary-color);
+    --tabs-card-active-bg: var(--white);
+    --tabs-card-active-shadow: rgba(0, 0, 0, 0.08);
+    --tabs-border-color: var(--border-color);
+    --tabs-nav-height: 44px;
+    --tabs-line-height: 3px;
+    --tabs-line-radius: 3px;
+    --tabs-font-size: 14px;
+    --tabs-transition-duration: 0.3s;
+    --tabs-card-radius: 4px;
+    --tabs-card-padding: 5px;
+    --tabs-tab-padding: 0 12px;
+    --tabs-tab-min-width: 80px;
 }

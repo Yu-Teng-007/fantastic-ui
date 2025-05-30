@@ -8,13 +8,14 @@
         <!-- 基本使用 -->
         <view class="section">
             <view class="section-title">基本使用</view>
-            <view class="cell" @click="showBasicPicker = true">
-                <view class="cell-title">选择日期</view>
-                <view class="cell-value">{{ basicDate || "请选择" }}</view>
-                <view class="cell-arrow">
-                    <text class="arrow-icon">></text>
-                </view>
-            </view>
+            <fanc-cell-group>
+                <fanc-cell
+                    title="选择日期"
+                    :value="basicDate || '请选择'"
+                    is-link
+                    @click="showBasicPicker = true"
+                />
+            </fanc-cell-group>
             <fanc-date-picker
                 v-model="showBasicPicker"
                 :default-date="basicDateTimestamp"
@@ -25,14 +26,26 @@
         <!-- 自定义类型 -->
         <view class="section">
             <view class="section-title">自定义类型</view>
-
-            <view class="cell" @click="showYearMonthPicker = true">
-                <view class="cell-title">年月选择</view>
-                <view class="cell-value">{{ yearMonthDate || "请选择" }}</view>
-                <view class="cell-arrow">
-                    <text class="arrow-icon">></text>
-                </view>
-            </view>
+            <fanc-cell-group>
+                <fanc-cell
+                    title="年月选择"
+                    :value="yearMonthDate || '请选择'"
+                    is-link
+                    @click="showYearMonthPicker = true"
+                />
+                <fanc-cell
+                    title="月日选择"
+                    :value="monthDayDate || '请选择'"
+                    is-link
+                    @click="showMonthDayPicker = true"
+                />
+                <fanc-cell
+                    title="年份选择"
+                    :value="yearDate || '请选择'"
+                    is-link
+                    @click="showYearPicker = true"
+                />
+            </fanc-cell-group>
             <fanc-date-picker
                 v-model="showYearMonthPicker"
                 type="year-month"
@@ -40,14 +53,6 @@
                 :default-date="yearMonthDateTimestamp"
                 @confirm="onYearMonthConfirm"
             />
-
-            <view class="cell" @click="showMonthDayPicker = true">
-                <view class="cell-title">月日选择</view>
-                <view class="cell-value">{{ monthDayDate || "请选择" }}</view>
-                <view class="cell-arrow">
-                    <text class="arrow-icon">></text>
-                </view>
-            </view>
             <fanc-date-picker
                 v-model="showMonthDayPicker"
                 type="month-day"
@@ -55,14 +60,6 @@
                 :default-date="monthDayDateTimestamp"
                 @confirm="onMonthDayConfirm"
             />
-
-            <view class="cell" @click="showYearPicker = true">
-                <view class="cell-title">年份选择</view>
-                <view class="cell-value">{{ yearDate || "请选择" }}</view>
-                <view class="cell-arrow">
-                    <text class="arrow-icon">></text>
-                </view>
-            </view>
             <fanc-date-picker
                 v-model="showYearPicker"
                 type="year"
@@ -75,13 +72,14 @@
         <!-- 自定义日期范围 -->
         <view class="section">
             <view class="section-title">自定义日期范围</view>
-            <view class="cell" @click="showRangePicker = true">
-                <view class="cell-title">限制范围</view>
-                <view class="cell-value">{{ rangeDate || "请选择(2022-2025年)" }}</view>
-                <view class="cell-arrow">
-                    <text class="arrow-icon">></text>
-                </view>
-            </view>
+            <fanc-cell-group>
+                <fanc-cell
+                    title="限制范围"
+                    :value="rangeDate || '请选择(2022-2025年)'"
+                    is-link
+                    @click="showRangePicker = true"
+                />
+            </fanc-cell-group>
             <fanc-date-picker
                 v-model="showRangePicker"
                 title="选择日期"
@@ -95,13 +93,14 @@
         <!-- 自定义文本后缀 -->
         <view class="section">
             <view class="section-title">自定义文本后缀</view>
-            <view class="cell" @click="showCustomSuffixPicker = true">
-                <view class="cell-title">自定义后缀</view>
-                <view class="cell-value">{{ customSuffixDate || "请选择" }}</view>
-                <view class="cell-arrow">
-                    <text class="arrow-icon">></text>
-                </view>
-            </view>
+            <fanc-cell-group>
+                <fanc-cell
+                    title="自定义后缀"
+                    :value="customSuffixDate || '请选择'"
+                    is-link
+                    @click="showCustomSuffixPicker = true"
+                />
+            </fanc-cell-group>
             <fanc-date-picker
                 v-model="showCustomSuffixPicker"
                 title="选择日期"
@@ -227,41 +226,5 @@ export default {
     border-bottom: 1px solid #f2f2f2;
 }
 
-.cell {
-    display: flex;
-    align-items: center;
-    padding: 16px;
-    border-bottom: 1px solid #f2f2f2;
-    position: relative;
-}
-
-.cell:last-child {
-    border-bottom: none;
-}
-
-.cell-title {
-    flex: 1;
-    font-size: 14px;
-    color: #323233;
-}
-
-.cell-value {
-    font-size: 14px;
-    color: #969799;
-    margin-right: 8px;
-}
-
-.cell-arrow {
-    width: 16px;
-    height: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.arrow-icon {
-    font-size: 14px;
-    color: #c8c9cc;
-    transform: rotate(90deg);
-}
+/* 移除不再需要的样式 */
 </style>
