@@ -198,6 +198,19 @@
     --message-box-shadow-color: rgba(0, 0, 0, 0.1);
     --message-action-hover-bg: rgba(0, 0, 0, 0.05);
 
+    /* 侧边栏组件 (fanc-sidebar) 颜色 */
+    --sidebar-bg-color: #f5f5f5;
+    --sidebar-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    --sidebar-border-color: #ebedf0;
+    --sidebar-item-bg-color: #f5f5f5;
+    --sidebar-item-border-color: var(--border-color);
+    --sidebar-item-active-bg-color: #fff;
+    --sidebar-item-active-color: var(--primary-color);
+    --sidebar-item-active-indicator-color: var(--primary-color);
+    --sidebar-item-badge-bg-color: var(--danger-color);
+    --sidebar-item-badge-color: var(--white);
+    --sidebar-item-active-radius: 8px;
+
     /* 公告栏组件 (fanc-noticebar) 颜色 */
     --noticebar-info-bg: #f0f8ff;
     --noticebar-info-border: #d0e6ff;
@@ -405,27 +418,6 @@
     --rate-disabled-color: var(--text-disabled);
     --rate-icon-size: 20px;
     --rate-icon-gutter: 4px;
-
-    /* Tabs 选项卡组件颜色 */
-    --tabs-nav-bg-color: var(--white);
-    --tabs-nav-card-bg-color: var(--gray-100);
-    --tabs-active-color: var(--fanc-primary-color);
-    --tabs-inactive-color: var(--text-primary);
-    --tabs-disabled-color: var(--text-disabled);
-    --tabs-disabled-opacity: 0.6;
-    --tabs-line-color: var(--fanc-primary-color);
-    --tabs-card-active-bg: var(--white);
-    --tabs-card-active-shadow: rgba(0, 0, 0, 0.08);
-    --tabs-border-color: var(--border-color);
-    --tabs-nav-height: 44px;
-    --tabs-line-height: 3px;
-    --tabs-line-radius: 3px;
-    --tabs-font-size: 14px;
-    --tabs-transition-duration: 0.3s;
-    --tabs-card-radius: 4px;
-    --tabs-card-padding: 5px;
-    --tabs-tab-padding: 0 12px;
-    --tabs-tab-min-width: 80px;
 
     /* TabBar 标签栏组件颜色 */
     --tabbar-bg-color: var(--white);

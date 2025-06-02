@@ -29,6 +29,8 @@ import FancDatePicker from "@/components/fanc-date-picker/index.vue";
 import FancUploader from "@/components/fanc-uploader/index.vue";
 import FancRate from "@/components/fanc-rate/index.vue";
 import FancTabbar from "@/components/fanc-tabbar/index.vue";
+import FancSidebar from "@/components/fanc-sidebar/index.vue";
+import FancSidebarItem from "@/components/fanc-sidebar-item/index.vue";
 import Message from "@/plugins/message";
 import Toast from "@/plugins/toast";
 import Dialog from "@/plugins/dialog";
@@ -67,6 +69,8 @@ const components = [
     FancUploader,
     FancRate,
     FancTabbar,
+    FancSidebar,
+    FancSidebarItem,
 ];
 
 // 导出单个组件
@@ -102,6 +106,8 @@ export {
     FancUploader,
     FancRate,
     FancTabbar,
+    FancSidebar,
+    FancSidebarItem,
 };
 
 // 批量注册组件

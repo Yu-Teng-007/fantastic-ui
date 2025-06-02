@@ -279,6 +279,14 @@
                     </view>
                 </template>
             </fanc-cell>
+
+            <fanc-cell title="侧边栏" is-link url="/pages/example/sidebar/index" center>
+                <template #icon>
+                    <view class="component-icon">
+                        <fanc-icon name="bars" size="18"></fanc-icon>
+                    </view>
+                </template>
+            </fanc-cell>
         </fanc-cell-group>
 
         <!-- 页脚 -->
