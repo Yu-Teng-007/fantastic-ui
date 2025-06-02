@@ -28,8 +28,6 @@ import FancForm from "@/components/fanc-form/index.vue";
 import FancDatePicker from "@/components/fanc-date-picker/index.vue";
 import FancUploader from "@/components/fanc-uploader/index.vue";
 import FancRate from "@/components/fanc-rate/index.vue";
-import FancTabs from "@/components/fanc-tabs/index.vue";
-import FancTab from "@/components/fanc-tab/index.vue";
 import FancTabbar from "@/components/fanc-tabbar/index.vue";
 import Message from "@/plugins/message";
 import Toast from "@/plugins/toast";
@@ -68,8 +66,6 @@ const components = [
     FancDatePicker,
     FancUploader,
     FancRate,
-    FancTabs,
-    FancTab,
     FancTabbar,
 ];
 
@@ -105,8 +101,6 @@ export {
     FancDatePicker,
     FancUploader,
     FancRate,
-    FancTabs,
-    FancTab,
     FancTabbar,
 };
 
