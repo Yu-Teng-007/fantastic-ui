@@ -7,192 +7,166 @@
 
         <view class="section">
             <view class="section-title">基础用法</view>
-            <fanc-cell-group>
-                <fanc-cell title="基础标签栏" is-link @click="showBasic = true" />
-            </fanc-cell-group>
-            <fanc-popup
-                v-model="showBasic"
-                position="bottom"
-                :safe-area-inset-bottom="false"
-                @close="onClosePopup('basic')"
-            >
-                <view class="demo-content">
-                    <fanc-tabbar v-model="activeBasic" :items="basicItems" @change="onChangeTab" />
-                </view>
-            </fanc-popup>
-        </view>
-
-        <view class="section">
-            <view class="section-title">自定义颜色</view>
-            <fanc-cell-group>
-                <fanc-cell title="自定义颜色" is-link @click="showCustomColor = true" />
-            </fanc-cell-group>
-            <fanc-popup
-                v-model="showCustomColor"
-                position="bottom"
-                :safe-area-inset-bottom="false"
-                @close="onClosePopup('customColor')"
-            >
-                <view class="demo-content">
-                    <fanc-tabbar
-                        v-model="activeCustomColor"
-                        :items="customColorItems"
-                        @change="onChangeTab"
-                    />
-                </view>
-            </fanc-popup>
-        </view>
-
-        <view class="section">
-            <view class="section-title">徽标提示</view>
-            <fanc-cell-group>
-                <fanc-cell title="徽标提示" is-link @click="showBadge = true" />
-            </fanc-cell-group>
-            <fanc-popup
-                v-model="showBadge"
-                position="bottom"
-                :safe-area-inset-bottom="false"
-                @close="onClosePopup('badge')"
-            >
-                <view class="demo-content">
-                    <fanc-tabbar v-model="activeBadge" :items="badgeItems" @change="onChangeTab" />
-                </view>
-            </fanc-popup>
-        </view>
-
-        <view class="section">
-            <view class="section-title">禁用状态</view>
-            <fanc-cell-group>
-                <fanc-cell title="禁用状态" is-link @click="showDisabled = true" />
-            </fanc-cell-group>
-            <fanc-popup
-                v-model="showDisabled"
-                position="bottom"
-                :safe-area-inset-bottom="false"
-                @close="onClosePopup('disabled')"
-            >
-                <view class="demo-content">
-                    <fanc-tabbar
-                        v-model="activeDisabled"
-                        :items="disabledItems"
-                        @change="onChangeTab"
-                    />
-                </view>
-            </fanc-popup>
-        </view>
-
-        <view class="section">
-            <view class="section-title">自定义图标尺寸</view>
-            <fanc-cell-group>
-                <fanc-cell title="自定义图标尺寸" is-link @click="showCustomSize = true" />
-            </fanc-cell-group>
-            <fanc-popup
-                v-model="showCustomSize"
-                position="bottom"
-                :safe-area-inset-bottom="false"
-                @close="onClosePopup('customSize')"
-            >
-                <view class="demo-content">
-                    <fanc-tabbar
-                        v-model="activeCustomSize"
-                        :items="basicItems"
-                        icon-size="30"
-                        @change="onChangeTab"
-                    />
-                </view>
-            </fanc-popup>
-        </view>
-
-        <view class="section">
-            <view class="section-title">图片图标</view>
-            <fanc-cell-group>
-                <fanc-cell title="图片图标" is-link @click="showImage = true" />
-            </fanc-cell-group>
-            <fanc-popup
-                v-model="showImage"
-                position="bottom"
-                :safe-area-inset-bottom="false"
-                @close="onClosePopup('image')"
-            >
-                <view class="demo-content">
-                    <fanc-tabbar v-model="activeImage" :items="imageItems" @change="onChangeTab" />
-                </view>
-            </fanc-popup>
-        </view>
-
-        <view class="section">
-            <view class="section-title">不固定在底部</view>
             <view class="demo-content demo-tabbar-container">
                 <fanc-tabbar
-                    v-model="activeUnfixed"
+                    v-model="activeBasic"
                     :items="basicItems"
                     :fixed="false"
                     @change="onChangeTab"
                 />
             </view>
-            <view class="demo-description">该示例将标签栏直接显示在内容中，而不是固定在底部</view>
+            <view class="demo-description">标准的底部导航栏，显示图标和文本</view>
         </view>
 
         <view class="section">
-            <view class="section-title">全屏应用示例</view>
-            <fanc-cell-group>
-                <fanc-cell title="全屏应用示例" is-link @click="showFullScreen = true" />
-            </fanc-cell-group>
-            <fanc-popup
-                v-model="showFullScreen"
-                custom-style="height: 100%;"
-                @close="onClosePopup('fullScreen')"
-            >
-                <view class="demo-fullscreen">
-                    <view class="demo-fullscreen__header">
-                        <view class="demo-fullscreen__title">示例应用</view>
-                        <view class="demo-fullscreen__close" @click="showFullScreen = false">
-                            <fanc-icon name="xmark" size="24"></fanc-icon>
+            <view class="section-title">自定义颜色</view>
+            <view class="demo-content demo-tabbar-container">
+                <fanc-tabbar
+                    v-model="activeCustomColor"
+                    :items="customColorItems"
+                    :fixed="false"
+                    @change="onChangeTab"
+                />
+            </view>
+            <view class="demo-description">可以自定义标签的颜色和激活状态的颜色</view>
+        </view>
+
+        <view class="section">
+            <view class="section-title">徽标提示</view>
+            <view class="demo-content demo-tabbar-container">
+                <fanc-tabbar
+                    v-model="activeBadge"
+                    :items="badgeItems"
+                    :fixed="false"
+                    @change="onChangeTab"
+                />
+            </view>
+            <view class="demo-description">在图标右上角显示徽标，可以是数字或红点</view>
+        </view>
+
+        <view class="section">
+            <view class="section-title">禁用状态</view>
+            <view class="demo-content demo-tabbar-container">
+                <fanc-tabbar
+                    v-model="activeDisabled"
+                    :items="disabledItems"
+                    :fixed="false"
+                    @change="onChangeTab"
+                />
+            </view>
+            <view class="demo-description">禁用的标签无法点击</view>
+        </view>
+
+        <view class="section">
+            <view class="section-title">胶囊模式</view>
+            <view class="demo-content demo-tabbar-container">
+                <fanc-tabbar
+                    v-model="activeCapsule"
+                    :items="basicItems"
+                    :capsule="true"
+                    :fixed="false"
+                    @change="onChangeTab"
+                />
+            </view>
+            <view class="demo-description">胶囊样式的标签栏，居中显示</view>
+        </view>
+
+        <view class="section">
+            <view class="section-title">纯图标模式</view>
+            <view class="demo-content demo-tabbar-container">
+                <fanc-tabbar
+                    v-model="activeIconOnly"
+                    :items="basicItems"
+                    :icon-only="true"
+                    :fixed="false"
+                    @change="onChangeTab"
+                />
+            </view>
+            <view class="demo-description">只显示图标，不显示文本</view>
+        </view>
+
+        <view class="section">
+            <view class="section-title">纯文本模式</view>
+            <view class="demo-content demo-tabbar-container">
+                <fanc-tabbar
+                    v-model="activeTextOnly"
+                    :items="basicItems"
+                    :text-only="true"
+                    :fixed="false"
+                    @change="onChangeTab"
+                />
+            </view>
+            <view class="demo-description">只显示文本，不显示图标，选中项带有椭圆形背景</view>
+        </view>
+
+        <view class="section">
+            <view class="section-title">胶囊+纯图标模式</view>
+            <view class="demo-content demo-tabbar-container">
+                <fanc-tabbar
+                    v-model="activeCapsuleIconOnly"
+                    :items="basicItems"
+                    :capsule="true"
+                    :icon-only="true"
+                    :fixed="false"
+                    @change="onChangeTab"
+                />
+            </view>
+            <view class="demo-description">结合胶囊模式和纯图标模式</view>
+        </view>
+
+        <view class="section">
+            <view class="section-title">胶囊+纯文本模式</view>
+            <view class="demo-content demo-tabbar-container">
+                <fanc-tabbar
+                    v-model="activeCapsuleTextOnly"
+                    :items="basicItems"
+                    :capsule="true"
+                    :text-only="true"
+                    :fixed="false"
+                    @change="onChangeTab"
+                />
+            </view>
+            <view class="demo-description">结合胶囊模式和纯文本模式</view>
+        </view>
+
+        <view class="section">
+            <view class="section-title">使用name属性</view>
+            <view class="demo-content demo-tabbar-container">
+                <fanc-tabbar
+                    v-model="activeName"
+                    :items="nameItems"
+                    :fixed="false"
+                    @change="onChangeNameTab"
+                />
+            </view>
+            <view class="demo-description">
+                当前选中: {{ activeName }}
+                <fanc-button size="small" type="primary" @click="switchTab">切换标签</fanc-button>
+            </view>
+        </view>
+
+        <view class="section">
+            <view class="section-title">自定义标签栏</view>
+            <view class="demo-content demo-tabbar-container">
+                <fanc-tabbar :fixed="false">
+                    <view
+                        v-for="(item, index) in customItems"
+                        :key="index"
+                        class="custom-tab-item"
+                        :class="{ 'custom-tab-item--active': activeCustom === index }"
+                        @click="onCustomTabClick(index)"
+                    >
+                        <view
+                            class="custom-tab-item__icon"
+                            :style="{ backgroundColor: item.color }"
+                        >
+                            <fanc-icon :name="item.icon" color="#fff" size="16"></fanc-icon>
                         </view>
+                        <view class="custom-tab-item__text">{{ item.text }}</view>
                     </view>
-                    <view class="demo-fullscreen__content" v-if="activeFullScreen === 0">
-                        <view class="demo-fullscreen__panel">
-                            <view class="demo-fullscreen__panel-title">首页</view>
-                            <view class="demo-fullscreen__placeholder">
-                                <fanc-icon name="home" size="64" color="#e0e0e0"></fanc-icon>
-                                <text>这是首页内容区域</text>
-                            </view>
-                        </view>
-                    </view>
-                    <view class="demo-fullscreen__content" v-else-if="activeFullScreen === 1">
-                        <view class="demo-fullscreen__panel">
-                            <view class="demo-fullscreen__panel-title">分类</view>
-                            <view class="demo-fullscreen__placeholder">
-                                <fanc-icon name="list" size="64" color="#e0e0e0"></fanc-icon>
-                                <text>这是分类内容区域</text>
-                            </view>
-                        </view>
-                    </view>
-                    <view class="demo-fullscreen__content" v-else-if="activeFullScreen === 2">
-                        <view class="demo-fullscreen__panel">
-                            <view class="demo-fullscreen__panel-title">消息</view>
-                            <view class="demo-fullscreen__placeholder">
-                                <fanc-icon name="comment" size="64" color="#e0e0e0"></fanc-icon>
-                                <text>这是消息内容区域</text>
-                            </view>
-                        </view>
-                    </view>
-                    <view class="demo-fullscreen__content" v-else-if="activeFullScreen === 3">
-                        <view class="demo-fullscreen__panel">
-                            <view class="demo-fullscreen__panel-title">我的</view>
-                            <view class="demo-fullscreen__placeholder">
-                                <fanc-icon name="user" size="64" color="#e0e0e0"></fanc-icon>
-                                <text>这是我的内容区域</text>
-                            </view>
-                        </view>
-                    </view>
-                    <fanc-tabbar
-                        v-model="activeFullScreen"
-                        :items="fullScreenItems"
-                        @change="onChangeTab"
-                    />
-                </view>
-            </fanc-popup>
+                </fanc-tabbar>
+            </view>
+            <view class="demo-description">使用插槽完全自定义标签栏内容和样式</view>
         </view>
     </view>
 </template>
@@ -206,12 +180,6 @@ export default {
     data() {
         return {
             // 弹出层控制
-            showBasic: false,
-            showCustomColor: false,
-            showBadge: false,
-            showDisabled: false,
-            showCustomSize: false,
-            showImage: false,
             showFullScreen: false,
 
             // 激活标签
@@ -219,10 +187,14 @@ export default {
             activeCustomColor: 0,
             activeBadge: 0,
             activeDisabled: 0,
-            activeCustomSize: 0,
-            activeImage: 0,
-            activeUnfixed: 0,
             activeFullScreen: 0,
+            activeName: "home",
+            activeCapsule: 0,
+            activeIconOnly: 0,
+            activeTextOnly: 0,
+            activeCapsuleIconOnly: 0,
+            activeCapsuleTextOnly: 0,
+            activeCustom: 0,
 
             // 基础标签项
             basicItems: [
@@ -256,30 +228,6 @@ export default {
                 { text: "我的", icon: "user" },
             ],
 
-            // 图片图标标签项
-            imageItems: [
-                {
-                    text: "首页",
-                    image: "/static/img/home.png",
-                    activeImage: "/static/img/home-active.png",
-                },
-                {
-                    text: "分类",
-                    image: "/static/img/category.png",
-                    activeImage: "/static/img/category-active.png",
-                },
-                {
-                    text: "消息",
-                    image: "/static/img/message.png",
-                    activeImage: "/static/img/message-active.png",
-                },
-                {
-                    text: "我的",
-                    image: "/static/img/user.png",
-                    activeImage: "/static/img/user-active.png",
-                },
-            ],
-
             // 全屏应用示例标签项
             fullScreenItems: [
                 { text: "首页", icon: "home", badge: 3 },
@@ -287,12 +235,47 @@ export default {
                 { text: "消息", icon: "comment", badge: 12 },
                 { text: "我的", icon: "user" },
             ],
+
+            // 带name属性的标签项
+            nameItems: [
+                { text: "首页", icon: "home", name: "home" },
+                { text: "分类", icon: "list", name: "category" },
+                { text: "消息", icon: "comment", name: "message" },
+                { text: "我的", icon: "user", name: "user" },
+            ],
+
+            // 自定义标签项
+            customItems: [
+                { text: "红色", icon: "heart", color: "#ee0a24" },
+                { text: "橙色", icon: "star", color: "#ff976a" },
+                { text: "蓝色", icon: "info", color: "#1989fa" },
+                { text: "绿色", icon: "success", color: "#07c160" },
+            ],
         };
     },
     methods: {
         // 标签切换事件
         onChangeTab(index, item) {
             this.$toast.text(`点击了: ${item.text}, 索引: ${index}`);
+        },
+
+        // 标签切换事件（带name）
+        onChangeNameTab(index, item) {
+            this.$toast.text(`点击了: ${item.text}, name: ${item.name}`);
+        },
+
+        // 自定义标签点击事件
+        onCustomTabClick(index) {
+            this.activeCustom = index;
+            this.$toast.text(`点击了自定义标签: ${this.customItems[index].text}`);
+        },
+
+        // 手动切换标签
+        switchTab() {
+            const names = ["home", "category", "message", "user"];
+            const currentIndex = names.indexOf(this.activeName);
+            const nextIndex = (currentIndex + 1) % names.length;
+            this.activeName = names[nextIndex];
         },
 
         // 关闭弹出层
@@ -348,14 +331,53 @@ export default {
 }
 
 .demo-tabbar-container {
-    height: 50px;
-    margin-top: 16px;
+    margin: 16px 0;
+    border-radius: 4px;
+    overflow: hidden;
+    background-color: #fff;
 }
 
 .demo-description {
     padding: 12px 16px;
     font-size: 14px;
     color: #969799;
+}
+
+/* 自定义标签栏样式 */
+.custom-tab-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding: 8px 0;
+}
+
+.custom-tab-item--active .custom-tab-item__text {
+    color: #1989fa;
+    font-weight: bold;
+}
+
+.custom-tab-item__icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 4px;
+    opacity: 0.8;
+}
+
+.custom-tab-item--active .custom-tab-item__icon {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+.custom-tab-item__text {
+    font-size: 12px;
+    color: #646566;
 }
 
 .demo-fullscreen {

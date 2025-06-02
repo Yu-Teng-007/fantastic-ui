@@ -46,6 +46,30 @@ export default {
 };
 ```
 
+### 使用name属性
+
+在标签指定`name`属性的情况下，`v-model`的值为当前标签的`name`。
+
+```html
+<fanc-tabbar v-model="activeName" :items="items" />
+```
+
+```js
+export default {
+  data() {
+    return {
+      activeName: 'home',
+      items: [
+        { text: '首页', icon: 'home', name: 'home' },
+        { text: '分类', icon: 'list', name: 'category' },
+        { text: '消息', icon: 'comment', name: 'message' },
+        { text: '我的', icon: 'user', name: 'user' }
+      ]
+    };
+  }
+};
+```
+
 ### 自定义颜色
 
 通过设置`color`和`activeColor`属性，可以自定义标签的颜色。
@@ -150,6 +174,42 @@ export default {
 };
 ```
 
+### 胶囊模式
+
+通过设置`capsule`属性为`true`，可以使用胶囊样式的标签栏。
+
+```html
+<fanc-tabbar v-model="active" :items="items" :capsule="true" />
+```
+
+### 纯图标模式
+
+通过设置`icon-only`属性为`true`，可以只显示图标，不显示文本。
+
+```html
+<fanc-tabbar v-model="active" :items="items" :icon-only="true" />
+```
+
+### 纯文本模式
+
+通过设置`text-only`属性为`true`，可以只显示文本，不显示图标。选中项会显示椭圆形背景。
+
+```html
+<fanc-tabbar v-model="active" :items="items" :text-only="true" />
+```
+
+### 组合模式
+
+可以组合使用胶囊模式和纯图标/纯文本模式。
+
+```html
+<!-- 胶囊+纯图标模式 -->
+<fanc-tabbar v-model="active" :items="items" :capsule="true" :icon-only="true" />
+
+<!-- 胶囊+纯文本模式 -->
+<fanc-tabbar v-model="active" :items="items" :capsule="true" :text-only="true" />
+```
+
 ### 不固定在底部
 
 通过设置`fixed`属性为`false`，可以取消标签栏固定在底部的效果。
@@ -158,17 +218,62 @@ export default {
 <fanc-tabbar v-model="active" :items="items" :fixed="false" />
 ```
 
+### 自定义标签栏
+
+通过默认插槽，可以完全自定义标签栏的内容和样式。使用插槽时，需要自行处理标签的点击事件和状态管理。
+
+```html
+<fanc-tabbar :fixed="false">
+  <view 
+    v-for="(item, index) in customItems" 
+    :key="index"
+    class="custom-tab-item"
+    :class="{'custom-tab-item--active': activeCustom === index}"
+    @click="onCustomTabClick(index)"
+  >
+    <view class="custom-tab-item__icon" :style="{backgroundColor: item.color}">
+      <fanc-icon :name="item.icon" color="#fff" size="16"></fanc-icon>
+    </view>
+    <view class="custom-tab-item__text">{{ item.text }}</view>
+  </view>
+</fanc-tabbar>
+```
+
+```js
+export default {
+  data() {
+    return {
+      activeCustom: 0,
+      customItems: [
+        { text: '红色', icon: 'heart', color: '#ee0a24' },
+        { text: '橙色', icon: 'star', color: '#ff976a' },
+        { text: '蓝色', icon: 'info', color: '#1989fa' },
+        { text: '绿色', icon: 'success', color: '#07c160' }
+      ]
+    };
+  },
+  methods: {
+    onCustomTabClick(index) {
+      this.activeCustom = index;
+    }
+  }
+};
+```
+
 ## API
 
 ### Props
 
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
-| modelValue(v-model) | 当前选中标签的索引 | _number_ | `0` |
+| modelValue(v-model) | 当前选中标签的索引或name值 | _number \| string_ | `0` |
 | items | 标签栏内容 | _array_ | `[]` |
 | fixed | 是否固定在底部 | _boolean_ | `true` |
 | placeholder | 固定在底部时是否在标签位置生成等高的占位元素 | _boolean_ | `true` |
 | safeAreaInsetBottom | 是否开启底部安全区适配 | _boolean_ | `true` |
+| capsule | 是否使用胶囊模式 | _boolean_ | `false` |
+| iconOnly | 是否只显示图标，不显示文本 | _boolean_ | `false` |
+| textOnly | 是否只显示文本，不显示图标 | _boolean_ | `false` |
 | zIndex | 元素 z-index | _number_ | `10` |
 | iconSize | 图标尺寸，默认单位为px | _number \| string_ | `24` |
 
@@ -179,6 +284,7 @@ export default {
 | 键名 | 说明 | 类型 |
 | --- | --- | --- |
 | text | 标签文字 | _string_ |
+| name | 标签标识符，作为v-model的值 | _string \| number_ |
 | icon | 图标名称，支持FancIcon组件中的图标 | _string_ |
 | image | 图片图标URL，与icon互斥 | _string_ |
 | activeImage | 激活状态图片图标URL | _string_ |
@@ -198,6 +304,12 @@ export default {
 | 事件名 | 说明 | 回调参数 |
 | --- | --- | --- |
 | change | 切换标签时触发 | index: 标签索引, item: 标签对象 |
+
+### Slots
+
+| 名称 | 说明 |
+| --- | --- |
+| default | 自定义标签栏内容，设置后将不使用items属性渲染标签 |
 
 ## 主题定制
 
@@ -219,4 +331,5 @@ export default {
 | --tabbar-height | `50px` | 标签栏高度 |
 | --tabbar-z-index | `10` | 标签栏z-index |
 | --tabbar-shadow-color | `rgba(0, 0, 0, 0.05)` | 标签栏阴影颜色 |
-``` 
+| --tabbar-text-only-size | `14px` | 纯文本模式下的文字尺寸 |
+| --tabbar-text-active-bg-color | `rgba(25, 137, 250, 0.1)` | 纯文本模式下选中项的背景颜色 |
