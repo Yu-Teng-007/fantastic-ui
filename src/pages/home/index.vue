@@ -290,6 +290,14 @@
                 </template>
             </fanc-cell>
 
+            <fanc-cell title="引导" is-link url="/pages/example/guide/index" center>
+                <template #icon>
+                    <view class="component-icon">
+                        <fanc-icon name="lightbulb" size="18"></fanc-icon>
+                    </view>
+                </template>
+            </fanc-cell>
+
             <fanc-cell title="列表" is-link url="/pages/example/list/index" center>
                 <template #icon>
                     <view class="component-icon">

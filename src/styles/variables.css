@@ -46,6 +46,47 @@
     --border-color: #ebedf0;
     --border-color-light: #ebeef5;
 
+    /* Guide 引导组件颜色 */
+    --guide-bg-color: var(--white);
+    --guide-title-color: var(--text-primary);
+    --guide-text-color: var(--text-secondary);
+    --guide-mask-color: rgba(0, 0, 0, 0.5);
+    --guide-close-bg-color: var(--gray-100);
+    --guide-close-hover-bg-color: var(--gray-200);
+    --guide-close-icon-color: var(--text-secondary);
+    --guide-step-bg-color: var(--gray-300);
+    --guide-step-active-bg-color: var(--fanc-primary-color);
+    --guide-prev-button-bg-color: var(--gray-100);
+    --guide-prev-button-text-color: var(--text-secondary);
+    --guide-next-button-bg-color: var(--fanc-primary-color);
+    --guide-next-button-text-color: var(--white);
+    --guide-shadow-color: rgba(0, 0, 0, 0.15);
+    --guide-dark-bg-color: var(--dark-color);
+    --guide-dark-title-color: var(--white);
+    --guide-dark-text-color: var(--gray-300);
+    --guide-dark-close-bg-color: rgba(255, 255, 255, 0.1);
+    --guide-dark-prev-button-bg-color: rgba(255, 255, 255, 0.1);
+    --guide-dark-prev-button-text-color: var(--gray-300);
+    --guide-primary-bg-color: var(--fanc-primary-color);
+    --guide-primary-title-color: var(--white);
+    --guide-primary-text-color: rgba(255, 255, 255, 0.9);
+    --guide-primary-step-bg-color: rgba(255, 255, 255, 0.5);
+    --guide-primary-step-active-bg-color: var(--white);
+    --guide-primary-prev-button-bg-color: rgba(255, 255, 255, 0.2);
+    --guide-primary-prev-button-text-color: var(--white);
+    --guide-primary-next-button-bg-color: var(--white);
+    --guide-primary-next-button-text-color: var(--fanc-primary-color);
+    --guide-primary-close-bg-color: rgba(255, 255, 255, 0.2);
+    --guide-primary-close-icon-color: var(--white);
+    --guide-border-radius: 8px;
+    --guide-padding: 20px;
+    --guide-title-font-size: 18px;
+    --guide-text-font-size: 14px;
+    --guide-button-font-size: 14px;
+    --guide-step-size: 8px;
+    --guide-z-index: 9999;
+    --guide-transition-duration: 0.3s;
+
     /* Skeleton 骨架屏组件颜色 */
     --skeleton-bg-color: #eeeeee;
     --skeleton-from-color: #eeeeee;

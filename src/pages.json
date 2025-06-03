@@ -251,6 +251,12 @@
             "style": {
                 "navigationBarTitleText": "表格示例"
             }
+        },
+        {
+            "path": "pages/example/guide/index",
+            "style": {
+                "navigationBarTitleText": "引导示例"
+            }
         }
     ],
     "globalStyle": {
