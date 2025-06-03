@@ -600,4 +600,16 @@
     --list-empty-icon-size: 80px;
     --list-font-size: 14px;
     --list-border-radius: 4px;
+
+    /* Progress 进度条组件颜色 */
+    --progress-track-color: var(--gray-200);
+    --progress-portion-color: var(--fanc-primary-color);
+    --progress-text-color: var(--white);
+    --progress-success-color: var(--fanc-success-color);
+    --progress-warning-color: var(--fanc-warning-color);
+    --progress-error-color: var(--fanc-danger-color);
+    --progress-pivot-background-color: var(--fanc-primary-color);
+    --progress-pivot-text-color: var(--white);
+    --progress-transition-duration: 0.3s;
+    --progress-striped-opacity: 0.15;
 }

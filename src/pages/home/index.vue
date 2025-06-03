@@ -186,6 +186,14 @@
                 </template>
             </fanc-cell>
 
+            <fanc-cell title="进度条" is-link url="/pages/example/progress/index" center>
+                <template #icon>
+                    <view class="component-icon">
+                        <fanc-icon name="bars-progress" size="18"></fanc-icon>
+                    </view>
+                </template>
+            </fanc-cell>
+
             <fanc-cell title="图标" is-link url="/pages/example/icon/index" center>
                 <template #icon>
                     <view class="component-icon">
