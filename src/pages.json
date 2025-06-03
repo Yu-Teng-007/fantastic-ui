@@ -323,6 +323,12 @@
             "style": {
                 "navigationBarTitleText": "面包屑示例"
             }
+        },
+        {
+            "path": "pages/example/swipe/index",
+            "style": {
+                "navigationBarTitleText": "轮播示例"
+            }
         }
     ],
     "globalStyle": {

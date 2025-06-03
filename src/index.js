@@ -60,6 +60,7 @@ import FancEmpty from "@/components/fanc-empty/index.vue";
 import FancCard from "@/components/fanc-card/index.vue";
 import FancBreadcrumb from "@/components/fanc-breadcrumb/index.vue";
 import FancBreadcrumbItem from "@/components/fanc-breadcrumb-item/index.vue";
+import FancSwipe from "@/components/fanc-swipe/index.vue";
 import Message from "@/plugins/message";
 import Toast from "@/plugins/toast";
 import Dialog from "@/plugins/dialog";
@@ -130,6 +131,7 @@ const components = [
     FancCard,
     FancBreadcrumb,
     FancBreadcrumbItem,
+    FancSwipe,
 ];
 
 // 导出单个组件
@@ -196,6 +198,7 @@ export {
     FancCard,
     FancBreadcrumb,
     FancBreadcrumbItem,
+    FancSwipe,
 };
 
 // 批量注册组件

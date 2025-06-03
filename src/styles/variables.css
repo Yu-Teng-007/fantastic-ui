@@ -909,4 +909,18 @@
     --breadcrumb-separator-margin: 0 8px;
     --breadcrumb-border-radius: 4px;
     --breadcrumb-shadow-color: rgba(0, 0, 0, 0.05);
+
+    /* Swipe 轮播组件颜色 */
+    --swipe-bg-color: #f2f2f2;
+    --swipe-indicator-color: rgba(255, 255, 255, 0.6);
+    --swipe-indicator-active-color: #ffffff;
+    --swipe-title-bg-color: rgba(0, 0, 0, 0.4);
+    --swipe-title-color: #ffffff;
+    --swipe-title-font-size: 14px;
+    --swipe-default-height: 200px;
+    --swipe-indicator-size: 8px;
+    --swipe-indicator-active-size: 16px;
+    --swipe-indicator-margin: 0 4px;
+    --swipe-indicator-bottom: 12px;
+    --swipe-transition-duration: 0.3s;
 }

@@ -202,6 +202,14 @@
                 </template>
             </fanc-cell>
 
+            <fanc-cell title="轮播" is-link url="/pages/example/swipe/index" center>
+                <template #icon>
+                    <view class="component-icon">
+                        <fanc-icon name="images" size="18"></fanc-icon>
+                    </view>
+                </template>
+            </fanc-cell>
+
             <fanc-cell title="空状态" is-link url="/pages/example/empty/index" center>
                 <template #icon>
                     <view class="component-icon">
