@@ -227,6 +227,12 @@
             "style": {
                 "navigationBarTitleText": "页脚示例"
             }
+        },
+        {
+            "path": "pages/example/list/index",
+            "style": {
+                "navigationBarTitleText": "列表示例"
+            }
         }
     ],
     "globalStyle": {

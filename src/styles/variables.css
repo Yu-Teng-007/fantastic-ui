@@ -579,4 +579,25 @@
     --steps-indicator-error-border: var(--fanc-danger-color);
     --steps-indicator-error-text: var(--white);
     --steps-transition-duration: 0.3s;
+
+    /* List 列表组件颜色 */
+    --list-bg-color: var(--bg-white);
+    --list-loading-text-color: var(--text-secondary);
+    --list-loading-spinner-color: var(--fanc-primary-color);
+    --list-error-text-color: var(--text-secondary);
+    --list-error-retry-color: var(--fanc-primary-color);
+    --list-error-retry-border-color: var(--fanc-primary-color);
+    --list-no-more-text-color: var(--text-secondary);
+    --list-empty-icon-color: var(--gray-300);
+    --list-empty-icon-bg-color: var(--gray-100);
+    --list-empty-text-color: var(--text-secondary);
+    --list-item-divider-color: var(--border-color-light);
+    --list-loading-duration: 0.8s;
+    --list-transition-duration: 0.3s;
+    --list-loading-size: 20px;
+    --list-footer-padding: 16px 0;
+    --list-empty-padding: 40px 0;
+    --list-empty-icon-size: 80px;
+    --list-font-size: 14px;
+    --list-border-radius: 4px;
 }
