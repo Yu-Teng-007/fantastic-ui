@@ -739,4 +739,16 @@
     --time-picker-button-font-size: 14px;
     --time-picker-transition-duration: 0.3s;
     --time-picker-disabled-opacity: var(--form-disabled-opacity);
+
+    /* Circle 环形进度条组件颜色 */
+    --circle-track-color: var(--gray-200);
+    --circle-primary-color: var(--fanc-primary-color);
+    --circle-success-color: var(--fanc-success-color);
+    --circle-warning-color: var(--fanc-warning-color);
+    --circle-danger-color: var(--fanc-danger-color);
+    --circle-text-color: var(--text-primary);
+    --circle-text-size: 18px;
+    --circle-default-size: 100px;
+    --circle-default-stroke-width: 40px;
+    --circle-animation-duration: 500ms;
 }

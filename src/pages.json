@@ -275,6 +275,12 @@
             "style": {
                 "navigationBarTitleText": "图片预览示例"
             }
+        },
+        {
+            "path": "pages/example/circle/index",
+            "style": {
+                "navigationBarTitleText": "环形进度条示例"
+            }
         }
     ],
     "globalStyle": {

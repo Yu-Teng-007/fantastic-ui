@@ -218,6 +218,14 @@
                 </template>
             </fanc-cell>
 
+            <fanc-cell title="环形进度条" is-link url="/pages/example/circle/index" center>
+                <template #icon>
+                    <view class="component-icon">
+                        <fanc-icon name="circle-notch" size="18"></fanc-icon>
+                    </view>
+                </template>
+            </fanc-cell>
+
             <fanc-cell title="骨架屏" is-link url="/pages/example/skeleton/index" center>
                 <template #icon>
                     <view class="component-icon">

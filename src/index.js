@@ -46,6 +46,7 @@ import FancCountDown from "@/components/fanc-count-down/index.vue";
 import FancFooter from "@/components/fanc-footer/index.vue";
 import FancList from "@/components/fanc-list/index.vue";
 import FancProgress from "@/components/fanc-progress/index.vue";
+import FancCircle from "@/components/fanc-circle/index.vue";
 import FancSkeleton from "@/components/fanc-skeleton/index.vue";
 import FancTable from "@/components/fanc-table/index.vue";
 import FancGuide from "@/components/fanc-guide/index.vue";
@@ -106,6 +107,7 @@ const components = [
     FancFooter,
     FancList,
     FancProgress,
+    FancCircle,
     FancSkeleton,
     FancTable,
     FancGuide,
@@ -162,6 +164,7 @@ export {
     FancFooter,
     FancList,
     FancProgress,
+    FancCircle,
     FancSkeleton,
     FancTable,
     FancGuide,
