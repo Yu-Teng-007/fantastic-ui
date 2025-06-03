@@ -178,6 +178,14 @@
                 </template>
             </fanc-cell>
 
+            <fanc-cell title="倒计时" is-link url="/pages/example/count-down/index" center>
+                <template #icon>
+                    <view class="component-icon">
+                        <fanc-icon name="clock" size="18"></fanc-icon>
+                    </view>
+                </template>
+            </fanc-cell>
+
             <fanc-cell title="图标" is-link url="/pages/example/icon/index" center>
                 <template #icon>
                     <view class="component-icon">

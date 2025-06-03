@@ -215,6 +215,12 @@
             "style": {
                 "navigationBarTitleText": "折叠面板示例"
             }
+        },
+        {
+            "path": "pages/example/count-down/index",
+            "style": {
+                "navigationBarTitleText": "倒计时示例"
+            }
         }
     ],
     "globalStyle": {

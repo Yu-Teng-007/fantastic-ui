@@ -46,6 +46,13 @@
     --border-color: #ebedf0;
     --border-color-light: #ebeef5;
 
+    /* CountDown 倒计时组件颜色 */
+    --countdown-text-color: var(--text-primary);
+    --countdown-item-text-color: var(--white);
+    --countdown-item-background-color: var(--fanc-primary-color);
+    --countdown-separator-color: var(--text-primary);
+    --countdown-unit-color: var(--text-primary);
+
     /* Collapse 折叠面板组件颜色 */
     --collapse-bg-color: var(--bg-white);
     --collapse-title-color: var(--text-primary);
