@@ -317,6 +317,12 @@
             "style": {
                 "navigationBarTitleText": "卡片示例"
             }
+        },
+        {
+            "path": "pages/example/breadcrumb/index",
+            "style": {
+                "navigationBarTitleText": "面包屑示例"
+            }
         }
     ],
     "globalStyle": {

@@ -58,6 +58,8 @@ import FancGrid from "@/components/fanc-grid/index.vue";
 import FancGridItem from "@/components/fanc-grid-item/index.vue";
 import FancEmpty from "@/components/fanc-empty/index.vue";
 import FancCard from "@/components/fanc-card/index.vue";
+import FancBreadcrumb from "@/components/fanc-breadcrumb/index.vue";
+import FancBreadcrumbItem from "@/components/fanc-breadcrumb-item/index.vue";
 import Message from "@/plugins/message";
 import Toast from "@/plugins/toast";
 import Dialog from "@/plugins/dialog";
@@ -126,6 +128,8 @@ const components = [
     FancGridItem,
     FancEmpty,
     FancCard,
+    FancBreadcrumb,
+    FancBreadcrumbItem,
 ];
 
 // 导出单个组件
@@ -190,6 +194,8 @@ export {
     FancGridItem,
     FancEmpty,
     FancCard,
+    FancBreadcrumb,
+    FancBreadcrumbItem,
 };
 
 // 批量注册组件

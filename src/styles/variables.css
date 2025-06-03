@@ -887,4 +887,26 @@
     --card-action-text-margin-left: 4px;
     --card-action-text-color: var(--text-secondary);
     --card-action-text-font-size: 12px;
+
+    /* Breadcrumb 面包屑组件颜色 */
+    --breadcrumb-text-color: var(--text-secondary);
+    --breadcrumb-active-color: var(--fanc-primary-color);
+    --breadcrumb-separator-color: var(--text-disabled);
+    --breadcrumb-icon-color: var(--text-secondary);
+    --breadcrumb-light-bg-color: var(--bg-white);
+    --breadcrumb-dark-bg-color: var(--dark-color);
+    --breadcrumb-dark-text-color: var(--gray-300);
+    --breadcrumb-dark-active-color: var(--white);
+    --breadcrumb-dark-separator-color: rgba(255, 255, 255, 0.5);
+    --breadcrumb-primary-bg-color: var(--fanc-primary-color);
+    --breadcrumb-primary-text-color: rgba(255, 255, 255, 0.9);
+    --breadcrumb-primary-active-color: var(--white);
+    --breadcrumb-primary-separator-color: rgba(255, 255, 255, 0.7);
+    --breadcrumb-font-size: 14px;
+    --breadcrumb-icon-size: 16px;
+    --breadcrumb-separator-size: 12px;
+    --breadcrumb-padding: 8px 16px;
+    --breadcrumb-separator-margin: 0 8px;
+    --breadcrumb-border-radius: 4px;
+    --breadcrumb-shadow-color: rgba(0, 0, 0, 0.05);
 }

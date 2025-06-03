@@ -186,6 +186,14 @@
                 </template>
             </fanc-cell>
 
+            <fanc-cell title="面包屑" is-link url="/pages/example/breadcrumb/index" center>
+                <template #icon>
+                    <view class="component-icon">
+                        <fanc-icon name="map-signs" size="18"></fanc-icon>
+                    </view>
+                </template>
+            </fanc-cell>
+
             <fanc-cell title="卡片" is-link url="/pages/example/card/index" center>
                 <template #icon>
                     <view class="component-icon">
