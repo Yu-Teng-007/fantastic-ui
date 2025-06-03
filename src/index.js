@@ -57,6 +57,7 @@ import FancPagination from "@/components/fanc-pagination/index.vue";
 import FancGrid from "@/components/fanc-grid/index.vue";
 import FancGridItem from "@/components/fanc-grid-item/index.vue";
 import FancEmpty from "@/components/fanc-empty/index.vue";
+import FancCard from "@/components/fanc-card/index.vue";
 import Message from "@/plugins/message";
 import Toast from "@/plugins/toast";
 import Dialog from "@/plugins/dialog";
@@ -124,6 +125,7 @@ const components = [
     FancGrid,
     FancGridItem,
     FancEmpty,
+    FancCard,
 ];
 
 // 导出单个组件
@@ -187,6 +189,7 @@ export {
     FancGrid,
     FancGridItem,
     FancEmpty,
+    FancCard,
 };
 
 // 批量注册组件

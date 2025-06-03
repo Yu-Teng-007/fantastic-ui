@@ -186,6 +186,14 @@
                 </template>
             </fanc-cell>
 
+            <fanc-cell title="卡片" is-link url="/pages/example/card/index" center>
+                <template #icon>
+                    <view class="component-icon">
+                        <fanc-icon name="credit-card" size="18"></fanc-icon>
+                    </view>
+                </template>
+            </fanc-cell>
+
             <fanc-cell title="空状态" is-link url="/pages/example/empty/index" center>
                 <template #icon>
                     <view class="component-icon">

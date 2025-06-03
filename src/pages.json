@@ -311,6 +311,12 @@
             "style": {
                 "navigationBarTitleText": "宫格示例"
             }
+        },
+        {
+            "path": "pages/example/card/index",
+            "style": {
+                "navigationBarTitleText": "卡片示例"
+            }
         }
     ],
     "globalStyle": {
