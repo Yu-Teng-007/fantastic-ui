@@ -146,6 +146,14 @@
             description="用于信息呈现和内容展示的组件"
             :id="categories[2].id"
         >
+            <fanc-cell title="导航栏" is-link url="/pages/example/navbar/index" center>
+                <template #icon>
+                    <view class="component-icon">
+                        <fanc-icon name="bars" size="18"></fanc-icon>
+                    </view>
+                </template>
+            </fanc-cell>
+
             <fanc-cell title="单元格" is-link url="/pages/example/cell/index" center>
                 <template #icon>
                     <view class="component-icon">

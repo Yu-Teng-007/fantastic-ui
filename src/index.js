@@ -31,6 +31,7 @@ import FancRate from "@/components/fanc-rate/index.vue";
 import FancTabbar from "@/components/fanc-tabbar/index.vue";
 import FancSidebar from "@/components/fanc-sidebar/index.vue";
 import FancSidebarItem from "@/components/fanc-sidebar-item/index.vue";
+import FancNavbar from "@/components/fanc-navbar/index.vue";
 import Message from "@/plugins/message";
 import Toast from "@/plugins/toast";
 import Dialog from "@/plugins/dialog";
@@ -71,6 +72,7 @@ const components = [
     FancTabbar,
     FancSidebar,
     FancSidebarItem,
+    FancNavbar,
 ];
 
 // 导出单个组件
@@ -108,6 +110,7 @@ export {
     FancTabbar,
     FancSidebar,
     FancSidebarItem,
+    FancNavbar,
 };
 
 // 批量注册组件

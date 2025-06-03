@@ -179,6 +179,12 @@
             "style": {
                 "navigationBarTitleText": "侧边栏示例"
             }
+        },
+        {
+            "path": "pages/example/navbar/index",
+            "style": {
+                "navigationBarTitleText": "导航栏示例"
+            }
         }
     ],
     "globalStyle": {

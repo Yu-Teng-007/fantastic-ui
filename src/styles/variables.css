@@ -434,4 +434,14 @@
     --tabbar-shadow-color: rgba(0, 0, 0, 0.05);
     --tabbar-safe-area-height: 0px;
     --tabbar-placeholder-height: calc(var(--tabbar-height) + var(--tabbar-safe-area-height));
+
+    /* Navbar 导航栏组件颜色 */
+    --navbar-bg-color: var(--white);
+    --navbar-text-color: var(--text-primary);
+    --navbar-title-color: var(--text-primary);
+    --navbar-text-font-size: 14px;
+    --navbar-title-font-size: 16px;
+    --navbar-title-font-weight: 500;
+    --navbar-height: 44px;
+    --navbar-border-color: var(--border-color);
 }
