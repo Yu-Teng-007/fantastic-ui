@@ -34,8 +34,8 @@
                     v-model:show="showStepsGuide"
                     v-model:step="currentStep"
                     :steps="steps"
-                    :title="steps[currentStep]?.title"
-                    :text="steps[currentStep]?.content"
+                    :title="steps[currentStep].title"
+                    :text="steps[currentStep].content"
                     centered
                     @finish="handleFinish"
                 ></fanc-guide>
@@ -87,8 +87,8 @@
                     v-model:show="showAutoplayGuide"
                     v-model:step="autoplayStep"
                     :steps="autoplaySteps"
-                    :title="autoplaySteps[autoplayStep]?.title"
-                    :text="autoplaySteps[autoplayStep]?.content"
+                    :title="autoplaySteps[autoplayStep].title"
+                    :text="autoplaySteps[autoplayStep].content"
                     centered
                     autoplay
                     :autoplay-delay="2000"
@@ -156,8 +156,8 @@
                     v-model:show="showFeatureGuide"
                     v-model:step="featureStep"
                     :steps="featureGuides"
-                    :title="featureGuides[featureStep]?.title"
-                    :text="featureGuides[featureStep]?.content"
+                    :title="featureGuides[featureStep].title"
+                    :text="featureGuides[featureStep].content"
                     :position="featurePositions[featureStep]"
                     @finish="handleFeatureFinish"
                 ></fanc-guide>
@@ -257,7 +257,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .container {
     padding: 20px;
     background-color: #f8f8f8;
