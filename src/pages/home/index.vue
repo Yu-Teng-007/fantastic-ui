@@ -107,6 +107,14 @@
                     </view>
                 </template>
             </fanc-cell>
+
+            <fanc-cell title="表格" is-link url="/pages/example/table/index" center>
+                <template #icon>
+                    <view class="component-icon">
+                        <fanc-icon name="table" size="18"></fanc-icon>
+                    </view>
+                </template>
+            </fanc-cell>
         </fanc-cell-group>
 
         <!-- 选择与日期组件 -->

@@ -245,6 +245,12 @@
             "style": {
                 "navigationBarTitleText": "列表示例"
             }
+        },
+        {
+            "path": "pages/example/table/index",
+            "style": {
+                "navigationBarTitleText": "表格示例"
+            }
         }
     ],
     "globalStyle": {

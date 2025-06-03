@@ -621,4 +621,33 @@
     --progress-pivot-text-color: var(--white);
     --progress-transition-duration: 0.3s;
     --progress-striped-opacity: 0.15;
+
+    /* Table 表格组件颜色 */
+    --table-bg-color: var(--white);
+    --table-text-color: var(--text-primary);
+    --table-header-bg-color: #f7f8fa;
+    --table-header-text-color: var(--text-primary);
+    --table-header-font-weight: 500;
+    --table-border-color: var(--border-color);
+    --table-striped-bg-color: #f9f9f9;
+    --table-hover-bg-color: #f5f7fa;
+    --table-fixed-shadow: 0 0 10px rgba(0, 0, 0, 0.12);
+    --table-row-height: 48px;
+    --table-header-row-height: 48px;
+    --table-footer-bg-color: #f7f8fa;
+    --table-footer-text-color: var(--text-primary);
+    --table-empty-text-color: var(--text-secondary);
+    --table-loading-bg-color: rgba(255, 255, 255, 0.9);
+    --table-sort-icon-color: var(--gray-600);
+    --table-sort-icon-active-color: var(--fanc-primary-color);
+    --table-cell-padding: 8px 16px;
+    --table-font-size: 14px;
+    --table-small-font-size: 12px;
+    --table-small-row-height: 40px;
+    --table-large-font-size: 16px;
+    --table-large-row-height: 56px;
+    --table-pagination-margin-top: 16px;
+    --table-selected-row-bg-color: #e6f7ff;
+    --table-placeholder-height: 100px;
+    --table-placeholder-color: var(--text-disabled);
 }
