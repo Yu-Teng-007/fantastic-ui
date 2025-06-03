@@ -7,6 +7,12 @@
             }
         },
         {
+            "path": "pages/example/empty/index",
+            "style": {
+                "navigationBarTitleText": "空状态示例"
+            }
+        },
+        {
             "path": "pages/example/highlight/index",
             "style": {
                 "navigationBarTitleText": "高亮文本示例"

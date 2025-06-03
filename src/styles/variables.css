@@ -164,6 +164,21 @@
     --footer-copyright-margin-bottom: 8px;
     --footer-icp-font-size: 12px;
 
+    /* Empty 空状态组件颜色 */
+    --empty-description-color: var(--text-secondary);
+    --empty-description-font-size: 14px;
+    --empty-description-line-height: 1.5;
+    --empty-image-width: 100px;
+    --empty-image-height: 100px;
+    --empty-image-margin-bottom: 16px;
+    --empty-bottom-margin-top: 8px;
+    --empty-padding: 40px 0;
+    --empty-error-color: var(--fanc-danger-color);
+    --empty-search-color: var(--text-secondary);
+    --empty-network-color: var(--fanc-warning-color);
+    --empty-icon-color: #c8c9cc;
+    --empty-icon-size: 50px;
+
     /* CountDown 倒计时组件颜色 */
     --countdown-text-color: var(--text-primary);
     --countdown-item-text-color: var(--white);
