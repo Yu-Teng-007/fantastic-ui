@@ -464,4 +464,15 @@
     --indexes-sidebar-z-index: 2;
     --indexes-sidebar-item-height: 16px;
     --indexes-sidebar-item-padding: 0 8px;
+
+    /* Tabs 选项卡组件颜色 */
+    --tabs-active-color: var(--primary-color);
+    --tabs-inactive-color: var(--gray-600);
+    --tabs-disabled-color: var(--text-disabled);
+    --tabs-nav-bg-color: var(--white);
+    --tabs-nav-border-color: var(--border-color-light);
+    --tabs-card-border-color: var(--border-color);
+    --tabs-card-active-bg-color: var(--primary-color);
+    --tabs-card-active-text-color: var(--white);
+    --tabs-badge-color: var(--danger-color);
 }

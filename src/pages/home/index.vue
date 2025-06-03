@@ -217,6 +217,14 @@
                     </view>
                 </template>
             </fanc-cell>
+
+            <fanc-cell title="选项卡" is-link url="/pages/example/tabs/index" center>
+                <template #icon>
+                    <view class="component-icon">
+                        <fanc-icon name="folder" size="18"></fanc-icon>
+                    </view>
+                </template>
+            </fanc-cell>
         </fanc-cell-group>
 
         <!-- 反馈组件 -->

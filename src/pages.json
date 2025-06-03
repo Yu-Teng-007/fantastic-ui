@@ -191,6 +191,12 @@
             "style": {
                 "navigationBarTitleText": "索引列表示例"
             }
+        },
+        {
+            "path": "pages/example/tabs/index",
+            "style": {
+                "navigationBarTitleText": "选项卡示例"
+            }
         }
     ],
     "globalStyle": {
