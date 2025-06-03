@@ -1,0 +1,213 @@
+/**
+ * 交互类组件CSS变量定义
+ */
+
+:root {
+    /* Swipe 轮播组件颜色 */
+    --swipe-bg-color: #f2f2f2;
+    --swipe-indicator-color: rgba(255, 255, 255, 0.6);
+    --swipe-indicator-active-color: #ffffff;
+    --swipe-title-bg-color: rgba(0, 0, 0, 0.4);
+    --swipe-title-color: #ffffff;
+    --swipe-title-font-size: 14px;
+    --swipe-default-height: 200px;
+    --swipe-indicator-size: 8px;
+    --swipe-indicator-active-size: 16px;
+    --swipe-indicator-margin: 0 4px;
+    --swipe-indicator-bottom: 12px;
+    --swipe-transition-duration: 0.3s;
+
+    /* Slider 滑动选择器组件颜色 */
+    --slider-active-color: var(--fanc-primary-color);
+    --slider-inactive-color: var(--gray-300);
+    --slider-disabled-color: var(--gray-400);
+    --slider-thumb-color: var(--white);
+    --slider-thumb-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    --slider-thumb-active-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    --slider-value-color: var(--text-primary);
+    --slider-disabled-opacity: 0.6;
+
+    /* 滑动单元格 (fanc-swipe-cell) 颜色 */
+    --swipe-cell-content-bg: var(--white);
+    --swipe-cell-indicator-bg: rgba(0, 0, 0, 0.1);
+    --swipe-cell-indicator-active-bg: rgba(0, 0, 0, 0.2);
+    --swipe-cell-delete-bg: var(--danger-color);
+    --swipe-cell-edit-bg: var(--primary-color);
+    --swipe-cell-collect-bg: var(--warning-color);
+    --swipe-cell-text-color: var(--white);
+    --swipe-cell-disabled-opacity: 0.6;
+    --swipe-cell-transition-duration: 0.3s;
+    --swipe-cell-button-font-size: 14px;
+
+    /* Picker 选择器组件颜色 */
+    --picker-bg-color: var(--white);
+    --picker-header-bg-color: var(--white);
+    --picker-header-height: 44px;
+    --picker-header-padding: 16px;
+    --picker-title-font-size: 16px;
+    --picker-title-color: var(--text-primary);
+    --picker-action-font-size: 14px;
+    --picker-action-padding: 16px;
+    --picker-confirm-color: var(--fanc-primary-color);
+    --picker-cancel-color: var(--text-secondary);
+    --picker-item-font-size: 16px;
+    --picker-item-padding: 8px;
+    --picker-item-color: var(--text-primary);
+    --picker-item-disabled-color: var(--text-disabled);
+    --picker-mask-color: rgba(0, 0, 0, 0.6);
+    --picker-border-color: var(--border-color);
+    --picker-border-radius: 16px;
+    --picker-disabled-opacity: 0.6;
+    --picker-transition-duration: 0.3s;
+    --picker-z-index: 1000;
+
+    /* TimePicker 时间选择器组件颜色 */
+    --time-picker-bg-color: var(--bg-white);
+    --time-picker-title-color: var(--text-primary);
+    --time-picker-title-font-size: 16px;
+    --time-picker-title-font-weight: 500;
+    --time-picker-item-color: var(--text-primary);
+    --time-picker-item-disabled-color: var(--text-disabled);
+    --time-picker-item-active-color: var(--fanc-primary-color);
+    --time-picker-confirm-button-color: var(--fanc-primary-color);
+    --time-picker-cancel-button-color: var(--text-secondary);
+    --time-picker-indicator-color: var(--gray-100);
+    --time-picker-border-color: var(--border-color);
+    --time-picker-header-height: 44px;
+    --time-picker-item-height: 44px;
+    --time-picker-item-font-size: 16px;
+    --time-picker-button-font-size: 14px;
+    --time-picker-transition-duration: 0.3s;
+    --time-picker-disabled-opacity: var(--form-disabled-opacity);
+
+    /* DatePicker 日期选择器组件颜色 */
+    --date-picker-bg-color: var(--white);
+    --date-picker-text-color: var(--text-primary);
+    --date-picker-disabled-opacity: var(--form-disabled-opacity);
+    --date-picker-title-color: var(--text-primary);
+    --date-picker-confirm-color: var(--fanc-primary-color);
+    --date-picker-cancel-color: var(--text-secondary);
+    --date-picker-item-color: var(--text-primary);
+    --date-picker-item-disabled-color: var(--text-disabled);
+    --date-picker-item-active-color: var(--fanc-primary-color);
+    --date-picker-toolbar-height: 44px;
+    --date-picker-item-height: 40px;
+    --date-picker-indicator-border-color: var(--border-color);
+
+    /* Calendar 日历组件颜色 */
+    --calendar-bg-color: var(--white);
+    --calendar-title-color: var(--text-primary);
+    --calendar-subtitle-color: var(--text-secondary);
+    --calendar-weekday-color: var(--text-secondary);
+    --calendar-day-color: var(--text-primary);
+    --calendar-day-disabled-color: var(--text-disabled);
+    --calendar-day-selected-color: var(--white);
+    --calendar-day-selected-bg: var(--primary-color);
+    --calendar-day-range-bg: rgba(0, 123, 255, 0.1);
+    --calendar-toolbar-color: var(--text-secondary);
+    --calendar-border-color: var(--border-color-light);
+    --calendar-button-active-bg: rgba(0, 0, 0, 0.05);
+    --calendar-month-title-color: var(--text-primary);
+    --calendar-day-text-color: inherit;
+    --calendar-transition-duration: 0.3s;
+    --calendar-z-index: 2000;
+
+    /* NumberKeyboard 数字键盘组件颜色 */
+    --keyboard-bg-color: #f2f3f5;
+    --keyboard-header-bg-color: #f7f8fa;
+    --keyboard-border-color: #ebedf0;
+    --keyboard-title-color: #323233;
+    --keyboard-close-color: var(--fanc-primary-color);
+    --keyboard-key-bg-color: #fff;
+    --keyboard-key-color: #323233;
+    --keyboard-key-active-bg-color: #e6e6e6;
+    --keyboard-function-key-color: var(--text-secondary);
+    --keyboard-delete-key-color: var(--text-secondary);
+    --keyboard-transition-duration: 0.3s;
+    --keyboard-z-index: 100;
+
+    /* 下拉菜单栏组件 (fanc-dropdown-menu) 颜色 */
+    --dropdown-menu-bg: var(--white);
+    --dropdown-menu-active-color: var(--fanc-primary-color);
+    --dropdown-menu-disabled-color: var(--text-disabled);
+    --dropdown-menu-disabled-opacity: 0.6;
+    --dropdown-menu-title-color: var(--text-primary);
+    --dropdown-menu-option-active-color: var(--fanc-primary-color);
+    --dropdown-menu-option-bg: var(--white);
+    --dropdown-menu-option-active-bg: rgba(0, 123, 255, 0.05);
+    --dropdown-menu-shadow-color: rgba(0, 0, 0, 0.1);
+    --dropdown-menu-mask-color: var(--dialog-mask-color);
+    --dropdown-menu-arrow-color: var(--text-secondary);
+    --dropdown-menu-border-color: var(--border-color-light);
+    --dropdown-menu-active-arrow-color: var(--fanc-primary-color);
+    --dropdown-menu-transition-duration: 0.3s;
+    --dropdown-menu-z-index: 10;
+
+    /* Cascader 级联选择组件颜色 */
+    --cascader-bg-color: var(--white);
+    --cascader-active-color: var(--fanc-primary-color);
+    --cascader-text-color: var(--text-primary);
+    --cascader-disabled-color: var(--text-disabled);
+    --cascader-border-color: var(--border-color-light);
+    --cascader-option-active-bg: rgba(0, 123, 255, 0.05);
+    --cascader-disabled-opacity: 0.6;
+    --cascader-z-index: 10;
+    --cascader-tab-height: 40px;
+    --cascader-option-height: 44px;
+    --cascader-header-height: 46px;
+    --cascader-transition-duration: 0.3s;
+
+    /* Signature 签名组件颜色 */
+    --signature-bg-color: var(--white);
+    --signature-border-color: var(--border-color);
+    --signature-border-width: 1px;
+    --signature-border-radius: 4px;
+    --signature-actions-margin-top: 12px;
+    --signature-disabled-opacity: 0.6;
+
+    /* Stepper 步进器组件颜色 */
+    --stepper-button-width: 28px;
+    --stepper-button-height: 28px;
+    --stepper-button-bg-color: var(--white);
+    --stepper-button-border-color: var(--border-color);
+    --stepper-button-disabled-bg-color: var(--gray-100);
+    --stepper-button-disabled-border-color: var(--border-color);
+    --stepper-button-disabled-color: var(--text-disabled);
+    --stepper-button-icon-color: var(--text-primary);
+    --stepper-button-active-bg-color: var(--gray-100);
+    --stepper-input-width: 40px;
+    --stepper-input-height: 28px;
+    --stepper-input-font-size: 14px;
+    --stepper-input-text-color: var(--text-primary);
+    --stepper-input-bg-color: var(--white);
+    --stepper-input-border-color: var(--border-color);
+    --stepper-input-disabled-bg-color: var(--gray-100);
+    --stepper-input-disabled-text-color: var(--text-disabled);
+    --stepper-border-radius-left: 4px 0 0 4px;
+    --stepper-border-radius-right: 0 4px 4px 0;
+    --stepper-disabled-opacity: 0.6;
+
+    /* FilterBar 筛选栏组件颜色 */
+    --filter-bar-bg-color: var(--bg-white);
+    --filter-bar-border-color: var(--border-color);
+    --filter-bar-text-color: var(--text-primary);
+    --filter-bar-active-color: var(--fanc-primary-color);
+    --filter-bar-disabled-color: var(--text-disabled);
+    --filter-bar-dropdown-bg-color: var(--bg-white);
+    --filter-bar-dropdown-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+    --filter-bar-drawer-bg-color: var(--bg-white);
+    --filter-bar-drawer-title-color: var(--text-primary);
+    --filter-bar-drawer-option-bg-color: var(--gray-100);
+    --filter-bar-drawer-option-text-color: var(--text-primary);
+    --filter-bar-drawer-option-active-bg-color: var(--fanc-primary-color);
+    --filter-bar-drawer-option-active-text-color: var(--white);
+    --filter-bar-mask-color: rgba(0, 0, 0, 0.5);
+    --filter-bar-height: 88px;
+    --filter-bar-item-height: 56px;
+    --filter-bar-item-font-size: 28px;
+    --filter-bar-dropdown-item-font-size: 28px;
+    --filter-bar-drawer-title-font-size: 28px;
+    --filter-bar-drawer-option-font-size: 26px;
+    --filter-bar-drawer-btn-font-size: 32px;
+    --filter-bar-z-index: 10;
+}

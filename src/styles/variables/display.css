@@ -1,0 +1,193 @@
+/**
+ * 展示类组件CSS变量定义
+ */
+
+:root {
+    /* Card 卡片组件颜色和样式 */
+    --card-bg-color: var(--white);
+    --card-border-color: var(--border-color);
+    --card-border-radius: 8px;
+    --card-round-radius: 12px;
+    --card-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    --card-margin-bottom: 16px;
+    --card-content-padding: 16px;
+    --card-title-color: var(--text-primary);
+    --card-title-font-size: 16px;
+    --card-title-font-weight: 500;
+    --card-title-line-height: 22px;
+    --card-title-margin-bottom: 8px;
+    --card-subtitle-color: var(--text-secondary);
+    --card-subtitle-font-size: 14px;
+    --card-subtitle-line-height: 20px;
+    --card-subtitle-margin-bottom: 8px;
+    --card-desc-color: var(--text-secondary);
+    --card-desc-font-size: 14px;
+    --card-desc-line-height: 20px;
+    --card-desc-margin-bottom: 12px;
+    --card-price-color: var(--fanc-danger-color);
+    --card-price-font-size: 18px;
+    --card-price-font-weight: 500;
+    --card-price-symbol-size: 14px;
+    --card-price-margin-top: 8px;
+    --card-origin-price-color: var(--text-disabled);
+    --card-origin-price-font-size: 14px;
+    --card-origin-price-symbol-size: 12px;
+    --card-origin-price-margin-left: 8px;
+    --card-footer-padding: 12px 16px;
+    --card-footer-border-color: var(--border-color);
+    --card-bottom-padding: 12px 16px;
+    --card-bottom-border-color: var(--border-color);
+    --card-avatar-margin-right: 8px;
+    --card-author-color: var(--text-primary);
+    --card-author-font-size: 14px;
+    --card-author-font-weight: 500;
+    --card-author-line-height: 20px;
+    --card-time-color: var(--text-secondary);
+    --card-time-font-size: 12px;
+    --card-time-line-height: 18px;
+    --card-action-margin-left: 16px;
+    --card-action-text-margin-left: 4px;
+    --card-action-text-color: var(--text-secondary);
+    --card-action-text-font-size: 12px;
+
+    /* Tag 标签组件颜色 */
+    --tag-default-color: var(--text-primary);
+    --tag-default-bg-color: var(--gray-200);
+    --tag-primary-color: var(--white);
+    --tag-primary-bg-color: var(--fanc-primary-color);
+    --tag-success-color: var(--white);
+    --tag-success-bg-color: var(--fanc-success-color);
+    --tag-warning-color: var(--white);
+    --tag-warning-bg-color: var(--fanc-warning-color);
+    --tag-danger-color: var(--white);
+    --tag-danger-bg-color: var(--fanc-danger-color);
+    --tag-info-color: var(--white);
+    --tag-info-bg-color: var(--fanc-info-color);
+    --tag-plain-bg-color: transparent;
+    --tag-plain-border-width: 1px;
+    --tag-font-size-small: 10px;
+    --tag-font-size-medium: 12px;
+    --tag-font-size-large: 14px;
+    --tag-padding-small: 0 6px;
+    --tag-padding-medium: 0 8px;
+    --tag-padding-large: 0 10px;
+    --tag-line-height-small: 16px;
+    --tag-line-height-medium: 20px;
+    --tag-line-height-large: 24px;
+    --tag-border-radius: 2px;
+    --tag-round-border-radius: 999px;
+    --tag-close-icon-size: 12px;
+    --tag-close-margin-left: 4px;
+
+    /* Empty 空状态组件颜色 */
+    --empty-description-color: var(--text-secondary);
+    --empty-description-font-size: 14px;
+    --empty-description-line-height: 1.5;
+    --empty-image-width: 100px;
+    --empty-image-height: 100px;
+    --empty-image-margin-bottom: 16px;
+    --empty-bottom-margin-top: 8px;
+    --empty-padding: 40px 0;
+    --empty-error-color: var(--fanc-danger-color);
+    --empty-search-color: var(--text-secondary);
+    --empty-network-color: var(--fanc-warning-color);
+    --empty-icon-color: #c8c9cc;
+    --empty-icon-size: 50px;
+
+    /* Image 图片组件颜色 */
+    --image-bg-color: var(--gray-100);
+    --image-error-bg-color: var(--gray-100);
+    --image-error-icon-color: var(--gray-400);
+    --image-error-text-color: var(--gray-600);
+    --image-loading-bg-color: var(--gray-100);
+    --image-loading-icon-color: var(--gray-400);
+    --image-loading-text-color: var(--gray-600);
+
+    /* ImagePreview 图片预览组件颜色 */
+    --image-preview-bg-color: rgba(0, 0, 0, 0.9);
+    --image-preview-index-bg-color: rgba(0, 0, 0, 0.3);
+    --image-preview-index-color: var(--white);
+    --image-preview-close-color: var(--white);
+    --image-preview-close-bg-color: rgba(0, 0, 0, 0.3);
+    --image-preview-footer-bg-color: rgba(0, 0, 0, 0.5);
+    --image-preview-footer-text-color: var(--white);
+    --image-preview-swiper-duration: 300ms;
+    --image-preview-z-index: 10000;
+
+    /* Highlight 高亮文本组件颜色 */
+    --highlight-primary-bg-color: rgba(0, 123, 255, 0.1);
+    --highlight-primary-text-color: var(--fanc-primary-color);
+    --highlight-success-bg-color: rgba(40, 167, 69, 0.1);
+    --highlight-success-text-color: var(--fanc-success-color);
+    --highlight-warning-bg-color: rgba(255, 193, 7, 0.1);
+    --highlight-warning-text-color: var(--fanc-warning-color);
+    --highlight-danger-bg-color: rgba(220, 53, 69, 0.1);
+    --highlight-danger-text-color: var(--fanc-danger-color);
+    --highlight-info-bg-color: rgba(23, 162, 184, 0.1);
+    --highlight-info-text-color: var(--fanc-info-color);
+    --highlight-keyword-color: var(--fanc-primary-color);
+    --highlight-keyword-bg-color: transparent;
+    --highlight-border-radius: 4px;
+    --highlight-font-size: 14px;
+    --highlight-line-height: 1.5;
+    --highlight-padding: 2px 8px;
+
+    /* Skeleton 骨架屏组件颜色 */
+    --skeleton-bg-color: #eeeeee;
+    --skeleton-from-color: #eeeeee;
+    --skeleton-to-color: #dddddd;
+    --skeleton-title-radius: 2px;
+    --skeleton-avatar-radius: 2px;
+    --skeleton-row-radius: 2px;
+    --skeleton-round-radius: 8px;
+
+    /* Footer 页脚组件颜色 */
+    --footer-bg-color: var(--bg-white);
+    --footer-text-color: var(--text-secondary);
+    --footer-border-color: var(--border-color);
+    --footer-link-color: var(--primary-color);
+    --footer-separator-color: var(--text-disabled);
+    --footer-dark-bg-color: var(--dark-color);
+    --footer-dark-text-color: var(--text-light);
+    --footer-dark-border-color: var(--black);
+    --footer-light-bg-color: var(--light-color);
+    --footer-light-text-color: var(--text-primary);
+    --footer-light-border-color: var(--border-color-light);
+    --footer-primary-bg-color: var(--primary-color);
+    --footer-primary-text-color: var(--text-light);
+    --footer-primary-border-color: var(--primary-color);
+    --footer-link-dark-color: var(--light-color);
+    --footer-link-primary-color: var(--white);
+    --footer-z-index: 10;
+    --footer-padding: 20px;
+    --footer-font-size: 14px;
+    --footer-logo-width: 80px;
+    --footer-logo-height: 30px;
+    --footer-logo-margin-bottom: 16px;
+    --footer-logo-image-margin-bottom: 8px;
+    --footer-title-font-size: 16px;
+    --footer-title-font-weight: 500;
+    --footer-title-margin-bottom: 8px;
+    --footer-links-margin-bottom: 16px;
+    --footer-link-margin: 0 8px;
+    --footer-link-padding: 4px 0;
+    --footer-link-font-size: 14px;
+    --footer-link-icon-margin: 4px;
+    --footer-link-separator-margin: 8px;
+    --footer-content-margin-bottom: 16px;
+    --footer-line-height: 1.5;
+    --footer-copyright-font-size: 12px;
+    --footer-copyright-margin-bottom: 8px;
+    --footer-icp-font-size: 12px;
+
+    /* TextEllipsis 文本省略组件颜色 */
+    --text-ellipsis-text-color: var(--text-primary);
+    --text-ellipsis-trigger-color: var(--fanc-primary-color);
+    --text-ellipsis-trigger-hover-color: rgba(0, 123, 255, 0.8);
+    --text-ellipsis-background-color: var(--bg-white);
+    --text-ellipsis-font-size: 14px;
+    --text-ellipsis-line-height: 1.5;
+    --text-ellipsis-transition-duration: 0.3s;
+    --text-ellipsis-trigger-padding: 8px 0;
+    --text-ellipsis-trigger-font-size: 14px;
+}

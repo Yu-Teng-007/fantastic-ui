@@ -1,0 +1,33 @@
+/**
+ * CSS变量统一引入文件
+ */
+
+/* 引入基础变量 */
+@import "./base.css";
+
+/* 引入表单相关变量 */
+@import "./form.css";
+
+/* 引入反馈类变量 */
+@import "./feedback.css";
+
+/* 引入导航类变量 */
+@import "./navigation.css";
+
+/* 引入展示类变量 */
+@import "./display.css";
+
+/* 引入交互类变量 */
+@import "./interaction.css";
+
+/* 引入数据展示类变量 */
+@import "./data.css";
+
+/* 引入媒体类变量 */
+@import "./media.css";
+
+/* 引入弹出类变量 */
+@import "./popover.css";
+
+/* 引入上传类变量 */
+@import "./upload.css";

@@ -1,0 +1,97 @@
+/**
+ * 表单相关组件CSS变量定义
+ */
+
+:root {
+    /* Form 表单组件颜色 */
+    --form-bg-color: var(--white);
+    --form-item-label-color: var(--text-primary);
+    --form-item-content-color: var(--text-primary);
+    --form-item-error-color: var(--fanc-danger-color);
+    --form-item-required-color: var(--fanc-danger-color);
+    --form-disabled-opacity: 0.6;
+    --form-item-margin-bottom: 14px;
+    --form-item-error-font-size: 12px;
+    --form-item-label-font-size: 14px;
+    --form-item-content-font-size: 14px;
+    --form-item-label-line-height: 24px;
+    --form-item-content-line-height: 24px;
+    --form-border-color: var(--border-color-light);
+    --form-item-label-width: 88px;
+    --form-item-label-margin-right: 12px;
+    --form-item-padding: 12px 16px;
+    --form-item-padding-left: 12px;
+    --form-item-padding-right: 12px;
+    --form-item-error-margin-top: 4px;
+    --form-item-focused-border-color: var(--fanc-primary-color);
+    --form-item-transition-duration: 0.3s;
+    --form-item-small-font-size: 12px;
+    --form-item-small-line-height: 20px;
+    --form-item-default-font-size: 14px;
+    --form-item-default-line-height: 24px;
+    --form-item-large-font-size: 16px;
+    --form-item-large-line-height: 28px;
+    --form-submit-button-margin-top: 20px;
+    --form-item-top-margin-bottom: 8px;
+    --form-inline-item-margin-right: 16px;
+
+    /* Field 输入框组件颜色 */
+    --field-bg-color: var(--white);
+    --field-label-color: var(--text-primary);
+    --field-input-color: var(--text-primary);
+    --field-placeholder-color: var(--text-disabled);
+    --field-error-color: var(--fanc-danger-color);
+    --field-disabled-opacity: 0.6;
+    --field-required-color: var(--fanc-danger-color);
+    --field-icon-color: var(--gray-600);
+    --field-clear-icon-color: var(--text-disabled);
+    --field-clear-icon-active-color: var(--text-secondary);
+    --field-right-icon-color: var(--gray-600);
+    --field-error-message-color: var(--fanc-danger-color);
+    --field-word-limit-color: var(--text-secondary);
+    --field-border-color: var(--border-color);
+
+    /* Checkbox 复选框组件颜色 */
+    --checkbox-bg-color: var(--white);
+    --checkbox-icon-color: #c8c9cc;
+    --checkbox-disabled-icon-color: #c8c9cc;
+    --checkbox-checked-icon-color: var(--fanc-primary-color);
+    --checkbox-disabled-checked-icon-color: #c8c9cc;
+    --checkbox-disabled-bg-color: #f2f2f2;
+    --checkbox-label-color: var(--text-primary);
+    --checkbox-disabled-label-color: var(--text-disabled);
+    --checkbox-label-margin: 4px;
+    --checkbox-icon-size-small: 12px;
+    --checkbox-icon-size-normal: 16px;
+    --checkbox-icon-size-large: 20px;
+    --checkbox-transition-duration: 0.2s;
+    --checkbox-group-margin: 0 8px 8px 0;
+    --checkbox-disabled-opacity: var(--form-disabled-opacity);
+
+    /* Radio 单选框组件颜色 */
+    --radio-bg-color: var(--white);
+    --radio-icon-color: #c8c9cc;
+    --radio-disabled-icon-color: #c8c9cc;
+    --radio-checked-icon-color: var(--fanc-primary-color);
+    --radio-disabled-checked-icon-color: #c8c9cc;
+    --radio-disabled-bg-color: #f2f2f2;
+    --radio-label-color: var(--text-primary);
+    --radio-disabled-label-color: var(--text-disabled);
+    --radio-label-margin: 4px;
+    --radio-icon-size-small: 14px;
+    --radio-icon-size-normal: 18px;
+    --radio-icon-size-large: 22px;
+    --radio-transition-duration: 0.2s;
+    --radio-group-margin: 0 8px 8px 0;
+    --radio-disabled-opacity: var(--form-disabled-opacity);
+
+    /* Search 搜索组件颜色 */
+    --search-background-color: var(--white);
+    --search-content-background: var(--gray-100);
+    --search-label-color: var(--text-primary);
+    --search-input-color: var(--text-primary);
+    --search-icon-color: var(--gray-600);
+    --search-clear-icon-color: var(--text-disabled);
+    --search-action-color: var(--fanc-primary-color);
+    --search-placeholder-color: var(--text-disabled);
+}

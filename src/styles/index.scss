@@ -1,5 +1,7 @@
-// 引入全局样式 (包含CSS变量)
-@import "@/styles/global.scss";
+// 全局样式入口文件
 
-// 引入CSS变量定义
-@import "@/styles/variables.css";
+// 引入变量定义
+@import "./variables/index.css";
+
+// 引入全局样式
+@import "./global.scss";

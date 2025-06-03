@@ -1,0 +1,167 @@
+/**
+ * 数据展示类组件CSS变量定义
+ */
+
+:root {
+    /* Table 表格组件颜色 */
+    --table-bg-color: var(--white);
+    --table-text-color: var(--text-primary);
+    --table-header-bg-color: #f7f8fa;
+    --table-header-text-color: var(--text-primary);
+    --table-header-font-weight: 500;
+    --table-border-color: var(--border-color);
+    --table-striped-bg-color: #f9f9f9;
+    --table-hover-bg-color: #f5f7fa;
+    --table-fixed-shadow: 0 0 10px rgba(0, 0, 0, 0.12);
+    --table-row-height: 48px;
+    --table-header-row-height: 48px;
+    --table-footer-bg-color: #f7f8fa;
+    --table-footer-text-color: var(--text-primary);
+    --table-empty-text-color: var(--text-secondary);
+    --table-loading-bg-color: rgba(255, 255, 255, 0.9);
+    --table-sort-icon-color: var(--gray-600);
+    --table-sort-icon-active-color: var(--fanc-primary-color);
+    --table-cell-padding: 8px 16px;
+    --table-font-size: 14px;
+    --table-small-font-size: 12px;
+    --table-small-row-height: 40px;
+    --table-large-font-size: 16px;
+    --table-large-row-height: 56px;
+    --table-pagination-margin-top: 16px;
+    --table-selected-row-bg-color: #e6f7ff;
+    --table-placeholder-height: 100px;
+    --table-placeholder-color: var(--text-disabled);
+
+    /* List 列表组件颜色 */
+    --list-bg-color: var(--bg-white);
+    --list-loading-text-color: var(--text-secondary);
+    --list-loading-spinner-color: var(--fanc-primary-color);
+    --list-error-text-color: var(--text-secondary);
+    --list-error-retry-color: var(--fanc-primary-color);
+    --list-error-retry-border-color: var(--fanc-primary-color);
+    --list-no-more-text-color: var(--text-secondary);
+    --list-empty-icon-color: var(--gray-300);
+    --list-empty-icon-bg-color: var(--gray-100);
+    --list-empty-text-color: var(--text-secondary);
+    --list-item-divider-color: var(--border-color-light);
+    --list-loading-duration: 0.8s;
+    --list-transition-duration: 0.3s;
+    --list-loading-size: 20px;
+    --list-footer-padding: 16px 0;
+    --list-empty-padding: 40px 0;
+    --list-empty-icon-size: 80px;
+    --list-font-size: 14px;
+    --list-border-radius: 4px;
+
+    /* Indexes 索引组件颜色 */
+    --indexes-sidebar-bg-color: transparent;
+    --indexes-sidebar-active-color: var(--fanc-primary-color);
+    --indexes-sidebar-text-color: var(--text-secondary);
+    --indexes-sidebar-active-bg-color: #f2f3f5;
+    --indexes-sidebar-font-size: 12px;
+    --indexes-anchor-bg-color: #f7f8fa;
+    --indexes-anchor-text-color: var(--text-secondary);
+    --indexes-anchor-font-size: 14px;
+    --indexes-item-text-color: var(--text-primary);
+    --indexes-item-font-size: 14px;
+    --indexes-item-line-height: 48px;
+    --indexes-item-bg-color: var(--white);
+    --indexes-item-active-bg-color: #f2f3f5;
+    --indexes-item-border-color: var(--border-color);
+    --indexes-z-index: 1;
+    --indexes-sidebar-z-index: 2;
+    --indexes-sidebar-item-height: 16px;
+    --indexes-sidebar-item-padding: 0 8px;
+
+    /* Progress 进度条组件颜色 */
+    --progress-track-color: var(--gray-200);
+    --progress-portion-color: var(--fanc-primary-color);
+    --progress-text-color: var(--white);
+    --progress-success-color: var(--fanc-success-color);
+    --progress-warning-color: var(--fanc-warning-color);
+    --progress-error-color: var(--fanc-danger-color);
+    --progress-pivot-background-color: var(--fanc-primary-color);
+    --progress-pivot-text-color: var(--white);
+    --progress-transition-duration: 0.3s;
+    --progress-striped-opacity: 0.15;
+
+    /* Circle 环形进度条组件颜色 */
+    --circle-track-color: var(--gray-200);
+    --circle-primary-color: var(--fanc-primary-color);
+    --circle-success-color: var(--fanc-success-color);
+    --circle-warning-color: var(--fanc-warning-color);
+    --circle-danger-color: var(--fanc-danger-color);
+    --circle-text-color: var(--text-primary);
+    --circle-text-size: 18px;
+    --circle-default-size: 100px;
+    --circle-default-stroke-width: 40px;
+    --circle-animation-duration: 500ms;
+
+    /* Pagination 分页组件颜色 */
+    --pagination-button-bg-color: var(--bg-white);
+    --pagination-button-text-color: var(--text-primary);
+    --pagination-active-bg-color: var(--fanc-primary-color);
+    --pagination-active-text-color: var(--white);
+    --pagination-disabled-color: var(--text-disabled);
+    --pagination-text-color: var(--text-primary);
+    --pagination-current-color: var(--fanc-primary-color);
+    --pagination-separator-color: var(--text-secondary);
+    --pagination-total-color: var(--text-secondary);
+    --pagination-dark-bg-color: var(--black-300);
+    --pagination-dark-text-color: var(--gray-100);
+    --pagination-dark-active-bg-color: var(--fanc-primary-color);
+    --pagination-dark-active-text-color: var(--white);
+
+    /* Grid 宫格组件颜色 */
+    --grid-bg-color: var(--white);
+    --grid-text-color: var(--text-primary);
+    --grid-icon-color: var(--text-primary);
+    --grid-border-color: var(--border-color);
+    --grid-active-color: var(--bg-gray-light);
+    --grid-text-font-size: 14px;
+    --grid-icon-font-size: 28px;
+    --grid-item-padding: 16px 8px;
+    --grid-item-content-padding: 16px 8px;
+    --grid-item-gap: 8px;
+    --grid-badge-color: var(--white);
+    --grid-badge-bg-color: var(--fanc-danger-color);
+    --grid-primary-color: var(--fanc-primary-color);
+    --grid-success-color: var(--fanc-success-color);
+    --grid-warning-color: var(--fanc-warning-color);
+    --grid-danger-color: var(--fanc-danger-color);
+    --grid-info-color: var(--fanc-info-color);
+
+    /* CountDown 倒计时组件颜色 */
+    --countdown-text-color: var(--text-primary);
+    --countdown-item-text-color: var(--white);
+    --countdown-item-background-color: var(--fanc-primary-color);
+    --countdown-separator-color: var(--text-primary);
+    --countdown-unit-color: var(--text-primary);
+
+    /* Collapse 折叠面板组件颜色 */
+    --collapse-bg-color: var(--bg-white);
+    --collapse-title-color: var(--text-primary);
+    --collapse-title-disabled-color: var(--text-disabled);
+    --collapse-content-color: var(--text-secondary);
+    --collapse-value-color: var(--text-secondary);
+    --collapse-border-color: var(--border-color);
+    --collapse-icon-color: var(--gray-600);
+    --collapse-header-bg-color: var(--bg-white);
+    --collapse-content-bg-color: var(--bg-white);
+    --collapse-transition-duration: 0.3s;
+    --collapse-header-padding: 12px 16px;
+    --collapse-content-padding: 12px 16px;
+    --collapse-header-font-size: 14px;
+    --collapse-content-font-size: 14px;
+    --collapse-header-line-height: 24px;
+    --collapse-content-line-height: 1.5;
+    --collapse-header-font-weight: 500;
+    --collapse-disabled-opacity: 0.6;
+
+    /* Rate 评分组件颜色 */
+    --rate-active-color: #ffcc00;
+    --rate-inactive-color: #c8c9cc;
+    --rate-disabled-color: var(--text-disabled);
+    --rate-icon-size: 20px;
+    --rate-icon-gutter: 4px;
+}

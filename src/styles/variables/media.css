@@ -1,0 +1,46 @@
+/**
+ * 媒体类组件CSS变量定义
+ */
+
+:root {
+    /* Video 视频播放器组件颜色 */
+    --fanc-video-bg-color: #000000;
+    --fanc-video-controls-bg-color: rgba(0, 0, 0, 0.7);
+    --fanc-video-text-color: var(--white);
+    --fanc-video-progress-color: var(--fanc-primary-color);
+    --fanc-video-progress-bg-color: rgba(255, 255, 255, 0.3);
+    --fanc-video-progress-buffer-color: rgba(255, 255, 255, 0.5);
+    --fanc-video-progress-dot-color: var(--white);
+    --fanc-video-progress-dot-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+    --fanc-video-icon-color: var(--white);
+    --fanc-video-loading-bg-color: rgba(0, 0, 0, 0.3);
+    --fanc-video-loading-spinner-color: var(--white);
+    --fanc-video-poster-bg-color: var(--black);
+    --fanc-video-center-play-btn-bg-color: rgba(0, 0, 0, 0.5);
+    --fanc-video-center-play-btn-color: var(--white);
+    --fanc-video-primary-color: var(--fanc-primary-color);
+    --fanc-video-success-color: var(--fanc-success-color);
+    --fanc-video-warning-color: var(--fanc-warning-color);
+    --fanc-video-danger-color: var(--fanc-danger-color);
+    --fanc-video-info-color: var(--fanc-info-color);
+    --fanc-video-border-radius: 8px;
+    --fanc-video-control-padding: 8px 12px;
+    --fanc-video-transition-duration: 0.3s;
+    --fanc-video-disabled-opacity: 0.6;
+
+    /* Audio 音频播放器组件颜色 */
+    --fanc-audio-bg-color: var(--white);
+    --fanc-audio-title-color: var(--text-primary);
+    --fanc-audio-author-color: var(--text-secondary);
+    --fanc-audio-time-color: var(--text-secondary);
+    --fanc-audio-progress-bg-color: var(--gray-300);
+    --fanc-audio-progress-color: var(--fanc-primary-color);
+    --fanc-audio-dot-color: var(--white);
+    --fanc-audio-button-bg-color: var(--gray-200);
+    --fanc-audio-box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    --fanc-audio-border-radius: 8px;
+    --fanc-audio-cover-border-radius: 4px;
+    --fanc-audio-title-font-size: 16px;
+    --fanc-audio-author-font-size: 12px;
+    --fanc-audio-time-font-size: 12px;
+}

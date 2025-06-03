@@ -1,0 +1,47 @@
+/**
+ * 基础CSS变量定义
+ */
+
+:root {
+    /* 主题颜色 */
+    --primary-color: #007bff !important;
+    --secondary-color: #6c757d;
+    --success-color: #28a745;
+    --danger-color: #dc3545;
+    --warning-color: #ffc107;
+    --info-color: #17a2b8;
+    --light-color: #f8f9fa;
+    --dark-color: #343a40;
+
+    /* Fantastic UI 颜色 */
+    --fanc-primary-color: var(--primary-color);
+    --fanc-success-color: var(--success-color);
+    --fanc-warning-color: var(--warning-color);
+    --fanc-danger-color: var(--danger-color);
+    --fanc-info-color: var(--info-color);
+
+    /* 中性色阶 */
+    --white: #fff;
+    --black: #000;
+    --black-300: #323233;
+    --gray-600: #969799;
+    --gray-300: #dee2e6;
+    --gray-200: #e9ecef;
+    --gray-400: #ced4da;
+    --gray-100: #f8f9fa;
+
+    /* 文本颜色 */
+    --text-primary: var(--dark-color);
+    --text-secondary: var(--gray-600);
+    --text-disabled: #c0c4cc;
+    --text-light: var(--white);
+
+    /* 背景颜色 */
+    --bg-white: var(--white);
+    --bg-gray-light: var(--gray-100);
+    --bg-transparent: transparent;
+
+    /* 边框颜色 */
+    --border-color: #ebedf0;
+    --border-color-light: #ebeef5;
+}
