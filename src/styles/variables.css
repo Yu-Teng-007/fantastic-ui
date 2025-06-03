@@ -971,4 +971,28 @@
     --fixed-nav-badge-dot-size: 8px;
     --fixed-nav-badge-font-size: 12px;
     --fixed-nav-item-spacing: 8px;
+
+    /* FilterBar 筛选栏组件颜色 */
+    --filter-bar-bg-color: var(--bg-white);
+    --filter-bar-border-color: var(--border-color);
+    --filter-bar-text-color: var(--text-primary);
+    --filter-bar-active-color: var(--fanc-primary-color);
+    --filter-bar-disabled-color: var(--text-disabled);
+    --filter-bar-dropdown-bg-color: var(--bg-white);
+    --filter-bar-dropdown-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+    --filter-bar-drawer-bg-color: var(--bg-white);
+    --filter-bar-drawer-title-color: var(--text-primary);
+    --filter-bar-drawer-option-bg-color: var(--gray-100);
+    --filter-bar-drawer-option-text-color: var(--text-primary);
+    --filter-bar-drawer-option-active-bg-color: var(--fanc-primary-color);
+    --filter-bar-drawer-option-active-text-color: var(--white);
+    --filter-bar-mask-color: rgba(0, 0, 0, 0.5);
+    --filter-bar-height: 88px;
+    --filter-bar-item-height: 56px;
+    --filter-bar-item-font-size: 28px;
+    --filter-bar-dropdown-item-font-size: 28px;
+    --filter-bar-drawer-title-font-size: 28px;
+    --filter-bar-drawer-option-font-size: 26px;
+    --filter-bar-drawer-btn-font-size: 32px;
+    --filter-bar-z-index: 10;
 }

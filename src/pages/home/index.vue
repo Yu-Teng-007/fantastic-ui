@@ -314,10 +314,18 @@
                 </template>
             </fanc-cell>
 
-            <fanc-cell title="下拉菜单" is-link url="/pages/example/dropdown-menu/index" center>
+            <fanc-cell title="下拉菜单栏" is-link url="/pages/example/dropdown-menu/index" center>
                 <template #icon>
                     <view class="component-icon">
                         <fanc-icon name="caret-down" size="18"></fanc-icon>
+                    </view>
+                </template>
+            </fanc-cell>
+
+            <fanc-cell title="筛选栏" is-link url="/pages/example/filter-bar/index" center>
+                <template #icon>
+                    <view class="component-icon">
+                        <fanc-icon name="filter" size="18"></fanc-icon>
                     </view>
                 </template>
             </fanc-cell>

@@ -341,6 +341,12 @@
             "style": {
                 "navigationBarTitleText": "悬浮导航示例"
             }
+        },
+        {
+            "path": "pages/example/filter-bar/index",
+            "style": {
+                "navigationBarTitleText": "筛选栏示例"
+            }
         }
     ],
     "globalStyle": {
