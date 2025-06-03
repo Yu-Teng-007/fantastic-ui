@@ -347,6 +347,12 @@
             "style": {
                 "navigationBarTitleText": "筛选栏示例"
             }
+        },
+        {
+            "path": "pages/example/audio/index",
+            "style": {
+                "navigationBarTitleText": "音频播放器示例"
+            }
         }
     ],
     "globalStyle": {

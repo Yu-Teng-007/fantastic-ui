@@ -995,4 +995,20 @@
     --filter-bar-drawer-option-font-size: 26px;
     --filter-bar-drawer-btn-font-size: 32px;
     --filter-bar-z-index: 10;
+
+    /* Audio 音频播放器组件颜色 */
+    --fanc-audio-bg-color: var(--white);
+    --fanc-audio-title-color: var(--text-primary);
+    --fanc-audio-author-color: var(--text-secondary);
+    --fanc-audio-time-color: var(--text-secondary);
+    --fanc-audio-progress-bg-color: var(--gray-300);
+    --fanc-audio-progress-color: var(--fanc-primary-color);
+    --fanc-audio-dot-color: var(--white);
+    --fanc-audio-button-bg-color: var(--gray-200);
+    --fanc-audio-box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    --fanc-audio-border-radius: 8px;
+    --fanc-audio-cover-border-radius: 4px;
+    --fanc-audio-title-font-size: 16px;
+    --fanc-audio-author-font-size: 12px;
+    --fanc-audio-time-font-size: 12px;
 }

@@ -64,6 +64,7 @@ import FancSwipe from "@/components/fanc-swipe/index.vue";
 import FancBacktop from "@/components/fanc-backtop/index.vue";
 import FancFixedNav from "@/components/fanc-fixed-nav/index.vue";
 import FancFilterBar from "@/components/fanc-filter-bar/index.vue";
+import FancAudio from "@/components/fanc-audio/index.vue";
 import Message from "@/plugins/message";
 import Toast from "@/plugins/toast";
 import Dialog from "@/plugins/dialog";
@@ -138,6 +139,7 @@ const components = [
     FancBacktop,
     FancFixedNav,
     FancFilterBar,
+    FancAudio,
 ];
 
 // 导出单个组件
@@ -208,6 +210,7 @@ export {
     FancBacktop,
     FancFixedNav,
     FancFilterBar,
+    FancAudio,
 };
 
 // 批量注册组件

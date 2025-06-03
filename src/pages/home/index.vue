@@ -505,80 +505,32 @@
             </fanc-cell>
         </fanc-cell-group>
 
-        <!-- 导航组件 -->
+        <!-- 媒体组件 -->
         <fanc-cell-group
-            title="导航组件"
-            description="用于页面导航和位置指示的组件"
-            :id="categories[3].id"
+            title="媒体组件"
+            description="视频、图片等媒体内容相关组件"
+            :id="categories[4].id"
         >
-            <fanc-cell title="导航栏" is-link url="/pages/example/navbar/index" center>
+            <fanc-cell title="图片" is-link url="/pages/example/image/index" center>
                 <template #icon>
                     <view class="component-icon">
-                        <fanc-icon name="bars" size="18"></fanc-icon>
+                        <fanc-icon name="image" size="18"></fanc-icon>
                     </view>
                 </template>
             </fanc-cell>
 
-            <fanc-cell title="标签栏" is-link url="/pages/example/tabbar/index" center>
+            <fanc-cell title="图片预览" is-link url="/pages/example/image-preview/index" center>
                 <template #icon>
                     <view class="component-icon">
-                        <fanc-icon name="grip" size="18"></fanc-icon>
+                        <fanc-icon name="images" size="18"></fanc-icon>
                     </view>
                 </template>
             </fanc-cell>
 
-            <fanc-cell title="侧边栏" is-link url="/pages/example/sidebar/index" center>
+            <fanc-cell title="音频播放器" is-link url="/pages/example/audio/index" center>
                 <template #icon>
                     <view class="component-icon">
-                        <fanc-icon name="indent" size="18"></fanc-icon>
-                    </view>
-                </template>
-            </fanc-cell>
-
-            <fanc-cell title="索引栏" is-link url="/pages/example/indexes/index" center>
-                <template #icon>
-                    <view class="component-icon">
-                        <fanc-icon name="list-ol" size="18"></fanc-icon>
-                    </view>
-                </template>
-            </fanc-cell>
-
-            <fanc-cell title="标签页" is-link url="/pages/example/tabs/index" center>
-                <template #icon>
-                    <view class="component-icon">
-                        <fanc-icon name="folder" size="18"></fanc-icon>
-                    </view>
-                </template>
-            </fanc-cell>
-
-            <fanc-cell title="步骤条" is-link url="/pages/example/steps/index" center>
-                <template #icon>
-                    <view class="component-icon">
-                        <fanc-icon name="shoe-prints" size="18"></fanc-icon>
-                    </view>
-                </template>
-            </fanc-cell>
-
-            <fanc-cell title="面包屑" is-link url="/pages/example/breadcrumb/index" center>
-                <template #icon>
-                    <view class="component-icon">
-                        <fanc-icon name="map-signs" size="18"></fanc-icon>
-                    </view>
-                </template>
-            </fanc-cell>
-
-            <fanc-cell title="返回顶部" is-link url="/pages/example/backtop/index" center>
-                <template #icon>
-                    <view class="component-icon">
-                        <fanc-icon name="arrow-up" size="18"></fanc-icon>
-                    </view>
-                </template>
-            </fanc-cell>
-
-            <fanc-cell title="悬浮导航" is-link url="/pages/example/fixed-nav/index" center>
-                <template #icon>
-                    <view class="component-icon">
-                        <fanc-icon name="compass" size="18"></fanc-icon>
+                        <fanc-icon name="music" size="18"></fanc-icon>
                     </view>
                 </template>
             </fanc-cell>
