@@ -225,6 +225,14 @@
                     </view>
                 </template>
             </fanc-cell>
+
+            <fanc-cell title="步骤条" is-link url="/pages/example/steps/index" center>
+                <template #icon>
+                    <view class="component-icon">
+                        <fanc-icon name="list-ol" size="18"></fanc-icon>
+                    </view>
+                </template>
+            </fanc-cell>
         </fanc-cell-group>
 
         <!-- 反馈组件 -->

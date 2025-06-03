@@ -475,4 +475,32 @@
     --tabs-card-active-bg-color: var(--primary-color);
     --tabs-card-active-text-color: var(--white);
     --tabs-badge-color: var(--danger-color);
+
+    /* Steps 步骤条组件颜色 */
+    --steps-bg-color: var(--white);
+    --steps-active-color: var(--fanc-primary-color);
+    --steps-inactive-color: var(--gray-400);
+    --steps-finish-color: var(--fanc-primary-color);
+    --steps-error-color: var(--fanc-danger-color);
+    --steps-title-color: var(--text-primary);
+    --steps-title-active-color: var(--fanc-primary-color);
+    --steps-title-error-color: var(--fanc-danger-color);
+    --steps-description-color: var(--text-secondary);
+    --steps-description-error-color: var(--fanc-danger-color);
+    --steps-line-color: var(--gray-400);
+    --steps-line-finish-color: var(--fanc-primary-color);
+    --steps-indicator-size: 24px;
+    --steps-indicator-font-size: 14px;
+    --steps-title-font-size: 14px;
+    --steps-description-font-size: 12px;
+    --steps-indicator-active-bg: var(--fanc-primary-color);
+    --steps-indicator-active-border: var(--fanc-primary-color);
+    --steps-indicator-active-text: var(--white);
+    --steps-indicator-wait-bg: var(--white);
+    --steps-indicator-wait-border: var(--gray-400);
+    --steps-indicator-wait-text: var(--gray-600);
+    --steps-indicator-error-bg: var(--fanc-danger-color);
+    --steps-indicator-error-border: var(--fanc-danger-color);
+    --steps-indicator-error-text: var(--white);
+    --steps-transition-duration: 0.3s;
 }
