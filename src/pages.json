@@ -287,6 +287,12 @@
             "style": {
                 "navigationBarTitleText": "标签示例"
             }
+        },
+        {
+            "path": "pages/example/text-ellipsis/index",
+            "style": {
+                "navigationBarTitleText": "文本省略示例"
+            }
         }
     ],
     "globalStyle": {

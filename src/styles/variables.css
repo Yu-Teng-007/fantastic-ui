@@ -780,4 +780,15 @@
     --tag-round-border-radius: 999px;
     --tag-close-icon-size: 12px;
     --tag-close-margin-left: 4px;
+
+    /* TextEllipsis 文本省略组件颜色 */
+    --text-ellipsis-text-color: var(--text-primary);
+    --text-ellipsis-trigger-color: var(--fanc-primary-color);
+    --text-ellipsis-trigger-hover-color: rgba(0, 123, 255, 0.8);
+    --text-ellipsis-background-color: var(--bg-white);
+    --text-ellipsis-font-size: 14px;
+    --text-ellipsis-line-height: 1.5;
+    --text-ellipsis-transition-duration: 0.3s;
+    --text-ellipsis-trigger-padding: 8px 0;
+    --text-ellipsis-trigger-font-size: 14px;
 }

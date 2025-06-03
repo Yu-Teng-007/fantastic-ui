@@ -194,6 +194,14 @@
                 </template>
             </fanc-cell>
 
+            <fanc-cell title="文本省略" is-link url="/pages/example/text-ellipsis/index" center>
+                <template #icon>
+                    <view class="component-icon">
+                        <fanc-icon name="align-left" size="18"></fanc-icon>
+                    </view>
+                </template>
+            </fanc-cell>
+
             <fanc-cell title="单元格" is-link url="/pages/example/cell/index" center>
                 <template #icon>
                     <view class="component-icon">

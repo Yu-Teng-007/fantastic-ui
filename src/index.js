@@ -52,6 +52,7 @@ import FancTable from "@/components/fanc-table/index.vue";
 import FancGuide from "@/components/fanc-guide/index.vue";
 import FancHighlight from "@/components/fanc-highlight/index.vue";
 import FancTag from "@/components/fanc-tag/index.vue";
+import FancTextEllipsis from "@/components/fanc-text-ellipsis/index.vue";
 import Message from "@/plugins/message";
 import Toast from "@/plugins/toast";
 import Dialog from "@/plugins/dialog";
@@ -114,6 +115,7 @@ const components = [
     FancGuide,
     FancHighlight,
     FancTag,
+    FancTextEllipsis,
 ];
 
 // 导出单个组件
@@ -172,6 +174,7 @@ export {
     FancGuide,
     FancHighlight,
     FancTag,
+    FancTextEllipsis,
 };
 
 // 批量注册组件
