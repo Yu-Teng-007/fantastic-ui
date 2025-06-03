@@ -46,6 +46,15 @@
     --border-color: #ebedf0;
     --border-color-light: #ebeef5;
 
+    /* Skeleton 骨架屏组件颜色 */
+    --skeleton-bg-color: #eeeeee;
+    --skeleton-from-color: #eeeeee;
+    --skeleton-to-color: #dddddd;
+    --skeleton-title-radius: 2px;
+    --skeleton-avatar-radius: 2px;
+    --skeleton-row-radius: 2px;
+    --skeleton-round-radius: 8px;
+
     /* Footer 页脚组件颜色 */
     --footer-bg-color: var(--bg-white);
     --footer-text-color: var(--text-secondary);

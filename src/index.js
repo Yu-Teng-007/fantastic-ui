@@ -44,6 +44,7 @@ import FancCountDown from "@/components/fanc-count-down/index.vue";
 import FancFooter from "@/components/fanc-footer/index.vue";
 import FancList from "@/components/fanc-list/index.vue";
 import FancProgress from "@/components/fanc-progress/index.vue";
+import FancSkeleton from "@/components/fanc-skeleton/index.vue";
 import Message from "@/plugins/message";
 import Toast from "@/plugins/toast";
 import Dialog from "@/plugins/dialog";
@@ -97,6 +98,7 @@ const components = [
     FancFooter,
     FancList,
     FancProgress,
+    FancSkeleton,
 ];
 
 // 导出单个组件
@@ -147,6 +149,7 @@ export {
     FancFooter,
     FancList,
     FancProgress,
+    FancSkeleton,
 };
 
 // 批量注册组件

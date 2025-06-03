@@ -7,6 +7,12 @@
             }
         },
         {
+            "path": "pages/example/skeleton/index",
+            "style": {
+                "navigationBarTitleText": "骨架屏示例"
+            }
+        },
+        {
             "path": "pages/example/button/index",
             "style": {
                 "navigationBarTitleText": "按钮示例"

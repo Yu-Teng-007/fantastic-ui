@@ -194,6 +194,14 @@
                 </template>
             </fanc-cell>
 
+            <fanc-cell title="骨架屏" is-link url="/pages/example/skeleton/index" center>
+                <template #icon>
+                    <view class="component-icon">
+                        <fanc-icon name="window-restore" size="18"></fanc-icon>
+                    </view>
+                </template>
+            </fanc-cell>
+
             <fanc-cell title="图标" is-link url="/pages/example/icon/index" center>
                 <template #icon>
                     <view class="component-icon">
