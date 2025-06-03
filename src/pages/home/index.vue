@@ -314,6 +314,14 @@
                 </template>
             </fanc-cell>
 
+            <fanc-cell title="分页" is-link url="/pages/example/pagination/index" center>
+                <template #icon>
+                    <view class="component-icon">
+                        <fanc-icon name="chevron-right" size="18"></fanc-icon>
+                    </view>
+                </template>
+            </fanc-cell>
+
             <fanc-cell title="选项卡" is-link url="/pages/example/tabs/index" center>
                 <template #icon>
                     <view class="component-icon">

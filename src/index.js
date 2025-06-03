@@ -53,6 +53,7 @@ import FancGuide from "@/components/fanc-guide/index.vue";
 import FancHighlight from "@/components/fanc-highlight/index.vue";
 import FancTag from "@/components/fanc-tag/index.vue";
 import FancTextEllipsis from "@/components/fanc-text-ellipsis/index.vue";
+import FancPagination from "@/components/fanc-pagination/index.vue";
 import Message from "@/plugins/message";
 import Toast from "@/plugins/toast";
 import Dialog from "@/plugins/dialog";
@@ -116,6 +117,7 @@ const components = [
     FancHighlight,
     FancTag,
     FancTextEllipsis,
+    FancPagination,
 ];
 
 // 导出单个组件
@@ -175,6 +177,7 @@ export {
     FancHighlight,
     FancTag,
     FancTextEllipsis,
+    FancPagination,
 };
 
 // 批量注册组件

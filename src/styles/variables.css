@@ -791,4 +791,19 @@
     --text-ellipsis-transition-duration: 0.3s;
     --text-ellipsis-trigger-padding: 8px 0;
     --text-ellipsis-trigger-font-size: 14px;
+
+    /* Pagination 分页组件颜色 */
+    --pagination-button-bg-color: var(--bg-white);
+    --pagination-button-text-color: var(--text-primary);
+    --pagination-active-bg-color: var(--fanc-primary-color);
+    --pagination-active-text-color: var(--white);
+    --pagination-disabled-color: var(--text-disabled);
+    --pagination-text-color: var(--text-primary);
+    --pagination-current-color: var(--fanc-primary-color);
+    --pagination-separator-color: var(--text-secondary);
+    --pagination-total-color: var(--text-secondary);
+    --pagination-dark-bg-color: var(--black-300);
+    --pagination-dark-text-color: var(--gray-100);
+    --pagination-dark-active-bg-color: var(--fanc-primary-color);
+    --pagination-dark-active-text-color: var(--white);
 }

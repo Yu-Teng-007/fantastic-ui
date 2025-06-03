@@ -211,6 +211,12 @@
             }
         },
         {
+            "path": "pages/example/pagination/index",
+            "style": {
+                "navigationBarTitleText": "分页示例"
+            }
+        },
+        {
             "path": "pages/example/steps/index",
             "style": {
                 "navigationBarTitleText": "步骤条示例"
