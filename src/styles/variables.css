@@ -46,6 +46,45 @@
     --border-color: #ebedf0;
     --border-color-light: #ebeef5;
 
+    /* Footer 页脚组件颜色 */
+    --footer-bg-color: var(--bg-white);
+    --footer-text-color: var(--text-secondary);
+    --footer-border-color: var(--border-color);
+    --footer-link-color: var(--primary-color);
+    --footer-separator-color: var(--text-disabled);
+    --footer-dark-bg-color: var(--dark-color);
+    --footer-dark-text-color: var(--text-light);
+    --footer-dark-border-color: var(--black);
+    --footer-light-bg-color: var(--light-color);
+    --footer-light-text-color: var(--text-primary);
+    --footer-light-border-color: var(--border-color-light);
+    --footer-primary-bg-color: var(--primary-color);
+    --footer-primary-text-color: var(--text-light);
+    --footer-primary-border-color: var(--primary-color);
+    --footer-link-dark-color: var(--light-color);
+    --footer-link-primary-color: var(--white);
+    --footer-z-index: 10;
+    --footer-padding: 20px;
+    --footer-font-size: 14px;
+    --footer-logo-width: 80px;
+    --footer-logo-height: 30px;
+    --footer-logo-margin-bottom: 16px;
+    --footer-logo-image-margin-bottom: 8px;
+    --footer-title-font-size: 16px;
+    --footer-title-font-weight: 500;
+    --footer-title-margin-bottom: 8px;
+    --footer-links-margin-bottom: 16px;
+    --footer-link-margin: 0 8px;
+    --footer-link-padding: 4px 0;
+    --footer-link-font-size: 14px;
+    --footer-link-icon-margin: 4px;
+    --footer-link-separator-margin: 8px;
+    --footer-content-margin-bottom: 16px;
+    --footer-line-height: 1.5;
+    --footer-copyright-font-size: 12px;
+    --footer-copyright-margin-bottom: 8px;
+    --footer-icp-font-size: 12px;
+
     /* CountDown 倒计时组件颜色 */
     --countdown-text-color: var(--text-primary);
     --countdown-item-text-color: var(--white);

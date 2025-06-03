@@ -250,6 +250,14 @@
                 </template>
             </fanc-cell>
 
+            <fanc-cell title="页脚" is-link url="/pages/example/footer/index" center>
+                <template #icon>
+                    <view class="component-icon">
+                        <fanc-icon name="copyright" size="18"></fanc-icon>
+                    </view>
+                </template>
+            </fanc-cell>
+
             <fanc-cell title="步骤条" is-link url="/pages/example/steps/index" center>
                 <template #icon>
                     <view class="component-icon">

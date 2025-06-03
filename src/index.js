@@ -41,6 +41,7 @@ import FancSlider from "@/components/fanc-slider/index.vue";
 import FancCollapse from "@/components/fanc-collapse/index.vue";
 import FancCollapseItem from "@/components/fanc-collapse-item/index.vue";
 import FancCountDown from "@/components/fanc-count-down/index.vue";
+import FancFooter from "@/components/fanc-footer/index.vue";
 import Message from "@/plugins/message";
 import Toast from "@/plugins/toast";
 import Dialog from "@/plugins/dialog";
@@ -91,6 +92,7 @@ const components = [
     FancCollapse,
     FancCollapseItem,
     FancCountDown,
+    FancFooter,
 ];
 
 // 导出单个组件
@@ -138,6 +140,7 @@ export {
     FancCollapse,
     FancCollapseItem,
     FancCountDown,
+    FancFooter,
 };
 
 // 批量注册组件

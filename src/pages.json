@@ -221,6 +221,12 @@
             "style": {
                 "navigationBarTitleText": "倒计时示例"
             }
+        },
+        {
+            "path": "pages/example/footer/index",
+            "style": {
+                "navigationBarTitleText": "页脚示例"
+            }
         }
     ],
     "globalStyle": {
