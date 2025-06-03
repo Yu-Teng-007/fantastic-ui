@@ -178,6 +178,14 @@
                 </template>
             </fanc-cell>
 
+            <fanc-cell title="高亮文本" is-link url="/pages/example/highlight/index" center>
+                <template #icon>
+                    <view class="component-icon">
+                        <fanc-icon name="highlighter" size="18"></fanc-icon>
+                    </view>
+                </template>
+            </fanc-cell>
+
             <fanc-cell title="单元格" is-link url="/pages/example/cell/index" center>
                 <template #icon>
                     <view class="component-icon">
