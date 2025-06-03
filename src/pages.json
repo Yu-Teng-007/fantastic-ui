@@ -257,6 +257,12 @@
             "style": {
                 "navigationBarTitleText": "引导示例"
             }
+        },
+        {
+            "path": "pages/example/time-picker/index",
+            "style": {
+                "navigationBarTitleText": "时间选择器示例"
+            }
         }
     ],
     "globalStyle": {

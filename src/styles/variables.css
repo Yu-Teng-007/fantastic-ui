@@ -691,4 +691,23 @@
     --table-selected-row-bg-color: #e6f7ff;
     --table-placeholder-height: 100px;
     --table-placeholder-color: var(--text-disabled);
+
+    /* TimePicker 时间选择器组件颜色 */
+    --time-picker-bg-color: var(--bg-white);
+    --time-picker-title-color: var(--text-primary);
+    --time-picker-title-font-size: 16px;
+    --time-picker-title-font-weight: 500;
+    --time-picker-item-color: var(--text-primary);
+    --time-picker-item-disabled-color: var(--text-disabled);
+    --time-picker-item-active-color: var(--fanc-primary-color);
+    --time-picker-confirm-button-color: var(--fanc-primary-color);
+    --time-picker-cancel-button-color: var(--text-secondary);
+    --time-picker-indicator-color: var(--gray-100);
+    --time-picker-border-color: var(--border-color);
+    --time-picker-header-height: 44px;
+    --time-picker-item-height: 44px;
+    --time-picker-item-font-size: 16px;
+    --time-picker-button-font-size: 14px;
+    --time-picker-transition-duration: 0.3s;
+    --time-picker-disabled-opacity: var(--form-disabled-opacity);
 }

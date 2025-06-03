@@ -147,6 +147,14 @@
                 </template>
             </fanc-cell>
 
+            <fanc-cell title="时间选择器" is-link url="/pages/example/time-picker/index" center>
+                <template #icon>
+                    <view class="component-icon">
+                        <fanc-icon name="clock" size="18"></fanc-icon>
+                    </view>
+                </template>
+            </fanc-cell>
+
             <fanc-cell title="日历" is-link url="/pages/example/calendar/index" center>
                 <template #icon>
                     <view class="component-icon">

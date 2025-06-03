@@ -26,6 +26,7 @@ import FancSearch from "@/components/fanc-search/index.vue";
 import FancField from "@/components/fanc-field/index.vue";
 import FancForm from "@/components/fanc-form/index.vue";
 import FancDatePicker from "@/components/fanc-date-picker/index.vue";
+import FancTimePicker from "@/components/fanc-time-picker/index.vue";
 import FancUploader from "@/components/fanc-uploader/index.vue";
 import FancRate from "@/components/fanc-rate/index.vue";
 import FancTabbar from "@/components/fanc-tabbar/index.vue";
@@ -82,6 +83,7 @@ const components = [
     FancField,
     FancForm,
     FancDatePicker,
+    FancTimePicker,
     FancUploader,
     FancRate,
     FancTabbar,
@@ -135,6 +137,7 @@ export {
     FancField,
     FancForm,
     FancDatePicker,
+    FancTimePicker,
     FancUploader,
     FancRate,
     FancTabbar,
