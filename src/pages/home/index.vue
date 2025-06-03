@@ -209,6 +209,14 @@
                     </view>
                 </template>
             </fanc-cell>
+
+            <fanc-cell title="索引列表" is-link url="/pages/example/indexes/index" center>
+                <template #icon>
+                    <view class="component-icon">
+                        <fanc-icon name="list-ol" size="18"></fanc-icon>
+                    </view>
+                </template>
+            </fanc-cell>
         </fanc-cell-group>
 
         <!-- 反馈组件 -->

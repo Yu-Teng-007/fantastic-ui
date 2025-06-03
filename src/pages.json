@@ -185,6 +185,12 @@
             "style": {
                 "navigationBarTitleText": "导航栏示例"
             }
+        },
+        {
+            "path": "pages/example/indexes/index",
+            "style": {
+                "navigationBarTitleText": "索引列表示例"
+            }
         }
     ],
     "globalStyle": {

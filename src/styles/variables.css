@@ -444,4 +444,24 @@
     --navbar-title-font-weight: 500;
     --navbar-height: 44px;
     --navbar-border-color: var(--border-color);
+
+    /* Indexes 索引组件颜色 */
+    --indexes-sidebar-bg-color: transparent;
+    --indexes-sidebar-active-color: var(--fanc-primary-color);
+    --indexes-sidebar-text-color: var(--text-secondary);
+    --indexes-sidebar-active-bg-color: #f2f3f5;
+    --indexes-sidebar-font-size: 12px;
+    --indexes-anchor-bg-color: #f7f8fa;
+    --indexes-anchor-text-color: var(--text-secondary);
+    --indexes-anchor-font-size: 14px;
+    --indexes-item-text-color: var(--text-primary);
+    --indexes-item-font-size: 14px;
+    --indexes-item-line-height: 48px;
+    --indexes-item-bg-color: var(--white);
+    --indexes-item-active-bg-color: #f2f3f5;
+    --indexes-item-border-color: var(--border-color);
+    --indexes-z-index: 1;
+    --indexes-sidebar-z-index: 2;
+    --indexes-sidebar-item-height: 16px;
+    --indexes-sidebar-item-padding: 0 8px;
 }
