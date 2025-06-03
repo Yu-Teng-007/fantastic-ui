@@ -269,6 +269,12 @@
             "style": {
                 "navigationBarTitleText": "时间选择器示例"
             }
+        },
+        {
+            "path": "pages/example/image-preview/index",
+            "style": {
+                "navigationBarTitleText": "图片预览示例"
+            }
         }
     ],
     "globalStyle": {

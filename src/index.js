@@ -12,6 +12,7 @@ import FancDialog from "@/components/fanc-dialog/index.vue";
 import FancSwipeCell from "@/components/fanc-swipe-cell/index.vue";
 import FancDropdownMenu from "@/components/fanc-dropdown-menu/index.vue";
 import FancImage from "@/components/fanc-image/index.vue";
+import FancImagePreview from "@/components/fanc-image-preview/index.vue";
 import FancCalendar from "@/components/fanc-calendar/index.vue";
 import FancCheckbox from "@/components/fanc-checkbox/index.vue";
 import FancCheckboxGroup from "@/components/fanc-checkbox-group/index.vue";
@@ -53,6 +54,7 @@ import Message from "@/plugins/message";
 import Toast from "@/plugins/toast";
 import Dialog from "@/plugins/dialog";
 import Validator from "@/plugins/validator";
+import ImagePreview from "@/plugins/image-preview";
 
 // 组件列表
 const components = [
@@ -70,6 +72,7 @@ const components = [
     FancSwipeCell,
     FancDropdownMenu,
     FancImage,
+    FancImagePreview,
     FancCalendar,
     FancCheckbox,
     FancCheckboxGroup,
@@ -125,6 +128,7 @@ export {
     FancSwipeCell,
     FancDropdownMenu,
     FancImage,
+    FancImagePreview,
     FancCalendar,
     FancCheckbox,
     FancCheckboxGroup,
@@ -182,5 +186,8 @@ export default {
 
         // 注册Validator全局方法
         Vue.prototype.$validator = Validator.validator;
+
+        // 注册ImagePreview全局方法
+        Vue.prototype.$imagePreview = ImagePreview;
     },
 };

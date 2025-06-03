@@ -46,6 +46,17 @@
     --border-color: #ebedf0;
     --border-color-light: #ebeef5;
 
+    /* ImagePreview 图片预览组件颜色 */
+    --image-preview-bg-color: rgba(0, 0, 0, 0.9);
+    --image-preview-index-bg-color: rgba(0, 0, 0, 0.3);
+    --image-preview-index-color: var(--white);
+    --image-preview-close-color: var(--white);
+    --image-preview-close-bg-color: rgba(0, 0, 0, 0.3);
+    --image-preview-footer-bg-color: rgba(0, 0, 0, 0.5);
+    --image-preview-footer-text-color: var(--white);
+    --image-preview-swiper-duration: 300ms;
+    --image-preview-z-index: 10000;
+
     /* Highlight 高亮文本组件颜色 */
     --highlight-primary-bg-color: rgba(0, 123, 255, 0.1);
     --highlight-primary-text-color: var(--fanc-primary-color);

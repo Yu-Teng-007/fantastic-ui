@@ -242,6 +242,14 @@
                 </template>
             </fanc-cell>
 
+            <fanc-cell title="图片预览" is-link url="/pages/example/image-preview/index" center>
+                <template #icon>
+                    <view class="component-icon">
+                        <fanc-icon name="images" size="18"></fanc-icon>
+                    </view>
+                </template>
+            </fanc-cell>
+
             <fanc-cell title="公告栏" is-link url="/pages/example/noticebar/index" center>
                 <template #icon>
                     <view class="component-icon">
