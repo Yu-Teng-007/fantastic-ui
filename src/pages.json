@@ -203,6 +203,12 @@
             "style": {
                 "navigationBarTitleText": "步骤条示例"
             }
+        },
+        {
+            "path": "pages/example/slider/index",
+            "style": {
+                "navigationBarTitleText": "滑动选择器示例"
+            }
         }
     ],
     "globalStyle": {

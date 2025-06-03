@@ -37,6 +37,7 @@ import FancTabs from "@/components/fanc-tabs/index.vue";
 import FancTabPane from "@/components/fanc-tab-pane/index.vue";
 import FancSteps from "@/components/fanc-steps/index.vue";
 import FancStep from "@/components/fanc-step/index.vue";
+import FancSlider from "@/components/fanc-slider/index.vue";
 import Message from "@/plugins/message";
 import Toast from "@/plugins/toast";
 import Dialog from "@/plugins/dialog";
@@ -83,6 +84,7 @@ const components = [
     FancTabPane,
     FancSteps,
     FancStep,
+    FancSlider,
 ];
 
 // 导出单个组件
@@ -126,6 +128,7 @@ export {
     FancTabPane,
     FancSteps,
     FancStep,
+    FancSlider,
 };
 
 // 批量注册组件

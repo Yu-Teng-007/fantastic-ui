@@ -46,6 +46,16 @@
     --border-color: #ebedf0;
     --border-color-light: #ebeef5;
 
+    /* Slider 滑动选择器组件颜色 */
+    --slider-active-color: var(--fanc-primary-color);
+    --slider-inactive-color: var(--gray-300);
+    --slider-disabled-color: var(--gray-400);
+    --slider-thumb-color: var(--white);
+    --slider-thumb-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+    --slider-thumb-active-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    --slider-value-color: var(--text-primary);
+    --slider-disabled-opacity: 0.6;
+
     /* Search 搜索组件颜色 */
     --search-background-color: var(--white);
     --search-content-background: var(--gray-100);

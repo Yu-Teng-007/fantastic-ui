@@ -84,6 +84,14 @@
                 </template>
             </fanc-cell>
 
+            <fanc-cell title="滑动选择器" is-link url="/pages/example/slider/index" center>
+                <template #icon>
+                    <view class="component-icon">
+                        <fanc-icon name="sliders-h" size="18"></fanc-icon>
+                    </view>
+                </template>
+            </fanc-cell>
+
             <fanc-cell title="数字键盘" is-link url="/pages/example/number-keyboard/index" center>
                 <template #icon>
                     <view class="component-icon">
