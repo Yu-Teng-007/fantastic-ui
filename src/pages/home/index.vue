@@ -361,6 +361,14 @@
                     </view>
                 </template>
             </fanc-cell>
+
+            <fanc-cell title="宫格" is-link url="/pages/example/grid/index" center>
+                <template #icon>
+                    <view class="component-icon">
+                        <fanc-icon name="th" size="18"></fanc-icon>
+                    </view>
+                </template>
+            </fanc-cell>
         </fanc-cell-group>
 
         <!-- 反馈组件 -->

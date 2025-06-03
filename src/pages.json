@@ -299,6 +299,12 @@
             "style": {
                 "navigationBarTitleText": "文本省略示例"
             }
+        },
+        {
+            "path": "pages/example/grid/index",
+            "style": {
+                "navigationBarTitleText": "宫格示例"
+            }
         }
     ],
     "globalStyle": {

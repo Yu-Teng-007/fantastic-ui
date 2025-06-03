@@ -54,6 +54,8 @@ import FancHighlight from "@/components/fanc-highlight/index.vue";
 import FancTag from "@/components/fanc-tag/index.vue";
 import FancTextEllipsis from "@/components/fanc-text-ellipsis/index.vue";
 import FancPagination from "@/components/fanc-pagination/index.vue";
+import FancGrid from "@/components/fanc-grid/index.vue";
+import FancGridItem from "@/components/fanc-grid-item/index.vue";
 import Message from "@/plugins/message";
 import Toast from "@/plugins/toast";
 import Dialog from "@/plugins/dialog";
@@ -118,6 +120,8 @@ const components = [
     FancTag,
     FancTextEllipsis,
     FancPagination,
+    FancGrid,
+    FancGridItem,
 ];
 
 // 导出单个组件
@@ -178,6 +182,8 @@ export {
     FancTag,
     FancTextEllipsis,
     FancPagination,
+    FancGrid,
+    FancGridItem,
 };
 
 // 批量注册组件

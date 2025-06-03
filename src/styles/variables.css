@@ -806,4 +806,23 @@
     --pagination-dark-text-color: var(--gray-100);
     --pagination-dark-active-bg-color: var(--fanc-primary-color);
     --pagination-dark-active-text-color: var(--white);
+
+    /* Grid 宫格组件颜色 */
+    --grid-bg-color: var(--white);
+    --grid-text-color: var(--text-primary);
+    --grid-icon-color: var(--text-primary);
+    --grid-border-color: var(--border-color);
+    --grid-active-color: var(--bg-gray-light);
+    --grid-text-font-size: 14px;
+    --grid-icon-font-size: 28px;
+    --grid-item-padding: 16px 8px;
+    --grid-item-content-padding: 16px 8px;
+    --grid-item-gap: 8px;
+    --grid-badge-color: var(--white);
+    --grid-badge-bg-color: var(--fanc-danger-color);
+    --grid-primary-color: var(--fanc-primary-color);
+    --grid-success-color: var(--fanc-success-color);
+    --grid-warning-color: var(--fanc-warning-color);
+    --grid-danger-color: var(--fanc-danger-color);
+    --grid-info-color: var(--fanc-info-color);
 }
