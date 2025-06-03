@@ -46,6 +46,26 @@
     --border-color: #ebedf0;
     --border-color-light: #ebeef5;
 
+    /* Collapse 折叠面板组件颜色 */
+    --collapse-bg-color: var(--bg-white);
+    --collapse-title-color: var(--text-primary);
+    --collapse-title-disabled-color: var(--text-disabled);
+    --collapse-content-color: var(--text-secondary);
+    --collapse-value-color: var(--text-secondary);
+    --collapse-border-color: var(--border-color);
+    --collapse-icon-color: var(--gray-600);
+    --collapse-header-bg-color: var(--bg-white);
+    --collapse-content-bg-color: var(--bg-white);
+    --collapse-transition-duration: 0.3s;
+    --collapse-header-padding: 12px 16px;
+    --collapse-content-padding: 12px 16px;
+    --collapse-header-font-size: 14px;
+    --collapse-content-font-size: 14px;
+    --collapse-header-line-height: 24px;
+    --collapse-content-line-height: 1.5;
+    --collapse-header-font-weight: 500;
+    --collapse-disabled-opacity: 0.6;
+
     /* Slider 滑动选择器组件颜色 */
     --slider-active-color: var(--fanc-primary-color);
     --slider-inactive-color: var(--gray-300);

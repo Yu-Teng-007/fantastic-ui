@@ -209,6 +209,12 @@
             "style": {
                 "navigationBarTitleText": "滑动选择器示例"
             }
+        },
+        {
+            "path": "pages/example/collapse/index",
+            "style": {
+                "navigationBarTitleText": "折叠面板示例"
+            }
         }
     ],
     "globalStyle": {

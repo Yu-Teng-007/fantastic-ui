@@ -170,6 +170,14 @@
                 </template>
             </fanc-cell>
 
+            <fanc-cell title="折叠面板" is-link url="/pages/example/collapse/index" center>
+                <template #icon>
+                    <view class="component-icon">
+                        <fanc-icon name="layer-group" size="18"></fanc-icon>
+                    </view>
+                </template>
+            </fanc-cell>
+
             <fanc-cell title="图标" is-link url="/pages/example/icon/index" center>
                 <template #icon>
                     <view class="component-icon">
