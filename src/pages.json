@@ -329,6 +329,12 @@
             "style": {
                 "navigationBarTitleText": "轮播示例"
             }
+        },
+        {
+            "path": "pages/example/backtop/index",
+            "style": {
+                "navigationBarTitleText": "返回顶部示例"
+            }
         }
     ],
     "globalStyle": {

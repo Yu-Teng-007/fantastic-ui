@@ -923,4 +923,26 @@
     --swipe-indicator-margin: 0 4px;
     --swipe-indicator-bottom: 12px;
     --swipe-transition-duration: 0.3s;
+
+    /* Backtop 返回顶部组件颜色 */
+    --backtop-bg-color: var(--bg-white);
+    --backtop-text-color: var(--text-primary);
+    --backtop-primary-bg-color: var(--fanc-primary-color);
+    --backtop-primary-text-color: var(--white);
+    --backtop-success-bg-color: var(--fanc-success-color);
+    --backtop-success-text-color: var(--white);
+    --backtop-warning-bg-color: var(--fanc-warning-color);
+    --backtop-warning-text-color: var(--white);
+    --backtop-danger-bg-color: var(--fanc-danger-color);
+    --backtop-danger-text-color: var(--white);
+    --backtop-info-bg-color: var(--fanc-info-color);
+    --backtop-info-text-color: var(--white);
+    --backtop-border-color: var(--border-color);
+    --backtop-shadow-color: rgba(0, 0, 0, 0.15);
+    --backtop-size: 40px;
+    --backtop-icon-size: 16px;
+    --backtop-text-font-size: 12px;
+    --backtop-border-radius: 50%;
+    --backtop-z-index: 10;
+    --backtop-transition-duration: 0.3s;
 }

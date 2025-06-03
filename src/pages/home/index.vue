@@ -456,6 +456,14 @@
                     </view>
                 </template>
             </fanc-cell>
+
+            <fanc-cell title="返回顶部" is-link url="/pages/example/backtop/index" center>
+                <template #icon>
+                    <view class="component-icon">
+                        <fanc-icon name="arrow-up" size="18"></fanc-icon>
+                    </view>
+                </template>
+            </fanc-cell>
         </fanc-cell-group>
 
         <!-- 高级交互 -->
