@@ -65,6 +65,7 @@ import FancBacktop from "@/components/fanc-backtop/index.vue";
 import FancFixedNav from "@/components/fanc-fixed-nav/index.vue";
 import FancFilterBar from "@/components/fanc-filter-bar/index.vue";
 import FancAudio from "@/components/fanc-audio/index.vue";
+import FancVideo from "@/components/fanc-video/index.vue";
 import Message from "@/plugins/message";
 import Toast from "@/plugins/toast";
 import Dialog from "@/plugins/dialog";
@@ -140,6 +141,7 @@ const components = [
     FancFixedNav,
     FancFilterBar,
     FancAudio,
+    FancVideo,
 ];
 
 // 导出单个组件
@@ -211,6 +213,7 @@ export {
     FancFixedNav,
     FancFilterBar,
     FancAudio,
+    FancVideo,
 };
 
 // 批量注册组件

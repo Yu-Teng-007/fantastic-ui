@@ -46,6 +46,31 @@
     --border-color: #ebedf0;
     --border-color-light: #ebeef5;
 
+    /* Video 视频播放器组件颜色 */
+    --fanc-video-bg-color: #000000;
+    --fanc-video-controls-bg-color: rgba(0, 0, 0, 0.7);
+    --fanc-video-text-color: var(--white);
+    --fanc-video-progress-color: var(--fanc-primary-color);
+    --fanc-video-progress-bg-color: rgba(255, 255, 255, 0.3);
+    --fanc-video-progress-buffer-color: rgba(255, 255, 255, 0.5);
+    --fanc-video-progress-dot-color: var(--white);
+    --fanc-video-progress-dot-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+    --fanc-video-icon-color: var(--white);
+    --fanc-video-loading-bg-color: rgba(0, 0, 0, 0.3);
+    --fanc-video-loading-spinner-color: var(--white);
+    --fanc-video-poster-bg-color: var(--black);
+    --fanc-video-center-play-btn-bg-color: rgba(0, 0, 0, 0.5);
+    --fanc-video-center-play-btn-color: var(--white);
+    --fanc-video-primary-color: var(--fanc-primary-color);
+    --fanc-video-success-color: var(--fanc-success-color);
+    --fanc-video-warning-color: var(--fanc-warning-color);
+    --fanc-video-danger-color: var(--fanc-danger-color);
+    --fanc-video-info-color: var(--fanc-info-color);
+    --fanc-video-border-radius: 8px;
+    --fanc-video-control-padding: 8px 12px;
+    --fanc-video-transition-duration: 0.3s;
+    --fanc-video-disabled-opacity: 0.6;
+
     /* ImagePreview 图片预览组件颜色 */
     --image-preview-bg-color: rgba(0, 0, 0, 0.9);
     --image-preview-index-bg-color: rgba(0, 0, 0, 0.3);

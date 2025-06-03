@@ -7,6 +7,12 @@
             }
         },
         {
+            "path": "pages/example/video/index",
+            "style": {
+                "navigationBarTitleText": "视频播放器示例"
+            }
+        },
+        {
             "path": "pages/example/empty/index",
             "style": {
                 "navigationBarTitleText": "空状态示例"
