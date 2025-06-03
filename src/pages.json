@@ -281,6 +281,12 @@
             "style": {
                 "navigationBarTitleText": "环形进度条示例"
             }
+        },
+        {
+            "path": "pages/example/tag/index",
+            "style": {
+                "navigationBarTitleText": "标签示例"
+            }
         }
     ],
     "globalStyle": {

@@ -108,6 +108,14 @@
                 </template>
             </fanc-cell>
 
+            <fanc-cell title="标签" is-link url="/pages/example/tag/index" center>
+                <template #icon>
+                    <view class="component-icon">
+                        <fanc-icon name="tags" size="18"></fanc-icon>
+                    </view>
+                </template>
+            </fanc-cell>
+
             <fanc-cell title="表格" is-link url="/pages/example/table/index" center>
                 <template #icon>
                     <view class="component-icon">

@@ -751,4 +751,33 @@
     --circle-default-size: 100px;
     --circle-default-stroke-width: 40px;
     --circle-animation-duration: 500ms;
+
+    /* Tag 标签组件颜色 */
+    --tag-default-color: var(--text-primary);
+    --tag-default-bg-color: var(--gray-200);
+    --tag-primary-color: var(--white);
+    --tag-primary-bg-color: var(--fanc-primary-color);
+    --tag-success-color: var(--white);
+    --tag-success-bg-color: var(--fanc-success-color);
+    --tag-warning-color: var(--white);
+    --tag-warning-bg-color: var(--fanc-warning-color);
+    --tag-danger-color: var(--white);
+    --tag-danger-bg-color: var(--fanc-danger-color);
+    --tag-info-color: var(--white);
+    --tag-info-bg-color: var(--fanc-info-color);
+    --tag-plain-bg-color: transparent;
+    --tag-plain-border-width: 1px;
+    --tag-font-size-small: 10px;
+    --tag-font-size-medium: 12px;
+    --tag-font-size-large: 14px;
+    --tag-padding-small: 0 6px;
+    --tag-padding-medium: 0 8px;
+    --tag-padding-large: 0 10px;
+    --tag-line-height-small: 16px;
+    --tag-line-height-medium: 20px;
+    --tag-line-height-large: 24px;
+    --tag-border-radius: 2px;
+    --tag-round-border-radius: 999px;
+    --tag-close-icon-size: 12px;
+    --tag-close-margin-left: 4px;
 }
