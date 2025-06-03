@@ -335,6 +335,12 @@
             "style": {
                 "navigationBarTitleText": "返回顶部示例"
             }
+        },
+        {
+            "path": "pages/example/fixed-nav/index",
+            "style": {
+                "navigationBarTitleText": "悬浮导航示例"
+            }
         }
     ],
     "globalStyle": {

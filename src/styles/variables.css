@@ -945,4 +945,30 @@
     --backtop-border-radius: 50%;
     --backtop-z-index: 10;
     --backtop-transition-duration: 0.3s;
+
+    /* FixedNav 悬浮导航组件颜色 */
+    --fixed-nav-bg-color: var(--white);
+    --fixed-nav-text-color: var(--text-primary);
+    --fixed-nav-active-bg-color: var(--fanc-primary-color);
+    --fixed-nav-active-text-color: var(--white);
+    --fixed-nav-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    --fixed-nav-item-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    --fixed-nav-primary-bg-color: var(--fanc-primary-color);
+    --fixed-nav-success-bg-color: var(--fanc-success-color);
+    --fixed-nav-warning-bg-color: var(--fanc-warning-color);
+    --fixed-nav-danger-bg-color: var(--fanc-danger-color);
+    --fixed-nav-info-bg-color: var(--fanc-info-color);
+    --fixed-nav-overlay-bg-color: rgba(0, 0, 0, 0.5);
+    --fixed-nav-badge-bg-color: var(--fanc-danger-color);
+    --fixed-nav-badge-text-color: var(--white);
+    --fixed-nav-size: 50px;
+    --fixed-nav-border-radius: 50%;
+    --fixed-nav-font-size: 14px;
+    --fixed-nav-icon-size: 20px;
+    --fixed-nav-z-index: 100;
+    --fixed-nav-transition-duration: 0.3s;
+    --fixed-nav-badge-size: 16px;
+    --fixed-nav-badge-dot-size: 8px;
+    --fixed-nav-badge-font-size: 12px;
+    --fixed-nav-item-spacing: 8px;
 }
