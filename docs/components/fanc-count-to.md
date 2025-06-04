@@ -202,28 +202,29 @@ export default {
 | start | 开始滚动 | - |
 | pause | 暂停滚动 | - |
 | resume | 继续滚动 | - |
-| reset | 重置滚动 | - |
+| reset | 重置到起始值 | - |
 
 ### Slots
 
-| 名称 | 说明 | 参数 |
-| --- | --- | --- |
-| default | 自定义内容，仅在 `type` 为 `custom` 时有效 | _{ displayValue: string }_ |
+| 名称 | 说明 |
+| --- | --- |
+| default | 自定义内容，仅在 `type="custom"` 时生效，提供 `displayValue` 参数 |
 
 ## 样式变量
 
+组件提供了下列 CSS 变量，可用于自定义样式：
+
 | 名称 | 默认值 | 说明 |
 | --- | --- | --- |
-| --count-to-text-color | _var(--text-primary)_ | 文本颜色 |
-| --count-to-font-size | _24px_ | 字体大小 |
-| --count-to-font-weight | _500_ | 字体粗细 |
-| --count-to-addon-color | _var(--text-secondary)_ | 前缀和后缀颜色 |
-| --count-to-addon-font-size | _16px_ | 前缀和后缀字体大小 |
-| --count-to-bg-color | _var(--fanc-primary-color)_ | 带背景样式的背景颜色 |
-| --count-to-bg-text-color | _var(--white)_ | 带背景样式的文本颜色 |
-| --count-to-bg-padding | _8px 16px_ | 带背景样式的内边距 |
-| --count-to-bg-border-radius | _4px_ | 带背景样式的圆角 |
-| --count-to-circle-bg-color | _var(--fanc-primary-color)_ | 圆形背景样式的背景颜色 |
-| --count-to-circle-text-color | _var(--white)_ | 圆形背景样式的文本颜色 |
-| --count-to-circle-padding | _0_ | 圆形背景样式的内边距 |
-| --count-to-circle-size | _60px_ | 圆形背景样式的尺寸 | 
+| --count-to-color | var(--text-primary) | 文本颜色 |
+| --count-to-font-size | 16px | 字体大小 |
+| --count-to-line-height | 1.5 | 行高 |
+| --count-to-addon-color | var(--text-primary) | 前缀/后缀文本颜色 |
+| --count-to-bg-padding | 8px 12px | 带背景类型的内边距 |
+| --count-to-bg-radius | 4px | 带背景类型的圆角 |
+| --count-to-bg-background | var(--primary-color) | 带背景类型的背景色 |
+| --count-to-bg-color | white | 带背景类型的文本颜色 |
+| --count-to-circle-size | 60px | 圆形背景类型的大小 |
+| --count-to-circle-background | var(--primary-color) | 圆形背景类型的背景色 |
+| --count-to-circle-color | white | 圆形背景类型的文本颜色 |
+``` 
