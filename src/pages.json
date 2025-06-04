@@ -7,6 +7,12 @@
             }
         },
         {
+            "path": "pages/example/alert/index",
+            "style": {
+                "navigationBarTitleText": "警告提示示例"
+            }
+        },
+        {
             "path": "pages/example/count-to/index",
             "style": {
                 "navigationBarTitleText": "数字滚动示例"

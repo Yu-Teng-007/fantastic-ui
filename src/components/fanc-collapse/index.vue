@@ -7,7 +7,7 @@
 <script>
 export default {
     name: "fanc-collapse",
-     model: {
+    model: {
         prop: "modelValue",
         event: "update:modelValue",
     },

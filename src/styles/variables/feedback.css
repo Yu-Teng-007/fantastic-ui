@@ -70,4 +70,39 @@
     --noticebar-action-color: var(--primary-color);
     --noticebar-action-hover-bg: rgba(0, 0, 0, 0.05);
     --noticebar-close-color: var(--gray-600);
+    
+    /* Alert 警告提示组件 */
+    --alert-padding: 12px 16px;
+    --alert-border-radius: 4px;
+    --alert-round-border-radius: 16px;
+    --alert-font-size: 14px;
+    --alert-line-height: 1.5;
+    --alert-title-font-weight: 500;
+    
+    /* Alert 尺寸相关 */
+    --alert-icon-margin-right: 10px;
+    --alert-description-margin-top: 6px;
+    --alert-description-font-size: 12px;
+    --alert-close-top: 12px;
+    --alert-close-right: 16px;
+    --alert-close-padding: 4px;
+    --alert-with-description-title-font-size: 16px;
+    --alert-with-description-title-margin-bottom: 4px;
+    --alert-with-description-icon-margin-top: 4px;
+    
+    /* Alert 颜色相关 */
+    --alert-info-color: var(--info-color);
+    --alert-info-bg-color: #f0f8ff;
+    --alert-info-border-color: #d0e6ff;
+    --alert-success-color: var(--success-color);
+    --alert-success-bg-color: #f0f9eb;
+    --alert-success-border-color: #e1f3d8;
+    --alert-warning-color: var(--warning-color);
+    --alert-warning-bg-color: #fffbe5;
+    --alert-warning-border-color: #fff1c2;
+    --alert-error-color: var(--danger-color);
+    --alert-error-bg-color: #fff2f0;
+    --alert-error-border-color: #ffccc7;
+    --alert-description-color: var(--text-secondary);
+    --alert-close-color: var(--gray-600);
 }

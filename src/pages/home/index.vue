@@ -449,6 +449,14 @@
             description="用户交互与操作反馈相关组件"
             :id="categories[3].id"
         >
+            <fanc-cell title="警告提示" is-link url="/pages/example/alert/index" center>
+                <template #icon>
+                    <view class="component-icon">
+                        <fanc-icon name="exclamation-triangle" size="18"></fanc-icon>
+                    </view>
+                </template>
+            </fanc-cell>
+
             <fanc-cell title="弹出层" is-link url="/pages/example/popup/index" center>
                 <template #icon>
                     <view class="component-icon">

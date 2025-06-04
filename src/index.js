@@ -68,6 +68,7 @@ import FancFilterBar from "@/components/fanc-filter-bar/index.vue";
 import FancAudio from "@/components/fanc-audio/index.vue";
 import FancVideo from "@/components/fanc-video/index.vue";
 import FancSwitch from "@/components/fanc-switch/index.vue";
+import FancAlert from "@/components/fanc-alert/index.vue";
 import Message from "@/plugins/message";
 import Toast from "@/plugins/toast";
 import Dialog from "@/plugins/dialog";
@@ -146,6 +147,7 @@ const components = [
     FancAudio,
     FancVideo,
     FancSwitch,
+    FancAlert,
 ];
 
 // 导出单个组件
@@ -220,6 +222,7 @@ export {
     FancAudio,
     FancVideo,
     FancSwitch,
+    FancAlert,
 };
 
 // 批量注册组件
