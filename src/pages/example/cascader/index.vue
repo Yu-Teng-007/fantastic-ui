@@ -206,7 +206,7 @@
                     title="高级选项"
                     is-link
                     large
-                    icon="settings-o"
+                    icon="air-freshener"
                     @click="showCustomCascader = true"
                 />
 

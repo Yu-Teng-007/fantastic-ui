@@ -11,7 +11,7 @@
             <fanc-cell-group>
                 <fanc-cell
                     title="选择日期"
-                    :value="basicDate || '请选择'"
+                    :content="basicDate || '请选择'"
                     is-link
                     @click="showBasicPicker = true"
                 />
@@ -29,19 +29,19 @@
             <fanc-cell-group>
                 <fanc-cell
                     title="年月选择"
-                    :value="yearMonthDate || '请选择'"
+                    :content="yearMonthDate || '请选择'"
                     is-link
                     @click="showYearMonthPicker = true"
                 />
                 <fanc-cell
                     title="月日选择"
-                    :value="monthDayDate || '请选择'"
+                    :content="monthDayDate || '请选择'"
                     is-link
                     @click="showMonthDayPicker = true"
                 />
                 <fanc-cell
                     title="年份选择"
-                    :value="yearDate || '请选择'"
+                    :content="yearDate || '请选择'"
                     is-link
                     @click="showYearPicker = true"
                 />
@@ -75,7 +75,7 @@
             <fanc-cell-group>
                 <fanc-cell
                     title="限制范围"
-                    :value="rangeDate || '请选择(2022-2025年)'"
+                    :content="rangeDate || '请选择(2022-2025年)'"
                     is-link
                     @click="showRangePicker = true"
                 />
@@ -96,7 +96,7 @@
             <fanc-cell-group>
                 <fanc-cell
                     title="自定义后缀"
-                    :value="customSuffixDate || '请选择'"
+                    :content="customSuffixDate || '请选择'"
                     is-link
                     @click="showCustomSuffixPicker = true"
                 />

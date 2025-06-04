@@ -1,80 +1,119 @@
 <template>
-    <view class="example-page">
+    <view class="container">
         <view class="header">
-            <text class="header__title">时间选择器</text>
-            <text class="header__desc">用于选择时间，支持小时、分钟、秒的选择</text>
+            <view class="title">时间选择器</view>
+            <view class="subtitle">用于选择时间，支持小时、分钟、秒的选择</view>
         </view>
 
-        <fanc-cell-group title="基础用法">
-            <fanc-cell title="选择时间" :value="time1" @click="showTimePicker1 = true" is-link />
-        </fanc-cell-group>
+        <!-- 基础用法 -->
+        <view class="section">
+            <view class="section-title">基础用法</view>
+            <fanc-cell-group>
+                <fanc-cell
+                    title="选择时间"
+                    :content="time1"
+                    @click="showTimePicker1 = true"
+                    is-link
+                />
+            </fanc-cell-group>
+            <fanc-time-picker v-model="showTimePicker1" :content="time1" @confirm="onConfirm1" />
+        </view>
 
-        <fanc-cell-group title="显示秒选择器">
-            <fanc-cell title="选择时间" :value="time2" @click="showTimePicker2 = true" is-link />
-        </fanc-cell-group>
+        <!-- 显示秒选择器 -->
+        <view class="section">
+            <view class="section-title">显示秒选择器</view>
+            <fanc-cell-group>
+                <fanc-cell
+                    title="选择时间"
+                    :content="time2"
+                    @click="showTimePicker2 = true"
+                    is-link
+                />
+            </fanc-cell-group>
+            <fanc-time-picker
+                v-model="showTimePicker2"
+                :content="time2"
+                show-seconds
+                format="HH:mm:ss"
+                @confirm="onConfirm2"
+            />
+        </view>
 
-        <fanc-cell-group title="设置步进值">
-            <fanc-cell title="选择时间" :value="time3" @click="showTimePicker3 = true" is-link />
-        </fanc-cell-group>
+        <!-- 设置步进值 -->
+        <view class="section">
+            <view class="section-title">设置步进值</view>
+            <fanc-cell-group>
+                <fanc-cell
+                    title="选择时间"
+                    :content="time3"
+                    @click="showTimePicker3 = true"
+                    is-link
+                />
+            </fanc-cell-group>
+            <fanc-time-picker
+                v-model="showTimePicker3"
+                :content="time3"
+                :minute-step="10"
+                :second-step="15"
+                show-seconds
+                format="HH:mm:ss"
+                @confirm="onConfirm3"
+            />
+        </view>
 
-        <fanc-cell-group title="限制小时范围">
-            <fanc-cell title="选择时间" :value="time4" @click="showTimePicker4 = true" is-link />
-        </fanc-cell-group>
+        <!-- 限制小时范围 -->
+        <view class="section">
+            <view class="section-title">限制小时范围</view>
+            <fanc-cell-group>
+                <fanc-cell
+                    title="选择时间"
+                    :content="time4"
+                    @click="showTimePicker4 = true"
+                    is-link
+                />
+            </fanc-cell-group>
+            <fanc-time-picker
+                v-model="showTimePicker4"
+                :content="time4"
+                :min-hour="9"
+                :max-hour="18"
+                @confirm="onConfirm4"
+            />
+        </view>
 
-        <fanc-cell-group title="自定义后缀">
-            <fanc-cell title="选择时间" :value="time5" @click="showTimePicker5 = true" is-link />
-        </fanc-cell-group>
+        <!-- 自定义后缀 -->
+        <view class="section">
+            <view class="section-title">自定义后缀</view>
+            <fanc-cell-group>
+                <fanc-cell
+                    title="选择时间"
+                    :content="time5"
+                    @click="showTimePicker5 = true"
+                    is-link
+                />
+            </fanc-cell-group>
+            <fanc-time-picker
+                v-model="showTimePicker5"
+                :content="time5"
+                hour-suffix="h"
+                minute-suffix="m"
+                second-suffix="s"
+                show-seconds
+                format="HH:mm:ss"
+                @confirm="onConfirm5"
+            />
+        </view>
 
-        <fanc-cell-group title="禁用状态">
-            <fanc-cell title="选择时间" value="禁用状态" />
+        <!-- 禁用状态 -->
+        <view class="section">
+            <view class="section-title">禁用状态</view>
+            <fanc-cell-group>
+                <fanc-cell title="选择时间" content="禁用状态" />
+            </fanc-cell-group>
             <view class="disabled-example">
                 <fanc-time-picker disabled />
             </view>
-        </fanc-cell-group>
-
-        <!-- 基础用法 -->
-        <fanc-time-picker v-model="showTimePicker1" :value="time1" @confirm="onConfirm1" />
-
-        <!-- 显示秒选择器 -->
-        <fanc-time-picker
-            v-model="showTimePicker2"
-            :value="time2"
-            show-seconds
-            format="HH:mm:ss"
-            @confirm="onConfirm2"
-        />
-
-        <!-- 设置步进值 -->
-        <fanc-time-picker
-            v-model="showTimePicker3"
-            :value="time3"
-            :minute-step="10"
-            :second-step="15"
-            show-seconds
-            format="HH:mm:ss"
-            @confirm="onConfirm3"
-        />
-
-        <!-- 限制小时范围 -->
-        <fanc-time-picker
-            v-model="showTimePicker4"
-            :value="time4"
-            :min-hour="9"
-            :max-hour="18"
-            @confirm="onConfirm4"
-        />
-
-        <!-- 自定义后缀 -->
-        <fanc-time-picker
-            v-model="showTimePicker5"
-            :value="time5"
-            hour-suffix="h"
-            minute-suffix="m"
-            second-suffix="s"
-            show-seconds
-            format="HH:mm:ss"
-            @confirm="onConfirm5"
-        />
+        </view>
     </view>
 </template>
 
@@ -120,34 +159,41 @@ export default {
 </script>
 
 <style>
-.example-page {
-    padding: 20px 0;
+.container {
+    padding: 20px;
+    background-color: #f8f8f8;
     min-height: 100vh;
-    background-color: #f7f8fa;
 }
 
 .header {
-    padding: 0 16px;
-    margin-bottom: 20px;
+    margin-bottom: 24px;
 }
 
-.header__title {
-    display: block;
-    font-size: 22px;
-    font-weight: 600;
+.title {
+    font-size: 24px;
+    font-weight: bold;
     color: #323233;
     margin-bottom: 8px;
 }
 
-.header__desc {
-    display: block;
+.subtitle {
     font-size: 14px;
     color: #969799;
     line-height: 1.5;
 }
 
-.disabled-example {
+.section {
+    margin-bottom: 24px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.section-title {
+    font-size: 16px;
+    font-weight: bold;
+    color: #323233;
     padding: 16px;
-    background-color: #fff;
+    border-bottom: 1px solid #f2f2f2;
 }
 </style>
