@@ -88,7 +88,7 @@
         <view class="section">
             <view class="section-title">文字描述</view>
             <view class="switch-group">
-                <view class="switch-item">
+                <view class="switch-item switch-item--text-label">
                     <fanc-switch
                         v-model="switch7"
                         active-text="开启"
@@ -226,6 +226,11 @@ export default {
 
 .switch-item:last-child {
     margin-bottom: 0;
+}
+
+.switch-item--text-label {
+    justify-content: flex-start;
+    padding-right: 60px; /* 为文字标签预留更多空间 */
 }
 
 .switch-label {

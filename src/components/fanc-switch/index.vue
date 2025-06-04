@@ -7,6 +7,7 @@
                 'is-checked': modelValue,
                 'is-disabled': disabled,
                 'is-loading': loading,
+                'has-text': activeText || inactiveText,
             },
         ]"
         :style="switchStyle"
@@ -171,11 +172,17 @@ export default {
 
     // 文本标签
     &__label {
-        margin-left: 8px;
+        position: absolute;
+        left: calc(100% + 10px);
+        top: 50%;
+        transform: translateY(-50%);
+        white-space: nowrap;
+        min-width: 40px;
 
         &-text {
             font-size: 14px;
             line-height: 1.5;
+            white-space: nowrap;
 
             &--active {
                 color: var(--switch-active-text-color);
@@ -265,6 +272,11 @@ export default {
     &.is-disabled {
         cursor: not-allowed;
         opacity: var(--switch-disabled-opacity);
+    }
+
+    // 有文字描述的状态
+    &.has-text {
+        margin-right: 60px;
     }
 }
 
