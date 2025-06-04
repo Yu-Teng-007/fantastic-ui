@@ -8,6 +8,7 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     color: var(--text-primary);
+    box-sizing: border-box;
 }
 
 // 修复使用CSS变量的问题

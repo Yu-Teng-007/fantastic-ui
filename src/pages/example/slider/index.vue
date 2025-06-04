@@ -21,12 +21,33 @@
             </view>
         </view>
 
+        <!-- 显示范围值 -->
+        <view class="section">
+            <view class="section-title">显示范围值</view>
+            <view class="section-content">
+                <fanc-slider v-model="value3" show-extremities @change="onChange"></fanc-slider>
+            </view>
+        </view>
+
+        <!-- 显示所有值 -->
+        <view class="section">
+            <view class="section-title">显示所有值</view>
+            <view class="section-content">
+                <fanc-slider
+                    v-model="value4"
+                    show-value
+                    show-extremities
+                    @change="onChange"
+                ></fanc-slider>
+            </view>
+        </view>
+
         <!-- 设置步长 -->
         <view class="section">
             <view class="section-title">设置步长</view>
             <view class="section-content">
                 <fanc-slider
-                    v-model="value3"
+                    v-model="value5"
                     :step="10"
                     show-value
                     @change="onChange"
@@ -39,10 +60,11 @@
             <view class="section-title">设置范围</view>
             <view class="section-content">
                 <fanc-slider
-                    v-model="value4"
+                    v-model="value6"
                     :min="-50"
                     :max="50"
                     show-value
+                    show-extremities
                     @change="onChange"
                 ></fanc-slider>
             </view>
@@ -53,7 +75,7 @@
             <view class="section-title">自定义样式</view>
             <view class="section-content">
                 <fanc-slider
-                    v-model="value5"
+                    v-model="value7"
                     active-color="#ee0a24"
                     inactive-color="#f2f3f5"
                     show-value
@@ -66,7 +88,7 @@
         <view class="section">
             <view class="section-title">禁用状态</view>
             <view class="section-content">
-                <fanc-slider v-model="value6" disabled show-value></fanc-slider>
+                <fanc-slider v-model="value8" disabled show-value></fanc-slider>
             </view>
         </view>
 
@@ -74,13 +96,27 @@
         <view class="section">
             <view class="section-title">自定义按钮</view>
             <view class="section-content">
-                <fanc-slider v-model="value7" show-value>
+                <fanc-slider v-model="value9" show-value>
                     <template #thumb>
                         <view class="custom-thumb">
-                            {{ value7 }}
+                            {{ value9 }}
                         </view>
                     </template>
                 </fanc-slider>
+            </view>
+        </view>
+
+        <!-- 显示刻度 -->
+        <view class="section">
+            <view class="section-title">显示刻度</view>
+            <view class="section-content">
+                <fanc-slider
+                    v-model="value10"
+                    show-ticks
+                    show-tick-labels
+                    :tick-count="5"
+                    @change="onChange"
+                ></fanc-slider>
             </view>
         </view>
 
@@ -90,34 +126,55 @@
             <view class="vertical-slider-container">
                 <view class="vertical-slider">
                     <fanc-slider
-                        v-model="value8"
+                        v-model="value11"
                         active-color="#ee0a24"
+                        vertical
+                        show-value
                         @change="onChange"
                     ></fanc-slider>
                 </view>
-                <view class="vertical-value">{{ value8 }}</view>
             </view>
         </view>
 
-        <!-- 双向滑块 -->
+        <!-- 双滑块用法 -->
         <view class="section">
             <view class="section-title">双滑块用法</view>
             <view class="section-content">
-                <view class="dual-slider">
+                <view class="range-slider">
                     <fanc-slider
-                        v-model="minValue"
-                        :max="maxValue"
-                        @change="onMinChange"
+                        v-model="rangeValue"
+                        range
+                        active-color="#ff6b00"
+                        show-value
+                        show-extremities
+                        @change="onRangeChange"
                     ></fanc-slider>
+                </view>
+            </view>
+        </view>
+
+        <!-- 自定义双滑块 -->
+        <view class="section">
+            <view class="section-title">自定义双滑块</view>
+            <view class="section-content">
+                <view class="range-slider">
                     <fanc-slider
-                        v-model="maxValue"
-                        :min="minValue"
-                        @change="onMaxChange"
-                    ></fanc-slider>
-                    <view class="dual-slider-value">
-                        <text>{{ minValue }}</text>
-                        <text>{{ maxValue }}</text>
-                    </view>
+                        v-model="customRangeValue"
+                        range
+                        active-color="#007bff"
+                        @change="onRangeChange"
+                    >
+                        <template #left-thumb>
+                            <view class="custom-thumb custom-thumb--left">
+                                {{ customRangeValue[0] }}
+                            </view>
+                        </template>
+                        <template #thumb>
+                            <view class="custom-thumb custom-thumb--right">
+                                {{ customRangeValue[1] }}
+                            </view>
+                        </template>
+                    </fanc-slider>
                 </view>
             </view>
         </view>
@@ -131,30 +188,24 @@ export default {
             value1: 50,
             value2: 30,
             value3: 40,
-            value4: 0,
-            value5: 70,
-            value6: 20,
-            value7: 60,
-            value8: 40,
-            minValue: 20,
-            maxValue: 80,
+            value4: 60,
+            value5: 40,
+            value6: 0,
+            value7: 70,
+            value8: 20,
+            value9: 60,
+            value10: 50,
+            value11: 40,
+            rangeValue: [36, 80],
+            customRangeValue: [20, 60],
         };
     },
     methods: {
         onChange(value) {
             this.$toast.text(`当前值：${value}`);
         },
-        onMinChange(value) {
-            this.minValue = value;
-            if (this.maxValue < value) {
-                this.maxValue = value;
-            }
-        },
-        onMaxChange(value) {
-            this.maxValue = value;
-            if (this.minValue > value) {
-                this.minValue = value;
-            }
+        onRangeChange(value) {
+            this.$toast.text(`当前范围：${value[0]}-${value[1]}`);
         },
     },
 };
@@ -208,10 +259,23 @@ export default {
     height: 26px;
     color: #fff;
     font-size: 10px;
-    line-height: 26px;
-    text-align: center;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background-color: #007bff;
-    border-radius: 100%;
+    border-radius: 50%;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+.custom-thumb--left {
+    background-color: #007bff;
+}
+
+.custom-thumb--right {
+    background-color: #28a745;
 }
 
 .vertical-slider-container {
@@ -223,24 +287,15 @@ export default {
 
 .vertical-slider {
     height: 100%;
-    transform: rotate(-90deg);
-    width: 200px;
-    transform-origin: left center;
-    margin-left: 30px;
+    width: 40px;
 }
 
-.vertical-value {
-    margin-left: 50px;
-    font-size: 16px;
-    color: #323233;
-}
-
-.dual-slider {
-    position: relative;
+.range-slider {
     padding: 20px 0;
+    position: relative;
 }
 
-.dual-slider-value {
+.range-value {
     display: flex;
     justify-content: space-between;
     margin-top: 10px;
