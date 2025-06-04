@@ -98,7 +98,6 @@ export default {
     font-size: var(--divider-font-size, 14px);
     line-height: 1.5;
     border: 0 solid var(--divider-border-color, var(--border-color));
-    border-bottom-width: 1px;
 
     // 文本样式
     &__text {
@@ -221,8 +220,6 @@ export default {
 
     // 细线样式
     &.is-hairline {
-        border-bottom-width: 0.5px;
-
         &::before,
         &::after {
             border-top-width: 0.5px;
@@ -244,4 +241,4 @@ export default {
         transform: rotate(360deg);
     }
 }
-</style> 
+</style>
