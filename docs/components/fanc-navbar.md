@@ -64,6 +64,76 @@ export default {
 />
 ```
 
+### 自定义文本颜色
+
+通过 `left-text-color` 和 `right-text-color` 属性设置左右文本的颜色。
+
+```html
+<fanc-navbar
+  title="自定义文本颜色"
+  left-text="返回"
+  right-text="按钮"
+  left-text-color="#ff6b6b"
+  right-text-color="#51cf66"
+  @click-left="onClickLeft"
+  @click-right="onClickRight"
+/>
+```
+
+### 标题文本省略
+
+当标题文字过长时，可以通过设置 `title-max-width` 或 `title-max-length` 属性来控制标题的显示。
+
+#### 最大宽度限制
+
+```html
+<fanc-navbar
+  title="这是一个很长的标题文本，会根据最大宽度自动省略"
+  :title-max-width="150"
+  @click-left="onClickLeft"
+/>
+```
+
+#### 最大字符数限制
+
+```html
+<fanc-navbar
+  title="这是一个很长的标题文本，会根据最大字符数自动省略"
+  :title-max-length="10"
+  @click-left="onClickLeft"
+/>
+```
+
+#### 自定义省略号位置
+
+通过 `title-ellipsis` 属性可以设置省略号的位置，支持 `start`、`middle` 和 `end` 三种模式。
+
+```html
+<!-- 省略号在开头 -->
+<fanc-navbar
+  title="这是一个很长的标题文本，省略号将显示在开头"
+  :title-max-length="10"
+  title-ellipsis="start"
+  @click-left="onClickLeft"
+/>
+
+<!-- 省略号在中间 -->
+<fanc-navbar
+  title="这是一个很长的标题文本，省略号将显示在中间位置"
+  :title-max-length="10"
+  title-ellipsis="middle"
+  @click-left="onClickLeft"
+/>
+
+<!-- 省略号在末尾（默认） -->
+<fanc-navbar
+  title="这是一个很长的标题文本，省略号将显示在末尾"
+  :title-max-length="10"
+  title-ellipsis="end"
+  @click-left="onClickLeft"
+/>
+```
+
 ### 自定义图标
 
 通过插槽自定义导航栏左右两侧的图标。
@@ -81,6 +151,40 @@ export default {
     </view>
   </template>
 </fanc-navbar>
+```
+
+### 配置左右图标
+
+通过 `left-icon`、`right-icon`、`left-icon-color` 和 `right-icon-color` 属性配置左右图标。
+
+```html
+<fanc-navbar
+  title="配置左右图标"
+  left-icon="home"
+  right-icon="user"
+  left-icon-color="#ff6b6b"
+  right-icon-color="#51cf66"
+  @click-left="onClickLeft"
+  @click-right="onClickRight"
+/>
+```
+
+### 图标和文本组合
+
+图标和文本可以同时显示。
+
+```html
+<fanc-navbar
+  title="图标和文本组合"
+  left-icon="arrow-left"
+  left-text="返回"
+  right-icon="share-alt"
+  right-text="分享"
+  left-text-color="#4dabf7"
+  right-text-color="#4dabf7"
+  @click-left="onClickLeft"
+  @click-right="onClickRight"
+/>
 ```
 
 ### 固定在顶部
@@ -148,19 +252,31 @@ export default {
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | title | 标题 | _string_ | - |
-| left-text | 左侧文字 | _string_ | - |
+| title-max-width | 标题最大宽度，超出将被省略 | _number \| string_ | - |
+| title-max-length | 标题最大字符数，超出将被省略 | _number \| string_ | `0` |
+| title-ellipsis | 标题省略号位置，可选值为 start、middle、end | _string_ | `end` |
+| left-text | 左侧文字 | _string_ | `返回` |
 | right-text | 右侧文字 | _string_ | - |
-| left-arrow | 是否显示左侧箭头 | _boolean_ | `false` |
+| left-arrow | 是否显示左侧箭头 | _boolean_ | `true` |
 | fixed | 是否固定在顶部 | _boolean_ | `false` |
 | border | 是否显示下边框 | _boolean_ | `true` |
 | placeholder | 固定在顶部时，是否在标签位置生成一个等高的占位元素 | _boolean_ | `false` |
 | safe-area-inset-top | 是否开启顶部安全区适配 | _boolean_ | `true` |
 | height | 导航栏高度，支持数值或带单位字符串 | _number \| string_ | `44` |
 | background | 导航栏背景色 | _string_ | - |
-| z-index | 导航栏 z-index | _number \| string_ | `10` |
+| z-index | 导航栏 z-index | _number \| string_ | `100` |
 | title-color | 标题颜色 | _string_ | - |
 | arrow-color | 箭头颜色 | _string_ | - |
 | arrow-size | 箭头大小，支持数值或带单位字符串 | _number \| string_ | `16` |
+| left-text-color | 左侧文本颜色 | _string_ | - |
+| right-text-color | 右侧文本颜色 | _string_ | - |
+| left-icon | 左侧图标名称 | _string_ | - |
+| right-icon | 右侧图标名称 | _string_ | - |
+| icon-size | 图标大小，支持数值或带单位字符串 | _number \| string_ | `20` |
+| left-icon-color | 左侧图标颜色 | _string_ | - |
+| right-icon-color | 右侧图标颜色 | _string_ | - |
+| show-left-text | 是否显示左侧返回文字 | _boolean_ | `true` |
+| offset-top | 顶部偏移量，用于处理系统自带导航栏 | _number \| string_ | `0` |
 | custom-style | 自定义样式 | _object_ | `{}` |
 
 ### Slots
