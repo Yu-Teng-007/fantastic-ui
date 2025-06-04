@@ -22,12 +22,8 @@
             </view>
         </view>
 
-        <!-- 基础输入组件 -->
-        <fanc-cell-group
-            title="基础输入"
-            description="文本输入与表单交互组件"
-            :id="categories[0].id"
-        >
+        <!-- 基础组件 -->
+        <fanc-cell-group title="基础组件" description="常用的基础界面元素" :id="categories[0].id">
             <fanc-cell title="按钮" is-link url="/pages/example/button/index" center>
                 <template #icon>
                     <view class="component-icon">
@@ -36,6 +32,45 @@
                 </template>
             </fanc-cell>
 
+            <fanc-cell title="图标" is-link url="/pages/example/icon/index" center>
+                <template #icon>
+                    <view class="component-icon">
+                        <fanc-icon name="icons" size="18"></fanc-icon>
+                    </view>
+                </template>
+            </fanc-cell>
+
+            <fanc-cell title="单元格" is-link url="/pages/example/cell/index" center>
+                <template #icon>
+                    <view class="component-icon">
+                        <fanc-icon name="table-cells" size="18"></fanc-icon>
+                    </view>
+                </template>
+            </fanc-cell>
+
+            <fanc-cell title="标签" is-link url="/pages/example/tag/index" center>
+                <template #icon>
+                    <view class="component-icon">
+                        <fanc-icon name="tags" size="18"></fanc-icon>
+                    </view>
+                </template>
+            </fanc-cell>
+
+            <fanc-cell title="宫格" is-link url="/pages/example/grid/index" center>
+                <template #icon>
+                    <view class="component-icon">
+                        <fanc-icon name="th" size="18"></fanc-icon>
+                    </view>
+                </template>
+            </fanc-cell>
+        </fanc-cell-group>
+
+        <!-- 表单组件 -->
+        <fanc-cell-group
+            title="表单组件"
+            description="用户输入和数据采集相关组件"
+            :id="categories[1].id"
+        >
             <fanc-cell title="输入框" is-link url="/pages/example/field/index" center>
                 <template #icon>
                     <view class="component-icon">
@@ -116,18 +151,18 @@
                 </template>
             </fanc-cell>
 
-            <fanc-cell title="标签" is-link url="/pages/example/tag/index" center>
+            <fanc-cell title="评分" is-link url="/pages/example/rate/index" center>
                 <template #icon>
                     <view class="component-icon">
-                        <fanc-icon name="tags" size="18"></fanc-icon>
+                        <fanc-icon name="star" size="18"></fanc-icon>
                     </view>
                 </template>
             </fanc-cell>
 
-            <fanc-cell title="表格" is-link url="/pages/example/table/index" center>
+            <fanc-cell title="签名" is-link url="/pages/example/signature/index" center>
                 <template #icon>
                     <view class="component-icon">
-                        <fanc-icon name="table" size="18"></fanc-icon>
+                        <fanc-icon name="signature" size="18"></fanc-icon>
                     </view>
                 </template>
             </fanc-cell>
@@ -137,7 +172,7 @@
         <fanc-cell-group
             title="选择与日期"
             description="多元化的选择器和日期相关组件"
-            :id="categories[1].id"
+            :id="categories[2].id"
         >
             <fanc-cell title="选择器" is-link url="/pages/example/picker/index" center>
                 <template #icon>
@@ -180,32 +215,32 @@
             </fanc-cell>
         </fanc-cell-group>
 
-        <!-- 内容展示组件 -->
+        <!-- 导航组件 -->
         <fanc-cell-group
-            title="内容展示"
-            description="用于信息呈现和内容展示的组件"
-            :id="categories[2].id"
+            title="导航组件"
+            description="页面导航和信息架构相关组件"
+            :id="categories[3].id"
         >
-            <fanc-cell title="视频播放器" is-link url="/pages/example/video/index" center>
-                <template #icon>
-                    <view class="component-icon">
-                        <fanc-icon name="video" size="18"></fanc-icon>
-                    </view>
-                </template>
-            </fanc-cell>
-
-            <fanc-cell title="音频播放器" is-link url="/pages/example/audio/index" center>
-                <template #icon>
-                    <view class="component-icon">
-                        <fanc-icon name="music" size="18"></fanc-icon>
-                    </view>
-                </template>
-            </fanc-cell>
-
             <fanc-cell title="导航栏" is-link url="/pages/example/navbar/index" center>
                 <template #icon>
                     <view class="component-icon">
                         <fanc-icon name="bars" size="18"></fanc-icon>
+                    </view>
+                </template>
+            </fanc-cell>
+
+            <fanc-cell title="标签栏" is-link url="/pages/example/tabbar/index" center>
+                <template #icon>
+                    <view class="component-icon">
+                        <fanc-icon name="tablet" size="18"></fanc-icon>
+                    </view>
+                </template>
+            </fanc-cell>
+
+            <fanc-cell title="标签页" is-link url="/pages/example/tabs/index" center>
+                <template #icon>
+                    <view class="component-icon">
+                        <fanc-icon name="folder" size="18"></fanc-icon>
                     </view>
                 </template>
             </fanc-cell>
@@ -218,6 +253,53 @@
                 </template>
             </fanc-cell>
 
+            <fanc-cell title="索引列表" is-link url="/pages/example/indexes/index" center>
+                <template #icon>
+                    <view class="component-icon">
+                        <fanc-icon name="list-ol" size="18"></fanc-icon>
+                    </view>
+                </template>
+            </fanc-cell>
+
+            <fanc-cell title="分页" is-link url="/pages/example/pagination/index" center>
+                <template #icon>
+                    <view class="component-icon">
+                        <fanc-icon name="ellipsis-h" size="18"></fanc-icon>
+                    </view>
+                </template>
+            </fanc-cell>
+
+            <fanc-cell title="步骤条" is-link url="/pages/example/steps/index" center>
+                <template #icon>
+                    <view class="component-icon">
+                        <fanc-icon name="shoe-prints" size="18"></fanc-icon>
+                    </view>
+                </template>
+            </fanc-cell>
+
+            <fanc-cell title="返回顶部" is-link url="/pages/example/backtop/index" center>
+                <template #icon>
+                    <view class="component-icon">
+                        <fanc-icon name="arrow-up" size="18"></fanc-icon>
+                    </view>
+                </template>
+            </fanc-cell>
+
+            <fanc-cell title="侧边栏" is-link url="/pages/example/sidebar/index" center>
+                <template #icon>
+                    <view class="component-icon">
+                        <fanc-icon name="bars" size="18"></fanc-icon>
+                    </view>
+                </template>
+            </fanc-cell>
+        </fanc-cell-group>
+
+        <!-- 展示组件 -->
+        <fanc-cell-group
+            title="展示组件"
+            description="用于信息呈现和内容展示的组件"
+            :id="categories[4].id"
+        >
             <fanc-cell title="卡片" is-link url="/pages/example/card/index" center>
                 <template #icon>
                     <view class="component-icon">
@@ -254,14 +336,6 @@
                 <template #icon>
                     <view class="component-icon">
                         <fanc-icon name="align-left" size="18"></fanc-icon>
-                    </view>
-                </template>
-            </fanc-cell>
-
-            <fanc-cell title="单元格" is-link url="/pages/example/cell/index" center>
-                <template #icon>
-                    <view class="component-icon">
-                        <fanc-icon name="table-cells" size="18"></fanc-icon>
                     </view>
                 </template>
             </fanc-cell>
@@ -314,26 +388,18 @@
                 </template>
             </fanc-cell>
 
-            <fanc-cell title="图标" is-link url="/pages/example/icon/index" center>
+            <fanc-cell title="列表" is-link url="/pages/example/list/index" center>
                 <template #icon>
                     <view class="component-icon">
-                        <fanc-icon name="icons" size="18"></fanc-icon>
+                        <fanc-icon name="list" size="18"></fanc-icon>
                     </view>
                 </template>
             </fanc-cell>
 
-            <fanc-cell title="图片" is-link url="/pages/example/image/index" center>
+            <fanc-cell title="表格" is-link url="/pages/example/table/index" center>
                 <template #icon>
                     <view class="component-icon">
-                        <fanc-icon name="image" size="18"></fanc-icon>
-                    </view>
-                </template>
-            </fanc-cell>
-
-            <fanc-cell title="图片预览" is-link url="/pages/example/image-preview/index" center>
-                <template #icon>
-                    <view class="component-icon">
-                        <fanc-icon name="images" size="18"></fanc-icon>
+                        <fanc-icon name="table" size="18"></fanc-icon>
                     </view>
                 </template>
             </fanc-cell>
@@ -362,58 +428,10 @@
                 </template>
             </fanc-cell>
 
-            <fanc-cell title="评分" is-link url="/pages/example/rate/index" center>
-                <template #icon>
-                    <view class="component-icon">
-                        <fanc-icon name="star" size="18"></fanc-icon>
-                    </view>
-                </template>
-            </fanc-cell>
-
-            <fanc-cell title="标签栏" is-link url="/pages/example/tabbar/index" center>
-                <template #icon>
-                    <view class="component-icon">
-                        <fanc-icon name="tablet" size="18"></fanc-icon>
-                    </view>
-                </template>
-            </fanc-cell>
-
-            <fanc-cell title="索引列表" is-link url="/pages/example/indexes/index" center>
-                <template #icon>
-                    <view class="component-icon">
-                        <fanc-icon name="list-ol" size="18"></fanc-icon>
-                    </view>
-                </template>
-            </fanc-cell>
-
-            <fanc-cell title="分页" is-link url="/pages/example/pagination/index" center>
-                <template #icon>
-                    <view class="component-icon">
-                        <fanc-icon name="ellipsis-h" size="18"></fanc-icon>
-                    </view>
-                </template>
-            </fanc-cell>
-
-            <fanc-cell title="标签页" is-link url="/pages/example/tabs/index" center>
-                <template #icon>
-                    <view class="component-icon">
-                        <fanc-icon name="folder" size="18"></fanc-icon>
-                    </view>
-                </template>
-            </fanc-cell>
-
             <fanc-cell title="页脚" is-link url="/pages/example/footer/index" center>
                 <template #icon>
                     <view class="component-icon">
                         <fanc-icon name="copyright" size="18"></fanc-icon>
-                    </view>
-                </template>
-            </fanc-cell>
-
-            <fanc-cell title="步骤条" is-link url="/pages/example/steps/index" center>
-                <template #icon>
-                    <view class="component-icon">
-                        <fanc-icon name="shoe-prints" size="18"></fanc-icon>
                     </view>
                 </template>
             </fanc-cell>
@@ -425,29 +443,13 @@
                     </view>
                 </template>
             </fanc-cell>
-
-            <fanc-cell title="列表" is-link url="/pages/example/list/index" center>
-                <template #icon>
-                    <view class="component-icon">
-                        <fanc-icon name="list" size="18"></fanc-icon>
-                    </view>
-                </template>
-            </fanc-cell>
-
-            <fanc-cell title="宫格" is-link url="/pages/example/grid/index" center>
-                <template #icon>
-                    <view class="component-icon">
-                        <fanc-icon name="th" size="18"></fanc-icon>
-                    </view>
-                </template>
-            </fanc-cell>
         </fanc-cell-group>
 
         <!-- 反馈组件 -->
         <fanc-cell-group
-            title="操作反馈"
+            title="反馈组件"
             description="用户交互与操作反馈相关组件"
-            :id="categories[3].id"
+            :id="categories[5].id"
         >
             <fanc-cell title="警告提示" is-link url="/pages/example/alert/index" center>
                 <template #icon>
@@ -505,41 +507,10 @@
                 </template>
             </fanc-cell>
 
-            <fanc-cell title="返回顶部" is-link url="/pages/example/backtop/index" center>
-                <template #icon>
-                    <view class="component-icon">
-                        <fanc-icon name="arrow-up" size="18"></fanc-icon>
-                    </view>
-                </template>
-            </fanc-cell>
-        </fanc-cell-group>
-
-        <!-- 高级交互 -->
-        <fanc-cell-group
-            title="高级交互"
-            description="提供复杂交互体验的功能组件"
-            :id="categories[4].id"
-        >
             <fanc-cell title="滑动单元格" is-link url="/pages/example/swipe-cell/index" center>
                 <template #icon>
                     <view class="component-icon">
                         <fanc-icon name="arrows-left-right" size="18"></fanc-icon>
-                    </view>
-                </template>
-            </fanc-cell>
-
-            <fanc-cell title="签名" is-link url="/pages/example/signature/index" center>
-                <template #icon>
-                    <view class="component-icon">
-                        <fanc-icon name="signature" size="18"></fanc-icon>
-                    </view>
-                </template>
-            </fanc-cell>
-
-            <fanc-cell title="侧边栏" is-link url="/pages/example/sidebar/index" center>
-                <template #icon>
-                    <view class="component-icon">
-                        <fanc-icon name="bars" size="18"></fanc-icon>
                     </view>
                 </template>
             </fanc-cell>
@@ -549,7 +520,7 @@
         <fanc-cell-group
             title="媒体组件"
             description="视频、图片等媒体内容相关组件"
-            :id="categories[4].id"
+            :id="categories[6].id"
         >
             <fanc-cell title="图片" is-link url="/pages/example/image/index" center>
                 <template #icon>
@@ -563,6 +534,14 @@
                 <template #icon>
                     <view class="component-icon">
                         <fanc-icon name="images" size="18"></fanc-icon>
+                    </view>
+                </template>
+            </fanc-cell>
+
+            <fanc-cell title="视频播放器" is-link url="/pages/example/video/index" center>
+                <template #icon>
+                    <view class="component-icon">
+                        <fanc-icon name="video" size="18"></fanc-icon>
                     </view>
                 </template>
             </fanc-cell>
@@ -590,11 +569,13 @@ export default {
         return {
             title: "Fantastic UI",
             categories: [
-                { id: "basic-inputs", name: "基础输入", icon: "keyboard" },
+                { id: "basic", name: "基础组件", icon: "square" },
+                { id: "form", name: "表单组件", icon: "keyboard" },
                 { id: "selection", name: "选择日期", icon: "calendar-days" },
-                { id: "display", name: "内容展示", icon: "image" },
-                { id: "feedback", name: "操作反馈", icon: "comment" },
-                { id: "advanced", name: "高级交互", icon: "wand-magic-sparkles" },
+                { id: "navigation", name: "导航组件", icon: "map-signs" },
+                { id: "display", name: "展示组件", icon: "image" },
+                { id: "feedback", name: "反馈组件", icon: "comment" },
+                { id: "media", name: "媒体组件", icon: "video" },
             ],
             iconList: [
                 // 基础图标
