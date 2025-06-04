@@ -554,6 +554,14 @@
                 </template>
             </fanc-cell>
 
+            <fanc-cell title="相册" is-link url="/pages/example/album/index" center>
+                <template #icon>
+                    <view class="component-icon">
+                        <fanc-icon name="photo-film" size="18"></fanc-icon>
+                    </view>
+                </template>
+            </fanc-cell>
+
             <fanc-cell title="视频播放器" is-link url="/pages/example/video/index" center>
                 <template #icon>
                     <view class="component-icon">

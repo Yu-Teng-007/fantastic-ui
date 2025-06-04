@@ -43,4 +43,29 @@
     --fanc-audio-title-font-size: 16px;
     --fanc-audio-author-font-size: 12px;
     --fanc-audio-time-font-size: 12px;
+
+    /* Album 相册组件颜色 */
+    --album-bg-color: var(--white);
+    --album-radius: 8px;
+    --album-border-color: var(--gray-200);
+    --album-header-padding: 12px 16px;
+    --album-content-padding: 12px;
+    --album-footer-padding: 12px 16px;
+    --album-footer-border-color: var(--gray-200);
+
+    --album-title-font-size: 16px;
+    --album-title-font-weight: 500;
+    --album-title-color: var(--text-primary);
+    --album-subtitle-font-size: 14px;
+    --album-subtitle-color: var(--text-secondary);
+
+    --album-add-btn-bg: var(--gray-100);
+    --album-add-btn-border: var(--gray-300);
+    --album-add-text-color: var(--text-secondary);
+    --album-add-icon-color: var(--gray-500);
+
+    --album-list-divider-color: var(--gray-200);
+    --album-list-title-color: var(--text-primary);
+    --album-list-desc-color: var(--text-secondary);
+    --album-list-footer-color: var(--text-tertiary);
 }

@@ -7,6 +7,12 @@
             }
         },
         {
+            "path": "pages/example/album/index",
+            "style": {
+                "navigationBarTitleText": "相册示例"
+            }
+        },
+        {
             "path": "pages/example/divider/index",
             "style": {
                 "navigationBarTitleText": "分割线示例"
