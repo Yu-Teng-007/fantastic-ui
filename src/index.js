@@ -8,6 +8,7 @@ import FancNoticebar from "@/components/fanc-noticebar/index.vue";
 import FancActionSheet from "@/components/fanc-action-sheet/index.vue";
 import FancPopover from "@/components/fanc-popover/index.vue";
 import FancToast from "@/components/fanc-toast/index.vue";
+import FancNotify from "@/components/fanc-notify/index.vue";
 import FancDialog from "@/components/fanc-dialog/index.vue";
 import FancSwipeCell from "@/components/fanc-swipe-cell/index.vue";
 import FancDropdownMenu from "@/components/fanc-dropdown-menu/index.vue";
@@ -71,6 +72,7 @@ import FancSwitch from "@/components/fanc-switch/index.vue";
 import FancAlert from "@/components/fanc-alert/index.vue";
 import Message from "@/plugins/message";
 import Toast from "@/plugins/toast";
+import Notify from "@/plugins/notify";
 import Dialog from "@/plugins/dialog";
 import Validator from "@/plugins/validator";
 import ImagePreview from "@/plugins/image-preview";
@@ -87,6 +89,7 @@ const components = [
     FancActionSheet,
     FancPopover,
     FancToast,
+    FancNotify,
     FancDialog,
     FancSwipeCell,
     FancDropdownMenu,
@@ -162,6 +165,7 @@ export {
     FancActionSheet,
     FancPopover,
     FancToast,
+    FancNotify,
     FancDialog,
     FancSwipeCell,
     FancDropdownMenu,
@@ -237,6 +241,9 @@ export default {
 
         // 注册Toast全局方法
         Vue.prototype.$toast = Toast;
+
+        // 注册Notify全局方法
+        Vue.prototype.$notify = Notify;
 
         // 注册Dialog全局方法
         Vue.prototype.$dialog = Dialog;

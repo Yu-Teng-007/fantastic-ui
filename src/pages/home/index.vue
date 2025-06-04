@@ -483,6 +483,14 @@
                 </template>
             </fanc-cell>
 
+            <fanc-cell title="消息提示" is-link url="/pages/example/notify/index" center>
+                <template #icon>
+                    <view class="component-icon">
+                        <fanc-icon name="bell" size="18"></fanc-icon>
+                    </view>
+                </template>
+            </fanc-cell>
+
             <fanc-cell title="轻提示" is-link url="/pages/example/toast/index" center>
                 <template #icon>
                     <view class="component-icon">

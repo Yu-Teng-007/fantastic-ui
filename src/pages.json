@@ -7,6 +7,12 @@
             }
         },
         {
+            "path": "pages/example/notify/index",
+            "style": {
+                "navigationBarTitleText": "消息提示示例"
+            }
+        },
+        {
             "path": "pages/example/alert/index",
             "style": {
                 "navigationBarTitleText": "警告提示示例"

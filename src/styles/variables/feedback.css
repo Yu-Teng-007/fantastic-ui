@@ -36,6 +36,15 @@
     --toast-mask-color: rgba(0, 0, 0, 0.3);
     --toast-max-width: 70%;
 
+    /* Notify 消息提示组件颜色 */
+    --notify-primary-bg-color: var(--primary-color);
+    --notify-success-bg-color: var(--success-color);
+    --notify-warning-bg-color: var(--warning-color);
+    --notify-error-bg-color: var(--danger-color);
+    --notify-text-color: var(--white);
+    --notify-z-index: 3000;
+    --notify-transition-duration: 0.3s;
+
     /* 消息组件 (fanc-message) 颜色 */
     --message-info-bg: #f4f4f5;
     --message-info-border: #ebeef5;
@@ -70,7 +79,7 @@
     --noticebar-action-color: var(--primary-color);
     --noticebar-action-hover-bg: rgba(0, 0, 0, 0.05);
     --noticebar-close-color: var(--gray-600);
-    
+
     /* Alert 警告提示组件 */
     --alert-padding: 12px 16px;
     --alert-border-radius: 4px;
@@ -78,7 +87,7 @@
     --alert-font-size: 14px;
     --alert-line-height: 1.5;
     --alert-title-font-weight: 500;
-    
+
     /* Alert 尺寸相关 */
     --alert-icon-margin-right: 10px;
     --alert-description-margin-top: 6px;
@@ -89,7 +98,7 @@
     --alert-with-description-title-font-size: 16px;
     --alert-with-description-title-margin-bottom: 4px;
     --alert-with-description-icon-margin-top: 4px;
-    
+
     /* Alert 颜色相关 */
     --alert-info-color: var(--info-color);
     --alert-info-bg-color: #f0f8ff;
