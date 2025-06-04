@@ -51,6 +51,17 @@
     --field-word-limit-color: var(--text-secondary);
     --field-border-color: var(--border-color);
 
+    /* Switch 开关选择器组件颜色 */
+    --switch-active-bg-color: var(--fanc-primary-color);
+    --switch-inactive-bg-color: #e9e9eb;
+    --switch-active-border-color: var(--fanc-primary-color);
+    --switch-inactive-border-color: #e9e9eb;
+    --switch-node-bg-color: var(--white);
+    --switch-loading-color: var(--gray-600);
+    --switch-active-text-color: var(--fanc-primary-color);
+    --switch-inactive-text-color: var(--text-secondary);
+    --switch-disabled-opacity: var(--form-disabled-opacity);
+
     /* Checkbox 复选框组件颜色 */
     --checkbox-bg-color: var(--white);
     --checkbox-icon-color: #c8c9cc;

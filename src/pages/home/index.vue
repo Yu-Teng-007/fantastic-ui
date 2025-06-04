@@ -76,6 +76,14 @@
                 </template>
             </fanc-cell>
 
+            <fanc-cell title="开关选择器" is-link url="/pages/example/switch/index" center>
+                <template #icon>
+                    <view class="component-icon">
+                        <fanc-icon name="toggle-on" size="18"></fanc-icon>
+                    </view>
+                </template>
+            </fanc-cell>
+
             <fanc-cell title="步进器" is-link url="/pages/example/stepper/index" center>
                 <template #icon>
                     <view class="component-icon">

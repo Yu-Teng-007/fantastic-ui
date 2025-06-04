@@ -43,6 +43,12 @@
             }
         },
         {
+            "path": "pages/example/switch/index",
+            "style": {
+                "navigationBarTitleText": "开关选择器示例"
+            }
+        },
+        {
             "path": "pages/example/icon/index",
             "style": {
                 "navigationBarTitleText": "图标示例"

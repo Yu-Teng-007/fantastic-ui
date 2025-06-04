@@ -7,6 +7,10 @@
 <script>
 export default {
     name: "fanc-collapse",
+     model: {
+        prop: "modelValue",
+        event: "update:modelValue",
+    },
     props: {
         // 是否开启手风琴模式，开启后每次只能展开一个面板
         accordion: {
