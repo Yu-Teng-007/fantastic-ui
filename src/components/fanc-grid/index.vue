@@ -58,6 +58,7 @@ export default {
 
             if (this.gutter) {
                 style.paddingLeft = `${this.gutter}px`;
+                style.paddingRight = `${this.gutter}px`;
             }
 
             return style;
@@ -84,19 +85,6 @@ export default {
 }
 
 .fanc-grid--bordered::after {
-    position: absolute;
-    box-sizing: border-box;
-    content: " ";
-    pointer-events: none;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    border: 0 solid var(--border-color);
-    border-top-width: 1px;
-    border-left-width: 1px;
-    z-index: 1;
-    transform-origin: 0 0;
-    transform: scale(0.5);
+    content: none;
 }
 </style>

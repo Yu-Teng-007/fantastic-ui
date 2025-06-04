@@ -31,7 +31,10 @@
                 <slot></slot>
 
                 <!-- 右上角徽标 -->
-                <view class="fanc-grid-item__badge" v-if="badge !== '' || dot">
+                <view
+                    v-if="badge !== '' || dot"
+                    :class="['fanc-grid-item__badge', dot ? 'fanc-grid-item__badge--dot' : '']"
+                >
                     <view class="fanc-grid-item__badge-dot" v-if="dot"></view>
                     <text class="fanc-grid-item__badge-text" v-else-if="badge !== ''">{{
                         badge
@@ -130,19 +133,33 @@ export default {
         // 计算样式
         gridItemStyle() {
             const width = `${100 / this.columnNum}%`;
+            const halfGutter = this.gutter / 2;
 
-            return {
-                width,
-                paddingRight: `${this.gutter}px`,
-                paddingBottom: `${this.gutter}px`,
-            };
+            if (this.gutter > 0) {
+                return {
+                    width,
+                    paddingLeft: `${halfGutter}px`,
+                    paddingRight: `${halfGutter}px`,
+                    paddingTop: `${halfGutter}px`,
+                    paddingBottom: `${halfGutter}px`,
+                };
+            } else {
+                return {
+                    width,
+                };
+            }
         },
         wrapperStyle() {
-            if (this.square) {
-                return { paddingTop: "100%" };
+            if (this.gutter > 0) {
+                return {
+                    backgroundColor: "#fff",
+                    borderRadius: "8px",
+                    boxShadow: "0 2px 8px rgba(0, 0, 0, 0.05)",
+                    overflow: "hidden",
+                };
+            } else {
+                return {};
             }
-
-            return {};
         },
     },
 
@@ -187,6 +204,8 @@ export default {
 .fanc-grid-item--square .fanc-grid-item__wrapper {
     position: relative;
     width: 100%;
+    height: 0;
+    padding-bottom: 100%;
 }
 
 .fanc-grid-item--square .fanc-grid-item__content {
@@ -195,36 +214,45 @@ export default {
     right: 0;
     bottom: 0;
     left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
 }
 
-.fanc-grid-item--bordered {
+/* 无间距时的边框样式 */
+.fanc-grid-item--bordered:not([style*="padding"]) {
     position: relative;
+    box-shadow: 1px 1px 0 0 var(--border-color, #ebedf0);
+}
+
+/* 有间距时的边框样式 */
+.fanc-grid-item--bordered[style*="padding"] .fanc-grid-item__wrapper {
+    border: 1px solid var(--border-color, #ebedf0);
 }
 
 .fanc-grid-item--bordered::after {
-    position: absolute;
-    box-sizing: border-box;
-    content: " ";
-    pointer-events: none;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    border: 0 solid var(--border-color);
-    border-right-width: 1px;
-    border-bottom-width: 1px;
-    z-index: 1;
-    transform-origin: 0 0;
-    transform: scale(0.5);
+    content: none;
 }
 
-.fanc-grid-item--clickable:active {
-    background-color: var(--bg-gray-light);
+/* 无间距时的点击效果 */
+.fanc-grid-item--clickable:not([style*="padding"]):active {
+    background-color: var(--bg-gray-light, #f5f5f5);
+}
+
+/* 有间距时的点击效果 */
+.fanc-grid-item--clickable[style*="padding"] .fanc-grid-item__wrapper:active {
+    background-color: var(--bg-gray-light, #f5f5f5);
 }
 
 .fanc-grid-item__wrapper {
     width: 100%;
     height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transition: all 0.2s;
 }
 
 .fanc-grid-item__content {
@@ -255,7 +283,7 @@ export default {
 }
 
 .fanc-grid-item__text {
-    color: var(--text-primary);
+    color: var(--text-primary, #323233);
 }
 
 .fanc-grid-item__text-content {
@@ -271,11 +299,10 @@ export default {
 
 .fanc-grid-item__badge {
     position: absolute;
-    top: 0;
-    right: 0;
-    transform: translate(50%, -50%);
+    top: 8px;
+    right: 8px;
     z-index: 2;
-    background-color: var(--fanc-danger-color);
+    background-color: var(--fanc-danger-color, #ee0a24);
     border-radius: 16px;
     min-width: 16px;
     padding: 0 4px;
@@ -286,31 +313,40 @@ export default {
     white-space: nowrap;
 }
 
+/* 圆点徽标样式 */
+.fanc-grid-item__badge--dot {
+    min-width: unset;
+    width: auto;
+    height: auto;
+    padding: 0;
+    background-color: transparent;
+}
+
 .fanc-grid-item__badge-dot {
     width: 8px;
     height: 8px;
-    background-color: var(--fanc-danger-color);
+    background-color: var(--fanc-danger-color, #ee0a24);
     border-radius: 100%;
 }
 
 /* 主题 */
 .fanc-grid-item--primary .fanc-grid-item__icon {
-    color: var(--fanc-primary-color);
+    color: var(--fanc-primary-color, #1989fa);
 }
 
 .fanc-grid-item--success .fanc-grid-item__icon {
-    color: var(--fanc-success-color);
+    color: var(--fanc-success-color, #07c160);
 }
 
 .fanc-grid-item--warning .fanc-grid-item__icon {
-    color: var(--fanc-warning-color);
+    color: var(--fanc-warning-color, #ff976a);
 }
 
 .fanc-grid-item--danger .fanc-grid-item__icon {
-    color: var(--fanc-danger-color);
+    color: var(--fanc-danger-color, #ee0a24);
 }
 
 .fanc-grid-item--info .fanc-grid-item__icon {
-    color: var(--fanc-info-color);
+    color: var(--fanc-info-color, #909399);
 }
 </style>
