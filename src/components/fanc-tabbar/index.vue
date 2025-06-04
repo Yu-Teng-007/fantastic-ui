@@ -42,6 +42,10 @@
                                 "
                                 mode="aspectFit"
                                 class="fanc-tabbar__image"
+                                :style="{
+                                    width: (item.imageSize || imageSize) + 'px',
+                                    height: (item.imageSize || imageSize) + 'px',
+                                }"
                             ></image>
                         </view>
                         <view v-if="item.badge" class="fanc-tabbar__badge">
@@ -82,7 +86,21 @@
  * TabBar 标签栏
  * @description 底部导航栏，用于在不同页面之间进行切换
  * @property {Number|String} value/v-model - 当前选中标签的索引或name值
- * @property {Array} items - 标签项配置数组
+ * @property {Array} items - 标签项配置数组，每项可包含：
+ *  - {String} text - 标签文本
+ *  - {String} name - 标签唯一标识，用于v-model绑定
+ *  - {String} icon - 图标名称，使用fanc-icon组件渲染
+ *  - {String} image - 图片URL，当不使用icon时生效
+ *  - {String} activeImage - 激活状态图片URL，当不使用icon时生效
+ *  - {String|Number} iconSize - 单独设置该项的图标大小
+ *  - {String|Number} imageSize - 单独设置该项的图片大小
+ *  - {String} color - 标签颜色
+ *  - {String} activeColor - 激活状态标签颜色
+ *  - {String} disabledColor - 禁用状态标签颜色
+ *  - {Boolean|String|Number} badge - 徽标内容，true为红点，数字或字符串为文本
+ *  - {Boolean} disabled - 是否禁用
+ *  - {String} url - 页面跳转链接
+ *  - {Boolean} switchTab/redirectTo/reLaunch - 跳转方式
  * @property {Boolean} fixed - 是否固定在底部
  * @property {Boolean} placeholder - 固定在底部时是否在标签位置生成等高的占位元素
  * @property {Boolean} safeAreaInsetBottom - 是否开启底部安全区适配
@@ -91,6 +109,7 @@
  * @property {Boolean} textOnly - 是否只显示文本，不显示图标
  * @property {Number} zIndex - 元素层级
  * @property {String|Number} iconSize - 图标尺寸，默认24px
+ * @property {String|Number} imageSize - 图片尺寸，默认24px
  * @event {Function} change - 点击标签时触发
  * @slot default - 自定义标签栏内容，设置后将不使用items属性渲染标签
  */
@@ -138,6 +157,10 @@ export default {
             default: 10,
         },
         iconSize: {
+            type: [String, Number],
+            default: 24,
+        },
+        imageSize: {
             type: [String, Number],
             default: 24,
         },
@@ -313,6 +336,7 @@ export default {
 .fanc-tabbar__image {
     width: var(--tabbar-item-icon-size);
     height: var(--tabbar-item-icon-size);
+    object-fit: contain;
 }
 
 .fanc-tabbar__badge {

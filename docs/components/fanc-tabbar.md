@@ -144,18 +144,14 @@ export default {
 
 ### 自定义图标尺寸
 
-通过设置`iconSize`属性，可以自定义所有图标的尺寸。
+通过设置`iconSize`属性，可以自定义所有图标的尺寸，也可以为每个标签单独设置图标尺寸。
 
 ```html
+<!-- 统一设置所有图标尺寸 -->
 <fanc-tabbar v-model="active" :items="items" icon-size="30" />
-```
 
-### 使用图片图标
-
-通过设置`image`和`activeImage`属性，可以使用自定义图片作为图标。
-
-```html
-<fanc-tabbar v-model="active" :items="items" />
+<!-- 单独设置每个标签的图标尺寸 -->
+<fanc-tabbar v-model="active" :items="itemsWithCustomSize" />
 ```
 
 ```js
@@ -164,10 +160,53 @@ export default {
     return {
       active: 0,
       items: [
+        { text: '首页', icon: 'home' },
+        { text: '分类', icon: 'list' },
+        { text: '消息', icon: 'comment' },
+        { text: '我的', icon: 'user' }
+      ],
+      itemsWithCustomSize: [
+        { text: '首页', icon: 'home', iconSize: 28 },
+        { text: '分类', icon: 'list', iconSize: 24 },
+        { text: '消息', icon: 'comment', iconSize: 26 },
+        { text: '我的', icon: 'user', iconSize: 30 }
+      ]
+    };
+  }
+};
+```
+
+### 使用图片图标
+
+通过设置`image`和`activeImage`属性，可以使用自定义图片作为图标。同时支持通过`imageSize`属性或每个标签的`imageSize`属性自定义图片尺寸。
+
+```html
+<!-- 使用图片图标 -->
+<fanc-tabbar v-model="active" :items="imageItems" />
+
+<!-- 设置统一图片尺寸 -->
+<fanc-tabbar v-model="active" :items="imageItems" image-size="32" />
+
+<!-- 单独设置每个图片的尺寸 -->
+<fanc-tabbar v-model="active" :items="imageItemsWithCustomSize" />
+```
+
+```js
+export default {
+  data() {
+    return {
+      active: 0,
+      imageItems: [
         { text: '首页', image: '/static/img/home.png', activeImage: '/static/img/home-active.png' },
         { text: '分类', image: '/static/img/category.png', activeImage: '/static/img/category-active.png' },
         { text: '消息', image: '/static/img/message.png', activeImage: '/static/img/message-active.png' },
         { text: '我的', image: '/static/img/user.png', activeImage: '/static/img/user-active.png' }
+      ],
+      imageItemsWithCustomSize: [
+        { text: '首页', image: '/static/img/home.png', activeImage: '/static/img/home-active.png', imageSize: 36 },
+        { text: '分类', image: '/static/img/category.png', activeImage: '/static/img/category-active.png', imageSize: 28 },
+        { text: '消息', image: '/static/img/message.png', activeImage: '/static/img/message-active.png', imageSize: 32 },
+        { text: '我的', image: '/static/img/user.png', activeImage: '/static/img/user-active.png', imageSize: 30 }
       ]
     };
   }
@@ -276,6 +315,7 @@ export default {
 | textOnly | 是否只显示文本，不显示图标 | _boolean_ | `false` |
 | zIndex | 元素 z-index | _number_ | `10` |
 | iconSize | 图标尺寸，默认单位为px | _number \| string_ | `24` |
+| imageSize | 图片尺寸，默认单位为px | _number \| string_ | `24` |
 
 ### Item 数据结构
 
@@ -288,6 +328,8 @@ export default {
 | icon | 图标名称，支持FancIcon组件中的图标 | _string_ |
 | image | 图片图标URL，与icon互斥 | _string_ |
 | activeImage | 激活状态图片图标URL | _string_ |
+| iconSize | 单个标签的图标尺寸 | _number \| string_ |
+| imageSize | 单个标签的图片尺寸 | _number \| string_ |
 | url | 页面跳转链接 | _string_ |
 | switchTab | 是否使用switchTab方式跳转页面 | _boolean_ |
 | redirectTo | 是否使用redirectTo方式跳转页面 | _boolean_ |
@@ -297,7 +339,6 @@ export default {
 | color | 标签颜色 | _string_ |
 | activeColor | 标签激活态颜色 | _string_ |
 | disabledColor | 标签禁用态颜色 | _string_ |
-| iconSize | 单个标签的图标尺寸 | _number \| string_ |
 
 ### Events
 

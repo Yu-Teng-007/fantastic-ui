@@ -168,6 +168,47 @@
             </view>
             <view class="demo-description">使用插槽完全自定义标签栏内容和样式</view>
         </view>
+
+        <view class="section">
+            <view class="section-title">自定义图标与图片</view>
+            <view class="demo-content demo-tabbar-container">
+                <fanc-tabbar
+                    v-model="activeIconSize"
+                    :items="iconSizeItems"
+                    :fixed="false"
+                    @change="onChangeTab"
+                />
+            </view>
+            <view class="demo-description">可以为每个标签单独设置不同的图标尺寸</view>
+        </view>
+
+        <view class="section">
+            <view class="section-title">使用图片图标</view>
+            <view class="demo-content demo-tabbar-container">
+                <fanc-tabbar
+                    v-model="activeImage"
+                    :items="imageItems"
+                    :fixed="false"
+                    @change="onChangeTab"
+                />
+            </view>
+            <view class="demo-description">使用自定义图片代替图标，支持普通图片和选中状态图片</view>
+        </view>
+
+        <view class="section">
+            <view class="section-title">混合使用图标和图片</view>
+            <view class="demo-content demo-tabbar-container">
+                <fanc-tabbar
+                    v-model="activeMixed"
+                    :items="mixedItems"
+                    :fixed="false"
+                    @change="onChangeTab"
+                />
+            </view>
+            <view class="demo-description"
+                >在同一个标签栏中混合使用图标和图片，并可自定义各自的尺寸</view
+            >
+        </view>
     </view>
 </template>
 
@@ -195,6 +236,9 @@ export default {
             activeCapsuleIconOnly: 0,
             activeCapsuleTextOnly: 0,
             activeCustom: 0,
+            activeIconSize: 0,
+            activeImage: 0,
+            activeMixed: 0,
 
             // 基础标签项
             basicItems: [
@@ -249,7 +293,57 @@ export default {
                 { text: "红色", icon: "heart", color: "#ee0a24" },
                 { text: "橙色", icon: "star", color: "#ff976a" },
                 { text: "蓝色", icon: "info", color: "#1989fa" },
-                { text: "绿色", icon: "success", color: "#07c160" },
+                { text: "绿色", icon: "apple-alt", color: "#07c160" },
+            ],
+
+            // 自定义图标尺寸标签项
+            iconSizeItems: [
+                { text: "首页", icon: "home", iconSize: 28 },
+                { text: "分类", icon: "list", iconSize: 20 },
+                { text: "消息", icon: "comment", iconSize: 24 },
+                { text: "我的", icon: "user", iconSize: 32 },
+            ],
+
+            // 使用图片的标签项
+            imageItems: [
+                {
+                    text: "首页",
+                    image: "/static/img/home.png",
+                    activeImage: "/static/img/home-active.png",
+                },
+                {
+                    text: "分类",
+                    image: "/static/img/category.png",
+                    activeImage: "/static/img/category-active.png",
+                },
+                {
+                    text: "消息",
+                    image: "/static/img/message.png",
+                    activeImage: "/static/img/message-active.png",
+                },
+                {
+                    text: "我的",
+                    image: "/static/img/user.png",
+                    activeImage: "/static/img/user-active.png",
+                },
+            ],
+
+            // 混合使用图标和图片
+            mixedItems: [
+                { text: "首页", icon: "home", iconSize: 28 },
+                {
+                    text: "分类",
+                    image: "/static/img/category.png",
+                    activeImage: "/static/img/category-active.png",
+                    imageSize: 24,
+                },
+                { text: "消息", icon: "comment", iconSize: 24 },
+                {
+                    text: "我的",
+                    image: "/static/img/user.png",
+                    activeImage: "/static/img/user-active.png",
+                    imageSize: 28,
+                },
             ],
         };
     },
