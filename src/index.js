@@ -43,6 +43,7 @@ import FancSlider from "@/components/fanc-slider/index.vue";
 import FancCollapse from "@/components/fanc-collapse/index.vue";
 import FancCollapseItem from "@/components/fanc-collapse-item/index.vue";
 import FancCountDown from "@/components/fanc-count-down/index.vue";
+import FancCountTo from "@/components/fanc-count-to/index.vue";
 import FancFooter from "@/components/fanc-footer/index.vue";
 import FancList from "@/components/fanc-list/index.vue";
 import FancProgress from "@/components/fanc-progress/index.vue";
@@ -119,6 +120,7 @@ const components = [
     FancCollapse,
     FancCollapseItem,
     FancCountDown,
+    FancCountTo,
     FancFooter,
     FancList,
     FancProgress,
@@ -191,6 +193,7 @@ export {
     FancCollapse,
     FancCollapseItem,
     FancCountDown,
+    FancCountTo,
     FancFooter,
     FancList,
     FancProgress,

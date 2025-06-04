@@ -190,4 +190,19 @@
     --text-ellipsis-transition-duration: 0.3s;
     --text-ellipsis-trigger-padding: 8px 0;
     --text-ellipsis-trigger-font-size: 14px;
+
+    /* CountTo 数字滚动组件颜色 */
+    --count-to-text-color: var(--text-primary);
+    --count-to-font-size: 24px;
+    --count-to-font-weight: 500;
+    --count-to-addon-color: var(--text-secondary);
+    --count-to-addon-font-size: 16px;
+    --count-to-bg-color: var(--fanc-primary-color);
+    --count-to-bg-text-color: var(--white);
+    --count-to-bg-padding: 8px 16px;
+    --count-to-bg-border-radius: 4px;
+    --count-to-circle-bg-color: var(--fanc-primary-color);
+    --count-to-circle-text-color: var(--white);
+    --count-to-circle-padding: 0;
+    --count-to-circle-size: 60px;
 }

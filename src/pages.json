@@ -7,6 +7,12 @@
             }
         },
         {
+            "path": "pages/example/count-to/index",
+            "style": {
+                "navigationBarTitleText": "数字滚动示例"
+            }
+        },
+        {
             "path": "pages/example/video/index",
             "style": {
                 "navigationBarTitleText": "视频播放器示例"

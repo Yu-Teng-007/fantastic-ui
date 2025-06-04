@@ -172,7 +172,7 @@
             </fanc-cell>
         </fanc-cell-group>
 
-        <!-- 展示组件 -->
+        <!-- 内容展示组件 -->
         <fanc-cell-group
             title="内容展示"
             description="用于信息呈现和内容展示的组件"
@@ -261,7 +261,7 @@
             <fanc-cell title="折叠面板" is-link url="/pages/example/collapse/index" center>
                 <template #icon>
                     <view class="component-icon">
-                        <fanc-icon name="layer-group" size="18"></fanc-icon>
+                        <fanc-icon name="angle-down" size="18"></fanc-icon>
                     </view>
                 </template>
             </fanc-cell>
@@ -274,10 +274,18 @@
                 </template>
             </fanc-cell>
 
+            <fanc-cell title="数字滚动" is-link url="/pages/example/count-to/index" center>
+                <template #icon>
+                    <view class="component-icon">
+                        <fanc-icon name="sort-numeric-up" size="18"></fanc-icon>
+                    </view>
+                </template>
+            </fanc-cell>
+
             <fanc-cell title="进度条" is-link url="/pages/example/progress/index" center>
                 <template #icon>
                     <view class="component-icon">
-                        <fanc-icon name="bars-progress" size="18"></fanc-icon>
+                        <fanc-icon name="spinner" size="18"></fanc-icon>
                     </view>
                 </template>
             </fanc-cell>
@@ -357,7 +365,7 @@
             <fanc-cell title="标签栏" is-link url="/pages/example/tabbar/index" center>
                 <template #icon>
                     <view class="component-icon">
-                        <fanc-icon name="delicious" size="18"></fanc-icon>
+                        <fanc-icon name="tablet" size="18"></fanc-icon>
                     </view>
                 </template>
             </fanc-cell>
@@ -373,12 +381,12 @@
             <fanc-cell title="分页" is-link url="/pages/example/pagination/index" center>
                 <template #icon>
                     <view class="component-icon">
-                        <fanc-icon name="chevron-right" size="18"></fanc-icon>
+                        <fanc-icon name="ellipsis-h" size="18"></fanc-icon>
                     </view>
                 </template>
             </fanc-cell>
 
-            <fanc-cell title="选项卡" is-link url="/pages/example/tabs/index" center>
+            <fanc-cell title="标签页" is-link url="/pages/example/tabs/index" center>
                 <template #icon>
                     <view class="component-icon">
                         <fanc-icon name="folder" size="18"></fanc-icon>
@@ -397,7 +405,7 @@
             <fanc-cell title="步骤条" is-link url="/pages/example/steps/index" center>
                 <template #icon>
                     <view class="component-icon">
-                        <fanc-icon name="list-ol" size="18"></fanc-icon>
+                        <fanc-icon name="shoe-prints" size="18"></fanc-icon>
                     </view>
                 </template>
             </fanc-cell>
