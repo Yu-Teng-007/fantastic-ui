@@ -11,6 +11,7 @@
 - 支持圆角和标记(半圆角)样式
 - 支持多种尺寸：小、中、大
 - 支持可关闭标签
+- 支持禁用状态
 - 支持自定义颜色和文本颜色
 - 支持组合使用多种样式
 
@@ -92,6 +93,16 @@ export default {
 <fanc-tag type="danger" round closeable>圆角可关闭</fanc-tag>
 ```
 
+### 禁用标签
+
+```vue
+<fanc-tag disabled>禁用标签</fanc-tag>
+<fanc-tag type="primary" disabled>禁用主要</fanc-tag>
+<fanc-tag type="success" plain disabled>禁用空心</fanc-tag>
+<fanc-tag type="warning" round disabled>禁用圆角</fanc-tag>
+<fanc-tag type="danger" closeable disabled>禁用关闭</fanc-tag>
+```
+
 ## 实际应用场景
 
 ### 商品标签
@@ -132,6 +143,7 @@ export default {
 | round | 是否为圆角样式 | Boolean | `false` |
 | mark | 是否为标记样式(半圆角) | Boolean | `false` |
 | closeable | 是否为可关闭标签 | Boolean | `false` |
+| disabled | 是否禁用标签 | Boolean | `false` |
 | size | 标签尺寸，可选值为 `small` `medium` `large` | String | `medium` |
 | color | 标签颜色，支持十六进制颜色 | String | - |
 | textColor | 文本颜色，支持十六进制颜色 | String | - |
@@ -154,4 +166,5 @@ export default {
 1. 当标签内容过长时，建议设置文本溢出样式或使用更宽的标签
 2. 使用 `closeable` 属性时，标签的 `close` 事件会在点击关闭图标时触发，但不会自动隐藏标签，需要自行处理隐藏逻辑
 3. 使用 `color` 属性自定义颜色时，`plain` 属性会使边框和文字变为相应的颜色
-4. 当同时使用 `mark` 和 `round` 属性时，`mark` 属性优先级更高 
+4. 当同时使用 `mark` 和 `round` 属性时，`mark` 属性优先级更高
+5. 当标签被禁用时，点击事件和关闭事件将不会触发 

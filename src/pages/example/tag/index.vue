@@ -107,6 +107,18 @@
             </view>
         </view>
 
+        <!-- 禁用标签 -->
+        <view class="section">
+            <view class="section-title">禁用标签</view>
+            <view class="tag-group">
+                <fanc-tag disabled>禁用标签</fanc-tag>
+                <fanc-tag type="primary" disabled>禁用主要</fanc-tag>
+                <fanc-tag type="success" plain disabled>禁用空心</fanc-tag>
+                <fanc-tag type="warning" round disabled>禁用圆角</fanc-tag>
+                <fanc-tag type="danger" closeable disabled>禁用关闭</fanc-tag>
+            </view>
+        </view>
+
         <!-- 用法示例 -->
         <view class="section">
             <view class="section-title">用法示例</view>

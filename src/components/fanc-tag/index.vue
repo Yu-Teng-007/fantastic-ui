@@ -8,6 +8,7 @@
                 'fanc-tag--round': round,
                 'fanc-tag--mark': mark,
                 'fanc-tag--closeable': closeable,
+                'fanc-tag--disabled': disabled,
                 [`fanc-tag--${size}`]: size,
             },
         ]"
@@ -55,6 +56,11 @@ export default {
             type: Boolean,
             default: false,
         },
+        // 标签是否禁用
+        disabled: {
+            type: Boolean,
+            default: false,
+        },
         // 标签尺寸
         size: {
             type: String,
@@ -92,9 +98,11 @@ export default {
     },
     methods: {
         onClick(event) {
+            if (this.disabled) return;
             this.$emit("click", event);
         },
         onClose(event) {
+            if (this.disabled) return;
             event.stopPropagation();
             this.$emit("close", event);
         },
@@ -217,5 +225,16 @@ export default {
     margin-left: var(--tag-close-margin-left);
     cursor: pointer;
     line-height: 1;
+}
+
+/* 禁用样式 */
+.fanc-tag--disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.fanc-tag--disabled.fanc-tag--plain {
+    border-color: var(--gray-400);
+    color: var(--gray-400);
 }
 </style>
