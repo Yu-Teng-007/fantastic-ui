@@ -63,6 +63,14 @@
                     </view>
                 </template>
             </fanc-cell>
+
+            <fanc-cell title="分割线" is-link url="/pages/example/divider/index" center>
+                <template #icon>
+                    <view class="component-icon">
+                        <fanc-icon name="minus" size="18"></fanc-icon>
+                    </view>
+                </template>
+            </fanc-cell>
         </fanc-cell-group>
 
         <!-- 表单组件 -->

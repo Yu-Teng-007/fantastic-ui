@@ -164,4 +164,13 @@
     --rate-disabled-color: var(--text-disabled);
     --rate-icon-size: 20px;
     --rate-icon-gutter: 4px;
+    
+    /* Divider 分割线组件颜色 */
+    --divider-text-color: var(--text-secondary);
+    --divider-border-color: var(--border-color);
+    --divider-font-size: 14px;
+    --divider-margin: 16px 0;
+    --divider-text-padding: 16px;
+    --divider-text-margin-left: 5%;
+    --divider-text-margin-right: 5%;
 }
