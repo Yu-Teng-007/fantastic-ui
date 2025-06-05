@@ -10,9 +10,14 @@
             <view class="section-title">基础用法</view>
             <view class="section-content">
                 <fanc-pagination
-                    v-model="currentPage1"
+                    :current="currentPage1"
                     :total="100"
-                    @change="handlePageChange"
+                    @change="
+                        (page) => {
+                            currentPage1 = page;
+                            handlePageChange(page);
+                        }
+                    "
                 ></fanc-pagination>
             </view>
         </view>
@@ -21,33 +26,76 @@
         <view class="section">
             <view class="section-title">简单模式</view>
             <view class="section-content">
-                <fanc-pagination v-model="currentPage2" :total="100" simple></fanc-pagination>
-            </view>
-        </view>
-
-        <!-- 显示文字 -->
-        <view class="section">
-            <view class="section-title">显示文字</view>
-            <view class="section-content">
                 <fanc-pagination
-                    v-model="currentPage3"
+                    :current="currentPage2"
                     :total="100"
-                    show-page-text
+                    simple
+                    @change="
+                        (page) => {
+                            currentPage2 = page;
+                        }
+                    "
                 ></fanc-pagination>
             </view>
         </view>
 
-        <!-- 自定义文字 -->
+        <!-- 显示省略号 -->
         <view class="section">
-            <view class="section-title">自定义文字</view>
+            <view class="section-title">显示省略号</view>
             <view class="section-content">
                 <fanc-pagination
-                    v-model="currentPage4"
-                    :total="100"
-                    show-page-text
-                    prev-text="前往上一页"
-                    next-text="前往下一页"
+                    :current="currentPage3"
+                    :total="200"
+                    showEllipsis
+                    @change="
+                        (page) => {
+                            currentPage3 = page;
+                        }
+                    "
                 ></fanc-pagination>
+            </view>
+        </view>
+
+        <!-- 自定义插槽 -->
+        <view class="section">
+            <view class="section-title">自定义插槽</view>
+            <view class="section-content">
+                <fanc-pagination
+                    :current="currentPage8"
+                    :total="100"
+                    @change="
+                        (page) => {
+                            currentPage8 = page;
+                        }
+                    "
+                >
+                    <template #prev>
+                        <fanc-icon name="angle-left" />
+                    </template>
+                    <template #next>
+                        <fanc-icon name="angle-right" />
+                    </template>
+                </fanc-pagination>
+            </view>
+        </view>
+
+        <!-- 自定义页码 -->
+        <view class="section">
+            <view class="section-title">自定义页码</view>
+            <view class="section-content">
+                <fanc-pagination
+                    :current="currentPage9"
+                    :total="100"
+                    @change="
+                        (page) => {
+                            currentPage9 = page;
+                        }
+                    "
+                >
+                    <template #page="{ page }">
+                        <text class="custom-page">{{ page }}</text>
+                    </template>
+                </fanc-pagination>
             </view>
         </view>
 
@@ -55,18 +103,15 @@
         <view class="section">
             <view class="section-title">迷你版本</view>
             <view class="section-content">
-                <fanc-pagination v-model="currentPage5" :total="100" mini></fanc-pagination>
-            </view>
-        </view>
-
-        <!-- 多页码 -->
-        <view class="section">
-            <view class="section-title">多页码</view>
-            <view class="section-content">
                 <fanc-pagination
-                    v-model="currentPage6"
-                    :total="500"
-                    :page-size="10"
+                    :current="currentPage5"
+                    :total="100"
+                    mini
+                    @change="
+                        (page) => {
+                            currentPage5 = page;
+                        }
+                    "
                 ></fanc-pagination>
             </view>
         </view>
@@ -76,10 +121,16 @@
             <view class="section-title">自定义页码数量</view>
             <view class="section-content">
                 <fanc-pagination
-                    v-model="currentPage7"
-                    :total="500"
-                    :page-size="10"
-                    :pager-count="5"
+                    :current="currentPage6"
+                    :total="300"
+                    :pageSize="10"
+                    :pagerCount="7"
+                    showEllipsis
+                    @change="
+                        (page) => {
+                            currentPage6 = page;
+                        }
+                    "
                 ></fanc-pagination>
             </view>
         </view>
@@ -87,8 +138,17 @@
         <!-- 深色主题 -->
         <view class="section">
             <view class="section-title">深色主题</view>
-            <view class="section-content dark-bg">
-                <fanc-pagination v-model="currentPage8" :total="100" dark></fanc-pagination>
+            <view class="section-content">
+                <fanc-pagination
+                    :current="currentPage7"
+                    :total="100"
+                    dark
+                    @change="
+                        (page) => {
+                            currentPage7 = page;
+                        }
+                    "
+                ></fanc-pagination>
             </view>
         </view>
 
@@ -97,7 +157,7 @@
             <view class="section-title">商品列表示例</view>
             <view class="product-list">
                 <view class="product-item" v-for="(item, index) in displayProducts" :key="index">
-                    <view class="product-image"></view>
+                    <image src="/static/img/cheese.png" class="product-image"></image>
                     <view class="product-content">
                         <view class="product-name">{{ item.name }}</view>
                         <view class="product-desc">{{ item.desc }}</view>
@@ -107,9 +167,9 @@
             </view>
             <view class="pagination-container">
                 <fanc-pagination
-                    v-model="productPage"
+                    :current="productPage"
                     :total="mockProducts.length"
-                    :page-size="5"
+                    :pageSize="5"
                     @change="handleProductPageChange"
                 ></fanc-pagination>
             </view>
@@ -124,11 +184,11 @@ export default {
             currentPage1: 1,
             currentPage2: 1,
             currentPage3: 1,
-            currentPage4: 1,
             currentPage5: 1,
             currentPage6: 1,
             currentPage7: 1,
             currentPage8: 1,
+            currentPage9: 1,
             productPage: 1,
             mockProducts: Array.from({ length: 25 }, (_, index) => ({
                 id: index + 1,
@@ -150,6 +210,7 @@ export default {
             this.$toast.text(`当前页: ${page}`);
         },
         handleProductPageChange(page) {
+            this.productPage = page;
             this.$toast.text(`加载第${page}页商品`);
         },
     },
@@ -197,11 +258,7 @@ export default {
 
 .section-content {
     padding: 16px;
-}
-
-.dark-bg {
-    background-color: #323233;
-    padding: 24px 16px;
+    background-color: #f7f7f7;
 }
 
 .product-list {
@@ -256,5 +313,10 @@ export default {
 .pagination-container {
     padding: 16px;
     border-top: 1px solid #f2f2f2;
+}
+
+/* 自定义样式 */
+.custom-page {
+    font-weight: 500;
 }
 </style>
