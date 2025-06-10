@@ -128,6 +128,7 @@ export default {
             visible: false,
             scrollTop: 0,
             observer: null,
+            handleScroll: null,
         };
     },
     computed: {
@@ -157,30 +158,55 @@ export default {
     },
     methods: {
         initScrollListener() {
-            // 获取页面滚动元素
-            const pages = getCurrentPages();
-            const page = pages[pages.length - 1];
-            const query = uni.createSelectorQuery().in(page);
-
-            // 监听页面滚动事件
-            uni.onPageScroll(({ scrollTop }) => {
-                this.scrollTop = scrollTop;
-                this.visible = scrollTop >= this.visibilityHeight;
-            });
+            // 检查环境，判断是uni-app环境还是浏览器环境
+            if (typeof uni !== "undefined" && uni.onPageScroll) {
+                // uni-app环境
+                uni.onPageScroll(({ scrollTop }) => {
+                    this.scrollTop = scrollTop;
+                    this.visible = scrollTop >= this.visibilityHeight;
+                });
+            } else {
+                // 浏览器环境
+                this.handleScroll = () => {
+                    this.scrollTop =
+                        window.pageYOffset ||
+                        document.documentElement.scrollTop ||
+                        document.body.scrollTop;
+                    this.visible = this.scrollTop >= this.visibilityHeight;
+                };
+                window.addEventListener("scroll", this.handleScroll);
+                // 初始检查
+                this.handleScroll();
+            }
         },
         removeScrollListener() {
-            uni.offPageScroll();
+            if (typeof uni !== "undefined" && uni.offPageScroll) {
+                uni.offPageScroll();
+            } else {
+                window.removeEventListener("scroll", this.handleScroll);
+            }
         },
         scrollToTop() {
-            uni.pageScrollTo({
-                scrollTop: 0,
-                duration: this.duration,
-            });
+            if (typeof uni !== "undefined" && uni.pageScrollTo) {
+                // uni-app环境
+                uni.pageScrollTo({
+                    scrollTop: 0,
+                    duration: this.duration,
+                });
+
+                // 成功提示
+                if (this.$toast && this.$toast.success) {
+                    this.$toast.success("已返回顶部");
+                }
+            } else {
+                // 浏览器环境
+                window.scrollTo({
+                    top: 0,
+                    behavior: "smooth",
+                });
+            }
 
             this.$emit("click");
-
-            // 成功提示
-            this.$toast.success("已返回顶部");
         },
     },
 };

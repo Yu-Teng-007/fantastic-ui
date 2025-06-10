@@ -5,148 +5,121 @@
             <view class="subtitle">提供较长的页面快捷返回顶部功能</view>
         </view>
 
-        <!-- 基础用法 -->
+        <!-- 配置面板 -->
         <view class="section">
-            <view class="section-title">基础用法</view>
+            <view class="section-title">配置面板</view>
             <view class="section-content">
-                <view class="tip">向下滚动页面查看效果</view>
-            </view>
-        </view>
+                <view class="config-item">
+                    <text class="config-label">类型：</text>
+                    <view class="config-options">
+                        <view
+                            v-for="item in typeOptions"
+                            :key="item.value"
+                            :class="['config-option', { active: config.type === item.value }]"
+                            @click="updateConfig('type', item.value)"
+                        >
+                            {{ item.label }}
+                        </view>
+                    </view>
+                </view>
 
-        <!-- 不同类型 -->
-        <view class="section">
-            <view class="section-title">不同类型</view>
-            <view class="section-content">
-                <view class="backtop-group">
-                    <fanc-backtop
-                        type="default"
-                        text="默认"
-                        :visibilityHeight="0"
-                        right="20px"
-                        bottom="300px"
+                <view class="config-item">
+                    <text class="config-label">图标：</text>
+                    <view class="config-options">
+                        <view
+                            v-for="item in iconOptions"
+                            :key="item.value"
+                            :class="['config-option', { active: config.icon === item.value }]"
+                            @click="updateConfig('icon', item.value)"
+                        >
+                            {{ item.label }}
+                        </view>
+                    </view>
+                </view>
+
+                <view class="config-item">
+                    <text class="config-label">文本：</text>
+                    <input
+                        class="config-input"
+                        type="text"
+                        v-model="config.text"
+                        placeholder="输入文本"
                     />
-                    <fanc-backtop
-                        type="primary"
-                        text="主要"
-                        :visibilityHeight="0"
-                        right="70px"
-                        bottom="300px"
+                </view>
+
+                <view class="config-item">
+                    <text class="config-label">背景颜色：</text>
+                    <input
+                        class="config-input color-input"
+                        type="text"
+                        v-model="config.color"
+                        placeholder="#ffffff"
                     />
-                    <fanc-backtop
-                        type="success"
-                        text="成功"
-                        :visibilityHeight="0"
-                        right="120px"
-                        bottom="300px"
+                </view>
+
+                <view class="config-item">
+                    <text class="config-label">文字颜色：</text>
+                    <input
+                        class="config-input color-input"
+                        type="text"
+                        v-model="config.textColor"
+                        placeholder="#000000"
                     />
-                    <fanc-backtop
-                        type="warning"
-                        text="警告"
-                        :visibilityHeight="0"
-                        right="170px"
-                        bottom="300px"
-                    />
-                    <fanc-backtop
-                        type="danger"
-                        text="危险"
-                        :visibilityHeight="0"
-                        right="220px"
-                        bottom="300px"
-                    />
-                    <fanc-backtop
-                        type="info"
-                        text="信息"
-                        :visibilityHeight="0"
-                        right="270px"
-                        bottom="300px"
-                    />
+                </view>
+
+                <view class="config-item">
+                    <text class="config-label">形状：</text>
+                    <view class="config-switch">
+                        <text>圆形</text>
+                        <switch
+                            :checked="config.round"
+                            @change="updateConfig('round', $event.detail.value)"
+                        />
+                    </view>
+                </view>
+
+                <view class="config-item">
+                    <text class="config-label">阴影：</text>
+                    <view class="config-switch">
+                        <text>显示</text>
+                        <switch
+                            :checked="config.shadow"
+                            @change="updateConfig('shadow', $event.detail.value)"
+                        />
+                    </view>
+                </view>
+
+                <view class="config-item">
+                    <text class="config-label">可见高度(px)：</text>
+                    <view class="config-slider">
+                        <slider
+                            :value="config.visibilityHeight"
+                            min="0"
+                            max="500"
+                            step="50"
+                            show-value
+                            @change="updateConfig('visibilityHeight', $event.detail.value)"
+                        />
+                    </view>
                 </view>
             </view>
         </view>
 
-        <!-- 自定义图标 -->
+        <!-- 预览区域 -->
         <view class="section">
-            <view class="section-title">自定义图标</view>
+            <view class="section-title">预览效果</view>
             <view class="section-content">
-                <view class="backtop-group">
-                    <fanc-backtop
-                        icon="chevron-up"
-                        :visibilityHeight="0"
-                        right="20px"
-                        bottom="240px"
-                    />
-                    <fanc-backtop icon="rocket" :visibilityHeight="0" right="70px" bottom="240px" />
-                    <fanc-backtop
-                        icon="arrow-circle-up"
-                        :visibilityHeight="0"
-                        right="120px"
-                        bottom="240px"
-                    />
-                </view>
+                <view class="tip">向下滚动页面查看效果，当前配置的返回顶部按钮将出现</view>
             </view>
         </view>
 
-        <!-- 自定义形状 -->
+        <!-- 组件代码 -->
         <view class="section">
-            <view class="section-title">自定义形状</view>
+            <view class="section-title">组件代码</view>
             <view class="section-content">
-                <view class="backtop-group">
-                    <fanc-backtop
-                        :round="false"
-                        :visibilityHeight="0"
-                        right="20px"
-                        bottom="180px"
-                    />
-                    <fanc-backtop
-                        :round="false"
-                        :shadow="false"
-                        :visibilityHeight="0"
-                        right="70px"
-                        bottom="180px"
-                    />
+                <view class="code-block">
+                    <text selectable class="code">{{ generatedCode }}</text>
                 </view>
-            </view>
-        </view>
-
-        <!-- 自定义颜色 -->
-        <view class="section">
-            <view class="section-title">自定义颜色</view>
-            <view class="section-content">
-                <view class="backtop-group">
-                    <fanc-backtop
-                        color="#8e44ad"
-                        textColor="#ffffff"
-                        text="紫色"
-                        :visibilityHeight="0"
-                        right="20px"
-                        bottom="120px"
-                    />
-                    <fanc-backtop
-                        color="#e74c3c"
-                        textColor="#ffffff"
-                        text="红色"
-                        :visibilityHeight="0"
-                        right="70px"
-                        bottom="120px"
-                    />
-                    <fanc-backtop
-                        color="#2ecc71"
-                        textColor="#ffffff"
-                        text="绿色"
-                        :visibilityHeight="0"
-                        right="120px"
-                        bottom="120px"
-                    />
-                </view>
-            </view>
-        </view>
-
-        <!-- 滚动触发 -->
-        <view class="section">
-            <view class="section-title">滚动触发</view>
-            <view class="section-content">
-                <view class="tip">默认滚动高度超过200px时显示</view>
-                <fanc-backtop />
             </view>
         </view>
 
@@ -154,15 +127,102 @@
         <view v-for="i in 20" :key="i" class="placeholder">
             <text>占位内容 {{ i }}</text>
         </view>
+
+        <!-- 当前配置的返回顶部按钮 -->
+        <fanc-backtop
+            :type="config.type"
+            :icon="config.icon"
+            :text="config.text"
+            :round="config.round"
+            :shadow="config.shadow"
+            :visibilityHeight="config.visibilityHeight"
+            :color="config.color"
+            :textColor="config.textColor"
+            :bottom="config.bottom"
+            :right="config.right"
+            @click="handleBacktopClick"
+        />
     </view>
 </template>
 
 <script>
 export default {
     data() {
-        return {};
+        return {
+            config: {
+                type: "primary",
+                icon: "arrow-up",
+                text: "",
+                round: true,
+                shadow: true,
+                visibilityHeight: 200,
+                color: "",
+                textColor: "",
+                bottom: "40px",
+                right: "20px",
+            },
+            typeOptions: [
+                { label: "默认", value: "default" },
+                { label: "主要", value: "primary" },
+                { label: "成功", value: "success" },
+                { label: "警告", value: "warning" },
+                { label: "危险", value: "danger" },
+                { label: "信息", value: "info" },
+            ],
+            iconOptions: [
+                { label: "上箭头", value: "arrow-up" },
+                { label: "上箭头(细)", value: "chevron-up" },
+                { label: "上箭头(圆)", value: "arrow-circle-up" },
+                { label: "火箭", value: "rocket" },
+            ],
+        };
     },
-    methods: {},
+    computed: {
+        generatedCode() {
+            let code = "<fanc-backtop\n";
+
+            if (this.config.type !== "primary") {
+                code += `    type="${this.config.type}"\n`;
+            }
+
+            if (this.config.icon !== "arrow-up") {
+                code += `    icon="${this.config.icon}"\n`;
+            }
+
+            if (this.config.text) {
+                code += `    text="${this.config.text}"\n`;
+            }
+
+            if (!this.config.round) {
+                code += '    :round="false"\n';
+            }
+
+            if (!this.config.shadow) {
+                code += '    :shadow="false"\n';
+            }
+
+            if (this.config.visibilityHeight !== 200) {
+                code += `    :visibilityHeight="${this.config.visibilityHeight}"\n`;
+            }
+
+            if (this.config.color) {
+                code += `    color="${this.config.color}"\n`;
+            }
+
+            if (this.config.textColor) {
+                code += `    textColor="${this.config.textColor}"\n`;
+            }
+
+            code += "/>";
+
+            return code;
+        },
+    },
+    methods: {
+        updateConfig(key, value) {
+            this.config[key] = value;
+        },
+    },
 };
 </script>
 
@@ -215,11 +275,6 @@ export default {
     margin-bottom: 12px;
 }
 
-.backtop-group {
-    position: relative;
-    height: 60px;
-}
-
 .placeholder {
     height: 60px;
     background-color: #ffffff;
@@ -230,5 +285,81 @@ export default {
     justify-content: center;
     color: #323233;
     font-size: 14px;
+}
+
+/* 配置面板样式 */
+.config-item {
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+}
+
+.config-label {
+    width: 100px;
+    font-size: 14px;
+    color: #323233;
+}
+
+.config-options {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.config-option {
+    margin-right: 8px;
+    margin-bottom: 8px;
+    padding: 4px 12px;
+    font-size: 12px;
+    background-color: #f2f2f2;
+    border-radius: 4px;
+    color: #323233;
+}
+
+.config-option.active {
+    background-color: #1989fa;
+    color: #ffffff;
+}
+
+.config-input {
+    flex: 1;
+    height: 32px;
+    padding: 0 8px;
+    border: 1px solid #ebedf0;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.color-input {
+    width: 120px;
+}
+
+.config-switch {
+    display: flex;
+    align-items: center;
+}
+
+.config-switch text {
+    margin-right: 8px;
+    font-size: 14px;
+}
+
+.config-slider {
+    flex: 1;
+}
+
+/* 代码块样式 */
+.code-block {
+    padding: 12px;
+    background-color: #f5f7fa;
+    border-radius: 4px;
+    overflow-x: auto;
+}
+
+.code {
+    font-family: monospace;
+    font-size: 12px;
+    color: #323233;
+    white-space: pre;
+    line-height: 1.5;
 }
 </style>
