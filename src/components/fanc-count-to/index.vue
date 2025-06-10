@@ -361,6 +361,11 @@ export default {
     margin: 0 4px;
 }
 
+.fanc-count-to__suffix {
+    align-self: flex-end;
+    transform: translateY(-2px);
+}
+
 /* 带背景的样式 */
 .fanc-count-to__bg {
     display: inline-flex;
