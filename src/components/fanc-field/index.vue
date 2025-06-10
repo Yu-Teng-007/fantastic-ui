@@ -404,7 +404,6 @@ export default {
 
     watch: {
         value(data) {
-            console.log("🚀 ~ value ~ data:", data);
             // 值变化时触发验证
             this.onFieldChange("change");
 
