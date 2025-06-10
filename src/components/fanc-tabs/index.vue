@@ -53,26 +53,9 @@
         </view>
 
         <!-- 内容区域 -->
-        <swiper
-            class="fanc-tabs__content"
-            :current="currentIndex"
-            :duration="animated ? duration * 1000 : 0"
-            @change="onSwiperChange"
-            :style="{ height: contentHeightValue }"
-            :circular="false"
-            :vertical="false"
-            :indicator-dots="false"
-            :autoplay="false"
-        >
-            <swiper-item v-for="(item, index) in tabs" :key="index" class="fanc-tabs__swiper-item">
-                <scroll-view scroll-y class="fanc-tabs__scroll-view">
-                    <view class="fanc-tabs__pane">
-                        <slot :name="item.title || index" :index="index"></slot>
-                        <slot v-if="!$scopedSlots[item.title || index]"></slot>
-                    </view>
-                </scroll-view>
-            </swiper-item>
-        </swiper>
+        <view class="fanc-tabs__content">
+            <slot></slot>
+        </view>
     </view>
 </template>
 
@@ -92,7 +75,6 @@
  * @property {String} activeColor - 激活状态颜色
  * @property {String} inactiveColor - 未激活状态颜色
  * @property {String} bgColor - 背景颜色
- * @property {String|Number} contentHeight - 内容区域高度，支持像素值或百分比，默认300px
  * @event {Function} change - 切换标签时触发
  * @event {Function} click - 点击标签时触发
  * @event {Function} disabled - 点击禁用标签时触发
@@ -161,11 +143,6 @@ export default {
             type: String,
             default: "",
         },
-        // 内容区域高度
-        contentHeight: {
-            type: [String, Number],
-            default: "300px",
-        },
     },
     data() {
         return {
@@ -198,14 +175,6 @@ export default {
                 backgroundColor: this.activeColor || "var(--tabs-active-color)",
                 transition: this.animated ? `transform ${this.duration}s` : "none",
             };
-        },
-
-        // 内容高度值
-        contentHeightValue() {
-            if (typeof this.contentHeight === "number") {
-                return this.contentHeight + "px";
-            }
-            return this.contentHeight;
         },
     },
     watch: {
@@ -289,17 +258,17 @@ export default {
                 this.scrollLeft = Math.max(0, rect.left - (screenWidth - rect.width) / 2);
             });
         },
-        // 处理轮播图切换事件
-        onSwiperChange(e) {
-            const current = e.detail.current;
-            if (current !== this.currentIndex) {
-                this.currentIndex = current;
-                this.$emit("change", {
-                    index: current,
-                    title: this.tabs[current].title,
-                });
-            }
-        },
+        // 已移除轮播图组件，此方法不再需要
+        // onSwiperChange(e) {
+        //     const current = e.detail.current;
+        //     if (current !== this.currentIndex) {
+        //         this.currentIndex = current;
+        //         this.$emit("change", {
+        //             index: current,
+        //             title: this.tabs[current].title,
+        //         });
+        //     }
+        // },
         // 获取tabs容器左侧的位置偏移
         getContainerLeft() {
             const query = uni.createSelectorQuery().in(this);
@@ -525,7 +494,7 @@ export default {
         width: 100%;
     }
 
-    &__swiper-item {
+    &__content-item {
         height: 100%;
         width: 100%;
         overflow: hidden;
