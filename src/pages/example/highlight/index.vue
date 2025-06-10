@@ -38,45 +38,51 @@
 
         <!-- 不同类型 -->
         <view class="section">
-            <view class="section-title">不同类型</view>
+            <view class="section-title">不同类型（带背景色）</view>
             <view class="demo-block">
                 <view class="demo-row">
-                    <fanc-highlight type="primary">主要类型</fanc-highlight>
+                    <fanc-highlight type="primary" :hasBackground="true">主要类型</fanc-highlight>
                 </view>
                 <view class="demo-row">
-                    <fanc-highlight type="success">成功类型</fanc-highlight>
+                    <fanc-highlight type="success" :hasBackground="true">成功类型</fanc-highlight>
                 </view>
                 <view class="demo-row">
-                    <fanc-highlight type="warning">警告类型</fanc-highlight>
+                    <fanc-highlight type="warning" :hasBackground="true">警告类型</fanc-highlight>
                 </view>
                 <view class="demo-row">
-                    <fanc-highlight type="danger">危险类型</fanc-highlight>
+                    <fanc-highlight type="danger" :hasBackground="true">危险类型</fanc-highlight>
                 </view>
                 <view class="demo-row">
-                    <fanc-highlight type="info">信息类型</fanc-highlight>
+                    <fanc-highlight type="info" :hasBackground="true">信息类型</fanc-highlight>
                 </view>
             </view>
         </view>
 
         <!-- 圆角样式 -->
         <view class="section">
-            <view class="section-title">圆角样式</view>
+            <view class="section-title">圆角样式（带背景色）</view>
             <view class="demo-block">
                 <view class="demo-row">
-                    <fanc-highlight type="primary" round>圆角主要类型</fanc-highlight>
+                    <fanc-highlight type="primary" :hasBackground="true" round
+                        >圆角主要类型</fanc-highlight
+                    >
                 </view>
                 <view class="demo-row">
-                    <fanc-highlight type="success" round>圆角成功类型</fanc-highlight>
+                    <fanc-highlight type="success" :hasBackground="true" round
+                        >圆角成功类型</fanc-highlight
+                    >
                 </view>
                 <view class="demo-row">
-                    <fanc-highlight type="warning" round>圆角警告类型</fanc-highlight>
+                    <fanc-highlight type="warning" :hasBackground="true" round
+                        >圆角警告类型</fanc-highlight
+                    >
                 </view>
             </view>
         </view>
 
         <!-- 自定义颜色 -->
         <view class="section">
-            <view class="section-title">自定义颜色</view>
+            <view class="section-title">自定义颜色（带背景色）</view>
             <view class="demo-block">
                 <view class="demo-row">
                     <fanc-highlight color="#8e44ad" backgroundColor="#f5e6ff"
@@ -121,6 +127,27 @@
             </view>
         </view>
 
+        <!-- 带背景与不带背景对比 -->
+        <view class="section">
+            <view class="section-title">带背景与不带背景对比</view>
+            <view class="demo-block">
+                <view class="demo-row">
+                    <fanc-highlight
+                        text="这是一段默认只高亮关键词的文本"
+                        keywords="关键词"
+                    ></fanc-highlight>
+                </view>
+                <view class="demo-row">
+                    <fanc-highlight
+                        text="这是一段带背景色且高亮关键词的文本"
+                        keywords="关键词"
+                        :hasBackground="true"
+                        type="primary"
+                    ></fanc-highlight>
+                </view>
+            </view>
+        </view>
+
         <!-- 搜索结果示例 -->
         <view class="section">
             <view class="section-title">搜索结果示例</view>
@@ -138,21 +165,38 @@
                     </fanc-field>
                 </view>
                 <view class="search-results">
+                    <!-- 搜索结果 -->
+                    <template v-if="searchKeyword && searchResults.length > 0">
+                        <view
+                            class="search-result-item"
+                            v-for="(item, index) in searchResults"
+                            :key="`search-${index}`"
+                        >
+                            <fanc-highlight
+                                :text="item.content"
+                                :keywords="searchKeyword"
+                            ></fanc-highlight>
+                        </view>
+                    </template>
+
+                    <!-- 无搜索结果 -->
                     <view
-                        v-if="searchKeyword && searchResults.length"
-                        class="search-result-item"
-                        v-for="(item, index) in searchResults"
-                        :key="index"
+                        v-else-if="searchKeyword && searchResults.length === 0"
+                        class="search-empty"
                     >
-                        <fanc-highlight
-                            :text="item.content"
-                            :keywords="searchKeyword"
-                        ></fanc-highlight>
-                    </view>
-                    <view v-else-if="searchKeyword && !searchResults.length" class="search-empty">
                         没有找到匹配的结果
                     </view>
-                    <view v-else class="search-placeholder"> 输入关键词进行搜索 </view>
+
+                    <!-- 默认展示所有数据 -->
+                    <template v-else>
+                        <view
+                            class="search-result-item"
+                            v-for="(item, index) in mockData"
+                            :key="`mock-${index}`"
+                        >
+                            {{ item.content }}
+                        </view>
+                    </template>
                 </view>
             </view>
         </view>
@@ -187,10 +231,18 @@ export default {
                 item.content.toLowerCase().includes(this.searchKeyword.toLowerCase())
             );
 
+            // 确保搜索结果有效
             if (this.searchResults.length === 0) {
-                this.$toast.info("没有找到匹配的结果");
+                // 无搜索结果时显示提示
+                uni.showToast({
+                    title: "没有找到匹配的结果",
+                    icon: "none",
+                });
             }
         },
+    },
+    mounted() {
+        console.log("组件已挂载，mockData:", this.mockData);
     },
 };
 </script>

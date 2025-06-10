@@ -3,7 +3,10 @@
         <text
             v-if="!text"
             class="fanc-highlight__content"
-            :class="[color ? '' : `fanc-highlight--${type}`, { 'fanc-highlight--round': round }]"
+            :class="[
+                color ? '' : hasBackground ? `fanc-highlight--${type}` : '',
+                { 'fanc-highlight--round': round && hasBackground },
+            ]"
             :style="customStyle"
         >
             <slot></slot>
@@ -11,19 +14,22 @@
         <text
             v-else
             class="fanc-highlight__content"
-            :class="[color ? '' : `fanc-highlight--${type}`, { 'fanc-highlight--round': round }]"
+            :class="[
+                color ? '' : hasBackground ? `fanc-highlight--${type}` : '',
+                { 'fanc-highlight--round': round && hasBackground },
+            ]"
             :style="customStyle"
         >
             <template v-if="keywords && keywords.length">
                 <template v-for="(item, index) in textParts">
                     <text
                         v-if="item.isKeyword"
-                        :key="index"
+                        :key="`keyword-${index}`"
                         class="fanc-highlight__keyword"
                         :style="keywordStyle"
                         >{{ item.text }}</text
                     >
-                    <text v-else :key="index">{{ item.text }}</text>
+                    <text v-else :key="`text-${index}`">{{ item.text }}</text>
                 </template>
             </template>
             <template v-else>
@@ -81,6 +87,11 @@ export default {
         bold: {
             type: Boolean,
             default: true,
+        },
+        // 是否给整体内容添加背景色
+        hasBackground: {
+            type: Boolean,
+            default: false,
         },
     },
     computed: {
@@ -229,3 +240,34 @@ export default {
     border-radius: 16px;
 }
 </style>
+
+<!-- 
+使用示例：
+
+1. 基本使用 - 只高亮关键词：
+<fanc-highlight text="这是一段包含关键词的文本" keywords="关键词"></fanc-highlight>
+
+2. 多关键词高亮：
+<fanc-highlight text="这是一段包含多个关键词和重要内容的文本" :keywords="['关键词', '重要内容']"></fanc-highlight>
+
+3. 自定义关键词样式：
+<fanc-highlight 
+  text="这是一段自定义样式的文本" 
+  keywords="自定义样式" 
+  keywordColor="#ff0000" 
+  keywordBackgroundColor="#ffeeee">
+</fanc-highlight>
+
+4. 带背景色的整体高亮：
+<fanc-highlight 
+  text="这是一段带背景的文本，其中有关键词" 
+  keywords="关键词" 
+  :hasBackground="true" 
+  type="warning">
+</fanc-highlight>
+
+5. 使用插槽内容：
+<fanc-highlight :hasBackground="true" type="success" :round="true">
+  这是通过插槽传入的<text style="color: red;">自定义内容</text>
+</fanc-highlight>
+-->

@@ -94,7 +94,7 @@
                 <view
                     v-if="showClear"
                     class="fanc-field__right-icon fanc-field__clear"
-                    @click="onClear"
+                    @click.stop="onClear"
                 >
                     <fanc-icon name="times-circle" size="16" class="fanc-field__icon" />
                 </view>
@@ -146,6 +146,11 @@ import AsyncValidator from "async-validator";
 
 export default {
     name: "fanc-field",
+
+    model: {
+        prop: "value",
+        event: "input",
+    },
 
     props: {
         // 输入框的类型，支持text、password、textarea、number、digit等
@@ -293,6 +298,11 @@ export default {
             type: String,
             default: "left",
         },
+        // 是否显示键盘上方带有"完成"按钮那一栏
+        showConfirmBar: {
+            type: Boolean,
+            default: true,
+        },
     },
 
     inject: {
@@ -331,8 +341,9 @@ export default {
                 this.clearable &&
                 !this.readonly &&
                 !this.disabled &&
-                (this.value !== "" || this.value !== 0) &&
-                this.focused
+                this.value !== "" &&
+                this.value !== null &&
+                this.value !== undefined
             );
         },
         // 表单验证规则
@@ -392,7 +403,8 @@ export default {
     },
 
     watch: {
-        value() {
+        value(data) {
+            console.log("🚀 ~ value ~ data:", data);
             // 值变化时触发验证
             this.onFieldChange("change");
 
@@ -453,12 +465,24 @@ export default {
         },
 
         // 清除内容
-        onClear() {
+        onClear(event) {
+            // 阻止事件冒泡
+            event && event.stopPropagation && event.stopPropagation();
+
+            // 清空值并触发事件
             this.$emit("input", "");
             this.$emit("update:value", "");
             this.$emit("change", "");
             this.$emit("clear");
             this.$emit("click-icon", "clear");
+
+            // 保持焦点
+            this.$nextTick(() => {
+                const input = this.$el.querySelector("input") || this.$el.querySelector("textarea");
+                if (input) {
+                    input.focus();
+                }
+            });
         },
 
         // 自动调整文本域高度
