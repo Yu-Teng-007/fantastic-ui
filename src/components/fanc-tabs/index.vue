@@ -1,51 +1,78 @@
 <template>
     <view class="fanc-tabs" :class="{ 'fanc-tabs--card': type === 'card' }">
+        <!-- 粘性布局占位符 -->
+        <view
+            v-if="sticky && isFixed"
+            class="fanc-tabs__sticky-placeholder"
+            :style="{ height: navHeight + 'px' }"
+        ></view>
+
         <!-- 标签头部区域 -->
-        <scroll-view
-            class="fanc-tabs__nav"
-            :class="[
-                `fanc-tabs__nav--${type}`,
-                {
-                    'fanc-tabs__nav--scrollable': scrollable,
-                    'fanc-tabs__nav--fixed': sticky,
-                },
-            ]"
-            scroll-x
-            :scroll-with-animation="true"
-            :scroll-left="scrollLeft"
+        <view
+            class="fanc-tabs__nav-container"
+            :class="{ 'fanc-tabs__nav-container--sticky': sticky && isFixed }"
         >
-            <view class="fanc-tabs__nav-wrap">
-                <view
-                    class="fanc-tabs__tab"
-                    v-for="(item, index) in tabs"
-                    :key="index"
-                    :class="[
-                        {
-                            'fanc-tabs__tab--active': currentIndex === index,
-                            'fanc-tabs__tab--disabled': item.disabled,
-                        },
-                    ]"
-                    :style="tabStyle(index)"
-                    @click="onTabClick(index, item)"
-                >
-                    <view class="fanc-tabs__tab-text">{{ item.title }}</view>
-                    <view v-if="item.badge" class="fanc-tabs__tab-badge">{{ item.badge }}</view>
-                    <view v-if="item.dot" class="fanc-tabs__tab-dot"></view>
+            <scroll-view
+                class="fanc-tabs__nav"
+                :class="[
+                    `fanc-tabs__nav--${type}`,
+                    {
+                        'fanc-tabs__nav--scrollable': scrollable,
+                    },
+                ]"
+                scroll-x
+                :scroll-with-animation="true"
+                :scroll-left="scrollLeft"
+            >
+                <view class="fanc-tabs__nav-wrap">
+                    <view
+                        class="fanc-tabs__tab"
+                        v-for="(item, index) in tabs"
+                        :key="index"
+                        :class="[
+                            {
+                                'fanc-tabs__tab--active': currentIndex === index,
+                                'fanc-tabs__tab--disabled': item.disabled,
+                            },
+                        ]"
+                        :style="tabStyle(index)"
+                        @click="onTabClick(index, item)"
+                    >
+                        <view class="fanc-tabs__tab-text">
+                            {{ item.title }}
+                            <view v-if="item.badge" class="fanc-tabs__tab-badge">{{
+                                item.badge
+                            }}</view>
+                            <view v-if="item.dot" class="fanc-tabs__tab-dot"></view>
+                        </view>
+                    </view>
+                    <!-- 标签底部条 -->
+                    <view v-if="type === 'line'" class="fanc-tabs__line" :style="lineStyle"></view>
                 </view>
-                <!-- 标签底部条 -->
-                <view v-if="type === 'line'" class="fanc-tabs__line" :style="lineStyle"></view>
-            </view>
-        </scroll-view>
+            </scroll-view>
+        </view>
 
         <!-- 内容区域 -->
-        <view class="fanc-tabs__content" :style="contentStyle">
-            <view
-                class="fanc-tabs__pane"
-                :style="{ transform: `translateX(${-100 * currentIndex}%)` }"
-            >
-                <slot></slot>
-            </view>
-        </view>
+        <swiper
+            class="fanc-tabs__content"
+            :current="currentIndex"
+            :duration="animated ? duration * 1000 : 0"
+            @change="onSwiperChange"
+            :style="{ height: contentHeightValue }"
+            :circular="false"
+            :vertical="false"
+            :indicator-dots="false"
+            :autoplay="false"
+        >
+            <swiper-item v-for="(item, index) in tabs" :key="index" class="fanc-tabs__swiper-item">
+                <scroll-view scroll-y class="fanc-tabs__scroll-view">
+                    <view class="fanc-tabs__pane">
+                        <slot :name="item.title || index" :index="index"></slot>
+                        <slot v-if="!$scopedSlots[item.title || index]"></slot>
+                    </view>
+                </scroll-view>
+            </swiper-item>
+        </swiper>
     </view>
 </template>
 
@@ -57,7 +84,6 @@
  * @property {Array} tabs - 选项卡标题数组，格式为 [{title: '标签1', disabled: false}]
  * @property {Number} active - 当前激活的标签索引
  * @property {Boolean} animated - 是否启用切换动画
- * @property {Boolean} swipeable - 是否可滑动切换
  * @property {Boolean} scrollable - 是否可滚动
  * @property {Boolean} sticky - 是否使用粘性布局
  * @property {Number} duration - 动画时长，单位秒
@@ -66,6 +92,7 @@
  * @property {String} activeColor - 激活状态颜色
  * @property {String} inactiveColor - 未激活状态颜色
  * @property {String} bgColor - 背景颜色
+ * @property {String|Number} contentHeight - 内容区域高度，支持像素值或百分比，默认300px
  * @event {Function} change - 切换标签时触发
  * @event {Function} click - 点击标签时触发
  * @event {Function} disabled - 点击禁用标签时触发
@@ -93,11 +120,6 @@ export default {
         animated: {
             type: Boolean,
             default: true,
-        },
-        // 是否可滑动切换
-        swipeable: {
-            type: Boolean,
-            default: false,
         },
         // 是否可滚动
         scrollable: {
@@ -139,14 +161,22 @@ export default {
             type: String,
             default: "",
         },
+        // 内容区域高度
+        contentHeight: {
+            type: [String, Number],
+            default: "300px",
+        },
     },
     data() {
         return {
             currentIndex: this.active,
             tabRects: [],
             scrollLeft: 0,
-            touchStartX: 0,
-            touchDeltaX: 0,
+            containerLeft: 0,
+            isFixed: false,
+            navHeight: 0,
+            scrollTop: 0,
+            navOffsetTop: 0,
         };
     },
     computed: {
@@ -162,16 +192,20 @@ export default {
             return {
                 width: width,
                 height: this.lineHeight,
-                transform: `translateX(${rect.left + (rect.width - parseFloat(width)) / 2}px)`,
+                transform: `translateX(${
+                    rect.left - this.containerLeft + (rect.width - parseFloat(width)) / 2
+                }px)`,
                 backgroundColor: this.activeColor || "var(--tabs-active-color)",
-                transition: `transform ${this.duration}s`,
-            };
-        },
-        // 内容区域样式
-        contentStyle() {
-            return {
                 transition: this.animated ? `transform ${this.duration}s` : "none",
             };
+        },
+
+        // 内容高度值
+        contentHeightValue() {
+            if (typeof this.contentHeight === "number") {
+                return this.contentHeight + "px";
+            }
+            return this.contentHeight;
         },
     },
     watch: {
@@ -194,6 +228,10 @@ export default {
     mounted() {
         this.$nextTick(() => {
             this.updateTabRects();
+            this.getContainerLeft();
+            if (this.sticky) {
+                this.initStickyLayout();
+            }
         });
     },
     methods: {
@@ -242,49 +280,89 @@ export default {
         },
         // 更新标签滚动位置
         updateTabPosition() {
-            if (!this.scrollable || !this.tabRects[this.currentIndex]) {
+            if (!this.scrollable || !this.tabRects[this.currentIndex]) return;
+
+            const rect = this.tabRects[this.currentIndex];
+            const screenWidth = uni.upx2px(750);
+
+            this.$nextTick(() => {
+                this.scrollLeft = Math.max(0, rect.left - (screenWidth - rect.width) / 2);
+            });
+        },
+        // 处理轮播图切换事件
+        onSwiperChange(e) {
+            const current = e.detail.current;
+            if (current !== this.currentIndex) {
+                this.currentIndex = current;
+                this.$emit("change", {
+                    index: current,
+                    title: this.tabs[current].title,
+                });
+            }
+        },
+        // 获取tabs容器左侧的位置偏移
+        getContainerLeft() {
+            const query = uni.createSelectorQuery().in(this);
+            query
+                .select(".fanc-tabs")
+                .boundingClientRect((data) => {
+                    if (data && typeof data.left === "number") {
+                        this.containerLeft = data.left;
+                        this.updateTabRects();
+                    }
+                })
+                .exec();
+        },
+        // 初始化粘性布局
+        initStickyLayout() {
+            const query = uni.createSelectorQuery().in(this);
+            query
+                .select(".fanc-tabs__nav-container")
+                .boundingClientRect((rect) => {
+                    if (rect) {
+                        this.navHeight = rect.height;
+                        this.navOffsetTop = rect.top;
+
+                        // 设置初始状态
+                        this.checkStickyPosition();
+
+                        // 添加页面滚动监听
+                        uni.$on("page-scroll", this.checkStickyPosition);
+                    }
+                })
+                .exec();
+
+            // 创建页面滚动监听（在页面中使用）
+            this.$emit("init-sticky", {
+                componentId: this._uid,
+            });
+        },
+
+        // 检查是否需要固定
+        checkStickyPosition(scrollTop) {
+            // 如果没有传入scrollTop，尝试获取当前页面滚动位置
+            if (scrollTop === undefined) {
+                // 使用setTimeout避免在某些平台上的警告
+                setTimeout(() => {
+                    uni.pageScrollTo({
+                        scrollTop: 0,
+                        duration: 0,
+                    });
+
+                    // 此时页面会滚动到顶部，我们可以检测初始位置
+                    this.isFixed = false;
+                }, 0);
                 return;
             }
 
-            const rect = this.tabRects[this.currentIndex];
-            const tabWidth = rect.width;
-            const offsetLeft = rect.left;
-
-            this.$nextTick(() => {
-                this.scrollLeft = offsetLeft - (uni.upx2px(750) - tabWidth) / 2;
-            });
+            this.scrollTop = scrollTop;
+            this.isFixed = scrollTop >= this.navOffsetTop;
         },
-        // 处理触摸开始事件
-        onTouchStart(event) {
-            if (!this.swipeable) return;
 
-            this.touchStartX = event.touches[0].clientX;
-            this.touchDeltaX = 0;
-        },
-        // 处理触摸移动事件
-        onTouchMove(event) {
-            if (!this.swipeable) return;
-
-            this.touchDeltaX = event.touches[0].clientX - this.touchStartX;
-        },
-        // 处理触摸结束事件
-        onTouchEnd() {
-            if (!this.swipeable || Math.abs(this.touchDeltaX) < 50) return;
-
-            if (this.touchDeltaX > 0 && this.currentIndex > 0) {
-                // 右滑，切换到前一个标签
-                this.currentIndex--;
-                this.$emit("change", {
-                    index: this.currentIndex,
-                    title: this.tabs[this.currentIndex].title,
-                });
-            } else if (this.touchDeltaX < 0 && this.currentIndex < this.tabs.length - 1) {
-                // 左滑，切换到后一个标签
-                this.currentIndex++;
-                this.$emit("change", {
-                    index: this.currentIndex,
-                    title: this.tabs[this.currentIndex].title,
-                });
+        // 组件销毁时移除监听
+        beforeDestroy() {
+            if (this.sticky) {
+                uni.$off("page-scroll", this.checkStickyPosition);
             }
         },
     },
@@ -295,6 +373,23 @@ export default {
 .fanc-tabs {
     width: 100%;
     position: relative;
+
+    &__sticky-placeholder {
+        width: 100%;
+    }
+
+    &__nav-container {
+        width: 100%;
+        background-color: var(--tabs-nav-bg-color, #fff);
+
+        &--sticky {
+            position: fixed;
+            top: var(--window-top, 0);
+            left: 0;
+            right: 0;
+            z-index: 99;
+        }
+    }
 
     &__nav {
         position: relative;
@@ -308,11 +403,13 @@ export default {
         }
 
         &--card {
-            height: 36px;
-            margin: 0 16px;
-            border-radius: 4px;
+            height: 40px;
+            border-radius: 8px;
             border: 1px solid var(--tabs-card-border-color, #e9ecef);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
             box-sizing: border-box;
+            background-color: var(--tabs-card-bg-color, #f8f9fa);
+            padding: 2px;
         }
 
         &--scrollable {
@@ -323,12 +420,6 @@ export default {
                 display: none;
             }
         }
-
-        &--fixed {
-            position: sticky;
-            top: 0;
-            z-index: 99;
-        }
     }
 
     &__nav-wrap {
@@ -337,6 +428,7 @@ export default {
         flex: 1;
         align-items: center;
         height: 100%;
+        box-sizing: border-box;
     }
 
     &__tab {
@@ -351,6 +443,7 @@ export default {
         line-height: 20px;
         color: var(--tabs-inactive-color, #646566);
         cursor: pointer;
+        height: 100%;
 
         &--active {
             font-weight: 500;
@@ -364,27 +457,35 @@ export default {
     }
 
     &--card &__tab {
-        border-right: 1px solid var(--tabs-card-border-color, #e9ecef);
+        position: relative;
+        margin: 0 2px;
+        border-radius: 6px;
+        border: none;
+        transition: all 0.3s ease;
+        height: calc(100% - 4px);
 
-        &:last-child {
-            border-right: none;
+        &:hover {
+            background-color: var(--tabs-card-hover-bg-color, rgba(0, 0, 0, 0.05));
         }
 
         &--active {
             background-color: var(--tabs-card-active-bg-color, #007bff);
             color: var(--tabs-card-active-text-color, #fff) !important;
+            box-shadow: 0 2px 6px rgba(0, 123, 255, 0.2);
+            transform: translateY(-1px);
         }
     }
 
     &__tab-text {
         display: inline-block;
         text-align: center;
+        position: relative;
     }
 
     &__tab-badge {
         position: absolute;
-        top: -2px;
-        right: -4px;
+        top: -4px;
+        right: -8px;
         min-width: 16px;
         height: 16px;
         line-height: 16px;
@@ -421,14 +522,23 @@ export default {
     }
 
     &__content {
-        position: relative;
+        width: 100%;
+    }
+
+    &__swiper-item {
+        height: 100%;
+        width: 100%;
         overflow: hidden;
+    }
+
+    &__scroll-view {
+        height: 100%;
+        width: 100%;
     }
 
     &__pane {
         width: 100%;
-        transition: transform 0.3s;
-        will-change: transform;
+        box-sizing: border-box;
     }
 }
 </style>

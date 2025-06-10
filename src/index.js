@@ -37,7 +37,6 @@ import FancSidebarItem from "@/components/fanc-sidebar-item/index.vue";
 import FancNavbar from "@/components/fanc-navbar/index.vue";
 import FancIndexes from "@/components/fanc-indexes/index.vue";
 import FancTabs from "@/components/fanc-tabs/index.vue";
-import FancTabPane from "@/components/fanc-tab-pane/index.vue";
 import FancSteps from "@/components/fanc-steps/index.vue";
 import FancSlider from "@/components/fanc-slider/index.vue";
 import FancCollapse from "@/components/fanc-collapse/index.vue";
@@ -119,7 +118,6 @@ const components = [
     FancNavbar,
     FancIndexes,
     FancTabs,
-    FancTabPane,
     FancSteps,
     FancSlider,
     FancCollapse,
@@ -196,7 +194,6 @@ export {
     FancNavbar,
     FancIndexes,
     FancTabs,
-    FancTabPane,
     FancSteps,
     FancSlider,
     FancCollapse,
