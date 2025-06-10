@@ -349,19 +349,14 @@ export default {
     },
     methods: {
         // 标签切换事件
-        onChangeTab(index, item) {
-            this.$toast.text(`点击了: ${item.text}, 索引: ${index}`);
-        },
+        onChangeTab(index, item) {},
 
         // 标签切换事件（带name）
-        onChangeNameTab(index, item) {
-            this.$toast.text(`点击了: ${item.text}, name: ${item.name}`);
-        },
+        onChangeNameTab(index, item) {},
 
         // 自定义标签点击事件
         onCustomTabClick(index) {
             this.activeCustom = index;
-            this.$toast.text(`点击了自定义标签: ${this.customItems[index].text}`);
         },
 
         // 手动切换标签
