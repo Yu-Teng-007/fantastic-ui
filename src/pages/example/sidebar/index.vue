@@ -10,19 +10,11 @@
             <view class="section__content sidebar-demo">
                 <fanc-sidebar
                     :active-index="stickActiveIndex"
+                    :items="menuItems"
                     @change="onChangeStickTab"
+                    @click="onStickItemClick"
                     class="sidebar-demo__nav"
-                >
-                    <fanc-sidebar-item
-                        v-for="(item, index) in menuItems"
-                        :key="index"
-                        :title="item.title"
-                        :icon="item.icon"
-                        :active="stickActiveIndex === index"
-                        :index="index"
-                        @click="onStickItemClick(index)"
-                    />
-                </fanc-sidebar>
+                />
                 <view class="sidebar-demo__content">
                     <view class="content-panel">
                         <text class="content-panel__title">{{
@@ -42,19 +34,11 @@
             <view class="section__content sidebar-demo">
                 <fanc-sidebar
                     :active-index="activeIndex"
+                    :items="menuItems"
                     @change="onChangeTab"
+                    @click="onItemClick"
                     class="sidebar-demo__nav"
-                >
-                    <fanc-sidebar-item
-                        v-for="(item, index) in menuItems"
-                        :key="index"
-                        :title="item.title"
-                        :icon="item.icon"
-                        :active="activeIndex === index"
-                        :index="index"
-                        @click="onItemClick(index)"
-                    />
-                </fanc-sidebar>
+                />
                 <view class="sidebar-demo__content">
                     <view class="content-panel">
                         <text class="content-panel__title">{{ menuItems[activeIndex].title }}</text>
@@ -71,20 +55,11 @@
             <view class="section__content sidebar-demo">
                 <fanc-sidebar
                     :active-index="badgeActiveIndex"
+                    :items="badgeMenuItems"
                     @change="onChangeBadgeTab"
+                    @click="onBadgeItemClick"
                     class="sidebar-demo__nav"
-                >
-                    <fanc-sidebar-item
-                        v-for="(item, index) in badgeMenuItems"
-                        :key="index"
-                        :title="item.title"
-                        :icon="item.icon"
-                        :badge="item.badge"
-                        :active="badgeActiveIndex === index"
-                        :index="index"
-                        @click="onBadgeItemClick(index)"
-                    />
-                </fanc-sidebar>
+                />
                 <view class="sidebar-demo__content">
                     <view class="content-panel">
                         <text class="content-panel__title">{{
@@ -103,19 +78,12 @@
             <view class="section__content sidebar-demo">
                 <fanc-sidebar
                     :active-index="customWidthActiveIndex"
+                    :items="menuItems"
                     :width="100"
                     @change="onChangeCustomWidthTab"
+                    @click="onCustomWidthItemClick"
                     class="sidebar-demo__nav"
-                >
-                    <fanc-sidebar-item
-                        v-for="(item, index) in menuItems"
-                        :key="index"
-                        :icon="item.icon"
-                        :active="customWidthActiveIndex === index"
-                        :index="index"
-                        @click="onCustomWidthItemClick(index)"
-                    />
-                </fanc-sidebar>
+                />
                 <view class="sidebar-demo__content">
                     <view class="content-panel">
                         <text class="content-panel__title">{{
@@ -144,20 +112,12 @@
                 </view>
                 <fanc-sidebar
                     :active-index="rightActiveIndex"
+                    :items="menuItems"
                     position="right"
                     @change="onChangeRightTab"
+                    @click="onRightItemClick"
                     class="sidebar-demo__nav"
-                >
-                    <fanc-sidebar-item
-                        v-for="(item, index) in menuItems"
-                        :key="index"
-                        :title="item.title"
-                        :icon="item.icon"
-                        :active="rightActiveIndex === index"
-                        :index="index"
-                        @click="onRightItemClick(index)"
-                    />
-                </fanc-sidebar>
+                />
             </view>
         </view>
 
@@ -166,20 +126,12 @@
             <view class="section__content sidebar-demo">
                 <fanc-sidebar
                     :active-index="disabledActiveIndex"
+                    :items="disabledMenuItems"
                     @change="onChangeDisabledTab"
+                    @click="onDisabledItemClick"
+                    @disabled-click="onDisabledItemClick"
                     class="sidebar-demo__nav"
-                >
-                    <fanc-sidebar-item
-                        v-for="(item, index) in disabledMenuItems"
-                        :key="index"
-                        :title="item.title"
-                        :icon="item.icon"
-                        :disabled="item.disabled"
-                        :active="disabledActiveIndex === index"
-                        :index="index"
-                        @click="onDisabledItemClick(index)"
-                    />
-                </fanc-sidebar>
+                />
                 <view class="sidebar-demo__content">
                     <view class="content-panel">
                         <text class="content-panel__title">{{
@@ -188,6 +140,30 @@
                         <text class="content-panel__desc"
                             >当前选中的是第{{ disabledActiveIndex + 1 }}项</text
                         >
+                    </view>
+                </view>
+            </view>
+        </view>
+
+        <view class="section">
+            <view class="section__title">纯文本侧边栏</view>
+            <view class="section__content sidebar-demo">
+                <fanc-sidebar
+                    :active-index="textOnlyActiveIndex"
+                    :items="textOnlyMenuItems"
+                    @change="onChangeTextOnlyTab"
+                    @click="onTextOnlyItemClick"
+                    class="sidebar-demo__nav"
+                />
+                <view class="sidebar-demo__content">
+                    <view class="content-panel">
+                        <text class="content-panel__title">{{
+                            textOnlyMenuItems[textOnlyActiveIndex].title
+                        }}</text>
+                        <text class="content-panel__desc"
+                            >当前选中的是第{{ textOnlyActiveIndex + 1 }}项</text
+                        >
+                        <text class="content-panel__note">纯文本侧边栏，无图标</text>
                     </view>
                 </view>
             </view>
@@ -205,6 +181,7 @@ export default {
             customWidthActiveIndex: 0,
             rightActiveIndex: 0,
             disabledActiveIndex: 0,
+            textOnlyActiveIndex: 0,
             menuItems: [
                 { title: "选项一", icon: "home" },
                 { title: "选项二", icon: "user" },
@@ -225,6 +202,13 @@ export default {
                 { title: "选项三", icon: "bell", disabled: true },
                 { title: "选项四", icon: "cog" },
                 { title: "选项五", icon: "question-circle", disabled: true },
+            ],
+            textOnlyMenuItems: [
+                { title: "菜单一" },
+                { title: "菜单二" },
+                { title: "菜单三" },
+                { title: "菜单四" },
+                { title: "菜单五" },
             ],
         };
     },
@@ -249,8 +233,8 @@ export default {
             this.rightActiveIndex = index;
             this.$toast.text(`点击了第${index + 1}项: ${this.menuItems[index].title}`);
         },
-        onDisabledItemClick(index) {
-            if (this.disabledMenuItems[index].disabled) {
+        onDisabledItemClick(index, item) {
+            if (item && item.disabled) {
                 this.$toast.text(`第${index + 1}项已禁用`);
                 return;
             }
@@ -274,6 +258,13 @@ export default {
         },
         onChangeDisabledTab(index) {
             console.log("Disabled tab changed:", index);
+        },
+        onTextOnlyItemClick(index) {
+            this.textOnlyActiveIndex = index;
+            this.$toast.text(`点击了第${index + 1}项: ${this.textOnlyMenuItems[index].title}`);
+        },
+        onChangeTextOnlyTab(index) {
+            console.log("Text only tab changed:", index);
         },
     },
 };
@@ -329,31 +320,35 @@ export default {
 }
 
 .sidebar-demo__nav {
-    width: 200px;
+    width: 90px;
     height: 100%;
     border-right: none;
-    padding: 8px 0;
+    background-color: #f7f7f7;
 }
 
 .sidebar-demo__content {
     flex: 1;
     padding: 20px;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: flex-start;
     background-color: #fff;
     position: relative;
+    padding-left: 30px;
 }
 
 .content-panel {
-    text-align: center;
+    text-align: left;
+    width: 100%;
 }
 
 .content-panel__title {
-    font-size: 20px;
+    font-size: 16px;
     font-weight: bold;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     display: block;
+    color: #333;
 }
 
 .content-panel__desc {

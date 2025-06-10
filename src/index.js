@@ -33,7 +33,6 @@ import FancUploader from "@/components/fanc-uploader/index.vue";
 import FancRate from "@/components/fanc-rate/index.vue";
 import FancTabbar from "@/components/fanc-tabbar/index.vue";
 import FancSidebar from "@/components/fanc-sidebar/index.vue";
-import FancSidebarItem from "@/components/fanc-sidebar-item/index.vue";
 import FancNavbar from "@/components/fanc-navbar/index.vue";
 import FancIndexes from "@/components/fanc-indexes/index.vue";
 import FancTabs from "@/components/fanc-tabs/index.vue";
@@ -114,7 +113,6 @@ const components = [
     FancRate,
     FancTabbar,
     FancSidebar,
-    FancSidebarItem,
     FancNavbar,
     FancIndexes,
     FancTabs,
@@ -190,7 +188,6 @@ export {
     FancRate,
     FancTabbar,
     FancSidebar,
-    FancSidebarItem,
     FancNavbar,
     FancIndexes,
     FancTabs,

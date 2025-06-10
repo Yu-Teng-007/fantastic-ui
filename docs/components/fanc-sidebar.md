@@ -14,6 +14,8 @@
 - 支持v-model双向绑定
 - 支持选中项与内容区域的视觉黏连效果
 - 支持圆角过渡，使界面更加自然美观
+- 支持纯文本侧边栏，无需图标
+- 支持右侧侧边栏中活动指示器位于右侧
 
 ## 组件用法
 
@@ -22,17 +24,13 @@
 ```vue
 <template>
   <view class="container">
-    <fanc-sidebar :active-index="activeIndex" @change="onChange" class="sidebar">
-      <fanc-sidebar-item 
-        v-for="(item, index) in menuItems" 
-        :key="index"
-        :title="item.title"
-        :icon="item.icon"
-        :active="activeIndex === index"
-        :index="index"
-        @click="onItemClick(index)"
-      />
-    </fanc-sidebar>
+    <fanc-sidebar 
+      :active-index="activeIndex" 
+      :items="menuItems"
+      @change="onChange" 
+      @click="onItemClick"
+      class="sidebar"
+    />
     
     <view class="content">
       <!-- 内容区域 -->
@@ -55,7 +53,7 @@ export default {
     };
   },
   methods: {
-    onItemClick(index) {
+    onItemClick(index, item) {
       this.activeIndex = index;
       // 处理菜单项点击事件
     },
@@ -72,7 +70,7 @@ export default {
   height: 100vh;
 }
 .sidebar {
-  width: 200px;
+  width: 90px;
   height: 100%;
 }
 .content {
@@ -86,84 +84,128 @@ export default {
 
 ```vue
 <!-- 侧边栏组件支持v-model:activeIndex双向绑定 -->
-<fanc-sidebar v-model:active-index="activeIndex" class="sidebar">
-  <!-- 侧边栏内容 -->
-</fanc-sidebar>
-
-<!-- 侧边栏项组件支持v-model:active双向绑定 -->
-<fanc-sidebar-item 
-  v-for="(item, index) in menuItems"
-  :key="index"
-  :title="item.title"
-  :icon="item.icon"
-  v-model:active="activeItems[index]"
-  :index="index"
-  @click="onItemClick(index)"
+<fanc-sidebar 
+  v-model:active-index="activeIndex" 
+  :items="menuItems"
+  class="sidebar"
 />
 ```
 
 ### 右侧侧边栏
 
 ```vue
-<fanc-sidebar :active-index="activeIndex" position="right" class="sidebar">
-  <fanc-sidebar-item 
-    v-for="(item, index) in menuItems" 
-    :key="index"
-    :title="item.title"
-    :icon="item.icon"
-    :active="activeIndex === index"
-    :index="index"
-    @click="onItemClick(index)"
-  />
-</fanc-sidebar>
+<fanc-sidebar 
+  :active-index="activeIndex" 
+  :items="menuItems"
+  position="right" 
+  class="sidebar"
+/>
 ```
 
 ### 自定义宽度
 
 ```vue
-<fanc-sidebar :active-index="activeIndex" :width="100" class="sidebar">
-  <fanc-sidebar-item 
-    v-for="(item, index) in menuItems" 
-    :key="index"
-    :icon="item.icon"
-    :active="activeIndex === index"
-    :index="index"
-    @click="onItemClick(index)"
-  />
-</fanc-sidebar>
+<fanc-sidebar 
+  :active-index="activeIndex" 
+  :items="menuItems"
+  :width="100" 
+  class="sidebar"
+/>
 ```
 
 ### 带徽标的侧边栏项
 
 ```vue
-<fanc-sidebar :active-index="activeIndex" class="sidebar">
-  <fanc-sidebar-item title="选项一" icon="home" />
-  <fanc-sidebar-item title="选项二" icon="user" />
-  <fanc-sidebar-item title="消息" icon="bell" badge="5" />
-  <fanc-sidebar-item title="选项四" icon="cog" />
-</fanc-sidebar>
+<template>
+  <fanc-sidebar 
+    :active-index="activeIndex" 
+    :items="badgeMenuItems"
+    class="sidebar"
+  />
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      activeIndex: 0,
+      badgeMenuItems: [
+        { title: '选项一', icon: 'home' },
+        { title: '选项二', icon: 'user' },
+        { title: '消息', icon: 'bell', badge: '5' },
+        { title: '选项四', icon: 'cog' }
+      ]
+    };
+  }
+};
+</script>
 ```
 
 ### 禁用状态
 
 ```vue
-<fanc-sidebar :active-index="activeIndex" class="sidebar">
-  <fanc-sidebar-item title="选项一" icon="home" />
-  <fanc-sidebar-item title="选项二" icon="user" />
-  <fanc-sidebar-item title="选项三" icon="bell" disabled />
-  <fanc-sidebar-item title="选项四" icon="cog" />
-</fanc-sidebar>
+<template>
+  <fanc-sidebar 
+    :active-index="activeIndex" 
+    :items="disabledMenuItems"
+    class="sidebar"
+  />
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      activeIndex: 0,
+      disabledMenuItems: [
+        { title: '选项一', icon: 'home' },
+        { title: '选项二', icon: 'user' },
+        { title: '选项三', icon: 'bell', disabled: true },
+        { title: '选项四', icon: 'cog' }
+      ]
+    };
+  }
+};
+</script>
+```
+
+### 纯文本侧边栏
+
+```vue
+<template>
+  <fanc-sidebar 
+    :active-index="activeIndex" 
+    :items="textOnlyMenuItems"
+    class="sidebar"
+  />
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      activeIndex: 0,
+      textOnlyMenuItems: [
+        { title: '菜单一' },
+        { title: '菜单二' },
+        { title: '菜单三' },
+        { title: '菜单四' }
+      ]
+    };
+  }
+};
+</script>
 ```
 
 ### 自定义背景色
 
 ```vue
-<fanc-sidebar :active-index="activeIndex" background-color="#f0f0f0" class="sidebar">
-  <fanc-sidebar-item title="选项一" icon="home" />
-  <fanc-sidebar-item title="选项二" icon="user" />
-  <fanc-sidebar-item title="选项三" icon="bell" />
-  <fanc-sidebar-item title="选项四" icon="cog" />
-</fanc-sidebar>
+<fanc-sidebar 
+  :active-index="activeIndex" 
+  :items="menuItems"
+  background-color="#f0f0f0" 
+  class="sidebar"
+/>
 ```
 
 ## API
@@ -197,7 +239,7 @@ export default {
 | 参数 | 说明 | 类型 | 默认值 |
 | --- | --- | --- | --- |
 | title | 菜单项标题 | String | `''` |
-| icon | 菜单项图标名称 | String | `''` |
+| icon | 菜单项图标名称（可选） | String | `''` |
 | icon-size | 图标大小，单位为px | Number \| String | `18` |
 | active | 是否为选中状态 | Boolean | `false` |
 | disabled | 是否为禁用状态 | Boolean | `false` |
@@ -246,4 +288,6 @@ export default {
 6. 侧边栏内容可以完全自定义，不仅限于使用 `fanc-sidebar-item` 组件
 7. 默认侧边栏背景色为浅灰色，选中项背景色为白色，形成与内容区域的视觉黏连效果
 8. 可以通过设置 `--sidebar-item-active-radius` 变量来调整选中项的圆角，实现不同的视觉效果
-9. 选中项具有轻微的阴影效果和圆角，使视觉过渡更加自然 
+9. 选中项具有轻微的阴影效果和圆角，使视觉过渡更加自然
+10. 纯文本侧边栏不需要设置 `icon` 属性，组件会自动调整样式
+11. 右侧侧边栏的活动指示器会自动显示在右侧，左侧侧边栏则显示在左侧 
