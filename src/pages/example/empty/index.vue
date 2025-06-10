@@ -26,7 +26,7 @@
             <view class="section-title">自定义图片</view>
             <view class="example-block">
                 <fanc-empty 
-                    image="/static/empty-image.png" 
+                    image="/static/img/empty-image.png" 
                     description="暂无收藏内容">
                 </fanc-empty>
             </view>
@@ -52,7 +52,7 @@
             <view class="example-block" style="margin-top: 20px;">
                 <fanc-empty 
                     type="network" 
-                    icon="wifi-slash" 
+                    icon="house-signal" 
                     description="网络连接失败，请检查网络设置">
                 </fanc-empty>
             </view>
