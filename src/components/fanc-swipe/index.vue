@@ -10,7 +10,7 @@
             :next-margin="nextMargin"
             :autoplay="autoplay"
             :duration="duration"
-            :indicator-dots="showIndicator"
+            :indicator-dots="showIndicator && !customIndicator"
             :indicator-color="indicatorColor"
             :indicator-active-color="indicatorActiveColor"
             @change="onChange"
@@ -33,7 +33,10 @@
         </swiper>
 
         <!-- 自定义指示器 -->
-        <view v-if="showIndicator && customIndicator" class="fanc-swipe__indicators">
+        <view
+            v-if="showIndicator && customIndicator"
+            :class="['fanc-swipe__indicators', vertical ? 'fanc-swipe__indicators--vertical' : '']"
+        >
             <view
                 v-for="(_, index) in list"
                 :key="index"
@@ -54,6 +57,34 @@
             class="fanc-swipe__title"
         >
             {{ list[currentIndex].title }}
+        </view>
+
+        <!-- 上下页切换按钮 -->
+        <view
+            v-if="showNavButtons && list.length > 1"
+            :class="[
+                'fanc-swipe__nav-buttons',
+                vertical ? 'fanc-swipe__nav-buttons--vertical' : '',
+            ]"
+        >
+            <view
+                :class="[
+                    'fanc-swipe__nav-button',
+                    vertical ? 'fanc-swipe__nav-button--up' : 'fanc-swipe__nav-button--prev',
+                ]"
+                @click="prev"
+            >
+                <fanc-icon :name="vertical ? 'angle-up' : 'angle-left'"></fanc-icon>
+            </view>
+            <view
+                :class="[
+                    'fanc-swipe__nav-button',
+                    vertical ? 'fanc-swipe__nav-button--down' : 'fanc-swipe__nav-button--next',
+                ]"
+                @click="next"
+            >
+                <fanc-icon :name="vertical ? 'angle-down' : 'angle-right'"></fanc-icon>
+            </view>
         </view>
     </view>
 </template>
@@ -141,6 +172,11 @@ export default {
         initialIndex: {
             type: Number,
             default: 0,
+        },
+        // 是否显示上下页切换按钮
+        showNavButtons: {
+            type: Boolean,
+            default: false,
         },
     },
     data() {
@@ -246,6 +282,15 @@ export default {
     flex-direction: row;
 }
 
+.fanc-swipe__indicators--vertical {
+    bottom: auto;
+    left: auto;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    flex-direction: column;
+}
+
 .fanc-swipe__indicator {
     width: 8px;
     height: 8px;
@@ -254,8 +299,17 @@ export default {
     transition: all 0.3s ease;
 }
 
+.fanc-swipe__indicators--vertical .fanc-swipe__indicator {
+    margin: 4px 0;
+}
+
 .fanc-swipe__indicator--active {
     width: 16px;
+}
+
+.fanc-swipe__indicators--vertical .fanc-swipe__indicator--active {
+    width: 8px;
+    height: 16px;
 }
 
 .fanc-swipe__title {
@@ -270,5 +324,62 @@ export default {
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
+}
+
+.fanc-swipe__nav-buttons {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: space-between;
+    pointer-events: none;
+}
+
+.fanc-swipe__nav-buttons--vertical {
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.fanc-swipe__nav-button {
+    width: 36px;
+    height: 36px;
+    background-color: rgba(0, 0, 0, 0.3);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    cursor: pointer;
+    pointer-events: auto;
+    margin: 0 10px;
+}
+
+.fanc-swipe__nav-buttons--vertical .fanc-swipe__nav-button {
+    margin: 10px 0;
+}
+
+.fanc-swipe__nav-button--prev,
+.fanc-swipe__nav-button--up {
+    padding-right: 2px;
+}
+
+.fanc-swipe__nav-button--next,
+.fanc-swipe__nav-button--down {
+    padding-left: 2px;
+}
+
+.fanc-swipe__nav-button--up {
+    padding-bottom: 2px;
+}
+
+.fanc-swipe__nav-button--down {
+    padding-top: 2px;
 }
 </style>

@@ -22,7 +22,7 @@
 
         <view class="example-block">
             <view class="block-title">垂直方向</view>
-            <fanc-swipe :list="images" vertical :height="200"></fanc-swipe>
+            <fanc-swipe :list="images" vertical :height="200" :show-nav-buttons="true"></fanc-swipe>
         </view>
 
         <view class="example-block">
@@ -57,6 +57,11 @@
                 <fanc-button size="small" type="primary" @click="prevSlide">上一张</fanc-button>
                 <fanc-button size="small" type="primary" @click="nextSlide">下一张</fanc-button>
             </view>
+        </view>
+
+        <view class="example-block">
+            <view class="block-title">显示上下页切换按钮</view>
+            <fanc-swipe :list="images" :show-nav-buttons="true"></fanc-swipe>
         </view>
     </view>
 </template>
