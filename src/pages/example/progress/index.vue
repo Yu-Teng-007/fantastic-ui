@@ -5,130 +5,123 @@
             <view class="subtitle">用于展示当前任务的进度</view>
         </view>
 
-        <!-- 基础用法 -->
         <view class="section">
             <view class="section-title">基础用法</view>
-            <view class="progress-demo">
-                <fanc-progress :percentage="50"></fanc-progress>
+            <view class="demo-block">
+                <fanc-progress :percentage="50" />
             </view>
         </view>
 
-        <!-- 自定义颜色 -->
         <view class="section">
-            <view class="section-title">自定义颜色</view>
-            <view class="progress-demo">
-                <fanc-progress :percentage="25" color="#f60"></fanc-progress>
-                <fanc-progress :percentage="50" color="#1989fa"></fanc-progress>
-                <fanc-progress :percentage="75" color="#6c757d"></fanc-progress>
+            <view class="section-title">线条组织</view>
+            <view class="demo-block">
+                <fanc-progress :percentage="30" />
+                <fanc-progress :percentage="50" />
+                <fanc-progress :percentage="70" />
+            </view>
+        </view>
+
+        <view class="section">
+            <view class="section-title">置灰</view>
+            <view class="demo-block">
+                <fanc-progress :percentage="50" disabled />
+            </view>
+        </view>
+
+        <view class="section">
+            <view class="section-title">样式定制</view>
+            <view class="demo-block">
+                <fanc-progress :percentage="50" themeColor="pink" pivotText="粉色" />
+                <fanc-progress :percentage="50" themeColor="red" pivotText="红色" />
+                <fanc-progress :percentage="50" themeColor="purple" pivotText="紫色" />
+            </view>
+        </view>
+
+        <view class="section">
+            <view class="section-title">文本位置</view>
+            <view class="demo-block">
+                <fanc-progress :percentage="80" textPosition="outside" />
+                <view class="subsection-title">内部文本</view>
+                <fanc-progress :percentage="50" textPosition="inside" />
+                <view class="subsection-title">自定义文本</view>
+                <fanc-progress :percentage="75" pivotText="优秀" />
+                <fanc-progress :percentage="25" textPosition="outside" pivotText="待提高" />
+            </view>
+        </view>
+
+        <view class="section">
+            <view class="section-title">文本格式化</view>
+            <view class="demo-block">
+                <fanc-progress :percentage="50" :format="formatText1" />
+                <fanc-progress :percentage="50" textPosition="outside" :format="formatText2" />
+                <fanc-progress :percentage="80" :format="formatLevel" />
+            </view>
+        </view>
+
+        <view class="section">
+            <view class="section-title">条纹效果</view>
+            <view class="demo-block">
+                <fanc-progress :percentage="50" striped />
+                <view class="subsection-title">动画条纹</view>
+                <fanc-progress :percentage="50" striped stripedActive />
+            </view>
+        </view>
+
+        <view class="section">
+            <view class="section-title">圆角样式</view>
+            <view class="demo-block">
+                <fanc-progress :percentage="50" rounded />
+                <fanc-progress :percentage="50" rounded themeColor="pink" />
+            </view>
+        </view>
+
+        <view class="section">
+            <view class="section-title">不同粗细</view>
+            <view class="demo-block">
+                <view class="subsection-title">外部文本</view>
+                <fanc-progress :percentage="50" :strokeWidth="4" textPosition="outside" />
+                <fanc-progress :percentage="50" :strokeWidth="8" textPosition="outside" />
+                <fanc-progress :percentage="50" :strokeWidth="12" textPosition="outside" />
+                <fanc-progress :percentage="50" :strokeWidth="16" textPosition="outside" />
+
+                <view class="subsection-title">内部文本</view>
+                <fanc-progress :percentage="50" :strokeWidth="16" />
+                <fanc-progress :percentage="50" :strokeWidth="20" />
+                <fanc-progress :percentage="50" :strokeWidth="24" />
+                <fanc-progress :percentage="50" :strokeWidth="30" />
+            </view>
+        </view>
+
+        <view class="section">
+            <view class="section-title">状态变化</view>
+            <view class="demo-block">
+                <fanc-progress :percentage="50" status="normal" />
+                <fanc-progress :percentage="50" status="success" />
+                <fanc-progress :percentage="50" status="warning" />
+                <fanc-progress :percentage="50" status="error" />
+            </view>
+        </view>
+
+        <view class="section">
+            <view class="section-title">组合用法</view>
+            <view class="demo-block">
                 <fanc-progress
-                    :percentage="100"
-                    color="linear-gradient(to right, #be99ff, #7232dd)"
-                ></fanc-progress>
+                    :percentage="80"
+                    rounded
+                    themeColor="purple"
+                    textPosition="outside"
+                />
+                <fanc-progress :percentage="60" striped stripedActive rounded themeColor="pink" />
             </view>
         </view>
 
-        <!-- 轨道颜色 -->
         <view class="section">
-            <view class="section-title">轨道颜色</view>
-            <view class="progress-demo">
-                <fanc-progress :percentage="50" track-color="#e1f5fe"></fanc-progress>
-            </view>
-        </view>
-
-        <!-- 进度条粗细 -->
-        <view class="section">
-            <view class="section-title">进度条粗细</view>
-            <view class="progress-demo">
-                <fanc-progress :percentage="50" :stroke-width="4"></fanc-progress>
-                <fanc-progress :percentage="50" :stroke-width="8"></fanc-progress>
-                <fanc-progress :percentage="50" :stroke-width="12"></fanc-progress>
-                <fanc-progress :percentage="50" :stroke-width="16"></fanc-progress>
-            </view>
-        </view>
-
-        <!-- 不显示进度文字 -->
-        <view class="section">
-            <view class="section-title">不显示进度文字</view>
-            <view class="progress-demo">
-                <fanc-progress :percentage="50" :show-pivot="false"></fanc-progress>
-            </view>
-        </view>
-
-        <!-- 文字内显 -->
-        <view class="section">
-            <view class="section-title">文字内显</view>
-            <view class="progress-demo">
-                <fanc-progress :percentage="50" text-inside></fanc-progress>
-            </view>
-        </view>
-
-        <!-- 自定义文字内容 -->
-        <view class="section">
-            <view class="section-title">自定义文字内容</view>
-            <view class="progress-demo">
-                <fanc-progress
-                    :percentage="status.percentage"
-                    :pivot-text="status.text"
-                ></fanc-progress>
-            </view>
-        </view>
-
-        <!-- 状态进度条 -->
-        <view class="section">
-            <view class="section-title">状态进度条</view>
-            <view class="progress-demo">
-                <fanc-progress :percentage="20" status="normal"></fanc-progress>
-                <fanc-progress :percentage="50" status="success"></fanc-progress>
-                <fanc-progress :percentage="80" status="warning"></fanc-progress>
-                <fanc-progress :percentage="100" status="error"></fanc-progress>
-            </view>
-        </view>
-
-        <!-- 自定义进度文字背景 -->
-        <view class="section">
-            <view class="section-title">自定义进度文字背景</view>
-            <view class="progress-demo">
-                <fanc-progress
-                    :percentage="50"
-                    pivot-color="#7232dd"
-                    pivot-text-color="#fff"
-                ></fanc-progress>
-            </view>
-        </view>
-
-        <!-- 圆角进度条 -->
-        <view class="section">
-            <view class="section-title">圆角进度条</view>
-            <view class="progress-demo">
-                <fanc-progress :percentage="50" rounded></fanc-progress>
-            </view>
-        </view>
-
-        <!-- 条纹进度条 -->
-        <view class="section">
-            <view class="section-title">条纹进度条</view>
-            <view class="progress-demo">
-                <fanc-progress :percentage="50" striped></fanc-progress>
-                <fanc-progress :percentage="50" striped striped-active></fanc-progress>
-            </view>
-        </view>
-
-        <!-- 动态进度条 -->
-        <view class="section">
-            <view class="section-title">动态进度条</view>
-            <view class="progress-demo">
-                <fanc-progress :percentage="dynamicPercentage"></fanc-progress>
+            <view class="section-title">过渡效果</view>
+            <view class="demo-block">
+                <fanc-progress :percentage="percentage" />
                 <view class="button-group">
-                    <fanc-button size="small" @click="decreasePercentage">减少</fanc-button>
-                    <fanc-button size="small" type="primary" @click="increasePercentage"
-                        >增加</fanc-button
-                    >
-                    <fanc-button size="small" type="success" @click="startProgress"
-                        >开始</fanc-button
-                    >
-                    <fanc-button size="small" type="warning" @click="resetProgress"
-                        >重置</fanc-button
-                    >
+                    <button class="button button-add" @click="addPercentage">增加</button>
+                    <button class="button button-reduce" @click="reducePercentage">减少</button>
                 </view>
             </view>
         </view>
@@ -139,63 +132,32 @@
 export default {
     data() {
         return {
-            status: {
-                percentage: 75,
-                text: "加载中...",
-            },
-            dynamicPercentage: 30,
-            progressTimer: null,
+            percentage: 50,
         };
     },
-    beforeDestroy() {
-        if (this.progressTimer) {
-            clearInterval(this.progressTimer);
-        }
-    },
     methods: {
-        increasePercentage() {
-            if (this.dynamicPercentage < 100) {
-                this.dynamicPercentage += 10;
-                if (this.dynamicPercentage > 100) {
-                    this.dynamicPercentage = 100;
-                }
-            } else {
-                this.$toast.warning("已达到最大值");
+        addPercentage() {
+            if (this.percentage < 100) {
+                this.percentage += 10;
             }
         },
-        decreasePercentage() {
-            if (this.dynamicPercentage > 0) {
-                this.dynamicPercentage -= 10;
-                if (this.dynamicPercentage < 0) {
-                    this.dynamicPercentage = 0;
-                }
-            } else {
-                this.$toast.warning("已达到最小值");
+        reducePercentage() {
+            if (this.percentage > 0) {
+                this.percentage -= 10;
             }
         },
-        startProgress() {
-            if (this.progressTimer) {
-                this.$toast.text("进度条已在运行中");
-                return;
-            }
-
-            this.resetProgress();
-            this.progressTimer = setInterval(() => {
-                if (this.dynamicPercentage < 100) {
-                    this.dynamicPercentage += 5;
-                } else {
-                    clearInterval(this.progressTimer);
-                    this.progressTimer = null;
-                    this.$toast.success("进度已完成");
-                }
-            }, 500);
+        // 文本格式化函数示例
+        formatText1(percentage) {
+            return `进度：${percentage}/100`;
         },
-        resetProgress() {
-            if (this.progressTimer) {
-                clearInterval(this.progressTimer);
-                this.progressTimer = null;
-            }
-            this.dynamicPercentage = 0;
+        formatText2(percentage) {
+            return `完成度 ${percentage}%`;
+        },
+        formatLevel(percentage) {
+            if (percentage < 30) return "初级";
+            if (percentage < 60) return "中级";
+            if (percentage < 80) return "高级";
+            return "专家";
         },
     },
 };
@@ -240,16 +202,36 @@ export default {
     border-bottom: 1px solid #f2f2f2;
 }
 
-.progress-demo {
+.demo-block {
     padding: 16px;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
+}
+
+.subsection-title {
+    font-size: 14px;
+    color: #969799;
+    margin: 16px 0 8px;
 }
 
 .button-group {
     display: flex;
-    gap: 8px;
-    margin-top: 8px;
+    margin-top: 16px;
+    gap: 12px;
+}
+
+.button {
+    flex: 1;
+    height: 36px;
+    font-size: 14px;
+    border: none;
+    border-radius: 4px;
+    color: #fff;
+}
+
+.button-add {
+    background-color: #1989fa;
+}
+
+.button-reduce {
+    background-color: #ee0a24;
 }
 </style>
