@@ -39,7 +39,6 @@ import FancIndexes from "@/components/fanc-indexes/index.vue";
 import FancTabs from "@/components/fanc-tabs/index.vue";
 import FancTabPane from "@/components/fanc-tab-pane/index.vue";
 import FancSteps from "@/components/fanc-steps/index.vue";
-import FancStep from "@/components/fanc-step/index.vue";
 import FancSlider from "@/components/fanc-slider/index.vue";
 import FancCollapse from "@/components/fanc-collapse/index.vue";
 import FancCollapseItem from "@/components/fanc-collapse-item/index.vue";
@@ -122,7 +121,6 @@ const components = [
     FancTabs,
     FancTabPane,
     FancSteps,
-    FancStep,
     FancSlider,
     FancCollapse,
     FancCollapseItem,
@@ -200,7 +198,6 @@ export {
     FancTabs,
     FancTabPane,
     FancSteps,
-    FancStep,
     FancSlider,
     FancCollapse,
     FancCollapseItem,
