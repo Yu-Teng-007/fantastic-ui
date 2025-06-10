@@ -27,7 +27,7 @@
         </svg>
         <view class="fanc-circle__text" :style="textStyle">
             <slot>
-                <text>{{ text || `${currentRate}%` }}</text>
+                <text>{{ text || `${Math.round(rate)}%` }}</text>
             </slot>
         </view>
     </view>
@@ -107,11 +107,7 @@ export default {
             default: "normal",
             validator: (value) => ["normal", "success", "warning", "error"].includes(value),
         },
-        // 动画速度
-        speed: {
-            type: Number,
-            default: 500,
-        },
+
         // 是否显示填充色
         fill: {
             type: Boolean,
@@ -188,19 +184,14 @@ export default {
     watch: {
         rate: {
             handler(newVal) {
-                this.animateRate(newVal);
+                this.animateCircle(newVal);
             },
             immediate: true,
         },
     },
-    beforeDestroy() {
-        if (this.animationTimer) {
-            clearTimeout(this.animationTimer);
-        }
-    },
     methods: {
-        // 进度动画
-        animateRate(targetRate) {
+        // 只为环形条添加动画
+        animateCircle(targetRate) {
             if (this.animationTimer) {
                 clearTimeout(this.animationTimer);
             }
@@ -208,7 +199,7 @@ export default {
             const startRate = this.currentRate;
             const endRate = targetRate;
             const diff = endRate - startRate;
-            const duration = this.speed;
+            const duration = 500; // 固定动画时间为500ms
             const startTime = Date.now();
 
             const animate = () => {
@@ -235,6 +226,11 @@ export default {
 
             animate();
         },
+    },
+    beforeDestroy() {
+        if (this.animationTimer) {
+            clearTimeout(this.animationTimer);
+        }
     },
 };
 </script>

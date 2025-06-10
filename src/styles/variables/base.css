@@ -18,6 +18,7 @@
     --fanc-success-color: var(--success-color);
     --fanc-warning-color: var(--warning-color);
     --fanc-danger-color: var(--danger-color);
+    --fanc-error-color: var(--danger-color);
     --fanc-info-color: var(--info-color);
 
     /* 中性色阶 */

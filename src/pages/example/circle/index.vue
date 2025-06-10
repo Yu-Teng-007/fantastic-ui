@@ -34,23 +34,13 @@
             </view>
         </view>
 
-        <!-- 环形宽度 -->
+        <!-- 环形宽度和尺寸 -->
         <view class="section">
-            <view class="section-title">环形宽度</view>
+            <view class="section-title">环形宽度和尺寸</view>
             <view class="circle-demo">
-                <fanc-circle :rate="50" :stroke-width="60"></fanc-circle>
-                <fanc-circle :rate="50" :stroke-width="40"></fanc-circle>
-                <fanc-circle :rate="50" :stroke-width="20"></fanc-circle>
-            </view>
-        </view>
-
-        <!-- 环形尺寸 -->
-        <view class="section">
-            <view class="section-title">环形尺寸</view>
-            <view class="circle-demo">
-                <fanc-circle :rate="50" :size="150"></fanc-circle>
-                <fanc-circle :rate="50" :size="100"></fanc-circle>
-                <fanc-circle :rate="50" :size="80"></fanc-circle>
+                <fanc-circle :rate="50" :stroke-width="60" :size="120"></fanc-circle>
+                <fanc-circle :rate="50" :stroke-width="40" :size="100"></fanc-circle>
+                <fanc-circle :rate="50" :stroke-width="20" :size="80"></fanc-circle>
             </view>
         </view>
 
@@ -59,7 +49,7 @@
             <view class="section-title">自定义文字内容</view>
             <view class="circle-demo">
                 <fanc-circle :rate="customTextRate" text="加载中..."></fanc-circle>
-                <fanc-circle :rate="customTextRate">
+                <fanc-circle :rate="customTextRate" text-color="#7232dd" font-size="24px">
                     <view class="custom-text">
                         <view class="custom-text__value">{{ customTextRate }}</view>
                         <view class="custom-text__label">进度</view>
@@ -68,29 +58,12 @@
             </view>
         </view>
 
-        <!-- 文字样式 -->
+        <!-- 样式设置 -->
         <view class="section">
-            <view class="section-title">文字样式</view>
-            <view class="circle-demo">
-                <fanc-circle :rate="50" text-color="#7232dd" font-size="24px"></fanc-circle>
-            </view>
-        </view>
-
-        <!-- 圆角样式 -->
-        <view class="section">
-            <view class="section-title">圆角样式</view>
+            <view class="section-title">样式设置</view>
             <view class="circle-demo">
                 <fanc-circle :rate="50" stroke-linecap="round"></fanc-circle>
                 <fanc-circle :rate="50" stroke-linecap="butt"></fanc-circle>
-                <fanc-circle :rate="50" stroke-linecap="square"></fanc-circle>
-            </view>
-        </view>
-
-        <!-- 进度方向 -->
-        <view class="section">
-            <view class="section-title">进度方向</view>
-            <view class="circle-demo">
-                <fanc-circle :rate="50" :clockwise="true"></fanc-circle>
                 <fanc-circle :rate="50" :clockwise="false"></fanc-circle>
             </view>
         </view>
@@ -103,20 +76,6 @@
                 <fanc-circle :rate="50" status="success"></fanc-circle>
                 <fanc-circle :rate="75" status="warning"></fanc-circle>
                 <fanc-circle :rate="100" status="error"></fanc-circle>
-            </view>
-        </view>
-
-        <!-- 动画速度 -->
-        <view class="section">
-            <view class="section-title">动画速度</view>
-            <view class="circle-demo">
-                <fanc-circle :rate="speedRate" :speed="3000"></fanc-circle>
-                <fanc-circle :rate="speedRate" :speed="1500"></fanc-circle>
-                <fanc-circle :rate="speedRate" :speed="500"></fanc-circle>
-            </view>
-            <view class="button-group">
-                <fanc-button size="small" @click="resetSpeedRate">重置</fanc-button>
-                <fanc-button size="small" type="primary" @click="updateSpeedRate">更新</fanc-button>
             </view>
         </view>
 
@@ -142,7 +101,6 @@ export default {
         return {
             dynamicRate: 30,
             customTextRate: 75,
-            speedRate: 0,
             progressTimer: null,
         };
     },
@@ -195,12 +153,6 @@ export default {
                 this.progressTimer = null;
             }
             this.dynamicRate = 0;
-        },
-        updateSpeedRate() {
-            this.speedRate = 100;
-        },
-        resetSpeedRate() {
-            this.speedRate = 0;
         },
     },
 };
