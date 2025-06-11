@@ -4,7 +4,7 @@
 
 ## 基础用法
 
-基础分页组件，用于分页显示数据，通过 `current` 属性绑定当前页码。
+基础分页组件，用于分页显示数据，通过 `current` 属性绑定当前页码。默认使用省略号模式。
 
 ```html
 <fanc-pagination 
@@ -27,15 +27,41 @@
 ></fanc-pagination>
 ```
 
-## 显示省略号
+## 不显示省略号
 
-当页码较多时，可以通过 `showEllipsis` 属性显示省略号模式，根据当前页码位置自动调整显示方式。
+分页组件默认使用省略号模式，如果不需要省略号，可以通过设置 `showEllipsis` 为 `false` 关闭。
 
 ```html
 <fanc-pagination 
   :current="currentPage" 
   :total="200" 
-  showEllipsis
+  :showEllipsis="false"
+  @change="(page) => { currentPage = page }"
+></fanc-pagination>
+```
+
+## 快速跳转
+
+通过 `showQuickJumper` 属性可以开启快速跳转功能，点击页码比例按钮可以弹出选择器快速选择页码。
+
+```html
+<fanc-pagination 
+  :current="currentPage" 
+  :total="200" 
+  :showQuickJumper="true"
+  @change="(page) => { currentPage = page }"
+></fanc-pagination>
+```
+
+## 显示总条数
+
+通过 `showTotal` 属性可以显示总条数，当总条数超过9999时会显示为"9999+"并支持点击查看详细数量。
+
+```html
+<fanc-pagination 
+  :current="currentPage" 
+  :total="150" 
+  :showTotal="true"
   @change="(page) => { currentPage = page }"
 ></fanc-pagination>
 ```
@@ -65,28 +91,13 @@
 
 ## 迷你版本
 
-通过 `mini` 属性可以设置为迷你版分页，适用于空间有限的场景。
+通过 `mini` 属性可以设置为迷你版分页，适用于空间有限的场景。迷你模式下，中间位置会额外显示首尾页码，便于快速跳转。
 
 ```html
 <fanc-pagination 
   :current="currentPage" 
-  :total="100" 
+  :total="500" 
   mini
-  @change="(page) => { currentPage = page }"
-></fanc-pagination>
-```
-
-## 自定义页码数量
-
-通过 `pagerCount` 属性可以自定义页码按钮的数量。
-
-```html
-<fanc-pagination
-  :current="currentPage"
-  :total="300"
-  :pageSize="10"
-  :pagerCount="7"
-  showEllipsis
   @change="(page) => { currentPage = page }"
 ></fanc-pagination>
 ```
@@ -100,6 +111,22 @@
   :current="currentPage" 
   :total="100" 
   dark
+  @change="(page) => { currentPage = page }"
+></fanc-pagination>
+```
+
+## 功能组合
+
+可以组合使用多种功能，如mini模式、显示总条数、快速跳转等。
+
+```html
+<fanc-pagination 
+  :current="currentPage" 
+  :total="10000" 
+  :pageSize="100" 
+  :showTotal="true"
+  :showQuickJumper="true"
+  mini
   @change="(page) => { currentPage = page }"
 ></fanc-pagination>
 ```
@@ -128,6 +155,8 @@
     :current="productPage"
     :total="mockProducts.length"
     :pageSize="5"
+    :showQuickJumper="true"
+    :showTotal="true"
     @change="handleProductPageChange"
   ></fanc-pagination>
 </view>
@@ -171,12 +200,13 @@ export default {
 | current | 当前页码 | `Number` | `1` |
 | total | 总条目数 | `Number` | `0` |
 | pageSize | 每页条目数 | `Number` | `10` |
-| pagerCount | 页码按钮的数量 | `Number` | `5` |
-| mini | 是否使用小型分页样式 | `Boolean` | `false` |
 | simple | 是否使用简单分页模式 | `Boolean` | `false` |
-| showEllipsis | 是否显示省略号 | `Boolean` | `false` |
+| showEllipsis | 是否显示省略号 | `Boolean` | `true` |
+| mini | 是否使用小型分页样式 | `Boolean` | `false` |
 | dark | 是否使用深色主题 | `Boolean` | `false` |
 | hidden | 当只有1页时是否隐藏分页 | `Boolean` | `false` |
+| showQuickJumper | 是否显示快速跳转 | `Boolean` | `false` |
+| showTotal | 是否显示总条数 | `Boolean` | `false` |
 
 ### Events
 
@@ -211,10 +241,10 @@ export default {
 
 ## 省略号模式说明
 
-省略号模式下，分页器会根据当前页码位置自动调整显示方式：
+省略号模式下（默认模式），分页器会根据当前页码位置自动调整显示方式：
 
 1. 当前页在前部分（1-2页）：显示前3页 + 省略号 + 最后一页
-2. 当前页在中间：显示省略号 + 当前页前一页 + 当前页 + 当前页后一页 + 省略号
+2. 当前页在中间：显示省略号 + 当前页前一页 + 当前页 + 当前页后一页 + 省略号（在mini模式下会额外显示首尾页码）
 3. 当前页在后部分（倒数2页）：显示第1页 + 省略号 + 后3页
 
-这种设计确保分页器始终只显示5个页码元素，保持界面简洁的同时提供良好的导航体验。 
+这种设计确保分页器始终只显示适量的页码元素，保持界面简洁的同时提供良好的导航体验。 

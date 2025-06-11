@@ -3,40 +3,17 @@
         class="fanc-pagination"
         :class="{ 'is-mini': mini, 'is-dark': dark, 'is-hidden': hidden, 'is-simple': simple }"
     >
-        <!-- 基础用法 -->
-        <view v-if="!simple && !showEllipsis" class="fanc-pagination__basic">
-            <view
-                class="fanc-pagination__prev"
-                :class="{ 'is-disabled': current <= 1 }"
-                @click="handlePrev"
+        <!-- 显示总条数 -->
+        <view v-if="showTotal" class="fanc-pagination__total">
+            <fanc-popover
+                :content="`共 ${total} 条`"
+                :theme="dark ? 'dark' : 'light'"
+                placement="top-left"
+                v-if="total > 9999"
             >
-                <!-- 上一页按钮插槽 -->
-                <slot name="prev"> 上一页 </slot>
-            </view>
-
-            <view class="fanc-pagination__pages">
-                <view
-                    v-for="page in pagerItems"
-                    :key="page"
-                    class="fanc-pagination__number"
-                    :class="{ 'is-active': page === current }"
-                    @click="handleChange(page)"
-                >
-                    <!-- 页码插槽 -->
-                    <slot name="page" :page="page">
-                        {{ page }}
-                    </slot>
-                </view>
-            </view>
-
-            <view
-                class="fanc-pagination__next"
-                :class="{ 'is-disabled': current >= totalPages }"
-                @click="handleNext"
-            >
-                <!-- 下一页按钮插槽 -->
-                <slot name="next"> 下一页 </slot>
-            </view>
+                <view>共 9999+</view>
+            </fanc-popover>
+            <view v-else>共 {{ total }} 条</view>
         </view>
 
         <!-- 简单模式 -->
@@ -46,7 +23,9 @@
                 :class="{ 'is-disabled': current <= 1 }"
                 @click="handlePrev"
             >
-                <slot name="prev"> 上一页 </slot>
+                <slot name="prev">
+                    <fanc-icon name="angle-left" :size="iconSize"></fanc-icon>
+                </slot>
             </view>
 
             <view class="fanc-pagination__info">
@@ -60,18 +39,22 @@
                 :class="{ 'is-disabled': current >= totalPages }"
                 @click="handleNext"
             >
-                <slot name="next"> 下一页 </slot>
+                <slot name="next">
+                    <fanc-icon name="angle-right" :size="iconSize"></fanc-icon>
+                </slot>
             </view>
         </view>
 
-        <!-- 显示省略号 -->
-        <view v-if="!simple && showEllipsis" class="fanc-pagination__ellipsis-mode">
+        <!-- 常规模式(默认使用省略号) -->
+        <view v-else class="fanc-pagination__ellipsis-mode">
             <view
                 class="fanc-pagination__prev"
                 :class="{ 'is-disabled': current <= 1 }"
                 @click="handlePrev"
             >
-                <slot name="prev"> 上一页 </slot>
+                <slot name="prev">
+                    <fanc-icon name="angle-left" :size="iconSize"></fanc-icon>
+                </slot>
             </view>
 
             <view class="fanc-pagination__pages">
@@ -84,13 +67,11 @@
                         :class="{ 'is-active': page === current }"
                         @click="handleChange(page)"
                     >
-                        <slot name="page" :page="page">
-                            {{ page }}
-                        </slot>
+                        <slot name="page" :page="page">{{ page }}</slot>
                     </view>
 
                     <view class="fanc-pagination__ellipsis" @click="jumpNext">
-                        <slot name="next-more"> ... </slot>
+                        <slot name="next-more">...</slot>
                     </view>
 
                     <view
@@ -98,22 +79,32 @@
                         :class="{ 'is-active': totalPages === current }"
                         @click="handleChange(totalPages)"
                     >
-                        <slot name="page" :page="totalPages">
-                            {{ totalPages }}
-                        </slot>
+                        <slot name="page" :page="totalPages">{{ totalPages }}</slot>
                     </view>
                 </template>
 
                 <!-- 情况2：当前页在中间 -->
                 <template v-else-if="pagerPosition === 'middle'">
-                    <view class="fanc-pagination__ellipsis" @click="jumpPrev">
-                        <slot name="prev-more"> ... </slot>
+                    <!-- 首页按钮(仅mini模式显示) -->
+                    <view
+                        v-if="mini"
+                        class="fanc-pagination__number"
+                        :class="{ 'is-active': 1 === current }"
+                        @click="handleChange(1)"
+                    >
+                        <slot name="page" :page="1">1</slot>
                     </view>
 
-                    <view class="fanc-pagination__number" @click="handleChange(current - 1)">
-                        <slot name="page" :page="current - 1">
-                            {{ current - 1 }}
-                        </slot>
+                    <view class="fanc-pagination__ellipsis" @click="jumpPrev">
+                        <slot name="prev-more">...</slot>
+                    </view>
+
+                    <view
+                        class="fanc-pagination__number"
+                        :class="{ 'is-active': current - 1 === current }"
+                        @click="handleChange(current - 1)"
+                    >
+                        <slot name="page" :page="current - 1">{{ current - 1 }}</slot>
                     </view>
 
                     <view
@@ -121,19 +112,29 @@
                         :class="{ 'is-active': true }"
                         @click="handleChange(current)"
                     >
-                        <slot name="page" :page="current">
-                            {{ current }}
-                        </slot>
+                        <slot name="page" :page="current">{{ current }}</slot>
                     </view>
 
-                    <view class="fanc-pagination__number" @click="handleChange(current + 1)">
-                        <slot name="page" :page="current + 1">
-                            {{ current + 1 }}
-                        </slot>
+                    <view
+                        class="fanc-pagination__number"
+                        :class="{ 'is-active': current + 1 === current }"
+                        @click="handleChange(current + 1)"
+                    >
+                        <slot name="page" :page="current + 1">{{ current + 1 }}</slot>
                     </view>
 
                     <view class="fanc-pagination__ellipsis" @click="jumpNext">
-                        <slot name="next-more"> ... </slot>
+                        <slot name="next-more">...</slot>
+                    </view>
+
+                    <!-- 尾页按钮(仅mini模式显示) -->
+                    <view
+                        v-if="mini"
+                        class="fanc-pagination__number"
+                        :class="{ 'is-active': totalPages === current }"
+                        @click="handleChange(totalPages)"
+                    >
+                        <slot name="page" :page="totalPages">{{ totalPages }}</slot>
                     </view>
                 </template>
 
@@ -144,11 +145,11 @@
                         :class="{ 'is-active': 1 === current }"
                         @click="handleChange(1)"
                     >
-                        <slot name="page" :page="1"> 1 </slot>
+                        <slot name="page" :page="1">1</slot>
                     </view>
 
                     <view class="fanc-pagination__ellipsis" @click="jumpPrev">
-                        <slot name="prev-more"> ... </slot>
+                        <slot name="prev-more">...</slot>
                     </view>
 
                     <view
@@ -158,9 +159,7 @@
                         :class="{ 'is-active': page === current }"
                         @click="handleChange(page)"
                     >
-                        <slot name="page" :page="page">
-                            {{ page }}
-                        </slot>
+                        <slot name="page" :page="page">{{ page }}</slot>
                     </view>
                 </template>
             </view>
@@ -170,8 +169,36 @@
                 :class="{ 'is-disabled': current >= totalPages }"
                 @click="handleNext"
             >
-                <slot name="next"> 下一页 </slot>
+                <slot name="next">
+                    <fanc-icon name="angle-right" :size="iconSize"></fanc-icon>
+                </slot>
             </view>
+        </view>
+
+        <!-- 快速跳转到指定页码 -->
+        <view v-if="showQuickJumper" class="fanc-pagination__jumper">
+            <view class="fanc-pagination__jumper-btn" @click="showJumperPicker = true">
+                <fanc-popover
+                    :content="`跳转到 ${current}/${totalPages} 页`"
+                    :theme="dark ? 'dark' : 'light'"
+                    placement="top-left"
+                    v-if="totalPages > 9999"
+                    trigger="hover"
+                >
+                    <view>{{ current }}/9999+</view>
+                </fanc-popover>
+                <view v-else>{{ current }}/{{ totalPages }}</view>
+            </view>
+
+            <fanc-picker
+                :show="showJumperPicker"
+                @update:show="showJumperPicker = $event"
+                :columns="pageOptions"
+                :default-index="[current - 1]"
+                title="选择页码"
+                @confirm="onPickerConfirm"
+                @cancel="showJumperPicker = false"
+            ></fanc-picker>
         </view>
     </view>
 </template>
@@ -184,17 +211,21 @@
  * @property {Number} total - 总条目数
  * @property {Number} pageSize - 每页条目数
  * @property {Boolean} simple - 是否使用简单模式
- * @property {Boolean} showEllipsis - 是否显示省略号
- * @property {Number} pagerCount - 页码按钮的数量
  * @property {Boolean} mini - 是否使用小型分页样式
  * @property {Boolean} dark - 是否使用深色主题
  * @property {Boolean} hidden - 当只有1页时是否隐藏分页
+ * @property {Boolean} showQuickJumper - 是否显示快速跳转
+ * @property {Boolean} showTotal - 是否显示总条数
  * @event {Function} change - 页码改变时触发
  * @event {Function} prev - 点击上一页按钮时触发
  * @event {Function} next - 点击下一页按钮时触发
  */
 export default {
     name: "fanc-pagination",
+    components: {
+        "fanc-picker": () => import("@/components/fanc-picker"),
+        "fanc-popover": () => import("@/components/fanc-popover"),
+    },
     props: {
         // 当前页码
         current: {
@@ -216,16 +247,6 @@ export default {
             type: Boolean,
             default: false,
         },
-        // 是否显示省略号
-        showEllipsis: {
-            type: Boolean,
-            default: false,
-        },
-        // 页码按钮的数量
-        pagerCount: {
-            type: Number,
-            default: 5,
-        },
         // 是否使用小型分页样式
         mini: Boolean,
         // 是否使用深色主题
@@ -235,33 +256,26 @@ export default {
             type: Boolean,
             default: false,
         },
+        // 是否显示快速跳转
+        showQuickJumper: {
+            type: Boolean,
+            default: false,
+        },
+        // 是否显示总条数
+        showTotal: {
+            type: Boolean,
+            default: false,
+        },
+    },
+    data() {
+        return {
+            showJumperPicker: false,
+        };
     },
     computed: {
         // 总页数
         totalPages() {
             return Math.max(1, Math.ceil(this.total / this.pageSize));
-        },
-        // 基础模式下的页码
-        pagerItems() {
-            const { totalPages, current, pagerCount } = this;
-
-            // 如果总页数小于等于要显示的页码数，直接返回全部页码
-            if (totalPages <= pagerCount) {
-                return Array.from({ length: totalPages }, (_, i) => i + 1);
-            }
-
-            // 否则根据当前页码计算要显示的页码范围
-            const halfPagerCount = Math.floor(pagerCount / 2);
-            let start = Math.max(1, current - halfPagerCount);
-            let end = start + pagerCount - 1;
-
-            // 处理边界情况
-            if (end > totalPages) {
-                end = totalPages;
-                start = Math.max(1, end - pagerCount + 1);
-            }
-
-            return Array.from({ length: end - start + 1 }, (_, i) => start + i);
         },
         // 省略号模式下的位置
         pagerPosition() {
@@ -294,7 +308,14 @@ export default {
         },
         // 图标大小
         iconSize() {
-            return this.mini ? 14 : 16;
+            return this.mini ? 12 : 14;
+        },
+        // 页码选项
+        pageOptions() {
+            return Array.from({ length: this.totalPages }, (_, i) => ({
+                text: `第 ${i + 1} 页`,
+                value: i + 1,
+            }));
         },
     },
     methods: {
@@ -327,6 +348,15 @@ export default {
         jumpNext() {
             this.handleChange(Math.min(this.totalPages, this.current + 5));
         },
+        // 处理picker选择
+        onPickerConfirm(e) {
+            if (e && e.value && e.value.length) {
+                const page = e.value[0];
+                if (page && page !== this.current) {
+                    this.handleChange(page);
+                }
+            }
+        },
     },
 };
 </script>
@@ -340,7 +370,14 @@ export default {
     font-size: 14px;
     flex-wrap: wrap;
 
-    &__basic,
+    &__total {
+        margin-right: 10px;
+        color: #606266;
+        font-size: 14px;
+        white-space: nowrap;
+        cursor: default;
+    }
+
     &__simple,
     &__ellipsis-mode {
         display: flex;
@@ -368,6 +405,9 @@ export default {
         cursor: pointer;
         color: #606266;
         white-space: nowrap;
+        display: flex;
+        align-items: center;
+        justify-content: center;
 
         &.is-disabled {
             color: #c0c4cc;
@@ -411,18 +451,37 @@ export default {
         align-items: center;
     }
 
-    .fanc-pagination__prev,
-    .fanc-pagination__next,
-    .fanc-pagination__info {
+    &__jumper {
+        display: flex;
+        align-items: center;
+        margin-left: 12px;
+    }
+
+    &__jumper-btn {
+        height: 28px;
+        line-height: 28px;
+        background-color: #fff;
+        border-radius: 4px;
+        border: 1px solid #dcdfe6;
+        font-size: 14px;
+        color: #606266;
+        cursor: pointer;
         display: flex;
         align-items: center;
         justify-content: center;
-        height: 32px;
+        white-space: nowrap;
+        padding: 0 4px;
+
+        &:hover {
+            border-color: #c6e2ff;
+            color: #409eff;
+        }
     }
 
     // 小型分页样式
     &.is-mini {
         padding: 8px 0;
+        font-size: 12px;
 
         .fanc-pagination__prev,
         .fanc-pagination__next {
@@ -445,12 +504,22 @@ export default {
             height: 24px;
             line-height: 24px;
         }
+
+        .fanc-pagination__jumper-btn {
+            height: 22px;
+            line-height: 22px;
+            font-size: 12px;
+        }
+
+        .fanc-pagination__total {
+            font-size: 12px;
+        }
     }
 
     // 深色主题
     &.is-dark {
         background-color: #1d1e1f;
-        padding:10px 5px;
+        padding: 10px 5px;
         border-radius: 8px;
 
         .fanc-pagination__prev,
@@ -468,6 +537,21 @@ export default {
 
         .fanc-pagination__info,
         .fanc-pagination__icon {
+            color: #e5e5e5;
+        }
+
+        .fanc-pagination__jumper-btn {
+            background-color: #323233;
+            border-color: #434343;
+            color: #e5e5e5;
+
+            &:hover {
+                border-color: #1989fa;
+                color: #1989fa;
+            }
+        }
+
+        .fanc-pagination__total {
             color: #e5e5e5;
         }
     }
@@ -488,6 +572,15 @@ export default {
         &__number,
         &__ellipsis {
             margin: 0 2px;
+        }
+
+        &__jumper {
+            margin-left: 8px;
+        }
+
+        &__total {
+            margin-right: 6px;
+            font-size: 12px;
         }
     }
 }

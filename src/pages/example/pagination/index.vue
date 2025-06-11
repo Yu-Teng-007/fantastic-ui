@@ -39,14 +39,13 @@
             </view>
         </view>
 
-        <!-- 显示省略号 -->
+        <!-- 不显示省略号 -->
         <view class="section">
-            <view class="section-title">显示省略号</view>
+            <view class="section-title">不显示省略号</view>
             <view class="section-content">
                 <fanc-pagination
                     :current="currentPage3"
                     :total="200"
-                    showEllipsis
                     @change="
                         (page) => {
                             currentPage3 = page;
@@ -105,7 +104,7 @@
             <view class="section-content">
                 <fanc-pagination
                     :current="currentPage5"
-                    :total="100"
+                    :total="500"
                     mini
                     @change="
                         (page) => {
@@ -113,6 +112,9 @@
                         }
                     "
                 ></fanc-pagination>
+            </view>
+            <view class="section-description">
+                迷你模式下，中间位置会额外显示首尾页码，便于快速跳转。
             </view>
         </view>
 
@@ -124,8 +126,6 @@
                     :current="currentPage6"
                     :total="300"
                     :pageSize="10"
-                    :pagerCount="7"
-                    showEllipsis
                     @change="
                         (page) => {
                             currentPage6 = page;
@@ -152,6 +152,76 @@
             </view>
         </view>
 
+        <!-- 快速跳转 -->
+        <view class="section">
+            <view class="section-title">快速跳转</view>
+            <view class="section-content">
+                <fanc-pagination
+                    :current="currentPage4"
+                    :total="200"
+                    :showQuickJumper="true"
+                    @change="
+                        (page) => {
+                            currentPage4 = page;
+                            handleQuickJumpChange(page);
+                        }
+                    "
+                ></fanc-pagination>
+            </view>
+            <view class="section-description"> 点击页码比例按钮可以弹出选择器快速选择页码。 </view>
+        </view>
+
+        <!-- 显示总条数 -->
+        <view class="section">
+            <view class="section-title">显示总条数</view>
+            <view class="section-content">
+                <fanc-pagination
+                    :current="currentPage11"
+                    :total="150"
+                    :showTotal="true"
+                    @change="
+                        (page) => {
+                            currentPage11 = page;
+                        }
+                    "
+                ></fanc-pagination>
+            </view>
+            <view class="section-description">
+                总条数超过9999时将显示为"9999+"并支持点击查看详细数量。
+            </view>
+        </view>
+
+        <!-- 功能组合 -->
+        <view class="section">
+            <view class="section-title">功能组合</view>
+            <view class="section-content">
+                <fanc-pagination
+                    :current="currentPage10"
+                    :total="10000"
+                    :pageSize="100"
+                    :showTotal="true"
+                    :showQuickJumper="true"
+                    mini
+                    @change="
+                        (page) => {
+                            currentPage10 = page;
+                            handlePageChange(page);
+                        }
+                    "
+                >
+                    <template #prev>
+                        <fanc-icon name="chevron-left" size="12" />
+                    </template>
+                    <template #next>
+                        <fanc-icon name="chevron-right" size="12" />
+                    </template>
+                </fanc-pagination>
+            </view>
+            <view class="section-description">
+                组合使用多种功能，如mini模式、显示总条数、快速跳转等。
+            </view>
+        </view>
+
         <!-- 加载商品列表的示例 -->
         <view class="section">
             <view class="section-title">商品列表示例</view>
@@ -170,6 +240,8 @@
                     :current="productPage"
                     :total="mockProducts.length"
                     :pageSize="5"
+                    :showQuickJumper="true"
+                    :showTotal="true"
                     @change="handleProductPageChange"
                 ></fanc-pagination>
             </view>
@@ -184,11 +256,14 @@ export default {
             currentPage1: 1,
             currentPage2: 1,
             currentPage3: 1,
+            currentPage4: 1,
             currentPage5: 1,
             currentPage6: 1,
             currentPage7: 1,
             currentPage8: 1,
             currentPage9: 1,
+            currentPage10: 1,
+            currentPage11: 1,
             productPage: 1,
             mockProducts: Array.from({ length: 25 }, (_, index) => ({
                 id: index + 1,
@@ -208,6 +283,9 @@ export default {
     methods: {
         handlePageChange(page) {
             this.$toast.text(`当前页: ${page}`);
+        },
+        handleQuickJumpChange(page) {
+            this.$toast.text(`快速跳转到第${page}页`);
         },
         handleProductPageChange(page) {
             this.productPage = page;
@@ -259,6 +337,20 @@ export default {
 .section-content {
     padding: 16px;
     background-color: #f7f7f7;
+}
+
+.section-description {
+    padding: 8px 16px 16px;
+    font-size: 14px;
+    color: #909399;
+    line-height: 1.5;
+}
+
+.section-description code {
+    background-color: #f1f1f1;
+    padding: 2px 4px;
+    border-radius: 3px;
+    font-family: monospace;
 }
 
 .product-list {
