@@ -144,49 +144,16 @@
         <!-- 分页 -->
         <view v-if="showPagination" class="fanc-table__pagination">
             <slot name="pagination">
-                <view class="fanc-table__pagination-info" v-if="pagination.showTotal">
-                    共 {{ total }} 条
-                </view>
-                <view class="fanc-table__pagination-buttons">
-                    <view
-                        class="fanc-table__pagination-button"
-                        :class="{ 'is-disabled': currentPage <= 1 }"
-                        @click="handlePageChange(currentPage - 1)"
-                    >
-                        <fanc-icon name="chevron-left" size="14" />
-                    </view>
-
-                    <view
-                        v-for="page in displayPages"
-                        :key="page"
-                        class="fanc-table__pagination-button"
-                        :class="{ 'is-active': currentPage === page }"
-                        @click="handlePageChange(page)"
-                    >
-                        {{ page }}
-                    </view>
-
-                    <view
-                        class="fanc-table__pagination-button"
-                        :class="{ 'is-disabled': currentPage >= totalPages }"
-                        @click="handlePageChange(currentPage + 1)"
-                    >
-                        <fanc-icon name="chevron-right" size="14" />
-                    </view>
-                </view>
-
-                <view v-if="pagination.showSizeChanger" class="fanc-table__pagination-size">
-                    <picker
-                        :value="pageSizeIndex"
-                        :range="pagination.pageSizeOptions"
-                        @change="handlePageSizeChange"
-                    >
-                        <view class="fanc-table__pagination-size-selector">
-                            {{ pageSize }}条/页
-                            <fanc-icon name="chevron-down" size="14" />
-                        </view>
-                    </picker>
-                </view>
+                <fanc-pagination
+                    :current="currentPage"
+                    :total="total"
+                    :page-size="pageSize"
+                    :show-total="pagination.showTotal"
+                    :show-quick-jumper="pagination.showQuickJumper"
+                    @update:current="handlePageChange"
+                    @change="handlePageChange"
+                >
+                </fanc-pagination>
             </slot>
         </view>
     </view>
@@ -227,6 +194,9 @@ import tableConfig from "@/configs/table.js";
 
 export default {
     name: "fanc-table",
+    components: {
+        "fanc-pagination": () => import("@/components/fanc-pagination"),
+    },
     props: {
         // 表格列配置
         columns: {
@@ -324,7 +294,7 @@ export default {
         // 是否显示分页
         showPagination: {
             type: Boolean,
-            default: true,
+            default: false,
         },
         // 默认列宽度
         defaultColumnWidth: {
@@ -347,9 +317,10 @@ export default {
             // 当前页码
             currentPage: 1,
             // 每页条数
-            pageSize: this.pagination.defaultPageSize || 10,
-            // 每页条数选项下标
-            pageSizeIndex: 0,
+            pageSize:
+                this.pagination && this.pagination.defaultPageSize
+                    ? this.pagination.defaultPageSize
+                    : 10,
         };
     },
     computed: {
@@ -393,45 +364,6 @@ export default {
             if (!this.data.length) return false;
             return this.data.every((row) => this.isSelected(row));
         },
-        // 显示的页码
-        displayPages() {
-            const pages = [];
-            const maxPageButtons = 5;
-            const totalPages = this.totalPages;
-
-            if (totalPages <= maxPageButtons) {
-                // 总页数小于等于最大显示按钮数，直接显示所有页码
-                for (let i = 1; i <= totalPages; i++) {
-                    pages.push(i);
-                }
-            } else {
-                // 总页数大于最大显示按钮数，需要计算显示哪些页码
-                const halfMaxButtons = Math.floor(maxPageButtons / 2);
-                let startPage = this.currentPage - halfMaxButtons;
-                let endPage = this.currentPage + halfMaxButtons;
-
-                if (startPage < 1) {
-                    startPage = 1;
-                    endPage = maxPageButtons;
-                }
-
-                if (endPage > totalPages) {
-                    endPage = totalPages;
-                    startPage = totalPages - maxPageButtons + 1;
-                }
-
-                for (let i = startPage; i <= endPage; i++) {
-                    pages.push(i);
-                }
-            }
-
-            return pages;
-        },
-    },
-    created() {
-        // 初始化每页条数选项下标
-        const index = this.pagination.pageSizeOptions.indexOf(this.pageSize);
-        this.pageSizeIndex = index >= 0 ? index : 0;
     },
     methods: {
         // 处理排序变化
@@ -517,16 +449,6 @@ export default {
             this.currentPage = page;
             this.$emit("page-change", page);
         },
-
-        // 处理每页条数变化
-        handlePageSizeChange(e) {
-            const index = e.detail.value;
-            this.pageSizeIndex = index;
-            this.pageSize = this.pagination.pageSizeOptions[index];
-            // 重置到第一页
-            this.currentPage = 1;
-            this.$emit("page-size-change", this.pageSize);
-        },
     },
 };
 </script>
@@ -576,10 +498,6 @@ export default {
             &:last-child {
                 border-right: none;
             }
-        }
-
-        .fanc-table__row:last-child .fanc-table__cell {
-            border-bottom: none;
         }
     }
 
@@ -764,48 +682,15 @@ export default {
     &__pagination {
         display: flex;
         align-items: center;
-        justify-content: space-between;
+        justify-content: center;
         padding: 16px 0;
         margin-top: var(--table-pagination-margin-top);
-    }
-
-    &__pagination-info {
-        color: var(--text-secondary);
-        font-size: 14px;
-    }
-
-    &__pagination-buttons {
-        display: flex;
-        align-items: center;
-    }
-
-    &__pagination-button {
-        min-width: 32px;
-        height: 32px;
-        margin: 0 4px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 4px;
-        cursor: pointer;
-        background-color: var(--white);
-        border: 1px solid var(--border-color);
-
-        &.is-active {
-            background-color: var(--fanc-primary-color);
-            color: var(--white);
-            border-color: var(--fanc-primary-color);
-        }
-
-        &.is-disabled {
-            cursor: not-allowed;
-            color: var(--text-disabled);
-        }
     }
 
     &__pagination-size {
         display: flex;
         align-items: center;
+        margin-left: 10px;
     }
 
     &__pagination-size-selector {

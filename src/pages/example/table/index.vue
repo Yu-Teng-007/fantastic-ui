@@ -157,8 +157,13 @@
                     :columns="basicColumns"
                     :data="paginatedData"
                     :total="100"
+                    :showPagination="true"
+                    :pagination="{
+                        showTotal: true,
+                        showQuickJumper: true,
+                        defaultPageSize: 10,
+                    }"
                     @page-change="handlePageChange"
-                    @page-size-change="handlePageSizeChange"
                     bordered
                 />
             </view>
@@ -337,13 +342,6 @@ export default {
             this.currentPage = page;
             this.generatePaginatedData();
             this.$toast.text(`页码变更为: ${page}`);
-        },
-
-        // 处理每页条数变化
-        handlePageSizeChange(pageSize) {
-            this.pageSize = pageSize;
-            this.generatePaginatedData();
-            this.$toast.text(`每页条数变更为: ${pageSize}`);
         },
 
         // 生成分页数据
