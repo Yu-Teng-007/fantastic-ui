@@ -7,7 +7,7 @@
 
         <view class="section">
             <view class="section-title">基础用法</view>
-            <fanc-swipe-cell right-width="70">
+            <fanc-swipe-cell :button-width="70" :right-buttons="1">
                 <fanc-cell title="基础用法" content="向左滑动" />
                 <template #right>
                     <view class="swipe-cell-right delete-button">删除</view>
@@ -17,7 +17,7 @@
 
         <view class="section">
             <view class="section-title">左右滑动</view>
-            <fanc-swipe-cell left-width="80" right-width="140">
+            <fanc-swipe-cell :button-width="70" :left-buttons="1" :right-buttons="2">
                 <fanc-cell title="左右滑动" content="支持多个按钮" />
                 <template #left>
                     <view class="swipe-cell-left collect-button">收藏</view>
@@ -31,7 +31,7 @@
 
         <view class="section">
             <view class="section-title">自定义内容</view>
-            <fanc-swipe-cell right-width="70">
+            <fanc-swipe-cell :button-width="70" :right-buttons="1">
                 <view class="custom-content">
                     <fanc-icon
                         name="kiss-wink-heart"
@@ -54,7 +54,7 @@
 
         <view class="section">
             <view class="section-title">禁用状态</view>
-            <fanc-swipe-cell right-width="70" disabled>
+            <fanc-swipe-cell :button-width="70" :right-buttons="1" disabled>
                 <fanc-cell title="禁用状态" content="无法滑动" />
                 <template #right>
                     <view class="swipe-cell-right delete-button">删除</view>
@@ -64,7 +64,7 @@
 
         <view class="section">
             <view class="section-title">异步关闭</view>
-            <fanc-swipe-cell right-width="70" ref="asyncCell">
+            <fanc-swipe-cell :button-width="70" :right-buttons="1" ref="asyncCell">
                 <fanc-cell title="异步操作" content="点击删除触发" />
                 <template #right>
                     <view class="swipe-cell-right delete-button" @click="handleAsyncDelete"
@@ -77,7 +77,8 @@
         <view class="section">
             <view class="section-title">事件监听</view>
             <fanc-swipe-cell
-                right-width="70"
+                :button-width="70"
+                :right-buttons="1"
                 ref="eventCell"
                 @open="handleCellOpen"
                 @close="handleCellClose"
@@ -92,9 +93,20 @@
 
         <view class="section">
             <view class="section-title">滑动阈值</view>
-            <fanc-swipe-cell right-width="70" :threshold="0.5">
+            <fanc-swipe-cell :button-width="70" :right-buttons="1" :threshold="0.5">
                 <fanc-cell title="滑动阈值" content="需要滑动超过50%才会触发" />
                 <template #right>
+                    <view class="swipe-cell-right delete-button">删除</view>
+                </template>
+            </fanc-swipe-cell>
+        </view>
+
+        <view class="section">
+            <view class="section-title">不同按钮宽度</view>
+            <fanc-swipe-cell :button-width="90" :right-buttons="2">
+                <fanc-cell title="更宽的按钮" content="设置按钮宽度为90px" />
+                <template #right>
+                    <view class="swipe-cell-right edit-button">编辑</view>
                     <view class="swipe-cell-right delete-button">删除</view>
                 </template>
             </fanc-swipe-cell>
@@ -187,6 +199,7 @@ export default {
     text-align: center;
     padding: 0 15px;
     font-size: 14px;
+    border: none;
 }
 
 /* 右侧操作按钮样式 */
@@ -199,6 +212,7 @@ export default {
     text-align: center;
     padding: 0 15px;
     font-size: 14px;
+    border: none;
 }
 
 /* 删除按钮 */
