@@ -1,14 +1,11 @@
 <template>
     <view
         class="fanc-video"
-        :class="[
-            `fanc-video--${type}`,
-            {
-                'fanc-video--playing': isPlaying,
-                'fanc-video--fullscreen': isFullscreen,
-                'fanc-video--disabled': disabled,
-            },
-        ]"
+        :class="{
+            'fanc-video--playing': isPlaying,
+            'fanc-video--fullscreen': isFullscreen,
+            'fanc-video--disabled': disabled,
+        }"
     >
         <!-- 视频播放区域 -->
         <view class="fanc-video__container">
@@ -61,12 +58,16 @@
 
             <!-- 播放暂停中央按钮层，仅在视频已经加载后显示 -->
             <view
-                v-if="showControlsOverlay && !disabled && hasPlayed"
+                v-if="showControlsOverlay && !disabled"
                 class="fanc-video__center-controls"
                 @click="togglePlay"
             >
-                <view v-if="!isPlaying && !isLoading" class="fanc-video__center-play-btn">
-                    <fanc-icon name="play-circle" size="48" color="#ffffff"></fanc-icon>
+                <view class="fanc-video__center-play-btn">
+                    <fanc-icon
+                        :name="isPlaying ? 'pause' : 'play-circle'"
+                        size="48"
+                        color="#ffffff"
+                    ></fanc-icon>
                 </view>
             </view>
 
@@ -81,15 +82,6 @@
                 class="fanc-video__controls"
                 :class="{ 'fanc-video__controls--active': showControlsOverlay }"
             >
-                <!-- 播放/暂停按钮 -->
-                <view class="fanc-video__play-btn" @click.stop="togglePlay">
-                    <fanc-icon
-                        :name="isPlaying ? 'pause' : 'play'"
-                        size="18"
-                        color="#ffffff"
-                    ></fanc-icon>
-                </view>
-
                 <!-- 时间显示和进度条 -->
                 <view class="fanc-video__progress-wrap">
                     <view class="fanc-video__time fanc-video__time--current">{{
@@ -170,16 +162,6 @@ export default {
         poster: {
             type: String,
             default: "",
-        },
-        // 类型：默认、主要、成功、警告、危险和信息
-        type: {
-            type: String,
-            default: "default",
-            validator: (value) => {
-                return ["default", "primary", "success", "warning", "danger", "info"].includes(
-                    value
-                );
-            },
         },
         // 自动播放
         autoplay: {
@@ -660,6 +642,11 @@ export default {
     border-radius: 50%;
     background-color: rgba(0, 0, 0, 0.5);
     cursor: pointer;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
 }
 
 .fanc-video__loading {
@@ -769,7 +756,7 @@ export default {
     top: 0;
     left: 0;
     height: 100%;
-    background-color: var(--fanc-video-progress-color);
+    background-color: var(--fanc-primary-color);
     z-index: 3;
 }
 
@@ -800,30 +787,5 @@ export default {
 .fanc-video__fullscreen-btn {
     margin-left: 16px;
     cursor: pointer;
-}
-
-/* 主题样式 */
-.fanc-video--default .fanc-video__progress-inner {
-    background-color: var(--fanc-primary-color);
-}
-
-.fanc-video--primary .fanc-video__progress-inner {
-    background-color: var(--fanc-primary-color);
-}
-
-.fanc-video--success .fanc-video__progress-inner {
-    background-color: var(--fanc-success-color);
-}
-
-.fanc-video--warning .fanc-video__progress-inner {
-    background-color: var(--fanc-warning-color);
-}
-
-.fanc-video--danger .fanc-video__progress-inner {
-    background-color: var(--fanc-danger-color);
-}
-
-.fanc-video--info .fanc-video__progress-inner {
-    background-color: var(--fanc-info-color);
 }
 </style>

@@ -2,7 +2,7 @@
     <view class="container">
         <view class="header">
             <view class="title">视频播放器</view>
-            <view class="subtitle">用于视频文件的播放控制和展示，提供多种样式和功能</view>
+            <view class="subtitle">用于视频文件的播放控制和展示，提供多种功能</view>
         </view>
 
         <!-- 基础用法 -->
@@ -12,47 +12,6 @@
                 <fanc-video
                     src="https://storage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
                     poster="https://storage.googleapis.com/gtv-videos-bucket/sample/images/BigBuckBunny.jpg"
-                ></fanc-video>
-            </view>
-        </view>
-
-        <!-- 不同主题 -->
-        <view class="section">
-            <view class="section-title">不同主题</view>
-            <view class="example-block">
-                <fanc-video
-                    src="https://storage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"
-                    poster="https://storage.googleapis.com/gtv-videos-bucket/sample/images/ElephantsDream.jpg"
-                    type="primary"
-                    class="example-item"
-                ></fanc-video>
-
-                <fanc-video
-                    src="https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4"
-                    poster="https://storage.googleapis.com/gtv-videos-bucket/sample/images/ForBiggerBlazes.jpg"
-                    type="success"
-                    class="example-item"
-                ></fanc-video>
-
-                <fanc-video
-                    src="https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4"
-                    poster="https://storage.googleapis.com/gtv-videos-bucket/sample/images/ForBiggerEscapes.jpg"
-                    type="warning"
-                    class="example-item"
-                ></fanc-video>
-
-                <fanc-video
-                    src="https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4"
-                    poster="https://storage.googleapis.com/gtv-videos-bucket/sample/images/ForBiggerFun.jpg"
-                    type="danger"
-                    class="example-item"
-                ></fanc-video>
-
-                <fanc-video
-                    src="https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4"
-                    poster="https://storage.googleapis.com/gtv-videos-bucket/sample/images/ForBiggerJoyrides.jpg"
-                    type="info"
-                    class="example-item"
                 ></fanc-video>
             </view>
         </view>
