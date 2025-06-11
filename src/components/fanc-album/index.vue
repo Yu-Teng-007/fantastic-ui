@@ -311,7 +311,6 @@ export default {
     watch: {
         images: {
             handler(newVal) {
-                console.log("🚀 ~ handler ~ newVal:", newVal);
                 if (this.mode === "waterfall") {
                     this.processWaterfallData();
                 }
