@@ -19,7 +19,7 @@
                             :src="img"
                             width="100%"
                             height="100px"
-                            mode="aspectFill"
+                            mode="cover"
                         ></fanc-image>
                     </view>
                 </view>
