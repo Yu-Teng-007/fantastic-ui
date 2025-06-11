@@ -147,7 +147,6 @@
             <view class="subsection">
                 <view class="subsection__title">主要类型</view>
                 <fanc-album
-                    type="primary"
                     title="主要类型"
                     :show-header="true"
                     :images="basicImages.slice(0, 3)"
@@ -160,7 +159,6 @@
             <view class="subsection">
                 <view class="subsection__title">成功类型</view>
                 <fanc-album
-                    type="success"
                     title="成功类型"
                     :show-header="true"
                     :images="basicImages.slice(3, 6)"
@@ -173,7 +171,6 @@
             <view class="subsection">
                 <view class="subsection__title">警告类型</view>
                 <fanc-album
-                    type="warning"
                     title="警告类型"
                     :show-header="true"
                     :images="basicImages.slice(0, 3)"
@@ -186,7 +183,6 @@
             <view class="subsection">
                 <view class="subsection__title">危险类型</view>
                 <fanc-album
-                    type="danger"
                     title="危险类型"
                     :show-header="true"
                     :images="basicImages.slice(3, 6)"
@@ -199,7 +195,6 @@
             <view class="subsection">
                 <view class="subsection__title">信息类型</view>
                 <fanc-album
-                    type="info"
                     title="信息类型"
                     :show-header="true"
                     :images="basicImages.slice(0, 3)"

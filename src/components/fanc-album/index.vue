@@ -1,5 +1,5 @@
 <template>
-    <view class="fanc-album" :class="[`fanc-album--${type}`, { 'fanc-album--disabled': disabled }]">
+    <view class="fanc-album" :class="{ 'fanc-album--disabled': disabled }">
         <!-- 相册标题区域 -->
         <view class="fanc-album__header" v-if="showHeader">
             <view class="fanc-album__title-wrap">
@@ -17,7 +17,7 @@
             :class="[`fanc-album__content--${mode}`, { 'fanc-album__content--border': border }]"
         >
             <!-- 网格模式 -->
-            <view class="fanc-album__grid" v-if="mode === 'grid'" :style="{ gap: `${gap}px` }">
+            <view class="fanc-album__grid" v-if="mode === 'grid'">
                 <view
                     class="fanc-album__item"
                     v-for="(item, index) in images"
@@ -25,6 +25,10 @@
                     :style="{
                         width: `calc((100% - ${gap * (columns - 1)}px) / ${columns})`,
                         borderRadius: `${radius}px`,
+                        marginRight: (index + 1) % columns === 0 ? '0' : `${gap}px`,
+                        marginBottom: `${gap}px`,
+                        aspectRatio: item.aspectRatio || '1',
+                        height: item.height || 'auto',
                     }"
                     @click="handleItemClick(item, index)"
                 >
@@ -50,6 +54,7 @@
                     :style="{
                         width: `calc((100% - ${gap * (columns - 1)}px) / ${columns})`,
                         borderRadius: `${radius}px`,
+                        marginRight: (images.length + 1) % columns === 0 ? '0' : `${gap}px`,
                     }"
                     @click="handleAddClick"
                 >
@@ -189,13 +194,6 @@
 export default {
     name: "fanc-album",
     props: {
-        // 相册类型
-        type: {
-            type: String,
-            default: "default",
-            validator: (value) =>
-                ["default", "primary", "success", "warning", "danger", "info"].includes(value),
-        },
         // 展示模式：grid-网格模式，list-列表模式，waterfall-瀑布流模式，swiper-轮播模式
         mode: {
             type: String,
@@ -313,6 +311,7 @@ export default {
     watch: {
         images: {
             handler(newVal) {
+                console.log("🚀 ~ handler ~ newVal:", newVal);
                 if (this.mode === "waterfall") {
                     this.processWaterfallData();
                 }
@@ -416,25 +415,36 @@ export default {
 }
 
 .fanc-album__content--border {
-    border: 1px solid var(--album-border-color);
+    border: 1px solid var(--album-border-color, rgba(0, 0, 0, 0.1));
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.05);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: box-shadow 0.3s ease;
+}
+
+.fanc-album__content--border:hover {
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.06);
 }
 
 /* 网格模式样式 */
 .fanc-album__grid {
     display: flex;
     flex-wrap: wrap;
+    width: 100%;
 }
 
 .fanc-album__item {
     position: relative;
-    margin-bottom: 8px;
     overflow: hidden;
+    box-sizing: border-box;
+    min-height: 100px;
 }
 
 .fanc-album__image {
     width: 100%;
     height: 100%;
     display: block;
+    object-fit: cover;
 }
 
 .fanc-album__mask {
@@ -623,27 +633,6 @@ export default {
 .fanc-album__footer {
     padding: var(--album-footer-padding);
     border-top: 1px solid var(--album-footer-border-color);
-}
-
-/* 类型样式 */
-.fanc-album--primary {
-    --album-title-color: var(--primary-color);
-}
-
-.fanc-album--success {
-    --album-title-color: var(--success-color);
-}
-
-.fanc-album--warning {
-    --album-title-color: var(--warning-color);
-}
-
-.fanc-album--danger {
-    --album-title-color: var(--danger-color);
-}
-
-.fanc-album--info {
-    --album-title-color: var(--info-color);
 }
 
 /* 禁用状态 */
