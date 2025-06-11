@@ -5,6 +5,9 @@
         :class="[
             position ? `fanc-popup--${position}` : '',
             round ? 'fanc-popup--round' : '',
+            fullscreen
+                ? `fanc-popup--fullscreen fanc-popup--fullscreen-${fullscreenAnimDirection}`
+                : '',
             customClass,
         ]"
         :style="popupStyle"
@@ -57,6 +60,8 @@
  * @property {Boolean} overlayClosable - 是否点击遮罩层后关闭弹出层
  * @property {String|Object} customStyle - 自定义弹出层样式
  * @property {String} customClass - 自定义弹出层类名
+ * @property {Boolean} fullscreen - 是否全屏显示弹出层
+ * @property {String} fullscreenAnimDirection - 全屏弹出层动画方向，可选值为 center/top/bottom，默认bottom
  * @event {Function} open - 弹出层打开时触发
  * @event {Function} close - 弹出层关闭时触发
  * @event {Function} clickOverlay - 点击遮罩层时触发
@@ -132,6 +137,17 @@ export default {
         customClass: {
             type: String,
             default: "",
+        },
+        // 是否全屏显示弹出层
+        fullscreen: {
+            type: Boolean,
+            default: false,
+        },
+        // 全屏弹出层动画方向
+        fullscreenAnimDirection: {
+            type: String,
+            default: "bottom",
+            validator: (value) => ["center", "top", "bottom"].includes(value),
         },
         // 是否挂载到页面根元素
         mountToBody: {
@@ -371,6 +387,47 @@ export default {
         }
     }
 
+    /* 全屏弹出 */
+    &--fullscreen {
+        .fanc-popup__content {
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            max-width: 100%;
+            max-height: 100%;
+        }
+
+        /* 全屏中心缩放弹出 */
+        &-center .fanc-popup__content {
+            transform: scale(0.9);
+            opacity: 0;
+
+            &--show {
+                opacity: 1;
+                transform: scale(1) !important;
+            }
+        }
+
+        /* 全屏从顶部弹出 */
+        &-top .fanc-popup__content {
+            transform: translateY(-100%);
+
+            &--show {
+                transform: translateY(0) !important;
+            }
+        }
+
+        /* 全屏从底部弹出 */
+        &-bottom .fanc-popup__content {
+            transform: translateY(100%);
+
+            &--show {
+                transform: translateY(0) !important;
+            }
+        }
+    }
+
     /* 圆角样式 */
     &--round {
         &.fanc-popup--center .fanc-popup__content {
@@ -391,6 +448,10 @@ export default {
 
         &.fanc-popup--right .fanc-popup__content {
             border-radius: 16px 0 0 16px;
+        }
+
+        &.fanc-popup--fullscreen .fanc-popup__content {
+            border-radius: 0;
         }
     }
 

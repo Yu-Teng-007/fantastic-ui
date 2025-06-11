@@ -53,6 +53,12 @@
                     is-link
                     @click="showRight = true"
                 />
+                <fanc-cell
+                    title="全屏弹出"
+                    description="弹出层占满整个屏幕"
+                    is-link
+                    @click="showFullscreen = true"
+                />
             </fanc-cell-group>
 
             <fanc-popup :show="showTop" position="top" @close="showTop = false">
@@ -91,6 +97,152 @@
                     <text class="popup-content__text">这是一个从右侧弹出的弹出层</text>
                     <fanc-button size="small" type="primary" @click="showRight = false"
                         >关闭</fanc-button
+                    >
+                </view>
+            </fanc-popup>
+
+            <fanc-popup :show="showFullscreen" fullscreen closeable @close="showFullscreen = false">
+                <view class="popup-content popup-content--fullscreen">
+                    <text class="popup-content__title">全屏弹出</text>
+                    <text class="popup-content__text">这是一个全屏显示的弹出层</text>
+                    <text class="popup-content__text">占满整个屏幕空间，适合展示重要内容</text>
+                    <fanc-button size="small" type="primary" @click="showFullscreen = false"
+                        >关闭</fanc-button
+                    >
+                </view>
+            </fanc-popup>
+        </view>
+
+        <view class="section">
+            <view class="section-title">全屏弹出</view>
+            <fanc-cell-group>
+                <fanc-cell
+                    title="全屏从底部弹出"
+                    description="默认全屏弹出方式，从底部滑入"
+                    is-link
+                    @click="showFullscreenBottom = true"
+                />
+                <fanc-cell
+                    title="全屏从顶部弹出"
+                    description="全屏从顶部滑入"
+                    is-link
+                    @click="showFullscreenTop = true"
+                />
+                <fanc-cell
+                    title="全屏中心弹出"
+                    description="全屏从中心缩放弹出"
+                    is-link
+                    @click="showFullscreenCenter = true"
+                />
+                <fanc-cell
+                    title="全屏带关闭图标"
+                    description="全屏弹出层可以添加关闭图标"
+                    is-link
+                    @click="showFullscreenWithContent = true"
+                />
+                <fanc-cell
+                    title="纯按钮关闭"
+                    description="全屏弹出层只通过按钮关闭，无关闭图标"
+                    is-link
+                    @click="showFullscreenButtonClose = true"
+                />
+            </fanc-cell-group>
+
+            <!-- 全屏从底部弹出 -->
+            <fanc-popup
+                :show="showFullscreenBottom"
+                fullscreen
+                fullscreenAnimDirection="bottom"
+                @close="showFullscreenBottom = false"
+            >
+                <view class="popup-content popup-content--fullscreen-demo">
+                    <text class="popup-content__title popup-content__title--large">从底部滑入</text>
+                    <text class="popup-content__text">这是一个从底部滑入的全屏弹出层</text>
+                    <text class="popup-content__text">底部滑入是全屏弹出的默认方式</text>
+                    <fanc-button type="primary" @click="showFullscreenBottom = false"
+                        >关闭</fanc-button
+                    >
+                </view>
+            </fanc-popup>
+
+            <!-- 全屏从顶部弹出 -->
+            <fanc-popup
+                :show="showFullscreenTop"
+                fullscreen
+                fullscreenAnimDirection="top"
+                @close="showFullscreenTop = false"
+            >
+                <view class="popup-content popup-content--fullscreen-demo">
+                    <text class="popup-content__title popup-content__title--large">从顶部滑入</text>
+                    <text class="popup-content__text">这是一个从顶部滑入的全屏弹出层</text>
+                    <text class="popup-content__text">适合展示通知、提醒等重要信息</text>
+                    <fanc-button type="primary" @click="showFullscreenTop = false"
+                        >关闭</fanc-button
+                    >
+                </view>
+            </fanc-popup>
+
+            <!-- 全屏中心弹出 -->
+            <fanc-popup
+                :show="showFullscreenCenter"
+                fullscreen
+                fullscreenAnimDirection="center"
+                @close="showFullscreenCenter = false"
+            >
+                <view class="popup-content popup-content--fullscreen-demo">
+                    <text class="popup-content__title popup-content__title--large"
+                        >中心缩放弹出</text
+                    >
+                    <text class="popup-content__text">这是一个从中心缩放弹出的全屏弹出层</text>
+                    <text class="popup-content__text">适合强调内容的重要性</text>
+                    <fanc-button type="primary" @click="showFullscreenCenter = false"
+                        >关闭</fanc-button
+                    >
+                </view>
+            </fanc-popup>
+
+            <!-- 全屏带丰富内容 -->
+            <fanc-popup
+                :show="showFullscreenWithContent"
+                fullscreen
+                closeable
+                @close="showFullscreenWithContent = false"
+            >
+                <view class="popup-content popup-content--fullscreen-demo">
+                    <text class="popup-content__title popup-content__title--large">全屏弹出层</text>
+                    <text class="popup-content__text">全屏弹出层可以展示更加丰富的内容</text>
+                    <text class="popup-content__text"
+                        >适合用于重要信息展示、引导页、广告页等场景</text
+                    >
+                    <view class="popup-content__image">
+                        <view class="image-placeholder">
+                            <text>图片内容区域</text>
+                        </view>
+                    </view>
+                    <fanc-button type="primary" @click="showFullscreenWithContent = false"
+                        >我知道了</fanc-button
+                    >
+                </view>
+            </fanc-popup>
+
+            <!-- 纯按钮关闭的全屏弹窗 -->
+            <fanc-popup
+                :show="showFullscreenButtonClose"
+                fullscreen
+                :overlayClosable="false"
+                @close="showFullscreenButtonClose = false"
+            >
+                <view class="popup-content popup-content--fullscreen-demo">
+                    <text class="popup-content__title popup-content__title--large">纯按钮关闭</text>
+                    <text class="popup-content__text">这个全屏弹出层没有关闭图标</text>
+                    <text class="popup-content__text">只能通过按钮关闭，且点击遮罩层不会关闭</text>
+                    <view class="popup-content__image">
+                        <view class="image-placeholder">
+                            <text>重要内容区域</text>
+                        </view>
+                    </view>
+                    <fanc-button type="primary" @click="showFullscreenButtonClose = false"
+                        >确认并关闭</fanc-button
                     >
                 </view>
             </fanc-popup>
@@ -236,6 +388,7 @@ export default {
             showBottom: false,
             showLeft: false,
             showRight: false,
+            showFullscreen: false,
 
             // 圆角和关闭图标
             showRoundWithClose: false,
@@ -249,6 +402,17 @@ export default {
 
             // v-model示例
             showVModel: false,
+
+            // 全屏弹出
+            showFullscreenWithContent: false,
+
+            // 全屏弹出
+            showFullscreenBottom: false,
+            showFullscreenTop: false,
+            showFullscreenCenter: false,
+
+            // 纯按钮关闭
+            showFullscreenButtonClose: false,
         };
     },
     methods: {
@@ -345,6 +509,40 @@ export default {
     height: 100%;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-content--fullscreen {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-content--fullscreen-demo {
+    padding: 24px;
+    text-align: center;
+}
+
+.popup-content__title--large {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 16px;
+    color: #323233;
+}
+
+.popup-content__image {
+    margin-bottom: 24px;
+}
+
+.image-placeholder {
+    width: 100%;
+    height: 200px;
+    background-color: #f2f2f2;
+    border-radius: 4px;
+    display: flex;
     justify-content: center;
     align-items: center;
 }
