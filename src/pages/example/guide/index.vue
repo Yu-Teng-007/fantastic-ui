@@ -18,7 +18,7 @@
                     v-model:show="showBasicGuide"
                     title="欢迎使用"
                     text="这是一个简单的引导示例，点击完成按钮关闭引导。"
-                    centered
+                    close-on-click-overlay
                 ></fanc-guide>
             </view>
         </view>
@@ -32,12 +32,12 @@
                 >
                 <fanc-guide
                     v-model:show="showStepsGuide"
-                    v-model:step="currentStep"
+                    :initialStep="currentStep"
                     :steps="steps"
-                    :title="steps[currentStep].title"
-                    :text="steps[currentStep].content"
-                    centered
                     @finish="handleFinish"
+                    @skip="handleSkip"
+                    @next="onStepChange"
+                    @prev="onStepChange"
                 ></fanc-guide>
             </view>
         </view>
@@ -52,8 +52,8 @@
                 <fanc-guide
                     v-model:show="showPositionGuide"
                     title="自定义位置"
-                    text="这个引导框位于页面右上角。"
-                    :position="{ top: '100px', right: '20px' }"
+                    text="这个引导框位于页面中央，是一个全屏弹出引导。"
+                    close-on-click-overlay
                 ></fanc-guide>
             </view>
         </view>
@@ -71,7 +71,7 @@
                     :theme="currentTheme"
                     title="主题演示"
                     :text="`这是${themeNames[currentTheme]}主题的引导框。`"
-                    centered
+                    close-on-click-overlay
                 ></fanc-guide>
             </view>
         </view>
@@ -85,14 +85,12 @@
                 >
                 <fanc-guide
                     v-model:show="showAutoplayGuide"
-                    v-model:step="autoplayStep"
+                    :initialStep="autoplayStep"
                     :steps="autoplaySteps"
-                    :title="autoplaySteps[autoplayStep].title"
-                    :text="autoplaySteps[autoplayStep].content"
-                    centered
                     autoplay
                     :autoplay-delay="2000"
                     @finish="handleAutoplayFinish"
+                    close-on-click-overlay
                 ></fanc-guide>
             </view>
         </view>
@@ -104,7 +102,7 @@
                 <fanc-button type="primary" @click="showCustomGuide = true"
                     >显示自定义内容引导</fanc-button
                 >
-                <fanc-guide v-model:show="showCustomGuide" centered>
+                <fanc-guide v-model:show="showCustomGuide" close-on-click-overlay>
                     <template #title>
                         <view class="custom-title">
                             <fanc-icon name="star" color="#ffc107" size="20"></fanc-icon>
@@ -154,13 +152,110 @@
 
                 <fanc-guide
                     v-model:show="showFeatureGuide"
-                    v-model:step="featureStep"
+                    :initialStep="featureStep"
                     :steps="featureGuides"
-                    :title="featureGuides[featureStep].title"
-                    :text="featureGuides[featureStep].content"
-                    :position="featurePositions[featureStep]"
                     @finish="handleFeatureFinish"
+                    @skip="handleFeatureSkip"
+                    @next="onFeatureStepChange"
+                    @prev="onFeatureStepChange"
+                    close-on-click-overlay
                 ></fanc-guide>
+            </view>
+        </view>
+
+        <!-- 表单填写引导 -->
+        <view class="section">
+            <view class="section-title">表单填写引导</view>
+            <view class="demo-block">
+                <view class="form-container">
+                    <view class="form-item">
+                        <text class="form-label">用户名</text>
+                        <input
+                            class="form-input"
+                            v-model="formData.username"
+                            placeholder="请输入用户名"
+                        />
+                    </view>
+                    <view class="form-item">
+                        <text class="form-label">密码</text>
+                        <input
+                            class="form-input"
+                            v-model="formData.password"
+                            type="password"
+                            placeholder="请输入密码"
+                        />
+                    </view>
+                    <view class="form-item">
+                        <text class="form-label">手机号</text>
+                        <input
+                            class="form-input"
+                            v-model="formData.phone"
+                            placeholder="请输入手机号"
+                        />
+                    </view>
+                    <view class="form-buttons">
+                        <fanc-button type="primary" @click="submitForm">提交</fanc-button>
+                        <fanc-button type="default" @click="startFormGuide"
+                            >显示填写引导</fanc-button
+                        >
+                    </view>
+                </view>
+
+                <fanc-popup
+                    v-model:show="showFormGuide"
+                    position="center"
+                    :overlay-closable="false"
+                    :z-index="9999"
+                >
+                    <view class="form-guide">
+                        <view class="form-guide__header">
+                            <text class="form-guide__title">{{
+                                formGuideSteps[formGuideStep].title || ""
+                            }}</text>
+                        </view>
+                        <view class="form-guide__content">
+                            <text class="form-guide__text">{{
+                                formGuideSteps[formGuideStep].content || ""
+                            }}</text>
+                        </view>
+                        <view class="form-guide__footer">
+                            <view class="form-guide__steps">
+                                <view
+                                    class="form-guide__step"
+                                    v-for="(step, index) in formGuideSteps"
+                                    :key="index"
+                                    :class="{ 'form-guide__step--active': index === formGuideStep }"
+                                ></view>
+                            </view>
+                            <view class="form-guide__buttons">
+                                <view
+                                    class="form-guide__button form-guide__button--skip"
+                                    v-if="formGuideStep < formGuideSteps.length - 1"
+                                    @click="handleFormGuideSkip"
+                                >
+                                    跳过
+                                </view>
+                                <view
+                                    class="form-guide__button form-guide__button--prev"
+                                    v-if="formGuideStep > 0"
+                                    @click="handleFormGuidePrev"
+                                >
+                                    上一步
+                                </view>
+                                <view
+                                    class="form-guide__button form-guide__button--next"
+                                    @click="handleFormGuideNext"
+                                >
+                                    {{
+                                        formGuideStep === formGuideSteps.length - 1
+                                            ? "完成"
+                                            : "下一步"
+                                    }}
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                </fanc-popup>
             </view>
         </view>
     </view>
@@ -214,10 +309,28 @@ export default {
                 { title: "购物车", content: "您的购物车，查看已选商品。" },
                 { title: "个人中心", content: "查看您的订单和个人信息。" },
             ],
-            featurePositions: [
-                { top: "100px", left: "20px" },
-                { top: "100px", left: "50%" },
-                { top: "100px", right: "20px" },
+
+            // 表单填写引导
+            formData: {
+                username: "",
+                password: "",
+                phone: "",
+            },
+            showFormGuide: false,
+            formGuideStep: 0,
+            formGuideSteps: [
+                {
+                    title: "用户引导标题",
+                    content: "按照引导填写表单的每一项内容，请先填写用户名。",
+                },
+                {
+                    title: "密码填写",
+                    content: "请设置一个安全的密码，建议使用字母、数字和特殊字符的组合。",
+                },
+                {
+                    title: "手机号填写",
+                    content: "请输入您的手机号码，将用于接收验证码和重要通知。",
+                },
             ],
         };
     },
@@ -225,6 +338,13 @@ export default {
         handleFinish() {
             this.$toast.success("引导完成！");
             this.currentStep = 0;
+        },
+        handleSkip() {
+            this.$toast.text("已跳过引导");
+            this.currentStep = 0;
+        },
+        onStepChange(step) {
+            console.log("步骤变更:", step);
         },
         showLightTheme() {
             this.currentTheme = "light";
@@ -252,6 +372,43 @@ export default {
         handleFeatureFinish() {
             this.$toast.success("功能引导完成！");
             this.featureStep = 0;
+        },
+        handleFeatureSkip() {
+            this.$toast.text("已跳过功能引导");
+            this.featureStep = 0;
+        },
+        onFeatureStepChange(step) {
+            console.log("功能引导步骤变更:", step);
+        },
+        submitForm() {
+            this.$toast.success("表单提交成功！");
+        },
+        startFormGuide() {
+            this.formGuideStep = 0;
+            this.showFormGuide = true;
+            console.log("显示表单引导", this.showFormGuide);
+        },
+        handleFormGuideFinish() {
+            this.$toast.success("表单引导完成！");
+            this.formGuideStep = 0;
+            this.showFormGuide = false;
+        },
+        handleFormGuideSkip() {
+            this.$toast.text("已跳过表单引导");
+            this.formGuideStep = 0;
+            this.showFormGuide = false;
+        },
+        handleFormGuideNext() {
+            if (this.formGuideStep === this.formGuideSteps.length - 1) {
+                this.handleFormGuideFinish();
+            } else {
+                this.formGuideStep++;
+            }
+        },
+        handleFormGuidePrev() {
+            if (this.formGuideStep > 0) {
+                this.formGuideStep--;
+            }
         },
     },
 };
@@ -368,5 +525,122 @@ export default {
 .feature-button text {
     font-size: 14px;
     color: #323233;
+}
+
+/* 表单样式 */
+.form-container {
+    width: 100%;
+}
+
+.form-item {
+    margin-bottom: 16px;
+}
+
+.form-label {
+    display: block;
+    font-size: 14px;
+    color: #323233;
+    margin-bottom: 8px;
+}
+
+.form-input {
+    width: 100%;
+    height: 40px;
+    padding: 0 12px;
+    background-color: #f7f8fa;
+    border: 1px solid #e5e7eb;
+    border-radius: 4px;
+    font-size: 14px;
+    color: #323233;
+    box-sizing: border-box;
+}
+
+.form-buttons {
+    display: flex;
+    gap: 12px;
+    margin-top: 24px;
+}
+
+.form-guide {
+    width: 300px;
+    background-color: #fff;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.form-guide__header {
+    margin-bottom: 16px;
+}
+
+.form-guide__title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #323233;
+}
+
+.form-guide__content {
+    margin-bottom: 24px;
+}
+
+.form-guide__text {
+    font-size: 14px;
+    color: #646566;
+    line-height: 1.6;
+}
+
+.form-guide__footer {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-guide__steps {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 16px;
+}
+
+.form-guide__step {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: #dcdee0;
+    margin: 0 4px;
+    transition: all 0.3s;
+}
+
+.form-guide__step--active {
+    background-color: #1989fa;
+    transform: scale(1.2);
+}
+
+.form-guide__buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.form-guide__button {
+    padding: 8px 16px;
+    font-size: 14px;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.form-guide__button--skip {
+    color: #969799;
+    background-color: transparent;
+}
+
+.form-guide__button--prev {
+    color: #323233;
+    background-color: #f2f3f5;
+    margin-right: 8px;
+}
+
+.form-guide__button--next {
+    color: #fff;
+    background-color: #1989fa;
+    flex: 1;
 }
 </style>

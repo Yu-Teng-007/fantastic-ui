@@ -1,71 +1,105 @@
 <template>
-    <view class="fanc-guide" :class="[`fanc-guide--${theme}`]" v-if="show">
-        <view class="fanc-guide__mask" @click="handleMaskClick" v-if="mask"></view>
-        <view
-            class="fanc-guide__content"
-            :class="{
-                'fanc-guide__content--centered': centered,
-                'fanc-guide__content--with-close': showClose,
-            }"
-            :style="contentStyle"
-        >
-            <view class="fanc-guide__header" v-if="title || $slots.title">
-                <slot name="title">
-                    <text class="fanc-guide__title">{{ title }}</text>
-                </slot>
-            </view>
-            <view class="fanc-guide__body">
-                <slot>
-                    <text class="fanc-guide__text">{{ text }}</text>
-                </slot>
-            </view>
-            <view class="fanc-guide__footer" v-if="showFooter">
-                <slot name="footer">
-                    <view class="fanc-guide__steps" v-if="steps.length > 0">
-                        <view
-                            class="fanc-guide__step"
-                            v-for="(step, index) in steps"
-                            :key="index"
-                            :class="{
-                                'fanc-guide__step--active': index === currentStep,
-                            }"
-                        ></view>
-                    </view>
-                    <view class="fanc-guide__buttons">
-                        <view
-                            class="fanc-guide__button fanc-guide__button--prev"
-                            v-if="currentStep > 0 && showPrevButton"
-                            @click="handlePrev"
-                        >
-                            <slot name="prev-button">{{ prevButtonText }}</slot>
+    <fanc-popup
+        v-model:show="showGuide"
+        :overlay="true"
+        position="center"
+        :overlay-closable="closeOnClickMask"
+        :z-index="9999"
+        custom-class="fanc-guide-popup"
+    >
+        <view class="fanc-guide" :class="[`fanc-guide--${theme}`]">
+            <view
+                class="fanc-guide__content"
+                :class="{
+                    'fanc-guide__content--with-close': showClose,
+                }"
+            >
+                <!-- 标题 -->
+                <view class="fanc-guide__header" v-if="currentTitle || $slots.title">
+                    <slot name="title">
+                        <text class="fanc-guide__title">{{ currentTitle }}</text>
+                    </slot>
+                </view>
+
+                <!-- 内容 -->
+                <view class="fanc-guide__body">
+                    <slot>
+                        <text class="fanc-guide__text">{{ currentText }}</text>
+                    </slot>
+                </view>
+
+                <!-- 底部 -->
+                <view class="fanc-guide__footer" v-if="showFooter">
+                    <slot name="footer">
+                        <!-- 步骤指示器 -->
+                        <view class="fanc-guide__steps" v-if="steps.length > 0">
+                            <view
+                                class="fanc-guide__step"
+                                v-for="(step, index) in steps"
+                                :key="index"
+                                :class="{
+                                    'fanc-guide__step--active': index === currentStep,
+                                }"
+                            ></view>
                         </view>
-                        <view
-                            class="fanc-guide__button fanc-guide__button--next"
-                            @click="handleNext"
-                        >
-                            <slot name="next-button">
-                                {{ isLastStep ? finishButtonText : nextButtonText }}
-                            </slot>
+
+                        <!-- 按钮区域 -->
+                        <view class="fanc-guide__buttons">
+                            <!-- 跳过按钮 -->
+                            <view
+                                class="fanc-guide__button fanc-guide__button--skip"
+                                v-if="!isLastStep && showSkipButton"
+                                @click="handleSkip"
+                            >
+                                <slot name="skip-button">{{ skipButtonText }}</slot>
+                            </view>
+
+                            <!-- 上一步按钮 -->
+                            <view
+                                class="fanc-guide__button fanc-guide__button--prev"
+                                v-if="currentStep > 0 && showPrevButton"
+                                @click="handlePrev"
+                            >
+                                <slot name="prev-button">{{ prevButtonText }}</slot>
+                            </view>
+
+                            <!-- 下一步/完成按钮 -->
+                            <view
+                                class="fanc-guide__button fanc-guide__button--next"
+                                @click="handleNext"
+                            >
+                                <slot name="next-button">
+                                    {{ isLastStep ? finishButtonText : nextButtonText }}
+                                </slot>
+                            </view>
                         </view>
-                    </view>
-                </slot>
-            </view>
-            <view class="fanc-guide__close" v-if="showClose" @click="handleClose">
-                <slot name="close-icon">
-                    <text class="fanc-guide__close-icon">×</text>
-                </slot>
+                    </slot>
+                </view>
+
+                <!-- 关闭按钮 -->
+                <view class="fanc-guide__close" v-if="showClose" @click="handleClose">
+                    <slot name="close-icon">
+                        <text class="fanc-guide__close-icon">×</text>
+                    </slot>
+                </view>
             </view>
         </view>
-    </view>
+    </fanc-popup>
 </template>
 
 <script>
 export default {
     name: "FancGuide",
+
+    model: {
+        prop: "show",
+        event: "update:show",
+    },
+
     props: {
         // 是否显示引导
         show: {
-            type: Boolean,
+            type: [Boolean, Number],
             default: true,
         },
         // 引导标题
@@ -83,15 +117,10 @@ export default {
             type: Array,
             default: () => [],
         },
-        // 当前步骤
-        step: {
+        // 初始步骤
+        initialStep: {
             type: Number,
             default: 0,
-        },
-        // 是否显示遮罩层
-        mask: {
-            type: Boolean,
-            default: true,
         },
         // 点击遮罩是否关闭
         closeOnClickMask: {
@@ -113,6 +142,11 @@ export default {
             type: Boolean,
             default: true,
         },
+        // 是否显示跳过按钮
+        showSkipButton: {
+            type: Boolean,
+            default: true,
+        },
         // 上一步按钮文本
         prevButtonText: {
             type: String,
@@ -128,31 +162,16 @@ export default {
             type: String,
             default: "完成",
         },
-        // 引导框位置
-        position: {
-            type: Object,
-            default: () => ({}),
-        },
-        // 是否居中显示
-        centered: {
-            type: Boolean,
-            default: false,
+        // 跳过按钮文本
+        skipButtonText: {
+            type: String,
+            default: "跳过",
         },
         // 主题风格
         theme: {
             type: String,
             default: "light",
             validator: (value) => ["light", "dark", "primary"].includes(value),
-        },
-        // 引导框宽度
-        width: {
-            type: [Number, String],
-            default: 280,
-        },
-        // 引导框最大宽度
-        maxWidth: {
-            type: [Number, String],
-            default: "80%",
         },
         // 是否自动播放
         autoplay: {
@@ -172,69 +191,55 @@ export default {
     },
     data() {
         return {
-            currentStep: this.step,
+            currentStep: this.initialStep,
             timer: null,
         };
     },
     computed: {
         isLastStep() {
+            // 如果没有步骤数据，则当作最后一步
+            if (!this.steps || this.steps.length === 0) {
+                return true;
+            }
             return this.currentStep === this.steps.length - 1;
         },
-        contentStyle() {
-            const style = {};
-
-            // 设置宽度
-            if (this.width) {
-                style.width = typeof this.width === "number" ? `${this.width}px` : this.width;
+        showGuide() {
+            // 将show属性转换为布尔值
+            return Boolean(this.show);
+        },
+        currentTitle() {
+            // 根据当前步骤获取标题
+            if (this.steps.length > 0 && this.currentStep < this.steps.length) {
+                return this.steps[this.currentStep]?.title || "";
             }
-
-            // 设置最大宽度
-            if (this.maxWidth) {
-                style.maxWidth =
-                    typeof this.maxWidth === "number" ? `${this.maxWidth}px` : this.maxWidth;
+            return this.title;
+        },
+        currentText() {
+            // 根据当前步骤获取内容
+            if (this.steps.length > 0 && this.currentStep < this.steps.length) {
+                return this.steps[this.currentStep]?.content || "";
             }
-
-            // 设置位置
-            if (!this.centered && this.position) {
-                if (this.position.top !== undefined) {
-                    style.top =
-                        typeof this.position.top === "number"
-                            ? `${this.position.top}px`
-                            : this.position.top;
-                }
-                if (this.position.bottom !== undefined) {
-                    style.bottom =
-                        typeof this.position.bottom === "number"
-                            ? `${this.position.bottom}px`
-                            : this.position.bottom;
-                }
-                if (this.position.left !== undefined) {
-                    style.left =
-                        typeof this.position.left === "number"
-                            ? `${this.position.left}px`
-                            : this.position.left;
-                }
-                if (this.position.right !== undefined) {
-                    style.right =
-                        typeof this.position.right === "number"
-                            ? `${this.position.right}px`
-                            : this.position.right;
-                }
-            }
-
-            return style;
+            return this.text;
         },
     },
     watch: {
-        step(val) {
+        initialStep(val) {
             this.currentStep = val;
         },
         show(val) {
-            if (val && this.autoplay) {
-                this.startAutoplay();
+            console.log("引导组件show属性变化:", val);
+            if (val) {
+                // 显示时重置步骤到初始值
+                this.currentStep = this.initialStep;
+                if (this.autoplay) {
+                    this.startAutoplay();
+                }
             } else {
                 this.stopAutoplay();
             }
+        },
+        showGuide(val) {
+            console.log("showGuide计算属性变化:", val);
         },
         autoplay(val) {
             if (val && this.show) {
@@ -260,24 +265,21 @@ export default {
             } else {
                 this.currentStep++;
                 this.$emit("next", this.currentStep);
-                this.$emit("update:step", this.currentStep);
             }
         },
         handlePrev() {
             if (this.currentStep > 0) {
                 this.currentStep--;
                 this.$emit("prev", this.currentStep);
-                this.$emit("update:step", this.currentStep);
             }
         },
         handleClose() {
             this.$emit("close");
             this.$emit("update:show", false);
         },
-        handleMaskClick() {
-            if (this.closeOnClickMask) {
-                this.handleClose();
-            }
+        handleSkip() {
+            this.$emit("skip");
+            this.$emit("update:show", false);
         },
         startAutoplay() {
             this.stopAutoplay();
@@ -285,10 +287,9 @@ export default {
                 if (this.isLastStep) {
                     if (this.loop) {
                         this.currentStep = 0;
-                        this.$emit("update:step", 0);
                     } else {
+                        this.handleClose();
                         this.stopAutoplay();
-                        this.$emit("finish");
                     }
                 } else {
                     this.handleNext();
@@ -305,75 +306,65 @@ export default {
 };
 </script>
 
-<style>
-.fanc-guide {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 9999;
-    pointer-events: none;
+<style lang="scss">
+.fanc-guide-popup {
+    .fanc-popup__content {
+        background-color: transparent !important;
+        box-shadow: none !important;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 }
 
-.fanc-guide__mask {
-    position: absolute;
-    top: 0;
-    left: 0;
+.fanc-guide {
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.5);
-    pointer-events: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .fanc-guide__content {
-    position: absolute;
+    position: relative;
     background-color: var(--white);
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    padding: 20px;
-    pointer-events: auto;
-    z-index: 10000;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    padding: 24px;
+    max-width: 320px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
     box-sizing: border-box;
 }
 
-.fanc-guide__content--centered {
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-.fanc-guide__content--with-close {
-    padding-top: 36px;
-}
-
 .fanc-guide__header {
-    margin-bottom: 12px;
+    margin-bottom: 16px;
 }
 
 .fanc-guide__title {
     font-size: 18px;
-    font-weight: 600;
+    font-weight: bold;
     color: var(--text-primary);
     line-height: 1.4;
-    display: block;
 }
 
 .fanc-guide__body {
-    margin-bottom: 16px;
+    flex: 1;
+    margin-bottom: 24px;
 }
 
 .fanc-guide__text {
     font-size: 14px;
     color: var(--text-secondary);
     line-height: 1.6;
-    display: block;
 }
 
 .fanc-guide__footer {
     display: flex;
     flex-direction: column;
-    align-items: center;
 }
 
 .fanc-guide__steps {
@@ -403,12 +394,17 @@ export default {
 }
 
 .fanc-guide__button {
-    padding: 8px 16px;
+    padding: 10px 16px;
     font-size: 14px;
     border-radius: 4px;
     cursor: pointer;
     transition: all 0.3s;
     text-align: center;
+}
+
+.fanc-guide__button--skip {
+    color: var(--gray-500);
+    background-color: transparent;
 }
 
 .fanc-guide__button--prev {
@@ -461,6 +457,10 @@ export default {
     color: var(--gray-300);
 }
 
+.fanc-guide--dark .fanc-guide__button--skip {
+    color: var(--gray-400);
+}
+
 .fanc-guide--dark .fanc-guide__button--prev {
     background-color: rgba(255, 255, 255, 0.1);
     color: var(--gray-300);
@@ -484,15 +484,11 @@ export default {
 }
 
 .fanc-guide--primary .fanc-guide__text {
-    color: rgba(255, 255, 255, 0.9);
+    color: rgba(255, 255, 255, 0.8);
 }
 
-.fanc-guide--primary .fanc-guide__step {
-    background-color: rgba(255, 255, 255, 0.5);
-}
-
-.fanc-guide--primary .fanc-guide__step--active {
-    background-color: var(--white);
+.fanc-guide--primary .fanc-guide__button--skip {
+    color: rgba(255, 255, 255, 0.6);
 }
 
 .fanc-guide--primary .fanc-guide__button--prev {
@@ -503,6 +499,14 @@ export default {
 .fanc-guide--primary .fanc-guide__button--next {
     background-color: var(--white);
     color: var(--fanc-primary-color);
+}
+
+.fanc-guide--primary .fanc-guide__step {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.fanc-guide--primary .fanc-guide__step--active {
+    background-color: var(--white);
 }
 
 .fanc-guide--primary .fanc-guide__close {
