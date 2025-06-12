@@ -13,21 +13,21 @@
                     src="https://music.163.com/song/media/outer/url?id=447925558.mp3"
                     title="梦想家"
                     author="白举纲"
-                    cover="https://p2.music.126.net/QHw-RuMwfQkmgtiyRpOtdg==/18264758718898447.jpg"
+                    cover="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=500&auto=format&fit=crop"
                 ></fanc-audio>
             </view>
         </view>
 
-        <!-- 不同主题 -->
+        <!-- 自定义颜色 -->
         <view class="section">
-            <view class="section-title">不同主题</view>
+            <view class="section-title">自定义颜色</view>
             <view class="example-block">
                 <fanc-audio
                     src="https://music.163.com/song/media/outer/url?id=28012031.mp3"
                     title="Time"
                     author="Hans Zimmer"
-                    cover="https://p2.music.126.net/wW-sSvvrKfYMNO5HQxQ8GA==/8898348765273307.jpg"
-                    type="primary"
+                    cover="https://images.unsplash.com/photo-1507838153414-b4b713384a76?q=80&w=500&auto=format&fit=crop"
+                    color="#1976d2"
                     class="example-item"
                 ></fanc-audio>
 
@@ -35,8 +35,8 @@
                     src="https://music.163.com/song/media/outer/url?id=5057892.mp3"
                     title="Summer"
                     author="Joe Hisaishi"
-                    cover="https://p1.music.126.net/ViuPiT1ZjLdencbF0ktTfw==/7957165652256243.jpg"
-                    type="success"
+                    cover="https://images.unsplash.com/photo-1534430480872-3498386e7856?q=80&w=500&auto=format&fit=crop"
+                    color="#4caf50"
                     class="example-item"
                 ></fanc-audio>
 
@@ -44,8 +44,8 @@
                     src="https://music.163.com/song/media/outer/url?id=26664345.mp3"
                     title="Moon River"
                     author="Audrey Hepburn"
-                    cover="https://p2.music.126.net/9WvMFDLm7u4OF7iYQsJIjw==/109951165633862464.jpg"
-                    type="warning"
+                    cover="https://images.unsplash.com/photo-1614149162883-504ce4d13909?q=80&w=500&auto=format&fit=crop"
+                    color="#ff9800"
                     class="example-item"
                 ></fanc-audio>
 
@@ -53,8 +53,8 @@
                     src="https://music.163.com/song/media/outer/url?id=17177324.mp3"
                     title="Flower Dance"
                     author="DJ Okawari"
-                    cover="https://p2.music.126.net/e4LLVF0V_UyLYODUUJTjWg==/669602418069239.jpg"
-                    type="danger"
+                    cover="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=500&auto=format&fit=crop"
+                    color="#f44336"
                     class="example-item"
                 ></fanc-audio>
 
@@ -62,11 +62,12 @@
                     src="https://music.163.com/song/media/outer/url?id=1443838820.mp3"
                     title="出山"
                     author="花粥"
-                    cover="https://p1.music.126.net/xUAfdMHdXhu3BmO4g8nOYA==/109951164590324445.jpg"
-                    type="info"
+                    cover="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?q=80&w=500&auto=format&fit=crop"
+                    color="#2196f3"
                     class="example-item"
                 ></fanc-audio>
             </view>
+            <view class="tip">使用color属性可以自定义播放器的主题颜色</view>
         </view>
 
         <!-- 迷你模式 -->
@@ -85,7 +86,7 @@
                     src="https://music.163.com/song/media/outer/url?id=1359460183.mp3"
                     title="小城夏天"
                     author="LBI利比"
-                    type="primary"
+                    color="#1976d2"
                     mini
                     class="example-item"
                 ></fanc-audio>
@@ -114,11 +115,69 @@
                     src="https://music.163.com/song/media/outer/url?id=487191330.mp3"
                     title="The Nights"
                     author="Avicii"
-                    cover="https://p2.music.126.net/mQyWm3vC5NWYGBf3K27n2g==/109951163221157827.jpg"
+                    cover="https://images.unsplash.com/photo-1506157786151-b8491531f063?q=80&w=500&auto=format&fit=crop"
+                    :showDownload="true"
+                    class="example-item"
+                ></fanc-audio>
+
+                <fanc-audio
+                    src="https://music.163.com/song/media/outer/url?id=1359460183.mp3"
+                    title="小城夏天"
+                    author="LBI利比"
+                    color="#1976d2"
+                    mini
                     :showDownload="true"
                     class="example-item"
                 ></fanc-audio>
             </view>
+            <view class="tip">下载按钮会显示在播放器右上角，以角标形式呈现</view>
+        </view>
+
+        <!-- 不同颜色的下载按钮 -->
+        <view class="section">
+            <view class="section-title">不同颜色的下载按钮</view>
+            <view class="example-block">
+                <fanc-audio
+                    src="https://music.163.com/song/media/outer/url?id=28012031.mp3"
+                    title="Time"
+                    author="Hans Zimmer"
+                    cover="https://images.unsplash.com/photo-1507838153414-b4b713384a76?q=80&w=500&auto=format&fit=crop"
+                    color="#4caf50"
+                    :showDownload="true"
+                    class="example-item"
+                ></fanc-audio>
+
+                <fanc-audio
+                    src="https://music.163.com/song/media/outer/url?id=26664345.mp3"
+                    title="Moon River"
+                    author="Audrey Hepburn"
+                    cover="https://images.unsplash.com/photo-1614149162883-504ce4d13909?q=80&w=500&auto=format&fit=crop"
+                    color="#ff9800"
+                    :showDownload="true"
+                    class="example-item"
+                ></fanc-audio>
+
+                <fanc-audio
+                    src="https://music.163.com/song/media/outer/url?id=17177324.mp3"
+                    title="Flower Dance"
+                    author="DJ Okawari"
+                    cover="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=500&auto=format&fit=crop"
+                    color="#f44336"
+                    :showDownload="true"
+                    class="example-item"
+                ></fanc-audio>
+
+                <fanc-audio
+                    src="https://music.163.com/song/media/outer/url?id=1443838820.mp3"
+                    title="出山"
+                    author="花粥"
+                    cover="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?q=80&w=500&auto=format&fit=crop"
+                    color="#8e44ad"
+                    :showDownload="true"
+                    class="example-item"
+                ></fanc-audio>
+            </view>
+            <view class="tip">下载按钮的颜色会跟随播放器的自定义颜色</view>
         </view>
 
         <!-- 禁用状态 -->
@@ -129,7 +188,7 @@
                     src="https://music.163.com/song/media/outer/url?id=26127161.mp3"
                     title="暧昧"
                     author="薛之谦"
-                    cover="https://p1.music.126.net/CjGoqmvF_MHbXjQmZRgrYQ==/17907745881553797.jpg"
+                    cover="https://images.unsplash.com/photo-1584679109597-c656b19974c9?q=80&w=500&auto=format&fit=crop"
                     disabled
                     class="example-item"
                 ></fanc-audio>
@@ -145,7 +204,7 @@
                     src="https://music.163.com/song/media/outer/url?id=32192436.mp3"
                     title="句号"
                     author="G.E.M.邓紫棋"
-                    cover="https://p1.music.126.net/VY-LfiQZZNjtDBHGmEu85A==/109951164900229922.jpg"
+                    cover="https://images.unsplash.com/photo-1511379938547-c1f69419868d?q=80&w=500&auto=format&fit=crop"
                     :autoplay="true"
                     class="example-item"
                 ></fanc-audio>
@@ -160,7 +219,7 @@
                     src="https://music.163.com/song/media/outer/url?id=187408.mp3"
                     title="千千阙歌"
                     author="陈慧娴"
-                    cover="https://p1.music.126.net/U7LwRwsqz1oyD09H4OFhIw==/109951164221720976.jpg"
+                    cover="https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?q=80&w=500&auto=format&fit=crop"
                     :loop="true"
                     class="example-item"
                 ></fanc-audio>
@@ -176,7 +235,7 @@
                     src="https://music.163.com/song/media/outer/url?id=409654891.mp3"
                     title="平凡之路"
                     author="朴树"
-                    cover="https://p1.music.126.net/W_5XiCv3rGS1-J7EXpHSCQ==/18885211718782327.jpg"
+                    cover="https://images.unsplash.com/photo-1477233534935-f5e6fe7c1159?q=80&w=500&auto=format&fit=crop"
                     class="example-item"
                     @play="onPlay"
                     @pause="onPause"
