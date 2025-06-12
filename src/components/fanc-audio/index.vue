@@ -727,8 +727,7 @@ export default {
     top: 0;
     right: 0;
     border-top-right-radius: var(--fanc-audio-border-radius);
-    width: 0;
-    height: 0;
+
     border-style: solid;
     border-width: 0 28px 28px 0;
     border-color: transparent var(--fanc-audio-custom-color, var(--fanc-primary-color)) transparent
@@ -741,24 +740,11 @@ export default {
     justify-content: center;
 }
 
-.fanc-audio__download-triangle::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 28px;
-    height: 28px;
-    display: flex;
-    align-items: flex-start;
-    justify-content: flex-end;
-    padding: 3px 3px 0 0;
-}
-
 .fanc-audio__download-triangle .fanc-icon {
     position: absolute;
-    top: 4px;
-    right: 4px;
-    transform: rotate(-45deg);
+    right: -25px;
+    top: 2px;
+    z-index: 10;
 }
 
 .fanc-audio__download-triangle:hover {
