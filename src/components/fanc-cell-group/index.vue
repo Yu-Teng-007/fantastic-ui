@@ -2,12 +2,15 @@
 <template>
     <view class="fanc-cell-group" :class="{ 'fanc-cell-group--inset': inset }">
         <!-- 标题区域 -->
-        <view class="fanc-cell-group__header" v-if="title || description || $slots.title || $slots.description">
+        <view
+            class="fanc-cell-group__header"
+            v-if="title || description || $slots.title || $slots.description"
+        >
             <!-- 标题 -->
             <view class="fanc-cell-group__title" v-if="title || $slots.title">
                 <slot name="title">{{ title }}</slot>
             </view>
-            
+
             <!-- 描述信息 -->
             <view class="fanc-cell-group__description" v-if="description || $slots.description">
                 <slot name="description">{{ description }}</slot>
@@ -53,14 +56,14 @@ export default {
     &__header {
         padding: 16px 16px 8px;
     }
-    
+
     &__title {
         color: var(--gray-600);
         font-size: 14px;
         line-height: 1.2;
         font-weight: 500;
     }
-    
+
     &__description {
         margin-top: 4px;
         color: var(--gray-500);
@@ -97,7 +100,7 @@ export default {
     }
 
     &--inset {
-        margin: 0 16px;
+        margin:10px 16px;
     }
 }
 </style>

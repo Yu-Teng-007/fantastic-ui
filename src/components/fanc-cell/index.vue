@@ -9,11 +9,19 @@
         ]"
         @click="onClick"
     >
-        <view :class="['fanc-cell__left', titleWidth ? 'fanc-cell__left--' + titleWidth : '']">
-            <view class="fanc-cell__icon" v-if="icon || $slots.icon">
-                <slot name="icon">
-                    <fanc-icon :name="icon" class="fanc-cell__icon-inner" size="16" />
-                </slot>
+        <!-- 自定义左侧区域 -->
+        <view
+            class="fanc-cell__left-container"
+            :class="{ 'fanc-cell__left-container--center': center }"
+        >
+            <slot name="left" v-if="$slots.left"></slot>
+        </view>
+        <view
+            v-if="!$slots.left"
+            :class="['fanc-cell__left', titleWidth ? 'fanc-cell__left--' + titleWidth : '']"
+        >
+            <view class="fanc-cell__icon" v-if="icon">
+                <fanc-icon :name="icon" class="fanc-cell__icon-inner" size="16" />
             </view>
 
             <view class="fanc-cell__title">
@@ -192,6 +200,10 @@ export default {
 
     &--center {
         align-items: center;
+
+        .fanc-cell__left {
+            align-items: center;
+        }
     }
 
     &--clickable {
@@ -200,6 +212,15 @@ export default {
 
     &--hover:active {
         background-color: rgba(#323233, 0.05);
+    }
+
+    &__left-container {
+        display: flex;
+        align-items: flex-start;
+
+        &--center {
+            align-items: center;
+        }
     }
 
     &__left {

@@ -288,8 +288,8 @@ export default {
         return {
             eventLogs: [],
             audioSrc:
-                "https://wx.music.tc.qq.com/M80000140o6q3Jvfzr.mp3?fromtag=8&guid=ilingku&src=M800004Yi5BD3ksoAN.mp3&trace=4b5427ab69326485&uin=8200895&vkey=4DB2B90411E526DF0BB7FBD4390F23E96879D9EC3946E2317678E6E8FD39D1F8C340BB99480593A8480C515E8FF71CC0FC1FD17E8EFA7C48__v21e2a1733",
-            audioCover: "https://imge.kugou.com/stdmusic/120/20220705/20220705143006989099.jpg",
+                "/static/audio/M80000140o6q3Jvfzr.mp3",
+            audioCover: "/static/audio/20220705143006989099.jpg",
             audioTitle: "蒲公英的约定",
             audioAuthor: "周杰伦",
         };

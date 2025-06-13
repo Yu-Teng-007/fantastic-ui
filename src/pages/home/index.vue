@@ -59,9 +59,14 @@
                     :url="item.url"
                     center
                 >
-                    <template #icon>
-                        <view class="component-icon">
-                            <fanc-icon :name="item.icon" size="18"></fanc-icon>
+                    <template #left>
+                        <view class="fanc-cell__left">
+                            <view class="component-icon">
+                                <fanc-icon :name="item.icon" size="18"></fanc-icon>
+                            </view>
+                            <view class="fanc-cell__title">
+                                <text>{{ item.title }}</text>
+                            </view>
                         </view>
                     </template>
                 </fanc-cell>
@@ -101,9 +106,14 @@
                     :url="item.url"
                     center
                 >
-                    <template #icon>
-                        <view class="component-icon">
-                            <fanc-icon :name="item.icon" size="18"></fanc-icon>
+                    <template #left>
+                        <view class="fanc-cell__left">
+                            <view class="component-icon">
+                                <fanc-icon :name="item.icon" size="18"></fanc-icon>
+                            </view>
+                            <view class="fanc-cell__title">
+                                <text>{{ item.title }}</text>
+                            </view>
                         </view>
                     </template>
                 </fanc-cell>
@@ -123,9 +133,14 @@
                     :url="item.url"
                     center
                 >
-                    <template #icon>
-                        <view class="component-icon">
-                            <fanc-icon :name="item.icon" size="18"></fanc-icon>
+                    <template #left>
+                        <view class="fanc-cell__left">
+                            <view class="component-icon">
+                                <fanc-icon :name="item.icon" size="18"></fanc-icon>
+                            </view>
+                            <view class="fanc-cell__title">
+                                <text>{{ item.title }}</text>
+                            </view>
                         </view>
                     </template>
                 </fanc-cell>
@@ -145,9 +160,14 @@
                     :url="item.url"
                     center
                 >
-                    <template #icon>
-                        <view class="component-icon">
-                            <fanc-icon :name="item.icon" size="18"></fanc-icon>
+                    <template #left>
+                        <view class="fanc-cell__left">
+                            <view class="component-icon">
+                                <fanc-icon :name="item.icon" size="18"></fanc-icon>
+                            </view>
+                            <view class="fanc-cell__title">
+                                <text>{{ item.title }}</text>
+                            </view>
                         </view>
                     </template>
                 </fanc-cell>
@@ -167,9 +187,14 @@
                     :url="item.url"
                     center
                 >
-                    <template #icon>
-                        <view class="component-icon">
-                            <fanc-icon :name="item.icon" size="18"></fanc-icon>
+                    <template #left>
+                        <view class="fanc-cell__left">
+                            <view class="component-icon">
+                                <fanc-icon :name="item.icon" size="18"></fanc-icon>
+                            </view>
+                            <view class="fanc-cell__title">
+                                <text>{{ item.title }}</text>
+                            </view>
                         </view>
                     </template>
                 </fanc-cell>
@@ -185,9 +210,14 @@
                     :url="item.url"
                     center
                 >
-                    <template #icon>
-                        <view class="component-icon">
-                            <fanc-icon :name="item.icon" size="18"></fanc-icon>
+                    <template #left>
+                        <view class="fanc-cell__left">
+                            <view class="component-icon">
+                                <fanc-icon :name="item.icon" size="18"></fanc-icon>
+                            </view>
+                            <view class="fanc-cell__title">
+                                <text>{{ item.title }}</text>
+                            </view>
                         </view>
                     </template>
                 </fanc-cell>
@@ -674,5 +704,11 @@ page {
 ::v-deep .fanc-cell__title {
     font-size: 15px;
     font-weight: 400;
+}
+
+.fanc-cell__left{
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
 }
 </style>
