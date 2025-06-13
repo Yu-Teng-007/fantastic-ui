@@ -69,12 +69,12 @@ export default {
     data() {
         return {
             images: [
-                "https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg",
-                "https://cdn.pixabay.com/photo/2014/02/27/16/10/flowers-276014_1280.jpg",
-                "https://cdn.pixabay.com/photo/2015/12/01/20/28/road-1072823_1280.jpg",
-                "https://cdn.pixabay.com/photo/2015/06/19/21/24/avenue-815297_1280.jpg",
-                "https://cdn.pixabay.com/photo/2018/01/14/23/12/nature-3082832_1280.jpg",
-                "https://cdn.pixabay.com/photo/2015/09/09/16/05/forest-931706_1280.jpg",
+                "/static/img/source material/DM_20250613111832_001.jpg",
+                "/static/img/source material/DM_20250613111832_002.jpg",
+                "/static/img/source material/DM_20250613111832_003.jpg",
+                "/static/img/source material/DM_20250613111832_004.jpg",
+                "/static/img/source material/DM_20250613111832_005.jpg",
+                "/static/img/source material/DM_20250613111832_006.jpg",
             ],
             showPreview: false,
             currentIndex: 0,

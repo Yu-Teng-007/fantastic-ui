@@ -12,7 +12,7 @@
             <view class="section-title">基础用法</view>
             <view class="section-content">
                 <fanc-image
-                    src="/static/img/demo/little_boy_with_trumpet.png"
+                    src="/static/img/source material/DM_20250613111832_001.jpg"
                     width="200"
                     height="200"
                 />
@@ -47,7 +47,7 @@
                 <view class="loading-demo">
                     <fanc-image
                         :key="loadingKey"
-                        src="/static/img/demo/little_girl_with_trumpet.png"
+                        src="/static/img/source material/DM_20250613111832_002.jpg"
                         width="100"
                         height="100"
                         loading-text="加载中..."
@@ -66,7 +66,7 @@
                     width="100"
                     height="100"
                     error-text="加载失败"
-                    fallbackSrc="/static/img/demo/fail_load.png"
+                    fallbackSrc="/static/img/source material/DM_20250613112436_022.JPEG"
                 />
             </view>
         </view>
@@ -94,7 +94,7 @@
             <view class="section-title">事件监听</view>
             <view class="section-content">
                 <fanc-image
-                    src="/static/img/demo/woman_with_trumpet.png"
+                    src="/static/img/source material/DM_20250613111832_003.jpg"
                     width="200"
                     height="100"
                     @load="onImageLoad"
@@ -113,7 +113,7 @@
 export default {
     data() {
         return {
-            demoImageUrl: "/static/img/demo/cat.jpeg",
+            demoImageUrl: "/static/img/source material/DM_20250613112436_001.JPEG",
             modes: [
                 "scaleToFill",
                 "aspectFit",
@@ -131,11 +131,11 @@ export default {
                 "bottom right",
             ],
             lazyImages: [
-                "/static/img/demo/little_pig_with_trumpet.png",
-                "/static/img/demo/little_dog_with_trumpet.png",
-                "/static/img/demo/little_rabbit_with_trumpet.png",
-                "/static/img/demo/little_panda_with_trumpet.png",
-                "/static/img/demo/little_penguin_with_trumpet.png",
+                "/static/img/source material/DM_20250613112436_010.JPEG",
+                "/static/img/source material/DM_20250613112436_011.JPEG",
+                "/static/img/source material/DM_20250613112436_012.JPEG",
+                "/static/img/source material/DM_20250613112436_013.JPEG",
+                "/static/img/source material/DM_20250613112436_014.JPEG",
             ],
             eventResult: "点击图片、加载成功或失败时会显示事件信息",
             loadingKey: 0,

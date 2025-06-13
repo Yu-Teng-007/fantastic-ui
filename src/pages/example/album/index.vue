@@ -271,51 +271,51 @@ export default {
     data() {
         return {
             basicImages: [
-                "https://picsum.photos/id/1/300/300",
-                "https://picsum.photos/id/10/300/300",
-                "https://picsum.photos/id/100/300/300",
-                "https://picsum.photos/id/1000/300/300",
-                "https://picsum.photos/id/1001/300/300",
-                "https://picsum.photos/id/1002/300/300",
-                "https://picsum.photos/id/1003/300/300",
-                "https://picsum.photos/id/1004/300/300",
-                "https://picsum.photos/id/1005/300/300",
+                "/static/img/source material/DM_20250613111832_001.jpg",
+                "/static/img/source material/DM_20250613111832_002.jpg",
+                "/static/img/source material/DM_20250613111832_003.jpg",
+                "/static/img/source material/DM_20250613111832_004.jpg",
+                "/static/img/source material/DM_20250613111832_005.jpg",
+                "/static/img/source material/DM_20250613111832_006.jpg",
+                "/static/img/source material/DM_20250613111832_007.jpg",
+                "/static/img/source material/DM_20250613111832_008.jpg",
+                "/static/img/source material/DM_20250613111832_009.jpg",
             ],
             captionImages: [
                 {
-                    url: "https://picsum.photos/id/1/300/300",
+                    url: "/static/img/source material/DM_20250613112436_001.JPEG",
                     caption: "美丽的风景",
                 },
                 {
-                    url: "https://picsum.photos/id/10/300/300",
+                    url: "/static/img/source material/DM_20250613112436_002.JPEG",
                     caption: "城市夜景",
                 },
                 {
-                    url: "https://picsum.photos/id/100/300/300",
+                    url: "/static/img/source material/DM_20250613112436_003.JPEG",
                     caption: "海边日落",
                 },
                 {
-                    url: "https://picsum.photos/id/1000/300/300",
+                    url: "/static/img/source material/DM_20250613112436_004.JPEG",
                     caption: "山间小路",
                 },
             ],
             listImages: [
                 {
-                    url: "https://picsum.photos/id/1/300/300",
+                    url: "/static/img/source material/DM_20250613112436_005.JPEG",
                     title: "风景照片",
                     description: "拍摄于2023年夏天的旅行",
                     date: "2023-07-15",
                     size: "2.5MB",
                 },
                 {
-                    url: "https://picsum.photos/id/10/300/300",
+                    url: "/static/img/source material/DM_20250613112436_006.JPEG",
                     title: "城市夜景",
                     description: "城市灯光璀璨的夜晚",
                     date: "2023-08-20",
                     size: "3.1MB",
                 },
                 {
-                    url: "https://picsum.photos/id/100/300/300",
+                    url: "/static/img/source material/DM_20250613112436_007.JPEG",
                     title: "海边日落",
                     description: "金色的阳光洒在海面上",
                     date: "2023-09-05",
@@ -324,32 +324,32 @@ export default {
             ],
             waterfallImages: [
                 {
-                    url: "https://picsum.photos/id/1/300/400",
+                    url: "/static/img/source material/DM_20250613112436_008.JPEG",
                     caption: "风景照片",
                     aspectRatio: 0.75,
                 },
                 {
-                    url: "https://picsum.photos/id/10/300/300",
+                    url: "/static/img/source material/DM_20250613112436_009.JPEG",
                     caption: "城市夜景",
                     aspectRatio: 1,
                 },
                 {
-                    url: "https://picsum.photos/id/100/300/500",
+                    url: "/static/img/source material/DM_20250613112436_010.JPEG",
                     caption: "海边日落",
                     aspectRatio: 0.6,
                 },
                 {
-                    url: "https://picsum.photos/id/1000/300/350",
+                    url: "/static/img/source material/DM_20250613112436_011.JPEG",
                     caption: "山间小路",
                     aspectRatio: 0.857,
                 },
                 {
-                    url: "https://picsum.photos/id/1001/300/450",
+                    url: "/static/img/source material/DM_20250613112436_012.JPEG",
                     caption: "森林风光",
                     aspectRatio: 0.667,
                 },
                 {
-                    url: "https://picsum.photos/id/1002/300/300",
+                    url: "/static/img/source material/DM_20250613112436_013.JPEG",
                     caption: "湖泊倒影",
                     aspectRatio: 1,
                 },
