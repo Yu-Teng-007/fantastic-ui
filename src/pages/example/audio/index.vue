@@ -10,10 +10,10 @@
             <view class="section-title">基础用法</view>
             <view class="example-block">
                 <fanc-audio
-                    src="https://wx.music.tc.qq.com/M80000140o6q3Jvfzr.mp3?fromtag=8&guid=ilingku&src=M800004Yi5BD3ksoAN.mp3&trace=4b5427ab69326485&uin=8200895&vkey=4DB2B90411E526DF0BB7FBD4390F23E96879D9EC3946E2317678E6E8FD39D1F8C340BB99480593A8480C515E8FF71CC0FC1FD17E8EFA7C48__v21e2a1733"
-                    title="蒲公英的约定"
-                    author="周杰伦"
-                    cover="https://imge.kugou.com/stdmusic/120/20220705/20220705143006989099.jpg"
+                    :src="audioSrc"
+                    :title="audioTitle"
+                    :author="audioAuthor"
+                    :cover="audioCover"
                 ></fanc-audio>
             </view>
         </view>
@@ -23,46 +23,46 @@
             <view class="section-title">自定义颜色</view>
             <view class="example-block">
                 <fanc-audio
-                    src="https://wx.music.tc.qq.com/M800002202B43Cq4V4.mp3?fromtag=8&guid=ilingku&trace=1b7706de3d201fa1&uin=2388721329&vkey=0D33A90EDA81AAB2B696FDDB9A18153D1041480D84C30D764DF91F4ADCBE2862092BCFF56714497C837249303A20FE16EF313EEBA7A687AB__v2b94c558"
-                    title="晴天"
-                    author="周杰伦"
-                    cover="https://imge.kugou.com/stdmusic/120/20230920/20230920142503632013.jpg"
+                    :src="audioSrc"
+                    :title="audioTitle"
+                    :author="audioAuthor"
+                    :cover="audioCover"
                     color="#1976d2"
                     class="example-item"
                 ></fanc-audio>
 
                 <fanc-audio
-                     src="https://wx.music.tc.qq.com/M80000140o6q3Jvfzr.mp3?fromtag=8&guid=ilingku&src=M800004Yi5BD3ksoAN.mp3&trace=4b5427ab69326485&uin=8200895&vkey=4DB2B90411E526DF0BB7FBD4390F23E96879D9EC3946E2317678E6E8FD39D1F8C340BB99480593A8480C515E8FF71CC0FC1FD17E8EFA7C48__v21e2a1733"
-                    title="蒲公英的约定"
-                    author="周杰伦"
-                    cover="https://imge.kugou.com/stdmusic/120/20220705/20220705143006989099.jpg"
+                    :src="audioSrc"
+                    :title="audioTitle"
+                    :author="audioAuthor"
+                    :cover="audioCover"
                     color="#4caf50"
                     class="example-item"
                 ></fanc-audio>
 
                 <fanc-audio
-                    src="https://wx.music.tc.qq.com/M80000140o6q3Jvfzr.mp3?fromtag=8&guid=ilingku&src=M800004Yi5BD3ksoAN.mp3&trace=4b5427ab69326485&uin=8200895&vkey=4DB2B90411E526DF0BB7FBD4390F23E96879D9EC3946E2317678E6E8FD39D1F8C340BB99480593A8480C515E8FF71CC0FC1FD17E8EFA7C48__v21e2a1733"
-                    title="蒲公英的约定"
-                    author="周杰伦"
-                    cover="https://imge.kugou.com/stdmusic/120/20220705/20220705143006989099.jpg"
+                    :src="audioSrc"
+                    :title="audioTitle"
+                    :author="audioAuthor"
+                    :cover="audioCover"
                     color="#ff9800"
                     class="example-item"
                 ></fanc-audio>
 
                 <fanc-audio
-                    src="https://wx.music.tc.qq.com/M80000140o6q3Jvfzr.mp3?fromtag=8&guid=ilingku&src=M800004Yi5BD3ksoAN.mp3&trace=4b5427ab69326485&uin=8200895&vkey=4DB2B90411E526DF0BB7FBD4390F23E96879D9EC3946E2317678E6E8FD39D1F8C340BB99480593A8480C515E8FF71CC0FC1FD17E8EFA7C48__v21e2a1733"
-                    title="蒲公英的约定"
-                    author="周杰伦"
-                    cover="https://imge.kugou.com/stdmusic/120/20220705/20220705143006989099.jpg"
+                    :src="audioSrc"
+                    :title="audioTitle"
+                    :author="audioAuthor"
+                    :cover="audioCover"
                     color="#f44336"
                     class="example-item"
                 ></fanc-audio>
 
                 <fanc-audio
-                    src="https://wx.music.tc.qq.com/M80000140o6q3Jvfzr.mp3?fromtag=8&guid=ilingku&src=M800004Yi5BD3ksoAN.mp3&trace=4b5427ab69326485&uin=8200895&vkey=4DB2B90411E526DF0BB7FBD4390F23E96879D9EC3946E2317678E6E8FD39D1F8C340BB99480593A8480C515E8FF71CC0FC1FD17E8EFA7C48__v21e2a1733"
-                    title="蒲公英的约定"
-                    author="周杰伦"
-                    cover="https://imge.kugou.com/stdmusic/120/20220705/20220705143006989099.jpg"
+                    :src="audioSrc"
+                    :title="audioTitle"
+                    :author="audioAuthor"
+                    :cover="audioCover"
                     color="#2196f3"
                     class="example-item"
                 ></fanc-audio>
@@ -75,19 +75,19 @@
             <view class="section-title">迷你模式</view>
             <view class="example-block">
                 <fanc-audio
-                   src="https://wx.music.tc.qq.com/M80000140o6q3Jvfzr.mp3?fromtag=8&guid=ilingku&src=M800004Yi5BD3ksoAN.mp3&trace=4b5427ab69326485&uin=8200895&vkey=4DB2B90411E526DF0BB7FBD4390F23E96879D9EC3946E2317678E6E8FD39D1F8C340BB99480593A8480C515E8FF71CC0FC1FD17E8EFA7C48__v21e2a1733"
-                    title="蒲公英的约定"
-                    author="周杰伦"
-                    cover="https://imge.kugou.com/stdmusic/120/20220705/20220705143006989099.jpg"
+                    :src="audioSrc"
+                    :title="audioTitle"
+                    :author="audioAuthor"
+                    :cover="audioCover"
                     mini
                     class="example-item"
                 ></fanc-audio>
 
                 <fanc-audio
-                    src="https://wx.music.tc.qq.com/M80000140o6q3Jvfzr.mp3?fromtag=8&guid=ilingku&src=M800004Yi5BD3ksoAN.mp3&trace=4b5427ab69326485&uin=8200895&vkey=4DB2B90411E526DF0BB7FBD4390F23E96879D9EC3946E2317678E6E8FD39D1F8C340BB99480593A8480C515E8FF71CC0FC1FD17E8EFA7C48__v21e2a1733"
-                    title="蒲公英的约定"
-                    author="周杰伦"
-                    cover="https://imge.kugou.com/stdmusic/120/20220705/20220705143006989099.jpg"
+                    :src="audioSrc"
+                    :title="audioTitle"
+                    :author="audioAuthor"
+                    :cover="audioCover"
                     color="#1976d2"
                     mini
                     class="example-item"
@@ -100,10 +100,10 @@
             <view class="section-title">无封面</view>
             <view class="example-block">
                 <fanc-audio
-                    src="https://wx.music.tc.qq.com/M80000140o6q3Jvfzr.mp3?fromtag=8&guid=ilingku&src=M800004Yi5BD3ksoAN.mp3&trace=4b5427ab69326485&uin=8200895&vkey=4DB2B90411E526DF0BB7FBD4390F23E96879D9EC3946E2317678E6E8FD39D1F8C340BB99480593A8480C515E8FF71CC0FC1FD17E8EFA7C48__v21e2a1733"
-                    title="蒲公英的约定"
-                    author="周杰伦"
-                    cover="https://imge.kugou.com/stdmusic/120/20220705/20220705143006989099.jpg"
+                    :src="audioSrc"
+                    :title="audioTitle"
+                    :author="audioAuthor"
+                    :cover="audioCover"
                     :showCover="false"
                     class="example-item"
                 ></fanc-audio>
@@ -115,19 +115,19 @@
             <view class="section-title">显示下载按钮</view>
             <view class="example-block">
                 <fanc-audio
-                    src="https://wx.music.tc.qq.com/M80000140o6q3Jvfzr.mp3?fromtag=8&guid=ilingku&src=M800004Yi5BD3ksoAN.mp3&trace=4b5427ab69326485&uin=8200895&vkey=4DB2B90411E526DF0BB7FBD4390F23E96879D9EC3946E2317678E6E8FD39D1F8C340BB99480593A8480C515E8FF71CC0FC1FD17E8EFA7C48__v21e2a1733"
-                    title="蒲公英的约定"
-                    author="周杰伦"
-                    cover="https://imge.kugou.com/stdmusic/120/20220705/20220705143006989099.jpg"
+                    :src="audioSrc"
+                    :title="audioTitle"
+                    :author="audioAuthor"
+                    :cover="audioCover"
                     :showDownload="true"
                     class="example-item"
                 ></fanc-audio>
 
                 <fanc-audio
-                    src="https://wx.music.tc.qq.com/M80000140o6q3Jvfzr.mp3?fromtag=8&guid=ilingku&src=M800004Yi5BD3ksoAN.mp3&trace=4b5427ab69326485&uin=8200895&vkey=4DB2B90411E526DF0BB7FBD4390F23E96879D9EC3946E2317678E6E8FD39D1F8C340BB99480593A8480C515E8FF71CC0FC1FD17E8EFA7C48__v21e2a1733"
-                    title="蒲公英的约定"
-                    author="周杰伦"
-                    cover="https://imge.kugou.com/stdmusic/120/20220705/20220705143006989099.jpg"
+                    :src="audioSrc"
+                    :title="audioTitle"
+                    :author="audioAuthor"
+                    :cover="audioCover"
                     color="#1976d2"
                     mini
                     :showDownload="true"
@@ -142,40 +142,40 @@
             <view class="section-title">不同颜色的下载按钮</view>
             <view class="example-block">
                 <fanc-audio
-                    src="https://wx.music.tc.qq.com/M80000140o6q3Jvfzr.mp3?fromtag=8&guid=ilingku&src=M800004Yi5BD3ksoAN.mp3&trace=4b5427ab69326485&uin=8200895&vkey=4DB2B90411E526DF0BB7FBD4390F23E96879D9EC3946E2317678E6E8FD39D1F8C340BB99480593A8480C515E8FF71CC0FC1FD17E8EFA7C48__v21e2a1733"
-                    title="蒲公英的约定"
-                    author="周杰伦"
-                    cover="https://imge.kugou.com/stdmusic/120/20220705/20220705143006989099.jpg"
+                    :src="audioSrc"
+                    :title="audioTitle"
+                    :author="audioAuthor"
+                    :cover="audioCover"
                     color="#4caf50"
                     :showDownload="true"
                     class="example-item"
                 ></fanc-audio>
 
                 <fanc-audio
-                    src="https://wx.music.tc.qq.com/M80000140o6q3Jvfzr.mp3?fromtag=8&guid=ilingku&src=M800004Yi5BD3ksoAN.mp3&trace=4b5427ab69326485&uin=8200895&vkey=4DB2B90411E526DF0BB7FBD4390F23E96879D9EC3946E2317678E6E8FD39D1F8C340BB99480593A8480C515E8FF71CC0FC1FD17E8EFA7C48__v21e2a1733"
-                    title="蒲公英的约定"
-                    author="周杰伦"
-                    cover="https://imge.kugou.com/stdmusic/120/20220705/20220705143006989099.jpg"
+                    :src="audioSrc"
+                    :title="audioTitle"
+                    :author="audioAuthor"
+                    :cover="audioCover"
                     color="#ff9800"
                     :showDownload="true"
                     class="example-item"
                 ></fanc-audio>
 
                 <fanc-audio
-                    src="https://wx.music.tc.qq.com/M80000140o6q3Jvfzr.mp3?fromtag=8&guid=ilingku&src=M800004Yi5BD3ksoAN.mp3&trace=4b5427ab69326485&uin=8200895&vkey=4DB2B90411E526DF0BB7FBD4390F23E96879D9EC3946E2317678E6E8FD39D1F8C340BB99480593A8480C515E8FF71CC0FC1FD17E8EFA7C48__v21e2a1733"
-                    title="蒲公英的约定"
-                    author="周杰伦"
-                    cover="https://imge.kugou.com/stdmusic/120/20220705/20220705143006989099.jpg"
+                    :src="audioSrc"
+                    :title="audioTitle"
+                    :author="audioAuthor"
+                    :cover="audioCover"
                     color="#f44336"
                     :showDownload="true"
                     class="example-item"
                 ></fanc-audio>
 
                 <fanc-audio
-                    src="https://wx.music.tc.qq.com/M80000140o6q3Jvfzr.mp3?fromtag=8&guid=ilingku&src=M800004Yi5BD3ksoAN.mp3&trace=4b5427ab69326485&uin=8200895&vkey=4DB2B90411E526DF0BB7FBD4390F23E96879D9EC3946E2317678E6E8FD39D1F8C340BB99480593A8480C515E8FF71CC0FC1FD17E8EFA7C48__v21e2a1733"
-                    title="蒲公英的约定"
-                    author="周杰伦"
-                    cover="https://imge.kugou.com/stdmusic/120/20220705/20220705143006989099.jpg"
+                    :src="audioSrc"
+                    :title="audioTitle"
+                    :author="audioAuthor"
+                    :cover="audioCover"
                     color="#8e44ad"
                     :showDownload="true"
                     class="example-item"
@@ -189,10 +189,10 @@
             <view class="section-title">禁用状态</view>
             <view class="example-block">
                 <fanc-audio
-                    src="https://wx.music.tc.qq.com/M80000140o6q3Jvfzr.mp3?fromtag=8&guid=ilingku&src=M800004Yi5BD3ksoAN.mp3&trace=4b5427ab69326485&uin=8200895&vkey=4DB2B90411E526DF0BB7FBD4390F23E96879D9EC3946E2317678E6E8FD39D1F8C340BB99480593A8480C515E8FF71CC0FC1FD17E8EFA7C48__v21e2a1733"
-                    title="蒲公英的约定"
-                    author="周杰伦"
-                    cover="https://imge.kugou.com/stdmusic/120/20220705/20220705143006989099.jpg"
+                    :src="audioSrc"
+                    :title="audioTitle"
+                    :author="audioAuthor"
+                    :cover="audioCover"
                     disabled
                     class="example-item"
                 ></fanc-audio>
@@ -204,10 +204,10 @@
             <view class="section-title">循环播放</view>
             <view class="example-block">
                 <fanc-audio
-                    src="https://wx.music.tc.qq.com/M80000140o6q3Jvfzr.mp3?fromtag=8&guid=ilingku&src=M800004Yi5BD3ksoAN.mp3&trace=4b5427ab69326485&uin=8200895&vkey=4DB2B90411E526DF0BB7FBD4390F23E96879D9EC3946E2317678E6E8FD39D1F8C340BB99480593A8480C515E8FF71CC0FC1FD17E8EFA7C48__v21e2a1733"
-                    title="蒲公英的约定"
-                    author="周杰伦"
-                    cover="https://imge.kugou.com/stdmusic/120/20220705/20220705143006989099.jpg"
+                    :src="audioSrc"
+                    :title="audioTitle"
+                    :author="audioAuthor"
+                    :cover="audioCover"
                     :loop="true"
                     class="example-item"
                 ></fanc-audio>
@@ -219,29 +219,29 @@
             <view class="section-title">圆形封面</view>
             <view class="example-block">
                 <fanc-audio
-                    src="https://wx.music.tc.qq.com/M80000140o6q3Jvfzr.mp3?fromtag=8&guid=ilingku&src=M800004Yi5BD3ksoAN.mp3&trace=4b5427ab69326485&uin=8200895&vkey=4DB2B90411E526DF0BB7FBD4390F23E96879D9EC3946E2317678E6E8FD39D1F8C340BB99480593A8480C515E8FF71CC0FC1FD17E8EFA7C48__v21e2a1733"
-                    title="蒲公英的约定"
-                    author="周杰伦"
-                    cover="https://imge.kugou.com/stdmusic/120/20220705/20220705143006989099.jpg"
+                    :src="audioSrc"
+                    :title="audioTitle"
+                    :author="audioAuthor"
+                    :cover="audioCover"
                     coverShape="circle"
                     class="example-item"
                 ></fanc-audio>
 
                 <fanc-audio
-                    src="https://wx.music.tc.qq.com/M80000140o6q3Jvfzr.mp3?fromtag=8&guid=ilingku&src=M800004Yi5BD3ksoAN.mp3&trace=4b5427ab69326485&uin=8200895&vkey=4DB2B90411E526DF0BB7FBD4390F23E96879D9EC3946E2317678E6E8FD39D1F8C340BB99480593A8480C515E8FF71CC0FC1FD17E8EFA7C48__v21e2a1733"
-                    title="蒲公英的约定"
-                    author="周杰伦"
-                    cover="https://imge.kugou.com/stdmusic/120/20220705/20220705143006989099.jpg"
+                    :src="audioSrc"
+                    :title="audioTitle"
+                    :author="audioAuthor"
+                    :cover="audioCover"
                     coverShape="circle"
                     color="#9c27b0"
                     class="example-item"
                 ></fanc-audio>
 
                 <fanc-audio
-                    src="https://wx.music.tc.qq.com/M80000140o6q3Jvfzr.mp3?fromtag=8&guid=ilingku&src=M800004Yi5BD3ksoAN.mp3&trace=4b5427ab69326485&uin=8200895&vkey=4DB2B90411E526DF0BB7FBD4390F23E96879D9EC3946E2317678E6E8FD39D1F8C340BB99480593A8480C515E8FF71CC0FC1FD17E8EFA7C48__v21e2a1733"
-                    title="蒲公英的约定"
-                    author="周杰伦"
-                    cover="https://imge.kugou.com/stdmusic/120/20220705/20220705143006989099.jpg"
+                    :src="audioSrc"
+                    :title="audioTitle"
+                    :author="audioAuthor"
+                    :cover="audioCover"
                     coverShape="circle"
                     mini
                     color="#3f51b5"
@@ -257,10 +257,10 @@
             <view class="example-block">
                 <fanc-audio
                     ref="eventAudio"
-                    src="https://wx.music.tc.qq.com/M80000140o6q3Jvfzr.mp3?fromtag=8&guid=ilingku&src=M800004Yi5BD3ksoAN.mp3&trace=4b5427ab69326485&uin=8200895&vkey=4DB2B90411E526DF0BB7FBD4390F23E96879D9EC3946E2317678E6E8FD39D1F8C340BB99480593A8480C515E8FF71CC0FC1FD17E8EFA7C48__v21e2a1733"
-                    title="蒲公英的约定"
-                    author="周杰伦"
-                    cover="https://imge.kugou.com/stdmusic/120/20220705/20220705143006989099.jpg"
+                    :src="audioSrc"
+                    :title="audioTitle"
+                    :author="audioAuthor"
+                    :cover="audioCover"
                     class="example-item"
                     @play="onPlay"
                     @pause="onPause"
@@ -287,6 +287,11 @@ export default {
     data() {
         return {
             eventLogs: [],
+            audioSrc:
+                "https://wx.music.tc.qq.com/M80000140o6q3Jvfzr.mp3?fromtag=8&guid=ilingku&src=M800004Yi5BD3ksoAN.mp3&trace=4b5427ab69326485&uin=8200895&vkey=4DB2B90411E526DF0BB7FBD4390F23E96879D9EC3946E2317678E6E8FD39D1F8C340BB99480593A8480C515E8FF71CC0FC1FD17E8EFA7C48__v21e2a1733",
+            audioCover: "https://imge.kugou.com/stdmusic/120/20220705/20220705143006989099.jpg",
+            audioTitle: "蒲公英的约定",
+            audioAuthor: "周杰伦",
         };
     },
     methods: {
