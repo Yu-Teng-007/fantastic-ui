@@ -491,14 +491,21 @@ export default {
             if (!this.isDragging || this.disabled) return;
 
             // 获取进度条宽度和位置
-            const progressBar = e.currentTarget.parentNode;
-            const rect = progressBar.getBoundingClientRect();
-            const offsetX = e.touches[0].clientX - rect.left;
-            const width = rect.width;
+            const query = uni.createSelectorQuery().in(this);
+            query
+                .select(".fanc-audio__progress-bar")
+                .boundingClientRect((data) => {
+                    if (!data) return;
 
-            // 计算百分比
-            let percent = Math.max(0, Math.min(100, (offsetX / width) * 100));
-            this.progress = percent;
+                    const touch = e.touches[0];
+                    const offsetX = touch.clientX - data.left;
+                    const width = data.width;
+
+                    // 计算百分比
+                    let percent = Math.max(0, Math.min(100, (offsetX / width) * 100));
+                    this.progress = percent;
+                })
+                .exec();
         },
 
         // 处理进度条拖动结束

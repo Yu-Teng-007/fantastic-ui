@@ -32,37 +32,37 @@
                 ></fanc-audio>
 
                 <fanc-audio
-                    src="https://music.163.com/song/media/outer/url?id=1891469546.mp3"
-                    title="理想"
-                    author="李健"
-                    cover="https://images.unsplash.com/photo-1534430480872-3498386e7856?q=80&w=500&auto=format&fit=crop"
+                     src="https://wx.music.tc.qq.com/M80000140o6q3Jvfzr.mp3?fromtag=8&guid=ilingku&src=M800004Yi5BD3ksoAN.mp3&trace=4b5427ab69326485&uin=8200895&vkey=4DB2B90411E526DF0BB7FBD4390F23E96879D9EC3946E2317678E6E8FD39D1F8C340BB99480593A8480C515E8FF71CC0FC1FD17E8EFA7C48__v21e2a1733"
+                    title="蒲公英的约定"
+                    author="周杰伦"
+                    cover="https://imge.kugou.com/stdmusic/120/20220705/20220705143006989099.jpg"
                     color="#4caf50"
                     class="example-item"
                 ></fanc-audio>
 
                 <fanc-audio
-                    src="https://music.163.com/song/media/outer/url?id=1922723733.mp3"
-                    title="像我这样的人"
-                    author="毛不易"
-                    cover="https://images.unsplash.com/photo-1614149162883-504ce4d13909?q=80&w=500&auto=format&fit=crop"
+                    src="https://wx.music.tc.qq.com/M80000140o6q3Jvfzr.mp3?fromtag=8&guid=ilingku&src=M800004Yi5BD3ksoAN.mp3&trace=4b5427ab69326485&uin=8200895&vkey=4DB2B90411E526DF0BB7FBD4390F23E96879D9EC3946E2317678E6E8FD39D1F8C340BB99480593A8480C515E8FF71CC0FC1FD17E8EFA7C48__v21e2a1733"
+                    title="蒲公英的约定"
+                    author="周杰伦"
+                    cover="https://imge.kugou.com/stdmusic/120/20220705/20220705143006989099.jpg"
                     color="#ff9800"
                     class="example-item"
                 ></fanc-audio>
 
                 <fanc-audio
-                    src="https://music.163.com/song/media/outer/url?id=1949096115.mp3"
-                    title="哪里都是你"
-                    author="队长"
-                    cover="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=500&auto=format&fit=crop"
+                    src="https://wx.music.tc.qq.com/M80000140o6q3Jvfzr.mp3?fromtag=8&guid=ilingku&src=M800004Yi5BD3ksoAN.mp3&trace=4b5427ab69326485&uin=8200895&vkey=4DB2B90411E526DF0BB7FBD4390F23E96879D9EC3946E2317678E6E8FD39D1F8C340BB99480593A8480C515E8FF71CC0FC1FD17E8EFA7C48__v21e2a1733"
+                    title="蒲公英的约定"
+                    author="周杰伦"
+                    cover="https://imge.kugou.com/stdmusic/120/20220705/20220705143006989099.jpg"
                     color="#f44336"
                     class="example-item"
                 ></fanc-audio>
 
                 <fanc-audio
-                    src="https://music.163.com/song/media/outer/url?id=1413863166.mp3"
-                    title="起风了"
-                    author="买辣椒也用券"
-                    cover="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?q=80&w=500&auto=format&fit=crop"
+                    src="https://wx.music.tc.qq.com/M80000140o6q3Jvfzr.mp3?fromtag=8&guid=ilingku&src=M800004Yi5BD3ksoAN.mp3&trace=4b5427ab69326485&uin=8200895&vkey=4DB2B90411E526DF0BB7FBD4390F23E96879D9EC3946E2317678E6E8FD39D1F8C340BB99480593A8480C515E8FF71CC0FC1FD17E8EFA7C48__v21e2a1733"
+                    title="蒲公英的约定"
+                    author="周杰伦"
+                    cover="https://imge.kugou.com/stdmusic/120/20220705/20220705143006989099.jpg"
                     color="#2196f3"
                     class="example-item"
                 ></fanc-audio>
@@ -75,17 +75,19 @@
             <view class="section-title">迷你模式</view>
             <view class="example-block">
                 <fanc-audio
-                    src="https://music.163.com/song/media/outer/url?id=1808492017.mp3"
-                    title="漫长的告别"
-                    author="梁博"
+                   src="https://wx.music.tc.qq.com/M80000140o6q3Jvfzr.mp3?fromtag=8&guid=ilingku&src=M800004Yi5BD3ksoAN.mp3&trace=4b5427ab69326485&uin=8200895&vkey=4DB2B90411E526DF0BB7FBD4390F23E96879D9EC3946E2317678E6E8FD39D1F8C340BB99480593A8480C515E8FF71CC0FC1FD17E8EFA7C48__v21e2a1733"
+                    title="蒲公英的约定"
+                    author="周杰伦"
+                    cover="https://imge.kugou.com/stdmusic/120/20220705/20220705143006989099.jpg"
                     mini
                     class="example-item"
                 ></fanc-audio>
 
                 <fanc-audio
-                    src="https://music.163.com/song/media/outer/url?id=1359460183.mp3"
-                    title="小城夏天"
-                    author="LBI利比"
+                    src="https://wx.music.tc.qq.com/M80000140o6q3Jvfzr.mp3?fromtag=8&guid=ilingku&src=M800004Yi5BD3ksoAN.mp3&trace=4b5427ab69326485&uin=8200895&vkey=4DB2B90411E526DF0BB7FBD4390F23E96879D9EC3946E2317678E6E8FD39D1F8C340BB99480593A8480C515E8FF71CC0FC1FD17E8EFA7C48__v21e2a1733"
+                    title="蒲公英的约定"
+                    author="周杰伦"
+                    cover="https://imge.kugou.com/stdmusic/120/20220705/20220705143006989099.jpg"
                     color="#1976d2"
                     mini
                     class="example-item"
@@ -98,9 +100,10 @@
             <view class="section-title">无封面</view>
             <view class="example-block">
                 <fanc-audio
-                    src="https://music.163.com/song/media/outer/url?id=1934251776.mp3"
-                    title="孤勇者"
-                    author="陈奕迅"
+                    src="https://wx.music.tc.qq.com/M80000140o6q3Jvfzr.mp3?fromtag=8&guid=ilingku&src=M800004Yi5BD3ksoAN.mp3&trace=4b5427ab69326485&uin=8200895&vkey=4DB2B90411E526DF0BB7FBD4390F23E96879D9EC3946E2317678E6E8FD39D1F8C340BB99480593A8480C515E8FF71CC0FC1FD17E8EFA7C48__v21e2a1733"
+                    title="蒲公英的约定"
+                    author="周杰伦"
+                    cover="https://imge.kugou.com/stdmusic/120/20220705/20220705143006989099.jpg"
                     :showCover="false"
                     class="example-item"
                 ></fanc-audio>
@@ -112,18 +115,19 @@
             <view class="section-title">显示下载按钮</view>
             <view class="example-block">
                 <fanc-audio
-                    src="https://music.163.com/song/media/outer/url?id=2007767912.mp3"
-                    title="花海"
+                    src="https://wx.music.tc.qq.com/M80000140o6q3Jvfzr.mp3?fromtag=8&guid=ilingku&src=M800004Yi5BD3ksoAN.mp3&trace=4b5427ab69326485&uin=8200895&vkey=4DB2B90411E526DF0BB7FBD4390F23E96879D9EC3946E2317678E6E8FD39D1F8C340BB99480593A8480C515E8FF71CC0FC1FD17E8EFA7C48__v21e2a1733"
+                    title="蒲公英的约定"
                     author="周杰伦"
-                    cover="https://images.unsplash.com/photo-1506157786151-b8491531f063?q=80&w=500&auto=format&fit=crop"
+                    cover="https://imge.kugou.com/stdmusic/120/20220705/20220705143006989099.jpg"
                     :showDownload="true"
                     class="example-item"
                 ></fanc-audio>
 
                 <fanc-audio
-                    src="https://music.163.com/song/media/outer/url?id=1942385658.mp3"
-                    title="Letting Go"
-                    author="蔡健雅"
+                    src="https://wx.music.tc.qq.com/M80000140o6q3Jvfzr.mp3?fromtag=8&guid=ilingku&src=M800004Yi5BD3ksoAN.mp3&trace=4b5427ab69326485&uin=8200895&vkey=4DB2B90411E526DF0BB7FBD4390F23E96879D9EC3946E2317678E6E8FD39D1F8C340BB99480593A8480C515E8FF71CC0FC1FD17E8EFA7C48__v21e2a1733"
+                    title="蒲公英的约定"
+                    author="周杰伦"
+                    cover="https://imge.kugou.com/stdmusic/120/20220705/20220705143006989099.jpg"
                     color="#1976d2"
                     mini
                     :showDownload="true"
@@ -138,40 +142,40 @@
             <view class="section-title">不同颜色的下载按钮</view>
             <view class="example-block">
                 <fanc-audio
-                    src="https://music.163.com/song/media/outer/url?id=1818031620.mp3"
-                    title="盗将行"
-                    author="花粥"
-                    cover="https://images.unsplash.com/photo-1507838153414-b4b713384a76?q=80&w=500&auto=format&fit=crop"
+                    src="https://wx.music.tc.qq.com/M80000140o6q3Jvfzr.mp3?fromtag=8&guid=ilingku&src=M800004Yi5BD3ksoAN.mp3&trace=4b5427ab69326485&uin=8200895&vkey=4DB2B90411E526DF0BB7FBD4390F23E96879D9EC3946E2317678E6E8FD39D1F8C340BB99480593A8480C515E8FF71CC0FC1FD17E8EFA7C48__v21e2a1733"
+                    title="蒲公英的约定"
+                    author="周杰伦"
+                    cover="https://imge.kugou.com/stdmusic/120/20220705/20220705143006989099.jpg"
                     color="#4caf50"
                     :showDownload="true"
                     class="example-item"
                 ></fanc-audio>
 
                 <fanc-audio
-                    src="https://music.163.com/song/media/outer/url?id=1973643937.mp3"
-                    title="白月光与朱砂痣"
-                    author="大籽"
-                    cover="https://images.unsplash.com/photo-1614149162883-504ce4d13909?q=80&w=500&auto=format&fit=crop"
+                    src="https://wx.music.tc.qq.com/M80000140o6q3Jvfzr.mp3?fromtag=8&guid=ilingku&src=M800004Yi5BD3ksoAN.mp3&trace=4b5427ab69326485&uin=8200895&vkey=4DB2B90411E526DF0BB7FBD4390F23E96879D9EC3946E2317678E6E8FD39D1F8C340BB99480593A8480C515E8FF71CC0FC1FD17E8EFA7C48__v21e2a1733"
+                    title="蒲公英的约定"
+                    author="周杰伦"
+                    cover="https://imge.kugou.com/stdmusic/120/20220705/20220705143006989099.jpg"
                     color="#ff9800"
                     :showDownload="true"
                     class="example-item"
                 ></fanc-audio>
 
                 <fanc-audio
-                    src="https://music.163.com/song/media/outer/url?id=1401161519.mp3"
-                    title="星辰大海"
-                    author="黄霄雲"
-                    cover="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?q=80&w=500&auto=format&fit=crop"
+                    src="https://wx.music.tc.qq.com/M80000140o6q3Jvfzr.mp3?fromtag=8&guid=ilingku&src=M800004Yi5BD3ksoAN.mp3&trace=4b5427ab69326485&uin=8200895&vkey=4DB2B90411E526DF0BB7FBD4390F23E96879D9EC3946E2317678E6E8FD39D1F8C340BB99480593A8480C515E8FF71CC0FC1FD17E8EFA7C48__v21e2a1733"
+                    title="蒲公英的约定"
+                    author="周杰伦"
+                    cover="https://imge.kugou.com/stdmusic/120/20220705/20220705143006989099.jpg"
                     color="#f44336"
                     :showDownload="true"
                     class="example-item"
                 ></fanc-audio>
 
                 <fanc-audio
-                    src="https://music.163.com/song/media/outer/url?id=1436709403.mp3"
-                    title="这一生关于你的风景"
-                    author="隔壁老樊"
-                    cover="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?q=80&w=500&auto=format&fit=crop"
+                    src="https://wx.music.tc.qq.com/M80000140o6q3Jvfzr.mp3?fromtag=8&guid=ilingku&src=M800004Yi5BD3ksoAN.mp3&trace=4b5427ab69326485&uin=8200895&vkey=4DB2B90411E526DF0BB7FBD4390F23E96879D9EC3946E2317678E6E8FD39D1F8C340BB99480593A8480C515E8FF71CC0FC1FD17E8EFA7C48__v21e2a1733"
+                    title="蒲公英的约定"
+                    author="周杰伦"
+                    cover="https://imge.kugou.com/stdmusic/120/20220705/20220705143006989099.jpg"
                     color="#8e44ad"
                     :showDownload="true"
                     class="example-item"
@@ -185,10 +189,10 @@
             <view class="section-title">禁用状态</view>
             <view class="example-block">
                 <fanc-audio
-                    src="https://music.163.com/song/media/outer/url?id=1930863111.mp3"
-                    title="干杯"
-                    author="五月天"
-                    cover="https://images.unsplash.com/photo-1584679109597-c656b19974c9?q=80&w=500&auto=format&fit=crop"
+                    src="https://wx.music.tc.qq.com/M80000140o6q3Jvfzr.mp3?fromtag=8&guid=ilingku&src=M800004Yi5BD3ksoAN.mp3&trace=4b5427ab69326485&uin=8200895&vkey=4DB2B90411E526DF0BB7FBD4390F23E96879D9EC3946E2317678E6E8FD39D1F8C340BB99480593A8480C515E8FF71CC0FC1FD17E8EFA7C48__v21e2a1733"
+                    title="蒲公英的约定"
+                    author="周杰伦"
+                    cover="https://imge.kugou.com/stdmusic/120/20220705/20220705143006989099.jpg"
                     disabled
                     class="example-item"
                 ></fanc-audio>
@@ -200,10 +204,10 @@
             <view class="section-title">循环播放</view>
             <view class="example-block">
                 <fanc-audio
-                    src="https://music.163.com/song/media/outer/url?id=25643136.mp3"
-                    title="光辉岁月"
-                    author="Beyond"
-                    cover="https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?q=80&w=500&auto=format&fit=crop"
+                    src="https://wx.music.tc.qq.com/M80000140o6q3Jvfzr.mp3?fromtag=8&guid=ilingku&src=M800004Yi5BD3ksoAN.mp3&trace=4b5427ab69326485&uin=8200895&vkey=4DB2B90411E526DF0BB7FBD4390F23E96879D9EC3946E2317678E6E8FD39D1F8C340BB99480593A8480C515E8FF71CC0FC1FD17E8EFA7C48__v21e2a1733"
+                    title="蒲公英的约定"
+                    author="周杰伦"
+                    cover="https://imge.kugou.com/stdmusic/120/20220705/20220705143006989099.jpg"
                     :loop="true"
                     class="example-item"
                 ></fanc-audio>
@@ -215,28 +219,29 @@
             <view class="section-title">圆形封面</view>
             <view class="example-block">
                 <fanc-audio
-                    src="https://music.163.com/song/media/outer/url?id=1975599456.mp3"
-                    title="麻雀"
-                    author="李荣浩"
-                    cover="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?q=80&w=500&auto=format&fit=crop"
+                    src="https://wx.music.tc.qq.com/M80000140o6q3Jvfzr.mp3?fromtag=8&guid=ilingku&src=M800004Yi5BD3ksoAN.mp3&trace=4b5427ab69326485&uin=8200895&vkey=4DB2B90411E526DF0BB7FBD4390F23E96879D9EC3946E2317678E6E8FD39D1F8C340BB99480593A8480C515E8FF71CC0FC1FD17E8EFA7C48__v21e2a1733"
+                    title="蒲公英的约定"
+                    author="周杰伦"
+                    cover="https://imge.kugou.com/stdmusic/120/20220705/20220705143006989099.jpg"
                     coverShape="circle"
                     class="example-item"
                 ></fanc-audio>
 
                 <fanc-audio
-                    src="https://music.163.com/song/media/outer/url?id=186016.mp3"
-                    title="今天只做一件事"
-                    author="陈奕迅"
-                    cover="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?q=80&w=500&auto=format&fit=crop"
+                    src="https://wx.music.tc.qq.com/M80000140o6q3Jvfzr.mp3?fromtag=8&guid=ilingku&src=M800004Yi5BD3ksoAN.mp3&trace=4b5427ab69326485&uin=8200895&vkey=4DB2B90411E526DF0BB7FBD4390F23E96879D9EC3946E2317678E6E8FD39D1F8C340BB99480593A8480C515E8FF71CC0FC1FD17E8EFA7C48__v21e2a1733"
+                    title="蒲公英的约定"
+                    author="周杰伦"
+                    cover="https://imge.kugou.com/stdmusic/120/20220705/20220705143006989099.jpg"
                     coverShape="circle"
                     color="#9c27b0"
                     class="example-item"
                 ></fanc-audio>
 
                 <fanc-audio
-                    src="https://music.163.com/song/media/outer/url?id=1902224221.mp3"
-                    title="和你一起"
-                    author="陈奕迅"
+                    src="https://wx.music.tc.qq.com/M80000140o6q3Jvfzr.mp3?fromtag=8&guid=ilingku&src=M800004Yi5BD3ksoAN.mp3&trace=4b5427ab69326485&uin=8200895&vkey=4DB2B90411E526DF0BB7FBD4390F23E96879D9EC3946E2317678E6E8FD39D1F8C340BB99480593A8480C515E8FF71CC0FC1FD17E8EFA7C48__v21e2a1733"
+                    title="蒲公英的约定"
+                    author="周杰伦"
+                    cover="https://imge.kugou.com/stdmusic/120/20220705/20220705143006989099.jpg"
                     coverShape="circle"
                     mini
                     color="#3f51b5"
@@ -252,10 +257,10 @@
             <view class="example-block">
                 <fanc-audio
                     ref="eventAudio"
-                    src="https://music.163.com/song/media/outer/url?id=1842025914.mp3"
-                    title="世间美好与你环环相扣"
-                    author="柏松"
-                    cover="https://images.unsplash.com/photo-1477233534935-f5e6fe7c1159?q=80&w=500&auto=format&fit=crop"
+                    src="https://wx.music.tc.qq.com/M80000140o6q3Jvfzr.mp3?fromtag=8&guid=ilingku&src=M800004Yi5BD3ksoAN.mp3&trace=4b5427ab69326485&uin=8200895&vkey=4DB2B90411E526DF0BB7FBD4390F23E96879D9EC3946E2317678E6E8FD39D1F8C340BB99480593A8480C515E8FF71CC0FC1FD17E8EFA7C48__v21e2a1733"
+                    title="蒲公英的约定"
+                    author="周杰伦"
+                    cover="https://imge.kugou.com/stdmusic/120/20220705/20220705143006989099.jpg"
                     class="example-item"
                     @play="onPlay"
                     @pause="onPause"
